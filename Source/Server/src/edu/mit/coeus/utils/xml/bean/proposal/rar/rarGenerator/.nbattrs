@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="CoreBudgetTotalsTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="CoreFederalAgencyReceiptQualifiersTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="ProjectSurveyStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000478"/>
+    </fileobject>
+    <fileobject name="CoreApplicationCategoryTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="OrgAssurancesTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000478"/>
+    </fileobject>
+    <fileobject name="CoreProjectDatesTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="BudgetTotalsTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000378"/>
+    </fileobject>
+    <fileobject name="CoreStateReceiptQualifiersTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="CoreSubmissionCategoryTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="CoreStateIntergovernmentalReviewTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="OtherAgencyQuestionsTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="AnimalSubjectTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000378"/>
+    </fileobject>
+    <fileobject name="ApplicantOrganizationTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="CoreApplicantSubmissionQualifiersTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="CoreFederalDebtDelinquencyQuestionsTypeStream.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+    <fileobject name="RarObjFactoryGenerator.java">
+        <attr name="template" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000278"/>
+    </fileobject>
+</attributes>

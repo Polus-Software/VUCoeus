@@ -1,0 +1,441 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+<form-beans>
+     <form-bean name="discCertificationForm" dynamic="false" 
+                    type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="personId" type="java.lang.String"/>
+            <form-property name="acType" type="java.lang.String"/> 
+            <form-property name="coiDisclosureNumber" type="java.lang.String"/>            
+      </form-bean>
+      <form-bean name="finEntityData" dynamic="false" 
+                    type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="entityNumber" type="java.lang.String"/>
+            <form-property name="entityName" type="java.lang.String"/> 
+            <form-property name="actionFrom" type="java.lang.String"/>            
+      </form-bean>
+      <form-bean name="annDisclosure" dynamic="false" 
+                    type="org.apache.struts.validator.DynaValidatorForm">   
+       <form-property name="personId" type="java.lang.String"/>
+       <form-property name="acType" type="java.lang.String"/> 
+        <form-property name="coiDisclosureNumber" type="java.lang.String"/>            
+      </form-bean>
+      <form-bean name="coiPerDisclosure" dynamic="false" 
+                    type="org.apache.struts.validator.DynaValidatorForm">   
+             <form-property name="coiDisclosureNumber" type="java.lang.String"/>
+            <form-property name="sequenceNumber" type="java.lang.Integer"/>
+            <form-property name="personId" type="java.lang.String"/>
+            <form-property name="disclosureStatusCode" type="java.lang.Integer"/>                                
+            <form-property name="updateTimestamp" type="java.sql.Timestamp"/>                
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="expirationDate" type="java.sql.Timestamp"/>
+            <form-property name="acType" type="java.lang.String"/>
+      </form-bean>
+      <form-bean name="annDisclFinEntity" dynamic="false" 
+                    type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="personId" type="java.lang.String"/>
+            <form-property name="entityNumber" type="java.lang.String"/>
+            <form-property name="sequenceNum" type="java.lang.Integer"/> 
+            <form-property name="entityName" type="java.lang.String"/>            
+            <form-property name="statusCode" type="java.lang.Integer"/>  
+            <form-property name="statusDesc" type="java.lang.String"/>              
+            <form-property name="entityTypeCode" type="java.lang.Integer"/>          
+            <form-property name="entityRelTypeCode" type="java.lang.Integer"/>             
+            <form-property name="relatedToOrgFlag" type="java.lang.String"/>
+            <form-property name="shareOwnerShip" type="java.lang.String"/>
+            <form-property name="relationShipDesc" type="java.lang.String"/>
+            <form-property name="orgRelnDesc" type="java.lang.String"/>
+            <form-property name="sponsorCode" type="java.lang.String"/>
+            <form-property name="columnName" type="java.lang.String"/>            
+            <form-property name="columnValue" type="java.lang.String"/>  
+            <form-property name="rlnType" type="java.lang.Integer"/>              
+            <form-property name="comments" type="java.lang.String"/>                    
+            <form-property name="updtimestamp" type="java.sql.Timestamp"/>                
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="acType" type="java.lang.String" initial="I"/>
+            <form-property name="coidisclosureNumber" type="java.lang.String"/>
+            <form-property name="disclSeqnumber" type="java.lang.Integer" />
+            <form-property name="columnSortId" type="java.lang.Integer"/>
+            <form-property name="groupSortId" type="java.lang.Integer" />
+            <form-property name="groupName" type="java.lang.String" />
+            <form-property name="guiType" type="java.lang.String" />
+        </form-bean>     
+        <form-bean name="disclProposalFrm" dynamic="false" 
+                    type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="moduleItemKey" type="java.lang.String"/>
+            <form-property name="moduleCode" type="java.lang.Integer"/> 
+            <form-property name="title" type="java.lang.String"/>  
+            <form-property name="statusCode" type="java.lang.Integer"/>
+            <form-property name="description" type="java.lang.String"/>
+            <form-property name="sponsorCode" type="java.lang.String"/> 
+            <form-property name="sponsorName" type="java.lang.String"/> 
+            <form-property name="disclExistsFlg" type="java.lang.Integer"/>   
+      </form-bean>
+      <form-bean name="finEntityReview" dynamic="false" 
+                    type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="coiDisclosureNumber" type="java.lang.String"/>
+            <form-property name="sequenceNumber" type="java.lang.Integer"/> 
+            <form-property name="moduleCode" type="java.lang.Integer"/>  
+            <form-property name="moduleItemKey" type="java.lang.String"/>
+            <form-property name="entityNumber" type="java.lang.String"/>
+            <form-property name="entitySeqNum" type="java.lang.String"/> 
+            <form-property name="coiStatusCode" type="java.lang.String"/> 
+            <form-property name="coiReviewerCode" type="java.lang.Integer"/>   
+            <form-property name="description" type="java.lang.String"/>                    
+            <form-property name="updtimestamp" type="java.sql.Timestamp"/>                
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="acType" type="java.lang.String"/>
+      </form-bean>
+      <form-bean name="disclProposal" dynamic="false" 
+                    type="org.apache.struts.validator.DynaValidatorForm">
+             <form-property name="coiDisclosureNumber" type="java.lang.String"/>
+            <form-property name="sequenceNumber" type="java.lang.Integer"/>             
+            <form-property name="moduleCode" type="java.lang.Integer"/> 
+            <form-property name="moduleItemKey" type="java.lang.String"/>
+            <form-property name="title" type="java.lang.String"/>            
+            <form-property name="statusCode" type="java.lang.Integer"/>
+            <form-property name="description" type="java.lang.String"/>
+            <form-property name="sponsorCode" type="java.lang.String"/> 
+            <form-property name="sponsorName" type="java.lang.String"/>
+            <form-property name="updtimestamp" type="java.sql.Date"/>                
+            <form-property name="updateUser" type="java.lang.String"/> 
+      </form-bean>
+      
+      <!--Case#4447 : Next phase of COI enhancements -->
+      <form-bean name="getPerFnProjects" dynamic = "false"
+                 type="org.apache.struts.validator.DynaValidatorForm">          
+          <form-property name="coiDisclosureNumber" type="java.lang.String"/>
+          <form-property name="sequenceNumber" type="java.lang.Integer"/>             
+          <form-property name="moduleItemKey" type="java.lang.String"/>
+          <form-property name="moduleCode" type="java.lang.Integer"/>
+          <form-property name="module" type="java.lang.String"/>
+          <form-property name="moduleSequence" type="java.lang.Integer"/> 
+          <form-property name="title" type="java.lang.String"/>
+          <form-property name="moduleStatus" type="java.lang.Integer"/>
+          <form-property name="description" type="java.lang.String"/>
+          <form-property name="statusDesc" type="java.lang.String"/> 
+          <form-property name="sponsorCode" type="java.lang.Integer"/>
+          <form-property name="sponsorName" type="java.lang.String"/>
+          <form-property name="entityNumber" type="java.lang.String"/>
+          <form-property name="entitySeqNumber" type="java.lang.Integer"/>
+          <form-property name="coiStatusCode" type="java.lang.Integer"/> 
+          <form-property name="coiReviewerCode" type="java.lang.Integer"/>
+          <form-property name="relationship" type="java.lang.String"/>
+          <form-property name="relationShipFlag" type="java.lang.Boolean"/>
+          <form-property name="updtimestamp" type="java.sql.Timestamp"/> 
+          <form-property name="updateUser" type="java.lang.String"/> 
+          <form-property name="acType" type="java.lang.String"/> 
+
+      </form-bean>
+      
+      <form-bean name="getPersonEntProjects" dynamic = "false"
+                 type="org.apache.struts.validator.DynaValidatorForm">          
+          <form-property name="coiDisclosureNumber" type="java.lang.String"/>
+          <form-property name="sequenceNumber" type="java.lang.Integer"/>             
+          <form-property name="moduleItemKey" type="java.lang.String"/>
+          <form-property name="moduleCode" type="java.lang.Integer"/>
+          <form-property name="title" type="java.lang.String"/>
+          <form-property name="description" type="java.lang.String"/>
+          <form-property name="sponsorName" type="java.lang.String"/>
+          <form-property name="entityNumber" type="java.lang.String"/>
+          <form-property name="coiStatusCode" type="java.lang.Integer"/> 
+          <form-property name="coiReviewerCode" type="java.lang.Integer"/>
+          <form-property name="updateTimestamp" type="java.lang.String"/> 
+          <form-property name="updateUser" type="java.lang.String"/> 
+      </form-bean>
+      
+      
+      <!--For active entities-->
+      <form-bean name="getActiveEntity" dynamic="false" 
+                 type="org.apache.struts.validator.DynaValidatorForm">
+          <form-property name="entityNumber" type="java.lang.String"/>
+          <form-property name="sequenceNumber" type="java.lang.Integer"/>
+          <form-property name="statusCode" type="java.lang.Integer"/>
+          <form-property name="statusDesc" type="java.lang.String"/> 
+          <form-property name="entityName" type="java.lang.String"/>
+          <form-property name="entityTypeCode" type="java.lang.Integer"/> 
+          <form-property name="sponsorCode" type="java.lang.String"/> 
+          <form-property name="updated" type="java.lang.String"/> 
+          <form-property name="relationShipTypeDesc" type="java.lang.String"/> 
+      </form-bean>
+      <!--Case#4447 - End -->
+      
+</form-beans>
+
+
+
+<action-mappings>
+    <action path="/coiMain" type="edu.dartmouth.coeuslite.coi.action.CoiMainAction"
+                scope="request" validate="false">                
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiMain.jsp"/>
+                <forward name="disclHistory" path="/coeuslite/dartmouth/coi/cwCoiHistoryDisclosure.jsp"/>                
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+    <action path="/getCompleteDiscl" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" name="annDisclosure" validate="false">                
+                <forward name="questionnaire" path="/getCoiQuestionnaire.do"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/addCertQuestions" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="session" name="dynaBeanList" validate="false">   
+                <!--<forward name="questionnaire" path="/coeuslite/dartmouth/coi/tiles/coiQuestionnaire.jsp"/> 
+                <forward name="questionnaire" path="/getCoiQuestionnaire.do"/>-->
+                <forward name="exit" path="/coeuslite/dartmouth/coi/saveExit.jsp"/>  
+                <forward name="coiCertYesAnswers" path="/disclFinEntity.do"/> 
+                <forward name="coiCertNoAnswers" path="/coeuslite/dartmouth/coi/tiles/coiCertNoAnswer.jsp"/> 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/> 
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>    
+    <action path="/getCertified" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false">                
+                <forward name="certified" path="/coeuslite/dartmouth/coi/tiles/coiCertify.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/createDisclosure" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="session" name="dynaBeanList" validate="false">              
+                <forward name="success" path="/saveCoiQuestionnaire.do?forward=disclosure"/>
+                <forward name="update" path="/getCoiQuestionnaire.do"/>
+                <forward name="continue" path="/addCertQuestions.do?mode=continue"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+                
+    </action>
+    
+    <action path="/certify" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" name="coiPerDisclosure"  validate="false">                
+                <!--<forward name="certified" path="/coeuslite/dartmouth/coi/tiles/coiCertify.jsp"/>-->                 
+                <forward name="certified" path="/coiMain.do"/>               
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/disclFinEntity" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false">                
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiCertYesAnswer.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+      
+    <action path="/coiProposals" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false">                
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiProposals.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/addDisclProposal" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false">                
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiCertify.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    
+    <action path="/getDisclosure" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false">                
+                <forward name="update" path="/coeuslite/dartmouth/coi/tiles/coiUpdate.jsp"/>                 
+                <forward name="review" path="/coeuslite/dartmouth/coi/tiles/coiReview.jsp"/>
+                <forward name="history" path="/coeuslite/dartmouth/coi/cwCoiDisclHistDet.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    
+   
+    <action path="/getCoiQuestionnaire" type="edu.dartmouth.coeuslite.coi.action.CoiQuestionnaireAction"
+                scope="session" name= "dynaBeanList" validate="false">                
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiCertQuestionnaire.jsp"/>
+                <forward name="review" path="/getDisclosure.do?mode=review"/>
+                <forward name="history" path="/getDisclosure.do?mode=history"/>
+                <forward name="saveUpdate" path="/saveCoiQuestionnaire.do"/> 
+                <forward name="modify" path="/createDisclosure.do?operation=MODIFY"/>
+                <forward name="continue" path="/addCertQuestions.do?mode=continue"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/saveCoiQuestionnaire" type="edu.dartmouth.coeuslite.coi.action.CoiQuestionnaireAction"
+                scope="session" name= "dynaBeanList" validate="false">                
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiCertQuestionnaire.jsp"/>   
+                <forward name="continue" path="/addCertQuestions.do?mode=continue"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+    <action path="/getAnnDisclFinEntity" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="session" name= "annDisclFinEntity" validate="false">                
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiFinEntity.jsp"/>  
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/addAnnDisclFinEntity" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="session" name= "annDisclFinEntity" validate="false">                
+                <forward name="coiDiscl" path="/disclFinEntity.do"/>
+                <forward name="success" path="/listAnnFinEntity.do"/>  
+                <forward name="main" path="/listAnnFinEntity.do"/>  
+                <forward name="finEnt" path="/getAnnDisclFinEntity.do"/>
+                <forward name="exit" path="/coiMain.do"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+                <forward name="createPjt" path="/getProjectDetailsAndFinEntityDetailsCoiv2.do" />
+                <forward name="createAnnual" path="/annual.do"/>
+
+    </action>
+    <action path="/listAnnFinEntity" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="session"  validate="false">                
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiRevFinEntity.jsp"/>  
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/reviewAnnFinEntity" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="session"  validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiFinEntity.jsp"/>  
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/reviewAnnFinEntityHist" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="session"  validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/cwFinentityHistView.jsp"/>  
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/deactivateAnnFinEnt" type="edu.dartmouth.coeuslite.coi.action.coiFinEntityAction" 
+               name="annDisclFinEntity" scope="request" validate="false">
+        <forward name="success" path="/coeuslite/dartmouth/coi/tiles/deactivateFinEntTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+        <forward name="failure"    path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>       
+       <action path="/deactivateAnnFinEntSubmit" type="edu.dartmouth.coeuslite.coi.action.coiFinEntityAction" 
+               name="annDisclFinEntity" scope="request" validate="false">
+        <forward name="success" path="/listAnnFinEntity.do"/>   
+        <forward name="coiCertYesAnswers" path="/disclFinEntity.do"/> 
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/deactivateFinEntTile.jsp" />
+        <forward name="failure"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/activateAnnFinEnt" type="edu.dartmouth.coeuslite.coi.action.coiFinEntityAction" 
+               name="annDisclFinEntity" scope="request" validate="false" >
+        <forward name="success" path="/listAnnFinEntity.do"/>      
+         <forward name="coiCertYesAnswers" path="/disclFinEntity.do"/> 
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+       </action>
+       <action path="/updFinReview" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                name="finEntityReview" scope="request" validate="false">                
+                <forward name="success" path="/coeuslite/dartmouth/coi/coiPropsalReview.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/getFinEntRev" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false">                
+                <forward name="success" path="/coeuslite/dartmouth/coi/addReviewFin.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/updDisclFE" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false"> 
+                <forward name="success" path="/coiProposals.do"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+   <action path="/getAnnFinEntHistory" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/annFinEntityHistory.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/getAllDisclosures" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/ApproveDisclosures.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action> 
+    
+    <action path="/getPIFinEntStatus" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/cwFinEntityStatus.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action> 
+    <action path="/updateConflictStatus" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/cwCoiUpdFinEntityStatus.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action> 
+    <action path="/updPerConflictStatus" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                name="coiDisclosure" scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/cwStatusUpdConfirm.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/approvePerDisc" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                name="coiDisclosure" scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/cwApprovalConfirm.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/getPIFinEntSummary" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                name="coiDisclosure" scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiPersonFinEntSummary.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/getReviewCOI" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                name="coiDisclosure" scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiAllDisclReports.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action> 
+    <action path="/getReviewCOIUnit" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                name="coiDisclosure" scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/coiUnitDisclReports.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action> 
+    <action path="/getDisclRpts" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                name="coiDisclosure" scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/cwDisclReports.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action> 
+     <action path="/getPIProjects" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                name="coiDisclosure" scope="request" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/cwCoiDiscProjects.jsp"/>                 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action> 
+    <!--Case 4447 : Next phase of COI enhancements - Start -->
+    <action path="/annDisclosure" type="edu.dartmouth.coeuslite.coi.action.AnnDisclosureAction"
+                scope="request" name="getPersonProjects" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/annDisclosuresMainTile.jsp"/> 
+                <forward name="getCertified" path="/getCertified.do?forward=certified"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+    <action path="/updAnnDisclosure" type="edu.dartmouth.coeuslite.coi.action.AnnlDisclosureUpdateAction"
+                scope="request" name="getPerFnProjects" validate="false"> 
+                <forward name="success" path="/coeuslite/dartmouth/coi/tiles/annDisclosuresMainTile.jsp"/> 
+                <forward name="annualDisclosure" path="/annDisclosure.do"/> 
+                <forward name="getCertified" path="/getCertified.do?forward=certified"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action>
+ 
+    <action path="/getSearchDisclosures" type="edu.dartmouth.coeuslite.coi.action.COIDisclosureSearchAction"
+                scope="request" name="coiPerDisclosure" validate="false"> 
+                    <forward name="success" path="/coeuslite/dartmouth/utils/dialogs/cwDisclosureSearch.jsp"/>                 
+                    <forward name="result" path="/coeuslite/dartmouth/utils/dialogs/cwDisclosureSearch.jsp"/>                 
+                    <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                    <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                    <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+    </action> 
+    <action path="/getFinEntPrj" type="edu.dartmouth.coeuslite.coi.action.CoiDisclAction"
+                scope="request" name="getPersonProjects" validate="false"> 
+                    <forward name="success" path="/coeuslite/dartmouth/coi/cwFinEntityProjects.jsp"/>                 
+                    <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                    <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/> 
+    </action> 
+    
+    <!--Case 4447 - End-->
+    
+</action-mappings>
+
+</struts-config>

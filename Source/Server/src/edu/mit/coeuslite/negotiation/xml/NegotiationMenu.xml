@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<Menu>
+	<MenuItem>
+		<Menu_Id>NEG001</Menu_Id>
+		<Menu_Name> Negotiation Details</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>NEGOTIATION_DETAILS</FieldName>
+		<Link>/viewNegotiation.do?</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id>NEG002</Menu_Id>
+		<Menu_Name> Activity</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>ACTIVITY</FieldName>
+		<Link>/getActivitiesForNegotiation.do?</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+</Menu>

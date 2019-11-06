@@ -1,0 +1,19 @@
+# Eclipse project files
+.project
+.classpath
+
+# Build artifacts
+Build/ant_log.txt
+Build/${JAVADOC.HOME}
+Build/.ant*.xml
+Build/*/
+
+# Directories that have out of date WARs in them
+/DEV/
+/UAT/
+/TRN/
+/PROD/
+
+# vi swap files
+.*.sw?
+

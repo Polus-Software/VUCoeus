@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<CUSTOM_JSP>
+	<cwPerson>
+		<placeHolder>cwPersonPH1</placeHolder>
+		<includeValue>e-mail.jsp</includeValue>
+	</cwPerson>
+	<cwPerson>
+		<placeHolder>cwPersonPH2</placeHolder>
+		<includeValue>personAcademic.jsp</includeValue>
+	</cwPerson>
+	<cwProtocolOrganizations>
+		<placeHolder>cwProtocolOrganizations</placeHolder>
+		<includeValue>cwProtocolOrganizations.jsp</includeValue>
+	</cwProtocolOrganizations>
+
+</CUSTOM_JSP>
+
+
+

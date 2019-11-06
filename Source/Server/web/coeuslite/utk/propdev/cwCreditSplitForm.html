@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Credit Split</title>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+<form name="form1" method="post" action="">
+  <table border="0" cellpadding="0"  class="tablemainsub2">
+    <tr class="tableheadersub3">
+      <td width="125">User Information </td>
+      <td width="125">Recognition</td>
+    </tr>
+    <tr  bgcolor="#EFEFEF">
+      <td>Doe, John P. </td>
+      <td><div align="center">
+        <input id="I1" name="I1" type="text" value="00.0" size="6" onChange="javascript:totalInvestigator()">
+      </div></td>
+    </tr>
+    <tr>
+      <td>Department of Philosophy</td>
+      <td><div align="center">
+        <input id="U1" name="U1" type="U1" value="00.0" size="6" onChange="javascript:totalUnit()">
+      </div></td>
+    </tr>
+    <tr bgcolor="#EFEFEF">
+      <td>Buster Sommer</td>
+      <td><div align="center">
+        <input id="I2" name="I2" type="text" value="00.0" size="6" onChange="javascript:totalInvestigator()">
+      </div></td>
+    </tr>
+    <tr>
+      <td>Department of Research</td>
+      <td><div align="center">
+        <input id="U2" name="U2" type="text" value="00.0" size="6" onChange="javascript:totalUnit()">
+      </div></td>
+    </tr>
+    <tr bgcolor="#EFEFEF">
+      <td>Smith, Jane</td>
+      <td><div align="center">
+        <input id="I3" name="I3" type="text" value="00.0" size="6" onChange="javascript:totalInvestigator()">
+      </div></td>
+    </tr>
+    <tr>
+      <td>Department of Psychology</td>
+      <td><div align="center">
+        <input id="U3" name="U3" type="text" value="00.0" size="6" onChange="javascript:totalUnit()">
+      </div></td>
+    </tr>
+    <tr>
+      <td><strong>Unit Total </strong></td>
+      <td><div align="center">
+        <input id="UnitTotal" name="UnitTotal" type="text" id="UnitTotal" value="00.0" size="6" onChange="javascript:totalInvestigator()">
+      </div></td>
+    </tr>
+    <tr>
+      <td><strong>Investigator Total </strong></td>
+      <td><div align="center">
+        <input id="InvestigatorTotal" name="InvestigatorTotal" type="text" id="InvestigatorTotal" value="00.0" size="6">
+      </div></td>
+    </tr>
+  </table>
+  <center><a href="javascript:pick()">accept changes</a></center>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function pick() {
+  if (window.opener && !window.opener.closed)
+
+    /* Calculate the percentage totals */
+        var unitTotal         = parseFloat(document.getElementById('U1').value) + parseFloat(document.getElementById('U2').value) + parseFloat(document.getElementById('U3').value);
+	var investigatorTotal = parseFloat(document.getElementById('I1').value) + parseFloat(document.getElementById('I2').value) + parseFloat(document.getElementById('I3').value);
+	var investigatorsOK   = "N";
+
+
+	if (parseFloat(investigatorTotal) == parseFloat(100)) {
+
+         /* this code will populate form fields in the page that opened this popup!              */
+         /* originally used for testing purposes, may eventually populate hidden fields.         */
+//        window.opener.document.investigatorForm.row1.value = document.getElementById('I1').value;
+//        window.opener.document.investigatorForm.row2.value = document.getElementById('I2').value;
+//        window.opener.document.investigatorForm.row3.value = document.getElementById('I3').value;
+		investigatorsOK = "Y";
+    window.close();
+	} else {
+	    alert("Investigator's recognition must total 100%!");
+	}
+	
+//	if (investigatorsOK == "Y" && parseFloat(unitTotal) == parseFloat(100)) {
+//    window.close();
+//	} else {
+//	    alert("Unit's recognition must total 100%!");
+//	}
+}
+
+function totalUnit() {
+    document.getElementById('unitTotal').value         = parseFloat(document.getElementById('U1').value) + parseFloat(document.getElementById('U2').value) + parseFloat(document.getElementById('U3').value);
+}
+
+function totalInvestigator() {
+    document.getElementById('investigatorTotal').value = parseFloat(document.getElementById('I1').value) + parseFloat(document.getElementById('I2').value) + parseFloat(document.getElementById('I3').value);
+}
+// -->
+</SCRIPT>
+</form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+Proposal copy check button
+New location type on Organizations tab
+New help language on organization pop-up
+Minor updates to CoeusHelpGidget to use new icons
+
+New location_type_code field in subcontract tables
+Updated FN_FEED_INST_PROP to populate location type field
+Updated all get and update procedures relating to subs tabs
+Updated Java for new subcontract field
+
+New buttons for questionnaire, validation checks, and Grants.gov in proposal development
+Inactive user fix for CoeusLite
+Show calculated amounts in budget by default with parameter
+

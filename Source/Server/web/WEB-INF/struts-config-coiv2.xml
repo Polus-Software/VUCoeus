@@ -1,0 +1,1184 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<!--
+    Document   : struts-coiv2-config.xml
+    Created on : March 10, 2010, 11:33 AM
+    Author     : Mr Lijo
+    Description:
+        Purpose of the document follows.
+-->
+
+<struts-config>
+    <form-beans>
+        <!--Start Form Beans @Author Sony-->
+        <form-bean name="propBasedDiclForm" type="edu.mit.coeuslite.coiv2.formbeans.propBasedDiclForm"></form-bean>
+        <form-bean name="coiDisclosureForm" type="edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean"></form-bean>
+        <form-bean name="assignDisclToUser" type="edu.mit.coeuslite.coiv2.formbeans.Coiv2AssignDisclToUser"></form-bean>        
+        <form-bean name="dispDisclStatusForm" type="edu.mit.coeuslite.coiv2.formbeans.Coiv2DispDisclStatusForm"></form-bean>
+        <form-bean name="coiSearchBean" type="edu.mit.coeuslite.coiv2.formbeans.CoiSearchBean"></form-bean>
+        <form-bean name="annDisclFinEntity" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+        <form-bean name="finEntity" type="edu.dartmouth.coeuslite.coi.beans.FinEntDetailsBean"></form-bean> 
+            <form-property name="personId" type="java.lang.String"/>
+            <form-property name="entityNumber" type="java.lang.String"/>
+            <form-property name="entType" type="java.lang.String"/>
+            <form-property name="sequenceNum" type="java.lang.Integer"/>
+            <form-property name="entityName" type="java.lang.String"/>
+            <form-property name="statusCode" type="java.lang.Integer"/>
+            <form-property name="statusDesc" type="java.lang.String"/>
+            <form-property name="entityTypeCode" type="java.lang.Integer"/>
+            <form-property name="entityRelTypeCode" type="java.lang.Integer"/>
+            <form-property name="relatedToOrgFlag" type="java.lang.String"/>
+            <form-property name="shareOwnerShip" type="java.lang.String"/>
+            <form-property name="relationShipDesc" type="java.lang.String"/>
+            <form-property name="orgRelnDesc" type="java.lang.String"/>
+            <form-property name="invlmntStudnt" type="java.lang.String"/>
+            <form-property name="invlmntStaff" type="java.lang.String"/>
+            <form-property name="resoucreMit" type="java.lang.String"/> 
+            <form-property name="sponsorCode" type="java.lang.String"/>
+            <form-property name="columnName" type="java.lang.String"/>
+            <form-property name="columnValue" type="java.lang.String"/>
+            <form-property name="rlnType" type="java.lang.Integer"/>
+            <form-property name="comments" type="java.lang.String"/> 
+            <form-property name="updtimestamp" type="java.sql.Timestamp"/> 
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="acType" type="java.lang.String" initial="I"/>
+            <form-property name="coidisclosureNumber" type="java.lang.String"/>
+            <form-property name="disclSeqnumber" type="java.lang.Integer" />
+            <form-property name="columnSortId" type="java.lang.Integer"/>
+            <form-property name="groupSortId" type="java.lang.Integer" />
+            <form-property name="groupName" type="java.lang.String" />
+            <form-property name="guiType" type="java.lang.String" />
+            <form-property name="relationShipTypeDesc" type="java.lang.String" />
+        </form-bean>
+      <form-bean name="awardInfoBean" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="mitAwardNumber" type="java.lang.String"/>
+            <form-property name="sequenceNumber" type="java.lang.Integer"/>
+            <form-property name="modificationNumber" type="java.lang.String"/>
+            <form-property name="sponsorAwardNumber" type="java.lang.String"/>
+            <form-property name="statusCode" type="java.lang.Integer"/>
+            <form-property name="awardStatusDescription" type="java.lang.String"/>
+            <form-property name="templateCode" type="java.lang.Integer"/>
+            <form-property name="awardExecutionDate" type="java.lang.String"/>
+            <form-property name="awardEffectiveDate" type="java.lang.String"/>
+            <form-property name="beginDate" type="java.lang.String"/>
+            <form-property name="sponsorCode" type="java.lang.String"/>
+            <form-property name="accountNumber" type="java.lang.String"/>
+            <form-property name="apprvdEquipmentIndicator" type="java.lang.String"/>
+            <form-property name="apprvdForiegnTripIndicator" type="java.lang.String"/>
+            <form-property name="apprvdSubcontractIndicator" type="java.lang.String"/>
+            <form-property name="paymentScheduleIndicator" type="java.lang.String"/>
+            <form-property name="idcIndicator" type="java.lang.String"/>
+            <form-property name="transferSponsorIndicator" type="java.lang.String"/>
+            <form-property name="costSharingIndicator" type="java.lang.String"/>
+            <form-property name="updateTimestamp" type="java.lang.String"/>
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="specialReviewIndicator" type="java.lang.String"/>
+            <form-property name="scienceCodeIndicator" type="java.lang.String"/>
+            <form-property name="nsfCode" type="java.lang.String"/>
+            <form-property name="keyPersonIndicator" type="java.lang.String"/>
+        </form-bean>
+        <!--End Form Beans @Author Sony-->
+
+    <!--Start Form Beans @Author Lijo-->
+        <form-bean name="coiPersonProjectDetailsForm" type="edu.mit.coeuslite.coiv2.formbeans.CoiPersonProjectDetailsForm"></form-bean>
+        <form-bean name="coiv2NotesBean" type="edu.mit.coeuslite.coiv2.formbeans.Coiv2Notes"></form-bean>
+        <form-bean name="coiv2Attachment" type="edu.mit.coeuslite.coiv2.formbeans.Coiv2Attachment"></form-bean>
+        <form-bean name="coiv2Certification" type="edu.mit.coeuslite.coiv2.formbeans.Coiv2Certification"></form-bean>
+        <form-bean name="coiv2ComboBean" type="edu.mit.coeus.coi.bean.ComboBoxBean"></form-bean>
+        <form-bean name="coiCommonAttachmentNote" type="edu.mit.coeuslite.coiv2.formbeans.CoiCommonAttachmentNoteForm"></form-bean>
+    </form-beans>
+
+    <action-mappings>
+        <!--Start Actions @Author Sony-->
+
+        <!--Which forwards to main Coi Home page-->
+
+        <!--
+        <action path="/allcoi"
+        attribute="allcoi"
+        type="edu.mit.coeuslite.coiv2.actions.Coiv2MainAction"
+        scope="request">
+           <forward name="dartmouth"  path="/coiHome.do"></forward>
+           <forward name="mit"  path="/coi.do"></forward>
+
+        </action>
+        -->
+
+
+        <action path="/coiHome" type="edu.mit.coeuslite.coiv2.actions.CoiHomeAction"
+                scope="request" validate="false" name="coiDisclosureForm">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/coiMainView.jsp"/>
+            <forward name="successToAdmin" path="/coeuslite/mit/coiv2/admintiles/adminView.jsp"/> 
+            <forward name="successToviewer" path="/coeuslite/mit/coiv2/tile/showAssignedDisclView.jsp"/>
+            <forward name="noRights" path="/coeuslite/mit/coiv2/tile/noRightsView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+
+        <!--To fetch all proposals for the logged in reporter-->
+
+        <action path="/showHistory" type="edu.mit.coeuslite.coiv2.actions.DisclosureHistoryAction"
+                scope="request" validate="false" name="coiDisclosureForm">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/historyView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+        <action
+        path="/allProposals"
+        type="edu.mit.coeuslite.coiv2.actions.PropBasedCoiDisclAction"
+        scope="request"
+            name="coiPersonProjectDetailsForm"
+        validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/proposalBasedDisclView.jsp"/>
+
+
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+
+        </action>
+
+        <!--To fetch all protocols for the logged in reporter-->
+
+        <action
+            path="/allProtocol"
+            type="edu.mit.coeuslite.coiv2.actions.ProtocolBasedCoiDisclAction"
+            scope="request"
+            validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/protocolBasedDisclView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+
+        </action>
+
+        <action
+            path="/allAwards"
+            type="edu.mit.coeuslite.coiv2.actions.AwardBasedCoiDisclAction"
+            scope="request"
+            name="awardInfoBean"
+            validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/awardBasedDisclView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+
+        </action>
+        <action
+            path="/otherCoiDiscl"
+            type="edu.mit.coeuslite.coiv2.actions.OtherCoiDisclAction"
+            scope="request"
+            name="awardInfoBean"
+            validate="false">
+            <forward name="new" path="/getCompleteDisclCoiv2.do?projectType=Other"/>
+            <forward name="continue" path="/createDisclosureCoiv2.do?operation=UPDATE"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+
+        </action>
+
+        <!--<action path="/getCoiQuestionnaire" type="edu.dartmouth.coeuslite.coi.action.CoiQuestionnaireAction"
+                scope="session" name= "dynaBeanList" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/certQuestionnaireView.jsp"/>
+        </action>-->
+
+        <!--End Actions @Author Sony-->
+
+ <!--for getting disclosure details with parameters disclosure num, sequence num,person id-->
+        <action path="/getAnyDisclosure" type="edu.mit.coeuslite.coiv2.actions.CoiHomeAction"
+        scope="request" validate="false">
+            <!--<forward name="disclosureview" path="/coeuslite/mit/coiv2/tile/coiv2GetDisclosureMainView.jsp"/>-->
+            <forward name="disclosureview" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+                 <forward name="questionnaire" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+                 <forward name="finnacialentity" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+                 <forward name="notes" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+                 <forward name="attachments" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+                 <forward name="cert" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+                 <forward name="fail" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            </action>
+ <!--for getting disclosure details ends here-->
+
+ <!--Start Actions @Author Lijo-->
+
+  <!--This action will crate new disclosure aftert that it will be rediredted to /saveCoiQuestionnaireCoiv2-->
+        <action path="/createDisclosureCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiGetDisclAction"
+                scope="session" name="dynaBeanList" validate="false">
+            <forward name="success" path="/saveCoiQuestionnaireCoiv2.do?forward=disclosure"/>
+            
+            <forward name="update" path="/getCoiQuestionnaireCoiv2.do"/>
+            <forward name="continue" path="/addCertQuestionsCoiv2.do?mode=continue"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+
+        <action path="/addCertQuestionsCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiGetDisclAction"
+                scope="session" name="dynaBeanList" validate="false">
+            <forward name="exit" path="/coeuslite/dartmouth/coi/saveExit.jsp"/>
+            <forward name="coiCertYesAnswers" path="/disclFinEntity.do"/>
+            <forward name="coiCertNoAnswers" path="/coeuslite/dartmouth/coi/tiles/coiCertNoAnswer.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+
+        <action path="/getCoiQuestionnaireCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiGetQuestionnaireAction"
+                scope="session" name= "dynaBeanList" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/certQuestionnaireView.jsp"/>
+            <forward name="review" path="/getDisclosure.do?mode=review"/>
+            <forward name="history" path="/getDisclosure.do?mode=history"/>
+            <forward name="saveUpdate" path="/saveCoiQuestionnaireCoiv2.do"/>
+            <forward name="modify" path="/createDisclosureCoiv2.do?operation=MODIFY"/>
+             <forward name="continueUpdate" path="/getProjectDetailsAndFinEntityDetailsCoiv2.do"/>
+            <forward name="continue" path="/addCertQuestionsCoiv2.do?mode=continue"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            <forward name="getNextQstnnr" path="/getCoiQuestionnaireCoiv2.do"/>
+        </action>
+        <action path="/getCompleteDisclCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiGetDisclAction"
+                scope="request" name="annDisclosure" validate="false">
+            <forward name="questionnaire" path="/getCoiQuestionnaireCoiv2.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+        <action path="/saveCoiQuestionnaireCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiGetQuestionnaireAction"
+                scope="session" name= "dynaBeanList" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/certQuestionnaireView.jsp"/>
+            <forward name="notes" path="/getNotesCoiv2.do"/>
+            <forward name="continue" path="/getProjectDetailsAndFinEntityDetailsCoiv2.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="getNextQstnnr" path="/getCoiQuestionnaireCoiv2.do"/>
+        </action>
+
+        <action path="/getProjectDetailsAndFinEntityDetailsCoiv2" type="edu.mit.coeuslite.coiv2.actions.Coi2ProjectAction"
+                scope="session" name="coiPersonProjectDetailsForm" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/jsp/coiProjectAndFinEntity.jsp"/>
+            <forward name="continue" path="/getAttachmentsCoiv2.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            <forward name="createFinEntity" path="/getAnnDisclFinEntityCoiv2.do"/>
+        </action>
+
+
+        <action path="/saveProjectDetails" type="edu.mit.coeuslite.coiv2.actions.Coi2ProjectAction"
+                scope="session" name="coiPersonProjectDetailsForm" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/jsp/coiProjectAndFinEntity.jsp"/>
+            <forward name="continue" path="/getAttachmentsCoiv2.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+
+        <action path="/getNotesCoiv2" type="edu.mit.coeuslite.coiv2.actions.Coiv2NotesAction"
+                scope="session" name="coiv2NotesBean"  validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/coiv2NotesView.jsp"/>
+            <forward name="continue" path="/getProjectDetailsAndFinEntityDetailsCoiv2.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/saveNotesCoiv2" type="edu.mit.coeuslite.coiv2.actions.Coiv2NotesAction"
+                scope="session" name="coiv2NotesBean" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/coiv2NotesView.jsp"/>
+             <forward name="notesViewer" path="/coeuslite/mit/coiv2/tile/notesView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/getAttachmentsCoiv2" type="edu.mit.coeuslite.coiv2.actions.Coiv2AttahmentsAction"
+                scope="session" name="coiv2Attachment" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/coiv2AttachmentView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/saveAttachmentsCoiv2" type="edu.mit.coeuslite.coiv2.actions.Coiv2AttahmentsAction"
+                scope="session" name ="coiv2Attachment" validate="false" >
+            <forward name="success" path="/getAttachmentsCoiv2.do"/>
+            <forward name="attachmentViewer" path="/coeuslite/mit/coiv2/tile/attachmentsView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/viewAttachment" type="edu.mit.coeuslite.coiv2.actions.Coiv2AttahmentsAction"
+                scope="session" name ="coiv2Attachment" validate="false" >
+            <forward name="success" path="/coeuslite/mit/coiv2/jsp/downloadPage.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/getCertificationCoiv2" type="edu.mit.coeuslite.coiv2.actions.Coiv2CertificationAction"
+                scope="session" name ="coiv2Certification" validate="false" >
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/coiv2CertitificationMain.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/saveCertificationCoiv2" type="edu.mit.coeuslite.coiv2.actions.Coiv2CertificationAction"
+                scope="session" name ="coiv2Certification" validate="false" >
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/coiv2CertitificationMain.jsp"/>
+            <forward name="continue" path="/coiHome.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+         <action path="/saveNonIntegratedProposals" type="edu.mit.coeuslite.coiv2.actions.PropBasedCoiDisclAction"
+               scope="request" name="coiPersonProjectDetailsForm" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/proposalBasedDisclView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            
+        </action>
+
+
+       <action path="/findDisclosureProjectType" type="edu.mit.coeuslite.coiv2.actions.Coi2ProjectAction"
+                scope="session" name="coiPersonProjectDetailsForm" validate="false">
+            <forward name="successToPropsal" path="/allProposals.do?acType=MODIFY"/>
+            <forward name="successToProtocol" path="/allProtocol.do?acType=MODIFY"/>
+             <forward name="successToIacucProtocol" path="/allIacucProtocol.do?acType=MODIFY"/>
+            <forward name="successToAward" path="/allAwards.do?acType=MODIFY"/>
+            <forward name="successToOther" path="/otherCoiDiscl.do?acType=MODIFY"/>
+            <forward name="successToAnnual" path="/showQuestionnaire.do?acType=MODIFY"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+                     <action
+            path="/allIacucProtocol"
+            type="edu.mit.coeuslite.coiv2.actions.IacucProtocolBasedCoiDisclAction"
+            scope="request"
+            validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/IacucprotocolBasedDisclView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+
+        </action>
+
+        <!--End Actions @Author Lijo-->
+
+
+
+        <!-- Action mappings from Biju -->
+          <action  path="/test" forward="/coeuslite/mit/coiv2/admintiles/somepage.jsp"/>
+
+
+        <action path="/mycoitest"
+                type="edu.mit.coeuslite.coiv2.actions.CoiV2HomeAction">
+
+            <forward  name="success" path="/coeuslite/mit/coiv2/jsp/coihometest.jsp"/>
+        </action>
+
+        <action path="/getannualdisclosure"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+            <forward name="travelPage" path="/travelDetails.do"/>
+            <forward name="questionnaire" path="/coeuslite/mit/coiv2/tile/screeningQuestionView.jsp"/>
+            <forward name="showAllReview" path="/showAllDiscl.do"/>
+            <forward name="showAllAnnualReview" path="/showAllAnnualDiscl.do"/>
+            <forward name="showAllEventReview" path="/showAllPendingEventDiscl.do"/>               
+            <!--            <forward name="finnacialentity" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            <forward name="notes" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            <forward name="attachments" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            <forward name="cert" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>-->
+            <forward name="fail" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            <forward name="error" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp" />
+            <forward name="attachments" path="/attachments.do"/>
+            <forward name="projectDetails" path="/getProjectsByFinancialEntitiesView.do"/>
+
+        </action>
+   <!--  <action path="/getselecteddisclosure"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+
+            <forward name="selectedFinancialentities" path="/coeuslite/mit/coiv2/tile/selectedDisclosureView.jsp"/>
+            <forward name="questionnaire" path="/coeuslite/mit/coiv2/tile/selectedDisclosureView.jsp"/>
+            <forward name="finnacialentity" path="/coeuslite/mit/coiv2/tile/selectedDisclosureView.jsp"/>
+            <forward name="notes" path="/coeuslite/mit/coiv2/tile/selectedDisclosureView.jsp"/>
+            <forward name="attachments" path="/coeuslite/mit/coiv2/tile/selectedDisclosureView.jsp"/>
+            <forward name="cert" path="/coeuslite/mit/coiv2/tile/selectedDisclosureView.jsp"/>
+            <forward name="fail" path="/coeuslite/mit/coiv2/tile/selectedDisclosureView.jsp"/>
+
+        </action>-->
+
+
+        <action path="/screeningquestions"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+            <!--<forward name="questionnaire" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>-->
+ <forward name="questionnaire" path="/coeuslite/mit/coiv2/tile/screeningQuestionView.jsp"/>
+        </action>
+
+
+        <action path="/financialentities"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+
+            <forward name="finnacialentity" path="/coeuslite/mit/coiv2/tile/financialEntitiesView.jsp"/>
+        </action>
+
+        <action path="/selectedFinancialentities"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+            <forward name="selectedFinancialentities" path="/coeuslite/mit/coiv2/tile/selectedDisclosureView.jsp"/>
+        </action>
+
+        <action path="/notes"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                name="coiv2NotesBean"
+                validation="false">
+
+            <forward name="notes" path="/coeuslite/mit/coiv2/tile/notesView.jsp"/>
+        </action>
+       <!-- <action path="/disclstatus"
+                type="edu.mit.coeuslite.coiv2.actions.SetStatusAdminCoiV2"
+                scope="request"
+                validation="false">
+          <forward name="disclstatus" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+        </action>
+         <action path="/disposistatus"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+
+            <forward name="disposistatus" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+        </action>-->
+
+        <action path="/setstatus"
+                type="edu.mit.coeuslite.coiv2.actions.SetStatusAdminCoiV2"
+                scope="request"
+                validation="false">
+            <forward name="setstatus" path="/coeuslite/mit/coiv2/tile/setStatusView.jsp"/>
+            <forward name="showAllReview" path="/showAllDiscl.do"/>
+            <forward name="showAllAnnualReview" path="/showAllAnnualDiscl.do"/>
+            <forward name="showAllEventReview" path="/showAllPendingEventDiscl.do"/>               
+        </action>
+        <action path="/updateStatus" name="dispDisclStatusForm"
+                type="edu.mit.coeuslite.coiv2.actions.SetStatusAdminCoiV2"
+                scope="request"
+                validation="false">
+            <forward name="updateStatus" path="/setstatus.do"/>
+            <forward name="showAll" path="/showAllDiscl.do"/>
+            <forward name="annualDiscl" path="/showAllAnnualDiscl.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+         <action path="/assignviewer"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+            <forward name="assignviewer" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+        </action>
+
+        <action path="/attachments"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                name="coiv2Attachment"
+                validation="false">
+
+            <forward name="attachments" path="/coeuslite/mit/coiv2/tile/attachmentsView.jsp"/>
+        </action>
+
+
+        <action path="/cert"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+
+            <forward name="cert" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+        </action>
+        <!--Added by Vineetha-->
+
+        <action path="/certify"
+                type="edu.mit.coeuslite.coiv2.actions.certAction"
+                scope="session"
+                validation="false">
+         <forward name="success" path="/coeuslite/mit/coiv2/tile/certifyview.jsp"/>
+        </action>
+
+
+        <action path="/coiv2mainheader"
+                type="edu.mit.coeuslite.coiv2.actions.MainHeaderActionCoiV2"
+                scope="request"
+                validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/jsp/coiMainHeaderCoiv2.jsp"/>
+        </action>
+
+        <action path="/reporterMainHeader"
+                type="edu.mit.coeuslite.coiv2.actions.MainHeaderActionCoiV2"
+                scope="request"
+                validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/jsp/coiReporterMainHeader.jsp"/>
+        </action>
+
+
+        <action path="/populaterights"
+                type="edu.mit.coeuslite.coiv2.actions.GettingRightsCoiV2"
+                scope="request"
+                validate="false">
+            <forward name="success"  path="/coeuslite/mit/coiv2/jsp/showuserrights.jsp"></forward>
+
+        </action>
+
+
+        <action path="/populatecoisubmenu"
+        type="edu.mit.coeuslite.coiv2.actions.PopulateSubMenuCoiV2"
+        scope="request"
+        validate="false">
+            <forward  name="success" path="/coeuslite/mit/coiv2/jsp/showcoiv2submenu.jsp"></forward>
+        </action>
+
+
+
+        <action  path="/printhome"
+                type="edu.mit.coeuslite.coiv2.actions.PrintActionCoiV2"
+                scope="request"
+                validate="false">
+                    <forward  name="success" path="/coeuslite/mit/coiv2/jsp/printview.jsp"/>
+                </action>
+
+
+           <action path="/approveddisclosureprint" type="edu.mit.coeuslite.coiv2.actions.ApprovedDisclosurePrintCoiv2Action"
+                scope="session"  validate="false">
+                <forward name="success" path="/coeuslite/mit/coiv2/jsp/printview.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+                <forward name="showAllReview" path="/showAllDiscl.do"/>
+                <forward name="showAllAnnualReview" path="/showAllAnnualDiscl.do"/>
+                <forward name="showAllEventReview" path="/showAllPendingEventDiscl.do"/>
+    </action>
+
+
+        <!-- Action mappings of biju ends here -->
+
+
+ <!--for getting disclosure details with parameters disclosure num, sequence num,person id-->
+        <action path="/getAnyDisclosure" type="edu.mit.coeuslite.coiv2.actions.CoiHomeAction"
+        scope="request" validate="false">
+            <!--<forward name="disclosureview" path="/coeuslite/mit/coiv2/tile/coiv2GetDisclosureMainView.jsp"/>-->
+            <forward name="disclosureview" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+                 <forward name="questionnaire" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+                 <forward name="finnacialentity" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+                 <forward name="notes" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+                 <forward name="attachments" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+                 <forward name="cert" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+                 <forward name="fail" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            </action>
+ <!--for getting disclosure details ends here-->
+
+  <action path="/showAssignedDiscl" type="edu.mit.coeuslite.coiv2.actions.CoiV2ViewerAction">
+  <forward  name="success" path="/coeuslite/mit/coiv2/tile/showAssignedDisclView.jsp"/>
+  </action>
+
+  <action path="/showAllDiscl" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction">
+  <forward  name="success" path="/coeuslite/mit/coiv2/tile/showAllDisclView.jsp"/>
+  <forward name="error" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp" />
+  </action>
+   <action path="/showAllAnnualDiscl" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction">
+  <forward  name="successToAnnualPendindCOIDiscl" path="/coeuslite/mit/coiv2/tile/showAllPendingAnnualDiscl.jsp"/>
+  <forward name="error" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp" />
+  </action>
+    <action path="/showAllPendingEventDiscl" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction">
+  <forward  name="successToPendingEventCOIDiscl" path="/coeuslite/mit/coiv2/tile/showAllPendingEventDiscl.jsp"/>
+  </action>
+    <action path="/showDisclReview" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction">
+  <forward  name="successToDiscl" path="/coeuslite/mit/coiv2/tile/disclosureReview.jsp"/>
+  </action>
+   <action path="/showAllAssignedReviewsCompleteDiscl" type="edu.mit.coeuslite.coiv2.actions.CoiV2ReviewerListAction">
+  <forward  name="success" path="/coeuslite/mit/coiv2/tile/showAllReviewCmpltView.jsp"/> 
+  </action>
+
+  <action path="/adminprint" type="edu.mit.coeuslite.coiv2.actions.PrintActionCoiV2">
+  <forward  name="success" path="/coeuslite/mit/coiv2/jsp/adminprintpage.jsp"/>
+  </action>
+
+  <action path="/printprocess"  type="edu.mit.coeuslite.coiv2.actions.PrintProcessCoiv2">
+      <forward name="success"  path="/coeuslite/mit/coiv2/jsp/deliverPDF.jsp"/>
+      <forward name="error"  path="/coeuslite/mit/coiv2/jsp/deliverPDF.jsp"/>
+  </action>
+
+
+
+  <action path="/assignDisclToUser" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction" name="assignDisclToUser">
+  <forward  name="assignDisclToUser" path="/coeuslite/mit/coiv2/tile/assignDisclView.jsp"/>
+  </action>
+
+  <action path="/saveDisclToUser" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction" name="assignDisclToUser">
+  <forward name="savecomplete" path="/assignDisclToUser.do"/>
+  </action>
+
+ <action path="/popsequence" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction" name="assignDisclToUser">
+  <forward  name="assignDisclToUser" path="/coeuslite/mit/coiv2/tile/assignDisclView.jsp"/>
+  </action>
+
+ <action path="/searchDisclosure" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction"
+  scope="request" name="coiSearchBean" validate="false">
+ <forward name="searchDisclosure" path="/coeuslite/mit/coiv2/jsp/searchDisclosure.jsp"/>
+ </action>
+
+ <action path="/searchDisclByElements" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction"
+  scope="request" name="coiSearchBean" validate="false">
+ <forward name="searchDisclByElements" path="/searchDisclosure.do"/>
+ </action>
+
+ <action path="/searchDisclosureViewer" type="edu.mit.coeuslite.coiv2.actions.CoiV2ViewerAction"
+  scope="request" name="coiSearchBean" validate="false">
+ <forward name="searchDisclosureViewer" path="/coeuslite/mit/coiv2/jsp/searchDisclosureViewer.jsp"/>
+ </action>
+
+ <action path="/searchDisclByElementsViewer" type="edu.mit.coeuslite.coiv2.actions.CoiV2ViewerAction"
+  scope="request" name="coiSearchBean" validate="false">
+ <forward name="searchDisclByElementsViewer" path="/searchDisclosureViewer.do"/>
+ </action>
+
+ <action path="/searchDisclosureReporter" type="edu.mit.coeuslite.coiv2.actions.CoiV2ReporterAction"
+  scope="request" name="coiSearchBean" validate="false">
+ <forward name="searchDisclosureReporter" path="/coeuslite/mit/coiv2/jsp/searchDisclosureReporter.jsp"/>
+ </action>
+
+ <action path="/searchDisclByElementsReporter" type="edu.mit.coeuslite.coiv2.actions.CoiV2ReporterAction"
+  scope="request" name="coiSearchBean" validate="false">
+ <forward name="searchDisclByElementsReporter" path="/searchDisclosureReporter.do"/>
+ </action>
+
+        <!-- Start -->
+
+
+<!-- -->
+
+        <action path="/showQuestionnaire" type="edu.mit.coeuslite.coiv2.actions.AnnualDisclAction"
+                scope="request" name="awardInfoBean" validate="false">
+            <forward name="new" path="/getCompleteAnnualDisclCoiv2.do?projectType=Annual"/>
+            <forward name="continue" path="/createAnnualDisclosureCoiv2.do?operation=UPDATE"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+    <action path="/getCompleteAnnualDisclCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiGetAnnualDisclAction"
+    scope="request" name="annDisclosure" validate="false">
+    <forward name="questionnaire" path="/getCoiAnnualQuestionnaireCoiv2.do"/>
+    <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+    </action>
+        <action path="/getCoiAnnualQuestionnaireCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiGetAnnualQuestionnaireAction"
+        scope="session" name= "dynaBeanList" validate="false">
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/certAnnualQuestionnaireView.jsp"/>
+        <forward name="review" path="/getDisclosure.do?mode=review"/>
+        <forward name="history" path="/getDisclosure.do?mode=history"/>
+         <forward name="saveUpdate" path="/saveCoiAnnualQuestionnaireCoiv2.do"/>
+        <forward name="continueUpdate" path="/annual.do"/>
+        <forward name="modify" path="/createAnnualDisclosureCoiv2.do?operation=MODIFY"/>
+        <forward name="continue" path="/addCertQuestionsCoiv2.do?mode=continue"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        <forward name="getNextQstnnr" path="/getCoiAnnualQuestionnaireCoiv2.do"/>
+        </action>
+            <action path="/saveCoiAnnualQuestionnaireCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiGetAnnualQuestionnaireAction"
+            scope="session" name= "dynaBeanList" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/certAnnualQuestionnaireView.jsp"/>
+            <forward name="continue" path="/annual.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="getNextQstnnr" path="/getCoiAnnualQuestionnaireCoiv2.do"/>
+            </action>
+
+    <action path="/createAnnualDisclosureCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiGetAnnualDisclAction"
+    scope="session" name="dynaBeanList" validate="false">
+    <forward name="success" path="/saveCoiAnnualQuestionnaireCoiv2.do?forward=disclosure"/>
+    <forward name="update" path="/getCoiAnnualQuestionnaireCoiv2.do"/>
+    <forward name="continue" path="/addCertQuestionsCoiv2.do?mode=continue"/>
+    <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+    </action>
+
+        <action path="/annual" type="edu.mit.coeuslite.coiv2.actions.AnnualCoiDisclAction"
+                scope="request" name="coiPersonProjectDetailsForm" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/annualDisclView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+
+        <action path="/getProjectDetailsAndFinEntityDetailsAnnualCoiv2" type="edu.mit.coeuslite.coiv2.actions.Coi2AnnualProjectAction"
+                scope="session" name="coiPersonProjectDetailsForm" validate="false" >
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/annualCoiProjectAndFinEntity.jsp"/>
+            <forward name="continue" path="/saveFinancialEntityIfExists.do" />
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            <forward name="gotoAttachments" path="/getAttachmentsCoiv2.do" />
+            <forward name="createFinEntity" path="/getAnnDisclFinEntityCoiv2.do"/>
+        </action>
+
+
+        <action path="/saveFinancialEntityIfExists" type="edu.mit.coeuslite.coiv2.actions.Coiv2AnnualProjectFinancialEntitySaveAction"
+                scope="session"  validate="false">
+                <forward name="success" path="/getNotesCoiv2.do"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            <forward name="createFinEntity" path="/getAnnDisclFinEntityCoiv2.do"/>
+        </action>
+
+        <action path="/saveNonIntegratedAnnuals" type="edu.mit.coeuslite.coiv2.actions.AnnualCoiDisclAction"
+               scope="request" name="coiPersonProjectDetailsForm" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/annualDisclView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+
+        </action>
+
+        <action path="/annualSaveProjectDetails" type="edu.mit.coeuslite.coiv2.actions.Coi2AnnualProjectAction"
+                scope="session" name="coiPersonProjectDetailsForm" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/annualCoiProjectAndFinEntity.jsp"/>
+            <forward name="continue" path="/getAttachmentsCoiv2.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+
+        <!-- End -->
+        <!-- added By Jaisha -->
+        <action path="/getApprovedDisclosureByfinancialEntities"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+
+            <forward name="finnacialentity" path="/coeuslite/mit/coiv2/tile/approvedDisclosureByfinancialEntitiesView.jsp"/>
+        </action>
+
+  <action path="/showHistoryForHeader" type="edu.mit.coeuslite.coiv2.actions.DisclosureHistoryAction"
+                scope="request" validate="false" name="coiDisclosureForm">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/historyView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+
+    <action path="/showDisclosure"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+
+            <forward name="questionnaire" path="/coeuslite/mit/coiv2/tile/screeningQuestionView.jsp"/>
+            <!--         <forward name="finnacialentity" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            <forward name="notes" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            <forward name="attachments" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+            <forward name="cert" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>-->
+            <forward name="fail" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+
+        </action>
+
+
+        <action path="/getApprovedDisclosureByProjects"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+
+            <forward name="ShowDisclosureForFinancialEntity" path="/coeuslite/mit/coiv2/tile/financialEntiesByApprovedDisclosure.jsp"/>
+        </action>
+
+        <action path="/getProjectsByFinancialEntitiesView"
+                       type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false" name="coiPersonProjectDetailsForm">
+
+            <forward name="financialentity" path="/coeuslite/mit/coiv2/tile/financialEntiesByDisclosure.jsp"/>
+        </action>
+
+        <!-- added By Jaisha -->
+
+        <action path="/setViewer"
+                type="edu.mit.coeuslite.coiv2.actions.SetViewerActionCoiV2"
+                scope="request"
+                validation="false">
+            <forward name="setviewer" path="/coeuslite/mit/coiv2/tile/setViewerActionView.jsp"/>
+        </action>
+        <action path="/updateViewerStatus" name="dispDisclStatusForm"
+                type="edu.mit.coeuslite.coiv2.actions.SetViewerActionCoiV2"
+                scope="request"
+                validation="false">
+            <forward name="updateViewerStatus" path="/setViewer.do"/>
+        </action>
+
+    <action path="/getAnnDisclFinEntityCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiDisclAction"
+                scope="session" name= "annDisclFinEntity" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/coiv2FinEntityView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+    </action>
+
+    <action path="/listAnnFinEntityCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiDisclAction"
+                scope="session"  validate="false">
+                <forward name="success" path="/coeuslite/mit/coiv2/tile/coiRevFinEntityCoiv2.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+    </action>
+
+     <action path="/addAnnDisclFinEntityCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiDisclAction"
+                scope="session" name= "annDisclFinEntity" validate="false">
+                <forward name="coiDiscl" path="/disclFinEntity.do"/> 
+                <forward name="success" path="/listAnnFinEntityCoiv2.do"/> 
+                <forward name="main" path="/listAnnFinEntityCoiv2.do"/>
+                <forward name="finEnt" path="/getAnnDisclFinEntityCoiv2.do"/>
+                <forward name="exit" path="/coiMain.do"/> 
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+                <forward name="createPjt" path="/listAnnFinEntityCoiv2.do" />
+                <forward name="createAnnual" path="/listAnnFinEntityCoiv2.do"/>
+
+    </action> 
+
+    <!--added by indu-->
+         <action path="/searchCoiDisclosureReporter" type="edu.mit.coeuslite.coiv2.actions.CoiV2ReporterSearchAction"
+                scope="request" name="coiSearchBean" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/jsp/coiv2SearchReporter.jsp"/>
+                <forward name="result" path="/coeuslite/mit/coiv2/jsp/coiv2SearchReporter.jsp"/>
+                <forward name="organization" path="/coeuslite/mit/coiv2/jsp/coiv2SearchReporter.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+
+        </action>
+        <action path="/searchCoiDisclosureViewer" type="edu.mit.coeuslite.coiv2.actions.CoiV2ViewerSearchAction"
+                scope="request" name="coiSearchBean" validate="false">
+             <forward name="success" path="/coeuslite/mit/coiv2/jsp/coiV2SearchViewer.jsp"/>
+             <forward name="result" path="/coeuslite/mit/coiv2/jsp/coiV2SearchViewer.jsp"/>
+             <forward name="organization" path="/coeuslite/mit/coiv2/jsp/coiV2SearchViewer.jsp"/>
+             <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+             <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+             <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+        </action>
+        <action path="/searchCoiDisclosureAdmin" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminSearchAction"
+                scope="request" name="coiSearchBean" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/jsp/coiv2SearchAdmin.jsp"/>
+            <forward name="result" path="/coeuslite/mit/coiv2/jsp/coiv2SearchAdmin.jsp"/>
+            <forward name="organization" path="/coeuslite/mit/coiv2/jsp/coiv2SearchAdmin.jsp"/>
+             <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+             <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+             <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+
+        </action>
+          <!--End-->
+           <!--For Disclosure Delete Exit-->
+        <action path="/exitDisclosure" type="edu.mit.coeuslite.coiv2.actions.Coiv2DiscloExitAction" scope="request" validate="false">
+              <forward name="success" path="/coiHome.do" />
+             <!--  <forward name="locked" path="/coeuslite/mit/irb/cwErrorPage.jsp" /> -->
+              <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp" />
+
+        </action>
+    <!-- COI Person Search -->
+        <action path="/coiPersonSearchAction" type="edu.mit.coeuslite.coiv2.actions.CoiPersonSearchAction"
+               scope="request" validate="false" name="coiSearchBean">
+
+             <forward name="success" path="/coeuslite/mit/coiv2/jsp/coiPersonSearch.jsp"/>
+             <forward name="result"  path="/coeuslite/mit/coiv2/jsp/coiPersonSearch.jsp"/>
+                <forward name="organization"  path="/coeuslite/mit/coiv2/jsp/coiPersonSearch.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+
+       </action>
+
+     <action path="/deactivateCoiAnnFinEnt" type="edu.mit.coeuslite.coiv2.actions.CoiFinEntityAction"
+               name="annDisclFinEntity" scope="request" validate="false">
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/deactivateFinEntTileCoiv2.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        <forward name="failure"    path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/deactivateCoiAnnFinEntSubmit" type="edu.mit.coeuslite.coiv2.actions.CoiFinEntityAction"
+               name="annDisclFinEntity" scope="request" validate="false">
+        <forward name="success" path="/listAnnFinEntityCoiv2.do"/>
+        <forward name="coiCertYesAnswers" path="/disclFinEntity.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/coiv2/tile/deactivateFinEntTileCoiv2.jsp" />
+        <forward name="failure"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+ <action path="/reviewEventFinEntity" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction">
+
+                <forward name="successToEventDisclFinEntity" path="/coeuslite/mit/coiv2/tile/eventDisclFinEntity.jsp"/>
+                <!--<forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>-->
+    </action>
+
+
+       <action path="/activateCoiAnnFinEnt" type="edu.mit.coeuslite.coiv2.actions.CoiFinEntityAction"
+               name="annDisclFinEntity" scope="request" validate="false" >
+        <forward name="success" path="/listAnnFinEntityCoiv2.do"/>      
+         <forward name="coiCertYesAnswers" path="/disclFinEntity.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+       </action>
+
+       <action path="/reviewAnnFinEntityCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiDisclAction"
+                scope="session"  validate="false">
+                <forward name="success" path="/coeuslite/mit/coiv2/tile/coiv2FinEntityView.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+  <action path="/ShowDisclosureDetails" type="edu.mit.coeuslite.coiv2.actions.ShowDisclosureDetailsAction"
+            scope="session" validate="false">
+                <forward name="success" path="/coeuslite/mit/coiv2/jsp/showProjectDetails.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+
+  <action path="/saveProjectsByFinancialEntitiesView"
+                       type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false" name="coiPersonProjectDetailsForm">
+
+            <forward name="updfinancialentity" path="/getProjectsByFinancialEntitiesView.do"/>
+        </action>
+
+        <action path="/updateFinancialEntityByProjects"
+                       type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false" name="coiPersonProjectDetailsForm">
+
+            <forward name="updfinancialentity" path="/financialentities.do"/>
+        </action>
+
+        <action path="/showselectedPersonDisclosure"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+            <forward name="questionnaire" path="/coeuslite/mit/coiv2/tile/screeningQuestionView.jsp"/>
+            <forward name="fail" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+        </action>
+
+        <action path="/getHistoryView"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+            <forward name="questionnaire" path="/coeuslite/mit/coiv2/tile/screeningQuestionView.jsp"/>
+            <forward name="fail" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+
+        </action>
+     
+ <action path="/viewFinEntityCoiV2" type="edu.mit.coeuslite.coiv2.actions.ViewFinEntityAction"
+                scope="request" validate="false" 
+               name="finEntity">
+             <forward name="success" path="/coeuslite/mit/coiv2/jsp/cwViewFinEntity.jsp"/>
+             <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+             <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>   
+       </action>
+
+    <action path="/getAnnFinEntHistoryCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiDisclAction"
+               scope="request" validate="false">
+      <forward name="success" path="/coeuslite/mit/coiv2/jsp/finEntityHistoryCoiv2.jsp" />
+      <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+      <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+   </action>
+
+ <action path="/removeDisclToUser" type="edu.mit.coeuslite.coiv2.actions.CoiV2AdminAction" name="assignDisclToUser">
+  <forward name="savecomplete" path="/assignDisclToUser.do"/>
+  </action> 
+       
+         <action path="/projectlistForEvent" type="edu.mit.coeuslite.coiv2.actions.ProjectListForEvent"
+                scope="session" name="dynaBeanList" validate="false">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/financialEntByProjectTile.jsp"/> 
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+         <action path="/createDisclosureFromInProgress" type="edu.mit.coeuslite.coiv2.actions.CoiGetDisclAction"
+                scope="session" name="dynaBeanList" validate="false">
+            <forward name="success" path="/saveCoiQuestionnaireCoiv2.do?forward=disclosure"/>            
+            <forward name="update" path="/getCoiQuestionnaireCoiv2.do"/>
+            <forward name="byfinancial" path="/getProjectDetailsAndFinEntityDetailsCoiv2.do"/>
+            <forward name="continue" path="/addCertQuestionsCoiv2.do?mode=continue"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            <forward name="successToAnnual" path="/showQuestionnaire.do?acType=MODIFY"/>
+        </action>
+
+        <action path="/reviewAnnFinEntViewCoiv2" type="edu.mit.coeuslite.coiv2.actions.CoiDisclAction"
+                scope="session"  validate="false">
+                <forward name="success" path="/coeuslite/mit/coiv2/jsp/cwCoiFinEntityCoiv2.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+    <action path="/continueWithoutQnr" type="edu.mit.coeuslite.coiv2.actions.CoiV2ContinueWithoutQnr"
+                scope="session" name="dynaBeanList" validate="false">
+            <forward name="success" path="/getProjectDetailsAndFinEntityDetailsCoiv2.do"/>            
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+     <action path="/continueWithoutAnnQnr" type="edu.mit.coeuslite.coiv2.actions.CoiV2AnnContinueWithoutQnr"
+                scope="session" name="dynaBeanList" validate="false">           
+            <forward name="success" path="/annual.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+
+    <action path="/newTravel" type="edu.mit.coeuslite.coiv2.actions.CreateNewTravelAction"
+                scope="request" validate="false">
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/travelDetTile.jsp"/>
+    </action>
+ 
+    <action path="/viewFinEntityMitCoiV2" type="edu.mit.coeuslite.coiv2.actions.ViewFinEntityMitAction"
+                scope="request" validate="false" 
+               name="finEntity">
+             <forward name="success" path="/coeuslite/mit/coiv2/jsp/feHistoryDetails.jsp"/>
+             <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+             <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>   
+    </action>
+    <action path="/showAllWipDiscl" type="edu.mit.coeuslite.coiv2.actions.CoiV2WipAction"  scope="request" validate="false">
+         <forward  name="success" path="/coeuslite/mit/coiv2/tile/showAllWipDisclTitlView.jsp"/>
+         <forward name="error" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp" />
+    </action>
+     
+<!-- coi rebuild S T A R T -->
+         <action path="/coiAnnualRevision" type="edu.mit.coeuslite.coiv2.actions.CoiAnnualRevisionAction"
+                 scope="request" name="coiPersonProjectDetailsForm" validate="false">
+            <forward name="success" path="/coiCommonSave.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+        <action path="/coiCommonSave" type="edu.mit.coeuslite.coiv2.actions.CoiCommonSaveAction"
+                 scope="request" name="coiPersonProjectDetailsForm" validate="false">
+            <forward name="success" path="/getCoiCommonQnr.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            <forward name="continue" path="/continueFromQnr.do"/>
+        </action>
+        
+       <action path="/getCoiCommonQnr" type="edu.mit.coeuslite.coiv2.actions.CoiCommonQuestionnaireAction"
+               scope="session" name= "dynaBeanList" validate="false">
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/coiCommomQnrTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+        <action path="/travelDetails" type="edu.mit.coeuslite.coiv2.actions.CreateNewTravelAction"
+                scope="request" validate="false">
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/travelDetTile.jsp"/>
+        <forward name="viewMode" path="/coeuslite/mit/coiv2/tile/travelViewTile.jsp"/>
+    </action>
+
+        <action path="/saveCoiCommonQnr" type="edu.mit.coeuslite.coiv2.actions.CoiCommonQuestionnaireAction"
+               scope="session" name= "dynaBeanList" validate="false">
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/coiCommomQnrTile.jsp"/>
+        <forward name="continue" path="/continueFromQnr.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+        <action path="/coiCentralAction" type="edu.mit.coeuslite.coiv2.actions.CoiCentralAction"
+               scope="session" name= "dynaBeanList" validate="false">        
+        <forward name="event" path="/coiConflictStatus.do"/> 
+        <forward name="annual" path="/coeuslite/mit/coiv2/tile/annualDisclView.jsp"/>
+        <forward name="certify" path="/getCertificationCoiv2.do"/>
+        <forward name="createFinEntity" path="/getAnnDisclFinEntityCoiv2.do"/>
+        <forward name="felistScreen" path="/listAnnFinEntityCoiv2.do"/>
+        <forward name="attachment" path="/getAttachmentsCoiv2.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/continueFromQnr" type="edu.mit.coeuslite.coiv2.actions.CoiCentralAction"
+               scope="session" name= "dynaBeanList" validate="false">        
+        <forward name="event" path="/coeuslite/mit/coiv2/tile/financialEntByProjectTile.jsp"/> 
+        <forward name="annual" path="/coeuslite/mit/coiv2/tile/annualDisclView.jsp"/>
+        <forward name="certify" path="/getCertificationCoiv2.do"/>
+        <forward name="createFinEntity" path="/getAnnDisclFinEntityCoiv2.do"/>
+        <forward name="felistScreen" path="/listAnnFinEntityCoiv2.do"/>  
+        <forward name="attachment" path="/getAttachmentsCoiv2.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+        <action path="/coiConflictStatus" type="edu.mit.coeuslite.coiv2.actions.CoiConflictStatusAction"
+               scope="session" name= "coiPersonProjectDetailsForm" validate="false">        
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/annualCoiProjectAndFinEntity.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+        <action path="/coiSaveConflictStatus" type="edu.mit.coeuslite.coiv2.actions.CoiConflictStatusAction"
+               scope="session" name= "coiPersonProjectDetailsForm" validate="false">        
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/annualCoiProjectAndFinEntity.jsp"/>
+        <forward name="continue" path="/getAttachmentsCoiv2.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+        <action path="/coiSaveSelectedProject" type="edu.mit.coeuslite.coiv2.actions.CoiConflictStatusAction"
+               scope="session" name= "coiPersonProjectDetailsForm" validate="false">        
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/annualCoiProjectAndFinEntity.jsp"/>
+        <forward name="continue" path="/getAttachmentsCoiv2.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+        <action path="/coiInProgress" type="edu.mit.coeuslite.coiv2.actions.CoiInProgressAction"
+                scope="session" name="dynaBeanList" validate="false">
+            <forward name="success" path="/getCoiCommonQnr.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            <forward name="successToAnnual" path="/showQuestionnaire.do?acType=MODIFY"/>
+            <forward name="travelPage" path="/travelDetails.do"/>
+            <forward name="continue" path="/continueFromQnr.do"/>
+        </action>
+        <action path="/coiQuestionnaire" type="edu.mit.coeuslite.coiv2.actions.CoiInProgressAction"
+                scope="session" name="dynaBeanList" validate="false">
+            <forward name="success" path="/getCoiCommonQnr.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            <forward name="successToAnnual" path="/showQuestionnaire.do?acType=MODIFY"/>
+        </action>
+         <action path="/coiSkipProject" type="edu.mit.coeuslite.coiv2.actions.CoiConflictStatusAction"
+               scope="session" name= "coiPersonProjectDetailsForm" validate="false">        
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/annualCoiProjectAndFinEntity.jsp"/>
+        <forward name="continue" path="/getAttachmentsCoiv2.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+<!-- coi rebuild E N D S  -->    
+<!-- coi new Mail proccess -->
+      <action path="/coiMailAction" type="edu.mit.coeuslite.coiv2.actions.CoiMailProcessAction"
+                scope="session" name="dynaBeanList" validate="false">
+            <forward name="success" path="/getCoiCommonQnr.do"/>
+            <forward name="home" path="/coiHome.do"/>
+            <forward name="commonSave" path="/coiCommonSave.do"/> 
+            <forward name="InProgress" path="/coiMailInProgress.do"/> 
+            <forward name="submitted" path="/getMaildisclosure.do"/> 
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            <forward name="successToAnnual" path="/showQuestionnaire.do?acType=MODIFY"/>
+        </action>
+        <action path="/coiMailInProgress" type="edu.mit.coeuslite.coiv2.actions.CoiInProgressAction"
+                scope="session" name="dynaBeanList" validate="false">
+            <forward name="success" path="/getCoiCommonQnr.do"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+            <forward name="successToAnnual" path="/showQuestionnaire.do?acType=MODIFY"/>
+        </action>
+         <action path="/getMaildisclosure"
+                type="edu.mit.coeuslite.coiv2.actions.GetAnnulaInternalDisclosureCoiV2"
+                scope="request"
+                validation="false">
+            <forward name="questionnaire" path="/coeuslite/mit/coiv2/tile/screeningQuestionView.jsp"/>
+            <forward name="showAllReview" path="/showAllDiscl.do"/>
+            <forward name="showAllAnnualReview" path="/showAllAnnualDiscl.do"/>
+            <forward name="showAllEventReview" path="/showAllPendingEventDiscl.do"/>
+            <forward name="fail" path="/coeuslite/mit/coiv2/tile/disclosureView.jsp"/>
+
+        </action>
+  <!-- coi new Mail proccess -->      
+   <action path="/reviewerAction" type="edu.mit.coeuslite.coiv2.actions.Coiv2ReviewerAction"
+               scope="request" validate="false" >
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/reviewerTile.jsp"/>
+    </action>
+
+    <action path="/saveReviewAction" type="edu.mit.coeuslite.coiv2.actions.Coiv2ReviewerAction"
+               scope="request" validate="false" >
+        <forward name="success" path="/completeReviewAction.do"/>
+        <forward name="backToDiscl" path="/screeningquestions.do"/>
+        <forward name="reviewerAction" path="/reviewerAction.do"/>
+    </action>
+
+   <action path="/completeReviewAction" type="edu.mit.coeuslite.coiv2.actions.Coiv2ReviewerAction"
+                scope="request" validate="false">
+        <forward name="success" path="/coeuslite/mit/coiv2/tile/completeReviewTile.jsp"/>
+        <forward name="completeReview" path="/coeuslite/mit/coiv2/tile/completeReviewTile.jsp"/>
+        <forward name="adminReview" path="/assignDisclToUser.do"/>
+        <forward name="cancelReview" path="/screeningquestions.do"/>
+    </action>
+ </action-mappings>
+  
+    <message-resources parameter="COIV2Messages" key="coiv2" />
+
+</struts-config>

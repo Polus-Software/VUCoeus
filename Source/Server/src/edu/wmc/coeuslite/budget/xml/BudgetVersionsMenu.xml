@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<Menu>
+	<MenuItem>
+		<Menu_Id> BV001</Menu_Id>
+		<Menu_Name> Return To Proposal</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>RETURNTOPROPOSAL</FieldName>
+		<Link>/getGeneralInfo.do</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> BV002</Menu_Id>
+		<Menu_Name> Budget Versions</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>BUDGETVERSIONS</FieldName>
+		<Link>/getBudgetVersions.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+</Menu>

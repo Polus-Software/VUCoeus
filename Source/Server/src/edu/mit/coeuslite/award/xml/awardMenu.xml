@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Document : awardMenu.xml Created on : July 28, 2011, 11:41 AM Author 
+	: indhulekha Description: Purpose of the document follows. -->
+
+<Menu>
+
+	<MenuItem>
+		<Menu_Id> A006</Menu_Id>
+		<Menu_Name>Award Summary</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>AWARDRECORDSUMMARY</FieldName>
+		<Link>/getAwardInfo.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+
+	<MenuItem>
+		<Menu_Id> A007</Menu_Id>
+		<Menu_Name>Award Record Summary</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PRINTAWARDRECORDSUMMARY</FieldName>
+		<Link>PRINT</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> A008</Menu_Id>
+		<Menu_Name>Award Record Detail</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PRINTAWARDRECORDDETAIL</FieldName>
+		<Link>PRINT</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> A009</Menu_Id>
+		<Menu_Name>Award Hierarchy</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PRINTAWARDHIERARCHY</FieldName>
+		<Link>PRINT</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+</Menu>

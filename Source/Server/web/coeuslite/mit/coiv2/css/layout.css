@@ -1,0 +1,338 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	margin: 0 0 0 0;
+	/* JM 3-26-2012 changed background color */
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	letter-spacing: normal;
+}
+
+#wrapper {
+	position: relative;
+	width: 980px;
+	min-height: 500px;
+}
+
+#main {
+	background-color: #9dbfe9;
+	position: relative;
+	float: left;
+	width: 980px;
+	min-height: 500px;
+	/* JM 3-23-2012 updated colors */
+	border-bottom: 5px solid #999999;
+}
+
+#header {
+	position: relative;
+	float: left;
+	width: 980px;
+	height: 71px;
+	/* JM 3-26-2012 change background image
+	background:url(../images/header.gif) no-repeat;*/
+	background: url(../images/header_coeus2.gif) no-repeat;
+}
+
+#topmenu {
+	position: relative;
+	float: left;
+	width: 980px;
+	height: 27px;
+	background-color: #cbddf3;
+}
+
+#submenu {
+	position: relative;
+	float: left;
+	width: 980px;
+	height: 30px;
+	background-color: #edeef1;
+	border-top: 1px solid #bacee3;
+	border-bottom: 1px solid #6e98d3;
+}
+
+#reporterdetails {
+	position: relative;
+	float: left;
+	width: 980px;
+	min-height: 80px;
+	background-color: #edeef1;
+	border-top: 1px solid #bacee3;
+	border-bottom: 1px solid #6e98d3;
+}
+
+.ProjectDetails {
+	position: relative;
+	float: left;
+	width: 730px;
+	min-height: 80px;
+	margin: 20px 20px 20px 130px;
+	padding-bottom: 20px;
+}
+
+#content {
+	position: relative;
+	float: left;
+	width: 900px;
+	padding: 0 25px 25px 25px;
+	min-height: 400px;
+	height: auto;
+	border-top: 1px solid #627a98;
+}
+
+#contentleft {
+	position: relative;
+	float: left;
+	width: 200px;
+	min-height: 380px;
+	height: auto;
+}
+
+#contentright {
+	position: relative;
+	float: left;
+	width: 599px;
+	min-height: 380px;
+	padding: 25px;
+	height: auto;
+	border-left: 1px solid #bacee3;
+	/*font-family:Verdana, Arial, Helvetica, sans-serif;*/
+}
+
+#contentrighthome {
+	position: relative;
+	float: left;
+	width: 599px;
+	min-height: 380px;
+	padding: 25px;
+	height: auto;
+	border-left: 1px solid #bacee3;
+	/*font-family:Verdana, Arial, Helvetica, sans-serif;*/
+}
+
+#contentright div.collapsemenu1 {
+	position: relative;
+	float: left;
+	width: 599px;
+	min-height: 100px;
+	height: auto;
+	text-align: left;
+}
+
+.collapsebox {
+	position: relative;
+	float: left;
+	width: 567px;
+	padding: 15px;
+	min-height: 1px;
+	height: auto;
+	background-color: #9dbfe9;
+	/*border:1px solid #bacee3;*/
+	margin-bottom: 10px;
+}
+
+.innercollapsebox {
+	position: relative;
+	float: left;
+	min-height: 160px;
+	visibility: visible;
+	width: 567px;
+	padding: 15px 0 15px 0;
+	background-color: #9dbfe9;
+	border: 1px solid #bacee3;
+	margin-bottom: 10px;
+}
+
+.myForm {
+	position: relative;
+	float: left;
+	width: 547px;
+	min-height: 1px;
+	height: auto;
+	color: #1d4068;
+	font-size: 12px;
+}
+
+.Formline0 {
+	position: relative;
+	float: left;
+	width: 547px;
+	height: 25px;
+	margin-bottom: 5px;
+}
+
+.Formline {
+	position: relative;
+	float: left;
+	width: 547px;
+	height: 25px;
+	margin-bottom: 5px;
+}
+
+.Formline2 {
+	position: relative;
+	float: left;
+	width: 547px;
+	min-height: 25px;
+	margin-bottom: 5px;
+	text-align: right;
+}
+
+.Formline3 {
+	position: relative;
+	float: left;
+	width: 547px;
+	min-height: 25px;
+	margin-bottom: 5px;
+	text-align: left;
+	color: #1d4068;
+}
+
+.Formline4 {
+	position: relative;
+	float: left;
+	width: 650px;
+	min-height: 10px;
+	margin-bottom: 2px;
+	text-align: left;
+	color: #1d4068;
+}
+
+.Formline5 {
+	position: relative;
+	float: left;
+	width: 547px;
+	height: 25px;
+	margin-bottom: 5px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.FormLeft {
+	position: relative;
+	float: left;
+	width: 273px;
+	height: 25px;
+	text-align: right;
+}
+
+.FormRight {
+	position: relative;
+	float: left;
+	width: 274px;
+	height: 25px;
+	text-align: right;
+}
+
+.FormColumn1 {
+	position: relative;
+	float: left;
+	width: 150px;
+	padding: 0 0 0 9px;
+	min-height: 30px;
+	text-align: left;
+}
+
+.FormColumnHover {
+	position: relative;
+	float: left;
+	width: 150px;
+	padding: 0 0 0 9px;
+	min-height: 30px;
+	text-align: left;
+	background-color: #fff;
+}
+
+.FormLeft2 {
+	position: relative;
+	float: left;
+	width: 273px;
+	height: 25px;
+	text-align: left;
+}
+
+.FormRight2 {
+	position: relative;
+	float: left;
+	width: 274px;
+	height: 25px;
+	text-align: left;
+}
+
+.FormColumnA1 {
+	position: relative;
+	float: left;
+	width: 70px;
+	padding: 2px 0 0 5px;
+	height: 18px;
+	text-align: left;
+	/* JM 3-26-2012 updated color */
+	background-color: #999999;
+	color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.FormColumnB1 {
+	position: relative;
+	float: left;
+	margin-left: 1px;
+	width: 127px;
+	padding: 2px 0 0 5px;
+	height: 18px;
+	text-align: left;
+	/* JM 3-26-2012 updated color */
+	background-color: #999999;
+	color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.FormColumnC1 {
+	position: relative;
+	float: left;
+	margin-left: 1px;
+	width: 105px;
+	padding: 2px 0 0 5px;
+	height: 18px;
+	text-align: left;
+	/* JM 3-26-2012 updated color */
+	background-color: #999999;
+	color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.FormColumnA2 {
+	position: relative;
+	float: left;
+	width: 70px;
+	padding: 2px 0 0 5px;
+	height: 18px;
+	text-align: left;
+	font-size: 11px;
+}
+
+.FormColumnB2 {
+	position: relative;
+	float: left;
+	margin-left: 1px;
+	width: 127px;
+	padding: 2px 0 0 5px;
+	height: 18px;
+	text-align: left;
+	font-size: 11px;
+}
+
+.FormColumnC2 {
+	position: relative;
+	float: left;
+	margin-left: 1px;
+	width: 105px;
+	padding: 2px 0 0 5px;
+	height: 18px;
+	text-align: left;
+	font-size: 11px;
+}

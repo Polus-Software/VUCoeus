@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Document : decorator.xml Created on : March 18, 2008, 10:19 AM Author 
+	: sharathk Description: since status was a key in earlier version, we could 
+	have only one staus for a decorator. hence IRB document and IACUC document 
+	with same status would get the same watermark/decorations. To incorporate 
+	different watermark/decorations for different modules, modified the document 
+	to group status into a goupname. -->
+
+<!-- Following status should have DRAFT, this is across 100 Pending/In Progress 
+	101 Submitted to IRB 102 Specific Minor Revisions Required 103 Deferred 104 
+	Substantive Revisions Required 105 Amendment in Progress 106 Renewal in Progress 
+	Following should have 'Approved' at the top margin with expiration date. 
+	200 Active - Open to Enrollment 201 Active - Closed to Enrollment 202 Active 
+	- Data Analysis Only Following status should have 'Invalid' Across 203 Exempt 
+	300 Closed Administratively for lack of response 301 Closed by Investigator 
+	302 Suspended by Investigator 303 Do Not Use - delete later - Terminated 
+	by Investigator 304 Withdrawn 305 Expired 306 Disapproved 307 Terminated 
+	by IRB 308 Suspended by IRB 309 Not Human Subjects Research 310 IRB review 
+	not required 311 Suspended by DSMB -->
+
+<!DOCTYPE DECORATIONS SYSTEM 'decorator.dtd'>
+<DECORATIONS>
+
+	<GROUP NAME="TEST">
+		<!--Exmaples - START -->
+		<DECORATION>
+			<STATUS>75</STATUS>
+			<HEADER ALIGN="LEFT" FONT-SIZE="15" FONT-COLOR="red">101 header</HEADER>
+			<HEADER ALIGN="RIGHT" FONT-COLOR="green">header right</HEADER>
+			<FOOTER ALIGN="RIGHT">101 footer here</FOOTER>
+			<FOOTER>101 footer 2</FOOTER>
+			<WATERMARK TYPE="TEXT" FONT-SIZE="25">/draftWaterMark.gif</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>76</STATUS>
+			<DOCTYPE>4</DOCTYPE>
+			<HEADER ALIGN="RIGHT" FONT-SIZE="12">header</HEADER>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>77</STATUS>
+			<HEADER ALIGN="LEFT" FONT-SIZE="15" FONT-COLOR="red">Status 100</HEADER>
+			<HEADER ALIGN="RIGHT" FONT-SIZE="12">right header</HEADER>
+			<FOOTER ALIGN="CENTER">100 footer here</FOOTER>
+			<WATERMARK TYPE="TEXT" FONT-SIZE="25" FONT-COLOR="#00FF00">WaterMark
+				text</WATERMARK>
+		</DECORATION>
+		<!--Examples - END -->
+	</GROUP>
+
+	<GROUP NAME="IRB">
+		<!--Use this(-2) status to display INVALID across pdf for older sequences -->
+		<DECORATION>
+			<STATUS>-2</STATUS>
+			<WATERMARK TYPE="TEXT">INVALID</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>100</STATUS>
+			<WATERMARK TYPE="TEXT">APPROVAL PENDING</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>101</STATUS>
+			<WATERMARK TYPE="TEXT">APPROVAL PENDING</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>102</STATUS>
+			<WATERMARK TYPE="TEXT">APPROVAL PENDING</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>103</STATUS>
+			<WATERMARK TYPE="TEXT">APPROVAL PENDING</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>104</STATUS>
+			<WATERMARK TYPE="TEXT">APPROVAL PENDING</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>105</STATUS>
+			<WATERMARK TYPE="TEXT">APPROVAL PENDING</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>106</STATUS>
+			<WATERMARK TYPE="TEXT">APPROVAL PENDING</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>107</STATUS>
+			<WATERMARK TYPE="TEXT">Major Revisions Required</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>200</STATUS>
+			<FOOTER ALIGN="CENTER" FONT-SIZE="12" FONT="TIMES_BOLDITALIC">Approved FROM_DB</FOOTER>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>201</STATUS>
+			<FOOTER ALIGN="CENTER" FONT-SIZE="12" FONT="TIMES_BOLDITALIC">Approved FROM_DB</FOOTER>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>202</STATUS>
+			<FOOTER ALIGN="CENTER" FONT-SIZE="12" FONT="TIMES_BOLDITALIC">Approved FROM_DB</FOOTER>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>203</STATUS>
+			<FOOTER ALIGN="CENTER" FONT-SIZE="12" FONT="TIMES_BOLDITALIC">Exemption FROM_DB</FOOTER>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>300</STATUS>
+			<WATERMARK TYPE="TEXT">IRB Approval Expired</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>301</STATUS>
+			<WATERMARK TYPE="TEXT">IRB Approval Expired</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>302</STATUS>
+			<WATERMARK TYPE="TEXT">IRB Approval Expired</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>303</STATUS>
+			<WATERMARK TYPE="TEXT">Invalid</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>304</STATUS>
+			<WATERMARK TYPE="TEXT">Invalid</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>305</STATUS>
+			<WATERMARK TYPE="TEXT">IRB Approval Expired</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>306</STATUS>
+			<WATERMARK TYPE="TEXT">Invalid</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>307</STATUS>
+			<WATERMARK TYPE="TEXT">IRB Approval Expired</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>308</STATUS>
+			<WATERMARK TYPE="TEXT">IRB Approval Expired</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>309</STATUS>
+			<WATERMARK TYPE="TEXT">IRB Oversight Not Required</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>310</STATUS>
+			<WATERMARK TYPE="TEXT">IRB Oversight Not Required</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>311</STATUS>
+			<WATERMARK TYPE="TEXT">IRB Approval Expired</WATERMARK>
+		</DECORATION>
+
+		<DECORATION>
+			<STATUS>313</STATUS>
+			<WATERMARK TYPE="TEXT">Abandoned</WATERMARK>
+		</DECORATION>
+	</GROUP>
+
+	<GROUP NAME="IACUC">
+		<!-- COEUSQA-3867 -->
+		<!--Use this(-2) status to display INVALID across pdf for older sequences -->
+		<DECORATION>
+			<STATUS>-2</STATUS>
+			<WATERMARK TYPE="TEXT">INVALID</WATERMARK>
+		</DECORATION>
+		<!-- COEUSQA-3867 -->
+		<DECORATION>
+			<STATUS>100</STATUS>
+			<WATERMARK TYPE="TEXT">Pending/In Progress</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>101</STATUS>
+			<WATERMARK TYPE="TEXT">Submitted to IACUC</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>102</STATUS>
+			<WATERMARK TYPE="TEXT">Return to PI</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>103</STATUS>
+			<WATERMARK TYPE="TEXT">Tabled</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>104</STATUS>
+			<WATERMARK TYPE="TEXT">Minor Revisions Required</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>105</STATUS>
+			<WATERMARK TYPE="TEXT">Withdrawn</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>107</STATUS>
+			<WATERMARK TYPE="TEXT">Major Revisions Required</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>108</STATUS>
+			<WATERMARK TYPE="TEXT">Routing In Progress</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>200</STATUS>
+			<WATERMARK TYPE="TEXT">Active</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>201</STATUS>
+			<WATERMARK TYPE="TEXT">Active - On Hold</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>202</STATUS>
+			<WATERMARK TYPE="TEXT">Administratively Approved</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>203</STATUS>
+			<WATERMARK TYPE="TEXT">Administratively Incomplete</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>300</STATUS>
+			<WATERMARK TYPE="TEXT">IACUC Review Not Required</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>302</STATUS>
+			<WATERMARK TYPE="TEXT">Administratively Withdrawn</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>303</STATUS>
+			<WATERMARK TYPE="TEXT">Disapproved</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>304</STATUS>
+			<WATERMARK TYPE="TEXT">Suspended</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>305</STATUS>
+			<WATERMARK TYPE="TEXT">Deactivated</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>306</STATUS>
+			<WATERMARK TYPE="TEXT">Administratively Deactivated</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>307</STATUS>
+			<WATERMARK TYPE="TEXT">Terminated</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>308</STATUS>
+			<WATERMARK TYPE="TEXT">Expired</WATERMARK>
+		</DECORATION>
+		<DECORATION>
+			<STATUS>309</STATUS>
+			<WATERMARK TYPE="TEXT">Abandoned</WATERMARK>
+		</DECORATION>
+	</GROUP>
+
+</DECORATIONS>

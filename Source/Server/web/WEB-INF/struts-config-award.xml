@@ -1,0 +1,189 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<!--
+    Document   : struts-coiv2-config.xml
+    Created on : March 10, 2010, 11:33 AM
+    Author     : Mr Lijo
+    Description:
+        Purpose of the document follows.
+-->
+
+<struts-config>
+    <form-beans>
+        <!--Start Form Beans @Author Sony-->
+        <form-bean name="propBasedDiclForm" type="edu.mit.coeuslite.coiv2.formbeans.propBasedDiclForm"></form-bean>
+        <form-bean name="coiDisclosureForm" type="edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean"></form-bean>
+        <form-bean name="assignDisclToUser" type="edu.mit.coeuslite.coiv2.formbeans.Coiv2AssignDisclToUser"></form-bean>
+         <form-bean name="dispDisclStatusForm" type="edu.mit.coeuslite.coiv2.formbeans.Coiv2DispDisclStatusForm"></form-bean>
+         <form-bean name="coiSearchBean" type="edu.mit.coeuslite.coiv2.formbeans.CoiSearchBean"></form-bean>
+        <form-bean name="annDisclFinEntity" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="personId" type="java.lang.String"/>
+            <form-property name="entityNumber" type="java.lang.String"/>
+            <form-property name="sequenceNum" type="java.lang.Integer"/>
+            <form-property name="entityName" type="java.lang.String"/>
+            <form-property name="statusCode" type="java.lang.Integer"/>
+            <form-property name="statusDesc" type="java.lang.String"/>
+            <form-property name="entityTypeCode" type="java.lang.Integer"/>
+            <form-property name="entityRelTypeCode" type="java.lang.Integer"/>
+            <form-property name="relatedToOrgFlag" type="java.lang.String"/>
+            <form-property name="shareOwnerShip" type="java.lang.String"/>
+            <form-property name="relationShipDesc" type="java.lang.String"/>
+            <form-property name="orgRelnDesc" type="java.lang.String"/>
+            <form-property name="invlmntStudnt" type="java.lang.String"/>
+            <form-property name="invlmntStaff" type="java.lang.String"/>
+            <form-property name="resoucreMit" type="java.lang.String"/> 
+            <form-property name="sponsorCode" type="java.lang.String"/>
+            <form-property name="columnName" type="java.lang.String"/>
+            <form-property name="columnValue" type="java.lang.String"/>
+            <form-property name="rlnType" type="java.lang.Integer"/>
+            <form-property name="comments" type="java.lang.String"/>
+            <form-property name="updtimestamp" type="java.sql.Timestamp"/>
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="acType" type="java.lang.String" initial="I"/>
+            <form-property name="coidisclosureNumber" type="java.lang.String"/>
+            <form-property name="disclSeqnumber" type="java.lang.Integer" />
+            <form-property name="columnSortId" type="java.lang.Integer"/>
+            <form-property name="groupSortId" type="java.lang.Integer" />
+            <form-property name="groupName" type="java.lang.String" />
+            <form-property name="guiType" type="java.lang.String" />
+
+            <form-property name="relationShipTypeDesc" type="java.lang.String" />
+            <form-property name="mitResources" type="java.lang.String"/>
+        </form-bean>
+      <form-bean name="awardInfoBean" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="mitAwardNumber" type="java.lang.String"/>
+            <form-property name="sequenceNumber" type="java.lang.Integer"/>
+            <form-property name="modificationNumber" type="java.lang.String"/>
+            <form-property name="sponsorAwardNumber" type="java.lang.String"/>
+            <form-property name="statusCode" type="java.lang.Integer"/>  
+            <form-property name="awardStatusDescription" type="java.lang.String"/>
+            <form-property name="templateCode" type="java.lang.Integer"/>
+            <form-property name="awardExecutionDate" type="java.lang.String"/>
+            <form-property name="awardEffectiveDate" type="java.lang.String"/>
+            <form-property name="beginDate" type="java.lang.String"/> 
+            <form-property name="sponsorCode" type="java.lang.String"/>
+            <form-property name="accountNumber" type="java.lang.String"/>
+            <form-property name="apprvdEquipmentIndicator" type="java.lang.String"/>
+            <form-property name="apprvdForiegnTripIndicator" type="java.lang.String"/>
+            <form-property name="apprvdSubcontractIndicator" type="java.lang.String"/>
+            <form-property name="paymentScheduleIndicator" type="java.lang.String"/>
+            <form-property name="idcIndicator" type="java.lang.String"/>
+            <form-property name="transferSponsorIndicator" type="java.lang.String"/>
+            <form-property name="costSharingIndicator" type="java.lang.String"/>
+            <form-property name="updateTimestamp" type="java.lang.String"/>
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="specialReviewIndicator" type="java.lang.String"/>
+            <form-property name="scienceCodeIndicator" type="java.lang.String"/>
+            <form-property name="nsfCode" type="java.lang.String"/>
+            <form-property name="keyPersonIndicator" type="java.lang.String"/>
+        </form-bean>
+        <!--End Form Beans @Author Sony-->
+
+    <!--Start Form Beans @Author Lijo-->
+        <form-bean name="coiPersonProjectDetailsForm" type="edu.mit.coeuslite.coiv2.formbeans.CoiPersonProjectDetailsForm"></form-bean>
+        <form-bean name="coiv2NotesBean" type="edu.mit.coeuslite.coiv2.formbeans.Coiv2Notes"></form-bean>
+        <form-bean name="coiv2Attachment" type="edu.mit.coeuslite.coiv2.formbeans.Coiv2Attachment"></form-bean>
+        <form-bean name="coiv2Certification" type="edu.mit.coeuslite.coiv2.formbeans.Coiv2Certification"></form-bean>
+        <form-bean name="coiv2ComboBean" type="edu.mit.coeus.coi.bean.ComboBoxBean"></form-bean>
+        <form-bean name="coiCommonAttachmentNote" type="edu.mit.coeuslite.coiv2.formbeans.CoiCommonAttachmentNoteForm"></form-bean>
+
+   <form-bean name="AllAwardRecordFormBean" type="edu.mit.coeuslite.award.formbeans.AllAwardRecordFormBean"></form-bean>
+
+
+   </form-beans>
+
+    <action-mappings>
+        <!--Start Actions @Author Sony-->
+
+        <!--Which forwards to main Coi Home page-->
+
+        <!--
+        <action path="/allcoi"
+        attribute="allcoi"
+        type="edu.mit.coeuslite.coiv2.actions.Coiv2MainAction"
+        scope="request">
+           <forward name="dartmouth"  path="/coiHome.do"></forward>
+           <forward name="mit"  path="/coi.do"></forward>
+
+        </action>
+        -->
+
+
+        <action path="/coiHome" type="edu.mit.coeuslite.coiv2.actions.CoiHomeAction"
+                scope="request" validate="false" name="coiDisclosureForm">
+            <forward name="success" path="/coeuslite/mit/coiv2/tile/coiMainView.jsp"/>
+            <forward name="successToAdmin" path="/coeuslite/mit/coiv2/admintiles/adminView.jsp"/>
+            <forward name="successToviewer" path="/coeuslite/mit/coiv2/tile/showAssignedDisclView.jsp"/>
+            <forward name="noRights" path="/coeuslite/mit/coiv2/tile/noRightsView.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception" path="/coeuslite/dartmouth/coi/tiles/coiException.jsp"/>
+        </action>
+
+        <action path="/award" type="edu.mit.coeuslite.award.actions.AwardListAction"
+            scope="request" validate="false">
+        <forward name="success" path="/coeuslite/mit/award/tile/awardListTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+   
+        <action path="/allAwardList" type="edu.mit.coeuslite.award.actions.AllAwardRecordAction"
+                scope="request" name="AllAwardRecordFormBean" validate="false">
+            <forward name="success" path="/coeuslite/mit/award/tile/awardListTile.jsp"/>
+             <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+             <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+             <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+        </action>
+
+
+
+
+
+        <!-- To get award data-->
+
+
+        <action path="/getAwardInfo" type="edu.mit.coeuslite.award.actions.AwardGetAction"
+               scope="request"  validate="false">
+          <forward name="success" path="/coeuslite/mit/award/tile/awardGetInfoTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/> 
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="statusException" path="/coeuslite/mit/award/tile/awardListTile.jsp"/>
+        </action>
+
+
+<!-- Award Search-->
+   <action path="/awardSearch" type="edu.mit.coeuslite.award.actions.awardSearchAction"
+                scope="request" name="AllAwardRecordFormBean"  validate="false">
+            <forward name="success" path="/coeuslite/mit/award/jsp/awardSearch.jsp"/>
+                <forward name="result"  path="/coeuslite/mit/award/jsp/awardSearch.jsp"/>
+                <forward name="organization"  path="/coeuslite/mit/award/jsp/awardSearch.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+</action>
+
+
+
+ <action path="/awardPrintnew" type="edu.mit.coeuslite.award.actions.awardPrint"
+               scope="request"  validate="false">
+          <forward name="success" path="/coeuslite/mit/award/jsp/awardPrint.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="statusException" path="/coeuslite/mit/award/tile/awardListTile.jsp"/>
+        </action>
+          <!-- <action path="/getAwardInfo" type="edu.mit.coeuslite.award.actions.AwardGetAction"
+               scope="request" name="generalInfoProposal" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="statusException" path="/coeuslite/utk/propdev/tiles/clProposalListTile.jsp"/>
+        </action>-->
+
+ </action-mappings>
+
+   <!-- <message-resources parameter="COIV2Messages" key="coiv2" />-->
+
+</struts-config>

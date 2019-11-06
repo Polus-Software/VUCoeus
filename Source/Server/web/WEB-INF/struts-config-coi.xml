@@ -1,0 +1,671 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>    
+     <form-bean name="finEntity" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="personId" type="java.lang.String" />
+           <form-property name="entityName" type="java.lang.String" />    
+           <form-property name="orgTypeCode" type="java.lang.String" />                                                         
+           <form-property name="statusCode" type="java.lang.String" /> 
+           <form-property name="descRelationship" type="java.lang.String" />
+           <form-property name="shareOwnerShip" type="java.lang.String" />
+           <form-property name="entityNumber" type="java.lang.String" />
+           <form-property name="sequenceNum" type="java.lang.String" />
+           <form-property name="statusDesc" type="java.lang.String" />
+           <form-property name="relationShipDesc" type="java.lang.String" />
+           <form-property name="relationShipTypeDesc" type="java.lang.String" />       
+           <form-property name="entityRelTypeCode" type="java.lang.String" />                                                                            
+           <form-property name="description" type="java.lang.String" />              
+           <form-property name="entityRelType" type="java.lang.String" />    
+           <form-property name="orgRelationship" type="java.lang.String" />
+           <form-property name="orgRelnDesc" type="java.lang.String" />
+           <form-property name="sponsorCode" type="java.lang.String" />
+           <form-property name="entityType" type="java.lang.String" />                       
+           <form-property name="questionId" type="java.lang.String" />            
+           <form-property name="answer" type="java.lang.String" />
+           <form-property name="explanation" type="java.lang.String"/>
+           <form-property name="reviewDate" type="java.lang.String" />
+           <form-property name="dateReqdFor" type="java.lang.String" />
+           <form-property name="effectiveDate" type="java.lang.String" />
+           <form-property name="expReqdFor" type="java.lang.String" />
+           <form-property name="questionType" type="java.lang.String" />                             
+           <form-property name="questionDesc" type="java.lang.String" />                   
+           <form-property name="noOfAnswers" type="java.lang.String" />   
+           <form-property name="updtimestamp" type="java.lang.String" />
+           <form-property name="upduser" type="java.lang.String" />                                                                          
+           <form-property name="acType" type="java.lang.String" initial="I"/>
+           <form-property name="status" type="java.lang.String" />
+           <form-property name="relatedToOrgFlag" type="java.lang.String"/>
+           <form-property name="entityTypeCode" type="java.lang.String"/> 
+           <form-property name="sponsorName" type="java.lang.String"/>
+           <form-property name="label" type="java.lang.String"/>
+           <form-property name="actionFrom" type="java.lang.String"/>
+           <form-property name="invlmntStudnt" type="java.lang.String"/>
+           <form-property name="invlmntStaff" type="java.lang.String"/>
+           <form-property name="resoucreMit" type="java.lang.String"/>
+   </form-bean>
+   
+  
+   
+  <form-bean name="coiDisclosure" dynamic="true" type="org.apache.struts.validator.DynaValidatorForm">
+  
+      <form-property name="title" type="java.lang.String" />
+      <form-property name="proposalTypeCode" type="java.lang.String"/>
+      <form-property name="coiStatusCode" type="java.lang.String"/>
+      <form-property name="sponsorName" type="java.lang.String"/>
+      <form-property name="updtimestamp" type="java.lang.String"/>
+      <form-property name="upduser" type="java.lang.String"/>     
+     
+       <form-property name="disclNo" type="java.lang.String"/> 
+       <form-property name="coiDisclosureNumber" type="java.lang.String"/>   
+       <form-property name="moduleItemKey" type="java.lang.String"/>  
+       <form-property name="moduleCode" type="java.lang.String"/>  
+       <form-property name="module" type="java.lang.String"/>  
+       <form-property name="personId" type="java.lang.String"/>  
+       <form-property name="disclosureType" type="java.lang.String"/>  
+       <form-property name="coiDisclosureStatusCode" type="java.lang.String"/>  
+       <form-property name="coiStatus" type="java.lang.String"/>  
+       <form-property name="coiReviewerCode" type="java.lang.String"/>  
+       <form-property name="reviewer" type="java.lang.String"/>          
+       <form-property name="sponsor" type="java.lang.String"/> 
+       
+       <form-property name="entityNumber" type="java.lang.String"/> 
+       <form-property name="sequenceNum" type="java.lang.String"/>
+       <form-property name="statusCode" type="java.lang.String"/> 
+       <form-property name="statusDesc" type="java.lang.String"/> 
+       <form-property name="entityName" type="java.lang.String"/> 
+       <form-property name="entityTypeCode" type="java.lang.String"/>
+       
+       <form-property name="discStat" type="java.lang.String"/> 
+       <form-property name="fullName" type="java.lang.String"/> 
+       <form-property name="entitySequenceNumber" type="java.lang.String"/>
+       <form-property name="description" type="java.lang.String"/>
+       <form-property name="answer" type="java.lang.String"/>         
+       <form-property name="explanation" type="java.lang.String"/>
+       <form-property name="reviewDate" type="java.lang.String"/>
+       <form-property name="questionId" type="java.lang.String"/> 
+       <form-property name="dateReqdFor" type="java.lang.String"/>
+       <form-property name="effectiveDate" type="java.lang.String"/>
+       <form-property name="expReqdFor" type="java.lang.String"/>
+       <form-property name="noOfAnswers" type="java.lang.String"/>   
+       <form-property name="questionType" type="java.lang.String"/>   
+       <form-property name="status" type="java.lang.String"/>
+       
+       <form-property name="questionPolicy" type="java.lang.String"/>
+       <form-property name="questionRegulation" type="java.lang.String"/>
+       <form-property name="questionExplanation" type="java.lang.String"/>
+       
+       <form-property name="entityType" type="java.lang.String"/>
+       <form-property name="entityRelTypeCode" type="java.lang.String"/>
+       <form-property name="shareOwnerShip" type="java.lang.String"/>
+       <form-property name="relationShipTypeDesc" type="java.lang.String"/> 
+       <form-property name="relationShipDesc" type="java.lang.String"/>
+       <form-property name="relatedToOrgFlag" type="java.lang.String"/>
+       <form-property name="orgRelationDesc" type="java.lang.String"/>
+       <form-property name="sponsorCode" type="java.lang.String"/>
+       <form-property name="appliesToCode" type="java.lang.String"/>
+       <form-property name="acType" type="java.lang.String" initial="I"/>
+       <form-property name="hasActiveEntities" type="java.lang.Boolean"/>        
+       
+       <form-property name="coiReviewer" type="java.lang.String"/>
+       <form-property name="correspEntQuestId" type="java.lang.String"/>
+       <form-property name="correspEntQuestLabel" type="java.lang.String"/>
+       <form-property name="label" type="java.lang.String"/>
+       <form-property name="proposalNumber" type="java.lang.String"/>
+       <form-property name="disclosureTypeCode" type="java.lang.String"/>
+       <form-property name="nonMitPersonFlag" type="java.lang.String"/>
+       <form-property name="leadUnit" type="java.lang.String"/>      
+       <form-property name="logStatus" type="java.lang.String"/>
+       <form-property name="comments" type="java.lang.String"/>   
+       <!-- case 3263 start -->
+       <form-property name="createtimestamp" type="java.lang.String"/>
+       <form-property name="createuser" type="java.lang.String"/> 
+       <form-property name="createName" type="java.lang.String"/> 
+       <form-property name="deadlineDate" type="java.lang.String"/>  
+       <!-- case 3263 end -->
+       <form-property name="account" type="java.lang.String"/> 
+       <form-property name="awardName" type="java.lang.String"/> 
+       <form-property name="sponsorAwdNumber" type="java.lang.String"/> 
+       <form-property name="userName" type="java.lang.String"/> 
+       <form-property name="proposalType" type="java.lang.String"/>
+       <form-property name="awSequenceNum" type="java.lang.String"/>
+       <form-property name="actionFrom" type="java.lang.String"/> 
+       <form-property name="updated" type="java.lang.String"/>  
+       <form-property name="explanationType" type="java.lang.String"/>     
+      </form-bean>      
+     
+      <form-bean name="midYearDisclosure" dynamic="true" type="org.apache.struts.validator.DynaValidatorForm">  
+           <form-property name="userName" type="java.lang.String"/> 
+           <form-property name="personId" type="java.lang.String"/>  
+           <form-property name="personName" type="java.lang.String"/>  
+           <form-property name="sponsorAwdNumber" type="java.lang.String"/>
+           <form-property name="disclosureTypeCode" type="java.lang.String"/>  
+           <form-property name="proposalNumber" type="java.lang.String"/>            
+           <form-property name="fullName" type="java.lang.String"/>
+           <form-property name="directoryDept" type="java.lang.String"/> 
+           <form-property name="directoryTitle" type="java.lang.String"/> 
+           <form-property name="is_Employee" type="java.lang.String"/> 
+           <form-property name="unitNumber" type="java.lang.String"/> 
+           <form-property name="lastName" type="java.lang.String"/> 
+           <form-property name="firstName" type="java.lang.String"/>
+           <form-property name="priorName" type="java.lang.String"/>
+           <form-property name="email" type="java.lang.String"/>
+           <form-property name="officeLocation" type="java.lang.String"/>
+           <form-property name="invPhone" type="java.lang.String"/>
+           <form-property name="SecondaryofficeLocation" type="java.lang.String"/>
+           <form-property name="SecondaryofficePhone" type="java.lang.String"/>           
+     </form-bean>
+     
+     <form-bean name="inboxForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="moduleItemKey" type="java.lang.String"/>
+            <form-property name="moduleCode" type="java.lang.String"/>
+            <form-property name="moduleDesc" type="java.lang.String"/>
+            <form-property name="toUser" type="java.lang.String"/>
+            <form-property name="messageId" type="java.lang.String"/>
+            <form-property name="fromUser" type="java.lang.String"/>
+            <form-property name="arrivalDate" type="java.lang.String"/>
+            <form-property name="strArrivalDate" type="java.lang.String"/>
+            <form-property name="subjectType" type="java.lang.String"/>
+            <form-property name="subjectDescription" type="java.lang.String"/>
+            <form-property name="openedFlag" type="java.lang.String"/>
+            <form-property name="updtimestamp" type="java.lang.String"/>
+            <form-property name="upduser" type="java.lang.String"/>
+            <form-property name="message" type="java.lang.String"/>
+            <form-property name="fromUserName" type="java.lang.String"/>
+            <form-property name="deadLineDate" type="java.util.Date"/>
+            <form-property name="proposalTitle" type="java.lang.String"/>
+            <form-property name="sponsorCode" type="java.lang.String"/>
+            <form-property name="sponsorName" type="java.lang.String"/>
+            <form-property name="systemDate" type="java.lang.String"/>
+            <form-property name="unitNumber" type="java.lang.String"/>
+            <form-property name="unitName" type="java.lang.String"/>
+            <form-property name="personName" type="java.lang.String"/>
+            <form-property name="creationStatusCode" type="java.lang.String"/> 
+            <form-property name="creationStatusDesc" type="java.lang.String"/>
+            <form-property name="acType" type="java.lang.String"/> 
+            <form-property name="whichMessagesAreChecked" type="java.lang.String[]"/>
+            <form-property name="daysUntilDeadline" type="java.lang.Long"/>
+            
+            <form-property name="proposalNumber" type="java.lang.String"/>
+            <form-property name="versionNumber" type="java.lang.String"/>
+            <form-property name="budgetPeriod" type="java.lang.Integer"/>
+            <form-property name="startDate" type="java.util.Date"/>
+            <form-property name="endDate" type="java.util.Date"/>
+            <form-property name="totalCost" type="java.lang.String"/>
+            <form-property name="totalDirectCost" type="java.lang.String"/>
+            <form-property name="totalIndirectCost" type="java.lang.String"/>
+            <form-property name="costSharingAmount" type="java.lang.String"/>
+            <form-property name="underRecoveryAmount" type="java.lang.String"/>
+            <form-property name="totalCostLimit" type="java.lang.String"/>
+            <form-property name="comments" type="java.lang.String"/>
+            <form-property name="updateTimestamp" type="java.lang.String"/>       
+            <form-property name="updateUser" type="java.lang.String"/>                      
+            <form-property name="COIUserName" type="java.lang.String"/>
+            <form-property name="vecSearchXML" type="java.util.Vector"/>
+     </form-bean>
+     
+      <form-bean name="displayProposal" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="proposalNumber" type="java.lang.String"/>
+            <form-property name="sponsorCode" type="java.lang.String"/>
+            <form-property name="sponsorName" type="java.lang.String"/> 
+            <form-property name="ownedUnit" type="java.lang.String"/>
+            <form-property name="creationStatusCode" type="java.lang.String"/> 
+            <form-property name="creationStatusDesc" type="java.lang.String"/> 
+            <form-property name="title" type="java.lang.String" />
+             <form-property name="deadLineDate" type="java.lang.String"/>
+            <form-property name="deadLineType" type="java.lang.String" />
+            <form-property name="reqStartDateInitial" type="java.lang.String"/>
+            <form-property name="reqStartDateTotal" type="java.lang.String"/> 
+            <form-property name="reqEndDateInitial" type="java.lang.String"/>
+            <form-property name="reqEndDateTotal" type="java.lang.String"/>
+            <form-property name="statusCode" type="java.lang.String" />  
+            <form-property name="totalDirectCost" type="java.lang.String" />  
+            <form-property name="totalIndirectCost" type="java.lang.String" />  
+            <form-property name="totalCost" type="java.lang.String" />  
+            <form-property name="costSharingAmount" type="java.lang.String" /> 
+            <form-property name="underrecoveryAmount" type="java.lang.String" />  
+            <form-property name="residualFunds" type="java.lang.String" /> 
+            <form-property name="finalVersionFlag" type="java.lang.String" /> 
+            <form-property name="userId" type="java.lang.String" /> 
+            <form-property name="moduleNumber" type="java.lang.String" /> 
+            <form-property name="moduleSequenceNumber" type="java.lang.String" /> 
+            <form-property name="moduleTitle" type="java.lang.String" /> 
+            <form-property name="moduleStatusCode" type="java.lang.String" /> 
+            <form-property name="moduleStatus" type="java.lang.String" /> 
+            <form-property name="sourceModuleNumber" type="java.lang.String" /> 
+            <form-property name="pdfModuleNumber" type="java.lang.String" /> 
+            <form-property name="viewRight" type="java.lang.String" /> 
+            <form-property name="personName" type="java.lang.String"/>
+            <form-property name="principalInvFlag" type="java.lang.String"/>
+            <form-property name="versionNumber" type="java.lang.String"/>
+      </form-bean>
+      
+      <form-bean name="annDiscCertificationForm" dynamic="false" 
+                    type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="personId" type="java.lang.String"/>
+            <form-property name="personFullName" type="java.lang.String"/> 
+            <form-property name="userName" type="java.lang.String"/>
+            <form-property name="hasActiveEntities" type="java.lang.String"/>       
+      </form-bean>
+      
+      <form-bean name="annualDisclosuresForm" dynamic="false" 
+                    type="org.apache.struts.validator.DynaValidatorForm">
+             <form-property name="entityNumber" type="java.lang.String"/>
+             <form-property name="entityName" type="java.lang.String"/>
+             <form-property name="disclosureType" type="java.lang.String"/>
+             <form-property name="status" type="java.lang.String"/>
+             <form-property name="shareOwnerShip" type="java.lang.String"/>
+             <form-property name="conflictStatus" type="java.lang.String"/>
+             <form-property name="updated" type="java.lang.String"/>
+      </form-bean>
+      
+    </form-beans>
+
+  <!-- ========== Global Forward Definitions ============================== -->
+  <global-forwards>
+        
+  </global-forwards>
+
+  <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+       <action path="/getAddFinEnt" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request" name="finEntity" validate="false">
+          <forward name="addFinEntity" path="/coeuslite/mit/coi/tiles/addFinEntityTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/getReviewFinEnt" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request" name="finEntity" validate="false">
+          <forward name="reviewFinEntity" path="/coeuslite/mit/coi/tiles/reviewFinEntityTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+		<!-- #3202 added by Geo -->
+       <action path="/getPIFinEnt" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request" name="finEntity" validate="false">
+          <forward name="reviewPIFinEntity" path="/coeuslite/mit/coi/tiles/reviewFinEntityTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+		<!-- End #3202 -->
+       <action path="/getFinEntHistory" type="edu.mit.coeuslite.coi.action.ViewFinEntityHistoryAction" 
+               scope="request" name="finEntity" validate="false">
+          <forward name="success" path="/coeuslite/mit/coi/finEntityHistory.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/getDisclosureHistory" type="edu.mit.coeuslite.coi.action.ViewDisclosureHistoryAction" 
+               scope="request" name="finEntity" validate="false">
+          <forward name="success" path="/coeuslite/mit/coi/cwReviewDisclosureHistory.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/getAddDisclosure" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request" name="coiDisclosure" validate="false">
+          <forward name="addCOIDisclosure" path="/coeuslite/mit/coi/tiles/addCOIDisclosureTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+        <action path="/getReviewDiscl" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request" name="coiDisclosure" validate="false">
+          <forward name="reviewCoiDisclosure" path="/coeuslite/mit/coi/tiles/reviewCOIDisclosureTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>
+       
+       
+       <!--#3202 added by geo-->
+       <action path="/getReviewAnnualDiscl" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request" name="coiDisclosure" validate="false">
+          <forward name="reviewAnnualDisclosure" path="/coeuslite/mit/coi/tiles/reviewCOIAnnualDisclosureTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>
+       <action path="/getPIAnnualDiscl" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request"  validate="false">
+          <forward name="reviewCOIPIAnnDiscDetails" path="/coeuslite/mit/coi/cwPIDisclList.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action> 
+       <action path="/getCompletedDisclosures" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request"  validate="false">
+          <forward name="getCompletedDisclosures" path="/coeuslite/mit/coi/cwPIDisclList.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action> 
+       <action path="/viewPIDisclosureDetails" type="edu.mit.coeuslite.coi.action.ViewPIDisclosureDetailsAction" 
+                scope="session" validate="false" 
+               name="coiDisclosure">
+             <!--forward name="success" path="/coeuslite/mit/coi/tiles/viewDisclosuresTile.jsp" /-->
+                  <forward name="success" path="/coeuslite/mit/coi/tiles/viewPIDiscDetailTile.jsp" />
+              <!-- <forward name="editCoiDisc" path="/coeuslite/mit/coi/tiles/editCoiDisclosureTile.jsp"/>-->
+                  <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                  <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/approveDisc" type="edu.mit.coeuslite.coi.action.ApproveCOIDisclosureAction" 
+               scope="request" name="coiAnnualDisclosure" validate="false">                   
+          <forward name="success" path="/coeuslite/mit/coi/cwApprovalConfirm.jsp"/>                   
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>
+       <action path="/getApproveDiscl" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request" name="coiDisclosure" validate="false">
+          <forward name="approveDisclosure" path="/coeuslite/mit/coi/tiles/revListApproveDisclTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>
+       
+       <action path="/approveDisclosureAction" type="edu.mit.coeuslite.coi.action.ApproveDisclosureAction" 
+               scope="request" name="coiDisclosure" validate="false">
+          <forward name="approveDisclosure" path="/coeuslite/mit/coi/tiles/revListApproveDisclTile.jsp"/>
+          <forward name="success" path="/coeuslite/mit/coi/tiles/discSubmitSuccessTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>
+       <action path="/approveAllDisclosures" type="edu.mit.coeuslite.coi.action.ApproveDisclosureAction" 
+               scope="request" name="coiDisclosure" validate="false">
+          <forward name="success" path="/getApproveDiscl.do" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>
+       <!--ends #3202-->
+       
+       <action path="/coidisclosure" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+              scope="request" name="coiDisclosure" validate="false">
+            <forward name="reviewCoiDisclosure" path="/coeuslite/mit/coi/tiles/reviewCOIDisclosureTile.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>      
+        </action>
+       
+       <action path="/addFinEntity" type="edu.mit.coeuslite.coi.action.FinEntityAction" 
+               scope="request" name="finEntity" validate="true" input="/coeuslite/mit/coi/cwFinEntity.jsp">
+          <forward name="success" path="/getReviewFinEnt.do" />
+          <forward name="toAddDiscl" path="/getAddDisclosure.do"/>
+          <forward name="toEditDiscl" path="/viewCOIDisclosureDetails.do"/> 
+          <forward name="toAnnDiscCert" path="/annDiscCertification.do"/>
+          <forward name="toAnnDiscFE" path="/getAnnDiscPendingFEs.do"/>         
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/coi/tiles/addFinEntityTile.jsp"/> 
+          <forward name="EditCOI" path="/viewCOIDisclosureDetails.do"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/editFinEnt" type="edu.mit.coeuslite.coi.action.EditFinEntityAction" 
+                scope="request" name="finEntity" validate="false">
+                <forward name="success" path="/coeuslite/mit/coi/tiles/addFinEntityTile.jsp" />
+                <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action> 
+       
+       <action path="/addCoiDisclosure" type="edu.mit.coeuslite.coi.action.AddCOIDisclosureAction" scope="request" 
+            name="coiDisclosure" validate="true" input="/coeuslite/mit/coi/cwAddCOIDisclosure.jsp">
+               <!--forward name="success" path="/getReviewDiscl.do"/-->
+               <forward name="success" path="/coeuslite/mit/coi/tiles/discSubmitSuccessTile.jsp" />
+               <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+               <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+               <forward name="exception" path="/coeuslite/mit/coi/tiles/addCOIDisclosureTile.jsp" />
+       </action>
+       
+       <!---View Financial Entity  -->
+      
+       
+       <action path="/deactivateFinEnt" type="edu.mit.coeuslite.coi.action.FinEntityAction" 
+               name="finEntity" scope="request" validate="false">
+        <forward name="success" path="/coeuslite/mit/coi/tiles/deactivateFinEntTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        
+        <forward name="failure"    path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/deactivateFinEntSubmit" type="edu.mit.coeuslite.coi.action.FinEntityAction" 
+               name="finEntity" scope="request" validate="false">
+        <forward name="success" path="/getReviewFinEnt.do"/>
+         <forward name="toAnnDiscFE" path="/getAnnDiscPendingFEs.do"/>         
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/coi/tiles/deactivateFinEntTile.jsp" />
+        <forward name="failure"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/activateFinEnt" type="edu.mit.coeuslite.coi.action.FinEntityAction" 
+               name="finEntity" scope="request" validate="false" >
+        <forward name="success" path="/getReviewFinEnt.do"/>
+        <forward name="annDiscFE" path="/getAnnDiscPendingFEs.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/viewFinEntity" type="edu.mit.coeuslite.coi.action.ViewFinEntityAction"
+                scope="request" validate="false" 
+               name="finEntity">
+             <forward name="success" path="/coeuslite/mit/coi/tiles/viewFinEntityTile.jsp" />
+             <forward name="successNoHeader" path="/coeuslite/mit/coi/cwViewFinEntity.jsp" />
+             <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+             <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>   
+       </action>
+       
+       
+        <!---Disclosure   -->
+       <action path="/viewCOIDisclosureDetails" type="edu.mit.coeuslite.coi.action.ViewCOIDisclosureDetailsAction" 
+                scope="session" validate="false" 
+               name="coiDisclosure">
+             <!--forward name="success" path="/coeuslite/mit/coi/tiles/viewDisclosuresTile.jsp" /-->
+                  <forward name="success" path="/coeuslite/mit/coi/tiles/viewCOIDiscDetailTile.jsp" />
+                  <forward name="editCoiDisc" path="/coeuslite/mit/coi/tiles/editCoiDisclosureTile.jsp"/>
+                  <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                  <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/viewDisclosureDetails" type="edu.mit.coeuslite.coi.action.ViewDisclosureDetailsAction" 
+               scope="request" validate="false" name="coiDisclosure" >
+             <!--forward name="success" path="/coeuslite/mit/coi/tiles/viewDisclosuresTile.jsp" /-->
+                  <forward name="success" path="/coeuslite/mit/coi/tiles/viewDisclosuresTile.jsp" />
+                  <forward name="disclosureHistory" path="/coeuslite/mit/coi/cwDisclosureHistory.jsp" />
+                  <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                  <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/editCoiDisc" type="edu.mit.coeuslite.coi.action.EditCoiDisclosureAction"
+                scope="session" validate="false" name="coiDisclosure">
+                <forward name="success" path="/coeuslite/mit/coi/tiles/editCoiDisclosureTile.jsp"/>
+                <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/updCoiDisclosure"  type="edu.mit.coeuslite.coi.action.AddCOIDisclosureAction" scope="session"
+            validate="true" name="coiDisclosure" input="/coeuslite/mit/coi/cwEditCoiDisclosure.jsp">
+               <forward name="success" path="/coeuslite/mit/coi/tiles/discSubmitSuccessTile.jsp" />
+               <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+               <forward name="failure"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+               <forward name="exception" path="/coeuslite/mit/coi/tiles/editCoiDisclosureTile.jsp" />
+       </action>
+       
+       <action path="/viewPendingDisc" type="edu.mit.coeuslite.coi.action.ViewPendingDisclosureAction"
+                scope="request" validate="false" name="coiDisclosure">
+                <forward name="success" path="/coeuslite/mit/coi/tiles/addCOIDisclosureTile.jsp"/>
+                <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+        <action path="/question" type="edu.mit.coeuslite.coi.action.QuestionAction" 
+                scope="request" validate="false"  name="coiDisclosure">
+                <forward name="success" path="/coeuslite/mit/coi/cwQuestion.jsp"/>
+                    <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+       
+         <!-- *************************************-->
+        <!-- Action Mapping for search forms-->
+        <!-- *************************************-->
+       
+       
+             
+        <action path="/personSearchCOI" type="edu.mit.coeuslite.coi.action.CoiSearchAction" 
+            scope="session" validate="false" name="midYearDisclosure" input="/coeuslite/mit/irb/cwLogon.jsp">
+            <forward name="success" path="/coeuslite/mit/utils/dialogs/cwPersonSearchWindow.jsp"/>
+                <forward name="result" path="/coeuslite/mit/utils/dialogs/cwPersonSearchWindow.jsp"/>
+                <forward name="personSearch" path="/coeuslite/mit/utils/dialogs/cwPersonSearchWindow.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>  
+                 <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>                
+            </action>
+            
+           <action path="/personDetails" type="edu.mit.coeuslite.coi.action.SelectPersonAction" 
+            scope="session" validate="false" name="midYearDisclosure" input="/coeuslite/mit/irb/cwLogon.jsp">
+                <forward name="success" path="/coeuslite/mit/coi/tiles/personDetailsTile.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="newdisclosure" path="/coeuslite/mit/irb/cwLogon.jsp"/>
+            </action>  
+                  
+        <action path="/coiSearch" type="edu.mit.coeuslite.coi.action.CoiSearchAction" 
+            scope="session" validate="false" name="midYearDisclosure" input="/coeuslite/mit/irb/cwLogon.jsp">
+            <forward name="success" path="/coeuslite/mit/utils/dialogs/cwCOISearchWindow.jsp"/>
+                <forward name="result" path="/coeuslite/mit/utils/dialogs/cwCOISearchWindow.jsp"/>
+                <forward name="proposalSearch" path="/coeuslite/mit/utils/dialogs/cwCOISearchWindow.jsp"/>
+                <forward name="personSearch" path="/coeuslite/mit/utils/dialogs/cwCOISearchWindow.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>  
+                <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>              
+            </action>
+            
+            <action path="/proposalSearch" type="edu.mit.coeuslite.coi.action.CoiSearchAction" 
+            scope="session" validate="false" name="midYearDisclosure" input="/coeuslite/mit/irb/cwLogon.jsp">
+                <forward name="success" path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+                <forward name="result" path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+                <forward name="proposalSearch" path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/> 
+                 <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>                 
+            </action>
+            
+         <!---Mid-Year Disclosure  -->
+            
+       <action path="/midYearDisclosure" type="edu.mit.coeuslite.coi.action.MidYearDisclosureAction" 
+        scope="request" validate="false" name="midYearDisclosure" input="/coeuslite/mit/coi/cwMidYearDisclosure.jsp" >
+             <forward name="success" path="/coeuslite/mit/coi/tiles/midYearDisclosureTile.jsp" />
+             <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>   
+       </action>
+       
+        <action path="/createMidYearDisclosure" type="edu.mit.coeuslite.coi.action.MidYearDisclosureAction" 
+        name="midYearDisclosure" input="/coeuslite/mit/coi/cwMidYearDisclosure.jsp" scope="request" validate="true">
+		<forward name="success" path="/getAddDisclosure.do"/>
+                <forward name="exception" path="/coeuslite/mit/coi/tiles/midYearDisclosureTile.jsp"/>
+		<forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+	</action>
+       
+        <action path="/viewFinEntityDisplay" type="edu.mit.coeuslite.coi.action.ViewFinEntityAction"
+                scope="request" validate="false" 
+               name="finEntity">
+             <forward name="success" path="/coeuslite/mit/coi/cwViewFinEntity.jsp" />
+             <forward name="successNoHeader" path="/coeuslite/mit/coi/cwViewFinEntity.jsp" />
+             <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+             <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>   
+       </action>
+       
+      <action path="/viewPendingDisc" type="edu.mit.coeuslite.coi.action.ViewPendingDiscAction" 
+              scope="request" validate="false" name="coiDisclosure" input="/coeuslite/mit/irb/cwLogon.jsp" >
+		<forward name="success" path="/coeuslite/mit/coi/tiles/viewPendingDiscTile.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+      </action>
+      
+      <action path ="/getInboxMessages" type ="edu.mit.coeuslite.coi.action.COIGetAction" 
+             name= "inboxForm" scope="request" validate ="false" >
+             <forward name ="unresolved" path="/coeuslite/mit/coi/tiles/unresolvedMessagesTile.jsp"/>
+             <forward name ="resolved" path="/coeuslite/mit/coi/tiles/resolvedMessagesTile.jsp"/>
+             <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+             <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+      </action>
+      
+      <action path ="/updateInboxMessages" type="edu.mit.coeuslite.coi.action.UpdateInboxMessagesAction" 
+            scope="request" name="inboxForm" validate="false">
+            <forward name="unresolved" path="/getInboxMessages.do?messageType=unresolved"/>
+            <forward name="resolved" path="/getInboxMessages.do?messageType=resolved"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="resolvedException" path="/coeuslite/mit/coi/tiles/resolvedMessagesTile.jsp"/>
+            <forward name="unresolvedException" path="/coeuslite/mit/coi/tiles/unresolvedMessagesTile.jsp"/>
+      </action>
+       
+       <action    path="/viewBudgetSummary"
+                    type="edu.mit.coeuslite.coi.action.ViewBudgetSummaryAction" scope="request">
+                    <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/GetNarrativeDocument" type="edu.mit.coeuslite.coi.action.GetNarrativeDocumentAction"
+            scope="request" name="inboxForm" validate="false">
+            <forward name="failure" path="/coeuslite/mit/coi/tiles/inboxErrorPageTile.jsp" />
+       </action>
+       
+       <action path="/getAnnDiscPendingFEs" type="edu.mit.coeuslite.coi.action.AnnDiscPendingFEAction" scope="request">
+               <forward name="success" path="/coeuslite/mit/coi/tiles/annDisclosureFEMainTile.jsp"/>
+               <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/annDiscCertification" type="edu.mit.coeuslite.coi.action.AnnDiscCertificationAction"
+		name="coiDisclosure" scope="request" validate="false">	
+		<forward name="success" path="/coeuslite/mit/coi/tiles/annDiscCertificationTile.jsp"/>
+                <forward name="exception" path="/coeuslite/mit/coi/tiles/annDiscCertificationTile.jsp"/>
+		<forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+     
+       <action path="/annualDisclosure" type="edu.mit.coeuslite.coi.action.AnnualDisclosureAction" 
+               scope="request" name="coiDisclosure" validate="false" input="/coeuslite/mit/coi/cwAnnDiscCertification.jsp">          
+          <forward name="success" path="/coeuslite/mit/coi/tiles/annualDisclosuresMainTile.jsp"/> 
+          <forward name="annDisclConfirmation" path="/coeuslite/mit/coi/tiles/annualDisclosureConfirmationTile.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/coi/tiles/annDiscCertificationTile.jsp"/>
+          
+       </action>
+       
+       <action path="/annualDisclosuresUpdate" 	type="edu.mit.coeuslite.coi.action.AnnualDisclosuresUpdateAction" 
+                name="coiDisclosure" scope="request"  validate="false">
+            <forward name="success" path="/annualDisclosure.do?validate=false"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="annDisclConfirmation" path="/coeuslite/mit/coi/tiles/annualDisclosureConfirmationTile.jsp"/>
+            <forward name="checkUpdateFailure" path="/annualDisclosure.do" />
+            <forward name="exception" path="/annualDisclosure.do?validate=false"/>
+       </action>
+       
+        <action path="/annualDisclsFinalUpdate" type="edu.mit.coeuslite.coi.action.AnnDisclFinalUpdateAction"
+    		name="coiDisclosure" scope="request" validate="false">
+            <!--forward name="success" path="/coeuslite/mit/irb/tiles/cwCOITile.jsp"/-->
+            <!--<forward name="success" path="/coi.do"/>-->
+            <forward name="success" path="/coeuslite/mit/coi/tiles/AnnDisclSubmitNotificationTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="updactionfail" path="/annualDisclosure.do"/>
+        </action>
+       
+       <!--"edu.mit.coeuslite.coi.action.COIWorkInProgressAction" -->
+        <action path="/getWip" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request" name="coiDisclosure" validate="false">
+          <forward name="success" path="/coeuslite/mit/coi/tiles/workInProgressTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>
+       
+       <action path="/getWipDisclosures" type="edu.mit.coeuslite.coi.action.COIGetAction" 
+               scope="request" name="coiDisclosure" validate="false">
+          <forward name="success" path="/coeuslite/mit/coi/cwPIDisclList.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>    
+       
+  </action-mappings>
+
+  
+
+  <!-- ========== Message Resources Definitions =========================== -->
+    <message-resources parameter="COIMessages" key="coi" />
+  
+   <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,
+                                              /WEB-INF/validation.xml"/>
+    </plug-in>
+  
+   <!--<plug-in className="edu.mit.coeuslite.utils.statement.StatementPlugIn">      
+        <set-property property="xmlFile" value="/WEB-INF/classes/edu/mit/coeuslite/irb/xml/COITransactions.xml" />        
+    </plug-in>-->
+    
+</struts-config>

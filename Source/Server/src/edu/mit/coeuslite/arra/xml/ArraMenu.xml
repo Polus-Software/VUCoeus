@@ -1,0 +1,70 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<Menu>
+	<MenuItem>
+		<Menu_Id> AR001</Menu_Id>
+		<!-- JM 6-7-2012 updated for metrics -->
+		<Menu_Name> Award Details</Menu_Name>
+		<!-- JM END -->
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>REPORT_DETAILS</FieldName>
+		<Link>/getArraDetails.do?</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AR002</Menu_Id>
+		<Menu_Name> Vendors</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>VENDOR</FieldName>
+		<Link>/getArraVendors.do?</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AR003</Menu_Id>
+		<Menu_Name> Subcontracts</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>SUBCONTRACT</FieldName>
+		<Link>/getArraSubcontracts.do?</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<!-- <MenuItem> <Menu_Id> AR005</Menu_Id> <Menu_Name> Contract Report</Menu_Name> 
+		<Image_Path></Image_Path> <OnLoadImage></OnLoadImage> <FieldName>PRINT</FieldName> 
+		<Link>/printArraReport.do?repId=ArraReport/ContractReport</Link> <Group> 
+		2 </Group> <visible> true</visible> </MenuItem> -->
+	<MenuItem>
+		<Menu_Id> AR006</Menu_Id>
+		<Menu_Name> Print</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PRINT</FieldName>
+		<Link>/printArraReport.do?repId=ArraReport/GrantLoanReport</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AR009</Menu_Id>
+		<Menu_Name> Past Reports</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PRINT</FieldName>
+		<Link>/getPastReports.do?</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<!-- JM 3-23-2012 commented out for metrics <MenuItem> <Menu_Id> AR004</Menu_Id> 
+		<Menu_Name> Finalize and Submit</Menu_Name> <Image_Path></Image_Path> <OnLoadImage></OnLoadImage> 
+		<FieldName>SUBMIT</FieldName> <Link>/submitARRA.do?</Link> <Group> 3 </Group> 
+		<visible> true</visible> </MenuItem> <MenuItem> <Menu_Id> AR008</Menu_Id> 
+		<Menu_Name>Submit Report</Menu_Name> <Image_Path></Image_Path> <OnLoadImage></OnLoadImage> 
+		<FieldName>SUBMIT</FieldName> <Link>/submitCompletedArra.do?</Link> <Group> 
+		3 </Group> <visible> true</visible> </MenuItem> <MenuItem> <Menu_Id> AR007</Menu_Id> 
+		<Menu_Name> Mark Incomplete</Menu_Name> <Image_Path></Image_Path> <OnLoadImage></OnLoadImage> 
+		<FieldName>SUBMIT</FieldName> <Link>/markInComplete.do?</Link> <Group> 3 
+		</Group> <visible> true</visible> </MenuItem> -->
+
+</Menu>

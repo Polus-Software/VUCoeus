@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+
+<project name="changeme" basedir="." default="all">
+	<target name="all">
+		<!-- place all server side coeus beans into client side coeus beans -->
+
+		<copy todir="edu/mit/coeus/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/bean" includes="**/*.class"
+				excludes="**/*Txn*.class,**/CoeusMessageResourcesBean.class,**/IndicatorLogic.class" />
+		</copy>
+
+		<!-- place all server side irb beans into client side coeus beans -->
+
+		<copy todir="edu/mit/coeus/irb/bean">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/irb/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+
+		</copy>
+
+		<!-- place all server side mapsrules beans into client side coeus beans -->
+
+		<copy todir="edu/mit/coeus/mapsrules/bean">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/mapsrules/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+
+
+		</copy>
+
+		<!-- place all server side questionnaire beans into client side coeus beans -->
+		<copy todir="edu/mit/coeus/questionnaire/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/questionnaire/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<!-- place all server side irb beans into client side coeus beans -->
+
+		<copy todir="edu/mit/coeus/codetable/bean">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/codetable/bean"
+				includes="**/*.class" excludes="**/CodeTableTxnBean.class" />
+
+		</copy>
+
+		<!-- place all server side organization beans into client side organization 
+			beans -->
+
+		<copy todir="edu/mit/coeus/organization/bean">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/organization/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+
+		</copy>
+
+		<!-- place all server side rolodexmaint beans into client side rolodexmaint 
+			beans -->
+
+		<copy todir="edu/mit/coeus/rolodexmaint/bean">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/rolodexmaint/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+
+		</copy>
+
+		<!-- place all server side search beans into client side search beans -->
+
+		<copy todir="edu/mit/coeus/search/bean">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/search/bean"
+				includes="**/*.class"
+				excludes="**/ProcessSearchXMLBean.class,
+				**/SearchExecutionBean.class,**/SearchXMLDocument.class,**/SearchXMLDocument$SearchErrorHandler.class" />
+
+		</copy>
+
+		<!-- place all server side sponsormaint beans into client side sponsormaint 
+			beans -->
+
+		<copy todir="edu/mit/coeus/sponsormaint/bean">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/sponsormaint/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+
+		</copy>
+
+		<!-- place all server side unit beans into client side unit beans -->
+
+		<copy todir="edu/mit/coeus/unit/bean">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/unit/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+
+		</copy>
+		<!-- prps start -->
+
+		<copy todir="edu/mit/coeus/customelements/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/customelements/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/departmental/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/departmental/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/propdev/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/propdev/bean"
+				includes="**/*.class" excludes="**/*Txn*.class,**/web/*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/user/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/user/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/user/auth/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/user/auth/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/user/auth">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/user/auth"
+				includes="**/CoeusAuthService.class,**/AuthResponseListener.class" />
+		</copy>
+
+		<!-- Creating brokers directory in the client side -->
+
+		<mkdir dir="edu/mit/coeus/brokers" />
+
+		<!-- place all server side broker beans into client side broker beans -->
+
+		<copy todir="edu/mit/coeus/brokers">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/brokers"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+
+		</copy>
+
+		<!-- place all server side broker beans into client side broker beans -->
+
+		<copy todir="edu/mit/coeus/utils">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/utils"
+				includes="**/AppointmentTypsConstants.class,
+                                    **/CoeusConstants.class,
+                                    **/CoeusPropertyKeys.class,
+                                    **/ComboBoxBean.class,
+                                    **/CoeusVector*.class,
+                                    **/DateUtils.class,
+                                    **/ModuleConstants.class,
+                                    **/RateClassTypeConstants.class,
+                                    **/TypeConstants.class,
+                                    **/ObjectCloner.class,
+                                    **/Utils.class,
+                                    **/S2SConstants.class,
+                                    **/KeyConstants.class" />
+
+		</copy>
+
+		<copy todir="edu/mit/coeus/utils/tree">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/utils/tree"
+				includes="**/ITreeNodeInfo.class" />
+
+		</copy>
+
+		<copy todir="edu/mit/coeus/utils/query">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/utils/query"
+				includes="**/*.class" />
+
+		</copy>
+		<copy todir="edu/mit/coeus/utils/question/bean">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/utils/question/bean"
+				includes="**/*.class" />
+
+		</copy>
+		<copy todir="edu/mit/coeus/exception">
+
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/exception"
+				includes="**/CoeusException.class" />
+
+		</copy>
+
+		<copy todir="edu/mit/coeus/budget/calculator">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/budget/calculator"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/budget/calculator/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/budget/calculator/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/budget/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/budget/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/award/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/award/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+		<copy todir="edu/mit/coeus/award">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/award" includes="**/AwardLabelConstants.class.class"
+				excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/businessrules/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/businessrules/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/instprop/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/instprop/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/subcontract/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/subcontract/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/negotiation/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/negotiation/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+		<copy todir="edu/mit/coeus/utils/locking">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/utils/locking"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+		<copy todir="edu/mit/coeus/rates/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/rates/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+		<copy todir="edu/mit/coeus/s2s/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/s2s/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+		<copy todir="edu/mit/coeus/s2s/util">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/s2s/util"
+				includes="**/Converter.class" />
+		</copy>
+
+		<copy todir="edu/mit/coeus/subcontract/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/subcontract/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+		<copy todir="edu/mit/coeus/s2s/validator">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/s2s/validator"
+				includes="S2SValidationException.class,S2SValidationException$ErrorBean.class,UniqueSchemaNotFoundException.class,FormException.class" />
+		</copy>
+		<copy todir="edu/mit/coeus/s2s">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/s2s" includes="Attachment.class" />
+		</copy>
+		<copy todir="edu/mit/coeus/admin/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/admin/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+		<copy todir="edu/mit/coeus/centraladmin/bean">
+			<fileset dir="WEB-INF/classes/edu/mit/coeus/centraladmin/bean"
+				includes="**/*.class" excludes="**/*Txn*.class" />
+		</copy>
+
+	</target>
+</project>

@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+
+<!--
+     This is a minimal Validator form file with a couple of examples.
+-->
+
+    <global>
+
+        <!-- An example global constant
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        end example-->
+
+    </global>
+
+    <formset>
+
+        <!-- An example form -->
+        <form name="logonForm">
+            <field
+                property="username"
+                depends="required">
+                    <arg key="logonForm.username"/>
+            </field>
+            <field
+                property="password"
+                depends="required,mask">
+                    <arg key="logonForm.password"/>
+                    <var>
+                        <var-name>mask</var-name>
+                        <var-value>^[0-9a-zA-Z]*$</var-value>
+                    </var>
+            </field>
+        </form>
+
+    </formset>
+    
+    <formset>
+        <form name="keyStudyPerson">
+            <field      
+                    property="personName"
+                    depends="required">
+                    <arg0 key="keyStudyPerson.personName"/>
+            </field>
+
+            <field property="personRole" depends="required">
+                    <arg0 key="keyStudyPerson.personRole"/>
+            </field>
+        </form>
+    </formset>
+    
+     <formset>
+        <form name="fundingSourceFrm">
+            <field property="code" depends="required">
+                <msg name="required" key="fundingSourceFrm.code"/>
+            </field>
+            <field property="fundingSource" depends="required">
+                <msg name="required" key="fundingSourceFrm.fundingSource"/>
+            </field>
+        </form>
+    </formset>
+    
+    <formset>   
+        <form name="specialReview">
+            <field property="applicationDate" depends="validDatePattern">
+                <msg name="validDatePattern" key="validation.specialreview.applDate"/>
+            </field>
+            <field property="approvalDate" depends="validDatePattern,dateValidate">
+                <msg name="validDatePattern" key="validation.specialreview.apprvDate"/>
+                <msg name="dateValidate" key="error.specialReview.approvalDateNotLater"/>
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>applicationDate</var-value>
+                </var>
+            </field>           
+            <field property="specialReviewCode" depends="required">
+                <msg name="required" key="validation.specialreview.specialReviewCode"/>
+            </field>
+            <field property="approvalCode" depends="required">
+                <msg name="required" key="validation.specialreview.approvalCode"/>
+            </field>                                    
+        </form>
+    </formset>
+    
+    <formset>
+        <form name="vulerable">
+            <field property="vulnerableSubjectTypeCode" depends="required">
+                <msg name="required" key="error.upload_desc_data"/>
+            </field>            
+        </form>
+    </formset>
+    
+    <formset>
+        <form name="irbGeneralInfoForm">
+                    
+            <field property="title" depends="required,maxlength">
+                <msg name="required" key="validation.irbGeneralInfoForm.title"/>
+                <msg name="maxlength" key="irbGeneralInfoForm.title.length"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>2000</var-value>
+                    </var>
+            </field>
+                        
+            <field property="applicationDate" depends="required,validDatePattern">
+                <msg name="required" key="errors.specialreview.applDate"/>
+                <msg name="validDatePattern" key="validation.specialreview.applDate"/>
+            </field>
+            
+            <field property="description" depends="maxlength">
+                   <msg name="maxlength"
+                         key="irbGeneralInfoForm.description.length"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>2000</var-value>
+                    </var>
+            </field>
+            
+            <field property="protocolTypeCode" depends="required">
+                <msg name="required" key="validation.irbGeneralInfoForm.type"/>
+            </field>                        
+        </form>
+    </formset>
+    
+    <formset>
+        <form name="irbInvestigatorForm">
+            
+            <field property="invLastName" depends="required">
+                <arg0 key="irbInvestigatorForm.invLastName"/>
+            </field>
+            
+            <field property="unitNumber" depends="required">
+                <arg0 key="irbInvestigatorForm.unitNumber"/>
+            </field>            
+        </form>
+    </formset>
+    
+    <formset>
+        <form name="areaForm">
+            <field property="researchAreaCode" depends="required">
+                <msg name="required" key="areaForm.researchAreaCode"/>
+             </field>             
+        </form>
+    </formset>
+    
+    <!--protocol Reference start -->
+    <formset>
+        <form name="protocolReference">
+            <field property="referenceTypeCode" depends="required">
+                <msg name="required" key="protocolReference.typeRequired"/>
+            </field>
+      <!-- Commented for case# 3168-CoeusLite Protocol References - Making Reference Number Non Mandatory 
+      <field property="referenceKey" depends="required">
+                <msg name="required" key="protocolReference.referenceKey"/>
+            </field> 
+      -->
+             <field property="applicationDate" depends="validDatePattern">
+                <msg name="validDatePattern" key="protocolReference.invalidAppliDate"/>
+            </field>
+            <field property="approvalDate" depends="validDatePattern,dateValidate">
+                <msg name="validDatePattern" key="protocolReference.invalidApprDate"/>
+                <msg name="dateValidate" key="error.specialReview.approvalDateNotLater"/>
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>applicationDate</var-value>
+                </var>
+                
+            </field>
+            <field property="comments" depends="maxlength">
+                 <msg name="maxlength" key="protocolReference.comments"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>2000</var-value>
+                </var>       
+            </field>             
+        </form>
+    </formset>
+    <!-- protocol reference end -->
+    <!-- COI VALIDATIONS START -->
+    <formset>
+        <form name="finEntity">            
+            <field property="entityName" depends="required">
+                <arg0 key="finEntity.entityTypeCode"/>
+             </field>  
+             <field property="orgRelnDesc" depends="required">
+                <msg name="required" key="finEntity.orgRelnDesc"/>
+             </field>
+        </form>        
+    </formset>
+    
+    
+<formset>   
+
+   <form name="applicableRateList">
+		<field property="applicableRate_wmc" indexedListProperty="list"  depends="required,float,floatRange,mask">
+		
+		<msg name="float"
+                     key="error.applicableRate_wmc.float"
+                     bundle="budget"/>
+                <msg name="floatRange"
+                     key="error.applicableRate_wmc.range"
+                     bundle="budget"/>
+                <msg name="mask"
+                     key="error.applicableRate_wmc.mask"
+                     bundle="budget"/>
+                <arg0 key="error.applicableRate_wmc.float"/>
+                <arg1 name="floatRange" key="{$var:min}"/>
+                <arg2 name="floatRange" key="{$var:max}"/>
+                <var><var-name>min</var-name><var-value>0.00</var-value></var>
+                <var><var-name>max</var-name><var-value>100.00</var-value></var>
+                <var><var-name>mask</var-name><var-value>^[0-9]{0,3}(.[0-9]{0,2})?$</var-value></var>
+            </field>
+
+        </form>
+
+    </formset> 
+       
+    <formset>
+        <form name="coiDisclosure">
+            <field property="title" depends="required">
+                <arg0 key="coiDisclosure.title"/> 
+            </field>
+            
+            <field property="sponsorName" depends="required">
+                <arg0 key="coiDisclosure.sponsorName"/>
+            </field>
+        
+        </form>
+    </formset> 
+    <!-- COI VALIDATIONS END -->
+    
+    <!-- UTK GENERAL INFO PROPOSAL VALIDATIOS START -->
+    
+     <formset>
+        <form name="generalInfoProposal">
+            
+           <field  property="startDate" depends="required,validDatePattern">
+                <msg name="required" key="generalInfoProposal.startdate" bundle="proposal"/>
+                <msg name="validDatePattern" key="generalInfoProposal.startdatevalidation" bundle="proposal"/>
+                
+             </field>
+            
+            <field property="endDate" depends="required,validDatePattern,dateValidate">
+                <msg name="required" key="generalInfoProposal.enddate" bundle="proposal"/>
+                <msg name="validDatePattern" key="generalInfoProposal.enddatevalidation" bundle="proposal"/>
+                <msg name="dateValidate" key="generalInfoProposal.period" bundle="proposal"/>
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>startDate</var-value>
+                </var>
+            </field>
+                    
+            <!-- <field property="startDate" depends="required,date">
+            <msg name="required"
+                         key="generalInfoProposal.startdate"
+                         bundle="proposal"/>
+            <msg name="date"
+                         key="generalInfoProposal.startdatevalidation"
+                         bundle="proposal"/>
+             <var><var-name>datePattern</var-name><var-value>MM/dd/yyyy</var-value></var>
+            </field>
+            
+            <field property="endDate" depends="required,date">
+            <msg name="required"
+                         key="generalInfoProposal.enddate"
+                         bundle="proposal"/>
+            <msg name="date"
+                         key="generalInfoProposal.enddatevalidation"
+                         bundle="proposal"/>
+             <var><var-name>datePattern</var-name><var-value>MM/dd/yyyy</var-value></var>
+            </field>-->
+            
+            <field property="deadLineDate" depends="validDatePattern">
+            <msg name="validDatePattern" key="generalInfoProposal.deadLineDate" bundle="proposal"/>
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>startDate</var-value>
+                </var>
+                
+             </field>
+               
+            <field property="title" depends="required,maxlength">
+                <msg name="required" key="generalInfoProposal.Title" bundle="proposal"/>
+                <!--arg0 key="generalInfoProposal.title"/-->
+                 <msg name="maxlength"
+                         key="generalInfoProposal.title.length"
+                         bundle="proposal"/>
+                <var>
+                    <var-name>maxlength</var-name>
+               <!-- Case# 3822: Increase the length of the proposal title to 200 characters -->     
+               <!-- <var-value>150</var-value>  -->
+                    <var-value>200</var-value>
+                </var>       
+            </field>   
+            
+            <field property="programAnnouncementTitle" depends="maxlength">
+                <msg name="maxlength"
+                         key="generalInfoProposal.programTitle.length"
+                         bundle="proposal"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>150</var-value>
+                </var>       
+            </field>  
+            
+             <field property="proposalType" depends="required">
+                <msg name="required"
+                         key="generalInfoProposal.proposalType.required"
+                         bundle="proposal"/>                    
+            </field>  
+             <field property="activityType" depends="required">
+                <msg name="required"
+                         key="generalInfoProposal.activityType.required"
+                         bundle="proposal"/>                    
+            </field>             
+        </form>
+        </formset>
+        <!-- From UTK for Investigator 31-July-2006 start -->
+        
+         <formset>
+        <form name="pdInvestKeyPersForm">
+            <field property="personName" depends="required">
+              <!--arg0 key="proposalInvKeyPersons.name" bundle="proposal"/-->
+              <msg name="required" key="proposalInvKeyPersons.name.required" bundle="proposal"/>
+            </field>
+            <field property="invEmail" depends="email">
+               <msg name="email" key="error.pdInvestKeyPersForm.email" bundle="proposal"/> 
+            </field>           
+            <field property="percentageEffort" depends="float,floatRange,mask">
+                <msg name="float"
+                     key="proposalInvKeyForm.percentEffort.float"
+                     bundle="proposal"/>
+                <msg name="floatRange"
+                     key="proposalInvKeyForm.percentEffort.range"
+                     bundle="proposal"/>
+                <msg name="mask"
+                     key="proposalInvKeyForm.percentEffort.mask"
+                     bundle="proposal"/>
+                <arg0 key="proposalInvKeyPersons.PercentEffort" resource="true"/>
+                <arg1 name="floatRange" key="${var:min}" resource="false"/>
+                <arg2 name="floatRange" key="${var:max}" resource="false"/>
+                <var><var-name>min</var-name><var-value>0.00</var-value></var>
+                <var><var-name>max</var-name><var-value>999.99</var-value></var>
+                <var><var-name>mask</var-name><var-value>^[0-9]{0,3}(.[0-9]{0,2})?$</var-value></var>
+            </field>            
+            <!-- Added for case#2270 and case#2229 - start -->
+            <field property="academicYearEffort" depends="float,floatRange,mask">
+                <msg name="float"
+                     key="proposalInvKeyForm.academicYearEffort.float"
+                     bundle="proposal"/>
+                <msg name="floatRange"
+                     key="proposalInvKeyForm.academicYearEffort.range"
+                     bundle="proposal"/>
+                <msg name="mask"
+                     key="proposalInvKeyForm.academicYearEffort.mask"
+                     bundle="proposal"/>
+                <arg0 key="proposalInvKeyPersons.academicEffort" resource="true"/>
+                <arg1 name="floatRange" key="${var:min}" resource="false"/>
+                <arg2 name="floatRange" key="${var:max}" resource="false"/>
+                <var><var-name>min</var-name><var-value>0.00</var-value></var>
+                <var><var-name>max</var-name><var-value>999.99</var-value></var>
+                <var><var-name>mask</var-name><var-value>^[0-9]{0,3}(.[0-9]{0,2})?$</var-value></var>
+            </field>
+            <field property="summerYearEffort" depends="float,floatRange,mask">
+                <msg name="float"
+                     key="proposalInvKeyForm.summerYearEffort.float"
+                     bundle="proposal"/>
+                <msg name="floatRange"
+                     key="proposalInvKeyForm.summerYearEffort.range"
+                     bundle="proposal"/>
+                <msg name="mask"
+                     key="proposalInvKeyForm.summerYearEffort.mask"
+                     bundle="proposal"/>
+                <arg0 key="proposalInvKeyPersons.summerEffort" resource="true"/>
+                <arg1 name="floatRange" key="${var:min}" resource="false"/>
+                <arg2 name="floatRange" key="${var:max}" resource="false"/>
+                <var><var-name>min</var-name><var-value>0.00</var-value></var>
+                <var><var-name>max</var-name><var-value>999.99</var-value></var>
+                <var><var-name>mask</var-name><var-value>^[0-9]{0,3}(.[0-9]{0,2})?$</var-value></var>
+            </field>
+            <field property="calendarYearEffort" depends="float,floatRange,mask">
+                <msg name="float"
+                     key="proposalInvKeyForm.calendarYearEffort.float"
+                     bundle="proposal"/>
+                <msg name="floatRange"
+                     key="proposalInvKeyForm.calendarYearEffort.range"
+                     bundle="proposal"/>
+                <msg name="mask"
+                     key="proposalInvKeyForm.calendarYearEffort.mask"
+                     bundle="proposal"/>
+                <arg0 key="proposalInvKeyPersons.calendarEffort" resource="true"/>
+                <arg1 name="floatRange" key="${var:min}" resource="false"/>
+                <arg2 name="floatRange" key="${var:max}" resource="false"/>
+                <var><var-name>min</var-name><var-value>0.00</var-value></var>
+                <var><var-name>max</var-name><var-value>999.99</var-value></var>
+                <var><var-name>mask</var-name><var-value>^[0-9]{0,3}(.[0-9]{0,2})?$</var-value></var>
+            </field>            
+            <!-- Added for case#2270 and case#2229 - end -->
+        </form>
+         <!-- From UTK for Investigator 31-July-2006 End -->
+    </formset> 
+     <!-- UTK GENERAL INFO PROPOSAL VALIDATIONS END -->
+    
+      <!-- Budget Line item details start date and End Date start-->
+       <formset>
+         <form name="lineItemDetails">             
+              <!--field property="lineItemCost" depends="mask,currencyMaxLength"-->
+              <field property="lineItemCost" depends="currencyMaxLength">
+                 <msg name="mask"
+                         key="error.lineItemDetails.lineItemCost"
+                         bundle="budget"/>
+                 <msg name="currencyMaxLength"
+                         key="error.lineItemDetails.lineItemCost.currencyMaxlength"
+                         bundle="budget"/>        
+                <var>
+                  <var-name>mask</var-name>
+                   <var-value>^\$?(\d{1,3},?(\d{3},?)*\d{3}(\.\d{1,3})?|\d{1,3}(\.\d{2})?)$</var-value>
+                </var>
+            </field>
+             <!--field property="costSharingAmount" depends="mask,currencyMaxLength"-->
+             <field property="costSharingAmount" depends="currencyMaxLength">
+                 <msg name="mask"
+                         key="error.lineItemDetails.costSharingAmount"
+                         bundle="budget"/>
+                 <msg name="currencyMaxLength"
+                         key="error.lineItemDetails.costSharingAmount.currencyMaxlength"
+                         bundle="budget"/>        
+                <var>
+                  <var-name>mask</var-name>
+                   <var-value>^\$?(\d{1,3},?(\d{3},?)*\d{3}(\.\d{1,3})?|\d{1,3}(\.\d{2})?)$</var-value>
+                </var>
+            </field>
+            
+             <!--field property="underRecoveryAmount" depends="mask,currencyMaxLength"-->
+             <field property="underRecoveryAmount" depends="currencyMaxLength">
+                 <msg name="mask"
+                         key="error.lineItemDetails.underRecovery"
+                         bundle="budget"/>
+                 <msg name="currencyMaxLength"
+                         key="error.lineItemDetails.underRecovery.currencyMaxlength"
+                         bundle="budget"/>        
+                <var>
+                  <var-name>mask</var-name>
+                   <var-value>^\$?(\d{1,3},?(\d{3},?)*\d{3}(\.\d{1,3})?|\d{1,3}(\.\d{2})?)$</var-value>
+                </var>
+            </field>           
+             <!--field property="quantity" depends="mask,currencyMaxLength"-->
+             <!-- Added for Case #3132 - start 
+                  Changing quantity field from integer to float-->
+             <field property="quantity" depends="quantityMaxLength">
+                 <msg name="mask"
+                         key="error.lineItemDetails.quantity"
+                         bundle="budget"/>
+                 <msg name="quantityMaxLength"
+                         key="error.lineItemDetails.quantity.quantityMaxlength"
+                         bundle="budget"/>        
+                <var>
+                   <var-name>mask</var-name>
+                   <var-value>\d{1,4},?(\.\d{1,2})?</var-value>
+                </var>
+            </field>      
+            <!-- Added for Case #3132 - end -->
+        </form>
+      </formset>
+        <!-- Budget Line item details start date and End Date End-->     
+      <formset>
+        <form name="budgetSummary">
+            <field property="comments" depends="maxlength">
+                 <msg name="maxlength"
+                         key="budgetSummary.comments"
+                         bundle="budget"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4000</var-value>
+                </var>       
+            </field>
+            <!--field property="totalCostLimit" depends="mask,currencyMaxLength"-->
+            <field property="totalCostLimit" depends="currencyMaxLength">
+                 <msg name="mask"
+                         key="error.budgetSummary.totalCostLimit"
+                         bundle="budget"/>
+                 <msg name="currencyMaxLength"
+                         key="error.budgetSummary.totalCostLimit.currencyMaxlength"
+                         bundle="budget"/>        
+                <var>
+                  <var-name>mask</var-name>
+                  <var-value>^\$?(\d{1,3},?(\d{3},?)*\d{3}(\.\d{1,3})?|\d{1,3}(\.\d{2})?)$</var-value>
+                </var>
+            </field>
+            <!--field property="residualFunds" depends="mask,currencyMaxLength"-->
+            <field property="residualFunds" depends="currencyMaxLength">
+                 <msg name="mask"
+                         key="error.budgetSummary.residualFunds.currencyMaxlength"
+                         bundle="budget"/>
+                  <msg name="currencyMaxLength"
+                         key="error.budgetSummary.residualFunds"
+                         bundle="budget"/>        
+                <var>
+                  <var-name>mask</var-name>
+                 <var-value>^\$?(\d{1,3},?(\d{3},?)*\d{3}(\.\d{1,3})?|\d{1,3}(\.\d{2})?)$</var-value>
+                </var>
+            </field>
+        </form>
+    </formset> 
+    <!--- Adjust Period Validation start -->
+     <formset>
+        <form name="dynaBeanList">
+            <field  property="periodStartDate" indexedListProperty="list"  depends="validateTwoDateField">
+                 <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>periodEndDate</var-value>
+                </var>
+                
+            </field>
+        </form>
+    </formset>
+    <!--- Adjust Period Validation end -->
+    <!--- Budget Equipment Validation start -->
+     <formset>
+        <form name="lineItemDynaBeanList">
+            <field  property="costElement" indexedListProperty="list"  depends="validateBudgetLineItems">
+                  <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>tempLineItemCost</var-value>
+                  </var>
+                    
+            </field>
+            <!-- Added for Case #3132 - start 
+                 Changing quantity field from integer to float-->
+            <field  property="quantity" indexedListProperty="list"  depends="validateBudgetLineItems">
+                  <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>tempQuantity</var-value>
+                  </var>
+                    
+            </field>
+            <!-- Added for Case #3132 - end -->
+            <!--<field  property="lineItemCost" indexedListProperty="list"  depends="mask">
+                 <msg name="mask"
+                         key="error.budgetSummary.totalCostLimit"
+                         bundle="budget"/> 
+                  <var>
+                    <var-name>mask</var-name>
+                    <var-value>^\d{1,3}(,?\d{3})*\.?(\d{1,2})?$</var-value>
+                  </var> 
+            </field>-->
+            
+             
+        </form>
+    </formset>
+    <!--- Budget Equipment Validation end -->
+    <!--- Budget Modular Validation start -->
+     <formset>
+        <form name="coeusBudgetModularDynaList">
+            <field  property="strDirectCostFA" indexedListProperty="list"  depends="validBudgetModularDC">
+                  <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>strConsortiumFNA</var-value>
+                  </var>
+                    
+            </field>
+            <field  property="strIdcRate" indexedListProperty="beanList"  depends="validBudgetModularIDC">
+                  <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>strIdcBase</var-value>
+                  </var>
+                  <var>
+                    <var-name>thirdProperty</var-name>
+                    <var-value>strFundRequested</var-value>
+                  </var>
+            </field>
+            
+             
+        </form>
+    </formset>
+    <!--- Budget Equipment Validation end -->    
+    <!-- Budget Sync Person Validation  Start  -->    
+    <formset>
+        <form name="syncPersonsDynaList">
+            <field  property="jobCode" indexedListProperty="list"  depends="required">
+                  <msg name="required"
+                         key="syncBudgetPersons.jobCode.required"
+                         bundle="budget"/> 
+             </field>             
+        </form>
+    </formset>    
+    <!-- Budget Sync Person Validation  End  -->    
+    
+    <!-- An example formset for another locale -->
+    <formset language="fr">
+
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^[0-9a-zA-Z]*$</constant-value>
+        </constant>
+
+        <!-- An example form -->
+        <form name="logonForm">
+            <field
+                property="username"
+                depends="required">
+                    <arg key="logonForm.username"/>
+            </field>
+            <field
+                property="password"
+                depends="required,mask">
+                    <arg key="logonForm.password"/>
+                    <var>
+                        <var-name>mask</var-name>
+                        <var-value>^[0-9a-zA-Z]*$</var-value>
+                    </var>
+            </field>
+        </form>
+
+    </formset>
+    
+    <!-- Project Income Validation Starts Here  -->
+    <formset>
+        <form name="budgetProjectIncomeList">
+            <field  property="strAmount" indexedListProperty="list"  depends="validProjectIncome">
+                  <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>description</var-value>
+                  </var>
+                  
+            </field>
+          
+ 
+        </form>
+    </formset>
+     <!-- Project Income Validation End Here  -->
+     
+    <!-- Proposal Routing Starts -->
+    <formset>
+        <form name="approvalRoute">
+            <field property="comments" depends="maxlength">
+                 <msg name="maxlength" key="routing.comments" bundle="proposal"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4000</var-value>
+                </var>       
+            </field>
+        </form>
+    </formset> 
+    <!-- Proposal Routing Ends -->
+    
+    <!-- Protocol Corresponents Starts -->
+    <!-- Commented for case#3523, moved to server side for validation -->
+    <!--
+    <formset>
+        <form name="correspondentsList">
+            <field  property="correspondentType" indexedListProperty="list"  depends="required">
+                  <msg name="required" key="validation.correspondents.correspondentType"/>
+            </field>
+            <field  property="personName" indexedListProperty="list"  depends="required">
+                  <msg name="required" key="validation.correspondents.personName"/>
+            </field>
+        </form>
+    </formset>    
+    --> 
+    <!-- Protocol Corresponents Starts -->   
+
+	<!-- WMC Validations START -->
+       <formset>
+         <form name="budgetPersonsDynaBean">             
+		<!-- budget persons -->
+            <field  property="jobCode" indexedListProperty="list"  depends="required">
+                  <msg name="required"
+                         key="persons.jobCode.required"
+                         bundle="budget"/> 
+             </field>             
+            <field  property="effectiveDate" indexedListProperty="list"  depends="required,date,validDatePattern">
+                  <msg name="required"
+                         key="persons.effectiveDate.required"
+                         bundle="budget"/> 
+            	<msg name="date"
+                         key="persons.effectiveDate.required"
+                         bundle="budget"/>
+               <msg name="validDatePattern"
+                          key="persons.effectiveDate.required"
+                          bundle="budget"/>
+             	<var><var-name>datePattern</var-name><var-value>MM/dd/yyyy</var-value></var>
+             </field>             
+            <field  property="calculationBase" indexedListProperty="list"  depends="required">
+                  <msg name="required"
+                         key="persons.baseSalary.required"
+                         bundle="budget"/> 
+             </field> 
+             <field  property="strSalaryAnniversaryDate" indexedListProperty="list"  depends="date,validDatePattern">
+                <msg name="date"
+                         key="persons.salaryAnnivDate.required"
+                         bundle="budget"/>
+               <msg name="validDatePattern"
+                          key="persons.salaryAnnivDate.required"
+                          bundle="budget"/>
+             	<var><var-name>datePattern</var-name><var-value>MM/dd/yyyy</var-value></var>
+             </field> 
+        </form>
+    </formset>
+       <formset>
+         <form name="budgetPersonnelDynaBean">             
+		<!-- budget personnel -->
+            <field  property="costElement" indexedListProperty="list"  depends="required">
+                  <msg name="required"
+                         key="personnel.costElement.requried"
+                         bundle="budget"/> 
+            </field>   
+             <field  property="personStartDate" indexedListProperty="list" depends="required,validDatePattern">
+                <msg name="required" key="personnel.startdate" bundle="budget"/>
+                 <msg name="validDatePattern" key="personnel.startdatevalidation" bundle="budget"/>
+             </field>
+            
+            <field property="personEndDate" indexedListProperty="list" depends="required,validDatePattern">
+                <msg name="required" key="personnel.enddate" bundle="budget"/>
+                <msg name="validDatePattern" key="personnel.enddatevalidation" bundle="budget"/>
+            </field>    
+                              
+            <field  property="percentEffort" indexedListProperty="list"  depends="validatePercentEffort">
+                 <var>
+                    <var-name>validateField</var-name>
+                    <var-value>percentCharged</var-value>
+                </var>
+            </field>
+  
+
+        </form>
+       </formset>
+       <formset>
+         <form name="budgetPersonnelLineItemDynaBean">             
+            <field  property="tempLineItemStartDate" indexedListProperty="list"  depends="required,date">
+                  <msg name="required"
+                         key="personnel.startDate.required"
+                         bundle="budget"/> 
+            	<msg name="date"
+                         key="personnel.startDate.required"
+                         bundle="budget"/>
+             </field>             
+            <field  property="tempLineItemEndDate" indexedListProperty="list"  depends="required,date">
+                  <msg name="required"
+                         key="personnel.endDate.required"
+                         bundle="budget"/> 
+            	<msg name="date"
+                         key="personnel.endDate.required"
+                         bundle="budget"/>
+             </field>             
+        </form>
+       </formset>
+	<!-- WMC Validations END -->
+        
+    <!-- Protocol Investigator / Key Persons Starts -->
+    <formset>
+        <form name="invesKeyPersons">
+            <field property="personName" depends="required">
+                <msg name="required" key="validation.invesKeypersons.personName"/>
+            </field>
+            <field property="role" depends="required">
+                <msg name="required" key="validation.invesKeypersons.role"/>
+            </field>
+            <field property="personRole" depends="requiredif">
+                <msg name="requiredif" key="validation.invesKeypersons.personRole"/>
+                    <var>
+                        <var-name>field[0]</var-name>
+                        <var-value>role</var-value>
+                    </var>
+                    <var>
+                        <var-name>fieldTest[0]</var-name>
+                        <var-value>EQUAL</var-value>
+                    </var>
+                    <var>
+                        <var-name>fieldValue[0]</var-name>
+                        <var-value>2</var-value>
+                    </var>            
+            </field> 
+            <field property="affiliationTypeCode" depends="required">
+                <msg name="required" key="validation.invesKeypersons.affiliationTypeCode"/>
+            </field>             
+        </form>
+    </formset> 
+    <!-- Protocol Investigator / Key Persons Starts --> 
+   <!-- Amendments/Renewal Starts-->
+    <formset>
+        <form name="amendmentRenewalForm">
+            <field  property="summary" depends="required">
+                  <msg name="required" key="validation.AmendRenew.summary"/>
+             </field>             
+        </form>
+    </formset>     
+   <!-- Amendments/Renewal Ends-->
+   
+ 
+   <!-- For Protocol Notes Starts-->
+    <formset>
+        <form name="protocolNotesForm">
+            <field property="addComments" depends="required,maxlength">
+                <msg name="required" key="protocolNote.error.message"/>
+                <msg name="maxlength" key="protocolNote.error.maxlength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>2000</var-value>
+                </var>
+            </field>   
+        </form>
+    </formset>     
+   <!-- For Protocol Notes Ends-->
+
+      <!-- For Protocol Organization Starts-->
+    <!-- Commented for Coeus4.3 Organization Page - frequently used list enhacement
+    <formset>
+        <form name="protocolOrganizationList">
+           
+            <field property="code" indexedListProperty="list" depends="required">
+                <msg name="required" key="protocolOrganization.error.orgType"/>
+            </field>
+            
+            <field property="freqUsedCode" indexedListProperty="list" depends="required">
+                <msg name="required" key="protocolOrganization.error.orgName"/>
+            </field>    
+                   
+            <field property="addOrganizationName" indexedListProperty="list" depends="required">
+                <msg name="required" key="protocolOrganization.error.orgName"/>
+            </field>
+            
+        </form>
+    </formset>  
+    -->   
+   <!-- For Protocol Organization Ends-->     
+   
+   <!--For proposal Organization - Location Start -->
+   <formset>
+        <form name="proposalOrganizationLocationList">
+         <field property="location"  indexedListProperty="beanList" depends="required">
+                <msg name="required" bundle="proposal" key="proposalLocation.error.location"/>
+            </field>
+         </form>
+    </formset>
+    <!--For proposal Organization - Location Start-->
+    
+   <!--For YNQ - Location Start -->
+   <formset>
+        <form name="ynqFormList">
+            <field property="answer"  indexedListProperty="list" depends="validateAnswers"> 
+                <msg name="validateAnswers" key="error.specialReview.approvalDateNotLater"/>
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>description</var-value>
+                </var>
+                <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>questionId</var-value>
+                </var>
+                <var>
+                    <var-name>thirdProperty</var-name>
+                    <var-value>reviewDate</var-value>
+                </var>
+            </field>
+         </form>
+    </formset>    
+    <!--For YNQ - Location Start-->    
+     <!--For Proposal Investigator Certify Start -->
+   <formset>
+        <form name="proposalInvCertifyList">
+            <field property="answer"  indexedListProperty="list" depends="validateAnswers">                 
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>description</var-value>
+                </var>
+                <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>questionId</var-value>
+                </var>
+                <var>
+                    <var-name>thirdProperty</var-name>
+                    <var-value>dateReqFor</var-value>
+                </var>
+            </field>
+         </form>
+    </formset>    
+    <!--For Proposal Investigator Certify End-->    
+    
+    <formset>   
+        <form name="propDevSpecialReview">
+            <field property="applicationDate" depends="validDatePattern">
+                <msg name="validDatePattern" key="validation.specialreview.applDate"/>
+            </field>
+            <field property="approvalDate" depends="validDatePattern,dateValidate">
+                <msg name="validDatePattern" key="validation.specialreview.apprvDate"/>
+                <msg name="dateValidate" key="error.specialReview.approvalDateNotLater"/>
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>applicationDate</var-value>
+                </var>
+            </field>
+            <field property="specialReviewCode" depends="required">
+                <msg name="required" key="validation.specialreview.specialReviewCode"/>
+            </field>
+            <!-- Commented for case#2990, moved to server side for validating
+            <field property="approvalCode" depends="required">
+                <msg name="required" key="validation.specialreview.approvalCode"/>
+            </field>  
+            -->
+        </form>
+    </formset>    
+    
+    <!-- Added for performing request actions through lite - Start -->
+    <!-- Commented for case#3214 - Moved to ProtocolActionForm bean class -->
+    <!--
+    <formset>
+        <form name="protocolActionsForm">
+            <field property="actionDate" depends="required, validDatePattern">
+                <msg name="required" key="protocolAction.errors.actionDate1"/>
+                <msg name="validDatePattern" key="protocolAction.errors.actionDate2"/>                
+            </field> 
+        </form>
+    </formset>
+    -->
+    <!-- Added for performing request actions through lite - End -->
+
+     <formset>
+        <form name="questionnaireList">
+            <field property="answer" indexedListProperty="list"  depends="required">
+                <msg name="required" key="questionnaire_answers_not_entered"/>
+            </field>
+        </form>
+    </formset>
+<!--Added for Dartmouth-->
+   <formset>
+        <form name="annDisclFinEntity">
+            <field property="entityName" depends="required">
+                <msg name="required" key="finEntity.entityName" bundle="coi"/> 
+            </field>
+            
+            <field property="relatedToOrgFlag" depends="required">
+               <msg name="required" key="finEntity.orgFlag" bundle="coi"/>
+            </field>
+            <field property="relationShipDesc" depends="required,maxlength">
+               <msg name="required" key="finEntity.relationShipDesc" bundle="coi"/>
+               <msg name="maxlength" key="error.DescRelation.maxlength" bundle="coi"/>
+               <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4000</var-value>
+                </var>
+            </field>
+            <field property="invlmntStudnt" depends="maxlength">              
+               <msg name="maxlength" key="error.involvement.students.maxlength" bundle="coi"/>
+               <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4000</var-value>
+                </var>
+            </field>
+            <field property="invlmntStaff" depends="maxlength">              
+               <msg name="maxlength" key="error.involvement.staff.maxlength" bundle="coi"/>
+               <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4000</var-value>
+                </var>
+            </field>
+            <field property="resoucreMit" depends="maxlength">              
+               <msg name="maxlength" key="error.mit.resources.maxlength" bundle="coi"/>
+               <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4000</var-value>
+                </var>
+            </field>
+            <!--<field property="orgRelnDesc" depends="required">
+               <msg name="required" key="finEntity.orgRelnDesc" bundle="coi"/>
+            </field>-->
+        
+        </form> 
+    </formset> 
+    
+    <formset>
+        <form name="subcontractDynaBeansList">
+            
+            <field  property="serviceDescription" indexedListProperty="list"  depends="maxlength">
+                <msg name="maxlength" bundle="arra" key="subcontractVendor.error.serviceDescLength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>255</var-value>
+                </var>
+                
+            </field>
+            
+            <!-- <field  property="strPaymentAmount" indexedListProperty="list"  depends="mask">
+                <msg name="mask"
+                     key="subcontract.error.validPaymentAmount"
+                     bundle="arra"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^\$?(\d{1,3},?(\d{3},?)*\d{3}(\.\d{1,3})?|\d{1,3}(\.\d{2})?)$</var-value>
+                </var>
+            </field> -->
+            <field   property="strPaymentAmount" indexedListProperty="list" depends="validNumberOfJobs">              
+	    
+            </field> 
+            
+            <field   property="strSubAwardAmount" indexedListProperty="infoList" depends="validNumberOfJobs">              
+	    
+            </field> 
+            
+            <field   property="strSubAwardAmtDispursed" indexedListProperty="infoList" depends="validNumberOfJobs">              
+	    
+            </field> 
+            
+            <field  property="vendorName" indexedListProperty="list"  depends="required">
+                <msg name="required" bundle="arra" key="subcontract.validation.vendorName"/>
+            </field>
+            
+            <field  property="employmentImpact" indexedListProperty="infoList"  depends="maxlength">
+                <msg name="maxlength" bundle="arra" key="awardDetails.error.emplImpactLength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4000</var-value>
+                </var>
+            </field>
+            
+            <field  property="noOfJobs" indexedListProperty="infoList"  depends="validNumberOfJobs">
+            </field>
+            <!--
+            <field  property="strCompensation" indexedListProperty="beanList"  depends="mask">
+                <msg name="mask"
+                     key="subcontractHighlyComp.error.validAmt"
+                     bundle="arra"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^\$?(\d{1,3},?(\d{3},?)*\d{3}(\.\d{1,3})?|\d{1,3}(\.\d{2})?)$</var-value>
+                </var>
+                
+            </field> -->
+            
+            <field   property="strCompensation" indexedListProperty="beanList" depends="validArraAmount">
+                
+            </field>
+            
+            <field  property="personName" indexedListProperty="beanList"  depends="required">
+                <msg name="required" bundle="arra" key="subcontract.validation.highlyCompensatedPersonName"/>
+            </field>
+        </form> 
+    </formset>   
+    <formset>
+        <form name="arraAwardDetailsForm">
+            <field  property="activityDescription" depends="maxlength">
+                <msg name="maxlength" bundle="arra" key="awardDetails.error.activityDescLength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>2000</var-value>
+                </var>
+                
+            </field>
+            
+            
+            <field  property="employmentImpact"  depends="maxlength">
+                <msg name="maxlength" bundle="arra" key="awardDetails.error.emplImpactLength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4000</var-value>
+                </var>
+                
+            </field>
+            
+            <field  property="infrastructureRationale" depends="maxlength">
+                <msg name="maxlength" bundle="arra" key="awardDetails.error.infraRationaleLength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4000</var-value>
+                </var>
+                
+            </field>
+            
+            <field  property="awardDescription" depends="maxlength">
+                <msg name="maxlength" bundle="arra" key="awardDetails.error.awardDescLength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4000</var-value>
+                </var>
+                
+            </field>
+            
+            <!-- <field  property="strTotalInfraExpenditure" depends="mask">
+                <msg name="mask"
+                     key="awardDetails.error.invalidTotalInfraExpediture"
+                     bundle="arra"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^\$?(\d{1,3},?(\d{3},?)*\d{3}(\.\d{1,3})?|\d{1,3}(\.\d{2})?)$</var-value>
+                </var>
+             
+            </field> -->
+            <field  property="projectTitle" depends="maxlength">
+                <msg name="maxlength" bundle="arra" key="awardDetails.error.projectTitleLength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>256</var-value>
+                </var>
+                
+            </field>
+            <field   property="strTotalInfraExpenditure" depends="validArraAmount">   
+            </field>
+            <field   property="strAwardAmount"  depends="validNumberOfJobs">              
+	    
+            </field> 
+            <field   property="strTotalExpenditure"  depends="validNumberOfJobs">              
+	    
+            </field> 
+            <field   property="strTotalFederalInvoiced"  depends="validNumberOfJobs">              
+	    
+            </field> 
+            <field   property="strIndSubAwardAmount"  depends="validNumberOfJobs">              
+	    
+            </field> 
+            <field   property="strVendorLess25KAmount"  depends="validNumberOfJobs">              
+	    
+            </field> 
+            <field   property="strSubAwdLess25KAmount"  depends="validNumberOfJobs">              
+	    
+            </field> 
+            <field   property="strIndSubAwards"  depends="validNumber">              
+	    
+            </field>
+            <field   property="strVendorLess25K"  depends="validNumber">              
+	    
+            </field>
+            <field   property="strSubAwdLess25K"  depends="validNumber">              
+	    
+            </field>
+            <field   property="noOfJobs" depends="validNumberOfJobs">   
+            </field>
+        </form> 
+    </formset>
+    <formset>
+        <form name="arraVendorDynaBeansList">
+             <field  property="vendorName" indexedListProperty="list"  depends="required">
+                <msg name="required" bundle="arra" key="subcontract.validation.vendorName"/>
+            </field>
+            <field   property="strPaymentAmount" indexedListProperty="list" depends="validNumberOfJobs">              
+	    
+            </field> 
+            <field  property="serviceDescription" indexedListProperty="list"  depends="maxlength">
+                <msg name="maxlength" bundle="arra" key="subcontractVendor.error.serviceDescLength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>255</var-value>
+                </var>
+                
+            </field>
+             
+        </form>
+    </formset>
+    
+      <!-- IACUC -->
+     <formset>
+        <form name="iacucGeneralInfoForm">
+                    
+            <field property="protocolTypeCode" depends="required">
+                <msg name="required" key="validation.iacucGeneralInfoForm.type"/>
+            </field>
+            
+            <field property="title" depends="required,maxlength">
+                <msg name="required" key="validation.irbGeneralInfoForm.title"/>
+                <msg name="maxlength" key="irbGeneralInfoForm.title.length"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>2000</var-value>
+                    </var>
+            </field>
+                        
+            <field property="applicationDate" depends="required,validDatePattern">
+                <msg name="required" key="errors.specialreview.applDate"/>
+                <msg name="validDatePattern" key="validation.specialreview.applDate"/>
+            </field>
+            
+            <field property="description" depends="maxlength">
+                   <msg name="maxlength"
+                         key="irbGeneralInfoForm.description.length"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>2000</var-value>
+                    </var>
+            </field>
+            <!-- #Added for COEUSQA-2260 (CaseId #1593) - Exception Error General info Page in Lay statement1 & Lay statement2 start -->
+            <field property="layStatement1" depends="maxlength">
+                   <msg name="maxlength" key="iacucGeneralInfoForm.layStatement1.length" bundle = "iacuc"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>2000</var-value>
+                    </var>
+            </field>
+            <field property="layStatement2" depends="maxlength">
+                   <msg name="maxlength" key="iacucGeneralInfoForm.layStatement2.length" bundle = "iacuc"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>2000</var-value>
+                    </var>
+            </field>
+            <!-- #Added for COEUSQA-2260 (CaseId #1593) - Exception Error General info Page in Lay statement1 & Lay statement2 end -->                                                                      
+        </form>
+    </formset>
+    
+    <!-- Iacuc Alternate Search Start-->
+    
+    
+     <formset>
+        <form name="iacucProtoAlternativeSearchForm">    
+             <!-- 1485 - 2260-user data entry is not restricted - start -->
+             <field property="yearsSearched" depends="maxlength">
+                <msg name="maxlength" key="alternativeSearch.yearsSearched.error.maxLength" bundle="iacuc"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>2000</var-value>
+                    </var>
+            </field>  
+            <field property="keyWordsSearched" depends="maxlength">
+                <msg name="maxlength" key="alternativeSearch.keyWordsSearched.error.maxLength" bundle="iacuc"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>2000</var-value>
+                    </var>
+            </field> 
+            <!-- 1485 - 2260-user data entry is not restricted - end -->
+            <field property="comments" depends="maxlength">
+                <msg name="maxlength" key="alternativeSearch.comments.error.maxLength" bundle="iacuc"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>4000</var-value>
+                    </var>
+            </field>
+        </form>     
+    </formset>
+    
+    <!-- iacuc alternate Search end -->
+    
+    <!-- iacuc Exceptions start -->
+    
+   <formset>
+        <form name="iacucKeyStudyPerson">
+            <field      
+                    property="personName"
+                    depends="required">
+                    <arg0 key="iacucKeyStudyPerson"/>
+            </field>
+
+            <field property="personRole" depends="required">
+                    <arg0 key="keyStudyPerson.personRole"/>
+            </field>
+        </form>
+    </formset>
+    
+     <formset>
+        <form name="iacucFundingSourceForm">
+            <field property="code" depends="required">
+                <msg name="required" key="fundingSourceFrm.code"/>
+            </field>
+            <field property="fundingSource" depends="required">
+                <msg name="required" key="fundingSourceFrm.fundingSource"/>
+            </field>
+        </form>
+    </formset>
+    
+    <formset>   
+        <form name="iacucSpecialReview">
+            <field property="applicationDate" depends="validDatePattern">
+                <msg name="validDatePattern" key="validation.specialreview.applDate"/>
+            </field>
+            <field property="approvalDate" depends="validDatePattern,dateValidate">
+                <msg name="validDatePattern" key="validation.specialreview.apprvDate"/>
+                <msg name="dateValidate" key="error.specialReview.approvalDateNotLater"/>
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>applicationDate</var-value>
+                </var>
+            </field>
+             <!--Added for expiration date validation-start-->
+            <field property="expirationDate" depends="validDatePattern,dateValidate">
+                <msg name="validDatePattern" key="validation.specialreview.expirationDate"/>                 
+                <msg name="dateValidate" key="error.specialReview.expirationDateNotLater"/>
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>approvalDate</var-value>                     
+                </var>                 
+            </field>
+             <!--Added for expiration date validation-end-->
+            <field property="specialReviewCode" depends="required">
+                <msg name="required" key="validation.specialreview.specialReviewCode"/>
+            </field>
+            <!-- added for internal issue fix 1494 start -->
+            <field property="comments" depends="maxlength">
+                <msg name="maxlength" key="iacucSpecialReviwForm.comments.length" bundle="iacuc"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>2000</var-value>
+                </var>
+            </field>
+            <!-- added for internal issue fix 1494 end --> 
+
+            <field property="approvalCode" depends="required">
+                <msg name="required" key="validation.specialreview.approvalCode"/>
+            </field>                                    
+        </form>
+    </formset>
+    
+   
+    <formset>
+        <form name="iacucVulerable">
+            <field property="vulnerableSubjectTypeCode" depends="required">
+                <msg name="required" key="error.upload_desc_data"/>
+            </field>            
+        </form>
+    </formset>
+    
+    
+    
+    <formset>
+        <form name="iacucGeneralInfoForm">
+                    
+            <field property="title" depends="required,maxlength">
+                <msg name="required" key="validation.irbGeneralInfoForm.title"/>
+                <msg name="maxlength" key="irbGeneralInfoForm.title.length"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>2000</var-value>
+                    </var>
+            </field>
+                        
+            <field property="applicationDate" depends="required,validDatePattern">
+                <msg name="required" key="errors.specialreview.applDate"/>
+                <msg name="validDatePattern" key="validation.specialreview.applDate"/>
+            </field>
+            
+            <field property="description" depends="maxlength">
+                   <msg name="maxlength"
+                         key="irbGeneralInfoForm.description.length"/>
+                   <var>
+                        <var-name>maxlength</var-name>
+                        <var-value>2000</var-value>
+                    </var>
+            </field>
+            
+            <field property="protocolTypeCode" depends="required">
+                <msg name="required" key="validation.iacucGeneralInfoForm.type"/>
+            </field>                        
+        </form>
+    </formset>
+    
+    <formset>
+        <form name="iacucInvestigatorForm">
+            
+            <field property="invLastName" depends="required">
+                <arg0 key="irbInvestigatorForm.invLastName"/>
+            </field>
+            
+            <field property="unitNumber" depends="required">
+                <arg0 key="irbInvestigatorForm.unitNumber"/>
+            </field>            
+        </form>
+    </formset>
+    
+    <formset>
+        <form name="iacucAreaForm">
+            <field property="researchAreaCode" depends="required">
+                <msg name="required" key="areaForm.researchAreaCode"/>
+             </field>             
+        </form>
+    </formset>
+
+    <formset>
+        <form name="iacucReference">
+            <field property="referenceTypeCode" depends="required">
+                <msg name="required" key="protocolReference.typeRequired"/>
+            </field>
+             <field property="applicationDate" depends="validDatePattern">
+                <msg name="validDatePattern" key="protocolReference.invalidAppliDate"/>
+            </field>
+            <field property="approvalDate" depends="validDatePattern,dateValidate">
+                <msg name="validDatePattern" key="protocolReference.invalidApprDate"/>
+                <msg name="dateValidate" key="error.specialReview.approvalDateNotLater"/>
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>applicationDate</var-value>
+                </var>
+                
+            </field>
+             <!--Added for expiration date validation-start-->
+            <field property="expirationDate" depends="validDatePattern,dateValidate">
+                <msg name="validDatePattern" key="validation.specialreview.expirationDate"/>                 
+                <msg name="dateValidate" key="error.specialReview.expirationDateNotLater"/>
+                <var>
+                    <var-name>firstProperty</var-name>
+                    <var-value>approvalDate</var-value>                     
+                </var>                 
+            </field>
+             <!--Added for expiration date validation-end-->
+            <field property="comments" depends="maxlength">
+                 <msg name="maxlength" key="protocolReference.comments"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>2000</var-value>
+                </var>       
+            </field>             
+        </form>
+    </formset>
+    
+     <formset>
+        <form name="iacucInvesKeyPersons">
+            <field property="personName" depends="required">
+                <msg name="required" key="validation.invesKeypersons.personName"/>
+            </field>
+            <field property="role" depends="required">
+                <msg name="required" key="validation.invesKeypersons.role"/>
+            </field>
+            <field property="personRole" depends="requiredif">
+                <msg name="requiredif" key="validation.invesKeypersons.personRole" bundle="iacuc"/>
+                    <var>
+                        <var-name>field[0]</var-name>
+                        <var-value>role</var-value>
+                    </var>
+                    <var>
+                        <var-name>fieldTest[0]</var-name>
+                        <var-value>EQUAL</var-value>
+                    </var>
+                    <var>
+                        <var-name>fieldValue[0]</var-name>
+                        <var-value>2</var-value>
+                    </var>            
+            </field> 
+            <field property="affiliationTypeCode" depends="required">
+                <msg name="required" key="validation.invesKeypersons.affiliationTypeCode"/>
+            </field>             
+        </form>
+    </formset> 
+    <!-- IACUC Protocol Investigator / Key Persons Starts --> 
+   <!-- IACUC Amendments/Renewal Starts-->
+    <formset>
+        <form name="iacucAmendmentRenewalForm">
+            <field  property="summary" depends="required">
+                  <msg name="required" key="validation.AmendRenew.summary"/>
+             </field>             
+        </form>
+    </formset>     
+   <!-- IACUC Amendments/Renewal Ends-->
+   
+ 
+   <!-- For IACUC Protocol Notes Starts-->
+    <formset>
+        <form name="iacucNotesForm">
+            <field property="addComments" depends="required,maxlength">
+                <msg name="required" key="protocolNote.error.message"/>
+                <msg name="maxlength" key="protocolNote.error.maxlength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>2000</var-value>
+                </var>
+            </field>   
+        </form>
+    </formset>  
+    
+    
+      <formset>
+        <form name="iacucProtocolExceptionsForm">
+            <field property="reductionPrinciple" depends="maxlength">
+                <msg name="maxlength" bundle="iacuc" key="reductionPrinciple.error.maxlength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>20</var-value>
+                </var>
+            </field>   
+            <field property="refinementPrinciple" depends="maxlength">
+                <msg name="maxlength" bundle="iacuc" key="refinementPrinciple.error.maxlength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>20</var-value>
+                </var>
+            </field>   
+            <field property="replacementPrinciple" depends="maxlength">
+                <msg name="maxlength" bundle="iacuc" key="replacementPrinciple.error.maxlength"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>20</var-value>
+                </var>
+            </field>   
+        </form>
+    </formset>
+     <formset>
+         <form name="iacucSpeciesForm">
+             <field property="groupName" depends="required">
+                 <msg name="required" key="validation.iacucSpeciesForm.groupName"/>
+             </field>
+         </form>
+     </formset>
+    <!-- iacuc Exceptions end -->
+    <!--  IACUC End -->
+    <!--- Adjust Period Validation  for RAFT start -->
+
+       <formset>
+        <form name="raftLineItemList">
+            <field  property="periodStartDate" indexedListProperty="list"  depends="validateTwoDateFieldForRaft">
+                 <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>periodEndDate</var-value>
+                </var>
+
+            </field>
+
+        </form>
+    </formset>
+
+  <formset>
+        <form name="raftLineItemList">
+
+
+              <field property="periodName" indexedListProperty="list" depends="required">
+                <msg name="required" key="validation.upload_period_name"/>
+             </field>
+
+            <field  property="periodStartDate" indexedListProperty="list"  depends="required">
+                <msg name="required" key="validation.upload_Start_Date"/>
+             </field>
+
+            <field  property="periodEndDate" indexedListProperty="list"  depends="required">
+                 <msg name="required" key="validation.upload_End_Date"/>
+            </field>
+        </form>
+    </formset>
+
+        <!--- Adjust Period Validation for RAFT end -->
+         <!-- For Raft Equipment Validation -->
+        <formset>
+    <form name="RaftLineItemList">
+            <field  property="costElement" indexedListProperty="list"  depends="validateAwardBudgetLineItems">
+                  <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>tempLineItemCost</var-value>
+                  </var>
+
+            </field>
+
+             <field property="tempLineItemStartDate" indexedListProperty="list" depends="required,validDatePattern">
+                <msg name="required" key="validation.upload_Start_Date"/>
+                 <msg name="validDatePattern" key="personnel.startdatevalidation"/>
+             </field>
+
+              <field property="tempLineItemEndDate" indexedListProperty="list" depends="required,validDatePattern">
+                <msg name="required" key="validation.upload_End_Date"/>
+                 <msg name="validDatePattern" key="personnel.enddatevalidation"/>
+             </field>
+
+    </form>
+        </formset>
+
+</form-validation>

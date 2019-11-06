@@ -1,0 +1,411 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+   <form-beans>
+           <form-bean name="arraAwardDetailsForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property name="arraReportNumber" type="java.lang.Integer"/> 
+                <form-property name="versionNumber" type="java.lang.Integer"/>
+                <form-property name="mitAwardNumber" type="java.lang.String"/>
+                <form-property name="sequenceNumber" type="java.lang.Integer"/>
+                <form-property name="leadUnit" type="java.lang.String"/>
+                <form-property name="projectStatus" type="java.lang.String"/>
+                <form-property name="activityCode" type="java.lang.String"/>
+                <form-property name="awardingAgencyCode" type="java.lang.String"/>
+                <form-property name="awardDescription" type="java.lang.String"/>
+                <form-property name="activityDescription" type="java.lang.String"/>
+                <form-property name="noOfJobs" type="java.lang.String"/>
+                <form-property name="jobsAtSubs" type="java.lang.String"/>
+                <form-property name="totalJobs" type="java.lang.String"/>
+                <form-property name="employmentImpact" type="java.lang.String"/>
+                <form-property name="infraContactId" type="java.lang.Integer"/>
+                <form-property name="infraContactAddress" type="java.lang.String"/>
+                <form-property name="infrastructureRationale" type="java.lang.String"/>
+                <form-property name="primPlaceOfPerfId" type="java.lang.Integer"/>
+                <form-property name="primPlaceOfPerfAddress" type="java.lang.String"/>
+                <form-property name="congressionalDistrict" type="java.lang.String"/>
+                <form-property name="accountNumber" type="java.lang.String"/>
+                <form-property name="finalFlag" type="java.lang.String"/>
+                <form-property name="awardType" type="java.lang.String"/>
+                <form-property name="awardDate" type="java.lang.String"/>
+                <form-property name="awardAmount" type="java.lang.Double"/>
+                <form-property name="strAwardAmount" type="java.lang.String"/>
+                <form-property name="totalFederalInvoiced" type="java.lang.Double"/>
+                <form-property name="strTotalFederalInvoiced" type="java.lang.String"/>
+                <form-property name="totalExpenditure" type="java.lang.Double"/>
+                <form-property name="strTotalExpenditure" type="java.lang.String"/>
+                <form-property name="totalInfraExpenditure" type="java.lang.Double"/>
+                <form-property name="strTotalInfraExpenditure" type="java.lang.String"/>
+                <form-property name="recipientDUNSNumber" type="java.lang.String"/>
+                <form-property name="agencyTAS" type="java.lang.String"/>
+                <form-property name="cfdaNumber" type="java.lang.String"/>
+                <form-property name="indSubAwards" type="java.lang.Integer"/>
+                <form-property name="strIndSubAwards" type="java.lang.String"/>
+                <form-property name="indSubAwardAmount" type="java.lang.Double"/>
+                <form-property name="strIndSubAwardAmount" type="java.lang.String"/>
+                <form-property name="vendorLess25K" type="java.lang.Integer"/>
+                <form-property name="strVendorLess25K" type="java.lang.String"/>
+                <form-property name="vendorLess25KAmount" type="java.lang.Double"/>
+                 <form-property name="strVendorLess25KAmount" type="java.lang.String"/>
+                <form-property name="subAwdLess25K" type="java.lang.Integer"/>
+                <form-property name="strSubAwdLess25K" type="java.lang.String"/>
+                <form-property name="subAwdLess25KAmount" type="java.lang.Double"/>
+                 <form-property name="strSubAwdLess25KAmount" type="java.lang.String"/>
+                <form-property name="govContractingOfficeCode" type="java.lang.String"/>
+                <form-property name="updateUser" type="java.lang.String"/>
+                <form-property name="updateTimestamp" type="java.lang.String"/>
+                <form-property name="awUpdateTimestamp" type="java.lang.String"/>  
+                <form-property name="acType" type="java.lang.String" initial="I"/>  
+                <form-property name="reportPeriodStart" type="java.lang.String"/>  
+                <form-property name="reportPeriodEnd" type="java.lang.String"/> 
+                <form-property name="submissionDate" type="java.lang.String"/>  
+                <form-property name="fundingAgencyCode" type="java.lang.String"/>     
+                <form-property name="awardNumber" type="java.lang.String"/>     
+                <form-property name="piName" type="java.lang.String"/>     
+                <form-property name="sponsorAwardNumber" type="java.lang.String"/>   
+                <form-property name="sponsorName" type="java.lang.String"/>   
+                <form-property name="projectTitle" type="java.lang.String"/>
+                <form-property name="unitName" type="java.lang.String"/>
+                <form-property name="orderNumber" type="java.lang.String"/>
+           </form-bean>
+           
+           <form-bean name="arraAwardVendorsForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property name="arraReportNumber" type="java.lang.Integer"/> 
+                <form-property name="versionNumber" type="java.lang.Integer"/>
+                <form-property name="mitAwardNumber" type="java.lang.String"/>
+                <form-property name="vendorNumber" type="java.lang.String"/>
+                <form-property name="subContractCode" type="java.lang.String"/>
+                <form-property name="vendorDUNS" type="java.lang.String"/>
+                <form-property name="vendorHQZipCode" type="java.lang.String"/>
+                <form-property name="vendorName" type="java.lang.String"/>
+                <form-property name="serviceDescription" type="java.lang.String"/>
+                <form-property name="paymentAmount" type="java.lang.Double"/>
+                <form-property name="strPaymentAmount" type="java.lang.String"/>
+                <form-property name="updateUser" type="java.lang.String"/>
+                <form-property name="updateTimestamp" type="java.lang.String"/>
+                <form-property name="awUpdateTimestamp" type="java.lang.String"/>  
+                <form-property name="acType" type="java.lang.String"/>  
+           </form-bean>
+           
+       <form-bean name="arraAwardSubcontractForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+               <form-property name="arraReportNumber" type="java.lang.Integer"/> 
+               <form-property name="versionNumber" type="java.lang.Integer"/>
+               <form-property name="mitAwardNumber" type="java.lang.String"/>
+               <form-property name="subcontractCode" type="java.lang.String"/>
+               <form-property name="subcontractorID" type="java.lang.String"/>
+               <form-property name="subcontractorName" type="java.lang.String"/>
+               <form-property name="subSequenceNo" type="java.lang.String"/>
+               <form-property name="subRecipientDUNS" type="java.lang.String"/>
+               <form-property name="subcontractNo" type="java.lang.String"/>
+               <form-property name="subRecipientCongDist" type="java.lang.String"/>
+               <form-property name="subAwardAmount" type="java.lang.Double"/>
+               <form-property name="strSubAwardAmount" type="java.lang.String"/>
+               <form-property name="subAwardAmtDispursed" type="java.lang.Double"/>
+               <form-property name="strSubAwardAmtDispursed" type="java.lang.String"/>
+               <form-property name="subAwardDate" type="java.lang.String"/>
+               <form-property name="primPlaceOfPerfId" type="java.lang.Integer"/>
+               <form-property name="primPlaceOfPerfAddress" type="java.lang.String"/>
+               <form-property name="primPlaceCongDist" type="java.lang.String"/>
+               <form-property name="reportingIndication" type="java.lang.String"/>
+               <form-property name="noOfJobs" type="java.lang.String"/>
+               <form-property name="employmentImpact" type="java.lang.String"/>
+               <form-property name="updateUser" type="java.lang.String"/>
+               <form-property name="updateTimestamp" type="java.lang.String"/>
+               <form-property name="awUpdateTimestamp" type="java.lang.String"/>  
+               <form-property name="acType" type="java.lang.String"/>  
+               <form-property name="subAwardNumber" type="java.lang.String"/>
+           </form-bean>
+           
+           
+           <form-bean name="arraAwardHighlyCompBean" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+               <form-property name="organizationId" type="java.lang.String"/> 
+               <form-property name="personNumber" type="java.lang.Integer"/>
+               <form-property name="personName" type="java.lang.String"/>
+               <form-property name="compensation" type="java.lang.Double"/>
+               <form-property name="strCompensation" type="java.lang.String"/>
+               <form-property name="updateUserName" type="java.lang.String"/>
+               <form-property name="updateUser" type="java.lang.String"/>
+               <form-property name="updateTimestamp" type="java.lang.String"/>
+               <form-property name="awUpdateTimestamp" type="java.lang.String"/>  
+               <form-property name="acType" type="java.lang.String"/>  
+           </form-bean>
+           
+           <form-bean name="arraAwardJob" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+               <form-property name="arraReportNumber" type="java.lang.Integer"/> 
+               <form-property name="versionNumber" type="java.lang.Integer"/>
+               <form-property name="mitAwardNumber" type="java.lang.String"/>
+               <form-property name="personId" type="java.lang.String"/>
+               <form-property name="personName" type="java.lang.String"/>
+               <form-property name="jobTitle" type="java.lang.String"/>
+               <form-property name="fte" type="java.lang.Double"/>
+           </form-bean>
+           
+           <form-bean name="subcontractDynaBeansList" type="edu.mit.coeuslite.utils.CoeusDynaFormList">
+           </form-bean>
+           
+           <form-bean name="arraVendorDynaBeansList" type="edu.mit.coeuslite.utils.CoeusDynaFormList">
+           </form-bean>
+         
+            <form-bean name="arraAwardPastReport" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">    
+                <form-property name="arraReportNumber" type="java.lang.Integer"/> 
+                <form-property name="versionNumber" type="java.lang.Integer"/>
+                <form-property name="mitAwardNumber" type="java.lang.String"/>
+                <form-property name="sequenceNumber" type="java.lang.Integer"/>
+                <form-property name="leadUnit" type="java.lang.String"/>
+                <form-property name="projectStatus" type="java.lang.String"/>
+                <form-property name="activityCode" type="java.lang.String"/>
+                <form-property name="awardingAgencyCode" type="java.lang.String"/>
+                <form-property name="awardDescription" type="java.lang.String"/>
+                <form-property name="activityDescription" type="java.lang.String"/>
+                <form-property name="noOfJobs" type="java.lang.String"/>
+                <form-property name="jobsAtSubs" type="java.lang.String"/>
+                <form-property name="totalJobs" type="java.lang.String"/>
+                <form-property name="employmentImpact" type="java.lang.String"/>
+                <form-property name="infraContactId" type="java.lang.Integer"/>
+                <form-property name="infraContactAddress" type="java.lang.String"/>
+                <form-property name="infrastructureRationale" type="java.lang.String"/>
+                <form-property name="primPlaceOfPerfId" type="java.lang.Integer"/>
+                <form-property name="primPlaceOfPerfAddress" type="java.lang.String"/>
+                <form-property name="congressionalDistrict" type="java.lang.String"/>
+                <form-property name="accountNumber" type="java.lang.String"/>
+                <form-property name="awardType" type="java.lang.String"/>
+                <form-property name="awardDate" type="java.lang.String"/>
+                <form-property name="awardAmount" type="java.lang.Double"/>
+                <form-property name="strAwardAmount" type="java.lang.String"/>
+                <form-property name="totalFederalInvoiced" type="java.lang.Double"/>
+                <form-property name="totalExpenditure" type="java.lang.Double"/>
+                <form-property name="strTotalExpenditure" type="java.lang.String"/>
+                <form-property name="totalInfraExpenditure" type="java.lang.Double"/>
+                <form-property name="strTotalInfraExpenditure" type="java.lang.String"/>
+                <form-property name="recipientDUNSNumber" type="java.lang.String"/>
+                <form-property name="cfdaNumber" type="java.lang.String"/>
+                <form-property name="indSubAwards" type="java.lang.Integer"/>
+                <form-property name="strIndSubAwards" type="java.lang.String"/>
+                <form-property name="indSubAwardAmount" type="java.lang.Double"/>
+                <form-property name="strIndSubAwardAmount" type="java.lang.String"/>
+                <form-property name="vendorLess25K" type="java.lang.Integer"/>
+                <form-property name="strVendorLess25K" type="java.lang.String"/>
+                <form-property name="vendorLess25KAmount" type="java.lang.Double"/>
+                 <form-property name="strVendorLess25KAmount" type="java.lang.String"/>
+                <form-property name="subAwdLess25K" type="java.lang.Integer"/>
+                <form-property name="strSubAwdLess25K" type="java.lang.String"/>
+                <form-property name="subAwdLess25KAmount" type="java.lang.Double"/>
+                 <form-property name="strSubAwdLess25KAmount" type="java.lang.String"/>
+                <form-property name="govContractingOfficeCode" type="java.lang.String"/>
+                <form-property name="orderNumber" type="java.lang.String"/>
+                
+                 <form-property name="organizationId" type="java.lang.String"/> 
+               <form-property name="personNumber" type="java.lang.Integer"/>
+               <form-property name="personNameHighlyCompBean" type="java.lang.String"/>
+               <form-property name="compensation" type="java.lang.Double"/>
+               <form-property name="strCompensation" type="java.lang.String"/>
+               
+                <form-property name="personId" type="java.lang.String"/>
+               <form-property name="personName" type="java.lang.String"/>
+               <form-property name="jobTitle" type="java.lang.String"/>
+               <form-property name="fte" type="java.lang.Double"/>
+               
+                <form-property name="vendorNumber" type="java.lang.String"/>
+                <form-property name="subContractCode" type="java.lang.String"/>
+                <form-property name="vendorDUNS" type="java.lang.String"/>
+                <form-property name="vendorHQZipCode" type="java.lang.String"/>
+                <form-property name="vendorName" type="java.lang.String"/>
+                <form-property name="serviceDescription" type="java.lang.String"/>
+                <form-property name="paymentAmount" type="java.lang.Double"/>
+                <form-property name="strPaymentAmount" type="java.lang.String"/>
+           </form-bean>
+    </form-beans>
+
+    <!-- ========== Action Mapping Definitions ============================== -->
+    <action-mappings> 
+       
+       <action path="/arraList" type="edu.mit.coeuslite.arra.action.ArraListAction"  
+            scope="request" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraListTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       <action path="/getClosedReports" type="edu.mit.coeuslite.arra.action.ArraListAction"  
+            scope="request" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraPastCycleListTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>       
+       <action path="/getArraDetails" type="edu.mit.coeuslite.arra.action.ArraAwardDetailsAction"  
+            scope="request" name="arraAwardDetailsForm" validate="true">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraDetailsTile.jsp"/>
+        <forward name="noRight" path="/arraList.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/copyArraDetails" type="edu.mit.coeuslite.arra.action.ArraAwardMarkIncompleteAction"  
+            scope="request" name="arraAwardDetailsForm" validate="true">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraDetailsTile.jsp"/>
+       </action>
+       
+        <action path="/fetchArraDetails" type="edu.mit.coeuslite.arra.action.ArraAwardDetailsAction"  
+            scope="request" name="arraAwardDetailsForm" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraDetailsTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/saveArraAwardDetails" type="edu.mit.coeuslite.arra.action.ArraAwardDetailsAction"  
+            scope="request" name="arraAwardDetailsForm" validate="true" input="/coeuslite/mit/arra/tiles/clArraDetailsTile.jsp">
+         <forward name="success" path="/fetchArraDetails.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/getArraVendors" type="edu.mit.coeuslite.arra.action.ArraAwardVendorsAction"  
+            scope="session" name="arraVendorDynaBeansList" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraVendorsTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/addVendors" type="edu.mit.coeuslite.arra.action.ArraAwardVendorsAction"  
+               scope="session" name="arraVendorDynaBeansList" validate="false">
+           <forward name="success" path="/coeuslite/mit/arra/tiles/clArraVendorsTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/removeArraVendorDetails" type="edu.mit.coeuslite.arra.action.ArraAwardVendorsAction"  
+               scope="session" name="arraVendorDynaBeansList" validate="false">
+           <forward name="success" path="/coeuslite/mit/arra/tiles/clArraVendorsTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/getArraSubcontracts" type="edu.mit.coeuslite.arra.action.ArraAwardSubcontractsAction"  
+            scope="request" name="arraAwardSubcontractForm" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraSubcontractTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/submitARRA" type="edu.mit.coeuslite.arra.action.ArraAwardSubmitAction"  
+            scope="request" name="arraAwardDetailsForm" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraSubmitTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/markInComplete" type="edu.mit.coeuslite.arra.action.ArraAwardMarkIncompleteAction"  
+            scope="request" name="arraAwardDetailsForm" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraMarkIncompleteTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+              
+        <action path="/markComplete" type="edu.mit.coeuslite.arra.action.ArraAwardSubmitAction"  
+            scope="request" name="arraAwardDetailsForm" validate="false">
+        <forward name="success" path="/fetchArraDetails.do"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/getSubcontractDetails" type="edu.mit.coeuslite.arra.action.ArraAwdSubcontractDetailsAction"  
+            scope="session" name="subcontractDynaBeansList" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraSubcontractDetTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/addSubcontractVendor" type="edu.mit.coeuslite.arra.action.ArraAwdSubcontractDetailsAction"  
+            scope="session" name="subcontractDynaBeansList" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraSubcontractDetTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/addHighlyCompIndividual" type="edu.mit.coeuslite.arra.action.ArraAwdSubcontractDetailsAction"  
+            scope="session" name="subcontractDynaBeansList" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraSubcontractDetTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/removeVendorDetails" type="edu.mit.coeuslite.arra.action.ArraAwdSubcontractDetailsAction"  
+            scope="session" name="subcontractDynaBeansList" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraSubcontractDetTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/removeIndivdualDetails" type="edu.mit.coeuslite.arra.action.ArraAwdSubcontractDetailsAction"  
+            scope="session" name="subcontractDynaBeansList" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraSubcontractDetTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+       <action path="/saveSubcontractDetails" type="edu.mit.coeuslite.arra.action.ArraAwdSubcontractDetailsAction"  
+            scope="session" name="subcontractDynaBeansList" validate="true" input="/coeuslite/mit/arra/tiles/clArraSubcontractDetTile.jsp" >
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraSubcontractDetTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+       
+        <action path="/saveVendorDetails" type="edu.mit.coeuslite.arra.action.ArraAwardVendorsAction"  
+                scope="session" name="arraVendorDynaBeansList" validate="true" input="/coeuslite/mit/arra/tiles/clArraVendorsTile.jsp">
+            <forward name="success" path="/coeuslite/mit/arra/tiles/clArraVendorsTile.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+        </action>
+        
+        <action path="/getArraPrintDetails" type="edu.mit.coeuslite.arra.action.ArraPrintAction"  
+                scope="session" name="arraAwardDetailsForm" validate="false" >
+            <forward name="success" path="/coeuslite/mit/arra/tiles/clArraPrintTile.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+        </action>
+        <action path="/printArraReport" type="edu.mit.coeuslite.arra.action.ArraPrintAction"  
+                scope="session" name="arraAwardDetailsForm" validate="false" >
+            <forward name="success" path="/coeuslite/mit/arra/tiles/clArraPrintTile.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+        </action>
+        <action path="/printArraReportForVersion" type="edu.mit.coeuslite.arra.action.ArraPrintAction"  
+                scope="session" name="arraAwardDetailsForm" validate="false" >
+            <forward name="success" path="/coeuslite/mit/arra/tiles/clArraPrintTile.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+        </action>
+        
+        <action path="/printArra" type="edu.mit.coeuslite.arra.action.ArraPrintAction"  
+                scope="session" name="arraAwardDetailsForm" validate="false">
+            <forward name="success" path="/coeuslite/mit/arra/tiles/clArraDetailsTile.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>   
+       </action>
+       <action path="/submitCompletedArra" type="edu.mit.coeuslite.arra.action.ArraAwardSubmittedAction"  
+            scope="request" name="arraAwardDetailsForm" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/tiles/clArraSubmitCompletedTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+        <action path="/openXml" type="edu.mit.coeuslite.arra.action.ArraAwardSubmittedAction"  
+                scope="session" name="arraAwardDetailsForm" validate="false">
+            <forward name="success" path="/fetchArraDetails.do"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>   
+        </action>
+        <action path="/getPastReports" type="edu.mit.coeuslite.arra.action.ArraAwdPastReportAction"  
+                scope="session" name="arraAwardDetailsForm" validate="false">
+            <forward name="success" path="/coeuslite/mit/arra/tiles/clArraPastReportTile.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>   
+       </action>
+       <action path="/getArraDetailsForVersion" type="edu.mit.coeuslite.arra.action.ArraAwdPastReportAction"  
+            scope="session" name="arraAwardPastReport" validate="false">
+        <forward name="success" path="/coeuslite/mit/arra/clArraDetailsForVersion.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>         
+       </action>
+    </action-mappings>
+  
+    <!-- ========== Message Resources Definitions =========================== -->
+    <message-resources parameter="ArraMessages" key="arra" />
+    
+</struts-config>

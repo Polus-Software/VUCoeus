@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<SubHeader>
+	<Sub_Header>
+		<Sub_Header_Id>SH004</Sub_Header_Id>
+		<Sub_Header_Name>All Proposals</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/proposalList.do?PROPOSAL_TYPE=ALL_PROPOSALS_SEARCH&#38;Menu_Id=003&#38;SUBHEADER_ID=SH004</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>001</Sub_Header_Id>
+		<Sub_Header_Name>Proposals In Progress</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/proposalList.do?PROPOSAL_TYPE=PROPOSAL_INPROGRESS&#38;Menu_Id=003&#38;SUBHEADER_ID=001</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH002</Sub_Header_Id>
+		<Sub_Header_Name>Create New Proposal</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/getUnitDetails.do?SUBHEADER_ID=SH002</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH003</Sub_Header_Id>
+		<Sub_Header_Name>Proposal Search</Sub_Header_Name>
+		<Search_Window>true</Search_Window>
+		<Link>/generalProposalSearch.do?type=proposalSearch&#38;search=true&#38;searchName=ALL_PROPOSALDEVSEARCHNOROLES&#38;SUBHEADER_ID=SH003</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH005</Sub_Header_Id>
+		<Sub_Header_Name>Grants.gov Opportunity Search</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/opportunitySearchAction.do?action=searchPage</Link>
+	</Sub_Header>
+</SubHeader>	
+
+
+

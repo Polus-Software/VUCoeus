@@ -1,0 +1,25 @@
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"     
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+   <service name="UtilityService" provider="java:RPC">     
+    <parameter name="className" value="edu.mit.coeus.ws.utils.Utility"/>     
+    <parameter name="allowedMethods" value="*"/> 
+    <beanMapping qname="utilsbean:InboxPtlBean" 
+            xmlns:utilsbean="http://coeus.mit.edu/ws/utils/bean" 
+            languageSpecificType="java:edu.mit.coeus.ws.utils.bean.InboxPtlBean"/>
+    <arrayMapping qname="utilsbeanarray:ArrayOfInboxPtlBean" 
+            xmlns:utilsbeanarray="http://coeus.mit.edu/ws/utils/beanarray"
+             languageSpecificType="java:edu.mit.coeus.ws.utils.bean.InboxPtlBean[]"
+		innerType="utilsbean:InboxPtlBean" 
+                xmlns:utilsbean="http://coeus.mit.edu/ws/utils/bean"
+             encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/> 
+  </service> 
+<!--<globalConfiguration>
+  <requestFlow>
+    <handler name="track" type="java:edu.mit.coeus.ws.security.AuthWSClient">
+    </handler>
+  </requestFlow>
+ </globalConfiguration>-->
+
+
+
+</deployment>

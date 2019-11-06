@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Document : document.xml Created on : March 2, 2006, 5:27 PM Author : 
+	sharathk Description: This XML is used to store the header/footer information 
+	for various documents. The Data values stored are in hexa-decimal format 
+	without the leading "0X" -->
+
+<documentTypes>
+
+	<document type="pdf" mime-type="application/pdf" description="Portable Document Format">
+		<match-list>
+			<match identifier="Header" value="25,50,44,46" />
+		</match-list>
+	</document>
+
+	<document type="doc" mime-type="application/msword"
+		description="Microsoft Word Document">
+		<match-list>
+			<match identifier="Header" value="D0,CF,11,E0,A1,B1,1A,E1" />
+			<match identifier="Footer" value="4D,53,57,6F,72,64,44,6F,63" />
+		</match-list>
+	</document>
+	<!--Case 4515 - START -->
+	<!-- Case COEUSQA-2405 - updated mime-types for microsoft office 2007 - 
+		START -->
+	<document type="docx"
+		mime-type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+		description="Microsoft Word 2007 Document">
+		<match-list>
+			<match identifier="Header" value="50,4B,03,04,14,00,06,00" />
+			<match identifier="Footer" value="77,6F,72,64" />
+		</match-list>
+	</document>
+
+	<document type="xlsx"
+		mime-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+		description="Microsoft Excel 2007 Document">
+		<match-list>
+			<match identifier="Header" value="50,4B,03,04" />
+			<match identifier="Footer" value="78,6C,2F,77,6F,72,6B,62,6F,6F,6B" />
+		</match-list>
+	</document>
+
+	<document type="xlsx"
+		mime-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+		description="Microsoft Excel 2007 Worksheet">
+		<match-list>
+			<match identifier="Header" value="50,4B,03,04" />
+			<match identifier="Footer" value="78,6C,2F,77,6F,72,6B,73,68,65,65,74,73" />
+		</match-list>
+	</document>
+	<!-- Case COEUSQA-2405 - END -->
+	<!--Case 4515 - END -->
+	<document type="xls" mime-type="application/vnd.ms-excel"
+		description="Microsoft Excel">
+		<match-list>
+			<match identifier="Header" value="D0,CF,11,E0,A1,B1,1A,E1,00" />
+		</match-list>
+	</document>
+	<!-- Case COEUSQA-2687 - START -->
+	<document type="xls" mime-type="application/excel"
+		description="Microsoft Excel">
+		<match-list>
+			<match identifier="Header" value="D0,CF,11,E0,A1,B1,1A,E1" />
+			<match identifier="Header"
+				value="57,00,6F,00,72,00,6B,00,62,00,6F,00,6F,00,6B" />
+		</match-list>
+	</document>
+	<document type="xlsm"
+		mime-type="application/vnd.ms-excel.sheet.macroEnabled.12"
+		description="Office Excel 2007 macro-enabled workbook">
+		<match-list>
+			<match identifier="Header" value="50,4b,03,04,14,00,06,00,08,00,00,00,21,00" />
+		</match-list>
+	</document>
+	<document type="xlsm"
+		mime-type="application/vnd.ms-excel.sheet.macroEnabled.12"
+		description="Office Excel 2007 macro-enabled workbook">
+		<match-list>
+			<match identifier="Header"
+				value="D0,CF,11,E0,A1,B1,1A,E1,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,3E,00,03,00,FE,FF,09,00,06,00,00,00,00,00,00,00,00,00,00,00" />
+		</match-list>
+	</document>
+	<document type="ppt" mime-type="application/powerpoint"
+		description="Microsoft PowerPoint">
+		<match-list>
+			<match identifier="Header" value="D0,CF,11,E0,A1,B1,1A,E1" />
+			<match identifier="Footer"
+				value="50,00,6F,00,77,00,65,00,72,00,50,00,6F,00,69,00,6E,00,74" />
+		</match-list>
+	</document>
+	<!-- Case COEUSQA-2687 - END -->
+	<document type="xls" mime-type="application/excel"
+		description="Microsoft Excel">
+		<match-list>
+			<match identifier="Header" value="D0,CF,11,E0,A1,B1,1A,E1" />
+			<match identifier="Footer"
+				value="57,00,6F,00,72,00,6B,00,62,00,6F,00,6F,00,6B" />
+		</match-list>
+	</document>
+	<!-- Case 4521 -->
+	<document type="xls" mime-type="application/excel"
+		description="Microsoft Excel">
+		<match-list>
+			<match identifier="Header" value="D0,CF,11,E0,A1,B1,1A,E1" />
+			<match identifier="Footer" value="57,6F,72,6B,73,68,65,65,74" />
+		</match-list>
+	</document>
+	<!--Case 4515 - START -->
+	<!-- Case COEUSQA-2405 - START -->
+	<document type="pptx"
+		mime-type="application/vnd.openxmlformats-officedocument.presentationml.presentation"
+		description="Microsoft 2007 PowerPoint">
+		<match-list>
+			<match identifier="Header" value="50,4B,03,04" />
+			<match identifier="Footer" value="00,70,70,74,2F" />
+		</match-list>
+	</document>
+	<!-- Case COEUSQA-2405 - END -->
+	<!--Case 4515 - END -->
+	<document type="mdb" mime-type="application/msaccess"
+		description="Microsoft Access">
+		<match-list>
+			<match identifier="Header"
+				value="00,01,00,00,53,74,61,6E,64,61,72,64,20,4A,65,74,20,44,42" />
+		</match-list>
+	</document>
+
+	<document type="ppt" mime-type="application/powerpoint"
+		description="Microsoft PowerPoint">
+		<match-list>
+			<match identifier="Header" value="D0,CF,11,E0,A1,B1,1A,E1" />
+			<match identifier="Header"
+				value="50,00,6F,00,77,00,65,00,72,00,50,00,6F,00,69,00,6E,00,74" />
+		</match-list>
+	</document>
+
+	<document type="doc" mime-type="application/octet-stream"
+		description="Microsoft Office Document">
+		<match-list>
+			<match identifier="Header" value="D0,CF,11,E0,A1,B1,1A,E1" />
+		</match-list>
+	</document>
+
+	<document type="rtf" mime-type="application/rtf" description="Rich Text Format">
+		<match-list>
+			<match identifier="Header" value="7B,5C,72,74,66,31" />
+		</match-list>
+	</document>
+
+	<document type="gif" mime-type="image/gif" description="GIF Image">
+		<match-list>
+			<match identifier="Header" value="47,49,46,38,37,61" />
+		</match-list>
+	</document>
+
+	<document type="dif" mime-type="image/gif" description="GIF Image">
+		<match-list>
+			<match identifier="Header" value="47,49,46,38,39,61" />
+		</match-list>
+	</document>
+
+	<document type="png" mime-type="image/png" description="PNG Image">
+		<match-list>
+			<match identifier="Header" value="89,50,4E,47,0D,0A,1A,0A" />
+		</match-list>
+	</document>
+
+	<document type="jpg" mime-type="image/jpeg" description="JPEG/JFIF graphics file">
+		<match-list>
+			<match identifier="Header" value="FF,D8,FF,E0" />
+			<match identifier="Header" value="4A,46,49,46,00" />
+		</match-list>
+	</document>
+
+	<document type="jpg" mime-type="image/jpg"
+		description="Digital camera JPG using Exchangeable Image File Format">
+		<match-list>
+			<match identifier="Header" value="FF,D8,FF,E1" />
+			<match identifier="Header" value="45,78,69,66,00" />
+		</match-list>
+	</document>
+
+	<document type="mpg" mime-type="video/mpeg" description="MPEG video file">
+		<match-list>
+			<match identifier="Header" value="00,00,01" />
+		</match-list>
+	</document>
+
+	<document type="rm" mime-type="application/vnd.rn-realmedia"
+		description="Real media file">
+		<match-list>
+			<match identifier="Header" value="2E,52,4D,46" />
+		</match-list>
+	</document>
+
+	<document type="asf" mime-type="video/x-ms-asf"
+		description="Microsoft Media Audio/Video File (Advanced Streaming Format)">
+		<match-list>
+			<match identifier="Header"
+				value="30,26,B2,75,8E,66,CF,11,A6,D9,00,AA,00,62,CE,6C" />
+		</match-list>
+	</document>
+
+	<document type="mp3" mime-type="audio/mpeg3" description="MPEG/MP3 audio file">
+		<match-list>
+			<match identifier="Header" value="49,44,33" />
+		</match-list>
+	</document>
+
+	<document type="zip" mime-type="application/zip" description="PKZIP archive file">
+		<match-list>
+			<match identifier="Header" value="50,4B,03,04" />
+		</match-list>
+	</document>
+
+	<document type="avi" mime-type="video/avi"
+		description="Resource Interchange File Format">
+		<match-list>
+			<match identifier="Header" value="52,49,46,46" />
+			<match identifier="Footer" value="41,56,49,20,4C,49,53,54" />
+		</match-list>
+	</document>
+
+	<document type="vsd" mime-type="application/visio"
+		description="Visio Drawing">
+		<match-list>
+			<match identifier="Header"
+				value="D0,CF,11,E0,A1,B1,1A,E1,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,3E,00,03,00,FE,FF,09,00,06,00,00,00,00,00,00,00,00,00,00,00" />
+		</match-list>
+	</document>
+
+	<document type="xfd" mime-type="application/xfdl" description="Pure Edge Form">
+		<match-list>
+			<match identifier="Header"
+				value="61,70,70,6C,69,63,61,74,69,6F,6E,2F,78,2D,78,66,64,6C,3B" />
+		</match-list>
+	</document>
+	<document type="txt" mime-type="text/plain" description="Plain Text Document" />
+	<document type="xml" mime-type="application/xml" description="XML document">
+		<match-list>
+			<match identifier="Header" value="3C,3F,78,6D,6C,20,76,65,72,73,69,6F,6E,3D" />
+		</match-list>
+	</document>
+	<document type="xsl" mime-type="text/xml" description="XSL document" />
+</documentTypes>

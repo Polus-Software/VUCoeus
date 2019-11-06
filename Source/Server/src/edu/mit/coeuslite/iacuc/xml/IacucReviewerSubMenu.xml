@@ -1,0 +1,63 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<SubHeader>
+	<!--Added for the case#3282/ 3284 - Reviewer Views and Comments: -start -->
+	<Sub_Header>
+		<Sub_Header_Id>SH001</Sub_Header_Id>
+		<Sub_Header_Name>All Protocols</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link> /iacucList.do?IACUC_TYPE=ALL_IACUC_SEARCH&#38;Menu_Id=008</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH002</Sub_Header_Id>
+		<Sub_Header_Name>Pending Protocols</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link> /iacucList.do?IACUC_TYPE=PENDINGIACUCSEARCH&#38;Menu_Id=008</Link>
+	</Sub_Header>
+	<!-- COEUSQA:3050 - IACUC - add Pending PI Action - Start -->
+	<Sub_Header>
+		<Sub_Header_Id>SH003</Sub_Header_Id>
+		<Sub_Header_Name>Pending PI Action</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/iacucPendingPIList.do?IACUC_TYPE=PENDING_PI_ACTION_SEARCH&#38;Menu_Id=008</Link>
+	</Sub_Header>
+	<!-- COEUSQA:3050 - End -->
+
+	<Sub_Header>
+		<Sub_Header_Id>SH004</Sub_Header_Id>
+		<Sub_Header_Name>Amendments &#38; Renewals</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/iacucList.do?IACUC_TYPE=AMENDS_RENEWALS_IACUC_SEARCH&#38;Menu_Id=008</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH006</Sub_Header_Id>
+		<Sub_Header_Name>Create New Protocol</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link> /getIacucData.do?NEW_PROTOCOL=NEW_PROTOCOL&#38;Menu_Id=008</Link>
+	</Sub_Header>
+
+	<Sub_Header>
+		<Sub_Header_Id>SH005</Sub_Header_Id>
+		<Sub_Header_Name>Protocol Search</Sub_Header_Name>
+		<Search_Window>true</Search_Window>
+		<Link>
+			/iacucSearch.do?type=Iacuc&#38;search=true&#38;searchName=ALL_IACUC_PROTOCOL_SEARCH</Link>
+	</Sub_Header>
+	<!--Added for thethe case3282/ 3284 - Reviewer Views and Comments: -end -->
+
+	<Sub_Header>
+		<Sub_Header_Id>SH007</Sub_Header_Id>
+		<Sub_Header_Name>All My Reviews</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link> /iacucList.do?IACUC_TYPE=REVIEWER_IACUC_SEARCH&#38;Menu_Id=008</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH008</Sub_Header_Id>
+		<Sub_Header_Name>Schedules</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>
+			/iacucList.do?IACUC_TYPE=IACUC_REVIEWER_SCHEDULE_SEARCH&#38;Menu_Id=008</Link>
+	</Sub_Header>
+</SubHeader>	
+
+
+

@@ -1,0 +1,110 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!-- This is a new Menu for ProposalApproval -->
+
+<Menu>
+	<MenuItem>
+		<Menu_Id>P001</Menu_Id>
+		<Menu_Name>Proposal Summary</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PROPOSALSUMMARY</FieldName>
+		<Link>/displayProposal.do</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>P002</Menu_Id>
+		<Menu_Name>Full Proposal Details</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PROPOSAL_DETAILS</FieldName>
+		<Link>/getGeneralInfo.do</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<!-- Code added for Case#2785 - Protocol Routing - starts -->
+	<MenuItem>
+		<Menu_Id>P006</Menu_Id>
+		<Menu_Name>Protocol Summary</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PROTOCOLSUMMARY</FieldName>
+		<Link>/displayProtocol.do?PAGE=G</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>P007</Menu_Id>
+		<Menu_Name>Protocol Details</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PROTOCOL_DETAILS</FieldName>
+		<Link>/getProtocolData.do?SEARCH_ACTION=SEARCH_ACTION&#38;PAGE=G</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<!-- Code added for Case#2785 - Protocol Routing - ends -->
+	<MenuItem>
+		<Menu_Id>P004</Menu_Id>
+		<Menu_Name>Approve</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>APPROVE</FieldName>
+		<Link>/getApprovalActions.do?actionMode=approve</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id>P005</Menu_Id>
+		<Menu_Name>Reject</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>REJECT</FieldName>
+		<Link>/getApprovalActions.do?actionMode=reject</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<!-- COEUSQA-1433 - Allow Recall from Routing - Start -->
+	<MenuItem>
+		<Menu_Id>P010</Menu_Id>
+		<Menu_Name>Recall</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>RECALL</FieldName>
+		<Link>/getApprovalActions.do?actionMode=recall</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<!-- COEUSQA-1433 - Allow Recall from Routing - Start -->
+	<MenuItem>
+		<Menu_Id>P008</Menu_Id>
+		<Menu_Name>Protocol Summary</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>IACUCPROTOCOLSUMMARY</FieldName>
+		<Link>/displayIacuc.do?PAGE=G</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>P009</Menu_Id>
+		<Menu_Name>Protocol Details</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>IACUC_PROTOCOL_DETAILS</FieldName>
+		<Link>/getIacucData.do?SEARCH_ACTION=SEARCH_ACTION&#38;PAGE=G</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>P015</Menu_Id>
+		<Menu_Name>Show Previous Submission</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PREVIOUS_SUBMISSION</FieldName>
+		<Link>/approvalRoute.do?pageNav=previous</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+</Menu>

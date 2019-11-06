@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- 
+    JNLP File for Coeus Application 
+    Java web start uses this file to configure each client side jvm
+--> 
+
+<jnlp 
+  spec="1.0+" 
+  codebase="<server.at.your.place where jnlp file resides>" 
+  href="coeus.jnlp"> 
+  <!-- This sesction be used to differntiate dev, test and prod instances -->
+  <information> 
+    <title>Coeus 4.5</title> 
+    <vendor>Massachusetts Institute of Technology</vendor> 
+    <homepage href="CoeusWebStart.htm"/> 
+    <description>Coeus 4.5 - Production</description> 
+    <description kind="short">Coeus 4.5 - Production</description> 
+	<icon href="coeus.gif"/>
+    <icon kind="splash" href="coeus_splash.jpg"/>
+    <shortcut online="false">
+      <desktop/>
+    </shortcut>
+  </information> 
+  <security> 
+      <all-permissions/> 
+  </security> 
+  <resources> 
+    <j2se version="1.5*"  href="http://java.sun.com/products/autodl/j2se" initial-heap-size="100M" max-heap-size="200M"/> 
+    <jar href="brokers.jar"/> 
+    <jar href="admin.jar"/>
+    <jar href="commonlib.jar"/> 
+    <jar href="award.jar"/>
+    <jar href="centraladmin.jar"/>
+    <jar href="proposal.jar"/>
+    <jar href="irb.jar"/> 
+    <jar href="iacuc.jar"/> 
+    <jar href="propdev.jar"/> 
+    <jar href="resources.jar"/>
+    <jar href="fop.jar"/> 
+    <jar href="mapsrules.jar"/>
+    <jar href="s2s.jar"/>
+    <jar href="avalon-framework-4.2.0.jar"/> 
+    <jar href="batik-all-1.6.jar"/> 
+    <jar href="poi-3.8-20120326.jar"/> 
+    <jar href="questionnaire.jar"/>
+    <jar href="coeusmail.jar"/>
+    <jar href="routing.jar"/>
+    <jar href="umdnjcoeus.jar"/>
+    <!-- LOG4J IS USED TO CREATE A ROLLING LOG ON CLIENT MACHINE TO LOG FATAL ERROR -->
+    <jar href="jsr173_1.0_api.jar" />
+    <jar href="xbean_xpath.jar" />
+    <jar href="xbean.jar" />
+    <jar href="personalization_swing.jar" />
+    <jar href="coeus-personalization.jar"/>
+  </resources> 
+  <application-desc main-class="CoeusApp"/> 
+</jnlp> 
+
+

@@ -1,0 +1,1 @@
+jarsigner -tsa http://sha256timestamp.ws.symantec.com/sha256/timestamp -keystore coeus2016_signer.keystore C:\Coeus6.0.2\Build\6.0.2_20161024_1358\d\coeus.war coeus_signer.keystore

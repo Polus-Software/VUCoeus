@@ -1,0 +1,62 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<SubHeader>
+	<!--Added for the case#3282/ 3284 - Reviewer Views and Comments: -start -->
+	<Sub_Header>
+		<Sub_Header_Id>SH001</Sub_Header_Id>
+		<Sub_Header_Name>All Protocols</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link> /protocolList.do?PROTOCOL_TYPE=ALL_PROTO_SEARCH&#38;Menu_Id=002</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH002</Sub_Header_Id>
+		<Sub_Header_Name>Pending Protocols</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>
+			/protocolList.do?PROTOCOL_TYPE=PENDINGPROTOCOLSEARCH&#38;Menu_Id=002</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH003</Sub_Header_Id>
+		<Sub_Header_Name>Pending PI Action</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/pendingPIList.do?PROTOCOL_TYPE=PENDING_PI_ACTION_SEARCH&#38;Menu_Id=002</Link>
+	</Sub_Header>
+
+	<Sub_Header>
+		<Sub_Header_Id>SH004</Sub_Header_Id>
+		<Sub_Header_Name>Amendments &#38; Renewals</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/protocolList.do?PROTOCOL_TYPE=AMENDS_RENEWALS_PROTO_SEARCH&#38;Menu_Id=002 </Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH006</Sub_Header_Id>
+		<Sub_Header_Name>Create New Protocol</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link> /getProtocolData.do?NEW_PROTOCOL=NEW_PROTOCOL&#38;Menu_Id=002</Link>
+	</Sub_Header>
+
+	<Sub_Header>
+		<Sub_Header_Id>SH005</Sub_Header_Id>
+		<Sub_Header_Name>Protocol Search</Sub_Header_Name>
+		<Search_Window>true</Search_Window>
+		<Link>
+			/protocolSearch.do?type=Protocol&#38;search=true&#38;searchName=ALL_PROTOCOL_SEARCH</Link>
+	</Sub_Header>
+	<!--Added for thethe case3282/ 3284 - Reviewer Views and Comments: -end -->
+	<Sub_Header>
+		<Sub_Header_Id>SH007</Sub_Header_Id>
+		<Sub_Header_Name>All My Reviews</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>
+			/protocolList.do?PROTOCOL_TYPE=REVIEWER_PROTOCOL_SEARCH&#38;Menu_Id=002</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH008</Sub_Header_Id>
+		<Sub_Header_Name>Schedules</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>
+			/protocolList.do?PROTOCOL_TYPE=REVIEWER_SCHEDULE_SEARCH&#38;Menu_Id=002</Link>
+	</Sub_Header>
+</SubHeader>	
+
+
+

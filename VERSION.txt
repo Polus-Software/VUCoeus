@@ -1,0 +1,5 @@
+Current build version:
+
+6.0
+
+Update VERSION constant in edu.mit.coeus.gui.CoeusAppletMDIForm

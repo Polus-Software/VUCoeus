@@ -1,0 +1,487 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<Menu>
+	<MenuItem>
+		<Menu_Id> AC001</Menu_Id>
+		<Menu_Name> *General Info</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>GENERAL_INFO</FieldName>
+		<Link>/getIacucData.do?PAGE=G</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC017</Menu_Id>
+		<Menu_Name> *Organization</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>ORGANIZATION</FieldName>
+		<Link>/getIacucOrganization.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC002</Menu_Id>
+		<Menu_Name> *Investigators / Study Personnel</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>INVESTIGATOR</FieldName>
+		<Link>/getIacucInvesKeyPersons.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC009</Menu_Id>
+		<Menu_Name> Correspondents</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>CORRESPONDENTS</FieldName>
+		<Link>/getIacucCorrespondents.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC004</Menu_Id>
+		<Menu_Name> *Areas of Research</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>AREAS_OF_RESEARCH</FieldName>
+		<Link>/getIacucData.do?PAGE=A</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC005</Menu_Id>
+		<Menu_Name> Funding Source</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>FUNDING_SOURCE</FieldName>
+		<Link>/getIacucData.do?PAGE=F</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<!--<MenuItem> <Menu_Id> 006</Menu_Id> <Menu_Name>Subjects</Menu_Name> <Image_Path></Image_Path> 
+		<OnLoadImage></OnLoadImage> <FieldName>VULNERABLE_SUBJECTS</FieldName> <Link>/getIacucData.do?PAGE=V</Link> 
+		<Group> 1 </Group> <visible> true</visible> </MenuItem> -->
+	<MenuItem>
+		<Menu_Id> AC032</Menu_Id>
+		<Menu_Name>Species / Groups</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>SPECIES_PROCEDURES</FieldName>
+		<Link>/getIacucProtoSpecies.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC034</Menu_Id>
+		<Menu_Name>Procedures</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>STUDY_GROUPS</FieldName>
+		<Link>/getStudyGroups.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<!-- <MenuItem> <Menu_Id> AC033</Menu_Id> <Menu_Name>Scientific Justification</Menu_Name> 
+		<Image_Path></Image_Path> <OnLoadImage></OnLoadImage> <FieldName>SCIENTIFIC_JUSTIFICATION</FieldName> 
+		<Link>/getScientificJustifications.do</Link> <Group> 1 </Group> <visible> 
+		true</visible> </MenuItem> -->
+	<MenuItem>
+		<Menu_Id> AC035</Menu_Id>
+		<Menu_Name>Scientific Justification</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>EXCEPTIONS</FieldName>
+		<Link>/getIacucProtoExceptions.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC036</Menu_Id>
+		<Menu_Name>Alternative Search</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>ALTERNATIVE_SEARCH</FieldName>
+		<Link>/getIacucProtoAlternativeSearch.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC007</Menu_Id>
+		<Menu_Name> Special Review</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>SPECIAL_REVIEW</FieldName>
+		<Link>/getIacucData.do?PAGE=S</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC016</Menu_Id>
+		<Menu_Name> Other Identifiers</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>REFERENCES</FieldName>
+		<Link>/getIacucReferenceAction.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> AC015</Menu_Id>
+		<Menu_Name> Notes </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>NOTESSUMMARY</FieldName>
+		<Link>/getIacucNotes.do?page=N</Link>
+		<Group> 1 </Group>
+		<visible>true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>AC023</Menu_Id>
+		<Menu_Name>Others</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>OTHERS</FieldName>
+		<Link>/getIacucGroups.do</Link>
+		<Group>1</Group>
+		<visible>true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> AC008</Menu_Id>
+		<Menu_Name>Attachments</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>UPLOAD_ATTACHMENTS</FieldName>
+		<Link>/getIacucData.do?PAGE=U</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id>AC024</Menu_Id>
+		<Menu_Name>Other Attachments</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>OTHER_ATTACHMENTS</FieldName>
+		<Link>/getIacucAllOtherAttachments.do</Link>
+		<Group>2</Group>
+		<visible>true</visible>
+	</MenuItem>
+
+	<!--COEUSQA-1724_ Implement validation based on rules in protocols_Start -->
+	<MenuItem>
+		<Menu_Id>AC033</Menu_Id>
+		<Menu_Name>Validate</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>VALIDATE</FieldName>
+		<Link>/iacucProtocolValidationType.do?ACTION=V</Link>
+		<Group>3</Group>
+		<visible>true</visible>
+	</MenuItem>
+	<!--COEUSQA-1724_ Implement validation based on rules in protocols_End -->
+
+	<MenuItem>
+		<Menu_Id>AC011</Menu_Id>
+		<Menu_Name>Submit to IACUC</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>ACTIONS</FieldName>
+		<Link>/getAllIacucActions.do?ACTION_CODE=A</Link>
+		<Group>3</Group>
+		<visible>true</visible>
+	</MenuItem>
+	<!--Code modified for Case#2785 - Protocol Routing - starts -->
+	<MenuItem>
+		<Menu_Id>AC026</Menu_Id>
+		<Menu_Name>Approval Routing</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>APPROVALROUTING</FieldName>
+		<Link>/approvalRoute.do?DisplayType=Boxed</Link>
+		<Group> 3 </Group>
+		<visible>false</visible>
+	</MenuItem>
+	<!-- Code modified for Case#2785 - Protocol Routing - ends -->
+	<MenuItem>
+		<Menu_Id> AC012</Menu_Id>
+		<Menu_Name> Amendments/Renewals History</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>AMENDMENT/RENEWAL</FieldName>
+		<Link>/getIacucAmendmentRenewal.do?page=AR</Link>
+		<Group> 4 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC019</Menu_Id>
+		<Menu_Name>View History</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PROTOCOLACTIONS</FieldName>
+		<Link>/getIacucAction.do</Link>
+		<Group>4</Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC013</Menu_Id>
+		<Menu_Name> Summary </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>AMENDMENTSUMMARY</FieldName>
+		<Link>/getIacucAmendmentRenewal.do?page=A</Link>
+		<Group>4 </Group>
+		<visible> false</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC014</Menu_Id>
+		<Menu_Name> Summary </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>RENEWALSUMMARY</FieldName>
+		<Link>/getIacucAmendmentRenewal.do?page=R</Link>
+		<Group>4  </Group>
+		<visible> false</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC038</Menu_Id>
+		<Menu_Name> Summary </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>RENEWALAMENDMENTSUMMARY</FieldName>
+		<Link>/getIacucAmendmentRenewal.do?page=E</Link>
+		<Group>4  </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<!--Added new menu Item for IACUC new Amendment Type (Continuation/Continuing)- 
+		Start -->
+	<MenuItem>
+		<Menu_Id> AC021</Menu_Id>
+		<Menu_Name> New Amendment </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>NEW AMENDMENT</FieldName>
+		<Link>/getIacucNewAmendment.do?PAGE=NA</Link>
+		<Group> 4 </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> AC039</Menu_Id>
+		<Menu_Name> New Continuation </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>NEW CONTINUATION/CONTINUING REVIEW</FieldName>
+		<Link>/getIacucNewAmendment.do?PAGE=CR</Link>
+		<Group> 4 </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> AC042</Menu_Id>
+		<Menu_Name> New Continuation with Amendment </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>NEW CONTINUATION/CONTINUING REVIEW WITH AMENDMENT</FieldName>
+		<Link>/getIacucNewAmendment.do?PAGE=CA</Link>
+		<Group> 4 </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> AC022</Menu_Id>
+		<Menu_Name> New Renewal </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>NEW RENEWAL</FieldName>
+		<Link>/getIacucNewRenewal.do?PAGE=NR</Link>
+		<Group> 4 </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> AC029</Menu_Id>
+		<!--Added for COEUSQA-3122 IACUC - Rename "New Renewal/Amendment" menu 
+			item - start -->
+		<!--<Menu_Name> New Renewal/Amendment </Menu_Name> -->
+		<Menu_Name> New Renewal with Amendment  </Menu_Name>
+		<!--Added for COEUSQA-3122 IACUC - Rename "New Renewal/Amendment" menu 
+			item - end -->
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>NEW RENEWAL/AMENDMENT</FieldName>
+		<!-- <Link>/getNewRenewal.do?PAGE=NR</Link> -->
+		<!-- Code modified for Case#4330 - Use consistent name for Renewal with 
+			Amendment - start -->
+		<Link>/getIacucNewRenewal.do?PAGE=RA</Link>
+		<!-- Code modified for Case#4330 - Use consistent name for Renewal with 
+			Amendment - end -->
+		<Group> 4 </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> AC040</Menu_Id>
+		<Menu_Name> Summary </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>CONTINUATIONCONTINUINGREVIEWSUMMARY</FieldName>
+		<Link>/getIacucAmendmentRenewal.do?page=C</Link>
+		<Group>4  </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> AC043</Menu_Id>
+		<Menu_Name> Summary </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>CONTINUATIONCONTINUINGREVIEWWITHAMENDMENTSUMMARY</FieldName>
+		<Link>/getIacucAmendmentRenewal.do?page=O</Link>
+		<Group> 4 </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> AC041</Menu_Id>
+		<Menu_Name> Delete Continuation </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>DELETE CONTINUATION/CONTINUING REVIEW</FieldName>
+		<Link>/deleteIacuc.do?PAGE=DA</Link>
+		<Group> 5 </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> AC044</Menu_Id>
+		<Menu_Name> Delete Continuation with Amendment </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>DELETE CONTINUATION/CONTINUING REVIEW WITH AMENDMENT</FieldName>
+		<Link>/deleteIacuc.do?PAGE=DA</Link>
+		<Group> 5 </Group>
+		<visible> false</visible>
+	</MenuItem>
+	<!--Added new menu Item for IACUC new Amendment Type (Continuation/Continuing)- 
+		End -->
+	<MenuItem>
+		<Menu_Id> ACP024</Menu_Id>
+		<Menu_Name>Send Email</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>Email</FieldName>
+		<Link>/iacucMailAction.do?MODULE_CODE=9&#38;IACUC_ACTION_CODE=0</Link>
+		<Group> 5 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC018</Menu_Id>
+		<Menu_Name> Access Permissions</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PROTOCOLROLES</FieldName>
+		<Link>/getIacucRoles.do</Link>
+		<Group> 5 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC025</Menu_Id>
+		<Menu_Name> Delete Protocol </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>DELETE PROTOCOL</FieldName>
+		<Link>/deleteIacuc.do?PAGE=DP</Link>
+		<Group> 5 </Group>
+		<visible> false</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC027</Menu_Id>
+		<Menu_Name> Delete Amendment </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>DELETE AMENDMENT</FieldName>
+		<Link>/deleteIacuc.do?PAGE=DA</Link>
+		<Group> 5 </Group>
+		<visible> false</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC028</Menu_Id>
+		<Menu_Name> Delete Renewal </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>DELETE RENEWAL</FieldName>
+		<Link>/deleteIacuc.do?PAGE=DR</Link>
+		<Group> 5 </Group>
+		<visible> false</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC037</Menu_Id>
+		<Menu_Name> Delete Renewal/Amendment </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>DELETE RENEWAL/AMENDMENT</FieldName>
+		<Link>/deleteIacuc.do?PAGE=DR</Link>
+		<Group> 5 </Group>
+		<visible> false</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> AC010</Menu_Id>
+		<Menu_Name> Copy Protocol </Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>COPYPROTOCOL</FieldName>
+		<!-- COEUSQA:3503 - Protocol Copying - Option to Copy Attachments and Questionnaires 
+			- Start -->
+		<!-- <Link>/copyIacuc.do?PAGE=CP&#38;Menu_Id=002</Link> -->
+		<Link>/getCopyIacuc.do</Link>
+		<!-- COEUSQA:3503 - End -->
+		<Group> 5 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<!-- Case#3091 - IRB - generate a protocol summary pdf -->
+	<MenuItem>
+		<Menu_Id> AC031</Menu_Id>
+		<Menu_Name>Print Summary</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PRINT SUMMARY</FieldName>
+		<Link>/getIacucPrintSummary.do</Link>
+		<Group> 5 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<!-- Case#3091 - End -->
+
+	<MenuItem>
+		<Menu_Id> AC030</Menu_Id>
+		<Menu_Name> Review Comments</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>REVIEWER COMMENTS</FieldName>
+		<Link>/getIacucReviewComments.do</Link>
+		<Group> 6 </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id>ACP021</Menu_Id>
+		<Menu_Name>Forms</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>Protocol Questionnaire</FieldName>
+		<Link>Iacuc Questionnaire</Link>
+		<Group> 7 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+
+	<!-- Moved to Request actions home page as link <MenuItem> <Menu_Id> 011</Menu_Id> 
+		<Menu_Name>Submit for Review</Menu_Name> <Image_Path></Image_Path> <OnLoadImage></OnLoadImage> 
+		<FieldName>SUBMITFORREVIEW</FieldName> <Link>/getSubmitForReview.do?PAGE=SR</Link> 
+		<Group> 5 </Group> <visible> true</visible> </MenuItem> -->
+</Menu>

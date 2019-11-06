@@ -1,0 +1,88 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!-- This is a new Menu for ProtocolApproval -->
+
+<Menu>
+	<MenuItem>
+		<Menu_Id>P001</Menu_Id>
+		<Menu_Name>Back to Inbox</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>BACKTOINBOX</FieldName>
+		<Link>/getInboxMessages.do?messageType=unresolved</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>P002</Menu_Id>
+		<Menu_Name>Protocol Details</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PROTOCOLDETAILS</FieldName>
+		<Link>/getProtocolData.do?SEARCH_ACTION=SEARCH_ACTION&#38;PAGE=G</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>P003</Menu_Id>
+		<Menu_Name>Approval Routing</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>APPROVALROUTING</FieldName>
+		<Link>/approvalRoute.do?DisplayType=Boxed</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id>P004</Menu_Id>
+		<Menu_Name>Approve</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>APPROVE</FieldName>
+		<Link>/getApprovalActions.do?actionMode=approve</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id>P005</Menu_Id>
+		<Menu_Name>Reject</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>REJECT</FieldName>
+		<Link>/getApprovalActions.do?actionMode=reject</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<!-- Added for COEUSQA-3785 : The Recall link should not be displayed on 
+		Left Navigation Bar of the Proposal Summary screen for an Approver - Start -->
+	<MenuItem>
+		<Menu_Id>P010</Menu_Id>
+		<Menu_Name>Recall</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>RECALL</FieldName>
+		<Link>/getApprovalActions.do?actionMode=recall</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<!-- Added for COEUSQA-3785 : The Recall link should not be displayed on 
+		Left Navigation Bar of the Proposal Summary screen for an Approver - End -->
+
+	<!--Added for COEUSDEV - 858 : Add a validation button to proposal summary 
+		in lite (approval screens) for business rules validations - start -->
+	<MenuItem>
+		<Menu_Id>P011</Menu_Id>
+		<Menu_Name>Validation Checks</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>VALIDATION CHECKS</FieldName>
+		<Link>/protocolValidationType.do?ACTION=VC</Link>
+		<Group>0</Group>
+		<visible>true</visible>
+	</MenuItem>
+	<!--Added for COEUSDEV - 858 : Add a validation button to proposal summary 
+		in lite (approval screens) for business rules validations - end -->
+
+</Menu>

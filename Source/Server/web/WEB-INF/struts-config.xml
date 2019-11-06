@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_0.dtd">-->
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+
+  	<form-bean 	name="changePasswordForm"
+           		type="edu.mit.coeuslite.common.form.ChangePasswordForm" />
+
+  	<form-bean	name="getInboxMessagesForm"
+  	 		type="edu.mit.coeus.action.propdev.GetInboxMessagesForm"/>
+
+    	<form-bean	name="ApproveProposalForm"
+  			type="edu.mit.coeus.action.propdev.ApproveProposalForm"/>
+
+    	<form-bean 	name="frmCOIDisclosure"
+    			type="edu.mit.coeus.action.coi.COIDisclosureActionForm"/>
+
+  	<form-bean 	name="frmFinancialEntityDetailsForm"
+  			type="edu.mit.coeus.action.coi.FinancialEntityDetailsActionForm"/>
+
+  	<form-bean 	name="frmNewDisclosure"
+  			type="edu.mit.coeus.action.coi.NewCOIDisclosureActionForm"/> 			
+  			
+  	<form-bean 	name="frmMidYearDisclosure"
+  			type="edu.mit.coeus.action.coi.MidYearDisclosureActionForm"/>  			
+
+  	<form-bean 	name="frmTempProposal"
+  			type="edu.mit.coeus.action.coi.TempProposalActionForm"/>
+
+  	<form-bean 	name="frmAddCOIDisclosure"
+  			type="edu.mit.coeus.action.coi.AddCOIDisclosureActionForm"/>
+
+   	<form-bean 	name="frmAnnualDisclosures"
+   			type="edu.mit.coeus.action.coi.AnnualDisclosuresActionForm"/>
+   			
+   	<!-- Added for CASE #864 -->
+   	<form-bean 	name="frmAnnDiscCertification"
+   			type="edu.mit.coeus.action.coi.AnnDiscCertificationActionForm"/> 
+   	<!-- End added for CASE #864 -->
+   			
+  	<form-bean 	name="loginForm"
+           		type="edu.mit.coeus.action.common.LoginForm" />
+
+   </form-beans>
+  <!-- ========== Global Forward Definitions ============================== -->
+    <global-forwards>
+
+  	<forward	name="failure"
+       			path="/web/ErrorPage.jsp" />
+
+      	<forward   	name="login"
+       			path="/login.do" />
+
+      	<forward   	name="welcome"
+       			path="/web/Welcome.jsp" />
+       			
+      	<forward   	name="welcomeCOI"
+       			path="/web/WelcomeCOI.jsp" /> 
+       			
+      	<forward   	name="changePassword"
+       			path="/web/ChangePassword.jsp" />        			
+
+       	<forward	name="loginCOI"
+       			path="/loginCOI.do?method=Post" />
+
+  	<forward 	name="sessionexpired"
+  			path="/web/InvalidSession.jsp"/>
+
+  	<forward 	name="coidisclosure"
+  			path="/web/COIDisclosure.jsp"/>
+
+   	<forward 	name="exception"
+   			path="/web/ErrorPage.jsp"/>
+   			
+   	<forward 	name="annDiscCertification"
+   			path="/annDiscCertification.do"/>   			
+
+  </global-forwards>
+
+  <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+	<!-- Attributes of the <action> element -->
+	<!-- For other available attributes see the JavaDocs for org.apache.struts.action.ActionMapping -->
+  	<!-- path - The request URI path that is matched to select this mapping. -->
+  	<!-- type - Fully qualified Java class name of the Action implementation class used by this mapping. -->
+  	<!-- name - The name of the form bean defined in the config file that this action will use -->
+  	<!-- unknown - Set to true if this action should be configured as the default for this application -->
+  	<!--           to handle all requests not handled by another action.  -->
+  	<!--           Only one action can be defined as a default within a single application. -->
+  	<!-- scope - Identifier of the scope ("request" or "session" within which the form bean, if any, associated with this action will be created -->
+  	<!-- input - Context-relative path of the input form to which control should be returned if a validation error is encountered -->
+  	<!-- validate - Set to true if the validate() method of the action associated with this mapping should be called. -->
+  	<!-- forward elements - The set of ActionForwards locally associated with this mapping. -->
+
+
+<!--action-mappings Proposal Development and other non-COI -->
+
+        <action path="/ApproveProposalAction"
+		name="ApproveProposalForm"
+            input="/web/ApproveProposal.jsp"
+            type="edu.mit.coeus.action.propdev.ApproveProposalAction"
+            scope="request"
+		validate="true">
+            <forward name="success" path="/MessageApprovalAction.do?action=maps"/>
+            <forward name="failure" path="/web/ErrorPage.jsp"/>
+        </action>
+
+        <action    path="/changePassword"
+                       type="edu.mit.coeuslite.common.action.ChangePasswordAction"
+                       name="changePasswordForm"
+                       input="/coeuslite/mit/irb/tiles/cwPasswordTile.jsp?contentPage=/coeuslite/mit/irb/clChangePassword.jsp"
+                       scope="request">
+                       <forward name="success"	path="/coeuslite/mit/irb/tiles/cwPasswordTile.jsp?contentPage=/coeuslite/mit/irb/clChangePasswordSuccess.jsp" />
+                       <forward name="failure" 	path="/coeuslite/mit/irb/cwErrorPage.jsp" />
+        </action>
+
+        <action    path="/displayProposal"
+        		type="edu.mit.coeus.action.propdev.DisplayProposalAction"
+        		scope="request">
+                	<forward name="success" path="/web/Proposal.jsp" />
+                	<forward name="failure" path="/web/ErrorPage.jsp" />
+        </action>
+        <action    path="/viewBudgetSummary"
+        		type="edu.mit.coeus.action.propdev.ViewBudgetSummaryAction"
+        		scope="request">
+                	<forward name="failure" path="/web/ErrorPage.jsp" />
+        </action>
+
+        <action    path="/displayHumanSubj"
+        		type="edu.mit.coeuslite.common.action.DisplayHumanSubjAction"
+        		scope="request">
+                	<!--<forward name="displayHumanSubj" path="/web/HumanSubjContent.jsp" />-->
+                        <forward name="displayHumanSubj" path="/coeuslite/mit/irb/tiles/cwPasswordTile.jsp?contentPage=/coeuslite/mit/training/clHumanSubjects.jsp" />
+                	<forward name="failure" 	path="/web/ErrorPage.jsp" />
+        </action>
+
+	<action    path="/displayNSFProgAnn"
+			type="edu.mit.coeus.action.nsfProgAnn.DisplayNSFProgAnnAction"
+			scope="request">
+  			<forward name="displayNSFProgAnn" path="/web/NSFProgAnn.jsp" />
+  			<forward name="failure" path="/web/ErrorPage.jsp" />
+  	</action>
+
+	<action    path="/displayNSFProgAnnDets"
+		   	type="edu.mit.coeus.action.nsfProgAnn.DisplayNSFProgAnnDetsAction"
+			scope="request">
+  			<forward name="displayNSFProgAnnDets" path="/web/NSFProgAnnDets.jsp" />
+  			<forward name="failure" path="/web/ErrorPage.jsp" />
+  	</action>
+
+        <action		path="/getInboxMessages"
+                           type="edu.mit.coeus.action.propdev.GetInboxMessagesAction"
+                     	name="getInboxMessagesForm"
+                           scope="request"
+                     	validate="false">
+                           <forward name="unresolved"	path="/web/UnresolvedMessages.jsp"/>
+                           <forward name="resolved"	path="/web/ResolvedMessages.jsp"/>
+                           <forward name="failure"	path="/web/ErrorPage.jsp"/>
+        </action>
+
+        <action path="/GetNarrativeDocument"
+                    	type="edu.mit.coeus.action.propdev.GetNarrativeDocumentAction"
+                    	scope="request">
+              		<forward name="failure" path="/web/ErrorPage.jsp"/>
+        </action>
+
+        <action		path="/login" name="loginForm"
+        		type="edu.mit.coeus.action.common.ValidateUserAction"
+        		scope="request">
+                	<forward name="failure" path="/web/ErrorPage.jsp" />
+        </action>
+
+
+        <action path="/MessageApprovalAction"
+                    	type="edu.mit.coeus.action.propdev.MessageApprovalAction"
+                    	scope="request">
+              		<forward name="success" path="/web/ApprovalRouting.jsp"/>
+              		<forward name="failure" path="/web/ErrorPage.jsp"/>
+        </action>
+
+        <action path="/RefreshProposalAction"
+                    	name="ApproveProposalForm"
+                	type="edu.mit.coeus.action.propdev.RefreshProposalAction"
+                	scope="request"
+                   	validate="false">
+          		<forward name="success" path="/web/ApproveProposal.jsp"/>
+          		<forward name="failure" path="/web/ErrorPage.jsp"/>
+        </action>
+
+        <action path="/updateInboxMessages" type="edu.mit.coeus.action.propdev.UpdateInboxMessagesAction"
+                    name="getInboxMessagesForm"
+                    scope="request"
+                    validate="false">
+                    <forward name="unresolved"	path="/getInboxMessages.do?messageType=unresolved"/>
+                    <forward name="resolved" 	path="/getInboxMessages.do?messageType=resolved"/>
+                    <forward name="failure" 	path="/web/ErrorPage.jsp"/>
+        </action>
+
+	<!-- end non-COI action-mappings -->
+        <!--Begin COI action mappings -->
+	
+	<!-- CASE #1374 Begin -->	
+	<action path="/activateFinEnt" type="edu.mit.coeus.action.coi.FinancialEntityDetailsAction" 
+	name="frmFinancialEntityDetailsForm" scope="request" validate="false">
+		<forward name="success" path="/getFinEntities.do"/>
+		<forward name="toAnnDiscFE" path="/getAnnDiscPendingFEs.do"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+
+	</action>	
+	<!-- CASE #1374 -->
+	
+	<!-- CASE #1374 Set to validate = "true".  Change scope for action form to session -->
+	<action path="/addCOIDisclosure" type="edu.mit.coeus.action.coi.AddCOIDisclosureAction" 
+	name="frmAddCOIDisclosure" input="/web/AddCOIDisclosure.jsp" scope="session" validate="true">
+
+
+		<forward name="success" path="/web/AddCOIDisclosure.jsp"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+
+
+	</action>
+	
+
+	<action path="/addFinEntity" type="edu.mit.coeus.action.coi.AddFinEntityAction" name="frmFinancialEntityDetailsForm" scope="request" validate="false">
+
+			<forward name="success" path="/web/FinancialEntityDetails.jsp"/>
+			<forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+
+
+
+	<!-- CASE #1374 Use actionForm from session scope -->
+	<action path="/addNewCOIDisclosure" type="edu.mit.coeus.action.coi.AddNewCOIDisclosureAction" 
+	name="frmAddCOIDisclosure" input="/web/AddCOIDisclosure.jsp" scope="session" validate="true">
+            <forward name="success" path="/web/DiscSubmitSuccess.jsp"/>
+            <forward name="failure" path="/web/ErrorPage.jsp"/>
+        </action>
+
+    <action path="/annualDisclosures" type="edu.mit.coeus.action.coi.AnnualDisclosuresAction">
+
+	        <forward name="success" path="/web/AnnualDisclosuresMain.jsp"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+        	<forward name="annDisclConfirmation" path="/web/AnnualDisclosureConfirmation.jsp"/>
+        	<forward name="checkUpdateFailure" path="/annualDisclosures.do" />
+	</action>
+
+    <action path="/annualDisclosuresUpdate"
+    		type="edu.mit.coeus.action.coi.AnnualDisclosuresUpdateAction" name="frmAnnualDisclosures" scope="request"
+    		input="/web/AnnualDisclosuresMain.jsp"  validate="true">
+
+	        <forward name="success" path="/annualDisclosures.do"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+		<!-- CASE #855 Begin -->
+        	<forward name="annDisclConfirmation" path="/web/AnnualDisclosureConfirmation.jsp"/>
+        	<forward name="checkUpdateFailure" path="/annualDisclosures.do" />
+        	<!-- CASE #855 End -->
+
+        </action>
+
+    <action path="/annualDisclsFinalUpdate"
+    		type="edu.mit.coeus.action.coi.AnnDisclFinalUpdateAction"
+    		name="frmAnnualDisclosure" scope="request"
+    		input="/web/AnnualDisclosuresMain.jsp"  validate="false">
+
+	        <forward name="success" path="/web/WelcomeCOI.jsp"/>
+                <forward name="failure" path="/web/ErrorPage.jsp"/>
+                <forward name="updactionfail" path="/annualDisclosures.do"/>
+    </action>
+    
+	<!-- CASE #864 Begin -->
+	<action path="/annDiscCertification"
+		type="edu.mit.coeus.action.coi.AnnDiscCertificationAction"
+		name="frmAnnDiscCertification" scope="session"
+		input="/web/AnnDiscCertification.jsp"  validate="true">	
+		<forward name="success" path="/web/AnnDiscCertification.jsp"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+	
+	<action path="/annDiscCertificationValidation"
+		type="edu.mit.coeus.action.coi.AnnDiscCertificationAction"
+		name="frmAnnDiscCertification" scope="session"
+		input="/web/AnnDiscCertification.jsp"  validate="true">
+		
+		<forward name="success" path="/annualDisclosures.do"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+	<!-- CASE #864 End -->    
+
+
+	<action path="/coidisclosure" type="edu.mit.coeus.action.coi.COIDisclosureAction" name="frmCOIDisclosure" scope="request" input="/web/COIDisclosure.jsp" validate="true">
+			<forward name="success" path="/web/COIDisclosure.jsp"/>
+			<forward name="failure" path="/web/ErrorPage.jsp"/>
+        </action>
+
+        <action path="/coeusSearch" type="edu.mit.coeus.action.search.CoeusSearchAction" scope="request">
+            <forward name="success" path="/web/CoeusSearch.jsp"/>
+            <forward name="awardSearch" path="/web/CoeusSearch.jsp"/>
+            <forward name="coiDisclosureSearch" path="/web/COIDisclosureSearch.jsp"/>
+            <forward name="leadUnitSearch" path="/web/LeadUnitSearch.jsp"/>
+            <forward name="proposalDevSearchNoRoles" path="/web/ProposalSearchCoeusWeb.jsp"/>
+            <forward name="proposalSearch" path="/web/CoeusSearch.jsp"/>
+            <forward name="personSearch" path="/web/PersonSearch.jsp"/>
+            <forward name="sponsorSearch" path="/web/SponsorSearch.jsp"/>
+            <forward name="failure" path="/web/CoeusSearchError.jsp"/>
+        </action>
+
+        <action path="/coeusSearchResult" type="edu.mit.coeus.action.search.CoeusSearchResultAction" scope="request">
+            <forward name="success" path="/web/CoeusSearch.jsp"/>
+            <forward name="coiDisclosureSearch" path="/web/COIDisclosure.jsp"/>
+            <forward name="leadUnitSearch" path="/web/LeadUnitSearchResult.jsp"/>
+            <forward name="awardSearch" path="/web/CoeusSearchResult.jsp"/>
+            <forward name="proposalDevSearchNoRoles" path="/web/ProposalSearchResultCoeusWeb.jsp"/>
+            <forward name="proposalSearch" path="/web/CoeusSearchResult.jsp"/>
+            <forward name="personSearch" path="/web/PersonSearchResult.jsp"/>
+            <forward name="sponsorSearch" path="/web/SponsorSearchResult.jsp"/>
+	    <forward name="failure" path="/web/CoeusSearchError.jsp"/>
+        </action>
+
+        <action path="/createnewdisclosure" type="edu.mit.coeus.action.coi.NewDisclosureAction" 
+        name="frmNewDisclosure" scope="request" input="/web/NewDisclosure.jsp" validate="true">
+		<forward name="success2" path="/midyeardisclosure.do"/>
+		<forward name="success" path="/tempProposalDisclosure.do"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+
+	</action>	
+	
+        <action path="/createmidyeardisclosure" type="edu.mit.coeus.action.coi.MidYearDisclosureAction" 
+        name="frmMidYearDisclosure" input="/web/MidYearDisclosure.jsp" scope="request" validate="true">
+		<forward name="success" path="/addCOIDisclosure.do"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>	
+
+	<action path="/createTempProposal" type="edu.mit.coeus.action.coi.CreateTempProposalAction" 
+	name="frmTempProposal" input="/web/TempProposal.jsp" scope="request" validate="true">
+		<!-- CASE #665 Comment Begin -->	
+		<!--<forward name="insertSuccess" path="/addCOIDisclosure.do"/>-->
+		<!-- CASE #665 Comment End -->
+		<!-- CASE #665 Begin -->
+		<forward name="success" path="/addCOIDisclosure.do"/>
+		<!-- CASE #665 End -->
+		<forward name="tempProposalPage" path="/web/TempProposal.jsp"/>		
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+
+	</action>
+	
+	<!-- Added for CASE #1374 -->
+	<action path="/deactivateFinEnt" type="edu.mit.coeus.action.coi.FinancialEntityDetailsAction" 
+	name="frmFinancialEntityDetailsForm" scope="request" >
+		<forward name="success" path="/web/DeactivateFinEnt.jsp"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+
+	</action>
+	
+	<action path="/deactivateFinEnt2" type="edu.mit.coeus.action.coi.FinancialEntityDetailsAction" 
+	name="frmFinancialEntityDetailsForm" input="/web/DeactivateFinEnt.jsp" scope="request" validate="true">
+		<forward name="success" path="/getFinEntities.do"/>
+		<forward name="toAnnDiscFE" path="/getAnnDiscPendingFEs.do"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+
+	</action>
+	<!-- CASE #1374 End -->
+
+	<action path="/editFinEntity" type="edu.mit.coeus.action.coi.EditFinEntityAction" 
+	name="frmFinancialEntityDetailsForm" scope="request" validate="false">
+
+			<forward name="success" path="/web/FinancialEntityDetails.jsp"/>
+			<forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+
+	<!-- CASE #1374 Change action form to session scope -->
+	<action path="/editCOIDisclosure" type="edu.mit.coeus.action.coi.AddNewCOIDisclosureAction" 
+	name="frmAddCOIDisclosure" input="/web/EditCOIDisclosure.jsp" scope="session" validate="true">
+		<forward name="success" path="/web/DiscSubmitSuccess.jsp"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+
+	<!-- CASE #1374 Add more forwarding options -->
+	<action path="/finEntityDetails" type="edu.mit.coeus.action.coi.FinancialEntityDetailsAction" 
+	name="frmFinancialEntityDetailsForm" input="/web/FinancialEntityDetails.jsp" scope="request" validate="true">
+
+			<forward name="success" path="/getFinEntities.do"/>
+			<forward name="toAddDiscl" path="/addCOIDisclosure.do"/>
+			<forward name="toEditDiscl" path="/viewCOIDisclosureDetails.do"/>
+			<forward name="toAnnDiscCert" path="/annDiscCertification.do"/>
+			<forward name="toAnnDiscFE" path="/getAnnDiscPendingFEs.do"/>
+			<forward name="invalidSponsor" path="/web/FinancialEntityDetails.jsp"/>
+			<forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+
+    <action path="/getAnnDiscPendingFEs" type="edu.mit.coeus.action.coi.AnnDiscPendingFEAction" scope="request">
+               <forward name="success" path="/web/AnnDisclosureFEMain.jsp"/>
+               <forward name="failure" path="/web/ErrorPage.jsp"/>
+    </action>
+
+
+    <action path="/getAnnualDisclosures" type="edu.mit.coeus.action.coi.AnnualDisclosuresAction" name="frmAnnualDisclosures" input="/web/AnnualDisclosuresMain.jsp" scope="request" validate="false">
+	        <forward name="success" path="/web/AnnualDisclosuresMain.jsp"/>
+	        <forward name="annDisclConfirmation" path="/web/AnnualDisclosureConfirmation.jsp"/>
+	        <forward name="checkUpdateFailure" path="/annualDisclosures.do" />
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+    </action>
+
+
+
+	<action path="/getcoidisclosure" type="edu.mit.coeus.action.coi.COIDisclosureAction" name="frmCOIDisclosure" scope="request" validate="false">
+
+		   <forward name="success" path="/web/COIDisclosure.jsp"/>
+		   <forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+
+	<action path="/getFinEntities" type="edu.mit.coeus.action.coi.GetFinancialEntitiesAction" scope="request">
+
+			<forward name="success" path="/web/GetFinancialEntities.jsp"/>
+			<forward name="failure" path="/web/ErrorPage.jsp"/>
+	           <forward name="selectperson" path="/web/SelectPerson.jsp"></forward>
+        </action>
+
+ 	<action	path="/loginCOI"
+ 			type="edu.mit.coeus.action.common.ValidateUserAction" scope="session">
+ 			<forward name="success"		path="/web/WelcomeCOI.jsp"></forward>
+			<forward name="failure"		path="/web/ErrorPage.jsp"></forward>
+    	</action>
+    	
+	<action path="/midyeardisclosure" type="edu.mit.coeus.action.coi.MidYearDisclosureAction" 
+		name="frmMidYearDisclosure" scope="request" validate="false">
+			<forward name="failure" path="/web/ErrorPage.jsp"/>
+			<forward name="success" path="/web/MidYearDisclosure.jsp"/>
+
+	</action>    	
+
+	<action path="/newdisclosure" type="edu.mit.coeus.action.coi.NewDisclosureAction" 
+		name="frmNewDisclosure" scope="request" validate="false">
+			<!--<forward name="success1" path="/web/AddCOIDisclosure.jsp"/>-->
+			<!--<forward name="success2" path="/web/TempProposal.jsp"/>-->
+			<forward name="success" path="/web/NewDisclosure.jsp"/>			
+			<forward name="failure" path="/web/ErrorPage.jsp"/>
+
+	</action>	
+
+        <action path="/question" type="edu.mit.coeus.action.coi.QuestionAction" scope="request">
+                <forward name="success" path="/web/Question.jsp"/>
+                    <forward name="failure" path="/web/ErrorPage.jsp"/>
+        </action>
+
+        <action path="/personDetails" type="edu.mit.coeus.action.coi.SelectPersonAction" scope="request">
+            <forward name="success" path="/web/PersonDetailsView.jsp"/>
+	        <forward name="failure" path="/web/ErrorPage.jsp"/>
+            <forward name="newdisclosure" path="/newdisclosure.do"/>
+        </action>
+
+
+	<action path="/tempProposalDisclosure" type="edu.mit.coeus.action.coi.TempProposalAction" name="frmTempProposal" scope="request" validate="false">
+		<forward name="success" path="/web/TempProposal.jsp"/>
+		<forward name="failure" path="/web/ErrorPage.jsp"/>
+
+	</action>
+
+	<!-- CASE #1374 Change scope to session, change validate to true -->
+	<action path="/viewCOIDisclosureDetails" type="edu.mit.coeus.action.coi.ViewCOIDisclosureDetailsAction" 
+	scope="session" name="frmAddCOIDisclosure" input="/web/EditCOIDisclosure.jsp" validate="true">
+
+		   <forward name="viewDisclosure" path="/web/COIDisclosureDetailsView.jsp"/>
+		   <forward name="editDisclosure" path="/web/EditCOIDisclosure.jsp"/>
+		   <forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+
+	<action path="/viewDisclosureDetails" type="edu.mit.coeus.action.coi.ViewDisclosureDetailsAction" scope="request">
+
+		   <forward name="success" path="/web/DisclosureDetailsView.jsp"/>
+		   <forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+
+
+	<action path="/viewFinEntity" type="edu.mit.coeus.action.coi.ViewFinEntityAction" scope="request">
+			<forward name="success" path="/web/ViewFinancialEntity.jsp"/>
+			<forward name="entityDetails" path="/web/ViewFinancialEntityDetails.jsp"/>
+			<forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+	
+	<!-- CASE #1046 Begin -->
+	<action path="/viewPendingDisc" type="edu.mit.coeus.action.coi.ViewPendingDiscAction" scope="request">
+			<forward name="success" path="/web/ViewPendingDisc.jsp"/>
+			<forward name="failure" path="/web/ErrorPage.jsp"/>
+	</action>
+	<!-- CASE #1046 End -->	
+
+    </action-mappings>
+
+     <!-- ========== Message Resources Definitions =========================== -->
+    <message-resources parameter="CoeusMessages" key="coeus" />
+    <message-resources parameter="coeus" key="coeusprop" />
+    
+    <plug-in className="edu.mit.coeus.utils.CoeusOutputPlugIn">
+        <set-property property="output" value="null"/>
+    </plug-in>
+    
+  </struts-config>
+

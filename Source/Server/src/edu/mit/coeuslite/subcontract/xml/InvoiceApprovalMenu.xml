@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!-- This is a new Menu for ProposalApproval -->
+
+<Menu>
+	<MenuItem>
+		<Menu_Id>P001</Menu_Id>
+		<Menu_Name>Back to Inbox</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>BACKTOINBOX</FieldName>
+		<Link>/getInboxMessages.do?messageType=unresolved</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>S001</Menu_Id>
+		<Menu_Name>Approve</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>APPROVE</FieldName>
+		<Link>/invoiceApproveRejectActions.do?invoiceMode=A</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id>S002</Menu_Id>
+		<Menu_Name>Reject</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>REJECT</FieldName>
+		<Link>/invoiceApproveRejectActions.do?invoiceMode=R</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+
+</Menu>

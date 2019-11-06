@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by mazuki (darksiderg) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="OSP_COI_DISCLOSURE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COI_DISCLOSURE_NUMBER" type="xs:string"/>
+				<xs:element name="SEQUENCE_NUMBER" type="xs:decimal"/>
+				<xs:element name="PERSON_ID" type="xs:string"/>
+				<xs:element name="CERTIFICATION_TEXT" type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="CERTIFIED_BY" type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="CERTIFICATION_TIMESTAMP" type="xs:dateTime" nillable="true" minOccurs="0"/>
+				<xs:element ref="OSP_COI_DISPOSITION_STATUS"/>
+				<xs:element name="EXPIRATION_DATE" type="xs:dateTime"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element ref="OSP_QUESTION"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+				<xs:element name="MODULE_CODE" type="xs:decimal" nillable="true" minOccurs="0"/>
+				<xs:element ref="OSP_COI_DISC_DETAILS" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="OSP_COI_DISCL_PROJECTS" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="OSP_COI_DOCUMENTS" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="OSP_COI_NOTEPAD" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="OSP_COI_USER_ROLES" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="OSP_COI_STATUS"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_COI_DISCL_PROJECTS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COI_DISCLOSURE_NUMBER" type="xs:string"/>
+				<xs:element name="SEQUENCE_NUMBER" type="xs:decimal"/>
+				<xs:element name="COI_PROJECT_ID" type="xs:string"/>
+				<xs:element name="COI_PROJECT_TITLE" type="xs:string"/>
+				<xs:element name="COI_PROJECT_TYPE" type="xs:string"/>
+				<xs:element name="COI_PROJECT_SPONSOR" type="xs:string"/>
+				<xs:element name="COI_PROJECT_START_DATE" type="xs:dateTime"/>
+				<xs:element name="COI_PROJECT_END_DATE" type="xs:dateTime"/>
+				<xs:element name="COI_PROJECT_FUNDING_AMOUNT" type="xs:decimal" nillable="true" minOccurs="0"/>
+				<xs:element name="COI_PROJECT_ROLE" type="xs:string"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_COI_DISC_DETAILS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COI_DISCLOSURE_NUMBER" type="xs:string"/>
+				<xs:element name="SEQUENCE_NUMBER" type="xs:decimal"/>
+				<xs:element name="COI_DISC_DETAILS_NUMBER" type="xs:decimal"/>
+				<xs:element name="MODULE_CODE" type="xs:decimal" nillable="true" minOccurs="0"/>
+				<xs:element name="MODULE_ITEM_KEY" type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="ENTITY_NUMBER" type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="ENTITY_SEQUENCE_NUMBER" type="xs:decimal" nillable="true" minOccurs="0"/>
+				<xs:element ref="OSP_COI_ENTITY_STATUS_CODE"/>
+				<xs:element name="DESCRIPTION" type="xs:string"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_COI_DISPOSITION_STATUS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COI_DISPOSITION_CODE" type="xs:decimal"/>
+				<xs:element name="DESCRIPTION" type="xs:string"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_COI_DOCUMENTS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COI_DISCLOSURE_NUMBER" type="xs:string"/>
+				<xs:element name="SEQUENCE_NUMBER" type="xs:decimal"/>
+				<xs:element ref="OSP_COI_DOCUMENT_TYPE"/>
+				<xs:element name="DESCRIPTION" type="xs:string"/>
+				<xs:element name="FILE_NAME" type="xs:string"/>
+				<xs:element name="DOCUMENT" type="xs:base64Binary"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+				<xs:element name="ENTRY_NUMBER" type="xs:decimal"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_COI_DOCUMENT_TYPE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COI_DOCUMENT_TYPE_CODE" type="xs:string"/>
+				<xs:element name="DESCRIPTION" type="xs:string"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_COI_ENTITY_STATUS_CODE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ENTITY_STATUS_CODE" type="xs:decimal"/>
+				<xs:element name="DESCRIPTION" type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime" nillable="true" minOccurs="0"/>
+				<xs:element name="UPDATE_USER" type="xs:string" nillable="true" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_COI_NOTEPAD">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COI_DISCLOSURE_NUMBER" type="xs:string"/>
+				<xs:element name="SEQUENCE_NUMBER" type="xs:decimal"/>
+				<xs:element name="ENTRY_NUMBER" type="xs:decimal"/>
+				<xs:element ref="OSP_COI_NOTEPAD_ENTRY_TYPE" minOccurs="0"/>
+				<xs:element name="COMMENTS" type="xs:string"/>
+				<xs:element name="RESTRICTED_VIEW" type="xs:string"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+				<xs:element name="TITLE" type="xs:string" nillable="true" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_COI_NOTEPAD_ENTRY_TYPE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COI_NOTEPAD_ENTRY_CODE" type="xs:string"/>
+				<xs:element name="DESCRIPTION" type="xs:string"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_COI_STATUS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COI_STATUS_CODE" type="xs:decimal"/>
+				<xs:element name="DESCRIPTION" type="xs:string"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_COI_USER_ROLES">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="COI_DISCLOSURE_NUMBER" type="xs:string"/>
+				<xs:element name="SEQUENCE_NUMBER" type="xs:decimal"/>
+				<xs:element name="ROLE_ID" type="xs:decimal" default="0"/>
+				<xs:element name="USER_ID" type="xs:string"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_PER_FIN_INT_DISCL_DET">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ENTITY_NUMBER" type="xs:string"/>
+				<xs:element name="SEQUENCE_NUMBER" type="xs:decimal"/>
+				<xs:element name="COLUMN_NAME" type="xs:string"/>
+				<xs:element name="COLUMN_VALUE" type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="RELATIONSHIP_TYPE_CODE" type="xs:decimal"/>
+				<xs:element name="COMMENTS" type="xs:string" nillable="true" minOccurs="0"/>
+				<xs:element name="UPDATE_TIMESTAMP" type="xs:dateTime"/>
+				<xs:element name="UPDATE_USER" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OSP_QUESTION">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="QUESTION_ID" type="xs:string"/>
+				<xs:element name="QUESTION" type="xs:string"/>
+				<xs:element name="ANSWER" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

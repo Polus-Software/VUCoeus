@@ -1,0 +1,1593 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+
+
+
+<form-beans>    
+     <form-bean name="lineItemDetails" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <!-- For Budget Period Details -->
+            <form-property name="proposalNumber" type="java.lang.String" initial = "-1" />
+            <form-property name="versionNumber" type="java.lang.Integer" initial = "-1" />
+           <form-property name="budgetPeriod" type="java.lang.Integer" initial = "-1" />
+           <form-property name="lineItemNumber" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="budgetCategoryCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="costElement" type="java.lang.String" /> 
+           <form-property name="costElementDescription" type="java.lang.String" />
+           <form-property name="lineItemDescription" type="java.lang.String" />
+           <form-property name="basedOnLineItem" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="lineItemSequence" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="lineItemStartDate" type="java.sql.Date" />
+           <form-property name="lineItemEndDate" type="java.sql.Date" />
+           <form-property name="lineItemCost" type="java.lang.String" />       
+           <form-property name="costSharingAmount" type="java.lang.String" />                                                                            
+           <form-property name="underRecoveryAmount" type="java.lang.String" />              
+           <form-property name="onOffCampusFlag" type="java.lang.Boolean" />    
+           <form-property name="applyInRateFlag" type="java.lang.Boolean" />
+           <form-property name="budgetJustification" type="java.lang.String" />
+           <form-property name="categoryType" type="java.lang.String" />
+           <!-- Modified for Case #3132 - start 
+                Changing quantity field from integer to float-->
+           <!--<form-property name="quantity" type="java.lang.Integer" initial = "-1"/>-->
+           <form-property name="quantity" type="java.lang.String"/>
+           <!-- Modified for Case #3132 - end -->
+           <form-property name="directCost" type="java.lang.Double" />            
+           <form-property name="indirectCost" type="java.lang.Double" />
+           <form-property name="totalCostSharing" type="java.lang.Double"/>
+           <form-property name="acType" type="java.lang.String"/>
+           <!-- For Budget Detail Cal Amounts -->
+           <form-property name="rateClassCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateClassDescription" type="java.lang.String" />
+           <form-property name="rateTypeCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateTypeDescription" type="java.lang.String" />
+           <form-property name="applyRateFlag" type="java.lang.Boolean" />                             
+           <form-property name="calculatedCost" type="java.lang.Double" />                   
+           <form-property name="calculatedCostSharing" type="java.lang.Double" />   
+           <form-property name="rateClassType" type="java.lang.String" />
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>   
+           <form-property name="changeCostElement" type="java.lang.Boolean"/>
+           <!-- To Check Row is Added. If Added then Go for line Item Sequence -->
+           <form-property name="isRowAdded" type="java.lang.Boolean"/>
+           <!--To Referesh the parent window-->
+            <form-property name="popUp" type="java.lang.String"/>
+            <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+            <form-property name="tempLineItemStartDate" type="java.lang.String"/>
+            <form-property name="tempLineItemEndDate" type="java.lang.String"/>
+            <!-- Budget Period Bean -->
+           <!--<form-property name="startDate" type="java.sql.Date"/>
+           <form-property name="endDate" type="java.sql.Date"/> 
+           <form-property name="totalCost" type="java.lang.Double" />
+           <form-property name="totalDirectCost" type="java.lang.Double"/>
+           <form-property name="totalIndirectCost" type="java.lang.Double"/>           
+           <form-property name="totalCostLimit" type="java.lang.Double"/>
+           <form-property name="comments" type="java.lang.String"/>
+           <form-property name="description" type="java.lang.String"/> -->
+           <!-- Code added for Case#3472 - Sync to Direct Cost Limit -->
+           <form-property name="totalDirectCostLimit" type="java.lang.Double" />
+           <!-- Code added for COEUSQA-1693 - Cost Sharing Submission -->
+          <form-property name="submitCostSharingFlag" type="java.lang.String"/>
+   </form-bean>
+   
+   <!-- Budget Summary --> 
+   <!-- Added for COEUSQA-1725 Extend the functionality of Lab Allocation in proposal development budgeting.- Start  
+   <form-bean name="formulatedLineItemDetailsDynaList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+   </form-bean>  -->
+   
+   <form-bean name="formulatedLineItemDetails" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+       <form-property name="proposalNumber"             type="java.lang.String"/>
+       <form-property name="versionNumber"              type="java.lang.Integer"/>
+       <form-property name="budgetPeriod"               type="java.lang.Integer"/>
+       <form-property name="lineItemNumber"             type="java.lang.Integer"/>
+       <form-property name="formulatedNumber"           type="java.lang.Integer"/>
+       <form-property name="formulatedCode"             type="java.lang.Integer" initial = "0"/>
+       <form-property name="previousSelectedFormulatedCode"             type="java.lang.Integer"    initial = "0"/>
+       <form-property name="formulatedCodeDescription"  type="java.lang.String"/> 
+       <form-property name="unitCost"                   type="java.lang.String"     initial = "0.00"/>       
+       <form-property name="previousUnitCost"           type="java.lang.String"     initial = "0.00"/>       
+       <form-property name="count"                      type="java.lang.Integer"    initial = "0"/>
+       <form-property name="frequency"                  type="java.lang.Integer"    initial = "0"/>      
+       <form-property name="calculatedExpenses"          type="java.lang.String"     initial = "0.00"/>       
+       <form-property name="acType"                     type="java.lang.String"/>
+       
+       <form-property name="rateClassCode"              type="java.lang.Integer"    initial = "-1"/>
+       <form-property name="rateClassDescription"       type="java.lang.String"/>
+       <form-property name="rateTypeCode"               type="java.lang.Integer"    initial = "-1"/>
+       <form-property name="rateTypeDescription"        type="java.lang.String"/>
+       <form-property name="applyRateFlag"              type="java.lang.Boolean"/>                             
+       <form-property name="calculatedCost"             type="java.lang.Double"/>                   
+       <form-property name="calculatedCostSharing"      type="java.lang.Double"/>   
+       <form-property name="rateClassType"              type="java.lang.String" />
+       <form-property name="updateTimestamp"            type="java.lang.String"/>
+       <form-property name="updateUser"                 type="java.lang.String"/>   
+       <form-property name="changeCostElement"          type="java.lang.Boolean"/>
+        
+       <form-property name="isRowAdded"                 type="java.lang.Boolean"/>
+       
+       <form-property name="popUp"                      type="java.lang.String"/>
+       <form-property name="awFormulatedNumber"         type="java.lang.Integer"/>
+       <form-property name="awFormulatedCode"           type="java.lang.Integer"/>
+   </form-bean>
+   <!--  Added for COEUSQA-1725 Extend the functionality of Lab Allocation in proposal development budgeting.- End -->
+   
+   <!--COEUSQA-1500 CoeusLite - Budget Summary - Allow end user to manually insert dollar amounts-Start--> 
+    <form-bean name="budgetSummaryDynaList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+    </form-bean>   
+   <!--COEUSQA-1500 CoeusLite - Budget Summary - Allow end user to manually insert dollar amounts-End-->
+   <form-bean name="budgetSummary" dynamic="true" type="org.apache.struts.validator.DynaValidatorForm">
+        <!-- BudgetInfo data -->
+           <form-property name="proposalNumber"     type="java.lang.String"/>
+            <form-property name="awardNumber"       type="java.lang.String"/>
+            <form-property name="versionNumber"     type="java.lang.Integer"/>
+           <form-property name="startDate"          type="java.sql.Date"/>
+           <form-property name="endDate" type="java.sql.Date"/>
+           <form-property name="totalCost" type="java.lang.Double" />
+           <form-property name="totalDirectCost" type="java.lang.Double"/>
+           <form-property name="totalIndirectCost" type="java.lang.Double"/>
+           <form-property name="costSharingAmount" type="java.lang.Double"/>
+           <form-property name="underRecoveryAmount" type="java.lang.Double"/>
+           <form-property name="residualFunds" type="java.lang.String"/>
+           <form-property name="totalCostLimit" type="java.lang.String"/>
+           <form-property name="ohRateClassCode" type="java.lang.Integer"/>
+           <form-property name="ohRateTypeCode" type="java.lang.Integer"/>
+           <form-property name="comments" type="java.lang.String"/>
+           <form-property name="finalVersionFlag" type="java.lang.String"/>
+           <form-property name="urRateClassCode" type="java.lang.Integer"/>
+           <form-property name="modularBudgetFlag" type="java.lang.String"/>
+           <form-property name="budgetStatusCode" type="java.lang.String"/>
+       <!-- UTK added onOffCampusFlag -->
+           <form-property name="onOffCampusFlag" type="java.lang.String"/>
+       <!-- end of UTK -->
+                      
+           <!-- BudgetPeriod data -->
+           <form-property name="budgetPeriod" type="java.lang.Integer"/>
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+             <!--Proposal Development Data -->          
+           <form-property name="activityTypeCode" type="java.lang.String"/>
+           <form-property name="unitNumber" type="java.lang.String"/>
+           <form-property name="creationStatusCode" type="java.lang.String"/>            
+           <form-property name="acType" type="java.lang.String"/>
+           <form-property name="requestedStartDateInitial" type="java.sql.Date"/>
+           <form-property name="requestedEndDateInitial" type="java.sql.Date"/>
+           <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+           
+              <!--Budget Sync data  -->
+           <form-property name="mode" type="java.lang.String"/>
+           <form-property name="personId" type="java.lang.String"/>
+           <form-property name="personType" type="java.lang.String"/>               
+           <form-property name="primarySecondaryIndicator" type="java.lang.String"/>
+            <form-property name="appointmentStartDate" type="java.sql.Date"/>
+           <form-property name="appointmentEndDate" type="java.sql.Date"/>  
+           <form-property name="appointmentType" type="java.lang.String"/>
+           <form-property name="jobTitle" type="java.lang.String"/>      
+           <form-property name="preferedJobTitle" type="java.lang.String"/>            
+           <form-property name="jobCode" type="java.lang.String"/>
+           <form-property name="unitName" type="java.lang.String"/> 
+           <form-property name="salary" type="java.lang.Double"/>  
+           <form-property name ="fullName" type="java.lang.String"/> 
+           <form-property name ="selected" type="java.lang.String"/>    
+           <form-property name="effectiveDate" type="java.sql.Date" />
+           <form-property name="calculationBase" type="java.lang.Double"/>   
+           
+           <!-- Budget versions Sync Data -->
+           
+            <form-property name="budgetStatus" type="java.lang.String"/>
+            <form-property name="finalVersionValue" type="java.lang.String"/>
+            <form-property name="newUpdateTimestamp" type="java.lang.String"/>
+            <form-property name="copyPeriodCode" type="java.lang.String"/> 
+            <form-property name="sponsorCode" type="java.lang.String"/>
+            <form-property name="sponsorName" type="java.lang.String"/> 
+            
+           <form-property name="nonEmployeeFlag" type="java.lang.String"/>
+           <form-property name="awNonEmployeeFlag" type="java.lang.String"/>
+           <!-- Added for case#3654 - Third option 'Default' in the campus dropdown -->
+           <form-property name="bsOnOffCampusFlag" type="java.lang.String"/>
+           
+           <!-- Code added for Case#3472 - Sync to Direct Cost Limit -->
+           <form-property name="totalDirectCostLimit" type="java.lang.String" />
+            <!-- Code added for Case#2918 - Salary Anniversary Date Enhancement -->
+           <form-property name="salaryAnniversaryDate" type="java.lang.String"/>
+          <!-- <form-property name="awSalaryAnniversaryDate" type="java.sql.Date"/>           -->
+          <!-- Code added for Case 3197 - Allow for the generation of project period greater than 12 months  -->
+          <form-property name="noOfPeriodMonths" type="java.lang.Double"/>
+          <!-- Code added for COEUSQA-1693 - Cost Sharing Submission -->
+          <form-property name="submitCostSharingFlag" type="java.lang.String"/>
+          <!--COEUSQA-1500 CoeusLite - Budget Summary - Allow end user to manually insert dollar amounts-Start-->
+          <form-property name="strTotalCost" type="java.lang.String" initial = "" />
+          <form-property name="strTotalDirectCost" type="java.lang.String" initial = ""/>
+          <form-property name="strTotalIndirectCost" type="java.lang.String" initial = ""/>
+          <form-property name="strCostSharingAmount" type="java.lang.String" initial = ""/>
+          <form-property name="strUnderRecoveryAmount" type="java.lang.String" initial = ""/>
+          <form-property name="strTotalCostLimit" type="java.lang.String" initial = ""/>
+          <!--COEUSQA-1500 CoeusLite - Budget Summary - Allow end user to manually insert dollar amounts-End-->
+            
+   </form-bean>
+   
+    <!-- Budget Sync Persons - Start    --> 
+    <form-bean name="syncPersonsDynaList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+    </form-bean>   
+   <!-- Budget Sync Persons - End    -->
+   
+   <!-- Budget Line Item start-->
+   <form-bean name="budgetEquipmentData" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <!-- Budget Detail Data -->
+            <form-property name="proposalNumber" type="java.lang.String" initial = "-1" />
+            <form-property name="versionNumber" type="java.lang.Integer" initial = "-1" />
+           <form-property name="budgetPeriod" type="java.lang.Integer" initial = "-1" />
+           <form-property name="lineItemNumber" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="budgetCategoryCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="costElement" type="java.lang.String" /> 
+           <form-property name="costElementDescription" type="java.lang.String" />
+           <form-property name="lineItemDescription" type="java.lang.String" />
+           <form-property name="basedOnLineItem" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="lineItemSequence" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="lineItemStartDate" type="java.sql.Date" />
+           <form-property name="lineItemEndDate" type="java.sql.Date" />
+           <form-property name="lineItemCost" type="java.lang.Double" />       
+           <form-property name="costSharingAmount" type="java.lang.Double" />                                                                            
+           <form-property name="underRecoveryAmount" type="java.lang.Double" />              
+           <form-property name="onOffCampusFlag" type="java.lang.Boolean" />    
+           <form-property name="applyInRateFlag" type="java.lang.Boolean" />
+           <form-property name="budgetJustification" type="java.lang.String" />
+           <form-property name="categoryType" type="java.lang.String" />
+           <!-- Modified for Case #3132 - start 
+                Changing quantity field from integer to float-->
+           <!--<form-property name="quantity" type="java.lang.Integer" initial = "-1"/>-->                       
+           <form-property name="quantity" type="java.lang.Double"/>
+           <form-property name="tempQuantity" type="java.lang.String"/>
+           <!-- Modified for Case #3132 - end -->
+           <form-property name="directCost" type="java.lang.Double" />            
+           <form-property name="indirectCost" type="java.lang.Double" />
+           <form-property name="totalCostSharing" type="java.lang.Double"/>
+           <form-property name="acType" type="java.lang.String"/>
+            <!--To Referesh the parent window-->
+            <form-property name="popUp" type="java.lang.String"/>
+           <!-- Budget Period Bean -->
+           <form-property name="startDate" type="java.sql.Date"/>
+           <form-property name="endDate" type="java.sql.Date"/> 
+           <form-property name="totalCost" type="java.lang.Double" />
+           <form-property name="totalDirectCost" type="java.lang.Double"/>
+           <form-property name="totalIndirectCost" type="java.lang.Double"/>           
+           <form-property name="totalCostLimit" type="java.lang.Double"/>
+           <form-property name="comments" type="java.lang.String"/>
+           <form-property name="description" type="java.lang.String"/>
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+           <!-- BudgetDetailCalAmts -->
+            <form-property name="rateClassCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateClassDescription" type="java.lang.String" />
+           <form-property name="rateTypeCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateTypeDescription" type="java.lang.String" />
+           <form-property name="applyRateFlag" type="java.lang.Boolean" />                             
+           <form-property name="calculatedCost" type="java.lang.Double" />                   
+           <form-property name="calculatedCostSharing" type="java.lang.Double" />   
+           <form-property name="rateClassType" type="java.lang.String" />
+           <form-property name="changeCostElement" type="java.lang.Boolean"/>
+           <!-- To Check Row is Added. If Added then Go for line Item Sequence -->
+           <form-property name="isRowAdded" type="java.lang.Boolean"/>
+           <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+           <form-property name="tempLineItemStartDate" type="java.lang.String"/>
+           <form-property name="tempLineItemEndDate" type="java.lang.String"/>
+           <form-property name="tempLineItemCost" type="java.lang.String"/>
+           <form-property name="vecYnQ" type="java.util.Vector"/>
+           <!-- Code added for Case#3472 - Sync to Direct Cost Limit -->
+           <form-property name="totalDirectCostLimit" type="java.lang.Double" />
+           <!-- Code added for Case 3197 - Allow for the generation of project period greater than 12 months  -->
+          <form-property name="noOfPeriodMonths" type="java.lang.Double"/>
+          <!-- Code added for COEUSQA-1693 - Cost Sharing Submission -->
+          <form-property name="submitCostSharingFlag" type="java.lang.String"/>
+          <!-- Added for COEUSQA-2115 Subaward budgeting for Proposal Development - Start -->
+          <form-property name="subAwardNumber" type="java.lang.Integer"/>          
+          <!-- Added for COEUSQA-2115 Subaward budgeting for Proposal Development - End -->
+          <!-- Added for COEUSQA-1725 Extend the functionality of Lab Allocation in proposal development budgeting. - Start -->
+          <form-property name="isFormulatedLineItem" type="java.lang.Boolean"/>          
+          <!-- Added for COEUSQA-1725 Extend the functionality of Lab Allocation in proposal development budgeting. - End -->
+          
+          
+   </form-bean>
+   <!-- Budget Line Item End-->
+
+
+   <!-- WMC coeusLiteBudget START -->   
+   <!-- Budget Detail Data -->
+   <form-bean name="budgetDetailData" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="proposalNumber" type="java.lang.String" initial = "-1" />
+           <form-property name="versionNumber" type="java.lang.Integer" initial = "-1" />
+           <form-property name="budgetPeriod" type="java.lang.Integer" initial = "-1" />
+           <form-property name="lineItemNumber" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="budgetCategoryCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="costElement" type="java.lang.String" /> 
+           <form-property name="costElementDescription" type="java.lang.String" />
+           <form-property name="lineItemDescription" type="java.lang.String" />
+           <form-property name="basedOnLineItem" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="lineItemSequence" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="lineItemStartDate" type="java.sql.Date" />
+           <form-property name="lineItemEndDate" type="java.sql.Date" />
+           <form-property name="lineItemCost" type="java.lang.Double" />       
+           <form-property name="costSharingAmount" type="java.lang.Double" />                                                                            
+           <form-property name="underRecoveryAmount" type="java.lang.Double" />              
+           <form-property name="onOffCampusFlag" type="java.lang.Boolean" />    
+           <form-property name="applyInRateFlag" type="java.lang.Boolean" />
+           <form-property name="budgetJustification" type="java.lang.String" />
+           <form-property name="categoryType" type="java.lang.String" />
+           <!--<form-property name="quantity" type="java.lang.Integer" initial = "-1"/-->                       
+           <form-property name="quantity" type="java.lang.Double"/>
+           <form-property name="directCost" type="java.lang.Double" />            
+           <form-property name="indirectCost" type="java.lang.Double" />
+           <form-property name="totalCostSharing" type="java.lang.Double"/>
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+           <form-property name="acType" type="java.lang.String"/>
+           <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+           <!-- Code added for COEUSQA-1693 - Cost Sharing Submission -->
+          <form-property name="submitCostSharingFlag" type="java.lang.String"/>
+   </form-bean>
+   <!-- Budget Period Bean -->
+   <form-bean name="budgetPeriodData" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="proposalNumber" type="java.lang.String"/>
+           <form-property name="versionNumber" type="java.lang.Integer"/>
+           <form-property name="budgetPeriod" type="java.lang.Integer" initial = "-1" />
+           <form-property name="startDate" type="java.sql.Date"/>
+           <form-property name="endDate" type="java.sql.Date"/> 
+           <form-property name="totalCost" type="java.lang.Double" />
+           <form-property name="totalDirectCost" type="java.lang.Double"/>
+           <form-property name="totalIndirectCost" type="java.lang.Double"/>           
+           <form-property name="costSharingAmount" type="java.lang.Double"/>           
+           <form-property name="underRecoveryAmount" type="java.lang.Double"/>           
+           <form-property name="totalCostLimit" type="java.lang.Double"/>
+           <form-property name="comments" type="java.lang.String"/>
+           <form-property name="description" type="java.lang.String"/>
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+           <form-property name="acType" type="java.lang.String"/>
+           <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+           <!-- Code added for Case#3472 - Sync to Direct Cost Limit -->
+           <form-property name="totalDirectCostLimit" type="java.lang.Double" />
+           <!-- Code added for Case 3197 - Allow for the generation of project period greater than 12 months  -->
+          <form-property name="noOfPeriodMonths" type="java.lang.Double"/>
+          
+   </form-bean>
+   <!-- BudgetDetailCalAmts -->
+   <form-bean name="budgetDetailCalAmtsData" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="proposalNumber" type="java.lang.String"/>
+           <form-property name="versionNumber" type="java.lang.Integer"/>
+           <form-property name="budgetPeriod" type="java.lang.Integer" initial = "-1" />
+           <form-property name="lineItemNumber" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateClassCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateClassDescription" type="java.lang.String" />
+           <form-property name="rateTypeCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateTypeDescription" type="java.lang.String" />
+           <form-property name="applyRateFlag" type="java.lang.Boolean" />                             
+           <form-property name="calculatedCost" type="java.lang.Double" />                   
+           <form-property name="calculatedCostSharing" type="java.lang.Double" />   
+           <form-property name="rateClassType" type="java.lang.String" />
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+           <form-property name="acType" type="java.lang.String"/>
+           <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+   </form-bean>
+   <form-bean name="budgetPersonnelCalAmtsData" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="proposalNumber" type="java.lang.String"/>
+           <form-property name="versionNumber" type="java.lang.Integer"/>
+           <form-property name="budgetPeriod" type="java.lang.Integer" initial = "-1" />
+           <form-property name="lineItemNumber" type="java.lang.Integer" initial = "-1"/>
+           <form-property name ="personNumber" type="java.lang.Integer"/>
+           <form-property name="rateClassCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateClassDescription" type="java.lang.String" />
+           <form-property name="rateTypeCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateTypeDescription" type="java.lang.String" />
+           <form-property name="applyRateFlag" type="java.lang.Boolean" initial="false"/>                             
+           <form-property name="calculatedCost" type="java.lang.Double" />                   
+           <form-property name="calculatedCostSharing" type="java.lang.Double" />   
+           <form-property name="rateClassType" type="java.lang.String" />
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+           <form-property name="acType" type="java.lang.String"/>
+           <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+   </form-bean>
+   <!-- Select Budget Persons in personnel budget page -->   
+   <form-bean name="selectBudgetPersons" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+        <!-- BudgetPersons -->
+           <form-property name="personId" type="java.lang.String"/>
+           <form-property name="status" type="java.lang.String"/>
+           <form-property name="isBudgetPersonActive" type="java.lang.String"/>
+           <form-property name="personName" type="java.lang.String"/>
+           <form-property name="jobCode" type="java.lang.String"/> 
+           <form-property name="appointmentType" type="java.lang.String"/>
+           <form-property name="personSelected" type="java.lang.Boolean" initial="false"/>
+   </form-bean>
+   <!-- Budget Persons -->   
+   <form-bean name="budgetPersonsData" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+        <!-- BudgetPersons data -->
+           <form-property name="proposalNumber" type="java.lang.String"/>
+           <form-property name="versionNumber" type="java.lang.Integer"/>
+           <form-property name="personId" type="java.lang.String"/>
+           <form-property name="status" type="java.lang.String"/>        
+           <form-property name="isBudgetPersonActive" type="java.lang.String"/>
+           <form-property name="isExternal" type="java.lang.String"/>                                  
+           <form-property name="jobCode" type="java.lang.String"/> 
+           <!-- Effective date is of type string to display in applicable format -->
+           <form-property name="effectiveDate" type="java.lang.String"/>
+           <form-property name="calculationBase" type="java.lang.Double"/>
+           <form-property name="appointmentType" type="java.lang.String"/>
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+           <form-property name="personName" type="java.lang.String"/>
+           <form-property name="acType" type="java.lang.String"/>
+           <!-- To retain the original value for comparison and use as update key if required -->
+           <form-property name="awJobCode" type="java.lang.String"/>
+           <form-property name="awEffectiveDate" type="java.sql.Date"/>
+           <form-property name="awCalculationBase" type="java.lang.Double"/>
+           <form-property name="awAppointmentType" type="java.lang.String"/>
+           <form-property name="nonEmployeeFlag" type="java.lang.String"/>
+           <form-property name="awNonEmployeeFlag" type="java.lang.String"/>
+           <form-property name="strCalculationBase" type="java.lang.String"/>
+           <!-- TBA Person - Start -->
+           <form-property name="tbaId" type="java.lang.String"/>
+           <!-- TBA Person - End -->   
+           <form-property name="strSalaryAnniversaryDate" type="java.lang.String"/>
+           <form-property name="salaryAnniversaryDate" type="java.sql.Date"/>
+           <form-property name="awSalaryAnniversaryDate" type="java.sql.Date"/>
+           <!-- COEUSQA-1559 Display calculated base salary amount on RR Budget form in out years - Start -->
+           <form-property name="basesalaryp1" type="java.lang.Double"/>
+           <form-property name="strBasesalaryp1" type="java.lang.String"/>
+           <form-property name="basesalaryp2" type="java.lang.Double"/>
+           <form-property name="strBasesalaryp2" type="java.lang.String"/>
+           <form-property name="basesalaryp3" type="java.lang.Double"/>
+           <form-property name="strBasesalaryp3" type="java.lang.String"/>
+           <form-property name="basesalaryp4" type="java.lang.Double"/>
+           <form-property name="strBasesalaryp4" type="java.lang.String"/>
+           <form-property name="basesalaryp5" type="java.lang.Double"/>
+           <form-property name="strBasesalaryp5" type="java.lang.String"/>
+           <form-property name="basesalaryp6" type="java.lang.Double"/>
+           <form-property name="strBasesalaryp6" type="java.lang.String"/>
+           <form-property name="basesalaryp7" type="java.lang.Double"/>
+           <form-property name="strBasesalaryp7" type="java.lang.String"/>
+           <form-property name="basesalaryp8" type="java.lang.Double"/>
+           <form-property name="strBasesalaryp8" type="java.lang.String"/>
+           <form-property name="basesalaryp9" type="java.lang.Double"/>
+           <form-property name="strBasesalaryp9" type="java.lang.String"/>
+           <form-property name="basesalaryp10" type="java.lang.Double"/>
+           <form-property name="strBasesalaryp10" type="java.lang.String"/>
+           <form-property name="awBasesalaryp1" type="java.lang.Double"/>
+           <form-property name="awBasesalaryp2" type="java.lang.Double"/>
+           <form-property name="awBasesalaryp3" type="java.lang.Double"/>
+           <form-property name="awBasesalaryp4" type="java.lang.Double"/>
+           <form-property name="awBasesalaryp5" type="java.lang.Double"/>
+           <form-property name="awBasesalaryp6" type="java.lang.Double"/>
+           <form-property name="awBasesalaryp7" type="java.lang.Double"/>
+           <form-property name="awBasesalaryp8" type="java.lang.Double"/>
+           <form-property name="awBasesalaryp9" type="java.lang.Double"/>
+           <form-property name="awBasesalaryp10" type="java.lang.Double"/>           
+           <!-- COEUSQA-1559 Display calculated base salary amount on RR Budget form in out years - End -->
+   </form-bean>
+
+   <!-- Budget Personnel -->   
+   <form-bean name="budgetPersonnelData" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+        <!-- BudgetPersonnel data -->
+           <form-property name="proposalNumber" type="java.lang.String" initial = "-1" />
+           <form-property name="versionNumber" type="java.lang.Integer" initial = "-1" />
+           <form-property name="budgetPeriod" type="java.lang.Integer" initial = "-1" />
+           <form-property name="lineItemNumber" type="java.lang.Integer" initial = "-1"/>
+           <form-property name ="personNumber" type="java.lang.Integer"/>
+           <form-property name ="personId" type="java.lang.String"/>
+           <form-property name="status" type="java.lang.String"/>
+           <form-property name="isBudgetPersonActive" type="java.lang.String"/>
+            <form-property name="isExternal" type="java.lang.String"/>                                                          
+           <form-property name ="fullName" type="java.lang.String"/>
+           <form-property name ="projectRole" type="java.lang.String"/>
+           <form-property name="costElement" type="java.lang.String" /> 
+           <form-property name="costElementDescription" type="java.lang.String" />
+           <form-property name ="jobCode" type="java.lang.String"/>
+           <form-property name ="startDate" type="java.sql.Date"/>
+           <form-property name ="endDate" type="java.sql.Date"/>
+           <form-property name ="periodType" type="java.lang.String"/>
+           <form-property name ="personMonths" type="java.lang.Double"/>
+           <form-property name ="sequenceNumber" type="java.lang.Integer"/>
+           <form-property name="lineItemDescription" type="java.lang.String" />
+           <form-property name ="salaryRequested" type="java.lang.Double"/>
+           <form-property name ="fringeBenefit" type="java.lang.Double"/>
+           <form-property name ="fundsRequested" type="java.lang.Double"/>
+           <form-property name ="percentCharged" type="java.lang.Double"/>
+           <form-property name ="percentEffort" type="java.lang.Double"/>
+           <form-property name ="costSharingPercent" type="java.lang.Double"/>
+           <form-property name="costSharingAmount" type="java.lang.Double" />                                                                            
+           <form-property name="underRecoveryAmount" type="java.lang.Double" />              
+           <form-property name="onOffCampusFlag" type="java.lang.Boolean" />    
+           <form-property name="directCost" type="java.lang.Double" />                                                                            
+           <form-property name="indirectCost" type="java.lang.Double" />              
+           <form-property name="totalCostSharing" type="java.lang.Double" />              
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+           <form-property name="applyInRateFlag" type="java.lang.Boolean" />
+           <form-property name="acType" type="java.lang.String"/>
+	     <!-- check for update - data changed -->
+           <form-property name ="awProjectRole" type="java.lang.String"/>
+           <form-property name ="awCostElement" type="java.lang.String" /> 
+           <form-property name ="awPeriodType" type="java.lang.String"/>
+           <form-property name ="awPercentCharged" type="java.lang.Double"/>
+           <form-property name ="awPercentEffort" type="java.lang.Double"/>
+           <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+           <form-property name="tempLineItemStartDate" type="java.lang.String"/>
+           <form-property name="tempLineItemEndDate" type="java.lang.String"/>
+           
+           <form-property name="personStartDate" type="java.lang.String"/>
+           <form-property name="personEndDate" type="java.lang.String"/>    
+           <form-property name="quantity" type="java.lang.Double" /> 
+           <form-property name="lineItemCost" type="java.lang.Double"/>
+           
+           <form-property name="calculateAllPeriodsFlag" type="java.lang.Boolean" />
+           <form-property name="lineItemWindowOpenedFlag" type="java.lang.Boolean" />
+           <!-- Code added for COEUSQA-1693 - Cost Sharing Submission -->
+          <form-property name="submitCostSharingFlag" type="java.lang.String"/>
+          <form-property name="awSubmitCostSharingFlag" type="java.lang.String"/>
+          <form-property name="tempSubmitCostSharingFlag" type="java.lang.Boolean" />
+           <form-property name="awOnOffCampusFlag" type="java.lang.Boolean" />    
+   </form-bean>
+   <!-- WMC coeusLiteBudget END --> 
+   <!-- Adjust Period Boundary start -->   
+   <form-bean name="adjustPeriodBoundary" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="proposalNumber" type="java.lang.String"/>
+           <form-property name="versionNumber" type="java.lang.Integer"/>
+           <form-property name ="budgetPeriod" type="java.lang.Integer"/>
+           <form-property name="startDate" type="java.sql.Date"/>
+           <form-property name="endDate" type="java.sql.Date"/> 
+           <form-property name="totalCost" type="java.lang.Double" />
+           <form-property name="totalDirectCost" type="java.lang.Double"/>
+           <form-property name="totalIndirectCost" type="java.lang.Double"/>
+           <form-property name ="costSharingAmount" type="java.lang.Double"/>
+           <form-property name ="underrecoveryAmount" type="java.lang.Double"/>           
+           <form-property name="totalCostLimit" type="java.lang.Double"/>
+           <form-property name="comments" type="java.lang.String"/>
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+           <form-property name="periodStartDate" type="java.lang.String"/>
+           <form-property name="periodEndDate" type="java.lang.String"/>           
+           <form-property name="acType" type="java.lang.String"/>
+           <!-- Code added for Case#3472 - Sync to Direct Cost Limit -->
+           <form-property name="totalDirectCostLimit" type="java.lang.Double" />
+   </form-bean>
+   
+   <form-bean name="dynaBeanList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList"/>
+   
+    <form-bean name="lineItemDynaBeanList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList"/>
+    
+  <!-- Adjust Period Boundary end -->   
+  
+    <!-- Budget Versions start -->   
+    <form-bean name="budgetVersions" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="proposalNumber" type="java.lang.String"/>          
+           <form-property name="budgetStatus" type="java.lang.String"/>
+           <form-property name="versionNumber" type="java.lang.Integer"/>            
+           <form-property name="totalDirectCost" type="java.lang.Double"/>
+           <form-property name="totalIndirectCost" type="java.lang.Double"/>
+           <form-property name="totalCost" type="java.lang.Double" />           
+           <form-property name="costSharingAmount" type="java.lang.Double"/>
+           <form-property name="underRecoveryAmount" type="java.lang.Double"/>
+           <form-property name="residualFunds" type="java.lang.Double"/>
+           <form-property name="finalVersionFlag" type="java.lang.String"/>
+           <form-property name="finalVersionValue" type="java.lang.String"/>
+           <form-property name="startDate" type="java.sql.Date"/>
+           <form-property name="endDate" type="java.sql.Date"/>  
+           <form-property name="budgetStatusCode" type="java.lang.String"/>
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="newUpdateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>              
+           <form-property name="copyPeriodCode" type="java.lang.String"/> 
+           <form-property name="sponsorCode" type="java.lang.String"/>
+           <form-property name="sponsorName" type="java.lang.String"/> 
+           <form-property name="activityTypeCode" type="java.lang.String"/>  
+           <!-- Added for the case# COEUSQA-1695-Add a "descriptor" field to each Budget version start-->
+           <form-property name="comments" type="java.lang.String"/>  
+           <!-- Added for the case# COEUSQA-1695-Add a "descriptor" field to each Budget version start-->
+    </form-bean>       
+    
+    
+
+  <!-- Budget Versions end -->  
+  <!-- Budget Modular data start 1 -->
+   <form-bean name="coeusBudgetModularDynaList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+    </form-bean>
+   <form-bean name="budgetModular" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <!-- Budget Modular DC Data -->
+           <form-property name="proposalNumber" type="java.lang.String"/>
+           <form-property name="versionNumber" type="java.lang.Integer"/>
+           <form-property name="budgetPeriod" type="java.lang.Integer"/>
+           <form-property name="directCostFA" type="java.lang.Double"/>
+           <form-property name="consortiumFNA" type="java.lang.Double"/>
+           <form-property name="totalDirectCost" type="java.lang.Double"/>
+           <form-property name="strDirectCostFA" type="java.lang.String" initial=""/>
+           <form-property name="strConsortiumFNA" type="java.lang.String" initial=""/>
+            <!-- Budget Modular IDC Data -->
+           <form-property name="description" type="java.lang.String"/>
+           <form-property name="fundRequested" type="java.lang.Double"/>
+           <form-property name="rateNumber" type="java.lang.Integer"/>   
+           <form-property name="awRateNumber" type="java.lang.Integer"/>         
+           <form-property name="acType" type="java.lang.String"/>
+           <form-property name="idcBase" type="java.lang.Double"/>
+           <form-property name="idcRate" type="java.lang.Double"/>
+           <form-property name="strIdcRate" type="java.lang.String" initial=""/>
+           <form-property name="strFundRequested" type="java.lang.String" initial=""/>
+           <form-property name="strIdcBase" type="java.lang.String" initial=""/>
+           <form-property name="avUpdateTimestamp" type="java.lang.String"/> 
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+   </form-bean>
+   <!-- Budget Modular data end 1 -->
+   
+    <!-- Proposal Rates start-->
+   <form-bean name="budgetProposalRate_wmc" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="proposalNumber_wmc" type="java.lang.String"/>
+           <form-property name="versionNumber_wmc" type="java.lang.Integer"/>
+           <form-property name="rateClassCode_wmc" type ="java.lang.Integer"/>
+            <form-property name="rateTypeCode_wmc" type ="java.lang.Integer"/>
+                <form-property name="fiscalYear_wmc"   type ="java.lang.String"/> 
+                <form-property name="onOffCampusFlag_wmc"   type ="java.lang.String"/>
+                <form-property name="activityTypeCode_wmc" type ="java.lang.Integer"/>
+                <form-property name="startDate_wmc" type="java.sql.Date"/>
+                <form-property name="applicableRate_wmc"    type ="java.lang.Float"   />
+                <form-property name="instituteRate_wmc"    type ="java.lang.Float"/>
+  		<form-property name="updateTimestamp_wmc" type = "java.lang.String"/>
+		<form-property name="updateUser_wmc" type = "java.lang.String"/> 
+                <form-property name="rateClassDescription_wmc" type ="java.lang.String"/>
+                <form-property name="rateTypeDescription_wmc" type ="java.lang.String"/>
+                <form-property name="activityTypeDescription_wmc" type ="java.lang.String"/>   
+                <form-property name="rateClassType_wmc" type ="java.lang.String"/>
+                <form-property name="awProposalNumber_wmc" type ="java.lang.String"/> 
+               <form-property name="awVersionNumber_wmc" type ="java.lang.Integer"/> 
+               <form-property name="awRateClassCode_wmc" type ="java.lang.Integer"/> 
+               <form-property name="awRateTypeCode_wmc" type ="java.lang.Integer"/> 
+               <form-property name="awFiscalYear_wmc" type ="java.lang.String"/> 
+               <form-property name="awOnOffCampusFlag_wmc" type ="java.lang.String"/> 
+               <form-property name="awActivityTypeCode_wmc" type ="java.lang.Integer"/> 
+               <form-property name="awStartDate_wmc" type ="java.sql.Date"/>	
+               <form-property name="awUpdateTimestamp_wmc" type ="java.lang.String"/> 
+               <form-property name="acType_wmc" type ="java.lang.String"/> 
+   </form-bean>
+	
+          <form-bean name="applicableRateList" type="edu.wmc.coeuslite.budget.bean.ApplicableRateList" />
+
+    <form-bean name="EPSProposalDetails" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="proposalNumber" type="java.lang.String"/>
+           <form-property name="proposalTypeCode" type="java.lang.Integer"/>
+           <form-property name="activityTypeCode" type ="java.lang.Integer"/>
+            <form-property name="unitNumber" type ="java.lang.String"/>
+   </form-bean>
+   <!-- Propsoal Rates end -->
+   
+   
+   <!-- Budget Project Income Starts-->
+    <form-bean name="budgetProjectIncomeList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+    </form-bean>
+    
+    <form-bean name="budgetProjectIncome" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="proposalNumber" type="java.lang.String"/>
+            <form-property name="versionNumber" type="java.lang.Integer"/>    
+            <form-property name="budgetPeriod" type="java.lang.Integer"/>
+            <form-property name="incomeNumber" type="java.lang.Integer"/>
+            <form-property name="strAmount" type="java.lang.String"/>
+            <form-property name="amount" type="java.lang.Double"/>
+            <form-property name="description" type="java.lang.String"/>
+            <form-property name="updateTimestamp" type="java.lang.String"/>
+            <form-property name="awUpdateTimestamp" type ="java.lang.String"/> 
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="acType" type ="java.lang.String"/>             
+    </form-bean> 
+    <!-- Budget Project Income Ends-->
+    
+    <!-- Sub Award Budget Starts-->
+    <form-bean name="budgetSubAward" dynamic="true" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="proposalNumber" type="java.lang.String"/>
+            <form-property name="versionNumber" type="java.lang.Integer"/>
+            <form-property name="organizationName" type="java.lang.String"/>
+            <form-property name="organizationId" type="java.lang.String"/><!-- JM 7-12-2013 added for org dropdown -->
+            <form-property name="comments" type="java.lang.String"/>
+            <form-property name="document" type="org.apache.struts.upload.FormFile"/>
+            <form-property name="fileName" type="java.lang.String"/>
+            <form-property name="selectedRow" type="java.lang.String"/>
+            <form-property name="updateTimestamp" type="java.lang.String"/>
+            <form-property name="awUpdateTimestamp" type ="java.lang.String"/> 
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="acType" type ="java.lang.String"/>
+    </form-bean>
+    
+    <!-- COEUSQA-2735 Cost sharing distribution for Sub awards - Start -->    
+    <form-bean name="budgetSubAwardCostSharing" dynamic="true" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="costSharingAmount" type="java.lang.String"/>
+    </form-bean>
+    <!-- COEUSQA-2735 Cost sharing distribution for Sub awards - Start -->
+    <!-- Sub Award Budget Ends-->
+    
+   <form-bean name="budgetPersonsDynaBean" type="edu.mit.coeuslite.utils.CoeusDynaBeansList"/>
+    
+   <form-bean name="budgetPersonnelDynaBean" type="edu.mit.coeuslite.utils.CoeusDynaBeansList"/>
+
+   <form-bean name="budgetPersonnelLineItemDynaBean" type="edu.mit.coeuslite.utils.CoeusDynaBeansList"/>
+
+   <!-- Budget Print - START -->
+   <form-bean name="budgetPrintForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="proposalNumber" type="java.lang.String"/>
+            <form-property name="versionNumber" type="java.lang.Integer"/>    
+            <form-property name="budgetPeriod" type="java.lang.Integer"/>
+            <form-property name="sponsorCode" type="java.lang.String"/>
+            <form-property name="packageNumber" type="java.lang.Integer"/>
+            <form-property name="pageNumber" type="java.lang.Integer"/>
+            <form-property name="pageData" type="java.lang.String"/>             
+    </form-bean>
+   <!-- Budget Print - END -->
+   
+   <!--NonDetails Personnel-->
+   <form-bean name="NonDetailsForPersonnel" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="proposalNumber" type="java.lang.String"/>
+           <form-property name="versionNumber" type="java.lang.Integer"/>
+           <form-property name="budgetPeriod" type="java.lang.Integer" initial = "1" />
+           <form-property name="lineItemNumber" type="java.lang.Integer" initial = "1" />
+           <form-property name="rateClassCode" type="java.lang.Integer"/>
+           <form-property name="rateClassDescription" type="java.lang.String" />
+           <form-property name="rateTypeCode" type="java.lang.Integer"/>
+           <form-property name="rateTypeDescription" type="java.lang.String" />
+           <form-property name="rateClassType" type="java.lang.String" />
+           <form-property name="applyRateFlag" type="java.lang.Boolean" />                             
+           <form-property name="calculatedCost" type="java.lang.Double" />                   
+           <form-property name="calculatedCostSharing" type="java.lang.Double" />   
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+
+           <form-property name="lineItemStartDate" type="java.lang.String" />
+           <form-property name="lineItemEndDate" type="java.lang.String" />
+           <form-property name="quantity" type="java.lang.Double" /> 
+           <form-property name="lineItemCost" type="java.lang.Double" />       
+           <form-property name="costSharingAmount" type="java.lang.Double" />                                                                            
+           <form-property name="underRecoveryAmount" type="java.lang.Double" /> 
+           <form-property name="onOffCampusFlag" type="java.lang.Boolean" />    
+           <form-property name="applyInRateFlag" type="java.lang.Boolean" />
+           <form-property name="lineItemDescription" type="java.lang.String" />
+   </form-bean>
+   <!--NonDetails Personnel-->
+   
+   <!-- Budget Cost Sharing Distribution - START -->
+   <form-bean name="costDistributionDynaList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+    </form-bean>   
+      <form-bean name="costSharingDistribution" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="proposalNumber" type="java.lang.String"/>
+            <form-property name="versionNumber" type="java.lang.Integer"/>    
+            <form-property name="budgetPeriod" type="java.lang.Integer"/>
+            <form-property name="costSharingFiscalYear" type="java.lang.String"/>
+            <form-property name="costSharingPercentage" type="java.lang.Double"/>
+            <form-property name="strCostSharingPercentage" type="java.lang.String"/>
+            <form-property name="amount" type="java.lang.Double"/>
+            <form-property name="sourceAccount" type="java.lang.String"/>
+            <form-property name="updateTimeStamp" type="java.lang.String"/>
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="versionTotalCostSharing" type="java.lang.Double"/>
+            <form-property name="costSharingAmount" type="java.lang.Double"/>
+            <form-property name="strCostSharingAmount" type="java.lang.String"/>
+            <form-property name="totalDirectCost" type="java.lang.Double"/>
+            <form-property name="totalIndirectCost" type="java.lang.Double"/>
+            <form-property name="totalCost" type="java.lang.Double"/>
+            <form-property name="totalCostLimit" type="java.lang.Double"/>
+            <form-property name="underRecoveryAmount" type="java.lang.Double"/>
+            <form-property name="startDate" type="java.sql.Date"/>
+            <form-property name="endDate" type="java.sql.Date"/>
+            <form-property name="acType" type="java.lang.String"/>
+            
+            <form-property name="aw_Percentage" type="java.lang.Double"/>
+            <form-property name="aw_FiscalYear" type="java.lang.String"/>
+            <form-property name="aw_Amount" type="java.lang.Double"/>
+            <form-property name="aw_SourceAccount" type="java.lang.String"/>
+            <form-property name="aw_UpdateTimeStamp" type="java.lang.String"/>
+            <form-property name="aw_UpdateUser" type="java.lang.String"/>
+            <form-property name="aw_ProposalNumber" type="java.lang.String"/>
+            <form-property name="aw_VersionNumber" type="java.lang.Integer"/> 
+            <!-- Code added for Case#3472 - Sync to Direct Cost Limit -->
+           <form-property name="totalDirectCostLimit" type="java.lang.Double" />
+    </form-bean>
+   <!-- Budget Cost Sharing Distribution - END -->
+   
+    <!-- Budget Under Recovery Distribution - START -->
+   <form-bean name="underRecoveryDynaList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+    </form-bean>   
+    <form-bean name="underRecoveryDistribution" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+        <form-property name="proposalNumber" type="java.lang.String"/>
+        <form-property name="versionNumber" type="java.lang.Integer"/>
+        
+        <form-property name="proposalNumber_wmc" type="java.lang.String"/>
+        <form-property name="versionNumber_wmc" type="java.lang.Integer"/>
+        <form-property name="rateClassCode_wmc" type ="java.lang.Integer"/>
+        <form-property name="rateTypeCode_wmc" type ="java.lang.Integer"/>
+        <form-property name="underRecoveryAmt_wmc"   type ="java.lang.Double"/>
+        <form-property name="strUnderRecoveryAmt_wmc"   type ="java.lang.String"/>
+        <form-property name="fiscalYear_wmc"   type ="java.lang.String"/> 
+        <form-property name="onOffCampusFlag_wmc"   type ="java.lang.String"/>
+        <form-property name="activityTypeCode_wmc" type ="java.lang.Integer"/>
+        <form-property name="startDate_wmc" type="java.sql.Date"/>
+        <form-property name="applicableRate_wmc"    type ="java.lang.Double"   />
+        <form-property name="strApplicableRate_wmc"    type ="java.lang.String"   />
+        <form-property name="instituteRate_wmc"    type ="java.lang.Double"/>
+        <form-property name="updateTimestamp_wmc" type = "java.lang.String"/>
+        <form-property name="updateUser_wmc" type = "java.lang.String"/> 
+        <form-property name="rateClassDescription_wmc" type ="java.lang.String"/>
+        <form-property name="rateTypeDescription_wmc" type ="java.lang.String"/>
+        <form-property name="activityTypeDescription_wmc" type ="java.lang.String"/>   
+        <form-property name="rateClassType_wmc" type ="java.lang.String"/>
+        <form-property name="sourceAccount_wmc" type="java.lang.String"/>
+        
+        <form-property name="costSharingAmount" type="java.lang.Double"/>
+        <form-property name="totalDirectCost" type="java.lang.Double"/>
+        <form-property name="totalIndirectCost" type="java.lang.Double"/>
+        <form-property name="totalCost" type="java.lang.Double"/>
+        <form-property name="totalCostLimit" type="java.lang.Double"/>
+        <form-property name="underRecoveryAmount" type="java.lang.Double"/>
+        <form-property name="startDate" type="java.sql.Date"/>
+        <form-property name="endDate" type="java.sql.Date"/>
+        <form-property name="acType" type="java.lang.String"/>
+        
+        <form-property name="awProposalNumber_wmc" type ="java.lang.String"/> 
+        <form-property name="awVersionNumber_wmc" type ="java.lang.Integer"/> 
+        <form-property name="awRateClassCode_wmc" type ="java.lang.Integer"/> 
+        <form-property name="awRateTypeCode_wmc" type ="java.lang.Integer"/> 
+        <form-property name="awFiscalYear_wmc" type ="java.lang.String"/> 
+        <form-property name="awOnOffCampusFlag_wmc" type ="java.lang.String"/> 
+        <form-property name="awActivityTypeCode_wmc" type ="java.lang.Integer"/> 
+        <form-property name="awStartDate_wmc" type ="java.sql.Date"/>	
+        <form-property name="awSourceAccount_wmc" type="java.lang.String"/>
+        <form-property name="awUpdateTimestamp_wmc" type ="java.lang.String"/>
+        <form-property name="awApplicableRate_wmc"    type ="java.lang.Double"/>
+        <!-- Code added for Case#3472 - Sync to Direct Cost Limit -->
+        <form-property name="totalDirectCostLimit" type="java.lang.Double" />
+    </form-bean>
+   <!-- Budget Under Recovery Distribution - END -->
+   
+    <!-- Added for  COEUSQA-2115 Subaward budgeting for Proposal Development - Start -->
+    <form-bean name="subAwardDetailDynaList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+    </form-bean>   
+
+    <form-bean name="subAwardDetailsForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+        <form-property name="proposalNumber" type="java.lang.String" initial = "-1" />
+        <form-property name="versionNumber" type="java.lang.Integer" initial = "-1" />
+        <form-property name="subAwardNumber" type="java.lang.Integer" initial = "-1" />
+        <form-property name="budgetPeriod" type="java.lang.Integer" initial = "-1" />
+        <form-property name="directCost" type="java.lang.String" initial = "0.0"/>            
+        <form-property name="indirectCost" type="java.lang.String" initial = "0.0"/>
+        <form-property name="costSharingAmount" type="java.lang.String" initial = "0.0"/>
+        <form-property name="periodStartDate" type="java.sql.Date" />
+        <form-property name="periodEndDate" type="java.sql.Date" />
+        <form-property name="acType" type="java.lang.String"/>
+        <form-property name="updateTimestamp" type="java.lang.String"/>
+        <form-property name="updateUser" type="java.lang.String"/>
+        <form-property name="awUpdateTimestamp" type="java.lang.String"/>
+        <form-property name="awUpdateUser" type="java.lang.String"/>
+    </form-bean>
+    <!-- Added for  COEUSQA-2115 Subaward budgeting for Proposal Development - End -->
+   
+    </form-beans> 
+
+
+          
+   <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+   <!-- WMC coeusLiteBudget START -->   
+    <!-- Generate All Periods -->
+        <action path="/generateAllPeriods" type="edu.wmc.coeuslite.budget.action.BudgetGetAction"  scope="request" >
+                <forward name="success" path="/coeuslite/wmc/budget/tiles/clGeneratePeriodsTile.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/selectionGenerateAllPeriods" type="edu.wmc.coeuslite.budget.action.BudgetGetAction"  scope="request" >
+                <forward name="success" path="/coeuslite/wmc/budget/tiles/clGeneratePeriodsTile.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        
+        <!-- Proposal Rates start -->
+        
+        <action path="/getBudgetProposalRate" type="edu.wmc.coeuslite.budget.action.BudgetProposalRateAction" 
+               scope="session"  name="applicableRateList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetProposalRateTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"     path="/coeuslite/mit/irb/tiles/cwPropMainMenuTile.jsp"/>
+          <!-- COEUSQA-1689 Role Restrictions for Budget Rates - Start -->
+          <!-- Observation:Save On change of Proposal Rate - Issue fix -->
+          <forward name="showSummary" path="/getBudgetSummary.do"/>
+          <!-- COEUSQA-1689 Role Restrictions for Budget Rates - End -->
+        </action>
+    
+        <action path="/updateBudgetProposalRate" type="edu.wmc.coeuslite.budget.action.BudgetProposalRateAction" 
+               scope="session"  name="applicableRateList" validate="true" input="/coeuslite/wmc/budget/tiles/budgetProposalRateTile.jsp">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetProposalRateTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"     path="/coeuslite/mit/irb/tiles/cwPropMainMenuTile.jsp"/>
+          <forward name="showSummary" path="/getBudgetSummary.do"/> 
+        </action>    
+        <!-- Proposal Rates End -->
+  <!-- personnel line item details - apply to current period calculation -->       
+       <action path="/applyToPersonnelCurrentPeriods" type="edu.wmc.coeuslite.budget.action.BudgetPersonnelLineItemAction" 
+               scope="session" name="budgetPersonnelLineItemDynaBean" validate="true" 
+		   input="/coeuslite/wmc/budget/clPersonnelLineItemDetails.jsp">
+          <forward name="success" path="/coeuslite/wmc/budget/clPersonnelLineItemDetails.jsp"/> 
+          <forward name="applyToLaterPeriodsException" path="/coeuslite/wmc/budget/clPersonnelLineItemDetails.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+  <!-- personnel line item details - apply to later period calculation -->       
+       <action path="/applyToPersonnelLaterPeriods" type="edu.wmc.coeuslite.budget.action.BudgetPersonnelLineItemAction" 
+               scope="session" name="budgetPersonnelLineItemDynaBean" validate="true" 
+		   input="/coeuslite/wmc/budget/clPersonnelLineItemDetails.jsp">
+          <forward name="success" path="/coeuslite/wmc/budget/clPersonnelLineItemDetails.jsp"/> 
+          <forward name="applyToLaterPeriodsException" path="/coeuslite/wmc/budget/clPersonnelLineItemDetails.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+  <!-- personnel line item -->       
+       <action path="/getPersonnelLineItemDetails" type="edu.wmc.coeuslite.budget.action.BudgetPersonnelLineItemAction" 
+               scope="session" name="budgetPersonnelLineItemDynaBean" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/clPersonnelLineItemDetails.jsp" redirect="true"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+  <!-- Remove personnel budget line item -->       
+       <action path="/RemovePersonnelLineItem" type="edu.wmc.coeuslite.budget.action.BudgetPersonnelLineItemAction" 
+               scope="session" name="budgetPersonnelDynaBean" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetPersonnelTile.jsp"/> 
+          <!-- COEUSQA-1414 Allow schools to indicate if cost element is still active - Start -->
+          <forward name="showWarning" path="/coeuslite/wmc/budget/tiles/clBudgetPersonnelWarningTile.jsp"/>
+          <!-- COEUSQA-1414 Allow schools to indicate if cost element is still active - End -->
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+    <!-- Calculated personnel budget -->
+       <action path="/calculatePersonnelBudget" type="edu.wmc.coeuslite.budget.action.BudgetPersonnelLineItemAction" 
+               scope="session" name="budgetPersonnelDynaBean" validate="true"
+               input ="/coeuslite/wmc/budget/tiles/budgetPersonnelTile.jsp">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetPersonnelTile.jsp"/>
+          <forward name="showWarning" path="/coeuslite/wmc/budget/tiles/clBudgetPersonnelWarningTile.jsp"/>
+          <forward name="editSuccess" path="/coeuslite/wmc/budget/clLineItemDetails.jsp"/>
+          <forward name="getBudgetPersonnel" path="/getBudgetPersonnel.do" redirect="true"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+    <!-- Person Search -->
+       <action path="/personSearch" type="edu.utk.coeuslite.propdev.action.ProposalSearchAction" 
+               scope="session" name="budgetPersonsDynaBean" validate="false"> 
+          <forward name="success" path="/coeuslite/wmc/budget/common/clBudgetPersonSearch.jsp"/>
+          <forward name="personSearch" path="/coeuslite/wmc/budget/common/clBudgetPersonSearch.jsp"/>
+          <forward name="result" path="/coeuslite/wmc/budget/common/clBudgetPersonSearch.jsp"/>   
+          <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+       </action>
+    <!-- Budget Person Add Person/Rolodex -->
+       <action path="/AddPersonLineItem" type="edu.wmc.coeuslite.budget.action.BudgetPersonnelLineItemAction"
+               scope="session" name="budgetPersonsDynaBean" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetPersonsTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+    <!-- Select persons for Budget Personnel -->
+       <action path="/selectBudgetPersonnel" type="edu.wmc.coeuslite.budget.action.BudgetGetPersonnelAction"
+               scope="session" name="budgetPersonnelDynaBean" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetPersonnelTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+    <!-- Add persons to Budget Personnel -->
+       <action path="/AddBudgetPersonnel" type="edu.wmc.coeuslite.budget.action.BudgetGetPersonnelAction"
+               scope="session" name="budgetPersonnelDynaBean" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/selectBudgetPersonsTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+    <!-- Budget Personnel -->
+       <action path="/getBudgetPersonnel" type="edu.wmc.coeuslite.budget.action.BudgetGetPersonnelAction"
+               scope="session" name="budgetPersonnelDynaBean" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetPersonnelTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+  <!-- Budget Persons -->
+       <action path="/getBudgetPersons" type="edu.wmc.coeuslite.budget.action.BudgetGetPersonnelAction" 
+               scope="session" name="budgetPersonsDynaBean" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetPersonsTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <!-- COEUSQA-1559 Display calculated base salary amount on RR Budget form in out years - Start -->
+       <action path="/calculateBaseSalary" type="edu.wmc.coeuslite.budget.action.BudgetGetPersonnelAction"
+               scope="session" name="budgetPersonsDynaBean" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetPersonsTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/calculateAllBaseSalary" type="edu.wmc.coeuslite.budget.action.BudgetGetPersonnelAction"
+               scope="session" name="budgetPersonsDynaBean" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetPersonsTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <!-- COEUSQA-1559 Display calculated base salary amount on RR Budget form in out years - End -->
+       
+  <!-- Budget Persons line item -->       
+       <action path="/RemovePersonLineItem" type="edu.wmc.coeuslite.budget.action.BudgetPersonnelLineItemAction" 
+               scope="session" name="budgetPersonsDynaBean" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetPersonsTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/setBudgetPersons" type="edu.wmc.coeuslite.budget.action.BudgetPersonnelLineItemAction" 
+               scope="session" name="budgetPersonsDynaBean" validate="true"
+               input ="/coeuslite/wmc/budget/tiles/budgetPersonsTile.jsp">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetPersonsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+   <!-- WMC coeusLiteBudget END -->  
+  
+  <!-- Budget Line Item Details -->
+       <action path="/getLineItemDetails" type="edu.wmc.coeuslite.budget.action.BudgetLineItemAction" 
+               scope="request" name="lineItemDetails" validate="true">
+          <forward name="success" path="/coeuslite/wmc/budget/clLineItemDetails.jsp"/>     
+          <forward name="formulatedCostDetails"  path="/getFormulatedLineItemDetails.do" redirect="true"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+
+       
+    <!-- Budget Formualted Line Item Details -->
+       <action path="/getFormulatedLineItemDetails" type="edu.wmc.coeuslite.budget.action.BudgetFormulatedLineItemDetailsAction" 
+               scope="request" name="formulatedLineItemDetails" validate="false">
+           <forward name="success"  path="/coeuslite/wmc/budget/clFormulatedLineItemDetails.jsp"/>     
+           <forward name="error"    path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/saveFormulatedLineItemDetail" type="edu.wmc.coeuslite.budget.action.BudgetFormulatedLineItemDetailsAction" 
+               scope="session" name="formulatedLineItemDetails" validate="false">
+           <forward name="success"      path="/getFormulatedLineItemDetails.do" redirect="true"/>     
+           <forward name="error"        path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure"      path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="exception"    path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/deleteFormulatedLineItemDetail" type="edu.wmc.coeuslite.budget.action.BudgetFormulatedLineItemDetailsAction" 
+               scope="session" name="formulatedLineItemDetails" validate="false">
+           <forward name="success"      path="/getFormulatedLineItemDetails.do" redirect="true"/>     
+           <forward name="error"        path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure"      path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="exception"    path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/applyToFormulatedLaterPeriods" type="edu.wmc.coeuslite.budget.action.BudgetFormulatedLineItemDetailsAction" 
+               scope="request" name="formulatedLineItemDetails" validate="false" input="/coeuslite/wmc/budget/clFormulatedLineItemDetails.jsp">
+           <forward name="success"      path="/coeuslite/wmc/budget/clFormulatedLineItemDetails.jsp"/> 
+           <forward name="applyToLaterPeriodsException" path="/coeuslite/wmc/budget/clFormulatedLineItemDetails.jsp"/> 
+           <forward name="error"        path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure"      path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="exception"    path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/applyToFormulatedCurrentPeriods" type="edu.wmc.coeuslite.budget.action.BudgetFormulatedLineItemDetailsAction" 
+             scope="request" name="formulatedLineItemDetails" validate="false" input="/coeuslite/wmc/budget/clFormulatedLineItemDetails.jsp">
+           <forward name="success"      path="/coeuslite/wmc/budget/clFormulatedLineItemDetails.jsp"/> 
+           <forward name="error"        path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure"      path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="exception"    path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+ 
+       <action path="/syncCalculatedLineItemCosts" type="edu.wmc.coeuslite.budget.action.BudgetFormulatedLineItemDetailsAction"
+               scope="request" name= "formulatedLineItemDetails" validate="false">
+           <forward name="success"      path="/coeuslite/wmc/budget/tiles/clSyncCalLineItemCostTile.jsp"/>
+           <forward name="summaryPage"      path="/getBudgetSummary.do" redirect="true"/>     
+           <forward name="error"        path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure"      path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="exception"    path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+ 
+       
+<!-- Budget Summary page -->       
+            
+         <action path="/getBudget" type="edu.wmc.coeuslite.budget.action.BudgetGetAction" 
+               scope="session" name="syncPersonsDynaList" validate="false">
+          <forward name="budgetSummary" path="/coeuslite/wmc/budget/tiles/budgetSummaryTile.jsp"/> 
+          <forward name="budgetPersons" path="/getBudgetPersons.do" redirect="true"/> 
+          <forward name="budgetVersions" path="/getBudgetVersions.do"/>   
+          <forward name="activityTypeChanged" path="/coeuslite/wmc/budget/tiles/clActivityTypeTile.jsp"/> 
+          <forward name="multipleAppointments" path="/coeuslite/wmc/budget/tiles/clAppointmentsTile.jsp"/> 
+          <forward name="syncPersons" path="/getBudgetSyncPerson.do"/>                   
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"   path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>  
+       </action>
+       
+     <!-- Budget Sync Persons - Start   -->
+     
+      <action path="/getBudgetSyncPerson" type="edu.wmc.coeuslite.budget.action.BudgetGetAction" 
+               scope="session" name="syncPersonsDynaList" validate="false" 
+               input ="/coeuslite/wmc/budget/tiles/clBudgetSyncPersonsTile.jsp">
+         <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetSyncPersonsTile.jsp"/> 
+         <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception"   path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>                
+      </action>         
+      
+      <action path="/updateBudgetSyncPerson" type="edu.wmc.coeuslite.budget.action.BudgetSyncPersonAction" 
+               scope="session" name="syncPersonsDynaList" validate="true" 
+               input ="/coeuslite/wmc/budget/tiles/clBudgetSyncPersonsTile.jsp">
+         <forward name="getBudget" path="/getBudget.do"/> 
+         <forward name="openBudgetVersion" path="/openBudgetVersion.do"/> 
+         <forward name="addNewVersion" path="/addNewVersion.do"/>            
+         <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception"   path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>                
+      </action>     
+     
+     <!-- Budget Sync Persons - End   -->                
+       
+<!--- Budget Equipment Page -->
+       <action path="/getBudgetEquipment" type="edu.wmc.coeuslite.budget.action.BudgetGetAction" 
+               scope="session" name="lineItemDynaBeanList" validate="false">
+               <!--<forward name="success" path="/coeuslite/wmc/budget/TestPage.jsp"/>-->
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetEquipmentTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="noCostElements" path="/coeuslite/wmc/budget/clRequiredCostElement.jsp"/>
+       </action>
+       
+<!-- Add Line Item -->       
+       <action path="/AddLineItem" type="edu.wmc.coeuslite.budget.action.BudgetLineItemAction" 
+               scope="session" name="lineItemDynaBeanList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetEquipmentTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+<!-- Remove Line Item -->       
+       <action path="/RemoveLineItem" type="edu.wmc.coeuslite.budget.action.BudgetLineItemAction" 
+               scope="session" name="lineItemDynaBeanList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetEquipmentTile.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+<!-- Calculate -->      
+       <action path="/calculateBudget" type="edu.wmc.coeuslite.budget.action.BudgetLineItemAction" 
+               scope="session" name="lineItemDynaBeanList" validate="true" input="/coeuslite/wmc/budget/tiles/clBudgetEquipmentTile.jsp">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetEquipmentTile.jsp"/>
+          <forward name="editSuccess" path="/coeuslite/wmc/budget/clLineItemDetails.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/applyToLaterPeriods" type="edu.wmc.coeuslite.budget.action.BudgetLineItemDetailsAction" 
+               scope="request" name="lineItemDetails" validate="true" input="/coeuslite/wmc/budget/clLineItemDetails.jsp">
+          <forward name="success" path="/coeuslite/wmc/budget/clLineItemDetails.jsp"/> 
+           <forward name="applyToLaterPeriodsException" path="/coeuslite/wmc/budget/clLineItemDetails.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/applyToCurrentPeriods" type="edu.wmc.coeuslite.budget.action.BudgetLineItemDetailsAction" 
+               scope="request" name="lineItemDetails" validate="true" input="/coeuslite/wmc/budget/clLineItemDetails.jsp">
+          <forward name="success" path="/coeuslite/wmc/budget/clLineItemDetails.jsp"/> 
+           <forward name="applyToLaterPeriodsException" path="/coeuslite/wmc/budget/clLineItemDetails.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/getAdjustPeriodData" type="edu.wmc.coeuslite.budget.action.AdjustPeriodBoundaryAction" 
+               scope="session" name="dynaBeanList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clAdjustPeriodBoundaryTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/addAdjustPeriod" type="edu.wmc.coeuslite.budget.action.AdjustPeriodBoundaryAction" 
+               scope="session" name="dynaBeanList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clAdjustPeriodBoundaryTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/saveAdjustPeriodData" type="edu.wmc.coeuslite.budget.action.AdjustPeriodBoundaryAction" 
+               scope="session" name="dynaBeanList" validate="true" input="/coeuslite/wmc/budget/tiles/clAdjustPeriodBoundaryTile.jsp"> 
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clAdjustPeriodBoundaryTile.jsp"  /> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/deleteAdjustPeriod" type="edu.wmc.coeuslite.budget.action.AdjustPeriodBoundaryAction" 
+               scope="session" name="dynaBeanList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clAdjustPeriodBoundaryTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       
+<!-- Calculate -->         
+       
+    <!--BudgetVersions Page- Start -->       
+       
+         <action path="/getBudgetVersions" type="edu.wmc.coeuslite.budget.action.BudgetVersionsAction" 
+               scope="request" name="budgetVersions" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetVersionsTile.jsp"/>
+          <forward name="copyBudgetVersion" path="/coeuslite/wmc/budget/tiles/clBudgetVersionCopyTile.jsp"/>  
+          <forward name="lockPage" path="/coeuslite/wmc/budget/tiles/clBudgetVersionsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"   path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>  
+       </action>  
+    <!--BudgetVersions Page- End -->   
+        <!--Modified forCOEUSQA-1500 CoeusLite - Budget Summary - Allow end user to manually insert dollar amounts-Start-->
+       <action path="/budgetSummary" type="edu.wmc.coeuslite.budget.action.BudgetSummaryAction" 
+               scope="session" name="budgetSummaryDynaList" validate="false" input="/coeuslite/wmc/budget/tiles/budgetSummaryTile.jsp">          
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetSummaryTile.jsp"/>        
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"   path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>  
+       </action>
+       
+       <action path="/getBudgetSummary" type="edu.wmc.coeuslite.budget.action.BudgetGetAction" 
+               scope="session" name="budgetSummaryDynaList" validate="false">
+          <forward name="budgetSummary" path="/coeuslite/wmc/budget/tiles/budgetSummaryTile.jsp"/> 
+          <forward name="budgetPersonnel" path="/getBudgetPersons.do"/> 
+          <forward name="budgetVersions" path="/getBudgetVersions.do"/>          
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"   path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>  
+       </action> 
+       <!--Modified forCOEUSQA-1500 CoeusLite - Budget Summary - Allow end user to manually insert dollar amounts-End-->
+        <action path="/addNewVersion" type="edu.wmc.coeuslite.budget.action.BudgetVersionsAction" 
+                scope="session" name="syncPersonsDynaList" validate="false">
+          <forward name="budgetSummary" path="/coeuslite/wmc/budget/tiles/budgetSummaryTile.jsp"/> 
+          <forward name="budgetPersons" path="/getBudgetPersons.do" redirect="true"/> 
+          <forward name="activityTypeChanged" path="/coeuslite/wmc/budget/tiles/clActivityTypeChangeTile.jsp"/> 
+          <forward name="multipleAppointments" path="/coeuslite/wmc/budget/tiles/clAppointmentsTile.jsp"/> 
+          <forward name="lockPage" path="/coeuslite/wmc/budget/tiles/clBudgetVersionsTile.jsp"/>
+          <forward name="syncPersons" path="/getSyncPersons.do"/>   
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>
+       
+       <action path="/copyBudgetVersion" type="edu.wmc.coeuslite.budget.action.BudgetVersionsAction" 
+                scope="request" name="budgetSummary" validate="false">
+          <forward name="budgetSummary" path="/getBudgetSummary.do"/> 
+          <forward name="budgetPersons" path="/getBudgetPersons.do" redirect="true"/> 
+          <forward name="lockPage" path="/coeuslite/wmc/budget/tiles/clBudgetVersionCopyTile.jsp"/>
+          <forward name="activityTypeChanged" path="/coeuslite/wmc/budget/tiles/clActivityTypeChangeTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>   
+       
+       <action path="/openBudgetVersion" type="edu.wmc.coeuslite.budget.action.BudgetVersionsAction" 
+                scope="session" name="syncPersonsDynaList" validate="false">
+          <forward name="budgetSummary" path="/getBudgetSummary.do"/> 
+          <forward name="budgetPersons" path="/getBudgetPersons.do" redirect="true"/> 
+          <forward name="lockPage" path="/coeuslite/wmc/budget/tiles/clBudgetVersionsTile.jsp"/>
+          <forward name="activityTypeChanged" path="/coeuslite/wmc/budget/tiles/clActivityTypeChangeTile.jsp"/> 
+          <forward name="multipleAppointments" path="/coeuslite/wmc/budget/tiles/clAppointmentsTile.jsp"/> 
+          <forward name="syncPersons" path="/getSyncPersons.do"/>       
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+       </action>   
+       
+       <!-- Budget Version Sync Persons    -->
+       
+      <action path="/getSyncPersons" type="edu.wmc.coeuslite.budget.action.BudgetVersionsAction" 
+               scope="session" name="syncPersonsDynaList" validate="false" 
+               input ="/coeuslite/wmc/budget/tiles/clBudgetSyncPersonsTile.jsp">
+           <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetSyncPersonsTile.jsp"/> 
+           <forward name="lockPage" path="/coeuslite/wmc/budget/tiles/clBudgetVersionsTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="exception"   path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>                
+      </action>       
+       
+        <!--Modified forCOEUSQA-1500 CoeusLite - Budget Summary - Allow end user to manually insert dollar amounts-Start-->
+        <action path="/changeLineItemOHRate" type="edu.wmc.coeuslite.budget.action.BudgetSummaryAction" 
+               scope="session" name="budgetSummaryDynaList" validate="false">          
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetSummaryTile.jsp"/>        
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"   path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>  
+       </action>
+       
+        <action path="/changeLineItemURRate" type="edu.wmc.coeuslite.budget.action.BudgetSummaryAction" 
+               scope="session" name="budgetSummaryDynaList" validate="false">          
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetSummaryTile.jsp"/>        
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"   path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>  
+       </action>                
+    <!-- Case id# 2924 - start -->
+       <action path="/changeLineItemOnOff" type="edu.wmc.coeuslite.budget.action.BudgetSummaryAction" 
+               scope="session" name="budgetSummaryDynaList" validate="false">          
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/budgetSummaryTile.jsp"/>        
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"   path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>  
+       </action>          
+    <!-- Case id# 2924 - end -->
+    <!--Modified forCOEUSQA-1500 CoeusLite - Budget Summary - Allow end user to manually insert dollar amounts-End-->
+    
+    <!--- Project Income Page start-->       
+    <action path="/getBudgetProjectIncome" type="edu.wmc.coeuslite.budget.action.BudgetProjectIncomeAction"
+            scope="session" name="budgetProjectIncomeList" validate="false" >
+        <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetProjectIncomeTile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+ 
+    <action path="/addBudgetProjectIncome" type="edu.wmc.coeuslite.budget.action.BudgetProjectIncomeAction"
+            scope="session" name="budgetProjectIncomeList" validate="false">        
+        <forward name="success" path="/getBudgetProjectIncome.do"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+ 
+    <action path="/deleteBudgetProjectIncome" type="edu.wmc.coeuslite.budget.action.BudgetProjectIncomeAction"
+            scope="session" name="budgetProjectIncomeList" validate="false">        
+        <forward name="success" path="/getBudgetProjectIncome.do"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+  
+   <action path="/saveBudgetProjectIncome" type="edu.wmc.coeuslite.budget.action.BudgetProjectIncomeAction"
+            scope="session" name="budgetProjectIncomeList" validate="false">        
+        <forward name="success" path="/getBudgetProjectIncome.do"/>     
+        <forward name="Unsuccess" path="/coeuslite/wmc/budget/tiles/clBudgetProjectIncomeTile.jsp"/> 
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+   </action>
+   <action path="/updateBudgetProjectIncome" type="edu.wmc.coeuslite.budget.action.BudgetProjectIncomeAction"
+            scope="session" name="budgetProjectIncomeList" validate="true" input="/coeuslite/wmc/budget/tiles/clBudgetProjectIncomeTile.jsp">        
+        <forward name="success" path="/getBudgetProjectIncome.do"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+   </action>
+     <!--- Project Income Page end--> 
+     
+    <!-- COEUSQA-2115: Sub award budgeting for Proposal Development - Start -->       
+    <action path="/getSubAwardBudget" type="edu.wmc.coeuslite.budget.action.BudgetSubAwardAction"
+            scope="session" name="budgetSubAward" validate="false" >
+        <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetSubAwardTile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+    
+    <action path="/editSubAwardBudget" type="edu.wmc.coeuslite.budget.action.BudgetSubAwardAction"
+            scope="session" name="budgetSubAward" validate="false" >
+        <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetSubAwardTile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+    
+    <action path="/saveSubAwardBudget" type="edu.wmc.coeuslite.budget.action.BudgetSubAwardAction"
+            scope="session" name="budgetSubAward" validate="false" >
+        <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetSubAwardTile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+    
+    <action path="/deleteSubAwardBudget" type="edu.wmc.coeuslite.budget.action.BudgetSubAwardAction"
+            scope="session" name="budgetSubAward" validate="false" >
+        <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetSubAwardTile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+    
+    <action path="/viewSubAwardBudget" type="edu.wmc.coeuslite.budget.action.BudgetSubAwardAction"
+            scope="session" name="budgetSubAward" validate="false" >
+        <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetSubAwardTile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+    <!-- COEUSQA-2115: Sub award budgeting for Proposal Development - End -->
+    
+    <!-- COEUSQA-2735 Cost sharing distribution for Sub awards - Start -->
+    <action path="/getSubAwardCostSharing" type="edu.wmc.coeuslite.budget.action.BudgetSubAwardCostSharingAction"
+            scope="session" name="budgetSubAwardCostSharing" validate="false" >
+        <forward name="success" path="/coeuslite/wmc/budget/clSubAwardCostSharing.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
+    <!-- COEUSQA-2735 Cost sharing distribution for Sub awards - Start -->
+    
+    <!-- Budget Modular data start with refreshing data(Changing URL) 2 -->
+       <action path="/getBudgetModularData" type="edu.wmc.coeuslite.budget.action.BudgetModularAction" 
+               scope="session" name="coeusBudgetModularDynaList" validate="false">          
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetModularTile.jsp"/>        
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action> 
+       <action path="/addBudgetModularIDC" type="edu.wmc.coeuslite.budget.action.BudgetModularAction" 
+               scope="session" name="coeusBudgetModularDynaList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetModularTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/saveBudgetModularData" type="edu.wmc.coeuslite.budget.action.BudgetModularAction" 
+               scope="session" name="coeusBudgetModularDynaList" validate="true" input="/coeuslite/wmc/budget/tiles/clBudgetModularTile.jsp"> 
+          <forward name="success" path="/getBudgetModularData.do" redirect="true" /> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/deleteBudgetModularIDC" type="edu.wmc.coeuslite.budget.action.BudgetModularAction" 
+               scope="session" name="coeusBudgetModularDynaList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetModularTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action> 
+       <action path="/syncedBudgetModular" type="edu.wmc.coeuslite.budget.action.BudgetModularAction" 
+               scope="session" name="coeusBudgetModularDynaList" validate="false">
+          <forward name="success" path="/getBudgetModularData.do" redirect="true"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action> 
+       <action path="/cumulativeBudgetModular" type="edu.wmc.coeuslite.budget.action.BudgetModularAction" 
+               scope="session" name="coeusBudgetModularDynaList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetModCumulativeTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action> 
+       <!-- Budget Modular data with refreshing data(Changing URL) end 2 -->  
+       
+       <!-- Budget Print - START -->
+       <action path="/budgetPrintAction" type="edu.wmc.coeuslite.budget.action.BudgetPrintAction" 
+               scope="request" name="budgetPrintForm" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clBudgetTile.jsp?content=clBudgetPrint.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <!-- Budget Print - END -->
+   
+       <!--NonDetails Personnel-->
+       <action path="/nonDetailsForPersonnel" type="edu.wmc.coeuslite.budget.action.BudgetGetPersonnelAction" 
+               scope="session" name="NonDetailsForPersonnel" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/clNonDetailsForPersonnel.jsp"/>     
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+<!--NonDetails Personnel-->       
+
+<!-- Budget Cost Sharing Distribution - START -->
+       <action path="/getCostSharingDistribution" type="edu.wmc.coeuslite.budget.action.CostSharingDistributionAction" 
+               scope="session" name="costDistributionDynaList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clCostSharingDistributionTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+        <action path="/addCostSharingDistribution" type="edu.wmc.coeuslite.budget.action.CostSharingDistributionAction" 
+               scope="session" name="costDistributionDynaList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clCostSharingDistributionTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/saveCostSharingDistribution" type="edu.wmc.coeuslite.budget.action.CostSharingDistributionAction" 
+               scope="session" name="costDistributionDynaList" 
+               input="/coeuslite/wmc/budget/tiles/clCostSharingDistributionTile.jsp" validate="true">
+              <forward name="success" path="/coeuslite/wmc/budget/tiles/clCostSharingDistributionTile.jsp"/> 
+              <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/deleteCostSharingDistribution" type="edu.wmc.coeuslite.budget.action.CostSharingDistributionAction" 
+               scope="session" name="costDistributionDynaList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clCostSharingDistributionTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <!-- Budget Cost Sharing Distribution - END -->
+       
+       <!-- Budget Under Recovery Distribution - START -->
+       <action path="/getUnderRecoveryDistribution" type="edu.wmc.coeuslite.budget.action.UnderRecoveryAction" 
+               scope="session" name="underRecoveryDynaList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clUnderRecoveryTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/addUnderRecoveryDistribution" type="edu.wmc.coeuslite.budget.action.UnderRecoveryAction" 
+               scope="session" name="underRecoveryDynaList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clUnderRecoveryTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/deleteUnderRecoveryDistribution" type="edu.wmc.coeuslite.budget.action.UnderRecoveryAction" 
+               scope="session" name="underRecoveryDynaList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clUnderRecoveryTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/saveUnderRecoveryDistribution" type="edu.wmc.coeuslite.budget.action.UnderRecoveryAction" 
+               scope="session" name="underRecoveryDynaList" validate="false">
+          <forward name="success" path="/coeuslite/wmc/budget/tiles/clUnderRecoveryTile.jsp"/> 
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <!-- Budget Under Recovery Distribution - END -->
+       
+        <!-- TBA Person - Start -->
+        <action path="/tbaSearch" type="edu.wmc.coeuslite.budget.action.BudgetPersonnelLineItemAction" 
+            scope="session" name="budgetPersonsDynaBean" validate="false"> 
+            <forward name="success" path="/coeuslite/wmc/utils/dialogs/clTBADialog.jsp"/>  
+            <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+            <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+        </action>    
+        <!-- TBA Person - End -->     
+        
+        <!-- Added for  COEUSQA-2115 Subaward budgeting for Proposal Development - Start -->
+        <action path="/getSubAwardDetails" type="edu.wmc.coeuslite.budget.action.BudgetSubAwardDetailAction" 
+                scope="session" name="subAwardDetailDynaList" validate="false"> 
+            <forward name="success"     path="/coeuslite/wmc/budget/clSubAwardDetails.jsp"/>  
+            <forward name="error"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception"   path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>    
+        <action path="/saveSubAwardDetails" type="edu.wmc.coeuslite.budget.action.BudgetSubAwardDetailAction" 
+                scope="session" name="subAwardDetailDynaList" validate="false">
+            <forward name="success" path="/coeuslite/wmc/budget/clSubAwardDetails.jsp"/> 
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+		<action path="/syncXMLSubAwardDetails" type="edu.wmc.coeuslite.budget.action.BudgetSubAwardDetailAction" 
+                scope="session" name="subAwardDetailDynaList" validate="false"> 
+            <forward name="success"     path="/coeuslite/wmc/budget/clSubAwardDetails.jsp"/>  
+            <forward name="error"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="exception"   path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <!-- Added for  COEUSQA-2115 Subaward budgeting for Proposal Development - End -->
+       
+  </action-mappings>
+
+  <!-- ========== Message Resources Definitions =========================== -->
+    <message-resources parameter="BudgetMessages" key="budget" />
+
+</struts-config>

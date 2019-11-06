@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Robert Dias (UCSD) -->
+<xs:schema xmlns:fv="http://coeus.ucsd.edu/personalization/coeusforms" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://coeus.ucsd.edu/personalization/coeusforms" elementFormDefault="qualified">
+	<xs:element name="coeus-forms">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cform" type="fv:cform" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="cform">
+		<xs:sequence>
+			<xs:element name="cfield" type="fv:cfield" maxOccurs="unbounded"/>
+			<xs:element name="ccontainer" type="fv:ccontainer" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="classname" type="xs:string" use="required"/>
+		<xs:attribute name="tabname" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ccontainer">
+		<xs:sequence>
+			<xs:element name="cfield" type="fv:cfield" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="cfield">
+		<xs:sequence>
+			<xs:element name="varname" type="xs:string" nillable="false"/>
+			<xs:element name="name" type="xs:string" nillable="false" minOccurs="0"/>
+			<xs:element name="type" type="xs:string" nillable="false"/>
+			<xs:element name="attr" type="fv:attr" minOccurs="0"/>
+			<xs:element name="shortcut" type="xs:string" minOccurs="0"/>
+			<xs:element name="mnemonic" type="fv:mnemonic" minOccurs="0"/>
+			<xs:element name="validation" type="fv:validation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="dataset" type="fv:dataset" minOccurs="0"/>
+			<xs:element name="disabled" type="fv:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="attr">
+		<xs:sequence>
+			<xs:element name="fgcolor" type="xs:string" nillable="false" minOccurs="0"/>
+			<xs:element name="bgcolor" type="xs:string" nillable="false" minOccurs="0"/>
+			<xs:element name="font" type="xs:string" nillable="false" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="dataset">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="value" type="fv:value"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="fv:datatype" use="optional" default="list"/>
+	</xs:complexType>
+	<xs:complexType name="value">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="keyindx" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="mnemonic">
+		<xs:sequence>
+			<xs:element name="mchar" type="xs:string" nillable="false"/>
+			<xs:element name="bindto" type="xs:string" nillable="false" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="boolean">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="false"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="datatype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="hashmap"/>
+			<xs:enumeration value="list"/>
+			<xs:enumeration value="string"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="validation">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="vdata" type="fv:vdata"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="fv:validationtype" use="optional" default="alpha"/>
+	</xs:complexType>
+	<xs:complexType name="vdata">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="datatype" type="fv:validationdata" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="validationtype">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="range"/>
+			<xs:enumeration value="date"/>
+			<xs:enumeration value="number"/>
+			<xs:enumeration value="alpha"/>
+			<xs:enumeration value="nonblank"/>
+			<xs:enumeration value="servicelookup"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="validationdata">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="low"/>
+			<xs:enumeration value="high"/>
+			<xs:enumeration value="dateformat"/>
+			<xs:enumeration value="string"/>
+			<xs:enumeration value="service"/>
+			<xs:enumeration value="errormesg"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

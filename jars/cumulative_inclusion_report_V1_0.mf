@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Application-Name: Coeus
+Permissions: all-permissions
+Application-Library-Allowable-Codebase: *
+Caller-Allowable-Codebase: *
+Codebase: *
+

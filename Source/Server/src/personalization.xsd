@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:sec="http://coeus.ucsd.edu/personalization" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://coeus.ucsd.edu/personalization" elementFormDefault="qualified">
+	<xs:element name="personalization_data">
+		<xs:annotation>
+			<xs:documentation>personalization_data: An XML file that included all other xml objects</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="xmlData" type="sec:xmlData" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="xmlData">
+		<xs:annotation>
+			<xs:documentation>xmlData:	A wrapper element to contain XML encoded metadata.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any namespace="##any" processContents="lax" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

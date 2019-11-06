@@ -1,0 +1,138 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!-- JM 7-3-2012 removed commented out code throughout; replaced MIT images 
+	with custom images throughout -->
+<Menu>
+	<MenuItem>
+		<Menu_Id>001</Menu_Id>
+		<Menu_Name>Coeus Home</Menu_Name>
+		<Image_Path>/coeusliteimages/vu_coeushome.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/vu_coeushome_sel.gif</OnLoadImage>
+		<Link>../../coeusHome.do?Menu_Id=001</Link>
+	</MenuItem>
+
+	<!-- JM 7-3-2012 not using; replaced with empty menu item 
+	<MenuItem> 
+		<Menu_Id>010</Menu_Id> 
+		<Menu_Name>My Negotiations</Menu_Name> 
+		<Image_Path>/coeusliteimages/vu_negotiations.gif</Image_Path> 
+		<OnLoadImage>/coeusliteimages/vu_negotiations_sel.gif</OnLoadImage> 
+		<Link>../../negotiationList.do?NEGOTIATION_TYPE=NEGOTIATION_ACTIVE_SEARCH&#38;Menu_Id=010&#38;SUBHEADER_ID=SH003</Link> 
+	</MenuItem> -->
+	<MenuItem>
+		<Menu_Id>010</Menu_Id>
+		<Menu_Name>Empty</Menu_Name>
+		<Image_Path>/coeusliteimages/vu_blank.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/vu_blank.gif</OnLoadImage>
+		<Link>../../coeusHome.do?Menu_Id=001</Link>
+	</MenuItem>
+	<!-- JM END -->
+
+	<MenuItem>
+		<Menu_Id>003</Menu_Id>
+		<Menu_Name>My Proposals</Menu_Name>
+		<Image_Path>/coeusliteimages/vu_proposals.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/vu_proposals_sel.gif</OnLoadImage>
+		<Link>../../proposalList.do?PROPOSAL_TYPE=PROPOSAL_INPROGRESS&#38;Menu_Id=003&#38;SUBHEADER_ID=001</Link>
+	</MenuItem>
+
+	<!-- JM 7-3-2012 updated images -->
+	<MenuItem> 
+		<Menu_Id>009</Menu_Id> 
+		<Menu_Name>My Awards</Menu_Name> 
+		<Image_Path>/coeusliteimages/vu_awards.gif</Image_Path> 
+		<OnLoadImage>/coeusliteimages/vu_awards_sel.gif </OnLoadImage> 
+		<Link>../../award.do?type=All_Active_Parent_Awards&#38;search=true&#38;searchName=ALL_ACTIVE_PARENT_AWARD&#38;Menu_Id=009&#38;SUBHEADER_ID=A003</Link> 
+	</MenuItem>
+	<!-- JM END -->
+
+	<!-- JM 7-3-2012 not using; replaced with empty menu item 
+	<MenuItem> 
+		<Menu_Id>004</Menu_Id> 
+		<Menu_Name>Coi Disclosure</Menu_Name> 
+		<Image_Path>/coeusliteimages/vu_metrics.gif</Image_Path> 
+		<OnLoadImage>/coeusliteimages/vu_metrics.gif </OnLoadImage> 
+		<Link>../../coi.do?Menu_Id=004</Link> 
+	</MenuItem> -->
+	<MenuItem>
+		<Menu_Id>004</Menu_Id>
+		<Menu_Name>Empty</Menu_Name>
+		<Image_Path>/coeusliteimages/vu_blank.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/vu_blank.gif</OnLoadImage>
+		<Link>../../coeusHome.do?Menu_Id=001</Link>
+	</MenuItem>
+	<!-- JM END -->
+
+	<!-- JM 7-3-2012 not using; replaced with empty menu item 
+	<MenuItem> 
+		<Menu_Id>002</Menu_Id> 
+		<Menu_Name>My Protocols</Menu_Name> 
+		<Image_Path>/coeusliteimages/myirbprotocols_11.gif</Image_Path> 
+		<OnLoadImage>/coeusliteimages/myirbprotocols_2.gif</OnLoadImage> 
+		<Link>../../protocolList.do?PROTOCOL_TYPE=DEFAULT&#38;PROTOCOL_NAME=Active Protocols&#38;Menu_Id=002</Link> 
+	</MenuItem> -->
+	<MenuItem>
+		<Menu_Id>002</Menu_Id>
+		<Menu_Name>Empty</Menu_Name>
+		<Image_Path>/coeusliteimages/vu_blank.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/vu_blank.gif</OnLoadImage>
+		<Link>../../coeusHome.do?Menu_Id=001</Link>
+	</MenuItem>
+	<!-- JM END -->
+
+	<!-- JM 7-3-2012 not using; replaced with empty menu item 
+	<MenuItem> 
+		<Menu_Id>008</Menu_Id> 
+		<Menu_Name>My IACUC</Menu_Name> 
+		<Image_Path>/coeusliteimages/myIacucProtocols_11.gif</Image_Path> 
+		<OnLoadImage>/coeusliteimages/myIacucProtocols_2.gif</OnLoadImage> 
+		<Link>../../iacucList.do?IACUC_TYPE=DEFAULT&#38;PROTOCOL_NAME=Active Protocols&#38;Menu_Id=008</Link> 
+	</MenuItem> -->
+	<MenuItem>
+		<Menu_Id>008</Menu_Id>
+		<Menu_Name>Empty</Menu_Name>
+		<Image_Path>/coeusliteimages/vu_blank.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/vu_blank.gif</OnLoadImage>
+		<Link>../../coeusHome.do?Menu_Id=001</Link>
+	</MenuItem>
+	<!-- JM END -->
+
+
+	<MenuItem>
+		<Menu_Id>005</Menu_Id>
+		<Menu_Name>Inbox</Menu_Name>
+		<Image_Path>/coeusliteimages/vu_inbox.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/vu_inbox_sel.gif</OnLoadImage>
+		<Link>../../getInboxMessages.do?messageType=unresolved&#38;Menu_Id=005</Link>
+	</MenuItem>
+
+	<!-- JM 10-23-2012 not using metrics any more; replaced with empty menu item 
+	<MenuItem> 
+		<Menu_Id>006</Menu_Id> 
+		<Menu_Name>My Metrics</Menu_Name> 
+		<Image_Path>/coeusliteimages/vu_metrics.gif</Image_Path> 
+		<OnLoadImage>/coeusliteimages/vu_metrics_sel.gif</OnLoadImage> 
+		<Link>../../arraList.do?Menu_Id=006</Link> 
+	</MenuItem> -->
+	<MenuItem>
+		<Menu_Id>006</Menu_Id>
+		<Menu_Name>Empty</Menu_Name>
+		<Image_Path>/coeusliteimages/vu_blank.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/vu_blank.gif</OnLoadImage>
+		<Link>../../coeusHome.do?Menu_Id=001</Link>
+	</MenuItem>
+	<!-- JM END -->
+
+	<MenuItem>
+		<Menu_Id>007</Menu_Id>
+		<Menu_Name>Logout</Menu_Name>
+		<Image_Path>/coeusliteimages/logout_11.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/logout_2.gif</OnLoadImage>
+		<Link>../../logoutAction.do?Menu_Id=007</Link>
+	</MenuItem>
+
+
+
+
+</Menu>
+
+

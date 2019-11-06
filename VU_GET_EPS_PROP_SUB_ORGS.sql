@@ -1,0 +1,20 @@
+CREATE OR REPLACE PROCEDURE COEUS.VU_GET_EPS_PROP_SUB_ORGS (
+       AV_PROPOSAL_NUMBER    IN OSP$EPS_PROP_SITES.PROPOSAL_NUMBER%TYPE,
+       CUR_SITES            IN OUT RESULT_SETS.CUR_GENERIC)
+AS
+BEGIN
+     OPEN CUR_SITES FOR
+           SELECT ps.PROPOSAL_NUMBER,
+                 ps.SITE_NUMBER,
+                 ps.LOCATION_NAME,
+                 ps.LOCATION_TYPE_CODE,
+                 ps.ORGANIZATION_ID,
+                 ps.ROLODEX_ID,
+                 ps.UPDATE_TIMESTAMP,
+                 ps.UPDATE_USER
+          FROM OSP$EPS_PROP_SITES ps
+          WHERE ps.LOCATION_TYPE_CODE IN (3,6)
+          AND ps.PROPOSAL_NUMBER = AV_PROPOSAL_NUMBER
+          ORDER BY ps.LOCATION_NAME;
+END;
+/

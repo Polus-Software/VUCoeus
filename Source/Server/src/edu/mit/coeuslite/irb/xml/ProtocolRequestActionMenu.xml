@@ -1,0 +1,46 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<Menu>
+	<MenuItem>
+		<Menu_Id> PA001</Menu_Id>
+		<Menu_Name> Return To Protocol</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>RETURNTOPROTOCOL</FieldName>
+		<Link>/getProtocolData.do</Link>
+		<Group>0</Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> PA002</Menu_Id>
+		<Menu_Name> Submission Details</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PROTOCOLREQUESTACTION</FieldName>
+		<Link> /getProtocolSubmissionAction.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> PA003</Menu_Id>
+		<Menu_Name> Complete Submission</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>COMPLETESUBMISSION</FieldName>
+		<Link>/completeProtocolSubmission.do?fromMenu=true</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> PA004</Menu_Id>
+		<Menu_Name> Forms</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PRINT</FieldName>
+		<Link>3</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+
+</Menu>

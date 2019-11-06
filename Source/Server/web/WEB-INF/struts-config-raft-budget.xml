@@ -1,0 +1,527 @@
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+   <!-- *********************************************  RAFT **************************************************-->
+<form-beans>
+ <form-bean name="raftLineItemList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+    </form-bean>
+    <form-bean name="RaftLineItemList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+    </form-bean>
+   <!-- Raft Line Item start-->
+   <form-bean name="RaftPeriodBeanList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList"/>
+   <form-bean name="raftPeriodData" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <!-- Budget Period Data -->
+
+           <form-property name="awardNumber"       type="java.lang.String"/>
+           <form-property name="versionNumber"     type="java.lang.Integer"/>
+           <form-property name="budgetPeriod"       type="java.lang.Integer" />
+           <form-property name="periodName"         type="java.lang.String" />
+        
+           <!--<form-property name="startDat"          type="java.lang.String"/>-->
+           <!--<form-property name="endDat"            type="java.lang.String"/>-->
+           <form-property name="startDate"          type="java.sql.Date"/>
+           <form-property name="endDate"            type="java.sql.Date" />
+           <form-property name="totalCost"          type="java.lang.Double" />
+           <form-property name="totalDirectCost"    type="java.lang.Double" />
+           <form-property name="totalIndirectCost"  type="java.lang.Double" />
+           <form-property name="comments"           type="java.lang.String" />
+           <form-property name="acType"             type="java.lang.String"/>
+         <form-property name="updateTimestamp" type="java.lang.String"/>
+         <form-property name="updateUser" type="java.lang.String"/>
+   </form-bean>
+
+   <form-bean name="raftPeriodBoundary" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="awardNumber" type="java.lang.String"/>
+           <form-property name="versionNumber" type="java.lang.Integer"/>
+           <form-property name ="budgetPeriod" type="java.lang.Integer"/>
+             <form-property name="periodName"         type="java.lang.String" />
+              <form-property name="tempPeriodName"         type="java.lang.String" />
+           <form-property name="startDate" type="java.sql.Date"/>
+           <form-property name="endDate" type="java.sql.Date"/>
+           <form-property name="totalCost" type="java.lang.Double" />
+           <form-property name="totalDirectCost" type="java.lang.Double"/>
+           <form-property name="totalIndirectCost" type="java.lang.Double"/>
+           <!--<form-property name ="costSharingAmount" type="java.lang.Double"/>-->
+           <!--<form-property name ="underrecoveryAmount" type="java.lang.Double"/>-->
+           <!--<form-property name="totalCostLimit" type="java.lang.Double"/>-->
+           <form-property name="comments" type="java.lang.String"/>
+          <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+           <form-property name="periodStartDate" type="java.lang.String"/>
+           <form-property name="periodEndDate" type="java.lang.String"/>
+           <form-property name="acType" type="java.lang.String"/>
+           <!-- Code added for Case#3472 - Sync to Direct Cost Limit -->
+           <!--<form-property name="totalDirectCostLimit" type="java.lang.Double" />-->
+   </form-bean>
+
+
+
+   <form-bean name="raftPeriodData" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <!-- Budget Period Data -->
+
+           <form-property name="awardNumber"       type="java.lang.String"  initial = "-1"   />
+           <form-property name="versionNumber"     type="java.lang.Integer"    initial = "-1" />
+           <form-property name="budgetPeriod"       type="java.lang.Integer"    initial = "-1" />
+           <form-property name="periodName"         type="java.lang.String" />
+           <form-property name="startDate"          type="java.sql.Date"    />
+           <form-property name="endDate"            type="java.sql.Date"    />
+           <form-property name="totalCost"          type="java.lang.Double" />
+           <form-property name="totalDirectCost"    type="java.lang.Double" />
+           <form-property name="totalIndirectCost"  type="java.lang.Double" />
+           <form-property name="comments"           type="java.lang.String" />
+          <form-property name="updateTimestamp"     type="java.lang.String" />
+          <form-property name="updateUser"          type="java.lang.String" />
+           <form-property name="lineItemStartDate" type="java.sql.Date" />
+           <form-property name="lineItemEndDate" type="java.sql.Date" />
+   </form-bean>
+<form-bean name="raftEquipmentData" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <!-- Budget Detail Data -->
+            <form-property name="awardNumber" type="java.lang.String" initial = "-1" />
+           <form-property name="versionNumber" type="java.lang.Integer" initial = "-1" />
+           <form-property name="budgetPeriod" type="java.lang.Integer" initial = "-1" />
+          <form-property name="lineItemNumber" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="budgetCategoryCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="costElement" type="java.lang.String" />
+           <form-property name="costElementDescription" type="java.lang.String" />
+           <form-property name="ceDescription" type="java.lang.String" />
+           <form-property name="lineItemDescription" type="java.lang.String" />
+           <form-property name="basedOnLineItem" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="lineItemSequence" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="lineItemStartDate" type="java.sql.Date" />
+           <form-property name="lineItemEndDate" type="java.sql.Date" />
+           <form-property name="lineItemCost" type="java.lang.Double" />
+           <form-property name="costSharingAmount" type="java.lang.Double" />
+           <!--<form-property name="underRecoveryAmount" type="java.lang.Double" />-->
+           <form-property name="onOffCampusFlag" type="java.lang.Boolean" />
+  <!--new Change for Overriding campus Flag after calculation-->
+           <form-property name="overRideCampusFlag" type="java.lang.Boolean" />
+            <form-property name="zeroCampusflag" type="java.lang.Boolean" />
+           <form-property name="applyInRateFlag" type="java.lang.Boolean" />
+           <!--<form-property name="budgetJustification" type="java.lang.String" />-->
+           <form-property name="categoryType" type="java.lang.String" />
+           <!-- Modified for Case #3132 - start
+                Changing quantity field from integer to float-->
+           <!--<form-property name="quantity" type="java.lang.Integer" initial = "-1"/>-->
+           <!--<form-property name="quantity" type="java.lang.Double"/>-->
+           <!--<form-property name="tempQuantity" type="java.lang.String"/>-->
+           <!-- Modified for Case #3132 - end -->
+           <form-property name="directCost" type="java.lang.Double" />
+           <form-property name="indirectCost" type="java.lang.Double" />
+           <form-property name="totalCostSharing" type="java.lang.Double"/>
+           <form-property name="acType" type="java.lang.String"/>
+            <!--To Referesh the parent window-->
+            <form-property name="popUp" type="java.lang.String"/>
+           <!-- Budget Period Bean -->
+
+
+           <form-property name="periodName"         type="java.lang.String"/>
+           <form-property name="startDate"          type="java.sql.Date"/>
+           <form-property name="endDate"            type="java.sql.Date"/>
+           <form-property name="totalCost"          type="java.lang.Double" />
+           <form-property name="totalDirectCost"    type="java.lang.Double"/>
+           <form-property name="totalIndirectCost"  type="java.lang.Double"/>
+           <!--<form-property name="totalCostLimit"     type="java.lang.Double"/>-->
+           <form-property name="comments"           type="java.lang.String"/>
+           <form-property name="description"        type="java.lang.String"/>
+           <form-property name="updateTimestamp"    type="java.lang.String"/>
+           <form-property name="updateUser"         type="java.lang.String"/>
+           <!-- BudgetDetailCalAmts -->
+            <form-property name="rateClassCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateClassDescription" type="java.lang.String" />
+           <form-property name="rateTypeCode" type="java.lang.Integer" initial = "-1"/>
+           <form-property name="rateTypeDescription" type="java.lang.String" />
+           <form-property name="applyRateFlag" type="java.lang.Boolean" />
+           <form-property name="calculatedCost" type="java.lang.Double" />
+           <form-property name="calculatedCostSharing" type="java.lang.Double" />
+           <form-property name="rateClassType" type="java.lang.String" />
+           <form-property name="changeCostElement" type="java.lang.Boolean"/>
+           <!-- To Check Row is Added. If Added then Go for line Item Sequence -->
+           <form-property name="isRowAdded" type="java.lang.Boolean"/>
+           <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+           <form-property name="tempLineItemStartDate" type="java.lang.String"/>
+           <form-property name="tempLineItemEndDate" type="java.lang.String"/>
+           <form-property name="tempLineItemCost" type="java.lang.String"/>
+           <form-property name="vecYnQ" type="java.util.Vector"/>
+           <!-- Code added for Case#3472 - Sync to Direct Cost Limit -->
+           <form-property name="totalDirectCostLimit" type="java.lang.Double" />
+           <!-- Code added for Case 3197 - Allow for the generation of project period greater than 12 months  -->
+          <form-property name="noOfPeriodMonths" type="java.lang.Double"/>
+          <!-- Code added for COEUSQA-1693 - Cost Sharing Submission -->
+          <!--<form-property name="submitCostSharingFlag" type="java.lang.String"/>-->
+          <form-property name="proposalNumber" type="java.lang.String"/>
+   </form-bean>
+
+    <form-bean name="budgetAwardRate_wmc" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="awardNumber_wmc" type="java.lang.String"/>
+           <form-property name="versionNumber_wmc" type="java.lang.Integer"/>
+           <form-property name="rateClassCode_wmc" type ="java.lang.Integer"/>
+            <form-property name="rateTypeCode_wmc" type ="java.lang.Integer"/>
+                <form-property name="fiscalYear_wmc"   type ="java.lang.String"/>
+                <form-property name="onOffCampusFlag_wmc"   type ="java.lang.String"/>
+                <form-property name="activityTypeCode_wmc" type ="java.lang.Integer"/>
+                <form-property name="startDate_wmc" type="java.sql.Date"/>
+                <form-property name="applicableRate_wmc"    type ="java.lang.Float"   />
+                <form-property name="instituteRate_wmc"    type ="java.lang.Float"/>
+  		<form-property name="updateTimestamp_wmc" type = "java.lang.String"/>
+		<form-property name="updateUser_wmc" type = "java.lang.String"/>
+                <form-property name="rateClassDescription_wmc" type ="java.lang.String"/>
+                <form-property name="rateTypeDescription_wmc" type ="java.lang.String"/>
+                <form-property name="activityTypeDescription_wmc" type ="java.lang.String"/>
+                <form-property name="rateClassType_wmc" type ="java.lang.String"/>
+                <form-property name="awAwardNumber_wmc" type ="java.lang.String"/>
+               <form-property name="awVersionNumber_wmc" type ="java.lang.Integer"/>
+               <form-property name="awRateClassCode_wmc" type ="java.lang.Integer"/>
+               <form-property name="awRateTypeCode_wmc" type ="java.lang.Integer"/>
+               <form-property name="awFiscalYear_wmc" type ="java.lang.String"/>
+               <form-property name="awOnOffCampusFlag_wmc" type ="java.lang.String"/>
+               <form-property name="awActivityTypeCode_wmc" type ="java.lang.Integer"/>
+               <form-property name="awStartDate_wmc" type ="java.sql.Date"/>
+               <form-property name="awUpdateTimestamp_wmc" type ="java.lang.String"/>
+               <form-property name="acType_wmc" type ="java.lang.String"/>
+   </form-bean>
+
+ <!-- Budget Summary -->
+   <form-bean name="raftBudgetSummary" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+        <!-- BudgetInfo data -->
+
+            <form-property name="awardNumber"       type="java.lang.String"/>
+            <form-property name="versionNumber"     type="java.lang.Integer"/>
+           <form-property name="startDate"          type="java.sql.Date"/>
+           <form-property name="endDate" type="java.sql.Date"/>
+           <form-property name="totalCost" type="java.lang.Double" />
+           <form-property name="totalDirectCost" type="java.lang.Double"/>
+           <form-property name="totalIndirectCost" type="java.lang.Double"/>
+           <form-property name="costSharingAmount" type="java.lang.Double"/>
+
+           <form-property name="totalCostLimit" type="java.lang.String"/>
+           <form-property name="ohRateClassCode" type="java.lang.Integer"/>
+           <form-property name="ohRateTypeCode" type="java.lang.Integer"/>
+           <form-property name="comments" type="java.lang.String"/>
+       <!-- UTK added onOffCampusFlag -->
+           <form-property name="onOffCampusFlag" type="java.lang.String"/>
+       <!-- end of UTK -->
+
+           <!-- BudgetPeriod data -->
+           <form-property name="budgetPeriod" type="java.lang.Integer"/>
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+             <!--Proposal Development Data -->
+           <form-property name="activityTypeCode" type="java.lang.String"/>
+           <form-property name="unitNumber" type="java.lang.String"/>
+           <form-property name="acType" type="java.lang.String"/>
+           <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+
+
+   </form-bean>
+     <form-bean name="allAwardRecordBean" type="edu.mit.coeuslite.raft.bean.AllAwardRecordFormBean"></form-bean>
+      <form-bean name="RaftHeaderBean" type="edu.mit.coeuslite.raft.bean.RaftBudgetHeaderBean"></form-bean>
+    <form-bean name="raftApplicableRateList" type="edu.mit.coeuslite.raft.bean.ApplicableRateList"></form-bean>
+    </form-beans>
+
+
+                   <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+
+
+
+       <!--*********************** Raft Budget Starts here**********************-->
+      
+      
+      <!-- for Summary Page Details -->
+       <action path="/raftBudget" type="edu.mit.coeuslite.raft.actions.raftSummaryGetAction"
+               scope="request"  validate="false">
+        <forward name="success" path="/coeuslite/mit/raft/tile/raftSummaryTile.jsp"/>
+        <forward name="saveToDB" path="/raftBudget.do"/>
+        <forward name="noRoles" path="/coeuslite/mit/irb/tiles/cwProtocolMainPageTile.jsp"/>
+        <forward name="createRoleNotPresent" path="/coeuslite/mit/irb/tiles/cwProtocolMainPageTile.jsp"/>
+        <forward name="modifyRoleNotPresent" path="/coeuslite/mit/irb/tiles/cwProtocolMainPageTile.jsp"/>
+       </action>
+
+       <action path="/raftBudgetSummary" type="edu.mit.coeuslite.raft.actions.raftSummaryGetAction"
+               scope="request"  validate="false" name="RaftHeaderBean">
+        <forward name="success" path="/coeuslite/mit/raft/tile/raftSummaryTile.jsp"/>
+       </action>
+
+<!--Raft Total Tab  Start-->
+ <action path="/getRaftTotal" type="edu.mit.coeuslite.raft.actions.RaftTotalAction"
+               scope="request" validate="false">
+
+             <forward name="success" path="/coeuslite/mit/raft/tile/raftTotalTile.jsp"/>
+
+                 </action>
+
+
+ <action path="/getRaftTotalCE" type="edu.mit.coeuslite.raft.actions.RaftTotalAccToCEAction"
+               scope="request" validate="false">
+
+             <forward name="success" path="/coeuslite/mit/raft/tile/raftTotalTileCE.jsp"/>
+
+                 </action>
+ <!--for the print budget summary-->
+ <action path="/showAwardSummaryPrint" type="edu.mit.coeuslite.raft.actions.raftBudgetSummaryPrint"
+               scope="request" validate="false">
+
+             <forward name="success" path="/coeuslite/mit/raft/tile/raftTotalTile.jsp"/>
+
+                 </action>
+
+
+    <!--    Raft Total Tab End    -->
+
+
+    <!-- START...................For Budget Categories get,add,remove,details................START -->
+
+
+<!-- Add Line Item -->
+       <action path="/AddRaftLineItem" type="edu.mit.coeuslite.raft.actions.raftLineItemAction"
+               scope="session" name="RaftLineItemList" validate="false" >
+           <forward name="success" path="/coeuslite/mit/raft/tile/raftEquipmentTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="noCostElements" path="/coeuslite/wmc/budget/clRequiredCostElement.jsp"/>
+       </action>
+
+         <action path="/AddLineItemDetails" type="edu.mit.coeuslite.raft.actions.raftLineItemAction"
+               scope="session" name="RaftLineItemList" validate="false" >
+           <forward name="success" path="/coeuslite/mit/raft/tile/raftEquipmentTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="noCostElements" path="/coeuslite/wmc/budget/clRequiredCostElement.jsp"/>
+       </action>
+
+
+<!-- Remove Line Item -->
+       <action path="/RemoveRaftLineItem" type="edu.mit.coeuslite.raft.actions.raftLineItemAction"
+               scope="session" name="RaftLineItemList" validate="false">
+          <forward name="success" path="/coeuslite/mit/raft/tile/raftEquipmentTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="noCostElements" path="/coeuslite/wmc/budget/clRequiredCostElement.jsp"/>
+       </action>
+
+  <!-- Budget Line Item Details -->
+       <action path="/getRaftLineItemDetails" type="edu.mit.coeuslite.raft.actions.raftLineItemAction"
+               scope="session" name="raftEquipmentData" validate="false">
+          <forward name="success"   path="/coeuslite/mit/raft/jsp/raftLineItemDetails.jsp"/>
+          <forward name="error"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"   path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+
+        <action path="/applyToRaftLaterPeriods" type="edu.mit.coeuslite.raft.actions.raftLineItemDetailsAction"
+               scope="request" name="raftEquipmentData" validate="true" input="/coeuslite/mit/raft/jsp/raftLineItemDetails.jsp">
+          <forward name="success" path="/coeuslite/mit/raft/jsp/raftLineItemDetails.jsp"/>
+           <forward name="applyToLaterPeriodsException" path="/coeuslite/mit/raft/jsp/raftLineItemDetails.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/applyToRaftCurrentPeriods" type="edu.mit.coeuslite.raft.actions.raftLineItemDetailsAction"
+               scope="request" name="raftEquipmentData" validate="true" input="/coeuslite/mit/raft/jsp/raftLineItemDetails.jsp">
+          <forward name="success" path="/coeuslite/mit/raft/jsp/raftLineItemDetails.jsp"/>
+           <forward name="applyToLaterPeriodsException" path="/coeuslite/mit/raft/jsp/raftLineItemDetails.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+
+
+ <!-- END...................For Budget Categories get,add,remove,details.............END -->
+
+
+
+
+        <action path="/getRaftProposalRate" type="edu.mit.coeuslite.raft.actions.raftBudgetRateGetAction"
+               scope="session"  validate="false" name="raftApplicableRateList">
+
+             <forward name="success" path="/coeuslite/mit/raft/tile/raftProposalRateTile.jsp"/>
+       </action>
+
+
+
+
+ <action path="/raftBudgetSearch" type="edu.mit.coeuslite.raft.actions.raftBudgetSearchAction"
+               scope="request" name="allAwardRecordBean" validate="false">
+
+             <forward name="success" path="/coeuslite/mit/raft/jsp/raftReference.jsp"/>
+             <forward name="result"  path="/coeuslite/mit/raft/jsp/raftReference.jsp"/>
+                <forward name="organization"  path="/coeuslite/mit/raft/jsp/raftReference.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+                <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+
+       </action>
+
+        <action path="/getProposalForAward" type="edu.mit.coeuslite.raft.actions.RaftPropForAwardSearchAction"
+               scope="request"  validate="false">
+
+             <forward name="success" path="/coeuslite/mit/raft/tile/raftProposalBudgetTile.jsp"/>
+             <!--<forward name="result"  path="/coeuslite/mit/raft/jsp/raftPropForAward.jsp"/>
+                <forward name="organization"  path="/coeuslite/mit/raft/jsp/raftPropForAward.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/raft/jsp/raftSearchError.jsp"/>
+                <forward name="error" path="/coeuslite/mit/raft/jsp/raftSearchError.jsp"/>
+                <forward name="exception" path="/coeuslite/mit/raft/jsp/raftSearchError.jsp"/>
+                <forward name="gotoNextPage"  path="/coeuslite/mit/raft/jsp/raftPropForAward.jsp"/>-->
+
+       </action>
+
+         <action path="/createProposalBudget" type="edu.mit.coeuslite.raft.actions.CreateProposalBudgetForAward"
+               scope="request"  validate="false">
+
+             <forward name="success" path="/raftBudget.do"/>
+             <forward name="generateAllPeriods" path="/raftGenerateAllPeriodsAferCopy.do" redirect="true"/>
+             <forward name="notCopied" path="/getProposalForAward.do"/>
+
+       </action>
+
+         <action path="/raftGenerateAllPeriodsAferCopy" type="edu.mit.coeuslite.raft.actions.raftGetAction"
+               scope="request" >
+             <forward name="success" path="/raftBudget.do" redirect="true"/>
+             <!-- <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>-->
+       </action>
+
+       <action path="/getSelectedProposalForAward" type="edu.mit.coeuslite.raft.actions.RaftPropForAwardSearchAction"
+               scope="request"  validate="false">
+
+             <forward name="success" path="/coeuslite/mit/raft/tile/raftProposalBudgetTile.jsp"/>
+       </action>
+<!--Award budget period start-->
+<action path="/getRaftAdjustPeriodData" type="edu.mit.coeuslite.raft.actions.raftPeriodsAction"
+               scope="session" name="raftLineItemList" validate="false">
+          <forward name="success" path="/coeuslite/mit/raft/tile/raftPeriodTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/addRaftAdjustPeriod" type="edu.mit.coeuslite.raft.actions.raftPeriodsAction"
+               scope="session" name="raftLineItemList" validate="false">
+          <forward name="success" path="/coeuslite/mit/raft/tile/raftPeriodTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/saveRaftAdjustPeriodData" type="edu.mit.coeuslite.raft.actions.raftPeriodsAction"
+               scope="session" name="raftLineItemList" validate="true"  input="/coeuslite/mit/raft/tile/raftPeriodTile.jsp">
+          <forward name="success" path="/coeuslite/mit/raft/tile/raftPeriodTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/deleteRaftAdjustPeriod" type="edu.mit.coeuslite.raft.actions.raftPeriodsAction"
+               scope="session" name="raftLineItemList" validate="false">
+          <forward name="success" path="/coeuslite/mit/raft/tile/raftPeriodTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/searchProposalList" type="edu.mit.coeuslite.raft.actions.ProposalSearchAction"
+               scope="session" name="raftLineItemList" validate="false">
+          <forward name="success" path="/coeuslite/mit/raft/tile/raftPropListTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+<!--Award budget period end-->
+
+<!-- Award delete budget end -->
+
+  <action path="/deleteAwardBudget" type="edu.mit.coeuslite.raft.actions.raftDeleteAction"
+                scope="request" validate="false">
+            <forward name="success" path="/raftBudget.do"/>
+            <forward name="locked" path="/coeuslite/mit/irb/tiles/cwDeleteProtocolTile.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="invalid" path="/coeuslite/mit/raft/tile/raftSummaryTile.jsp"/>
+        </action>
+
+<!-- Award delete budget end -->
+<action path="/getRaftEquipment" type="edu.mit.coeuslite.raft.actions.raftGetAction"
+              scope="session" name="RaftLineItemList" validate="false">
+           <forward name="success" path="/coeuslite/mit/raft/tile/raftEquipmentTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="noCostElements" path="/coeuslite/wmc/budget/clRequiredCostElement.jsp"/>
+       </action>
+<action path="/calculateRaftBudget" type="edu.mit.coeuslite.raft.actions.raftLineItemAction"
+
+               scope="session" name="RaftLineItemList" validate="true" input="/coeuslite/mit/raft/tile/raftEquipmentTile.jsp">
+            <!--scope="request" name="lineItemDynaBeanList" validate="false">-->
+           <forward name="success" path="/coeuslite/mit/raft/tile/raftEquipmentTile.jsp"/>
+         <forward name="editSuccess" path="/coeuslite/mit/raft/jsp/raftLineItemDetails.jsp"/>
+         <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="noCostElements" path="/coeuslite/wmc/budget/clRequiredCostElement.jsp"/>
+       </action>
+
+<action path="/calculatedAfter" type="edu.mit.coeuslite.raft.actions.raftLineItemAction"
+               scope="session" name="RaftLineItemList" validate="true" input="/coeuslite/mit/raft/tile/raftEquipmentTile.jsp">
+           <forward name="redirect" path="/calculateRaftBudget.do"/>
+           <forward name="success" path="/coeuslite/mit/raft/tile/raftEquipmentTile.jsp"/>
+         <forward name="editSuccess" path="/coeuslite/mit/raft/jsp/raftLineItemDetails.jsp"/>
+         <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception"  path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="noCostElements" path="/coeuslite/wmc/budget/clRequiredCostElement.jsp"/>
+       </action>
+
+
+     <action path="/updateBudgetRaftRate" type="edu.mit.coeuslite.raft.actions.raftBudgetRateGetAction"
+               scope="session"  validate="false" name="raftApplicableRateList">
+             <forward name="success" path="/coeuslite/mit/raft/tile/raftProposalRateTile.jsp"/> 
+             <forward name="toSummary" path="/raftBudget.do"/>    </action>
+<!-- Generate All Periods start -->
+
+  <action path="/raftGenerateAllPeriods" type="edu.mit.coeuslite.raft.actions.raftGetAction"
+               scope="request" >
+             <forward name="success" path="/coeuslite/mit/raft/tile/raftGeneratePeriodTile.jsp"/>
+              <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+        <action path="/raftSelectGenerateAllPeriods" type="edu.mit.coeuslite.raft.actions.raftGetAction"
+        scope="request">
+                <forward name="success" path="/coeuslite/mit/raft/tile/raftGeneratePeriodTile.jsp"/>
+                <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+
+<!-- Generate All Periods end -->
+
+         <action path="/raftProposalSearch" type="edu.mit.coeuslite.raft.actions.ProposalSearchAction"
+              scope="session" name="raftLineItemList" validate="false">
+          <forward name="success"  path="/coeuslite/mit/raft/jsp/raftProposalSearch.jsp"/>
+          <forward name="result"  path="/coeuslite/mit/raft/jsp/raftProposalSearch.jsp"/>
+          <forward name="organization"  path="/coeuslite/mit/raft/jsp/raftProposalSearch.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+          <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+       </action>
+
+ <action path="/changeRaftLineItemOHRate" type="edu.mit.coeuslite.raft.actions.raftSummaryGetAction"
+               scope="request"  validate="false" name="RaftHeaderBean">
+        <forward name="success" path="/raftBudget.do"/>
+        <forward name="saveToDB" path="/raftBudget.do"/>
+        <forward name="noRoles" path="/coeuslite/mit/irb/tiles/cwProtocolMainPageTile.jsp"/>
+       </action>
+
+  <action path="/changeRaftOnOffCampus" type="edu.mit.coeuslite.raft.actions.raftSummaryGetAction"
+               scope="request"  validate="false" name="RaftHeaderBean">
+        <forward name="success" path="/raftBudget.do"/>
+        <forward name="saveToDB" path="/raftBudget.do"/>
+        <forward name="noRoles" path="/coeuslite/mit/irb/tiles/cwProtocolMainPageTile.jsp"/>
+       </action>
+
+  </action-mappings>
+
+
+<!-- Generate All Periods end -->
+  <!-- ========== Message Resources Definitions =========================== -->
+    <message-resources parameter="BudgetMessages" key="budget" />
+
+</struts-config>

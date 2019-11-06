@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<SubHeader>
+	<Sub_Header>
+		<Sub_Header_Id>SH001</Sub_Header_Id>
+		<Sub_Header_Name>Appr Annuals</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/getAllDisclosures.do</Link>
+	</Sub_Header>
+	<!--Case#4447 : Next phase of COI enhancements -->
+	<Sub_Header>
+		<Sub_Header_Id>SH002</Sub_Header_Id>
+		<Sub_Header_Name>Disclosure Search</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/getSearchDisclosures.do?COI_DISCL_TYPE=disclosureSearch&#38;search=true&#38;searchName=DISCLOSURE_SEARCH&#38;Menu_Id=002&#38;SUBHEADER_ID=SH002</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH003</Sub_Header_Id>
+		<Sub_Header_Name>View COI</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/getReviewCOI.do</Link>
+	</Sub_Header>
+	<!--<Sub_Header> <Sub_Header_Id>SH003</Sub_Header_Id> <Sub_Header_Name>View 
+		COI by Unit</Sub_Header_Name> <Search_Window>false</Search_Window> <Link>/getReviewCOIUnit.do</Link> 
+		</Sub_Header> -->
+
+
+</SubHeader>	
+
+
+

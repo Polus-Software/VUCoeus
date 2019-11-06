@@ -1,0 +1,109 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>    
+     <form-bean name="subcontractInvoice" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="subcontractId" type="java.lang.String" />
+           <form-property name="sequenceNumber" type="java.lang.Integer" />    
+           <form-property name="subcontractStatus" type="java.lang.String" />                                                         
+           <form-property name="subAwardType" type="java.lang.String" /> 
+           <form-property name="subcontractor" type="java.lang.String" />
+           <form-property name="requisitionerId" type="java.lang.Integer" />
+           <form-property name="requisitionerName" type="java.lang.String" />
+           <form-property name="requistionerUnit" type="java.lang.String" />
+           <form-property name="lineNumber" type="java.lang.Integer" />
+           <form-property name="invoiceNumber" type="java.lang.String" />
+           <form-property name="invoiceAmount" type="java.lang.Double" />       
+           <form-property name="invoiceStatus" type="java.lang.String" />                                                                            
+           <form-property name="invoiceStartDate" type="java.lang.String" /> 
+           <form-property name="invoiceEndDate" type="java.lang.String" /> 
+           <form-property name="invoiceEffectiveDate" type="java.lang.String" /> 
+           <form-property name="fileName" type="java.lang.String" /> 
+           <form-property name="mimeType" type="java.lang.String" />
+           <form-property name="comments" type="java.lang.String" /> 
+           <form-property name="approvalComments" type="java.lang.String" /> 
+           <form-property name="updateTimestamp" type="java.lang.String" /> 
+           <form-property name="updateUser" type="java.lang.String" /> 
+           <form-property name="approvalUser" type="java.lang.String" /> 
+           <form-property name="approvalDate" type="java.lang.String" /> 
+           <form-property name="acType" type="java.lang.String" /> 
+           <form-property name="awSubcontractId" type="java.lang.String" />
+           <form-property name="awSequenceNumber" type="java.lang.Integer" />    
+           <form-property name="awLineNumber" type="java.lang.Integer" />
+           <form-property name="awUpdateTimestamp" type="java.lang.String" /> 
+           <form-property name="message" type="java.lang.String" /> 
+           <form-property name="messageSubject" type="java.lang.String" /> 
+           <form-property name="messageId" type="java.lang.String" />
+           <form-property name="openedFlag" type="java.lang.String" />
+           <form-property name="path" type="java.lang.String" />
+   </form-bean>
+   
+   <form-bean name="invoiceApproveReject" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="subcontractId" type="java.lang.String" />
+           <form-property name="sequenceNumber" type="java.lang.Integer" />    
+           <form-property name="subcontractStatus" type="java.lang.String" />                                                         
+           <form-property name="subAwardType" type="java.lang.String" /> 
+           <form-property name="subcontractor" type="java.lang.String" />
+           <form-property name="requisitionerId" type="java.lang.Integer" />
+           <form-property name="requisitionerName" type="java.lang.String" />
+           <form-property name="requistionerUnit" type="java.lang.String" />
+           <form-property name="lineNumber" type="java.lang.Integer" />
+           <form-property name="invoiceNumber" type="java.lang.String" />
+           <form-property name="invoiceAmount" type="java.lang.String" />       
+           <form-property name="invoiceStatus" type="java.lang.String" />                                                                            
+           <form-property name="invoiceStartDate" type="java.lang.String" /> 
+           <form-property name="invoiceEndDate" type="java.lang.String" /> 
+           <form-property name="invoiceEffectiveDate" type="java.lang.String" /> 
+           <form-property name="fileName" type="java.lang.String" /> 
+           <form-property name="comments" type="java.lang.String" /> 
+           <form-property name="approvalComments" type="java.lang.String" /> 
+           <form-property name="updateTimestamp" type="java.lang.String" /> 
+           <form-property name="updateUser" type="java.lang.String" /> 
+           <form-property name="description" type="java.lang.String" /> 
+           <form-property name="approvalUser" type="java.lang.String" /> 
+           <form-property name="approvalDate" type="java.lang.String" /> 
+           <form-property name="acType" type="java.lang.String" /> 
+           <form-property name="awSubcontractId" type="java.lang.String" />
+           <form-property name="awSequenceNumber" type="java.lang.Integer" />    
+           <form-property name="awLineNumber" type="java.lang.Integer" />
+           <form-property name="awUpdateTimestamp" type="java.lang.String" /> 
+   </form-bean>
+   
+    </form-beans>
+
+  <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+       <action path="/getSubcontractInvSummary" type="edu.mit.coeuslite.subcontract.action.InvoiceApprovalAction" 
+               scope="request" name="subcontractInvoice" validate="false">
+          <forward name="success" path="/coeuslite/mit/subcontract/tiles/clSubcontractInvoiceSummaryTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/invoiceApproveRejectActions" type="edu.mit.coeuslite.subcontract.action.InvoiceApprovalAction" 
+               scope="request" name="subcontractInvoice" validate="false">
+          <forward name="success" path="/coeuslite/mit/subcontract/tiles/clInvoiceApproveRejectTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/saveInvoice" type="edu.mit.coeuslite.subcontract.action.InvoiceApprovalAction" 
+               scope="request" name="subcontractInvoice" validate="false">
+          <forward name="success" path="/coeuslite/mit/subcontract/tiles/clInvoiceApproveRejectTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/viewInvoice" type="edu.mit.coeuslite.subcontract.action.InvoiceApprovalAction" 
+               scope="request" name="subcontractInvoice" validate="false" redirect="true" >
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+  </action-mappings>
+
+  
+
+  <!-- ========== Message Resources Definitions =========================== -->
+    <message-resources parameter="SubcontractMessages" key="subcontract"/>
+</struts-config>

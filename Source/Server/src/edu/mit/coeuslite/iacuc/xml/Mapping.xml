@@ -1,0 +1,357 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<PROCEDURE_DETAILS>
+	<GET_PERSON_DETAILS>
+		<procedure>GET_POC_DATA</procedure>
+		<map>
+			<procparameter>PERSON_ID</procparameter>
+			<property>personId</property>
+			<type>Integer</type>
+			<proc_type>IN</proc_type>
+		</map>
+
+		<map>
+			<procparameter>NAME</procparameter>
+			<property>personName</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>AGE</procparameter>
+			<property>age</property>
+			<type>Integer</type>
+
+		</map>
+		<map>
+			<procparameter>DOB</procparameter>
+			<property>dob</property>
+			<type>Date</type>
+
+		</map>
+		<map>
+			<procparameter>SALARY</procparameter>
+			<property>salary</property>
+			<type>Double</type>
+
+		</map>
+		<map>
+			<procparameter>MARTIAL_STATUS</procparameter>
+			<property>maritalStatus</property>
+			<type>Boolean</type>
+
+		</map>
+
+		<map>
+			<procparameter>EMAIL_ID</procparameter>
+			<property>emailId</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>UPDATE_TIMESTAMP</procparameter>
+			<property>timeStamp</property>
+			<type>Timestamp</type>
+
+		</map>
+
+		<map>
+			<procparameter>AC_TYPE</procparameter>
+			<property>acType</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>RESULTSET</procparameter>
+			<property>resultset</property>
+			<type>resultset</type>
+			<proc_type>OUT</proc_type>
+		</map>
+
+	</GET_PERSON_DETAILS>
+
+
+	<!-- Get the Academic details -->
+
+	<GET_ACADEMIC_DETAILS>
+		<procedure>GET_POC_PERSON_ACADEMIC_DATA</procedure>
+		<map>
+			<procparameter>PERSON_ID</procparameter>
+			<property>personId</property>
+			<type>Integer</type>
+			<proc_type>IN</proc_type>
+		</map>
+
+		<map>
+			<procparameter>DEGREE</procparameter>
+			<property>degree</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>PERCENTAGE_OF_MARKS</procparameter>
+			<property>percentage</property>
+			<type>Double</type>
+
+		</map>
+		<map>
+			<procparameter>INSTITUTION</procparameter>
+			<property>institution</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>UNIVERSITY</procparameter>
+			<property>university</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>REGULAR_CORRESP_FLAG</procparameter>
+			<property>regular</property>
+			<type>Boolean</type>
+
+		</map>
+
+
+		<map>
+			<procparameter>AC_TYPE</procparameter>
+			<property>acType</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>RESULTSET</procparameter>
+			<property>resultset</property>
+			<type>resultset</type>
+			<proc_type>OUT</proc_type>
+		</map>
+
+	</GET_ACADEMIC_DETAILS>
+
+
+	<!-- Get the Person data and Academic data for the person -->
+	<GET_PERSON_ACADEMIC_DETAILS>
+		<procedure>GET_PERSON_DATA</procedure>
+		<map>
+			<procparameter>PERSON_ID</procparameter>
+			<property>personId</property>
+			<type>Integer</type>
+			<proc_type>IN</proc_type>
+		</map>
+
+		<map>
+			<procparameter>NAME</procparameter>
+			<property>personName</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>AGE</procparameter>
+			<property>age</property>
+			<type>Integer</type>
+
+		</map>
+		<map>
+			<procparameter>DOB</procparameter>
+			<property>dob</property>
+			<type>Date</type>
+
+		</map>
+		<map>
+			<procparameter>SALARY</procparameter>
+			<property>salary</property>
+			<type>Double</type>
+
+		</map>
+		<map>
+			<procparameter>MARTIAL_STATUS</procparameter>
+			<property>maritalStatus</property>
+			<type>Boolean</type>
+
+		</map>
+
+		<map>
+			<procparameter>EMAIL_ID</procparameter>
+			<property>emailId</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>UPDATE_TIMESTAMP</procparameter>
+			<property>timeStamp</property>
+			<type>Timestamp</type>
+
+		</map>
+
+		<map>
+			<procparameter>AC_TYPE</procparameter>
+			<property>acType</property>
+			<type>String</type>
+
+		</map>
+
+		<map>
+			<procparameter>DEGREE</procparameter>
+			<property>degree</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>PERCENTAGE_OF_MARKS</procparameter>
+			<property>percentage</property>
+			<type>Double</type>
+
+		</map>
+		<map>
+			<procparameter>INSTITUTION</procparameter>
+			<property>institution</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>UNIVERSITY</procparameter>
+			<property>university</property>
+			<type>String</type>
+
+		</map>
+		<map>
+			<procparameter>REGULAR_CORRESP_FLAG</procparameter>
+			<property>regular</property>
+			<type>Boolean</type>
+
+		</map>
+
+		<map>
+			<procparameter>RESULTSET</procparameter>
+			<property>resultset</property>
+			<type>resultset</type>
+			<proc_type>OUT</proc_type>
+		</map>
+
+	</GET_PERSON_ACADEMIC_DETAILS>
+
+
+
+
+	<UPDATE_PERSON_DETAILS>
+		<procedure>UPDATE_POC_DATA</procedure>
+		<map>
+			<procparameter>AV_PERSON_ID</procparameter>
+			<property>personId</property>
+			<type>Integer</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>AV_NAME</procparameter>
+			<property>personName</property>
+			<type>String</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>AV_AGE</procparameter>
+			<property>age</property>
+			<type>Integer</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>AV_DOB</procparameter>
+			<property>dob</property>
+			<type>Date</type>
+			<proc_type>IN</proc_type>
+		</map>
+
+		<map>
+			<procparameter>AV_SALARY</procparameter>
+			<property>salary</property>
+			<type>Double</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>AV_MARITAL_STATUS</procparameter>
+			<property>maritalStatus</property>
+			<type>Boolean</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>AV_EMAIL_ID</procparameter>
+			<property>emailId</property>
+			<type>String</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>AV_UPDATE_TIMESTAMP</procparameter>
+			<property>timeStamp</property>
+			<type>Timestamp</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>AW_PERSON_ID</procparameter>
+			<property>personId</property>
+			<type>Integer</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>AC_TYPE</procparameter>
+			<property>acType</property>
+			<type>String</type>
+			<proc_type>IN</proc_type>
+		</map>
+	</UPDATE_PERSON_DETAILS>
+
+	<!-- Update Person Academic details -->
+
+	<UPDATE_PERSON_ACADEMIC_DETAILS>
+		<procedure>UPD_POC_PERSON_ACADEMIC_DATA</procedure>
+		<map>
+			<procparameter>PERSON_ID</procparameter>
+			<property>personId</property>
+			<type>Integer</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>DEGREE</procparameter>
+			<property>degree</property>
+			<type>String</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>PERCENTAGE_OF_MARKS</procparameter>
+			<property>percentage</property>
+			<type>Double</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>INSTITUTION</procparameter>
+			<property>institution</property>
+			<type>String</type>
+			<proc_type>IN</proc_type>
+		</map>
+
+		<map>
+			<procparameter>UNIVERSITY</procparameter>
+			<property>university</property>
+			<type>String</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>REGULAR_CORRESP_FLAG</procparameter>
+			<property>regular</property>
+			<type>Boolean</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>AW_PERSON_ID</procparameter>
+			<property>personId</property>
+			<type>Integer</type>
+			<proc_type>IN</proc_type>
+		</map>
+		<map>
+			<procparameter>AC_TYPE</procparameter>
+			<property>acType</property>
+			<type>String</type>
+			<proc_type>IN</proc_type>
+		</map>
+	</UPDATE_PERSON_ACADEMIC_DETAILS>
+
+</PROCEDURE_DETAILS>
+
+

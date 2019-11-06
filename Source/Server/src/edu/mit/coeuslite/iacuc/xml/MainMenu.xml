@@ -1,0 +1,63 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<Menu>
+	<MenuItem>
+		<Menu_Id>001</Menu_Id>
+		<Menu_Name>Coeus Home</Menu_Name>
+		<Image_Path>/coeusliteimages/coeushome_11.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/coeushome_2.gif</OnLoadImage>
+		<Link>../../coeusHome.do?Menu_Id=001</Link>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>002</Menu_Id>
+		<Menu_Name>My Protocols</Menu_Name>
+		<!--Image_Path>/coeusliteimages/myprotocols_11.gif</Image_Path> <OnLoadImage>/coeusliteimages/myprotocols_2.gif</OnLoadImage> -->
+		<Image_Path>/coeusliteimages/myirbprotocols_11.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/myirbprotocols_2.gif</OnLoadImage>
+		<!--Link>../../protocolList.do?PROTOCOL_TYPE=ACTIVEPROTOCOLSEARCH&#38;PROTOCOL_NAME=Active 
+			Protocols&#38;Menu_Id=002&#38;SUBHEADER_ID=SH001</Link -->
+		<!--<Link>../../protocolList.do?PROTOCOL_TYPE=ACTIVEPROTOCOLSEARCH&#38;PROTOCOL_NAME=Active 
+			Protocols&#38;Menu_Id=002</Link> -->
+		<Link>../../protocolList.do?PROTOCOL_TYPE=DEFAULT&#38;PROTOCOL_NAME=Active
+			Protocols&#38;Menu_Id=002</Link>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>003</Menu_Id>
+		<Menu_Name>My Proposals</Menu_Name>
+		<Image_Path>/coeusliteimages/myproposals_11.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/mypropsals_2.gif</OnLoadImage>
+		<!--Link>../../proposalList.do?PROPOSAL_TYPE=PROPOSAL_INPROGRESS&#38;Menu_Id=003&#38;SUBHEADER_ID=SH001</Link -->
+		<Link>../../proposalList.do?PROPOSAL_TYPE=PROPOSAL_INPROGRESS&#38;Menu_Id=003&#38;SUBHEADER_ID=001</Link>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>004</Menu_Id>
+		<Menu_Name>Coi Disclosure</Menu_Name>
+		<Image_Path>/coeusliteimages/coidisclosure_11.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/coidisclosure_2.gif </OnLoadImage>
+		<Link>../../coi.do?Menu_Id=004</Link>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>005</Menu_Id>
+		<Menu_Name>Inbox</Menu_Name>
+		<Image_Path>/coeusliteimages/inbox_11.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/inbox_2.gif</OnLoadImage>
+		<Link>../../getInboxMessages.do?messageType=unresolved&#38;Menu_Id=005</Link>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>006</Menu_Id>
+		<Menu_Name>My ARRA</Menu_Name>
+		<Image_Path>/coeusliteimages/myArra_11.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/myArra_2.gif</OnLoadImage>
+		<Link>../../arraList.do?Menu_Id=006</Link>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id>007</Menu_Id>
+		<Menu_Name>Logout</Menu_Name>
+		<Image_Path>/coeusliteimages/logout_11.gif</Image_Path>
+		<OnLoadImage>/coeusliteimages/logout_2.gif</OnLoadImage>
+		<Link>../../logoutAction.do?Menu_Id=007</Link>
+	</MenuItem>
+
+</Menu>
+
+

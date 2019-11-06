@@ -1,0 +1,293 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<Mass_Change>
+
+	<!-- COEUSQS:3081 - Person Mass Change updates to support recent enhancements 
+		- Start -->
+	<Module>
+		<Module_Id> 011</Module_Id>
+		<Module_Name> IACUC</Module_Name>
+		<Person_Type>
+			<Module_id>011</Module_id>
+			<person_Type_Id>Iacuc001</person_Type_Id>
+			<person_Type_Name> Investigator</person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>011</Module_id>
+			<person_Type_Id> Iacuc002</person_Type_Id>
+			<person_Type_Name> Key Study Person</person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>011</Module_id>
+			<person_Type_Id> Iacuc003</person_Type_Id>
+			<person_Type_Name> Correspondents</person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+	</Module>
+	<!-- COEUSQA:3081 - End -->
+
+	<Module>
+		<Module_Id> 001</Module_Id>
+		<Module_Name> Award</Module_Name>
+		<Person_Type>
+			<Module_id>001</Module_id>
+			<person_Type_Id>Aw001</person_Type_Id>
+			<person_Type_Name> Investigator</person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+		<!-- COEUSQS:3081 - Person Mass Change updates to support recent enhancements 
+			- Start -->
+		<Person_Type>
+			<Module_id>001</Module_id>
+			<person_Type_Id> Aw005</person_Type_Id>
+			<person_Type_Name> Key Study Person </person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+		<!-- COEUSQA:3081 - End -->
+
+		<Person_Type>
+			<Module_id>001</Module_id>
+			<person_Type_Id> Aw002</person_Type_Id>
+			<person_Type_Name> Contact Person</person_Type_Name>
+			<ReplaceType>R</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>001</Module_id>
+			<person_Type_Id> Aw003</person_Type_Id>
+			<person_Type_Name> Foreign Trip</person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>001</Module_id>
+			<person_Type_Id> Aw004</person_Type_Id>
+			<person_Type_Name> Unit Administrators</person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+
+	</Module>
+
+
+	<Module>
+		<Module_Id> 002</Module_Id>
+		<Module_Name> Institute Proposal </Module_Name>
+		<Person_Type>
+			<Module_id>002</Module_id>
+			<person_Type_Id> InstProp001</person_Type_Id>
+			<person_Type_Name> Investigator</person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+		<!-- COEUSQS:3081 - Person Mass Change updates to support recent enhancements 
+			- Start -->
+		<Person_Type>
+			<Module_id>002</Module_id>
+			<person_Type_Id> InstProp005</person_Type_Id>
+			<person_Type_Name> Key Study Person </person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+		<!-- COEUSQA:3081 - End -->
+
+		<Person_Type>
+			<Module_id>002</Module_id>
+			<person_Type_Id> InstProp002</person_Type_Id>
+			<person_Type_Name> Mailing Info</person_Type_Name>
+			<ReplaceType>R</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>002</Module_id>
+			<person_Type_Id> InstProp003</person_Type_Id>
+			<person_Type_Name> IP Reviewer</person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>002</Module_id>
+			<person_Type_Id> InstProp004</person_Type_Id>
+			<person_Type_Name> Unit Administrators</person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+	</Module>
+
+	<Module>
+		<Module_Id> 003</Module_Id>
+		<Module_Name> Proposal Development </Module_Name>
+
+		<Person_Type>
+			<Module_id>003</Module_id>
+			<person_Type_Id> DevProp001</person_Type_Id>
+			<person_Type_Name> Mailing Info </person_Type_Name>
+			<ReplaceType>R</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>003</Module_id>
+			<person_Type_Id> DevProp002</person_Type_Id>
+			<person_Type_Name> Investigator</person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>003</Module_id>
+			<person_Type_Id> DevProp003</person_Type_Id>
+			<person_Type_Name> Key Study Person</person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>003</Module_id>
+			<person_Type_Id> DevProp004</person_Type_Id>
+			<person_Type_Name> Budget Person</person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+
+	</Module>
+
+	<Module>
+		<Module_Id> 004</Module_Id>
+		<Module_Name> Proposal Log </Module_Name>
+		<Person_Type>
+			<Module_id>004</Module_id>
+			<person_Type_Id> PropLog001</person_Type_Id>
+			<person_Type_Name> Principle Investigator</person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+	</Module>
+
+	<Module>
+		<Module_Id> 005</Module_Id>
+		<Module_Name> Subcontract </Module_Name>
+		<Person_Type>
+			<Module_id>005</Module_id>
+			<person_Type_Id> SubCon001</person_Type_Id>
+			<person_Type_Name> Contact Person </person_Type_Name>
+			<ReplaceType>R</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>005</Module_id>
+			<person_Type_Id> SubCon002</person_Type_Id>
+			<person_Type_Name> Requisitioner</person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+	</Module>
+
+	<Module>
+		<Module_Id> 006</Module_Id>
+		<Module_Name> Negotiations </Module_Name>
+		<Person_Type>
+			<Module_id>006</Module_id>
+			<person_Type_Id> Neg001</person_Type_Id>
+			<person_Type_Name> Negotiator </person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+	</Module>
+
+	<Module>
+		<Module_Id> 007</Module_Id>
+		<Module_Name> Committee </Module_Name>
+		<Person_Type>
+			<Module_id>007</Module_id>
+			<person_Type_Id> Comm001</person_Type_Id>
+			<person_Type_Name> Member </person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+
+	</Module>
+
+	<Module>
+		<Module_Id> 008</Module_Id>
+		<Module_Name> Protocol </Module_Name>
+		<Person_Type>
+			<Module_id>008</Module_id>
+			<person_Type_Id> Proto001</person_Type_Id>
+			<person_Type_Name> Investigator </person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>008</Module_id>
+			<person_Type_Id> Proto002</person_Type_Id>
+			<person_Type_Name> Key Study Person </person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>008</Module_id>
+			<person_Type_Id> Proto003</person_Type_Id>
+			<person_Type_Name> Correspondents </person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>008</Module_id>
+			<person_Type_Id> Proto004</person_Type_Id>
+			<person_Type_Name> Reviewer </person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+	</Module>
+
+	<Module>
+		<Module_Id> 009</Module_Id>
+		<Module_Name> Schedule </Module_Name>
+		<Person_Type>
+			<Module_id>009</Module_id>
+			<person_Type_Id> Sch001</person_Type_Id>
+			<person_Type_Name> Attendees </person_Type_Name>
+			<ReplaceType>B</ReplaceType>
+		</Person_Type>
+	</Module>
+
+	<Module>
+		<Module_Id> 010</Module_Id>
+		<Module_Name> Unit </Module_Name>
+		<Person_Type>
+			<Module_id>010</Module_id>
+			<person_Type_Id> Unit001</person_Type_Id>
+			<person_Type_Name> Administrators </person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+		<!-- COEUSQS:3081 - Person Mass Change updates to support recent enhancements 
+			- Start -->
+		<Person_Type>
+			<Module_id>010</Module_id>
+			<person_Type_Id> Unit002</person_Type_Id>
+			<person_Type_Name> Administrative Officer </person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>010</Module_id>
+			<person_Type_Id> Unit003</person_Type_Id>
+			<person_Type_Name> Unit Head </person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>010</Module_id>
+			<person_Type_Id> Unit004</person_Type_Id>
+			<person_Type_Name> Dean VP </person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>010</Module_id>
+			<person_Type_Id> Unit005</person_Type_Id>
+			<person_Type_Name> Other Individual to Notify </person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+
+		<Person_Type>
+			<Module_id>010</Module_id>
+			<person_Type_Id> Unit006</person_Type_Id>
+			<person_Type_Name> OSP Administrator</person_Type_Name>
+			<ReplaceType>P</ReplaceType>
+		</Person_Type>
+		<!-- COEUSQA:3081 - End -->
+	</Module>
+
+</Mass_Change>

@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<SubHeader>
+	<!--<Sub_Header> <Sub_Header_Id>SH001</Sub_Header_Id> <Sub_Header_Name>All 
+		ARRA Awards</Sub_Header_Name> <Search_Window>false</Search_Window> <Link>/arraList.do</Link> 
+		</Sub_Header> -->
+	<Sub_Header>
+		<Sub_Header_Id>SH001</Sub_Header_Id>
+		<Sub_Header_Name>Arra quick card</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>http://coeus.mit.edu/training/ArraQuickCard.pdf</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH002</Sub_Header_Id>
+		<Sub_Header_Name>Sub-award quick card</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>http://coeus.mit.edu/training/ArraSubawardQuickCard.pdf</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH003</Sub_Header_Id>
+		<Sub_Header_Name>Data Dictionary</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>http://coeus.mit.edu/training/ArraDataDictionary.pdf</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH004</Sub_Header_Id>
+		<Sub_Header_Name>ARRA Guidelines </Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>http://coeus.mit.edu/training/ArraGuidelines.pdf</Link>
+	</Sub_Header>
+</SubHeader>	

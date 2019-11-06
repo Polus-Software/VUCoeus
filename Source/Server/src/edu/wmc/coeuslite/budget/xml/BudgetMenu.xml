@@ -1,0 +1,247 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<Menu>
+	<MenuItem>
+		<Menu_Id> B001</Menu_Id>
+		<Menu_Name> Return To Proposal</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>RETURNTOPROPOSAL</FieldName>
+		<Link>/getGeneralInfo.do</Link>
+		<Group> 0 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B002</Menu_Id>
+		<Menu_Name> Budget Versions</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>BUDGETVERSIONS</FieldName>
+		<Link>/getBudgetVersions.do?PAGE=V </Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> B003</Menu_Id>
+		<Menu_Name> Budget Summary</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>BUDGETSUMMARY</FieldName>
+		<Link>/getBudgetSummary.do</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> B004</Menu_Id>
+		<Menu_Name> Print</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PRINT</FieldName>
+		<Link>/budgetPrintAction.do?action=displayPrint</Link>
+		<Group> 1 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B016</Menu_Id>
+		<Menu_Name> Budget Set Up</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>BUDGETSETUP</FieldName>
+		<Link>BUDGETSETUP</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> B005</Menu_Id>
+		<Menu_Name> Personnel</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PERSONNEL</FieldName>
+		<Link>/getBudgetPersons.do</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> B006</Menu_Id>
+		<Menu_Name> Adjust Periods</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>ADJUST_PERIODS</FieldName>
+		<Link>/getAdjustPeriodData.do</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> B007</Menu_Id>
+		<Menu_Name> Proposal Rates</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PROPOSAL_RATES</FieldName>
+		<Link>/getBudgetProposalRate.do</Link>
+		<Group> 2 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> B008</Menu_Id>
+		<Menu_Name> Budget Justification</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>BUDGET_JUSTIFICATION</FieldName>
+		<Link>/empty</Link>
+		<Group> 2 </Group>
+		<visible> false</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id>B021</Menu_Id>
+		<Menu_Name> Validate</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>VALIDATE</FieldName>
+		<Link>/validateProposal.do?PAGE=B</Link>
+		<Group> 3 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id>B023</Menu_Id>
+		<Menu_Name> Sync Calculated Line Item costs</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>SYNC_CALC_LINE_ITEM_COSTS</FieldName>
+		<Link>/syncCalculatedLineItemCosts.do</Link>
+		<Group> 3 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B017</Menu_Id>
+		<Menu_Name> Budget Periods</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>BUDGETPERIODS</FieldName>
+		<Link>BUDGETPERIODS</Link>
+		<Group> 4 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> B009</Menu_Id>
+		<Menu_Name> Personnel Budget</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PERSONNEL_BUDGET</FieldName>
+		<Link>/getBudgetPersonnel.do</Link>
+		<Group> 4 </Group>
+		<visible> true</visible>
+	</MenuItem>
+	<MenuItem>
+		<Menu_Id> B010</Menu_Id>
+		<Menu_Name> Equipment</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>EQUIPMENT</FieldName>
+		<Link>/getBudgetEquipment.do?PAGE=EQ</Link>
+		<Group> 4 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B011</Menu_Id>
+		<Menu_Name> Travel</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>TRAVEL</FieldName>
+		<Link>/getBudgetEquipment.do?PAGE=TR</Link>
+		<Group> 4 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B012</Menu_Id>
+		<Menu_Name> Participant/Trainee</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PARTICIPANT_TRAINEEE</FieldName>
+		<Link>/getBudgetEquipment.do?PAGE=PT</Link>
+		<Group> 4 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B013</Menu_Id>
+		<Menu_Name> Other Direct Costs</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>OTHER_DIRECT_COST</FieldName>
+		<Link>/getBudgetEquipment.do?PAGE=ODC</Link>
+		<Group> 4 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B014</Menu_Id>
+		<Menu_Name> Modular Budget</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>MODULAR_BUDGET</FieldName>
+		<Link>/getBudgetModularData.do</Link>
+		<Group> 5 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B019</Menu_Id>
+		<Menu_Name> Cost Sharing Distribution</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>COST SHARING DISTRIBUTION</FieldName>
+		<Link>/getCostSharingDistribution.do</Link>
+		<Group> 5 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B020</Menu_Id>
+		<Menu_Name> Under Recovery Distribution</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>UNDER RECOVERY DISTRIBUTION</FieldName>
+		<Link>/getUnderRecoveryDistribution.do</Link>
+		<Group> 5 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B018</Menu_Id>
+		<Menu_Name> Project Income</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>PROJECT_INCOME</FieldName>
+		<Link>/getBudgetProjectIncome.do</Link>
+		<Group> 5 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B015</Menu_Id>
+		<Menu_Name> Generate All Periods</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>GENERATE_PERIODS</FieldName>
+		<Link>/selectionGenerateAllPeriods.do</Link>
+		<Group> 6 </Group>
+		<visible> true</visible>
+	</MenuItem>
+
+	<MenuItem>
+		<Menu_Id> B022</Menu_Id>
+		<Menu_Name> Sub Award Budget</Menu_Name>
+		<Image_Path></Image_Path>
+		<OnLoadImage></OnLoadImage>
+		<FieldName>SUB_AWARD_BUDGET</FieldName>
+		<Link>/getSubAwardBudget.do</Link>
+		<Group> 5 </Group>
+		<visible> true</visible>
+	</MenuItem>
+</Menu>

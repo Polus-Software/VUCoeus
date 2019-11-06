@@ -1,0 +1,2053 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+    <form-beans>
+           <form-bean name="generalInfoProposal" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property name="proposalNumber" type="java.lang.String"/>
+                <form-property name="proposalType" type="java.lang.String"/>
+                <form-property name="statusCode" type="java.lang.String"/>
+                <form-property name="creationStatusCode" type="java.lang.String"/>
+                <form-property name="baseProposalNumber" type="java.lang.String"/>
+                <form-property name="continuedFrom" type="java.lang.String"/>
+                <form-property name="templateFlag" type="java.lang.String"/>
+                <form-property name="organizationId" type="java.lang.String"/>
+                <form-property name="performingOrganizationId" type="java.lang.String"/>
+                <form-property name="currentAccountNumber" type="java.lang.String"/>
+                <form-property name="awardNumber" type="java.lang.String"/>
+                <form-property name="title" type="java.lang.String"/>
+                <form-property name="cfdaCode" type="java.lang.String"/>
+                <form-property name="sponsorCode" type="java.lang.String"/>
+                <form-property name="primeSponsorCode" type="java.lang.String"/>
+                <form-property name="sponsorProposalNuber" type="java.lang.String"/>
+                <form-property name="intrCoopActivitiesFlag" type="java.lang.String"/>
+                <form-property name="intrCountrylist" type="java.lang.String"/>
+                <form-property name="otherAgencyFlag" type="java.lang.String"/>
+                <form-property name="noticeOfOppr" type="java.lang.String"/>
+                <form-property name="programAnnouncementNumber" type="java.lang.String"/>
+                <form-property name="programAnnouncementTitle" type="java.lang.String"/>
+                <form-property name="activityType" type="java.lang.String"/>
+                <form-property name="startDate" type="java.lang.String"/>
+                <form-property name="requestStartDateTotal" type="java.lang.String"/>
+                <form-property name="endDate" type="java.lang.String"/>
+                <form-property name="requestEndDateTotal" type="java.lang.String"/>
+                <form-property name="durationMonth" type="java.lang.String"/>
+                <form-property name="numberCopies" type="java.lang.String"/>
+                <form-property name="deadLineDate" type="java.lang.String"/>
+                <form-property name="deadlineType" type="java.lang.String"/>
+                <form-property name="mailBy" type="java.lang.String"/>
+                <form-property name="mailType" type="java.lang.String"/>
+                <form-property name="carrierCodeType" type="java.lang.String"/>
+                <form-property name="carrierCode" type="java.lang.String"/>
+                <form-property name="mailDescription" type="java.lang.String"/>
+                <form-property name="mailAccountNumber" type="java.lang.String"/>
+                <form-property name="subcontractFlag" type="java.lang.String"/>
+                <form-property name="unitNumber" type="java.lang.String"/>
+                <form-property name="createUser" type="java.lang.String"/>
+                <form-property name="nsfCode" type="java.lang.String"/>
+                <form-property name="agencyProgramCode" type="java.lang.String"/>
+                <form-property name="agencyDivCode" type="java.lang.String"/>
+                <form-property name="updateUser" type="java.lang.String"/>
+                <form-property name="updateTimestamp" type="java.lang.String"/>
+                <form-property name="acType" type="java.lang.String" initial="I"/>
+                <form-property name="unitName" type="java.lang.String"/>
+
+                <form-property name="ownerFirstName" type="java.lang.String"/>
+                <form-property name="ownerLastName" type="java.lang.String"/>
+                <form-property name="personId" type="java.lang.String"/>
+                <form-property name="status" type="java.lang.String"/>
+                
+                <form-property name="dateEdited" type="java.lang.String"/>
+                <form-property name="contactFirstName" type="java.lang.String"/>
+                <form-property name="contactLastName" type="java.lang.String"/>
+                <form-property name="contactPhone" type="java.lang.String"/>
+                <form-property name="contactEmail" type="java.lang.String"/>
+                <form-property name="contactFax" type="java.lang.String"/>
+                <form-property name="sponsorName" type="java.lang.String"/>
+                <form-property name="primeSponsorName" type="java.lang.String"/>
+                <form-property name="leadUnit" type="java.lang.String"/>
+                <form-property name="amount" type="java.lang.String"/>
+                <form-property name="onCampusFlag" type="java.lang.String"/>
+                <form-property name="graHeadCount" type="java.lang.String"/>
+                <form-property name="newUpdateTimetamp" type="java.lang.String"/>
+                <form-property name="mailingAddresId" type="java.lang.String"/>
+                <form-property name="budgetStatus" type="java.lang.String"/>
+                <form-property name="narrativeStatus" type="java.lang.String"/>
+
+                <form-property name="organizationName" type="java.lang.String"/>
+                <form-property name="performingOrganizationName" type="java.lang.String"/>
+                <form-property name="proposalTypeDesc" type="java.lang.String"/>
+
+                <form-property name="nsfCodeDesc" type="java.lang.String"/>
+                <form-property name="nopDesc" type="java.lang.String"/>
+                <form-property name="activityTypeDesc" type="java.lang.String"/>
+                <form-property name="createTimestamp" type="java.lang.String"/>
+                <form-property name="creationStatusDesc" type="java.lang.String"/>
+
+                <form-property name="roleId" type="java.lang.String"/>
+                <form-property name="roleName" type="java.lang.String"/>
+                <form-property name="roleDescription" type="java.lang.String"/>
+                <form-property name="roleType" type="java.lang.String"/>
+                <form-property name="descendFlag" type="java.lang.String"/>
+                <form-property name="statusFlag" type="java.lang.String"/>
+                <form-property name="userName" type="java.lang.String"/>
+                <form-property name="userId" type="java.lang.String"/>
+                <!-- added for Case # 2162 - adding Award type - start -->
+                <form-property name="anticipatedAwardType" type="java.lang.String"/>
+                <form-property name="anticipatedAwardTypeDesc" type="java.lang.String"/>
+                <!-- added for Case # 2162 - adding Award type - end -->
+        <!--COEUSQA-3951-->
+                <form-property name="agencyRoutingIdentifier" type="java.lang.String"/>
+                <form-property name="previousGGTrackingID" type="java.lang.String"/>
+        <!--COEUSQA-3951-->
+           </form-bean>
+
+           <!-- For submit to sponsor start-->
+           <form-bean name="submitTosponsorDetails" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property name="proposalNumber" type="java.lang.String"/>
+                <form-property name="proposalType" type="java.lang.String"/>
+                <form-property name="statusCode" type="java.lang.String"/>
+                <form-property name="creationStatusCode" type="java.lang.String"/>
+                <form-property name="baseProposalNumber" type="java.lang.String"/>
+                <form-property name="continuedFrom" type="java.lang.String"/>
+                <form-property name="templateFlag" type="java.lang.String"/>
+                <form-property name="organizationId" type="java.lang.String"/>
+                <form-property name="instPropNumber" type="java.lang.String"/>
+                <form-property name="generated" type="java.lang.String"/>
+                <form-property name="notGenerated" type="java.lang.String"/>
+           </form-bean>
+           <!-- For submit to sponsor end-->
+
+             <!-- For Proposal Valdidate start-->
+           <form-bean name="validateProposalForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                        <form-property  name = "proposalNumber" type = "java.lang.String"/>
+                        <form-property  name = "ruleType"       type = "java.lang.String"/>
+                        <form-property  name = "description"    type = "java.lang.String"/>
+                        <form-property  name = "unitName"       type = "java.lang.String"/>
+                        <form-property  name = "ruleCategory"   type = "java.lang.String"/>
+                        <form-property  name = "moduleCode"     type = "java.lang.String"/>
+                        <form-property  name = "submoduleCode"  type = "java.lang.String"/>
+           </form-bean>
+   <!-- For Proposal Valdidate End-->
+
+   <!-- Submit for approve start-->
+           <form-bean name="generalProposalForm" dynamic="false" type="edu.utk.coeuslite.propdev.form.GeneralProposalForm">
+                <form-property name="proposalNumber"    type="java.lang.String"/>
+                <form-property name="unitNumber"        type="java.lang.String"/>
+                <form-property name="updateUser"        type="java.lang.String"/>
+                <form-property name="updateTimeStamp"   type="java.lang.String"/>
+                <form-property name="newUpdateTimeStamp"   type="java.lang.String"/>
+                <form-property name="acType"            type="java.lang.String" initial="I"/>
+                <form-property name="roleId"            type="java.lang.Integer"/>
+                <form-property name="userId"            type="java.lang.String"/>
+                <form-property name="ruleType"          type="java.lang.String"/>
+                <form-property name="description"       type="java.lang.String"/>
+                <form-property name="sponsorCode"       type="java.lang.String"/>
+                <form-property name="rolodexId"         type="java.lang.String"/>
+                <form-property name="unitName"          type="java.lang.String" />
+                <form-property name="ruleCategory"      type="java.lang.String"/>
+                <form-property name="moduleCode"        type="java.lang.String"/>
+                <form-property name="submoduleCode"     type="java.lang.String"/>
+        </form-bean>
+
+   <!-- Submit for approve End-->
+
+
+
+           <form-bean name="uploadProposalForm" type="edu.utk.coeuslite.propdev.form.ProposalUploadForm"/>
+                <form-bean name="otherCustomElementsForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property  name = "proposalNumber"     type = "java.lang.String"/>
+                <form-property  name = "columnName"         type = "java.lang.String"/>
+                <form-property  name = "columnValue"        type = "java.lang.String"/>
+                <form-property  name = "updateUser"         type = "java.lang.String"/>
+                <form-property  name = "columnLabel"        type = "java.lang.String"/>
+                <form-property  name = "dataType"           type = "java.lang.String"/>
+                <form-property  name = "dataLength"         type = "java.lang.String"/>
+                <form-property  name = "defaultValue"       type = "java.lang.String"/>
+                <form-property  name = "hasLookUp"          type = "java.lang.String"/>
+                <form-property  name = "lookUpWindow"       type = "java.lang.String"/>
+                <form-property  name = "lookUpArgument"     type = "java.lang.String"/>
+                <form-property  name = "updateTimestamp"    type = "java.lang.String"/>
+                <form-property  name = "lookUpReuired"      type = "java.lang.String"/>
+                <form-property  name = "isRequired"         type = "java.lang.String"/>
+                <form-property  name = "description"        type = "java.lang.String"/>
+                <form-property  name = "acType"             type = "java.lang.String"/>
+                <form-property  name = "groupCode"          type = "java.lang.String"/>
+                <form-property  name = "lookUpValue"        type = "java.lang.String"/>
+                <form-property  name = "awUpdateTimestamp"  type = "java.lang.String"/>
+                <form-property  name = "userName"           type = "java.lang.String"/>
+         </form-bean>
+
+                    <!-- DynaBean for questionnaire starts -->
+        <!-- Code commented and added for coeus4.3 questionnaire enhancements case#2946 -->
+        <!--  <form-bean name="questionnaireForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property  name = "proposalNumber"                type = "java.lang.String"/>
+                <form-property  name = "moduleItemCode"                type = "java.lang.String"/>
+                <form-property  name = "moduleItemKey"                 type = "java.lang.String"/>
+                <form-property  name = "moduleSubItemCode"             type = "java.lang.String"/>
+                <form-property  name = "moduleSubItemKey"              type = "java.lang.String"/>
+                <form-property  name = "questionaireId"                type = "java.lang.String"/>
+                <form-property  name = "questionaireCompletionId"      type = "java.lang.String"/>
+                <form-property  name = "questionaireLabel"              type = "java.lang.String"/>
+                <form-property  name = "questionId"                    type = "java.lang.String"/>
+                <form-property  name = "questionNumber"                type = "java.lang.String"/>
+                <form-property  name = "parentQuestionNumber"          type = "java.lang.String"/>
+                <form-property  name = "answerNumber"                  type = "java.lang.String"/>
+                <form-property  name = "questionDescription"           type = "java.lang.String"/>
+                <form-property  name = "maxAnswers"                    type = "java.lang.String"/>
+                <form-property  name = "validAnswers"                  type = "java.lang.String"/>
+                <form-property  name = "lookUpName"                    type = "java.lang.String"/>
+                <form-property  name = "answerDataType"                type = "java.lang.String"/>
+                <form-property  name = "answerMaxLength"               type = "java.lang.String"/>
+                <form-property  name = "lookupGUI"                     type = "java.lang.String"/>
+                <form-property  name = "answer"                        type = "java.lang.String"/>
+                <form-property  name = "condition"                     type = "java.lang.String"/>
+                <form-property  name = "conditionValue"                type = "java.lang.String"/>
+                <form-property  name = "conditionFlag"                 type = "java.lang.String"/>
+                <form-property  name = "answerDescription"             type = "java.lang.String"/>
+                <form-property  name = "acType"                        type = "java.lang.String"/>
+                <form-property  name = "updateUser"                    type = "java.lang.String"/>
+                <form-property  name = "updateTimestamp"               type = "java.lang.String"/>
+                <form-property  name = "awUpdateTimestamp"             type = "java.lang.String"/>
+         </form-bean> -->
+
+          <form-bean name="questionnaireForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                <!-- QuestionnaireQuestionsBean properties -->
+                <form-property  name = "answerDataType"                 type = "java.lang.String"/>
+                <form-property  name = "answerMaxLength"                type = "java.lang.Integer"/>
+                <form-property  name = "lookUpGui"                      type = "java.lang.String"/>
+                <form-property  name = "lookUpName"                     type = "java.lang.String"/>
+                <form-property  name = "validAnswer"                    type = "java.lang.String"/>
+                <form-property  name = "maxAnswers"                     type = "java.lang.Integer"/>
+                <form-property  name = "questionnaireCompletionId"      type = "java.lang.String"/>
+                <form-property  name = "answerNumber"                   type = "java.lang.Integer"/>
+                <form-property  name = "answer"                         type = "java.lang.String"/>
+                <form-property  name = "searchName"                     type = "java.lang.String"/>
+                <!-- QuestionnaireBean properties -->
+                <form-property  name = "questionId"                     type = "java.lang.Integer"/>
+                <form-property  name = "questionVersionNumber"          type = "java.lang.Integer"/>
+                <form-property  name = "questionNumber"                 type = "java.lang.Integer"/>
+                <form-property  name = "moduleItemCode"                 type = "java.lang.Integer"/>
+                <form-property  name = "moduleSubItemCode"              type = "java.lang.Integer"/>
+                <form-property  name = "questionSequenceNumber"         type = "java.lang.Integer"/>
+                <!-- QuestionnaireBaseBean properties -->
+                <form-property  name = "questionnaireId"                type = "java.lang.Integer"/>
+                <form-property  name = "questionnaireVersionNumber"     type = "java.lang.Integer"/>
+                <form-property  name = "name"                           type = "java.lang.String"/>
+                <form-property  name = "description"                    type = "java.lang.String"/>
+                <!-- QuestionnaireMaintainaceBaseBean properties -->
+                <form-property  name = "questionnaireNumber"            type = "java.lang.Integer"/>
+                <form-property  name = "unitNumber"                     type = "java.lang.String"/>
+                <form-property  name = "updateTimestamp"                type = "java.lang.String"/>
+                <form-property  name = "updateUser"                     type = "java.lang.String"/>
+                <form-property  name = "acType"                         type = "java.lang.String"/>
+                <form-property  name = "printQuestionsOnly"             type = "java.lang.String"/>
+                <form-property  name = "printQuestionAnswers"           type = "java.lang.String"/>
+                <form-property  name = "printAllQuestions"              type = "java.lang.String"/>
+                <form-property  name = "printAnsweredQuestionsOnly"     type = "java.lang.String"/>
+         </form-bean>
+        <!-- DynaBean for questionnaire ends -->
+
+
+        <form-bean name="dynaBeanList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+        </form-bean>
+
+        <!-- Grants Gov START -->
+            <form-bean name="opportunity" dynamic="false" type="org.apache.struts.action.DynaActionForm">
+                   <form-property name="proposalNumber" type="java.lang.String"/>
+                   <form-property name="sponsor" type="java.lang.String"/>
+                   <form-property name="opportunityId" type="java.lang.String"/>
+                   <form-property name="opportunityTitle" type="java.lang.String"/>
+                   <form-property name="cfdaNumber" type="java.lang.String"/>
+                   <form-property name="competitionId" type="java.lang.String"/>
+                   <form-property name="schemaUrl" type="java.lang.String"/>
+                   <form-property name="instructionUrl" type="java.lang.String" />
+                   <form-property name="openingDate" type="java.lang.String"/>
+                   <form-property name="closingDate" type="java.lang.String"/>
+            </form-bean>
+
+            <form-bean name="grantsGovOpportunity" dynamic="false" type="org.apache.struts.action.DynaActionForm">
+                   <form-property name="proposalNumber" type="java.lang.String"/>
+                    <form-property name="opportunityId" type="java.lang.String"/>
+                   <form-property name="opportunityTitle" type="java.lang.String"/>
+                   <form-property name="cfdaNumber" type="java.lang.String"/>
+                   <form-property name="competitionId" type="java.lang.String"/>
+                   <form-property name="schemaUrl" type="java.lang.String"/>
+                   <form-property name="instructionUrl" type="java.lang.String" />
+                   <form-property name="openingDate" type="java.lang.String"/>
+                   <form-property name="closingDate" type="java.lang.String"/>
+                   <form-property name="opportunity" type="java.lang.String"/>
+                   <form-property name="submissionTypeCode" type="java.lang.String"/>
+                   <form-property name="revisionCode" type="java.lang.String"/>
+                   <form-property name="revisionCodeAward" type="java.lang.String"/>
+                   <form-property name="revisionCodeDuration" type="java.lang.String"/>
+                   <form-property name="revisionCodeOther" type="java.lang.String"/>
+                   <form-property name="revisionOtherDescription" type="java.lang.String"/>
+                   <form-property name="submitType" type="java.lang.String"/>
+                   <form-property name="updateTimestamp" type="java.lang.String"/>
+                   <form-property name="updateUser" type="java.lang.String"/>
+                   <form-property name="acType" type="java.lang.String"/>
+            </form-bean>
+
+            <!-- includes grantsGovOpportunity and list of FormInfoBean -->
+            <form-bean name="grantsGov" type="edu.wmc.coeuslite.utils.DynaBeanList">
+		   <form-property name="listFormName" type="java.lang.String" initial="formInfoBean"/>
+                   <form-property name="beanListFormName" type="java.lang.String" initial="grantsGovOpportunity"/>
+	    </form-bean>
+
+            <form-bean name="formInfoBean" type="org.apache.struts.action.DynaActionForm">
+                   <form-property name="proposalNumber" type="java.lang.String"/>
+                   <form-property name="ns" type="java.lang.String"/>
+                   <form-property name="schUrl" type="java.lang.String"/>
+                   <form-property name="formName" type="java.lang.String"/>
+                   <form-property name="mandatory" type="java.lang.Boolean"/>
+                   <form-property name="available" type="java.lang.Boolean"/>
+                   <form-property name="include" type="java.lang.Boolean" />
+                   <form-property name="includeSelected" type="java.lang.Boolean" /><!-- to include checkbox value -->
+                   <form-property name="updateTimestamp" type="java.lang.String"/>
+                   <form-property name="updateUser" type="java.lang.String"/>
+                   <form-property name="acType" type="java.lang.String"/>
+                   <form-property name="print" type="java.lang.Boolean"/>
+            </form-bean>
+            <!-- Grants Gov END -->
+
+            <form-bean name="approvalRoutingList" type="edu.mit.coeuslite.utils.CoeusDynaFormList">
+            </form-bean>
+
+            <form-bean name="approvalRoute" dynamic= "false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="level" type="java.lang.String"/>
+            <form-property name="proposalNumber" type="java.lang.String"/>
+            <form-property name="mapId" type="java.lang.Integer"/>
+            <form-property name="parentMapNumber" type="java.lang.Integer"/>
+            <form-property name="description" type="java.lang.String"/>
+            <form-property name="systemFlag" type="java.lang.String"/>
+            <form-property name="approvalStatus" type="java.lang.String"/>
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="updateTimeStamp" type="java.lang.String"/>
+            <form-property name="userId" type="java.lang.String"/>
+            <form-property name="userName" type="java.lang.String"/>
+            <form-property name="primaryApproverFlag" type="java.lang.String"/>
+            <form-property name="levelNumber" type="java.lang.Integer"/>
+            <form-property name="stopNumber" type="java.lang.Integer"/>
+            <form-property name="comments" type="java.lang.String"/>
+            <form-property name="submissionDate" type="java.lang.String"/>
+            <form-property name="approvaldate" type="java.lang.String"/>
+            <form-property name="approvalStatusText" type="java.lang.String"/>
+            <form-property name="actionMode" type="java.lang.String"/>
+            <form-property name="proposalApprovals" type="java.util.Vector"/>
+            <form-property name="action" type="java.lang.String"/>
+            <form-property name="approveAll" type="java.lang.String"/>
+            <form-property name="avUpdateTimestamp" type="java.lang.String"/>
+            <form-property name="byPassFlag" type="java.lang.String"/>
+            <form-property name="approvalUserName" type="java.lang.String"/>
+            <form-property name="routingNumber" type="java.lang.String"/>
+            <form-property name="mapNumber" type="java.lang.Integer"/>
+            <form-property name="approverNumber" type="java.lang.Integer"/>
+            <form-property name="attachments" type = "org.apache.struts.upload.FormFile"/>
+            <form-property name="attachFile" type = "java.lang.String"/>
+            <form-property name="newApprovers" type = "edu.mit.coeus.utils.CoeusVector"/>
+
+          </form-bean>
+            <!--  Added by Manju -->
+          <form-bean name="proposalDetails" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="proposalNumber" type="java.lang.String"/>
+            <form-property name="title" type="java.lang.String"/>
+            <form-property name="creationStatusCode" type="java.lang.Integer"/>
+            <form-property name="sponsorCode" type="java.lang.String"/>
+            <form-property name="requstedStartDateInitial" type="java.lang.String"/>
+            <form-property name="requestedEndDateInitial" type="java.lang.String"/>
+            <form-property name="personName" type="java.lang.String"/>
+            <form-property name="ownedByUnit" type="java.lang.String"/>
+            <form-property name="unitName" type="java.lang.String"/>
+            <form-property name="sponsorName" type="java.lang.String"/>
+            <form-property name="submissionDate" type="java.lang.String"/>
+            <form-property name="deadlineDate" type="java.lang.String"/>
+          </form-bean>
+
+
+          <!-- From UTK start -->
+             <form-bean name="pdInvestKeyPersForm"
+                      type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property name="proposalNumber" type="java.lang.String"/>
+                <form-property name="personId" type="java.lang.String"/>               
+                <form-property name="personName" type="java.lang.String"/>
+                <form-property name="invLastName" type="java.lang.String"/>
+                <form-property name="invFirstName" type="java.lang.String"/>
+                <form-property name="invPhone" type="java.lang.String"/>
+                <form-property name="invEmail" type="java.lang.String"/>
+                <form-property name="unitNumber" type="java.lang.String"/>
+                <form-property name="unitName" type="java.lang.String"/>
+                <form-property name="awUnitNumber" type="java.lang.String"/>
+                <form-property name="is_Employee" type="java.lang.String"/>
+
+                <form-property name="principalInvestigatorFlag" type="java.lang.String"/>
+                <form-property name="percentageEffort" type="java.lang.Float"/>
+                <form-property name="nonEmployee" type="java.lang.String"/>
+
+                <form-property name="invRoleCode" type="java.lang.String"/>
+                <form-property name="invRoleDescription" type="java.lang.String"/>
+                <form-property name="keyPersRole" type="java.lang.String"/>
+                <form-property name="acType" type="java.lang.String"/>
+                <form-property name="investigatorUnits" type="java.util.ArrayList"/>
+                <form-property name="leadUnitFlag" type="java.lang.String"/>
+                <form-property name="propInvTimestamp" type="java.lang.String"/>
+                <form-property name="propInvUpdateUser" type="java.lang.String"/>
+
+                <form-property name="facultyFlag" type="java.lang.String"/>
+                <form-property name="coiFlag" type="java.lang.String"/>
+                <form-property name="FEDRdebrFlag" type="java.lang.String"/>
+                <form-property name="FEDRdelqFlag" type="java.lang.String"/>
+				<form-property name="status" type="java.lang.String"/>
+                <form-property name="isExternal" type="java.lang.String"/>
+                <form-property name="commonsUserName" type="java.lang.String"/>
+               
+                
+                
+
+                <!-- custom elements -->
+                <form-property name="costCenter" type="java.lang.String"/>
+                <form-property name="piAcctSetup" type="java.lang.String"/>
+                <form-property name="releasePayType" type="java.lang.String"/>
+                <form-property name="summerPayType" type="java.lang.String"/>
+                <form-property name="naPayType" type="java.lang.String"/>
+
+                <form-property name="degreeCode" type="java.lang.String"/>
+                <form-property name="awDegreeCode" type="java.lang.String"/>
+                <form-property name="degreeDescription" type="java.lang.String"/>
+                <form-property name="graduationDate" type="java.lang.String"/>
+                <form-property name="degree" type="java.lang.String"/>
+                <form-property name="awDegree" type="java.lang.String"/>
+                <form-property name="fieldOfStudy" type="java.lang.String"/>
+                <form-property name="specialization" type="java.lang.String"/>
+                <form-property name="school" type="java.lang.String"/>
+                <form-property name="schoolIdCode" type="java.lang.String"/>
+                <form-property name="schoolDescription" type="java.lang.String"/>
+                <form-property name="schoolId" type="java.lang.String"/>
+                <form-property name="updateTimestamp" type="java.lang.String"/>
+                <form-property name="awUpdateTimestamp" type="java.lang.String"/>
+                <form-property name="updateUser" type="java.lang.String"/>
+
+                <form-property name="userId" type="java.lang.String"/>
+                <form-property name="rightId" type="java.lang.String"/>
+                <form-property name="description" type="java.lang.String"/>
+                <form-property name="certifyFlag" type="java.lang.String"/>
+
+                <!-- Added to Investigator screen -->
+                <form-property name="faxNumber" type="java.lang.String"/>
+                <form-property name="mobileNumber" type="java.lang.String"/>
+
+                <!-- For Custom Data -->
+                <form-property name="columnName" type="java.lang.String"/>
+                <form-property name="columnValue" type="java.lang.String"/>
+
+                <!-- Added for case#2229 - Multi PI Enhancement -->
+                <form-property name="multiPIFlag" type="java.lang.String"/>
+                <!-- Added for case#2270 - Tracking Effort - start -->
+                <form-property name="academicYearEffort" type="java.lang.Float"/>
+                <form-property name="summerYearEffort" type="java.lang.Float"/>
+                <form-property name="calendarYearEffort" type="java.lang.Float"/>
+                <!-- Added for case#2270 - Tracking Effort - end -->
+                <!-- Added for COEUSQA-2037 : Software allows you to delete an investigator who is assigned credit in the credit split window - start -->
+                <form-property name="isCreditSplitExists" type="java.lang.String"/>
+                <!-- Added for COEUSQA-2037 : Software allows you to delete an investigator who is assigned credit in the credit split window - end -->
+                <form-property name="isSelected" type="java.lang.String"/>
+				 
+           </form-bean>
+
+            <!-- From UTK end -->
+
+            <!-- Added for COEUSQA-1438-Science Code Information not Located in Lite - Start -->
+            <form-bean  name="scienceCodeForm" dynamic="true" type="org.apache.struts.validator.DynaValidatorForm">                     
+                <form-property name = "proposalNumber" type="java.lang.String"/>
+                <form-property name="code" type = "java.lang.String" />
+                <form-property name="scienceCodeDescription" type = "java.lang.String" />                 
+                <form-property name = "updateTimeStamp" type="java.lang.String"/>                
+                <form-property name = "updateUser" type="java.lang.String"/> 
+                <form-property name = "awProposalNumber" type="java.lang.String"/>
+                <form-property name="awCode" type = "java.lang.String" />
+                <form-property name = "awUpdateTimestamp" type="java.lang.String"/>
+                <form-property name="acType" type="java.lang.String"/>               
+            </form-bean>
+            <!-- Added for COEUSQA-1438-Science Code Information not Located in Lite - End -->
+            
+            <!-- proposal InvestigatorKeyStudyPersons Certification List Start -->
+            <form-bean name="proposalInvCertifyList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+            </form-bean>
+
+           <form-bean name="proposalInvCertifyForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property name = "proposalNumber" type="java.lang.String"/>
+                <form-property name = "personId" type="java.lang.String"/>
+                <form-property name = "questionType" type="java.lang.String"/>
+                <form-property  name = "questionId" type = "java.lang.String"/>
+                <form-property  name = "description" type = "java.lang.String"/>
+                <form-property name = "noOfAnswers" type="java.lang.Integer"/>
+                <form-property  name = "explanationReqFor" type = "java.lang.String"/>
+                <form-property  name = "answer" type = "java.lang.String"/>
+                <form-property  name = "popUp" type = "java.lang.String"/>
+                <form-property  name = "dateReqFor" type = "java.lang.String"/>
+                <form-property  name = "answer2Choices" type = "java.lang.String"/>
+                <form-property  name = "answer3Choices" type = "java.lang.String"/>
+                <form-property  name = "explanation" type = "java.lang.String"/>
+                <form-property  name = "status" type = "java.lang.String"/>
+                <form-property  name = "explanationType" type = "java.lang.String"/>
+                <form-property name = "updateTimestamp" type="java.lang.String"/>
+                <form-property name = "awUpdateTimestamp" type="java.lang.String"/>
+                <form-property name = "updateUser" type="java.lang.String"/>
+                <form-property name="acType" type="java.lang.String"/>
+                <form-property  name = "question" type = "java.lang.String"/>
+            </form-bean>
+           <!-- proposal InvestigatorKeyStudyPersons Certification List  End -->
+
+            <!-- Abstract -->
+             <form-bean name="abstractForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                    <form-property  name = "proposalNumber" type = "java.lang.String"/>
+                    <form-property  name = "description" type = "java.lang.String"/>
+                    <form-property  name = "abstract" type = "java.lang.String"/>
+                    <form-property  name = "abstractTypeCode" type = "java.lang.String"/>
+                    <form-property name="updateTimestamp" type="java.lang.String"/>
+                    <form-property name="awUpdateTimestamp" type="java.lang.String"/>
+                    <form-property name="updateUser" type="java.lang.String"/>
+                    <form-property name="showTab" type="java.lang.String"/>
+                    <form-property name="hideTab" type="java.lang.String"/>
+                    <form-property name="acType" type="java.lang.String"/>
+                    <!-- Added for case#2349 - Update timestamp for the Abstracts Module - start -->
+                    <form-property  name="awAbstract" type="java.lang.String"/>
+                    <!-- Added for case#2349 - Update timestamp for the Abstracts Module - end -->
+           </form-bean>
+
+           <!-- Proposal Print - START -->
+	      <form-bean name="sponsorTemplateForm" type="org.apache.struts.action.DynaActionForm">
+		      <form-property name="rowId" type="java.lang.Integer"/>
+		      <form-property name="sponsorCode" type="java.lang.String"/>
+		      <form-property name="pageDescription" type="java.lang.String"/>
+		      <form-property name="packageNumber" type="java.lang.Integer"/>
+		      <form-property name="pageNumber" type="java.lang.Integer"/>
+		      <form-property name="print" type="java.lang.Boolean"/>
+	       </form-bean>
+
+	       <!-- includes grantsGovOpportunity and list of sponsorTemplateForm -->
+	       <form-bean name="proposalPrint" type="edu.wmc.coeuslite.utils.DynaBeanList">
+		   <form-property name="listFormName" type="java.lang.String" initial="sponsorTemplateForm"/>
+
+     <!-- ~**~*~*~**~*~*~*~**~*~*~*~ DISPLAYPROPOSALFORM beans  CONTAINS ~**~*~*~**~*~*~**~*~*~**~*~*~**~*~*~*~* -->
+               <form-property name="proposalNumber" type="java.lang.String"/>
+                <form-property name="personId" type="java.lang.String"/>
+                <form-property name="status" type="java.lang.String"/>
+                <form-property name="isExternal" type="java.lang.String"/>
+                <form-property name="personName" type="java.lang.String"/>
+                <form-property name="invLastName" type="java.lang.String"/>
+                <form-property name="invFirstName" type="java.lang.String"/>
+                <form-property name="invPhone" type="java.lang.String"/>
+                <form-property name="invEmail" type="java.lang.String"/>
+                <form-property name="unitNumber" type="java.lang.String"/>
+                <form-property name="unitName" type="java.lang.String"/>
+                <form-property name="awUnitNumber" type="java.lang.String"/>
+                <form-property name="is_Employee" type="java.lang.String"/>
+
+                <form-property name="principalInvestigatorFlag" type="java.lang.String"/>
+                <form-property name="percentageEffort" type="java.lang.Float"/>
+                <form-property name="nonEmployee" type="java.lang.String"/>
+
+                <form-property name="invRoleCode" type="java.lang.String"/>
+                <form-property name="invRoleDescription" type="java.lang.String"/>
+                <form-property name="keyPersRole" type="java.lang.String"/>
+                <form-property name="acType" type="java.lang.String"/>
+                <form-property name="investigatorUnits" type="java.util.ArrayList"/>
+                <form-property name="leadUnitFlag" type="java.lang.String"/>
+                <form-property name="propInvTimestamp" type="java.lang.String"/>
+                <form-property name="propInvUpdateUser" type="java.lang.String"/>
+
+                <form-property name="facultyFlag" type="java.lang.String"/>
+                <form-property name="coiFlag" type="java.lang.String"/>
+                <form-property name="FEDRdebrFlag" type="java.lang.String"/>
+                <form-property name="FEDRdelqFlag" type="java.lang.String"/>
+
+                <form-property name="commonsUserName" type="java.lang.String"/>
+
+                <!-- custom elements -->
+                <form-property name="costCenter" type="java.lang.String"/>
+                <form-property name="piAcctSetup" type="java.lang.String"/>
+                <form-property name="releasePayType" type="java.lang.String"/>
+                <form-property name="summerPayType" type="java.lang.String"/>
+                <form-property name="naPayType" type="java.lang.String"/>
+
+                <form-property name="degreeCode" type="java.lang.String"/>
+                <form-property name="awDegreeCode" type="java.lang.String"/>
+                <form-property name="degreeDescription" type="java.lang.String"/>
+                <form-property name="graduationDate" type="java.lang.String"/>
+                <form-property name="degree" type="java.lang.String"/>
+                <form-property name="awDegree" type="java.lang.String"/>
+                <form-property name="fieldOfStudy" type="java.lang.String"/>
+                <form-property name="specialization" type="java.lang.String"/>
+                <form-property name="school" type="java.lang.String"/>
+                <form-property name="schoolIdCode" type="java.lang.String"/>
+                <form-property name="schoolDescription" type="java.lang.String"/>
+                <form-property name="schoolId" type="java.lang.String"/>
+                <form-property name="updateTimestamp" type="java.lang.String"/>
+                <form-property name="awUpdateTimestamp" type="java.lang.String"/>
+                <form-property name="updateUser" type="java.lang.String"/>
+
+                <form-property name="userId" type="java.lang.String"/>
+                <form-property name="rightId" type="java.lang.String"/>
+                <form-property name="description" type="java.lang.String"/>
+                <form-property name="certifyFlag" type="java.lang.String"/>
+
+                <!-- Added to Investigator screen -->
+                <form-property name="faxNumber" type="java.lang.String"/>
+                <form-property name="mobileNumber" type="java.lang.String"/>
+
+                <!-- For Custom Data -->
+                <form-property name="columnName" type="java.lang.String"/>
+                <form-property name="columnValue" type="java.lang.String"/>
+
+                <!-- Added for case#2229 - Multi PI Enhancement -->
+                <form-property name="multiPIFlag" type="java.lang.String"/>
+                <!-- Added for case#2270 - Tracking Effort - start -->
+                <form-property name="academicYearEffort" type="java.lang.Float"/>
+                <form-property name="summerYearEffort" type="java.lang.Float"/>
+                <form-property name="calendarYearEffort" type="java.lang.Float"/>
+                <!-- Added for case#2270 - Tracking Effort - end -->
+                <!-- Added for COEUSQA-2037 : Software allows you to delete an investigator who is assigned credit in the credit split window - start -->
+                <form-property name="isCreditSplitExists" type="java.lang.String"/>
+                <!-- Added for COEUSQA-2037 : Software allows you to delete an investigator who is assigned credit in the credit split window - end -->
+				
+
+	       </form-bean>
+           <!-- Proposal Print - END -->
+
+           <!--Copy Proposal Form Start -->
+           <form-bean name="copyProposalForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                    <form-property  name = "proposalNumber" type = "java.lang.String"/>
+                    <form-property  name = "budgetFlag" type = "java.lang.String"/>
+                    <form-property  name = "budgetVersionFlag" type = "java.lang.String"/>
+                    <form-property  name = "narrativeFlag" type = "java.lang.String"/>
+                    <form-property  name = "questionnaireFlag" type = "java.lang.String"/>
+                    <form-property name="updateTimestamp" type="java.lang.String"/>
+                    <form-property name="awUpdateTimestamp" type="java.lang.String"/>
+                    <form-property name="updateUser" type="java.lang.String"/>
+            </form-bean>
+           <!--Copy Proposal Form End -->
+        <!--Proposal Organization start -->
+            <form-bean name="proposalOrganizationLocationList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+            </form-bean>
+
+           <form-bean name="proposalOrganizationForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property  name = "organizationId" type = "java.lang.String"/>
+           <!--form-property  name = "performingOrgId" type = "java.lang.String"/>
+           <form-property  name = "organizationName" type = "java.lang.String"/>
+           <form-property  name = "performingOrganizationName" type = "java.lang.String"/-->
+           <form-property  name = "rolodexId" type = "java.lang.Integer"/>
+           <form-property  name = "proposalNumber" type = "java.lang.String"/>
+           <!--form-property  name = "location" type = "java.lang.String"/-->
+           <form-property  name = "contactAddress" type = "java.lang.String"/>
+           <form-property  name = "rolodexAddress" type = "java.lang.String"/>
+           <form-property  name = "firstName" type = "java.lang.String"/>
+           <form-property  name = "lastName" type = "java.lang.String"/>
+           <form-property  name = "middleName" type = "java.lang.String"/>
+           <form-property  name = "suffix" type = "java.lang.String"/>
+           <form-property  name = "prefix" type = "java.lang.String"/>
+           <form-property  name = "title" type = "java.lang.String"/>
+           <form-property  name = "organization" type = "java.lang.String"/>
+           <form-property  name = "addressLine1" type = "java.lang.String"/>
+           <form-property  name = "addressLine2" type = "java.lang.String"/>
+           <form-property  name = "addressLine3" type = "java.lang.String"/>
+            <form-property  name = "faxNumber" type = "java.lang.String"/>
+           <form-property  name = "e-mail" type = "java.lang.String"/>
+           <form-property  name = "city" type = "java.lang.String"/>
+           <form-property  name = "county" type = "java.lang.String"/>
+           <form-property  name = "state" type = "java.lang.String"/>
+           <form-property  name = "postalCode" type = "java.lang.String"/>
+           <form-property  name = "phoneNumber" type = "java.lang.String"/>
+           <form-property  name = "countryCode" type = "java.lang.String"/>
+           <!--form-property  name = "updateUserOrg" type = "java.lang.String"/>
+           <form-property  name = "updateTimeStampOrg" type = "java.lang.String"/>
+           <form-property  name = "updateUserLoc" type = "java.lang.String"/>
+           <form-property  name = "updateTimeStampLoc" type = "java.lang.String"/>
+           <form-property  name = "awProposalNumber" type = "java.lang.String"/>
+           <form-property  name = "awUpdateTimeStampOrg" type = "java.lang.String"/>
+           <form-property  name = "awUpdateTimeStampLoc" type = "java.lang.String"/>
+           <form-property  name = "awLocation" type = "java.lang.String"/>
+           <form-property  name = "save" type = "java.lang.String"/-->
+           <form-property  name = "acType" type = "java.lang.String"/>
+           <form-property  name = "updateUser" type = "java.lang.String"/>
+           <form-property  name = "updateTimestamp" type = "java.lang.String"/>
+           <form-property  name = "awUpdateUser" type = "java.lang.String"/>
+           <form-property  name = "awUpdateTimeStamp" type = "java.lang.String"/>
+           <form-property  name = "siteNumber" type = "java.lang.Integer"/>
+           <form-property  name = "locationName" type = "java.lang.String"/>
+           <form-property  name = "locationTypeDesc" type = "java.lang.String"/>
+           <form-property  name = "locationTypeCode" type = "java.lang.Integer"/>
+           <form-property  name = "cvCongDist" type = "java.util.Vector"/>
+           <form-property  name = "billingAgreementOrg" type = "java.lang.String"/>           
+           </form-bean>
+
+            <form-bean name="proposalCongDistForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property  name = "proposalNumberCD" type = "java.lang.String"/>
+           <form-property  name = "siteNumberCD" type = "java.lang.Integer"/>
+           <form-property  name = "congDistrict" type = "java.lang.String"/>
+           <form-property  name = "updateUserCD" type = "java.lang.String"/>
+           <form-property  name = "updateTimeStampCD" type = "java.lang.String"/>
+           <form-property  name = "awCongDistrict" type = "java.lang.String"/>
+           <form-property  name = "awUpdateTimeStampCD" type = "java.lang.String"/>
+           <form-property  name = "awProposalNumberCD" type = "java.lang.String"/>
+           <form-property  name = "awSiteNumberCD" type = "java.lang.Integer"/>
+           <form-property  name = "acTypeCD" type = "java.lang.String"/>
+           </form-bean>
+           <!--Proposal Organization end -->
+
+           <!-- Opportunity Search - START -->
+	      <form-bean name="opportunitySearchForm" type="org.apache.struts.action.DynaActionForm">
+		     <form-property name="cfdaNumber" type="java.lang.String"/>
+		     <form-property name="programNumber" type="java.lang.String"/>
+	      </form-bean>
+           <!-- Opportunity Search - END -->
+
+           <!-- special review form bean -->
+           <form-bean name="propDevSpecialReview"
+                      type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property name="spRevProtocolNumber"      type = "java.lang.String"/>
+                <form-property name="specialReviewCode"        type = "java.lang.String"/>
+                <form-property name="approvalCode"             type = "java.lang.String"/>
+                <form-property name="applicationDate"          type = "java.lang.String"/>
+                <form-property name="approvalDate"             type = "java.lang.String"/>
+                <form-property name="comments"                 type = "java.lang.String"/>
+                <form-property name="proposalNumber"           type = "java.lang.String"/>
+
+                <form-property name="acType"                   type = "java.lang.String"/>
+                <form-property name="pdSpTimestamp"            type = "java.lang.String"/>
+
+                <form-property name="updateUser"               type = "java.lang.String"/>
+                <form-property name="specialReviewDescription" type = "java.lang.String"/>
+                <form-property name="approvalDescription"      type = "java.lang.String"/>
+                <form-property name="specialReviewNumber"      type = "java.lang.Integer"/>
+                <!-- Added for case#2990 - Proposal Special Review Enhancement -->
+                <form-property name="tempApprovalCode"              type = "java.lang.String"/>
+                <form-property name="tempApprovalText"              type = "java.lang.String"/>
+                <form-property name="tempApprovalDate"              type = "java.lang.String"/>
+                <form-property name="tempApplicationDate"           type = "java.lang.String"/>
+
+
+
+           </form-bean>
+
+
+
+
+        <!--Proposal YNQ start -->
+            <form-bean name="ynqFormList" type="edu.mit.coeuslite.utils.CoeusDynaBeansList">
+            </form-bean>
+
+           <form-bean name="ynqForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property  name = "groupName" type = "java.lang.String"/>
+           <form-property  name = "explanation" type = "java.lang.String"/>
+           <form-property  name = "reviewDate" type = "java.lang.String"/>
+           <form-property  name = "answer" type = "java.lang.String"/>
+           <form-property  name = "questionId" type = "java.lang.String"/>
+           <form-property  name = "description" type = "java.lang.String"/>
+           <form-property  name = "numberOfAnswers" type = "java.lang.Integer"/>
+           <form-property  name = "explanationReqFor" type = "java.lang.String"/>
+           <form-property  name = "dateReqFor" type = "java.lang.String"/>
+           <form-property  name = "proposalNumber" type = "java.lang.String"/>
+           <form-property  name = "updateUser" type = "java.lang.String"/>
+           <form-property  name = "updateTimeStamp" type = "java.lang.String"/>
+           <form-property  name = "awUpdateTimeStamp" type = "java.lang.String"/>
+           <form-property  name = "acType" type = "java.lang.String"/>
+           </form-bean>
+           <!--Proposal YNQ end -->
+
+        <!-- Credit Split - starts -->
+        <form-bean name="proposalCreditSplitForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property  name = "invCreditTypeCode" type = "java.lang.Integer"/>
+            <form-property  name = "proposalNumber" type = "java.lang.String"/>
+            <form-property  name = "personId" type = "java.lang.String"/>
+            <form-property  name = "personName" type = "java.lang.String"/>
+            <form-property  name = "description" type = "java.lang.String"/>
+            <form-property  name = "addsToHundred" type = "java.lang.String"/>
+            <form-property  name = "unitNumber" type = "java.lang.String"/>
+            <form-property  name = "unitName" type = "java.lang.String"/>
+            <form-property  name = "recognition" type = "java.lang.String"/>
+            <form-property  name = "principalInvestigator" type = "java.lang.String"/>
+            <form-property  name = "updateTimestamp" type = "java.lang.String"/>
+            <form-property  name = "awUpdateTimestamp" type = "java.lang.String"/>
+            <form-property  name = "updateUser" type = "java.lang.String"/>
+            <form-property  name = "credit" type = "java.lang.String"/>
+            <form-property  name = "acType" type = "java.lang.String"/>
+       </form-bean>
+        <!-- Credit Split - ends -->
+
+        <!--Proposal Roles Start-->
+           <form-bean name="proposalRolesForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="proposalNumber" type="java.lang.String"/>
+            <form-property name="roleId" type="java.lang.Integer"/>
+            <form-property name="roleDescription" type="java.lang.String"/>
+            <form-property name="roleName" type="java.lang.String"/>
+            <form-property name="roleType" type="java.lang.String"/>
+            <form-property name="ownerByUnit" type="java.lang.String"/>
+            <form-property name="descendFlag" type="java.lang.String"/>
+            <form-property name="statusFlag" type="java.lang.String"/>
+            <form-property name="homeUnit" type="java.lang.String"/>
+            <form-property name="unitNumber" type="java.lang.String"/>
+            <form-property name="userId" type="java.lang.String"/>
+            <form-property name="rightId" type="java.lang.String"/>
+
+            <form-property name="userName" type="java.lang.String"/>
+            <form-property name="nonMitPersonFlag" type="java.lang.String"/>
+            <form-property name="personId" type="java.lang.String"/>
+            <form-property name="userType" type="java.lang.String"/>
+            <form-property name="status" type="java.lang.String"/>
+          
+            
+            <form-property name="unitName" type="java.lang.String"/>
+
+           <form-property name="updateTimestamp" type="java.lang.String"/>
+           <form-property name="updateUser" type="java.lang.String"/>
+           <form-property name="createTimestamp" type="java.lang.String"/>
+           <form-property name="createUser" type="java.lang.String"/>
+           <form-property name="acType" type="java.lang.String"/>
+           <form-property name="awUpdateTimestamp" type="java.lang.String"/>
+           <form-property name="awUpdateUser" type="java.lang.String"/>
+           <form-property name="awProposalNumber" type="java.lang.String"/>
+           <form-property name="awSequenceNumber" type="java.lang.Integer"/>
+           <form-property name="awRoleId" type="java.lang.Integer"/>
+           <form-property name="awUserId" type="java.lang.String"/>
+     </form-bean>
+             <!--Proposal Roles End-->
+            <!--Proposal Inv More Details Start -->
+
+             <form-bean name="personDynaBeansList" type="edu.mit.coeuslite.utils.CoeusDynaFormList">
+            </form-bean>
+
+           <form-bean name="proposalInvMoreForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property name = "proposalNumber" type="java.lang.String"/>
+                <form-property name = "personId" type="java.lang.String"/>
+                <form-property name = "ssn" type="java.lang.String"/>
+                <form-property name = "lastName" type="java.lang.String"/>
+                <form-property name = "firstName" type="java.lang.String"/>
+                <form-property name = "middleName" type="java.lang.String"/>
+                <form-property name = "fullName" type="java.lang.String"/>
+                <form-property name = "priorName" type="java.lang.String"/>
+                <form-property name = "userName" type="java.lang.String"/>
+                <form-property name = "emailAddress" type="java.lang.String"/>
+                <form-property name = "dateOfBirth" type="java.lang.String"/>
+                <form-property name = "age" type="java.lang.Integer"/>
+                <form-property name = "ageByFiscalYear" type="java.lang.Integer"/>
+                <form-property name = "gender" type="java.lang.String"/>
+                <form-property name = "race" type="java.lang.String"/>
+                <form-property name = "educationLevel" type="java.lang.String"/>
+                <form-property name = "degree" type="java.lang.String"/>
+                <form-property name = "major" type="java.lang.String"/>
+                <form-property name = "isHandicapped" type="java.lang.String"/>
+                <form-property name = "handicapType" type="java.lang.String"/>
+                <form-property name = "isVeteran" type="java.lang.String"/>
+                <form-property name = "veteranType" type="java.lang.String"/>
+                <form-property name = "visaCode" type="java.lang.String"/>
+                <form-property name = "visaType" type="java.lang.String"/>
+                <form-property name = "visaRenewalDate" type="java.lang.String"/>
+                <form-property name = "hasVisa" type="java.lang.String"/>
+                <form-property name = "officeLocation" type="java.lang.String"/>
+                <form-property name = "secondaryOfficeLocation" type="java.lang.String"/>
+                <form-property name = "officePhone" type="java.lang.String"/>
+                <form-property name = "secondaryOfficePhone" type="java.lang.String"/>
+                <form-property name = "school" type="java.lang.String"/>
+                <form-property name = "yearGraduated" type="java.lang.String"/>
+                <form-property name = "directoryDepartment" type="java.lang.String"/>
+                <form-property name = "salutation" type="java.lang.String"/>
+                <form-property name = "countaryOfCitizenship" type="java.lang.String"/>
+                <form-property name = "primaryTitle" type="java.lang.String"/>
+                <form-property name = "directoryTitle" type="java.lang.String"/>
+                <form-property name = "homeUnit" type="java.lang.String"/>
+                <form-property name = "isFaculty" type="java.lang.String"/>
+                <form-property name = "isGraduateStudentStaff" type="java.lang.String"/>
+                <form-property name = "isResearchStaff" type="java.lang.String"/>
+                <form-property name = "isServiceStaff" type="java.lang.String"/>
+                <form-property name = "isSupportStaff" type="java.lang.String"/>
+                <form-property name = "isOtherAccademicGroup" type="java.lang.String"/>
+                <form-property name = "isMedicalStaff" type="java.lang.String"/>
+                <form-property name = "vacationAccural" type="java.lang.String"/>
+                <form-property name = "isOnSabbatical" type="java.lang.String"/>
+                <form-property name = "idProvided" type="java.lang.String"/>
+                <form-property name = "idVerified" type="java.lang.String"/>
+                <form-property name = "updateTimestamp" type="java.lang.String"/>
+                <form-property name = "updateUser" type="java.lang.String"/>
+                <form-property name = "addressLine1" type="java.lang.String"/>
+                <form-property name = "addressLine2" type="java.lang.String"/>
+                <form-property name = "addressLine3" type="java.lang.String"/>
+                <form-property name = "city" type="java.lang.String"/>
+                <form-property name = "country" type="java.lang.String"/>
+                <form-property name = "state" type="java.lang.String"/>
+                <form-property name = "postalCode" type="java.lang.String"/>
+                <form-property name = "countryCode" type="java.lang.String"/>
+                <form-property name = "faxNumber" type="java.lang.String"/>
+                <form-property name = "pagerNumber" type="java.lang.String"/>
+                <form-property name = "mobilePhoneNumber" type="java.lang.String"/>
+                <form-property name = "eraCommonsUserName" type="java.lang.String"/>
+                <form-property name="unitName" type="java.lang.String"/>
+                <form-property name="userId" type="java.lang.String"/>
+                <form-property name="unitNumber" type="java.lang.String"/>
+                <form-property name="rightId" type="java.lang.String"/>
+                <form-property  name = "columnName" type = "java.lang.String"/>
+                <form-property  name = "columnValue" type = "java.lang.String"/>
+                <form-property  name = "columnLabel" type = "java.lang.String"/>
+                <form-property  name = "dataType"  type = "java.lang.String"/>
+                <form-property  name = "dataLength" type = "java.lang.String"/>
+                <form-property  name = "defaultValue" type = "java.lang.String"/>
+                <form-property  name = "hasLookUp" type = "java.lang.String"/>
+                <form-property  name = "lookUpWindow" type = "java.lang.String"/>
+                <form-property  name = "lookUpArgument" type = "java.lang.String"/>
+                <form-property  name = "description" type = "java.lang.String"/>
+                <form-property  name = "moduleCode" type = "java.lang.Integer"/>
+                <form-property  name = "groupCode" type = "java.lang.String"/>
+                <form-property  name = "isRequired" type = "java.lang.String"/>
+                <form-property name="value" type="java.lang.String"/>
+                <form-property  name = "acType" type = "java.lang.String"/>
+                <form-property name="leadUnitFlag" type="java.lang.String"/>
+                <form-property name = "propInvTimestamp" type="java.lang.String"/>
+
+                <form-property name="degreeTypes" type="java.lang.String"/>
+                <form-property name="degreeCode" type="java.lang.String"/>
+                <form-property name="awDegreeCode" type="java.lang.String"/>
+                <form-property name="degreeDescription" type="java.lang.String"/>
+                <form-property name="graduationDate" type="java.lang.String"/>
+                <form-property name="awDegree" type="java.lang.String"/>
+                <form-property name="fieldOfStudy" type="java.lang.String"/>
+                <form-property name="specialization" type="java.lang.String"/>
+                <form-property name="schoolIdCode" type="java.lang.String"/>
+                <form-property name="schoolDescription" type="java.lang.String"/>
+                <form-property name="schoolId" type="java.lang.String"/>
+                <form-property name = "county" type="java.lang.String"/>
+                <form-property name="awUnitNumber" type="java.lang.String"/>
+                <form-property  name = "awAcType" type = "java.lang.String"/>
+                <form-property name="awUpdateTimestamp" type="java.lang.String"/>
+                <form-property  name = "sortId" type = "java.lang.Integer"/>
+                <form-property name = "stateCode" type="java.lang.String"/>
+                <form-property name = "division" type="java.lang.String"/>
+                 <form-property name="status" type="java.lang.String"/>
+                
+           </form-bean>
+            <!--Proposal Inv More Details End -->
+
+            <!--Proposal Roles Start-->
+        <form-bean name="proposalRolesForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="proposalNumber" type="java.lang.String"/>
+            <form-property name="roleId" type="java.lang.Integer"/>
+            <form-property name="roleDescription" type="java.lang.String"/>
+            <form-property name="roleName" type="java.lang.String"/>
+            <form-property name="roleType" type="java.lang.String"/>
+            <form-property name="ownerByUnit" type="java.lang.String"/>
+            <form-property name="descendFlag" type="java.lang.String"/>
+            <form-property name="statusFlag" type="java.lang.String"/>
+            <form-property name="homeUnit" type="java.lang.String"/>
+            <form-property name="unitNumber" type="java.lang.String"/>
+            <form-property name="userId" type="java.lang.String"/>
+            <form-property name="rightId" type="java.lang.String"/>
+
+            <form-property name="userName" type="java.lang.String"/>
+            <form-property name="nonMitPersonFlag" type="java.lang.String"/>
+            <form-property name="status" type="java.lang.String"/>
+            
+            <form-property name="personId" type="java.lang.String"/>
+            <form-property name="userType" type="java.lang.String"/>
+            <form-property name="unitName" type="java.lang.String"/>
+
+           <form-property name="newUpdateTimetamp" type="java.lang.String"/><!--this is av time-->
+           <form-property name="updateUser" type="java.lang.String"/>
+           <form-property name="createTimestamp" type="java.lang.String"/>
+           <form-property name="createUser" type="java.lang.String"/>
+           <form-property name="acType" type="java.lang.String"/>
+           <form-property name="updateTimestamp" type="java.lang.String"/><!--this is aw Time-->
+           <form-property name="awUpdateUser" type="java.lang.String"/>
+           <form-property name="awProposalNumber" type="java.lang.String"/>
+           <form-property name="awRoleId" type="java.lang.Integer"/>
+           <form-property name="awUserId" type="java.lang.String"/>
+     </form-bean>
+             <!--Proposal Roles End-->
+
+             <!-- case#3108 - Rolodex Form Start-->
+
+     <form-bean name="RolodexInfoForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+          <form-property name="firstName"          type="java.lang.String" />
+          <form-property name="middleName"         type="java.lang.String" />
+          <form-property name="lastName"           type="java.lang.String" />
+          <form-property name="suffix"             type="java.lang.String" />
+          <form-property name="prefix"             type="java.lang.String" />
+          <form-property name="title"              type="java.lang.String" />
+          <form-property name="sponsor"            type="java.lang.String" />
+          <form-property name="organization"       type="java.lang.String" />
+          <form-property name="address1"           type="java.lang.String" />
+          <form-property name="address2"           type="java.lang.String" />
+          <form-property name="address3"           type="java.lang.String" />
+          <form-property name="city"               type="java.lang.String" />
+          <form-property name="county"             type="java.lang.String" />
+          <form-property name="state"              type="java.lang.String" />
+          <form-property name="postalCode"         type="java.lang.String" />
+          <form-property name="country"            type="java.lang.String" />
+          <form-property name="phone"              type="java.lang.String" />
+          <form-property name="email"              type="java.lang.String" />
+          <form-property name="fax"                type="java.lang.String" />
+          <form-property name="comments"           type="java.lang.String" />
+          <form-property name="acType"             type="java.lang.String" initial="I" />
+          <form-property name="createUser"         type="java.lang.String" />
+          <form-property name="ownedByUnit"        type="java.lang.String" />
+          <form-property name="updateTimestamp"    type="java.lang.String" />
+          <form-property name="rolodexId"          type="java.lang.String" />
+          <form-property name="emptyString"        type="java.lang.String" />
+          <form-property name="sponsorAddressFlag" type="java.lang.String" />
+          <form-property name="ownerRight"         type="java.lang.String" />
+          <form-property name="getSponsorAddress"  type="java.lang.String" />
+          <form-property name="tempState"          type="java.lang.String" />
+          <form-property name="searchFlag"          type="java.lang.String" />
+          <!--3789 - Add a New Rolodex Entry using CoeusLite interface - Start -->
+          <form-property name="stateCode"          type="java.lang.String" />
+          <form-property name="stateDescription"          type="java.lang.String" />
+          <form-property name="countryState"          type="java.lang.String" />
+          <!--3789 - Add a New Rolodex Entry using CoeusLite interface - End -->
+		   <!-- added for rolodex status start-->
+		  <form-property name="rolodexStatus"      type="java.lang.String" initial="A"/>
+  		  <!-- added for rolodex status end-->
+     </form-bean>
+             <!-- case#3108 - Rolodex Form End-->
+
+<!--- Bean for Display proposal    -->
+
+
+ <form-bean name="displayProposalForm" type="edu.wmc.coeuslite.utils.DynaBeanList">
+	        <form-property name="proposalNumber" type="java.lang.String"/>
+                <form-property name="personId" type="java.lang.String"/>
+                <form-property name="personName" type="java.lang.String"/>
+				 <form-property name="status" type="java.lang.String"/>
+                <form-property name="isExternal" type="java.lang.String"/>
+				 <form-property name="invLastName" type="java.lang.String"/>
+                <form-property name="invFirstName" type="java.lang.String"/>
+                <form-property name="invPhone" type="java.lang.String"/>
+                <form-property name="invEmail" type="java.lang.String"/>
+                <form-property name="unitNumber" type="java.lang.String"/>
+                <form-property name="unitName" type="java.lang.String"/>
+                <form-property name="awUnitNumber" type="java.lang.String"/>
+                <form-property name="is_Employee" type="java.lang.String"/>
+
+                <form-property name="principalInvestigatorFlag" type="java.lang.String"/>
+                <form-property name="percentageEffort" type="java.lang.Float"/>
+                <form-property name="nonEmployee" type="java.lang.String"/>
+
+                <form-property name="invRoleCode" type="java.lang.String"/>
+                <form-property name="invRoleDescription" type="java.lang.String"/>
+                <form-property name="keyPersRole" type="java.lang.String"/>
+                <form-property name="acType" type="java.lang.String"/>
+                <form-property name="investigatorUnits" type="java.util.ArrayList"/>
+                <form-property name="leadUnitFlag" type="java.lang.String"/>
+                <form-property name="propInvTimestamp" type="java.lang.String"/>
+                <form-property name="propInvUpdateUser" type="java.lang.String"/>
+
+                <form-property name="facultyFlag" type="java.lang.String"/>
+                <form-property name="coiFlag" type="java.lang.String"/>
+                <form-property name="FEDRdebrFlag" type="java.lang.String"/>
+                <form-property name="FEDRdelqFlag" type="java.lang.String"/>
+
+                <form-property name="commonsUserName" type="java.lang.String"/>
+
+                <!-- custom elements -->
+                <form-property name="costCenter" type="java.lang.String"/>
+                <form-property name="piAcctSetup" type="java.lang.String"/>
+                <form-property name="releasePayType" type="java.lang.String"/>
+                <form-property name="summerPayType" type="java.lang.String"/>
+                <form-property name="naPayType" type="java.lang.String"/>
+
+                <form-property name="degreeCode" type="java.lang.String"/>
+                <form-property name="awDegreeCode" type="java.lang.String"/>
+                <form-property name="degreeDescription" type="java.lang.String"/>
+                <form-property name="graduationDate" type="java.lang.String"/>
+                <form-property name="degree" type="java.lang.String"/>
+                <form-property name="awDegree" type="java.lang.String"/>
+                <form-property name="fieldOfStudy" type="java.lang.String"/>
+                <form-property name="specialization" type="java.lang.String"/>
+                <form-property name="school" type="java.lang.String"/>
+                <form-property name="schoolIdCode" type="java.lang.String"/>
+                <form-property name="schoolDescription" type="java.lang.String"/>
+                <form-property name="schoolId" type="java.lang.String"/>
+                <form-property name="updateTimestamp" type="java.lang.String"/>
+                <form-property name="awUpdateTimestamp" type="java.lang.String"/>
+                <form-property name="updateUser" type="java.lang.String"/>
+
+                <form-property name="userId" type="java.lang.String"/>
+                <form-property name="rightId" type="java.lang.String"/>
+                <form-property name="description" type="java.lang.String"/>
+                <form-property name="certifyFlag" type="java.lang.String"/>
+
+                <!-- Added to Investigator screen -->
+                <form-property name="faxNumber" type="java.lang.String"/>
+                <form-property name="mobileNumber" type="java.lang.String"/>
+
+                <!-- For Custom Data -->
+                <form-property name="columnName" type="java.lang.String"/>
+                <form-property name="columnValue" type="java.lang.String"/>
+
+                <!-- Added for case#2229 - Multi PI Enhancement -->
+                <form-property name="multiPIFlag" type="java.lang.String"/>
+                <!-- Added for case#2270 - Tracking Effort - start -->
+                <form-property name="academicYearEffort" type="java.lang.Float"/>
+                <form-property name="summerYearEffort" type="java.lang.Float"/>
+                <form-property name="calendarYearEffort" type="java.lang.Float"/>
+                <!-- Added for case#2270 - Tracking Effort - end -->
+                <!-- Added for COEUSQA-2037 : Software allows you to delete an investigator who is assigned credit in the credit split window - start -->
+                <form-property name="isCreditSplitExists" type="java.lang.String"/>
+                <!-- Added for COEUSQA-2037 : Software allows you to delete an investigator who is assigned credit in the credit split window - end -->
+
+                <!--print-->
+ <form-property name="listFormName" type="java.lang.String" initial="sponsorTemplateForm"/>
+
+	      </form-bean>
+
+
+   <!-- -->
+            <form-bean name="rightPersonBean"       type="edu.utk.coeuslite.propdev.bean.rightPersonBean">
+            </form-bean>
+           <form-bean name="rightPersonCertifyBean" type="edu.utk.coeuslite.propdev.bean.RightPersonCertifyBean">
+            </form-bean>
+        <!--COEUSQA-4066-->
+         <form-bean name="userAttachmentS2Sform" dynamic="true" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="proposalNumber" type="java.lang.String"/>         
+            <form-property name="description" type="java.lang.String"/>         
+            <form-property name="document" type="org.apache.struts.upload.FormFile"/>
+            <form-property name="fileName" type="java.lang.String"/>
+            <form-property name="selectedRow" type="java.lang.String"/>
+            <form-property name="updateTimestamp" type="java.lang.String"/>
+            <form-property name="awUpdateTimestamp" type ="java.lang.String"/> 
+            <form-property name="updateUser" type="java.lang.String"/>
+            <form-property name="acType" type ="java.lang.String"/>
+        </form-bean>
+        <!--COEUSQA-4066-->
+    </form-beans>
+
+    <!-- ========== Action Mapping Definitions ============================== -->
+
+
+    <!--Action mapping for general info -->
+    <action-mappings>
+        <action path="/getGeneralInfo" type="edu.utk.coeuslite.propdev.action.ProposalGetAction"
+               scope="request" name="generalInfoProposal" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="statusException" path="/coeuslite/utk/propdev/tiles/clProposalListTile.jsp"/>
+        </action>
+    <!--Action mapping for case#3108 - Rolodex info -->
+
+        <action path="/getRolodexInfo" type="edu.utk.coeuslite.propdev.action.RolodexGetAction" scope="request" name="RolodexInfoForm" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clAddNewRolodexTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp" />
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp" />
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp" />
+          <forward name="statusException" path="/coeuslite/utk/propdev/tiles/clAddNewRolodexTile.jsp" />
+        </action>
+
+        <action path="/rolodexInfoSave" type="edu.utk.coeuslite.propdev.action.RolodexInfoAction" scope="request" name="RolodexInfoForm" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clAddNewRolodexTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp" />
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp" />
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp" />
+          <forward name="statusException" path="/coeuslite/utk/propdev/tiles/clAddNewRolodexTile.jsp" />
+        </action>
+
+        <!--Action mapping for Award Search  -->
+         <action path="/generalProposalSearch" type="edu.utk.coeuslite.propdev.action.ProposalSearchAction"
+               scope="request" name="generalInfoProposal" validate="false">
+          <forward name="success"  path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+          <forward name="personSearch"  path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+          <forward name="awardSearch"  path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+          <forward name="sponsorSearch"  path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+          <forward name="primeSponsorSearch"  path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+          <forward name="proposalSearch"  path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+          <forward name="result"  path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+          <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+       </action>
+
+
+        <action path="/generalInfoProposal" type="edu.utk.coeuslite.propdev.action.GeneralInfoAction"
+            scope="request" name="generalInfoProposal" validate="true" input="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp">
+            <forward name="success" path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>
+            <forward name="result" path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+            <forward name="personSearch" path="/coeuslite/utk/utils/dialogs/clProposalSearch.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+         <action path="/getUnitDetails" type="edu.utk.coeuslite.propdev.action.ProposalGetAction"
+               scope="request" name="generalInfoProposal" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalListTile.jsp"/>
+          <forward name="unitDetails" path="/coeuslite/utk/propdev/tiles/clUnitProposalTile.jsp"/>
+          <forward name="generalInfo" path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/proposalList" type="edu.utk.coeuslite.propdev.action.ProposalListAction"
+            scope="request" validate="false">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalListTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/upLoadProposal" type="edu.utk.coeuslite.propdev.action.UploadAttachmentAction"
+               scope="request" name="uploadProposalForm" validate="false">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clUploadPropInstAttachmentsTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/upLoadProposalAction" type="edu.utk.coeuslite.propdev.action.UploadAttachmentAction"
+               scope="request" name="uploadProposalForm" validate="true" input="/coeuslite/utk/propdev/tiles/clUploadPropInstAttachmentsTile.jsp">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clUploadPropInstAttachmentsTile.jsp"/>
+        <forward name="isNotAllowed" path="/coeuslite/utk/propdev/tiles/clUploadPropInstAttachmentsTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/upLoadProposalRemoveView" type="edu.utk.coeuslite.propdev.action.UploadAttachmentAction"
+               scope="request" name="uploadProposalForm" validate="false">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clUploadPropInstAttachmentsTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+
+        <action path="/viewDocument" type="edu.utk.coeuslite.propdev.action.UploadAttachmentAction"
+               scope="request" name="uploadProposalForm" validate="false">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clUploadPropInstAttachmentsTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <!-- Added for COEUSQA-1438-Science Code Information not Located in Lite - Start -->
+             
+       <action path="/getScienceCode" type="edu.utk.coeuslite.propdev.action.ProposalScienceCodeAction" 
+               scope="request" name="scienceCodeForm" validate="false">
+           <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalScienceCodeTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/saveProposalScienceCode" type="edu.utk.coeuslite.propdev.action.ProposalScienceCodeAction" 
+               scope="request" name="scienceCodeForm" validate="false">
+           <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalScienceCodeTile.jsp"/>
+           <forward name="invalidScienceCode" path="/coeuslite/utk/propdev/tiles/clProposalScienceCodeTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <action path="/deleteProposalScienceCode" type="edu.utk.coeuslite.propdev.action.ProposalScienceCodeAction" 
+               scope="request" name="scienceCodeForm" validate="false">
+           <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalScienceCodeTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       
+       <!-- Added for COEUSQA-1438-Science Code Information not Located in Lite - End -->
+       
+       <!-- For Proposal Valdidate start-->
+        <action path="/validateProposal" type="edu.utk.coeuslite.propdev.action.ValidateProposalAction"
+               scope="request" name= "validateProposalForm" validate="false">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clValidateProposalTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+     <!-- For Proposal Valdidate End-->
+
+     <!-- For Proposal Valdidate start-->
+        <action path="/getOtherCostElements" type="edu.utk.coeuslite.propdev.action.CustomElementsAction"
+               scope="session" name= "dynaBeanList" validate="false">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clOtherCustomElementsTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/saveOthersData" type="edu.utk.coeuslite.propdev.action.CustomElementsAction"
+               scope="session" name= "dynaBeanList" validate="false">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clOtherCustomElementsTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+        <action path="/getArgumentData" type="edu.mit.coeuslite.utils.ArgumentListAction"
+               scope="session">
+        <forward name="W_ARG_CODE_TBL" path="/coeuslite/utk/propdev/tiles/clOtherCustomElementsTile.jsp"/>
+        <forward name="w_arg_value_list" path="/coeuslite/mit/utils/clArgumentList.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+          <!-- For Submit for Aproval start-->
+        <action path="/submitForApproval" type="edu.utk.coeuslite.propdev.action.SubmitForApprovalAction"
+               scope="request" name= "generalProposalForm" validate="false">
+        <forward name="ProposalCompleteCheck" path="/coeuslite/utk/propdev/tiles/clProposalErrorsTile.jsp"/>
+        <forward name="EdiValidateCheck" path="/coeuslite/utk/propdev/tiles/clEDIValidateTile.jsp"/>
+        <forward name="ProposalValidateCheck" path="/coeuslite/utk/propdev/tiles/clValidateProposalTile.jsp"/>
+        <forward name="MapExistCheck" path="/coeuslite/utk/propdev/tiles/clEDIValidateTile.jsp"/>
+        <forward name="PropSponsorRolodexCheck" path="/coeuslite/utk/propdev/tiles/clEDIValidateTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+     <!-- For Submit for Aproval End-->
+
+       <!-- Grants Gov START -->
+       <action path="/grantsGovAction" type="edu.utk.coeuslite.propdev.action.GrantsGovAction"
+               scope="request" name="grantsGov" validate="false">
+           <forward name="opportunity" path="/coeuslite/utk/propdev/tiles/clGrantsGovTile.jsp?contentPage=/coeuslite/utk/propdev/OpportunityList.jsp"/>
+           <forward name="grantsGov" path="/coeuslite/utk/propdev/tiles/clGrantsGovTile.jsp?contentPage=/coeuslite/utk/propdev/GrantsGov.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/saveOpportunity" type="edu.utk.coeuslite.propdev.action.OpportunityAction"
+               scope="request" name="opportunity" validate="false">
+           <forward name="sucess" path="/coeuslite/utk/propdev/tiles/clGrantsGovTile.jsp?contentPage=/coeuslite/utk/propdev/GrantsGov.jsp"/>
+           <forward name="opportunity" path="/coeuslite/utk/propdev/tiles/clGrantsGovTile.jsp?contentPage=/coeuslite/utk/propdev/OpportunityList.jsp"/>
+           <forward name="generalInfo" path="/coeuslite/utk/propdev/tiles/clGeneralInfoTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <!-- Grants Gov END -->
+
+       <!--  Added for Proposal Routing Start -->
+        <action path="/displayProposal" type="edu.utk.coeuslite.propdev.action.DisplayProposalAction"
+            scope="request" name="proposalPrint"  validate="false" >
+            <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalDetailsSummaryTile.jsp" />
+            <forward name="failure" path="/coeuslite/mit/coi/tiles/inboxErrorPageTile.jsp" />
+            <forward name="delegationsWarning" path="/coeuslite/mit/coi/tiles/delegationWarningTile.jsp" />
+       </action>
+
+       <!-- COEUSQA-1433 - Allow Recall from Routing - Start -->
+      <action path="/approvalRoute" type="edu.utk.coeuslite.propdev.action.ApprovalRouteAction"
+            scope="request" name="approvalRoute" validate = "false" >
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clApprovalRouteTile.jsp" />
+          <forward name="displayProtocol" path="/coeuslite/mit/irb/tiles/cwIRBProtocolApprovalRoutingTile.jsp" />
+          <forward name="displayIacuc" path="/coeuslite/mit/iacuc/tiles/cwProtocolApprovalRoutingTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>          
+          <forward name="displayProposalInfo" path="/getGeneralInfo.do" />
+          <forward name="displayProtocolInfo" path="/getProtocolData.do?PAGE=G" />
+          <forward name="displayIacucProtocolInfo" path="/getIacucData.do?PAGE=G" />
+       </action>
+       <!-- COEUSQA-1433 - Allow Recall from Routing - End -->
+
+       <!--Added for Case#3915 - Lite - can’t see comments in routing in Approval Routing - ends-->
+       <action path="/approvalRoutComments" type="edu.utk.coeuslite.propdev.action.ApprovalRouteAction"
+            scope="request" name="approvalRoute" validate = "false" >
+          <forward name="success" path="/coeuslite/utk/propdev/clApprRoutingComments.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <!--Added for Case#3915 - Lite - can’t see comments in routing in Approval Routing - ends-->
+
+       <!--Added for Case#4262 - Lite - Routing attachments not visible in Lite - starts-->
+       <action path="/approvalRoutingAttachments" type="edu.utk.coeuslite.propdev.action.ApprovalRouteAction"
+            scope="request" name="approvalRoute" validate = "false" >
+          <forward name="success" path="/coeuslite/utk/propdev/clApprRoutingAttachments.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/viewApprovalRoutingAttachments" type="edu.utk.coeuslite.propdev.action.ApprovalRouteAction"
+            scope="session" name="approvalRoute" validate = "false" >
+            <forward name="success" path="/coeuslite/utk/propdev/clApprRoutingAttachments.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <!--Added for Case#4262 - Lite - Routing attachments not visible in Lite - ends-->
+
+       <action path="/getApprovalActions" type="edu.utk.coeuslite.propdev.action.RoutingAction"
+            scope="session" name="approvalRoutingList" validate = "false" >
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp" />
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/saveApprovalDetails" type="edu.utk.coeuslite.propdev.action.RoutingAction"
+            scope="session" name="approvalRoutingList" validate = "false" >
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp" />
+          <forward name="errorPresent" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+        <action path="/approveUser" type="edu.utk.coeuslite.propdev.action.RoutingAction"
+            scope="session" name="approvalRoutingList" validate = "true" input="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp">
+          <forward name="success" path="/approvalRoute.do"/>
+          <forward name="submitSponsor" path="/submitSponsor.do" redirect="true"/>
+          <forward name="cannotPerformSubmitSponsor" path="/cannotPerformSubmitSponsor.do" redirect="true"/>
+          <forward name="errorPresent" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp"/>
+          <forward name="approveAll" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <!-- COEUSQA-1433 - Allow Recall from Routing - Start -->
+          <forward name="email" path="/mailAction.do"/>
+          <forward name="iacucEmail" path="/iacucMailAction.do"/>
+          <!-- COEUSQA-1433 - Allow Recall from Routing - End -->
+       </action>
+
+
+        <action path="/addApprover" type="edu.utk.coeuslite.propdev.action.RoutingAction"
+                scope="session" name="approvalRoutingList" validate = "true" input="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp">
+            <forward name="success" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp" />
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/removeApprover" type="edu.utk.coeuslite.propdev.action.RoutingAction"
+                scope="session" name="approvalRoutingList" validate = "true" input="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp">
+            <forward name="success" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp" />
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/approveAllUsers" type="edu.utk.coeuslite.propdev.action.RoutingAction"
+            scope="session" name="approvalRoutingList" validate = "false" >
+          <forward name="success" path="/approvalRoute.do"/>
+          <forward name="errorPresent" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp"/>
+          <forward name="submitSponsor" path="/submitSponsor.do" redirect="true"/>
+          <forward name="cannotPerformSubmitSponsor" path="/cannotPerformSubmitSponsor.do" redirect="true"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="email" path="/mailAction.do"/>
+          <forward name="iacucEmail" path="/iacucMailAction.do"/>
+       </action>
+
+        <action path="/editApprovalComments" type="edu.utk.coeuslite.propdev.action.RoutingAction"
+            scope="session" name="approvalRoutingList" validate = "false" >
+          <forward name="editComments" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/removeApprovalDetails" type="edu.utk.coeuslite.propdev.action.RoutingAction"
+            scope="session" name="approvalRoutingList" validate = "false" >
+          <forward name="removeDetails" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+        <action path="/viewApprovalAttachments" type="edu.utk.coeuslite.propdev.action.RoutingAction"
+            scope="session" name="approvalRoutingList" validate = "false" >
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clApprovalRoutingTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <!--Added for Proposal Routing End -->
+       
+         <!-- COEUSQA:1445 - User Not able to View Routing Comments through Show Routing - Start -->
+         <action path="/routingCommentsAndAttachments" type="edu.utk.coeuslite.propdev.action.RoutingCommentsAndAttachmentsAction" 
+                 scope="request" name="generalInfoProposal" validate="false"> 
+             <forward name="success"  path="/coeuslite/utk/propdev/clRoutingCommentsAndAttachments.jsp"/>
+             <forward name="error" path="/coeuslite/utk/propdev/clRoutingCommentsAndAttachments.jsp"/>
+         </action>
+         
+         <action path="/routingAttachments" type="edu.utk.coeuslite.propdev.action.RoutingCommentsAndAttachmentsAction" 
+                 scope="request" name="generalInfoProposal" validate="false"> 
+             <forward name="success"  path="/coeuslite/utk/propdev/clRoutingCommentsAndAttachments.jsp"/>
+             <forward name="error" path="/coeuslite/utk/propdev/clRoutingCommentsAndAttachments.jsp"/>
+         </action>
+         
+         <!--  COEUSQA:1445 - End -->
+
+
+         <!-- From UTK start-->
+      <action path="/getInvKeyPersons" type="edu.utk.coeuslite.propdev.action.ProposalGetInvKeyAction"
+            scope="request" validate="false" name="pdInvestKeyPersForm">
+            <forward name="success" path="/coeuslite/utk/propdev/tiles/clInvKeyPersonsTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+      <action path="/editInvKeyPersons" type="edu.utk.coeuslite.propdev.action.InvKeyPersonAction"
+            scope="request" validate="false" name="pdInvestKeyPersForm">
+            <forward name="success" path="/coeuslite/utk/propdev/tiles/clInvKeyPersonsTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/propdevInvestigatorKeyPerson" type="edu.utk.coeuslite.propdev.action.InvKeyPersonAction"
+            scope="request" validate="true" name="pdInvestKeyPersForm"
+            input="/coeuslite/utk/propdev/tiles/clInvKeyPersonsTile.jsp">
+            <forward name="success" path="/coeuslite/utk/propdev/tiles/clInvKeyPersonsTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+
+         <!--<action path="/propdevInvestigatorKeyPersonNew" type="edu.utk.coeuslite.propdev.action.InvKeyPersonAction"
+            scope="request" validate="true" name="displayProposalForm"
+            input="/coeuslite/utk/propdev/tiles/clInvKeyPersonsTile.jsp">
+            <forward name="success" path="/coeuslite/utk/propdev/tiles/clInvKeyPersonsTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>-->
+
+
+
+    <!-- From UTK End-->
+
+    <!-- Proposal InvestigatorKeyStudyPersons Certification Start-->
+       <action path="/getInvKeyPersonsCertify" type="edu.utk.coeuslite.propdev.action.ProposalInvCertifyAction"
+            scope="session" validate="false" name="proposalInvCertifyList">
+            <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvCertifyTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/saveInvKeyPersonsCertify" type="edu.utk.coeuslite.propdev.action.ProposalInvCertifyAction"
+            scope="session" validate="true" name="proposalInvCertifyList" input="/coeuslite/utk/propdev/tiles/clProposalInvCertifyTile.jsp">
+             <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvCertifyTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/getMoreQuestions" type="edu.utk.coeuslite.propdev.action.ProposalInvCertifyAction"
+            scope="session" validate="false" name="proposalInvCertifyList">
+            <forward name="success" path="/coeuslite/utk/propdev/clProposalInvCertifyQuestion.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+    <!-- Proposal InvestigatorKeyStudyPersons Certification End-->
+
+    <!-- Abstract-->
+       <action path="/getAbstract" type="edu.utk.coeuslite.propdev.action.AbstractAction"
+               scope="request" name="abstractForm" validate="false">
+           <forward name="success" path="/coeuslite/utk/propdev/tiles/clAbstractTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/saveAbstract" type="edu.utk.coeuslite.propdev.action.AbstractAction"
+               scope="request" name="abstractForm" validate="false">
+           <forward name="success" path="/coeuslite/utk/propdev/tiles/clAbstractTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+        <!-- Copy Proposal Start  -->
+        <action path="/getCopyProposal" type="edu.utk.coeuslite.propdev.action.CopyProposalAction"
+               scope="request" name="copyProposalForm" validate="false">
+           <forward name="success" path="/coeuslite/utk/propdev/tiles/clCopyProposalTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+        <action path="/copyProposalDetails" type="edu.utk.coeuslite.propdev.action.CopyProposalAction"
+               scope="request" name="copyProposalForm" validate="false">
+           <forward name="success" path="/coeuslite/utk/propdev/tiles/clCopyProposalTile.jsp"/>
+           <forward name="invalidQuestionnaire" path="/coeuslite/utk/propdev/tiles/clCopyProposalTile.jsp"/>
+           <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+
+        <!-- Copy Proposal End  -->
+
+       <!--  For Questionnaire Starts -->
+
+       <action path="/getQuestionnaire" type="edu.utk.coeuslite.propdev.action.QuestionnaireAction"
+               scope="session" name= "dynaBeanList" validate="false">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clQuestionnaireTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+        <action path="/saveQuestionnaireData" type="edu.utk.coeuslite.propdev.action.QuestionnaireAction"
+               scope="session" name= "dynaBeanList" validate="false">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clQuestionnaireTile.jsp"/>
+        <forward name="protoRequestActionPage" path="/coeuslite/mit/irb/tiles/cwSubmissionQuestionnaireTile.jsp"/>
+        <forward name="iacucRequestActionPage" path="/coeuslite/mit/iacuc/tiles/cwSubmissionQuestionnaireTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <!--Added for Case#3524 - Add Explanation field to Questions - Start -->
+        <action path="/showQuestionExplanation" type="edu.utk.coeuslite.propdev.action.QuestionnaireAction"
+         name= "dynaBeanList" scope="request">
+            <forward name="success" path="/coeuslite/utk/propdev/clQuestionExplanation.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/ErrorPage.jsp"/>
+        </action>
+        <!--Added for Case#3524 - Add Explanation field to Questions - End -->
+        <!--  For Questionnaire ends -->
+
+       <!-- Proposal Print - START -->
+      <action path="/proposalPrintAction" type="edu.utk.coeuslite.propdev.action.ProposalPrintAction"
+	      scope="request" name="proposalPrint" validate="false">
+	  <forward name="success" path="/coeuslite/utk/propdev/tiles/clGrantsGovTile.jsp?contentPage=/coeuslite/utk/propdev/clProposalPrint.jsp"/>
+	  <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+	 <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+      </action>
+       <!-- Proposal Print - END -->
+
+       <!-- Opportunity Search - START -->
+	      <action path="/opportunitySearchAction" type="edu.utk.coeuslite.propdev.action.GrantsGovAction"
+		  scope="request" name="opportunitySearchForm" validate="false">
+		  <forward name="opportunitySearchResults" path="/coeuslite/utk/propdev/OpportunityList.jsp"/>
+		  <forward name="opportunitySearchPage" path="/coeuslite/utk/propdev/tiles/clProposalTile.jsp?contentPage=/coeuslite/utk/propdev/OpportunitySearch.jsp"/>
+		  <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+		  <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+	      </action>
+       <!-- Opportunity Search - END -->
+
+         <!-- Submit to sponsor - START -->
+      <action path="/submitSponsor" type="edu.utk.coeuslite.propdev.action.SubmitToSponsorAction"
+	      scope="request" name="submitTosponsorDetails" validate="false">
+	  <forward name="success" path="/coeuslite/utk/propdev/tiles/clSubmitToSponsorMessageTile.jsp"/>
+          <forward name="submitToSponsor" path="/coeuslite/utk/propdev/tiles/clSubmitToSponsorTile.jsp"/>
+	  <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+	 <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+      </action>
+
+      <action path="/feedInstProposal" type="edu.utk.coeuslite.propdev.action.SubmitToSponsorAction"
+	      scope="request" name="submitTosponsorDetails" validate="false">
+	  <forward name="success" path="/coeuslite/utk/propdev/tiles/clSubmitToSponsorMessageTile.jsp"/>
+          <forward name="messages" path="/coeuslite/utk/propdev/tiles/clSubmitToSponsorTile.jsp"/>
+          <forward name="submitToSponsor" path="/coeuslite/utk/propdev/tiles/clSubmitToSponsorTile.jsp"/>
+	  <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+	 <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+      </action>
+
+      <action path="/cannotPerformSubmitSponsor" type="edu.utk.coeuslite.propdev.action.SubmitToSponsorAction"
+	      scope="request" name="submitTosponsorDetails" validate="false">
+	  <forward name="success" path="/coeuslite/utk/propdev/tiles/clSubmitToSponsorFailedTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+      </action>
+       <!-- Submit to sponsor - END -->
+
+       <!-- Proposal Organization - start -->
+      <action path="/getOrganization" type="edu.utk.coeuslite.propdev.action.ProposalOrganizationAction"
+               scope="session" name= "proposalOrganizationLocationList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/modifyOrganization" type="edu.utk.coeuslite.propdev.action.ProposalOrganizationAction"
+               scope="session" name= "proposalOrganizationLocationList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <!--action path="/saveOrganizationLocation" type="edu.utk.coeuslite.propdev.action.ProposalOrganizationAction"
+               scope="session" name= "proposalOrganizationLocationList" validate="true" input="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"-->
+         <action path="/saveOrganizationLocation" type="edu.utk.coeuslite.propdev.action.ProposalOrganizationAction"
+             scope="session" name= "proposalOrganizationLocationList">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/addOrgLocCongDistrict" type="edu.utk.coeuslite.propdev.action.ProposalOrganizationAction"
+               scope="session" name= "proposalOrganizationLocationList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <action path="/addOrgLocation" type="edu.utk.coeuslite.propdev.action.ProposalOrganizationAction"
+               scope="session" name= "proposalOrganizationLocationList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/deleteOrgLocation" type="edu.utk.coeuslite.propdev.action.ProposalOrganizationAction"
+               scope="session" name= "proposalOrganizationLocationList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/deleteCongDist" type="edu.utk.coeuslite.propdev.action.ProposalOrganizationAction"
+               scope="session" name= "proposalOrganizationLocationList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"/>
+          <forward name="unsuccess" path="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+
+       <action path="/changeOrgLocation" type="edu.utk.coeuslite.propdev.action.ProposalOrganizationAction"
+               scope="session" name= "proposalOrganizationLocationList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"/>
+          <forward name="unsuccess" path="/coeuslite/utk/propdev/tiles/clOrganizationTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+       </action>
+       <!-- Proposal Organization - end -->
+
+        <!-- specail review action mapping - start -->
+        <action path="/getPropDevSpecialReview" type="edu.utk.coeuslite.propdev.action.ProposalGetSpRevAction"
+                scope="request" name="propDevSpecialReview" validate="false">
+          <forward name="success"         path="/coeuslite/utk/propdev/tiles/clSpecialReviewsTile.jsp"/>
+          <forward name="error"           path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure"         path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/propSpecialReview" type="edu.utk.coeuslite.propdev.action.PropSpecialReviewAction"
+                scope="request" name="propDevSpecialReview" validate="true"
+                input="/coeuslite/utk/propdev/tiles/clSpecialReviewsTile.jsp">
+           <forward name="success"         path="/coeuslite/utk/propdev/tiles/clSpecialReviewsTile.jsp"/>
+           <forward name="eFrror"           path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure"         path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/deleteSpecialReview" type="edu.utk.coeuslite.propdev.action.PropSpecialReviewAction"
+                scope="request" name="propDevSpecialReview" validate="true"
+                input="/coeuslite/utk/propdev/tiles/clSpecialReviewsTile.jsp">
+           <forward name="success"         path="/coeuslite/utk/propdev/tiles/clSpecialReviewsTile.jsp"/>
+           <forward name="error"           path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+           <forward name="failure"         path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <!-- special review - end -->
+
+        <!-- YNQ - starts -->
+        <action path="/getYNQDetails" type="edu.utk.coeuslite.propdev.action.YNQAction"
+                scope="session" name="ynqFormList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clYNQTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/updateYNQDetails" type="edu.utk.coeuslite.propdev.action.YNQAction"
+                scope="session" name="ynqFormList" validate="false"
+                input="/coeuslite/utk/propdev/tiles/clYNQTile.jsp">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clYNQTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <!-- YNQ - ends -->
+
+        <!-- Credit Split - starts -->
+	<action path="/getCreditSplitInfo" type="edu.utk.coeuslite.propdev.action.ProposalCreditSplitAction"
+                scope="request" name="proposalCreditSplitForm" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalCreditSplitTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/saveCreditSplitInfo" type="edu.utk.coeuslite.propdev.action.ProposalCreditSplitAction"
+                scope="request" name="proposalCreditSplitForm" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalCreditSplitTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <!-- Credit Split - ends -->
+
+        <!--Proposal Roles Start-->
+        <action path="/getProposalRoles" type="edu.utk.coeuslite.propdev.action.ProposalRolesAction"
+            scope="session" validate="false" name="proposalRolesForm">
+              <forward name="success"       path="/coeuslite/utk/propdev/tiles/clProposalRolesTile.jsp"/>
+              <forward name="error"         path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="failure"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/addUser" type="edu.utk.coeuslite.propdev.action.ProposalRolesAction"
+            scope="session" validate="false" name="proposalRolesForm">
+              <forward name="success"       path="/coeuslite/utk/propdev/tiles/clProposalRolesTile.jsp"/>
+              <forward name="error"         path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="failure"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/saveProposalRoles" type="edu.utk.coeuslite.propdev.action.ProposalRolesAction"
+            scope="session" validate="false" name="proposalRolesForm">
+              <forward name="success"       path="/coeuslite/utk/propdev/tiles/clProposalRolesTile.jsp"/>
+              <forward name="error"         path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="failure"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/deleteUser" type="edu.utk.coeuslite.propdev.action.ProposalRolesAction"
+            scope="session" validate="false" name="proposalRolesForm">
+              <forward name="success"     path="/coeuslite/utk/propdev/tiles/clProposalRolesTile.jsp"/>
+              <forward name="error"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <!--Proposal Roles End-->
+         <!--Proposal Inv More Details Start -->
+
+          <action path="/getMoreDetails" type="edu.utk.coeuslite.propdev.action.ProposalInvesMoreAction"
+                scope="session" name="personDynaBeansList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvesMoreTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/addUnitDetails" type="edu.utk.coeuslite.propdev.action.ProposalInvesMoreAction"
+                scope="session" name="personDynaBeansList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvesMoreTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+         <action path="/updateUnitDetails" type="edu.utk.coeuslite.propdev.action.ProposalInvesMoreAction"
+                scope="session" name="personDynaBeansList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvesMoreTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/removeUnitDetails" type="edu.utk.coeuslite.propdev.action.ProposalInvesMoreAction"
+                scope="session" name="personDynaBeansList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvesMoreTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+         <action path="/getPersonDetailsInfo" type="edu.utk.coeuslite.propdev.action.ProposalInvesMoreAction"
+                scope="session" name="personDynaBeansList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvesMoreTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+         <action path="/getDegreeInfo" type="edu.utk.coeuslite.propdev.action.ProposalInvesMoreAction"
+                scope="session" name="personDynaBeansList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvesMoreTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+         <action path="/addDegreeInfo" type="edu.utk.coeuslite.propdev.action.ProposalInvesMoreAction"
+                scope="session" name="personDynaBeansList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvesMoreTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+         <action path="/removeDegreeInfo" type="edu.utk.coeuslite.propdev.action.ProposalInvesMoreAction"
+                scope="session" name="personDynaBeansList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvesMoreTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+         <action path="/saveAllDetails" type="edu.utk.coeuslite.propdev.action.ProposalInvesMoreAction"
+                scope="session" name="personDynaBeansList" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvesMoreTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+        <action path="/getPersonsCertify" type="edu.utk.coeuslite.propdev.action.ProposalInvesMoreAction"
+                scope="session" name="personDynaBeansList" validate="false">
+          <forward name="certifyPerson" path="/getInvKeyPersonsCertify.do" redirect="true"/>
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clProposalInvesMoreTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+
+         <!--Proposal Inv More Details End -->
+
+
+          <!--Added for Case# COEUQA-1675 - ability to delete proposal development proposal - Start-->
+        <action path="/deleteProposal" type="edu.utk.coeuslite.propdev.action.ProposalDeleteAction"
+                scope="request" validate="false">
+            <forward name="success" path="/proposalList.do?PROPOSAL_TYPE=PROPOSAL_INPROGRESS&#38;Menu_Id=003&#38;SUBHEADER_ID=001"/>
+            <forward name="locked" path="/coeuslite/utk/propdev/tiles/clDeleteProposalTile.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="invalid" path="/proposalList.do?PROPOSAL_TYPE=PROPOSAL_INPROGRESS&#38;Menu_Id=003&#38;SUBHEADER_ID=001"/>
+        </action>
+        <!--Added for Case#  COEUQA-1675 - ability to delete proposal development proposal - End-->
+
+        <!--Proposal Roles Start-->
+        <action path="/getProposalRoles" type="edu.utk.coeuslite.propdev.action.ProposalRolesAction"
+            scope="session" validate="false" name="proposalRolesForm">
+              <forward name="success"       path="/coeuslite/utk/propdev/tiles/clProposalRolesTile.jsp"/>
+              <forward name="error"         path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="failure"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/addUser" type="edu.utk.coeuslite.propdev.action.ProposalRolesAction"
+            scope="session" validate="false" name="proposalRolesForm">
+              <forward name="success"       path="/coeuslite/utk/propdev/tiles/clProposalRolesTile.jsp"/>
+              <forward name="unsuccess" path="/coeuslite/utk/propdev/tiles/clProposalRolesTile.jsp"/>
+              <forward name="error"         path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="failure"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/saveProposalRoles" type="edu.utk.coeuslite.propdev.action.ProposalRolesAction"
+            scope="session" validate="false" name="proposalRolesForm">
+              <forward name="success"       path="/coeuslite/utk/propdev/tiles/clProposalRolesTile.jsp"/>
+              <forward name="error"         path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="failure"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/deleteUser" type="edu.utk.coeuslite.propdev.action.ProposalRolesAction"
+            scope="session" validate="false" name="proposalRolesForm">
+              <forward name="success"     path="/coeuslite/utk/propdev/tiles/clProposalRolesTile.jsp"/>
+              <forward name="error"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <!--Proposal Roles End-->
+
+        <!-- Print Certification -->
+         <action path="/printCertification" type="edu.utk.coeuslite.propdev.action.PrintCertificationAction"
+            scope="request" validate="false">
+              <forward name="error"       path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+              <forward name="failure"     path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+
+        </action>
+
+   <!--~**~*~*~**~*~*~**~*~*~For proposal person certification Start-->
+
+
+               <!--...................proposal person certification................-->
+         <action path="/sendNotificationMsg" type="edu.utk.coeuslite.propdev.action.sendNotification"
+               scope="request" name="rightPersonBean" validate="false">
+          <forward name="success"  path="/coeuslite/utk/propdev/sendNotification.jsp"/>
+          </action>
+         <!--......................tw..............ends................-->
+ <action path="/sendEmail" type="edu.utk.coeuslite.propdev.action.ProposalGetInvKeyAction"
+            scope="request" validate="false" name="sndNoti">
+            <forward name="success" path="/coeuslite/utk/propdev/tiles/clInvKeyPersonsTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+    <!--Athuls  strt -->
+
+
+       <action path="/proposalPersonsCertify" type="edu.utk.coeuslite.propdev.action.ProposalPersonsCertifyAction"
+            scope="request" name="proposalPrint"  validate="false" >
+            <forward name="success" path="/ppcCertification.do" />
+            <forward name="invalidUser" path="/coeuslite/utk/propdev/tiles/RightPersonCertifyTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/coi/tiles/inboxErrorPageTile.jsp" />
+            <forward name="delegationsWarning" path="/coeuslite/mit/coi/tiles/delegationWarningTile.jsp" />
+       </action>
+
+  <!--Athuls   stop-->
+
+
+        <action path="/rightPersonCertify" type="edu.utk.coeuslite.propdev.action.RightPersonCertify"
+               scope="request" name="rightPersonCertifyBean" validate="false">
+          <forward name="success" path="/toGetRoledQuestionnaire.do"/>
+           <forward name="invalidUser" path="/coeuslite/utk/propdev/tiles/RightPersonCertifyTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+
+        </action>
+    <!-- when clicked to certification link -->
+
+    <action path="/ppcCertification" type="edu.utk.coeuslite.propdev.action.ppcCertificationAction"
+               scope="request" name="rightPersonCertifyBean" validate="false">
+          <forward name="success" path="/getQuest.do"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+
+        </action>
+
+
+
+      <!-- to get questionnaire on the basis of roles selectde-->
+
+      <action path="/toGetRoledQuestionnaire" type="edu.utk.coeuslite.propdev.action.RightPersonCertify"
+               scope="request"  validate="false" name="rightPersonCertifyBean">
+          <forward name="success" path="/getQuest.do"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+
+        </action>
+
+         <action path="/getQuest" type="edu.utk.coeuslite.propdev.action.RightPersonQuestAction"
+             scope="session"  validate="false" name= "dynaBeanList">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/RightPersonCertifyTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+
+        </action>
+
+         <action path="/saveQuestData" type="edu.utk.coeuslite.propdev.action.RightPersonQuestAction"
+             scope="session"  validate="false" name= "dynaBeanList">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/RightPersonCertifyTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+
+  <!-- ~**~*~*~**********~**~*~*~**~*~*~-->
+   <!--*********************************** -->
+        <!-- Action mapping for Logout-->
+        <!--*********************************** -->
+        <action path="/logoutAction" type="edu.mit.coeuslite.irb.action.LogoutAction"
+		scope="session" validate="false">
+                <forward name="success" path="/coeuslite/mit/irb/cwLogon.jsp"/>
+		<forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+                <forward name="userAuthAction" path="/userAuthAction.do"/>
+                <forward name="userSecondaryAuthAction" path="/userSecondaryAuthAction.do"/>
+
+	</action>
+
+  <!-- ~**~*~*~**********~**~*~*~**~*~*~-->
+
+
+      <action path="/sendNotificationMsg" type="edu.utk.coeuslite.propdev.action.sendNotification"
+               scope="request"  validate="false">
+          <forward name="success"  path="/coeuslite/utk/propdev/sendNotification.jsp"/>
+          </action>
+
+ <!-- For Streamline protocol creation -->
+    <action path="/newStubProtocol" type="edu.utk.coeuslite.propdev.action.NewStubProtocolAction"
+               scope="request"  validate="false">
+          <forward name="success"  path="/coeuslite/utk/propdev/tiles/clSpecialReviewsTile.jsp"/>
+          <forward name="specialReview"  path="/getPropDevSpecialReview.do"/>
+          </action>
+          
+          <action path="/rolesInProposals" type="edu.utk.coeuslite.propdev.action.RolesInProposalsAction"
+		  scope="session" name="proposalRolesForm" validate="false">
+
+		  <forward name="success" path="/coeuslite/utk/propdev/tiles/clRolesInProposalTile.jsp"/>
+		  <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+		  <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+	      </action>
+   <!--    COEUSQA-4066-->           
+     <action path="/getUserAttS2SDetails" type="edu.mit.coeus.s2s.formattachment.UserAttachmentS2SAction"
+            scope="session" name="userAttachmentS2Sform" validate="false" >
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/userAttachmentS2STile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>      
+
+     <action path="/editUserAttS2SDetails" type="edu.mit.coeus.s2s.formattachment.UserAttachmentS2SAction"
+            scope="session" name="userAttachmentS2Sform" validate="false" >
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/userAttachmentS2STile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>      
+    
+    <action path="/saveUserAttS2SDetails" type="edu.mit.coeus.s2s.formattachment.UserAttachmentS2SAction"
+           scope="session" name="userAttachmentS2Sform" validate="false" >
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/userAttachmentS2STile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>      
+    
+    <action path="/deleteUserAttS2SDetails" type="edu.mit.coeus.s2s.formattachment.UserAttachmentS2SAction"
+            scope="session" name="userAttachmentS2Sform" validate="false" >
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/userAttachmentS2STile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>      
+    
+    <action path="/viewUserAttS2SDetails" type="edu.mit.coeus.s2s.formattachment.UserAttachmentS2SAction"
+           scope="session" name="userAttachmentS2Sform" validate="false" >
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/userAttachmentS2STile.jsp"/>     
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>      
+<!--    COEUSQA-4066-->
+    
+    <!-- ========== Message Resources Definitions =========================== -->
+
+</action-mappings>
+    <message-resources parameter="ProposalMessages" key="proposal" />
+
+</struts-config>
+
+

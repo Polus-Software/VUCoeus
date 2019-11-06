@@ -1,0 +1,450 @@
+@charset "utf-8";
+/* TOP MENU	 */
+#topmenu ul {
+	position: relative;
+	margin-top: 0px;
+	list-style: none;
+	left: -42px;
+	width: 980px;
+	font-weight: bold;
+}
+
+#topmenu ul  li {
+	position: relative;
+	float: right;
+	width: 147px;
+	height: 27px;
+	margin-right: 2px;
+}
+
+#topmenu ul  li a {
+	position: relative;
+	float: right;
+	display: block;
+	width: 147px;
+	height: 21px;
+	padding: 6px 0 0 0;
+	color: #2e547f;
+	text-decoration: none;
+	background: url(../images/menu1.gif) no-repeat;
+}
+
+#topmenu ul  li a:hover {
+	background: url(../images/menu2.gif) no-repeat;
+	color: #900;
+	text-decoration: none;
+}
+
+/* SUB MENU */
+#submenu ul {
+	position: relative;
+	margin-top: 3px;
+	list-style: none;
+	left: -50px;
+	height: 22px;
+	width: 980px;
+	font-weight: bold;
+}
+
+#submenu ul  li {
+	position: relative;
+	float: left;
+	height: 22px;
+}
+
+#submenu ul  li a {
+	position: relative;
+	float: left;
+	display: block;
+	height: 19px;
+	padding: 3px 15px 0 15px;
+	color: #1d4068;
+	text-decoration: none;
+	border-right: 1px solid #000;
+}
+
+#submenu ul  li a:hover {
+	color: #900;
+}
+
+#contentleft h1 {
+	position: relative;
+	float: left;
+	margin: 15px 0 6px -2px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	width: 225px;
+	height: 25;
+	color: #006699;
+}
+
+#contentleft ul li h1 {
+	position: relative;
+	float: left;
+	margin: 0 0 0 0;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	width: 210px;
+	padding: 3px 0 3px 5px;
+	height: 25;
+	color: #fff;
+	/* JM 3-26-2012 updated colors */
+	background-color: #999999;
+}
+
+/* LEFT MENU */
+#contentleft ul {
+	position: relative;
+	margin-top: 5px;
+	list-style: none;
+	left: -65px;
+	min-height: 22px;
+	width: 215px;
+	font-size: 12px;
+	float: left;
+	letter-spacing: 1px;
+	margin-left: 5px;
+}
+
+#contentleft ul  li {
+	position: relative;
+	float: left;
+	width: 215px;
+	min-height: 22px;
+	/* JM 3-26-2012 updated colors */
+	border: 1px solid #999999;
+	margin-top: -1px;
+}
+
+#contentleft ul  li a {
+	position: relative;
+	float: left;
+	display: block;
+	min-height: 18px;
+	width: 210px;
+	padding: 4px 0 0 5px;
+	color: #003399;
+	text-decoration: none;
+	text-align: left;
+	letter-spacing: 0.001em;
+}
+
+#contentleft ul li a:hover {
+	color: #900;
+	text-decoration: underline;
+}
+
+/* STYLES */
+#header div.username {
+	position: absolute;
+	width: 249px;
+	height: 16px;
+	left: 631px;
+	top: 11px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+	text-decoration: none;
+	text-align: right;
+}
+
+#header a.currentlocks {
+	position: absolute;
+	width: 249px;
+	height: 16px;
+	left: 631px;
+	top: 43px;
+	color: #d4e8ff;
+	font-weight: bold;
+	font-size: 12px;
+	text-decoration: underline;
+	text-align: right;
+}
+
+#header a.currentlocks:hover {
+	color: #fff;
+}
+
+#contentright h1 {
+	position: relative;
+	float: left;
+	width: 599px;
+	height: 20px;
+	height: auto;
+	color: #0f335b;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+	margin: 10px 0 10px 0;
+}
+
+#content h2 {
+	position: relative;
+	float: left;
+	width: 589px;
+	padding: 5px 0 5px 10px;
+	display: block;
+	height: auto;
+	color: #fff;
+	/* JM 3-26-2012 updated colors */
+	background-color: #999999;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	margin: 10px 0 0 0;
+}
+
+#content h2 a.rightlink {
+	position: absolute;
+	width: 249px;
+	height: 16px;
+	left: 595px;
+	top: 5px;
+	color: #0039d0;
+	font-weight: bold;
+	font-size: 14px;
+	text-decoration: none;
+	text-align: right;
+}
+
+#content h2 a.rightlink:hover {
+	text-decoration: underline;
+}
+
+#contentrighthome h1 {
+	position: relative;
+	float: left;
+	width: 599px;
+	height: 20px;
+	height: auto;
+	color: #0f335b;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+	margin: 10px 0 10px 0;
+}
+
+#contentrighthome ul {
+	list-style: none;
+	font-size: 14px;
+	margin-top: 30px;
+}
+
+#contentrighthome ul li {
+	position: relative;
+	float: left;
+	width: 500px;
+	height: 25px;
+	text-align: left;
+}
+
+#contentrighthome ul li a {
+	position: relative;
+	float: left;
+	width: 470px;
+	height: 20px;
+	padding: 5px 0 0 30px;
+	display: block;
+	/* JM 3-23-2012 updated colors */
+	color: #999999;
+	text-decoration: none;
+}
+
+#contentrighthome ul li a:hover {
+	color: #900;
+}
+
+.Formline0   input {
+	margin: 0 0 0 10px;
+	width: 160px;
+}
+
+.Formline   input {
+	margin: 0 0 0 10px;
+	width: 160px;
+}
+
+.Formline0  select {
+	width: 165px;
+	font-size: 12px;
+	margin: 0 0 0 5px;
+}
+
+.Formline  select {
+	width: 145px;
+	font-size: 11px;
+	margin: 0 0 0 5px;
+}
+
+.Formline2   textarea {
+	margin: 0 0 0 10px;
+	vertical-align: top;
+	width: 434px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.Formline2   input {
+	margin: 0 0 0 10px;
+	vertical-align: top;
+	width: 434px;
+}
+
+.Formline3   label {
+	margin: 0 0 0 10px;
+}
+
+.FormColumn1  select {
+	width: 90px;
+	font-size: 11px;
+}
+
+.Formline4  select {
+	width: 155px;
+	font-size: 11px;
+	margin: 0 0 0 20px;
+}
+
+.myForm input.button {
+	width: 100px;
+	height: 25px;
+	text-align: center;
+	border: 1px solid #3E4F75;
+	background: url(../images/btn.gif) repeat-x;
+	cursor: pointer;
+}
+
+.myForm input.button1 {
+	width: 130px;
+	height: 25px;
+	text-align: center;
+	border: 1px solid #3E4F75;
+	background: url(../images/btn.gif) repeat-x;
+	cursor: pointer;
+}
+
+.myForm input.button2 {
+	background: url(../images/btn2.gif) repeat-x;
+	color: #060;
+	font-weight: bold;
+	width: 60px;
+	height: 20px;
+	font-size: 11px;
+	display: block;
+	position: relative;
+	float: left;
+	border: 0px;
+	cursor: pointer;
+	padding: 0 0 5px 0;
+}
+
+.myForm input.button2:hover {
+	text-decoration: underline;
+}
+
+.Formline5 input.button {
+	width: 100px;
+	height: 25px;
+	text-align: center;
+	border: 1px solid #3E4F75;
+	background: url(../images/btn.gif) repeat-x;
+	cursor: pointer;
+}
+
+.notesattachs {
+	color: #660033;
+	font-size: 12px;
+}
+
+#reporterdetails div.Rdetails {
+	position: relative;
+	float: left;
+	width: 300px;
+	height: 20px;
+	padding: 10px 0 10px 0;
+}
+
+#reporterdetails div.Rdetails div.ColLeft {
+	position: relative;
+	float: left;
+	width: 100px;
+	height: 20px;
+	text-align: right;
+	color: #003399;
+	font-weight: bold;
+}
+
+#reporterdetails div.Rdetails div.ColRight {
+	position: relative;
+	float: left;
+	width: 190px;
+	padding: 0 0 0 10px;
+	height: 20px;
+	text-align: left;
+	color: #000066;
+}
+
+a.logocoi {
+	position: absolute;
+	left: 42px;
+	top: 9px;
+	width: 180px;
+	height: 30px;
+	display: block;
+}
+
+#reporterdetails h1 {
+	position: relative;
+	float: left;
+	width: 99%;
+	margin: 0 0 0 0;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	padding: 2px 0 2px 10px;
+	/* JM 3-26-2012 updated colors */
+	background-color: #999999;
+}
+
+.ProjectDetails div.column1 {
+	position: relative;
+	float: left;
+	width: 250px;
+	min-height: 20px;
+	margin: 0 0 10px 0;
+	text-align: left;
+	padding: 0 10px 0 0;
+}
+
+.ProjectDetails div.column2 {
+	position: relative;
+	float: left;
+	width: 200px;
+	min-height: 20px;
+	margin: 0 0 10px 0;
+	text-align: left;
+}
+
+.ProjectDetails a {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a {
+	font-weight: bold;
+}
+
+a:hover {
+	color: #900;
+	text-decoration: underline;
+}
+
+.rowLineLight td {
+	border-style: solid none;
+	border-width: 1px 0;
+	background-color: #D1E5FF;
+	border-color: #9DBFE9;
+}

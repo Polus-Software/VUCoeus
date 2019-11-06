@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Document : awardSubMenu.xml Created on : December 22, 2010, 5:18 PM 
+	Author : vineetha Description: Purpose of the document follows. -->
+
+
+<SubHeader>
+	<Sub_Header>
+		<Sub_Header_Id>A001</Sub_Header_Id>
+		<Sub_Header_Name>All Awards</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/allAwardList.do?type=All_Awards&#38;search=true&#38;searchName=AWARD_SEARCH&#38;Menu_Id=009&#38;SUBHEADER_ID=A001</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>A002</Sub_Header_Id>
+		<Sub_Header_Name>All Parent Awards</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/allAwardList.do?type=All_Parent_Awards&#38;search=true&#38;searchName=ALL_PARENT_AWARD_SEARCH&#38;Menu_Id=009&#38;SUBHEADER_ID=A002</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>A003</Sub_Header_Id>
+		<Sub_Header_Name>All Active Parent Awards</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/allAwardList.do?type=All_Active_Parent_Awards&#38;search=true&#38;searchName=ALL_ACTIVE_PARENT_AWARD&#38;Menu_Id=009&#38;SUBHEADER_ID=A003</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>A004</Sub_Header_Id>
+		<Sub_Header_Name>All Active Awards</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/allAwardList.do?type=All_Active_Awards&#38;search=true&#38;searchName=ALL_ACTIVE_AWARDS&#38;Menu_Id=009&#38;SUBHEADER_ID=A004</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>A005</Sub_Header_Id>
+		<Sub_Header_Name>Award Search</Sub_Header_Name>
+		<Search_Window>true</Search_Window>
+		<Link>/awardSearch.do?type=AwardList_Search&#38;search=true&#38;searchName=AWARDLIST_SEARCH&#38;Menu_Id=009&#38;SUBHEADER_ID=A005</Link>
+	</Sub_Header>
+</SubHeader>
+
+
+

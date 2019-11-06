@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Geo Thomas 
+	(Massachusetts Institute of Technology) -->
+<CoeusReportBinding>
+	<ReportGroup name="ProposalBudget" display="Proposal Budget Reports"
+		streamgenerator="edu.mit.coeus.xml.generator.ProposalBudgetStream"
+		jaxbpkgname="edu.mit.coeus.utils.xml.bean.budget">
+		<Report id="budgetsummary" multiple="true"
+			template="edu/mit/coeus/xml/data/BudgetSummaryReport.xsl"
+			jaxbpkgname="edu.mit.coeus.utils.xml.bean.budget">Budget Summary by Period
+		</Report>
+		<Report id="costsharesummarybyperiod" multiple="true"
+			template="edu/mit/coeus/xml/data/CostSharingBudgetSummary.xsl"
+			jaxbpkgname="edu.mit.coeus.utils.xml.bean.budget">Cost Sharing Summary by Period
+		</Report>
+		<Report id="cumulativebudget" template="edu/mit/coeus/xml/data/CumulativeSummary.xsl">Cumulative Budget
+		</Report>
+		<Report id="budgettotalbyperiod" jaxbpkgname="edu.mit.coeus.utils.xml.bean.budget.budgetSalary"
+			streamgenerator="edu.mit.coeus.xml.generator.ProposalBudgetSummaryTotalPageStream"
+			template="edu/mit/coeus/xml/data/BudgetSummaryTotalPage.xsl">Budget Total
+		</Report>
+		<Report id="industrialbudget" multiple="true" footer="false"
+			template="edu/mit/coeus/xml/data/IndstlBudgetSummary.xsl">Industrial Budget by Period
+		</Report>
+		<Report id="indsrlcumbudget" jaxbpkgname="edu.mit.coeus.utils.xml.bean.budget.budgetSalary"
+			streamgenerator="edu.mit.coeus.xml.generator.ProposalBudgetSummaryTotalPageStream"
+			template="edu/mit/coeus/xml/data/BudgetSummaryTotalPage.xsl">Industrial Cumulative Budget
+		</Report>
+	</ReportGroup>
+
+	<ReportGroup name="ProposalLog" display="Proposal Log">
+		<Report id="ProposalLog" jaxbpkgname="edu.mit.coeus.utils.xml.bean.proposalLog"
+			streamgenerator="edu.mit.coeus.xml.generator.ProposalLogStream"
+			template="edu/mit/coeus/utils/xml/data/proposalLog.xsl">Proposal Log
+		</Report>
+	</ReportGroup>
+
+	<ReportGroup name="InstituteProposal" display="Institute Proposal">
+		<Report id="InstituteProposalReport" jaxbpkgname="edu.mit.coeus.xml.instprop"
+			streamgenerator="edu.mit.coeus.xml.generator.InstituteProposalStream"
+			template="edu/mit/coeus/xml/data/instituteProposal.xsl">Institute Proposal Report
+		</Report>
+	</ReportGroup>
+
+	<ReportGroup name="Proposal" display="Proposal">
+		<Report id="PrintCertification" multiple="true"
+			jaxbpkgname="edu.mit.coeus.utils.xml.bean.printCertification"
+			streamgenerator="edu.mit.coeus.xml.generator.PrintCertificationStream"
+			template="edu/mit/coeus/xml/data/printCertification.xsl">Institute Proposal Report
+		</Report>
+		<Report id="CurrentReport" multiple="false"
+			jaxbpkgname="edu.mit.coeus.utils.xml.bean.instProp"
+			streamgenerator="edu.mit.coeus.utils.xml.bean.instProp.generator.InstPropStream"
+			template="edu/mit/coeus/utils/xml/data/CurrentSupport.xsl">Proposal Current Report
+		</Report>
+		<Report id="PendingReport" multiple="false"
+			jaxbpkgname="edu.mit.coeus.utils.xml.bean.instProp"
+			streamgenerator="edu.mit.coeus.utils.xml.bean.instProp.generator.InstPropStream"
+			template="edu/mit/coeus/utils/xml/data/PendingSupport.xsl">Proposal Pending Report
+		</Report>
+	</ReportGroup>
+
+	<ReportGroup name="Award" display="Award">
+		<Report id="AwardTemplate" jaxbpkgname="edu.mit.coeus.utils.xml.bean.template"
+			streamgenerator="edu.mit.coeus.xml.generator.TemplateSteam" template="edu/mit/coeus/xml/data/awardTemplate.xsl">Award
+			Template
+		</Report>
+
+		<Report id="ReportingRequirements" jaxbpkgname="edu.mit.coeus.utils.xml.bean.reportingReq"
+			streamgenerator="edu.mit.coeus.xml.generator.AwardReportingReqStream"
+			template="edu/mit/coeus/xml/data/AwardReportingRequirements.xsl">Award Reporting Requirements
+		</Report>
+
+		<Report id="AwardNotice" jaxbpkgname="edu.mit.coeus.utils.xml.bean.award"
+			streamgenerator="edu.mit.coeus.utils.xml.bean.award.generator.AwardStream"
+			template="edu/mit/coeus/utils/xml/data/AwardNotice.xsl">Award Notice
+		</Report>
+
+		<Report id="DeltaReport" jaxbpkgname="edu.mit.coeus.utils.xml.bean.award"
+			streamgenerator="edu.mit.coeus.utils.xml.bean.award.generator.AwardStream"
+			template="edu/mit/coeus/utils/xml/data/AwardModification.xsl">Delta Report
+		</Report>
+
+		<Report id="BudgetHierarchy" jaxbpkgname="edu.mit.coeus.utils.xml.bean.award"
+			streamgenerator="edu.mit.coeus.xml.generator.AwardBudgetHierarchyStream"
+			template="edu/mit/coeus/xml/data/awardBudgetHierarchy.xsl">Budget Hierarchy
+		</Report>
+
+		<Report id="BudgetHistoryTransactionDetail" jaxbpkgname="edu.mit.coeus.utils.xml.bean.award"
+			streamgenerator="edu.mit.coeus.xml.generator.AwardBudgetModificationStream"
+			template="edu/mit/coeus/xml/data/awardBudgetModification.xsl">Budget History Transaction Detail
+		</Report>
+
+		<Report id="MoneyAndEndDatesHistory" jaxbpkgname="edu.mit.coeus.utils.xml.bean.award"
+			streamgenerator="edu.mit.coeus.xml.generator.AwardMoneyAndEndDatesHistoryStream"
+			template="edu/mit/coeus/xml/data/awardMoneyAndEndDatesHistory.xsl">Money And End Dates History
+		</Report>
+
+	</ReportGroup>
+
+	<ReportGroup name="Budget" display="Budget">
+		<Report id="Salaries" jaxbpkgname="edu.mit.coeus.utils.xml.bean.budget.budgetSalary"
+			streamgenerator="edu.mit.coeus.xml.generator.ProposalSalaryStream"
+			template="edu/mit/coeus/xml/data/BudgetSalary.xsl">Budget Salaries
+		</Report>
+		<Report id="SummaryTotal" jaxbpkgname="edu.mit.coeus.utils.xml.bean.budget.budgetSalary"
+			streamgenerator="edu.mit.coeus.xml.generator.ProposalBudgetSummaryTotalPageStream"
+			template="edu/mit/coeus/xml/data/BudgetSummaryTotalPage.xsl">Budget Summary Total
+		</Report>
+	</ReportGroup>
+
+	<ReportGroup name="Negotiation" display="Negotiation"
+		jaxbpkgname="edu.mit.coeus.utils.xml.bean.negotiation"
+		streamgenerator="edu.mit.coeus.xml.generator.NegotiationStream">
+		<Report id="Activity"
+			template="edu/mit/coeus/xml/data/NegotiationActivityReport.xsl">Negotiation Activity
+		</Report>
+		<Report id="ActivityPrintAll" template="edu/mit/coeus/xml/data/NegotiationReport.xsl">Negotiation Activity
+			Print All
+		</Report>
+	</ReportGroup>
+
+	<ReportGroup name="Subcontract" display="Subcontract"
+		jaxbpkgname="edu.mit.coeus.utils.xml.bean.subcontractingReports"
+		streamgenerator="edu.mit.coeus.xml.generator.SubContractingReportsStream">
+		<Report id="294" multiple="true" template="edu/mit/coeus/xml/data/294.xsl">Subcontract Report
+			294
+		</Report>
+		<Report id="295" template="edu/mit/coeus/xml/data/295.xsl">Subcontract Report 295
+		</Report>
+	</ReportGroup>
+
+	<!-- Added for Case#2919 Review Comments Printing -->
+	<ReportGroup name="Protocol" display="Protocol">
+		<Report id="ReviewComments" jaxbpkgname="edu.mit.coeus.utils.xml.bean.reviewcomments"
+			streamgenerator="edu.mit.coeus.xml.generator.ReviewCommentsStream"
+			template="edu/mit/coeus/xml/data/ReviewCommentsReport.xsl">
+			Review Comments Report
+		</Report>
+		<!-- Added for 3091 Generate a Protocol Summary PDF -->
+		<Report id="ProtocolSummary" jaxbpkgname="edu.mit.coeus.utils.xml.bean.protocol"
+			streamgenerator="edu.mit.coeus.utils.xml.bean.protocol.generator.ProtocolSummaryStream"
+			template="edu/mit/coeus/utils/xml/data/ProtocolSummary.xsl">
+			IRB Protocol Summary Report
+		</Report>
+		<!-- Added for 3091 Generate a Protocol Summary PDF -->
+
+	</ReportGroup>
+	<!-- Added for COEUSQA-2630_Allow the ability to print attachments with 
+		protocol summary start -->
+
+	<ReportGroup name="IacucProtocol" display="Protocol">
+
+		<Report id="ReviewComments" jaxbpkgname="edu.mit.coeus.utils.xml.bean.reviewcomments"
+			streamgenerator="edu.mit.coeus.xml.generator.ReviewCommentsStream"
+			template="edu/mit/coeus/xml/data/ReviewCommentsReport.xsl">
+			Review Comments Report
+		</Report>
+
+		<Report id="ProtocolSummary" jaxbpkgname="edu.mit.coeus.xml.iacuc"
+			streamgenerator="edu.mit.coeus.xml.iacuc.generator.ProtocolStream"
+			template="edu/mit/coeus/utils/xml/data/IacucProtocolSummary.xsl">
+			IACUC Protocol Summary Report
+		</Report>
+
+
+	</ReportGroup>
+	<!-- Added for COEUSQA-2630_Allow the ability to print attachments with 
+		protocol summary end -->
+
+	<!-- Added for Case#2946 Questionnaire Printing -->
+	<ReportGroup name="Questionnaire" display="Questionnaire"
+		jaxbpkgname="edu.mit.coeus.utils.xml.bean.questionnaire"
+		streamgenerator="edu.mit.coeus.xml.generator.QuestionnaireStream">
+		<Report id="QuestionnaireReport" template="edu/mit/coeus/xml/data/QuestionnaireReport.xsl">
+			Questionnaire Report
+		</Report>
+	</ReportGroup>
+
+	<ReportGroup name="ArraReport" display="Arra Award Report"
+		jaxbpkgname="edu.mit.coeus.utils.xml.bean.arra" streamgenerator="edu.mit.coeus.xml.generator.ArraStream">
+		<Report id="ContractReport" template="edu/mit/coeus/xml/data/ArraContractReport.xsl">
+			Contract Report
+		</Report>
+		<Report id="GrantLoanReport" template="edu/mit/coeus/xml/data/ArraGrantLoanReport.xsl">
+			Grant Loan Report
+		</Report>
+	</ReportGroup>
+	<ReportGroup name="Coiv2print" display="Conflict of interest print">
+		<Report id="Coiv2disclosureprint" jaxbpkgname="edu.mit.coeuslite.coiv2.jaxbclasses"
+			streamgenerator="edu.mit.coeuslite.coiv2.schema.generator.CoiV2Stream"
+			template="edu/mit/coeuslite/coiv2/schema/xsl/discl.xsl">Coiv2 print
+		</Report>
+
+		<Report id="approveddisclosure" jaxbpkgname="edu.mit.coeuslite.coiv2.print.approved"
+			streamgenerator="edu.mit.coeuslite.coiv2.schema.generator.ApprovedDisclosureStream"
+			template="edu/mit/coeuslite/coiv2/schema/xsl/coidisclosure.xsl">Coiv2 print
+		</Report>
+
+
+	</ReportGroup>
+
+	<!--award printing -->
+	<ReportGroup name="AwardCoeuslite" display="Award">
+		<Report id="AwardSummary" jaxbpkgname="edu.mit.coeuslite.award.print.awardsummary"
+			streamgenerator="edu.mit.coeuslite.award.schema.generator.AwardSummaryStream"
+			template="edu/mit/coeuslite/award/schema/xsl/AwardSummarystyle.xsl">Award Summary Report
+		</Report>
+		<Report id="AwardHierarchy" jaxbpkgname="edu.mit.coeuslite.award.print.awardhierarchy"
+			streamgenerator="edu.mit.coeuslite.award.schema.generator.AwardHierarchyStream"
+			template="edu/mit/coeuslite/award/schema/xsl/AwardHierarchyStyle.xsl">Award Hierarchy Report
+		</Report>
+	</ReportGroup>
+
+	<!--Subcontract FDP printing Template will be fetched from the table OSP$SUBCONTRACT_FORMS -->
+	<ReportGroup name="SubcontractFdpReports" display="Subcontract Fdp Reports">
+		<Report id="SubcontractFdpReports"
+			jaxbpkgname="edu.mit.coeus.utils.xml.bean.subcontractfdpreports.subcontract"
+			streamgenerator="edu.mit.coeus.xml.generator.SubcontractFdpReportsStream"
+			template="">Subcontract Fdp Report
+		</Report>
+	</ReportGroup>
+
+	<!--Added for award budget summary -->
+	<ReportGroup name="RaftBudget" display="Raft Budget Summary of Award">
+
+		<Report id="RaftBudgetSummaryTotal" jaxbpkgname="edu.mit.coeuslite.raft.print.AwardBudgetSummary"
+			streamgenerator="edu.mit.coeuslite.raft.schema.generator.RaftBudgetSummaryStreamer"
+			template="edu/mit/coeuslite/raft/schema/xsl/AwardBudgetSummary.xsl">Raft Budget Summary Total
+		</Report>
+	</ReportGroup>
+	<!--Added for award budget summary ends -->
+
+
+</CoeusReportBinding>

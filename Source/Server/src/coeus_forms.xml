@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Please note the varname has to match the variable name declared in the COEUS application
+	  We are building a catalog of variable names that can be used in personalization. This catalog will be published on the coeus documentation website
+ -->
+ <!-- The Base Window for coeus application -->
+<coeus-forms xmlns="http://coeus.ucsd.edu/personalization/coeusforms">
+    <cform classname="edu.mit.coeus.gui.CoeusAppletMDIForm">
+        <cfield>
+            <varname>awards</varname>
+            <type>edu.mit.coeus.gui.toolbar.CoeusToolBarButton</type>
+        </cfield>
+    </cform>
+</coeus-forms>

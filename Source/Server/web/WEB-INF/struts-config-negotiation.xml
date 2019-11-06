@@ -1,0 +1,120 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+    <form-beans>
+        <form-bean name="negotiationSearch" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+                <form-property name="proposalNumber" type="java.lang.String"/> 
+                <form-property name="proposalType" type="java.lang.String"/>
+                <form-property name="baseProposalNumber" type="java.lang.String"/>
+                <form-property name="title" type="java.lang.String"/>
+                <form-property name="sponsorCode" type="java.lang.String"/>
+                <form-property name="primeSponsorCode" type="java.lang.String"/>
+                <form-property name="sponsorProposalNuber" type="java.lang.String"/>
+                <form-property name="proposalTypeDesc" type="java.lang.String"/>
+              
+           </form-bean>
+           <form-bean name="negotiationHeaderForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+               <form-property name="proposalNumber" type="java.lang.String"/> 
+               <form-property name="proposalTypeCode" type="java.lang.Integer"/>
+               <form-property name="title" type="java.lang.String"/>
+               <form-property name="sponsorCode" type="java.lang.String"/>
+               <form-property name="initialContractAdmin" type="java.lang.String"/>
+               <form-property name="piID" type="java.lang.String"/>
+               <form-property name="leadUnit" type="java.lang.String"/>
+               <form-property name="piName" type="java.lang.String"/>
+               <form-property name="sponsorName" type="java.lang.String"/>
+               <form-property name="unitName" type="java.lang.String"/>
+               <form-property name="proposalTypeDescription" type="java.lang.String"/>
+            </form-bean>
+            <form-bean name="negotiationInfoForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+               <form-property name="negotiatorId" type="java.lang.String"/> 
+               <form-property name="negotiatorName" type="java.lang.String"/>
+               <form-property name="docFileAddress" type="java.lang.String"/>
+               <form-property name="startDate" type="java.lang.String"/>
+               <form-property name="statusCode" type="java.lang.Integer"/>
+               <form-property name="statusDescription" type="java.lang.String"/>
+               <form-property name="negotiationAgreeTypeCode" type="java.lang.Integer"/>
+               <form-property name="negotiationAgreeTypeDescription" type="java.lang.String"/>
+               <form-property name="primeSponsorCode" type="java.lang.String"/>
+               <form-property name="primeSponsorName" type="java.lang.String"/>
+               <form-property name="proposedStartDate" type="java.lang.String"/>
+               <form-property name="closedDate" type="java.lang.String"/>
+               
+               <form-property name="title" type="java.lang.String"/>
+               <form-property name="initialContractAdmin" type="java.lang.String"/>
+               <form-property name="proposalTypeDescription" type="java.lang.String"/>
+            </form-bean>
+            <form-bean name="negotiationActivityForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+               <form-property name="activityNumber" type="java.lang.Integer"/> 
+               <form-property name="description" type="java.lang.String"/>
+               <form-property name="negotiationActTypeCode" type="java.lang.Integer"/>
+               <form-property name="documentFileAddress" type="java.lang.String"/>
+               <form-property name="followUpDate" type="java.lang.String"/>
+               <form-property name="createDate" type="java.lang.String"/>
+               <form-property name="activityDate" type="java.lang.String"/>
+               <form-property name="restrictedView" type="java.lang.Boolean"/>
+               <form-property name="lastUpdatedBy" type="java.lang.String"/>
+               <form-property name="propertySupport" type="java.beans.PropertyChangeSupport"/>
+               <form-property name="activityTypeDescription" type="java.lang.String"/>
+               <form-property name="attachmentPresent" type="java.lang.Boolean"/>
+               <form-property name="updateTimestamp" type="java.lang.String"/>
+               <form-property name="attachmentBean" type="edu.mit.coeus.negotiation.bean.NegotiationAttachmentBean"/>
+            </form-bean>
+            <form-bean name="negotiationLocationForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
+               <form-property name="locationNumber" type="java.lang.Integer"/> 
+               <form-property name="negotiationLocationTypeCode" type="java.lang.Integer"/>
+               <form-property name="effectiveDate" type="java.lang.String"/>
+               <form-property name="negotiationLocationTypeDes" type="java.lang.String"/>
+               <form-property name="updateTimestamp" type="java.lang.String"/>
+               <form-property name="updateUser" type="java.lang.String"/>
+                <form-property name="numberOfDays" type="java.lang.String"/>
+            </form-bean>
+   
+           <form-bean 	name="negotiationForm"
+                       dynamic="false"
+                       type="org.apache.struts.validator.DynaValidatorForm"/>
+    </form-beans>
+    
+    <!-- ========== Action Mapping Definitions ============================== -->
+    <action-mappings>
+        <action path="/negotiationList" type="edu.mit.coeuslite.negotiation.action.NegotiationListAction" 
+                scope="request" validate="false" input="/coeuslite/mit/irb/cwLogon.jsp">
+            <forward name="success" path="/coeuslite/mit/negotiation/tiles/cwNegotiationListTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>   
+        <action path="/viewNegotiation" type="edu.mit.coeuslite.negotiation.action.NegotiationAction" 
+              name="negotiationInfoForm"  scope="request" validate="false" input="/coeuslite/mit/irb/cwLogon.jsp">
+            <forward name="success" path="/coeuslite/mit/negotiation/tiles/cwNegotiationViewTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>   
+        <action path="/getActivitiesForNegotiation" type="edu.mit.coeuslite.negotiation.action.NegotiationActivityAction" 
+                scope="request" name="negotiationActivityForm" validate="false" >
+            <forward name="success" path="/coeuslite/mit/negotiation/tiles/cwNegotiationActivityTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action> 
+        <action path="/viewAttachmentForActivity" type="edu.mit.coeuslite.negotiation.action.NegotiationActivityAction" 
+                scope="request" name="negotiationActivityForm" validate="false" >
+            <forward name="success" path="/coeuslite/mit/negotiation/tiles/cwNegotiationActivityTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action> 
+        <action path="/printActivity" type="edu.mit.coeuslite.negotiation.action.NegotiationActivityAction" 
+                scope="request" name="negotiationActivityForm" validate="false" >
+            <forward name="success" path="/coeuslite/mit/negotiation/tiles/cwNegotiationActivityTile.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+            <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action> 
+        <action path="/negotiationSearch" type="edu.mit.coeuslite.negotiation.action.NegotiationSearchAction" 
+                scope="request" validate="false" name="negotiationSearch" input="/coeuslite/mit/negotiation/cwNegotiationSearch.jsp">
+            <forward name="success" path="/coeuslite/mit/negotiation/cwNegotiationSearch.jsp"/>
+            <forward name="result" path="/coeuslite/mit/negotiation/cwNegotiationSearch.jsp"/>
+            <forward name="failure" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+            <forward name="error" path="/coeuslite/mit/utils/dialogs/SearchError.jsp"/>
+        </action>   
+    </action-mappings>
+    
+    <!-- ========== Message Resources Definitions =========================== -->
+    <message-resources parameter="NegotiationMessages" key="negotiation" />
+</struts-config>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="Coeus4.5.1.l/Source/Server/web/WEB-INF/lib/cumulative_inclusion_report_V1_0.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/Coeus4.5.1.l/jars/cumulative_inclusion_report_V1_0.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="false" manifestLocation="/Coeus4.5.1.l/jars/cumulative_inclusion_report_V1_0.mf" manifestVersion="1.0" reuseManifest="true" saveManifest="true" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <file path="/Coeus4.5.1.l/Source/Server/src/edu/vanderbilt/coeus/s2s/template/PHS398_CumulativeInclusionReport-V1.0.xsl"/>
+        <javaElement handleIdentifier="=Coeus4.5.1.l/Source\/Server\/src&lt;gov.grants.apply.forms.cumulative_inclusion_report_v1_0.impl"/>
+        <javaElement handleIdentifier="=Coeus4.5.1.l/Source\/Server\/src&lt;edu.vanderbilt.coeus.s2s.generator{CumulativeInclusionReportStream_V1_0.java"/>
+        <javaElement handleIdentifier="=Coeus4.5.1.l/Source\/Server\/src&lt;edu.vanderbilt.coeus.s2s.bean{CumulativeInclusionReportTxnBean.java"/>
+        <javaElement handleIdentifier="=Coeus4.5.1.l/Source\/Server\/src&lt;gov.grants.apply.forms.cumulative_inclusion_report_v1_0"/>
+        <javaElement handleIdentifier="=Coeus4.5.1.l/Source\/Server\/src&lt;gov.grants.apply.forms.cumulative_inclusion_report_v1_0.verification"/>
+    </selectedElements>
+</jardesc>

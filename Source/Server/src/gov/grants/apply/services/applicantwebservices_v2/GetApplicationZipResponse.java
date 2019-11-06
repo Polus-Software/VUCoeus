@@ -1,0 +1,67 @@
+
+package gov.grants.apply.services.applicantwebservices_v2;
+
+import javax.activation.DataHandler;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlMimeType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Java class for anonymous complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="FileDataHandler" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+    "fileDataHandler"
+})
+@XmlRootElement(name = "GetApplicationZipResponse")
+public class GetApplicationZipResponse {
+
+    @XmlElement(name = "FileDataHandler")
+    @XmlMimeType("application/octet-stream")
+    protected DataHandler fileDataHandler;
+
+    /**
+     * Gets the value of the fileDataHandler property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DataHandler }
+     *     
+     */
+    public DataHandler getFileDataHandler() {
+        return fileDataHandler;
+    }
+
+    /**
+     * Sets the value of the fileDataHandler property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DataHandler }
+     *     
+     */
+    public void setFileDataHandler(DataHandler value) {
+        this.fileDataHandler = value;
+    }
+
+}

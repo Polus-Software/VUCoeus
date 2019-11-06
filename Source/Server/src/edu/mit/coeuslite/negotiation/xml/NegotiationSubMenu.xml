@@ -1,0 +1,26 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<SubHeader>
+	<Sub_Header>
+		<Sub_Header_Id>SH001</Sub_Header_Id>
+		<Sub_Header_Name>All Negotiations</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/negotiationList.do?NEGOTIATION_TYPE=NEGOTIATION_LIST_SEARCH&#38;SUBHEADER_ID=SH001</Link>
+	</Sub_Header>
+
+	<Sub_Header>
+		<Sub_Header_Id>SH003</Sub_Header_Id>
+		<Sub_Header_Name>Active Negotiations</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/negotiationList.do?NEGOTIATION_TYPE=NEGOTIATION_ACTIVE_SEARCH&#38;SUBHEADER_ID=SH003</Link>
+	</Sub_Header>
+
+	<Sub_Header>
+		<Sub_Header_Id>SH002</Sub_Header_Id>
+		<Sub_Header_Name>Negotiation Search</Sub_Header_Name>
+		<Search_Window>true</Search_Window>
+		<Link>/negotiationSearch.do?type=Negotiation&#38;search=true&#38;searchName=NEGOTIATION_LITE_SEARCH</Link>
+	</Sub_Header>
+</SubHeader>	
+
+
+

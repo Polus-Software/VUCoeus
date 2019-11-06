@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Created by ravikanth on June 16, 2003, 2:23 PM -->
+
+<PARAMETERS>
+	<PROTOCOL>
+		<PARAMETER name='Ref_1' value='Reference Num 1' />
+		<PARAMETER name='Ref_2' value='Reference Num 2' />
+		<PARAMETER name='test' value='value' />
+	</PROTOCOL>
+	<COMMITTEE>
+		<PARAMETER name='MINIMUM_MEMBERS' value='Min Members for quorum' />
+	</COMMITTEE>
+	<PROTOCOL_REFERENCE>
+		<PARAMETER name='REF_COL_1' value='Reference Type' />
+		<PARAMETER name='REF_COL_2' value='Reference Number' />
+		<PARAMETER name='REF_COL_3' value='Appl Date' />
+		<PARAMETER name='REF_COL_4' value='Appr Date' />
+	</PROTOCOL_REFERENCE>
+</PARAMETERS>

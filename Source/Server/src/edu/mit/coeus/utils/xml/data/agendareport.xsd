@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="agenda">
+<xs:complexType>
+<xs:sequence>
+    <xs:element name="committee" minOccurs="0" maxOccurs="1">
+    <xs:complexType>
+    <xs:sequence>
+        <xs:element name="committeeName" type="xs:string" minOccurs="0" maxOccurs="1" />
+<!-- start currentSchedule -->
+        <xs:element name="currentSchedule" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+        <xs:sequence>     
+		<xs:element name="currentScheduleId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="currentScheduleDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="currentScheduleTime" type="xs:time" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="currentScheduleLocation" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		<xs:element name="previousScheduleId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		<xs:element name="previousScheduleDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="previousScheduleTime" type="xs:time" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="previousScheduleLocation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		<xs:element name="nextScheduleId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="nextScheduleDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="nextScheduleTime" type="xs:time" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="nextScheduleLocation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+
+<!-- start currentProtocolSubmitted  -->            
+            <xs:element name="currentProtocolSubmitted" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+            <xs:sequence>  
+<!-- start protocol -->            
+                <xs:element name="protocol" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="submissionType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="piName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="id" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+                </xs:complexType>
+                </xs:element>
+<!-- end protocol -->
+            </xs:sequence>
+            </xs:complexType>
+            </xs:element>
+<!-- end currentProtocolSubmitted  -->
+
+<!-- start currentOtherBusinessList -->
+            <xs:element name="currentOtherBusinessList" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+            <xs:sequence>
+<!-- start otherBusiness -->
+                <xs:element name="otherBusiness" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="otherActionType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="otherActionDesc" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+                </xs:complexType>
+                </xs:element>   
+<!-- end otherBusiness -->
+            </xs:sequence>
+            </xs:complexType>
+            </xs:element>
+<!-- end currentOtherBusinessList -->
+
+        </xs:sequence>
+        </xs:complexType>
+        </xs:element>
+<!-- end currentSchedule -->
+
+    </xs:sequence>  
+    </xs:complexType>
+    </xs:element>
+<!-- end committee  -->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<!-- end agenda -->
+</xs:schema>

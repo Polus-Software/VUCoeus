@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://coeus.mit.edu/ws/utils" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://coeus.mit.edu/ws/utils" xmlns:intf="http://coeus.mit.edu/ws/utils" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:utilsbean="http://coeus.mit.edu/ws/utils/bean" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.2
+Built on May 03, 2005 (02:20:24 EDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://coeus.mit.edu/ws/utils" xmlns="http://www.w3.org/2001/XMLSchema">
+<!--   <import namespace="http://DefaultNamespace"/>-->
+   <import namespace="http://coeus.mit.edu/ws/utils/bean"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_xsd_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_tns1_InboxPtlBean">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="utilsbean:InboxPtlBean[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://coeus.mit.edu/ws/utils/bean" xmlns="http://www.w3.org/2001/XMLSchema">
+<!--   <import namespace="http://DefaultNamespace"/>-->
+   <import namespace="http://coeus.mit.edu/ws/utils"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="InboxPtlBean">
+    <sequence>
+     <element name="arrivalDate" nillable="true" type="xsd:dateTime"/>
+     <element name="fromUser" nillable="true" type="xsd:string"/>
+     <element name="item" nillable="true" type="xsd:string"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="messageId" nillable="true" type="xsd:string"/>
+     <element name="module" nillable="true" type="xsd:string"/>
+     <element name="moduleCode" type="xsd:int"/>
+     <element name="openedFlag" type="xsd:string"/>
+     <element name="personName" nillable="true" type="xsd:string"/>
+     <element name="proposalDeadLineDate" nillable="true" type="xsd:dateTime"/>
+     <element name="proposalNumber" nillable="true" type="xsd:string"/>
+     <element name="proposalTitle" nillable="true" type="xsd:string"/>
+     <element name="sponsorCode" nillable="true" type="xsd:string"/>
+     <element name="sponsorName" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+     <element name="statusCode" type="xsd:int"/>
+     <element name="subject" nillable="true" type="xsd:string"/>
+     <element name="subjectType" type="xsd:string"/>
+     <element name="toUser" nillable="true" type="xsd:string"/>
+     <element name="unitName" nillable="true" type="xsd:string"/>
+     <element name="unitNumber" nillable="true" type="xsd:string"/>
+     <element name="updateUser" nillable="true" type="xsd:string"/>
+     <element name="userName" nillable="true" type="xsd:string"/>
+     <element name="linkURL" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getInboxRequest">
+
+      <wsdl:part name="userId" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="mainRequest">
+
+      <wsdl:part name="args" type="impl:ArrayOf_xsd_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="mainResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getInboxResponse">
+
+      <wsdl:part name="getInboxReturn" type="impl:ArrayOf_tns1_InboxPtlBean"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Utility">
+
+      <wsdl:operation name="main" parameterOrder="args">
+
+         <wsdl:input message="impl:mainRequest" name="mainRequest"/>
+
+         <wsdl:output message="impl:mainResponse" name="mainResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getInbox" parameterOrder="userId">
+
+         <wsdl:input message="impl:getInboxRequest" name="getInboxRequest"/>
+
+         <wsdl:output message="impl:getInboxResponse" name="getInboxResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="UtilityServiceSoapBinding" type="impl:Utility">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="main">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="mainRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://coeus.mit.edu/ws" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="mainResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://coeus.mit.edu/ws/utils" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getInbox">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getInboxRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://coeus.mit.edu/ws" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getInboxResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://coeus.mit.edu/ws/utils" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="UtilityService">
+
+      <wsdl:port binding="impl:UtilityServiceSoapBinding" name="UtilityService">
+
+         <wsdlsoap:address location="http://coeus.mit.edu/ws/utils/UtilityService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

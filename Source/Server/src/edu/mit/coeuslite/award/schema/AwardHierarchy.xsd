@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 sp2 (http://www.altova.com) by Midhun (Massachusetts Institute of Technology) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="AwardRootNode">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AwardItems" type="AwardDetails" maxOccurs="unbounded"/>
+				<xs:element name="MITAccountNumber" type="xs:string" minOccurs="0"/>
+				<xs:element name="AwardPI" type="xs:string" minOccurs="0"/>
+				<xs:element name="AwardDate" type="xs:dateTime" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="AwardDetails">
+		<xs:sequence>
+			<xs:element name="AwardNumber" type="xs:string"/>
+			<xs:element name="AwardHierarchy" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="AccountNumber" type="xs:string"/>
+			<xs:element name="Status" type="xs:string"/>
+			<xs:element name="AccountType" type="xs:string"/>
+			<xs:element name="SponsorCode" type="xs:string"/>
+			<xs:element name="PI" type="xs:string"/>
+			<xs:element name="LeadUnit" type="xs:string"/>
+			<xs:element name="TotalObligated" type="xs:string"/>
+			<xs:element name="TotalAnticipated" type="xs:string"/>
+			<xs:element name="FinalExpirationDate" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

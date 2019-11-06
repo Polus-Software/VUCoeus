@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<SubHeader>
+	<Sub_Header>
+		<Sub_Header_Id>SH001</Sub_Header_Id>
+		<Sub_Header_Name>Unresolved Messages</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/getInboxMessages.do?messageType=unresolved</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH002</Sub_Header_Id>
+		<Sub_Header_Name>Resolved Messages</Sub_Header_Name>
+		<Search_Window>false</Search_Window>
+		<Link>/getInboxMessages.do?messageType=resolved</Link>
+	</Sub_Header>
+	<Sub_Header>
+		<Sub_Header_Id>SH003</Sub_Header_Id>
+		<Sub_Header_Name>Proposal Search</Sub_Header_Name>
+		<Search_Window>true</Search_Window>
+		<Link>/proposalSearch.do?type=proposalSearch&#38;search=true&#38;searchName=ALL_PROPOSALDEVSEARCHNOROLES</Link>
+	</Sub_Header>
+</SubHeader>	
+
+
+

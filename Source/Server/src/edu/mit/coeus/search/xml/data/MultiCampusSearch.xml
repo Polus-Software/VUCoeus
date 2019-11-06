@@ -1,0 +1,694 @@
+<SEARCHENGINE>
+
+	<!-- Order 1. USERSEARCH 2. PERSONSEARCH 3. LEADUNITSEARH 4. WEBLEADUNITSEARCH 
+		5. WEBPERSONSEARCH 6. ALL_PERSON_SEARCH 7. w_unit_select 8. w_person_select -->
+
+	<!-- USERSEARCH - Start -->
+
+	<USERSEARCH display="User Search" retrievelimit="USER_RETRIEVE_LIMIT"
+		primarykeycolumn="OSP$USER.USER_ID">
+		<QUERY>
+			<SELECTQUERY>SELECT OSP$USER.USER_ID,OSP$USER.USER_NAME,
+				OSP$ARG_VALUE_LOOKUP.DESCRIPTION as CAMPUS,
+				OSP$USER.NON_MIT_PERSON_FLAG,
+				OSP$USER.UNIT_NUMBER,OSP$USER.STATUS,
+				OSP$UNIT.UNIT_NAME,
+				DECODE(OSP$USER.STATUS, 'A', 'Active' ,'I' ,'Inactive' )AS STATUSDESC,
+				DECODE(OSP$USER.NON_MIT_PERSON_FLAG, 'Y', 'Yes' ,'N' ,'No' )AS
+				FLAGDESC
+			</SELECTQUERY>
+
+			<FROM>
+				<TABLE name="OSP$USER" />
+				<TABLE name="OSP$UNIT" />
+				<TABLE name="OSP$ARG_VALUE_LOOKUP" />
+				<TABLE name="OSP$MULTI_CAMPUS_PERSON_MAP" />
+			</FROM>
+
+			<WHERE
+				join="OSP$USER.UNIT_NUMBER = OSP$UNIT.UNIT_NUMBER
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.PERSON_ID(+) = OSP$USER.PERSON_ID
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE = OSP$ARG_VALUE_LOOKUP.VALUE(+) 
+                        AND OSP$ARG_VALUE_LOOKUP.ARGUMENT_NAME(+) = 'CampusCode'" />
+
+		</QUERY>
+		<CRITERIA>
+			<FIELD name="OSP$USER.USER_ID" datatype="string" size="100" />
+			<FIELD name="OSP$USER.USER_NAME" datatype="string" size="100" />
+			<FIELD name="OSP$USER.NON_MIT_PERSON_FLAG" datatype="string"
+				size="100" />
+			<FIELD name="OSP$USER.UNIT_NUMBER" datatype="string" size="100" />
+			<FIELD name="OSP$UNIT.UNIT_NAME" datatype="string" size="100" />
+			<FIELD name="OSP$USER.STATUS" datatype="string" size="100" />
+			<FIELD name="OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE" datatype="string"
+				webSize="30" size="100" />
+		</CRITERIA>
+
+		<PROCEDURE name="get_user_for_query">
+			<PARAM name="query" datatype="String" direction="IN" />
+			<PARAM name="result" datatype="Resultset" direction="OUT" />
+		</PROCEDURE>
+
+		<DISPLAY>
+			<FIELD name="USER_ID">User ID</FIELD>
+			<FIELD name="USER_NAME">User Name</FIELD>
+			<FIELD name="CAMPUS">Campus</FIELD>
+			<FIELD name="FLAGDESC">Non Employee</FIELD>
+			<FIELD name="UNIT_NUMBER">Unit Number</FIELD>
+			<FIELD name="UNIT_NAME">Unit Name</FIELD>
+			<FIELD name="STATUSDESC">Status</FIELD>
+		</DISPLAY>
+		<REMCLAUSE>
+			ORDER BY INITCAP(OSP$USER.USER_ID)
+		</REMCLAUSE>
+	</USERSEARCH>
+
+	<!-- USERSEARCH - End -->
+
+	<!-- PERSON SEARCH - Start -->
+	<PERSONSEARCH display="Person Search" retrievelimit="PERSON_RETRIEVE_LIMIT"
+		primarykeycolumn="OSP$PERSON.PERSON_ID">
+		<QUERY>
+			<SELECTQUERY>
+				SELECT
+				OSP$PERSON.PERSON_ID,
+				OSP$PERSON.FULL_NAME,
+				OSP$PERSON.LAST_NAME,
+				OSP$PERSON.FIRST_NAME,
+				OSP$PERSON.PRIOR_NAME,
+				OSP$PERSON.USER_NAME,
+				OSP$PERSON.EMAIL_ADDRESS,
+				OSP$PERSON.HOME_UNIT,
+				OSP$UNIT.UNIT_NAME,
+				OSP$PERSON.SCHOOL,
+				OSP$PERSON.DIRECTORY_TITLE,
+				OSP$PERSON.OFFICE_LOCATION,
+				OSP$PERSON.OFFICE_PHONE,
+				OSP$PERSON.IS_FACULTY,
+				OSP$PERSON.SECONDRY_OFFICE_PHONE,
+				OSP$PERSON.SECONDRY_OFFICE_LOCATION,
+				to_char(OSP$PERSON.SALARY_ANNIVERSARY_DATE, 'yyyy/MM/dd') SALARY_ANNIVERSARY_DATE,
+				OSP$ARG_VALUE_LOOKUP.DESCRIPTION AS CAMPUS
+			</SELECTQUERY>
+
+			<FROM>
+				<TABLE name="OSP$PERSON" />
+				<TABLE name="OSP$UNIT" />
+				<TABLE name="OSP$ARG_VALUE_LOOKUP" />
+				<TABLE name="OSP$MULTI_CAMPUS_PERSON_MAP" />
+			</FROM>
+
+			<WHERE
+				join="OSP$PERSON.HOME_UNIT = OSP$UNIT.UNIT_NUMBER(+)
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.PERSON_ID(+) = OSP$PERSON.PERSON_ID
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE = OSP$ARG_VALUE_LOOKUP.VALUE(+) 
+                        AND OSP$ARG_VALUE_LOOKUP.ARGUMENT_NAME(+) = 'CampusCode' " />
+		</QUERY>
+
+		<ORDERBY>OSP$PERSON.FULL_NAME</ORDERBY>
+
+		<CRITERIA>
+			<FIELD name="OSP$PERSON.LAST_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.FIRST_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.FULL_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.USER_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.EMAIL_ADDRESS" datatype="string"
+				webSize="13" size="120" />
+			<FIELD name="OSP$PERSON.HOME_UNIT" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$UNIT.UNIT_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.SCHOOL" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.DIRECTORY_TITLE" datatype="string"
+				webSize="10" size="100" />
+			<FIELD name="OSP$PERSON.OFFICE_LOCATION" datatype="string"
+				webSize="10" size="100" />
+			<FIELD name="OSP$PERSON.OFFICE_PHONE" datatype="string"
+				webSize="10" size="100" />
+			<FIELD name="SUBSTR(UNIT_NAME,1,3)" datatype="string" webSize="30"
+				size="100" />
+		</CRITERIA>
+
+		<PROCEDURE name="dw_get_person_list_for_query">
+			<PARAM name="query" datatype="String" direction="IN" />
+			<PARAM name="result" datatype="Resultset" direction="OUT" />
+		</PROCEDURE>
+
+		<DISPLAY>
+
+			<FIELD name="PERSON_ID" visible="false">Person Id</FIELD>
+			<FIELD name="FULL_NAME" size="100">Full Name</FIELD>
+			<FIELD name="PRIOR_NAME" size="100">Prior Name</FIELD>
+			<FIELD name="USER_NAME" size="100">User Name</FIELD>
+			<FIELD name="CAMPUS">Campus</FIELD>
+			<FIELD name="HOME_UNIT" size="100">Home Unit</FIELD>
+			<FIELD name="SCHOOL" size="100">School</FIELD>
+			<FIELD name="EMAIL_ADDRESS" size="100">Email Address</FIELD>
+			<FIELD name="DIRECTORY_TITLE" size="100">Directory Title</FIELD>
+			<FIELD name="OFFICE_LOCATION" size="100">Office Location</FIELD>
+			<FIELD name="OFFICE_PHONE" size="100">Office Phone</FIELD>
+			<FIELD name="IS_FACULTY">Faculty</FIELD>
+			<FIELD name="SECONDRY_OFFICE_LOCATION" size="100">Sec. Office
+				Location</FIELD>
+			<FIELD name="SECONDRY_OFFICE_PHONE" size="100">Sec. Office Phone</FIELD>
+			<FIELD name="PERSON_ID" visible="false">Person Id</FIELD>
+			<FIELD name="SALARY_ANNIVERSARY_DATE" visible="false" datatype="date">Salary
+				Anniv Date</FIELD>
+		</DISPLAY>
+		<DEFAULTSELECT>
+			<ID>
+				PERSON_ID
+			</ID>
+			<NAME>
+				FULL_NAME
+			</NAME>
+		</DEFAULTSELECT>
+	</PERSONSEARCH>
+
+
+	<!-- PERSON SEARCH - ENd -->
+
+	<!-- LEAD UNIT SEARCH- Start -->
+
+	<LEADUNITSEARCH display="Unit Search" retrievelimit="UNIT_RETRIEVE_LIMIT"
+		primarykeycolumn="OSP$UNIT.UNIT_NUMBER">
+		<QUERY>
+			<SELECTQUERY>SELECT DISTINCT OSP$UNIT.UNIT_NUMBER,
+				OSP$UNIT.UNIT_NAME,OSP$UNIT.ADMINISTRATIVE_OFFICER,
+				OSP$PERSON_A.FULL_NAME ADMINOFFICER ,OSP$UNIT.UNIT_HEAD,
+				OSP$PERSON_B.FULL_NAME UNITHEAD, OSP$UNIT.DEAN_VP,
+				OSP$PERSON_C.FULL_NAME DEANVP,
+				OSP$UNIT.OTHER_INDIVIDUAL_TO_NOTIFY, OSP$PERSON_D.FULL_NAME NOTIFY,
+				OSP$UNIT.OSP_ADMINISTRATOR, OSP$PERSON_E.FULL_NAME ADMINTR,
+				OSP$ARG_VALUE_LOOKUP.DESCRIPTION AS CAMPUS
+			</SELECTQUERY>
+			<FROM>
+				<TABLE name="OSP$UNIT" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_A" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_B" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_C" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_D" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_E" />
+				<TABLE name="OSP$MULTI_CAMPUS_PERSON_MAP" />
+				<TABLE name="OSP$ARG_VALUE_LOOKUP" />
+
+			</FROM>
+			<WHERE
+				join="OSP$UNIT.ADMINISTRATIVE_OFFICER = OSP$PERSON_A.PERSON_ID (+)
+                        AND OSP$UNIT.UNIT_HEAD = OSP$PERSON_B.PERSON_ID (+)
+                        AND OSP$UNIT.DEAN_VP = OSP$PERSON_C.PERSON_ID (+)
+                        AND OSP$UNIT.OTHER_INDIVIDUAL_TO_NOTIFY= OSP$PERSON_D.PERSON_ID (+)
+                        AND OSP$UNIT.OSP_ADMINISTRATOR= OSP$PERSON_E.PERSON_ID (+)
+                        AND SUBSTR(UNIT_NAME,1,3) = OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE(+)
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE = OSP$ARG_VALUE_LOOKUP.VALUE(+) 
+                        AND OSP$ARG_VALUE_LOOKUP.ARGUMENT_NAME(+) = 'CampusCode'" />
+		</QUERY>
+		<CRITERIA>
+			<FIELD name="OSP$UNIT.UNIT_NUMBER" datatype="string" webSize="13"
+				size="120" />
+			<FIELD name="OSP$UNIT.UNIT_NAME" datatype="string" webSize="13"
+				size="120" />
+			<FIELD name="OSP$UNIT.ADMINISTRATIVE_OFFICER" alias="OSP$PERSON_A.FULL_NAME"
+				datatype="string" webSize="13" size="120" />
+			<FIELD name="OSP$UNIT.UNIT_HEAD" alias="OSP$PERSON_B.FULL_NAME"
+				datatype="string" webSize="13" size="120" />
+			<FIELD name="OSP$UNIT.DEAN_VP" alias="OSP$PERSON_C.FULL_NAME"
+				datatype="string" webSize="13" size="120" />
+			<FIELD name="OSP$UNIT.OTHER_INDIVIDUAL_TO_NOTIFY" alias="OSP$PERSON_D.FULL_NAME"
+				datatype="string" webSize="13" size="120" />
+			<FIELD name="OSP$UNIT.OSP_ADMINISTRATOR" alias="OSP$PERSON_E.FULL_NAME"
+				datatype="string" webSize="15" size="120" />
+			<FIELD name="SUBSTR(UNIT_NAME,1,3)" datatype="string" webSize="30"
+				size="100" />
+		</CRITERIA>
+		<PROCEDURE name="dw_get_unit_list_for_query">
+			<PARAM name="query" datatype="String" direction="IN" />
+			<PARAM name="result" datatype="Resultset" direction="OUT" />
+		</PROCEDURE>
+		<DISPLAY>
+			<FIELD name="UNIT_NUMBER">Unit Number</FIELD>
+			<FIELD name="UNIT_NAME">Unit Name</FIELD>
+			<FIELD name="CAMPUS">Campus</FIELD>
+			<FIELD name="ADMINOFFICER">Administrative Officer</FIELD>
+			<FIELD name="UNITHEAD">Unit Head</FIELD>
+			<FIELD name="DEANVP">Dean VP</FIELD>
+			<FIELD name="NOTIFY">Other Ind To Notify</FIELD>
+			<FIELD name="ADMINTR">Admin</FIELD>
+		</DISPLAY>
+		<REMCLAUSE>
+			ORDER BY OSP$UNIT.UNIT_NUMBER
+		</REMCLAUSE>
+		<DEFAULTSELECT>
+			<ID>
+				UNIT_NUMBER
+			</ID>
+			<NAME>
+				UNIT_NAME
+			</NAME>
+		</DEFAULTSELECT>
+
+	</LEADUNITSEARCH>
+	<!-- LEAD UNIT SEARCH - End -->
+
+	<!-- WEBLEADUNITSEARCH - Start -->
+	<WEBLEADUNITSEARCH display="Unit Search"
+		retrievelimit="UNIT_RETRIEVE_LIMIT" primarykeycolumn="OSP$UNIT.UNIT_NUMBER">
+		<QUERY>
+			<SELECTQUERY>SELECT DISTINCT OSP$UNIT.UNIT_NUMBER,
+				OSP$UNIT.UNIT_NAME,OSP$UNIT.ADMINISTRATIVE_OFFICER,
+				OSP$PERSON_A.FULL_NAME ADMINOFFICER ,OSP$UNIT.UNIT_HEAD,
+				OSP$PERSON_B.FULL_NAME UNITHEAD, OSP$UNIT.DEAN_VP,
+				OSP$PERSON_C.FULL_NAME DEANVP,
+				OSP$UNIT.OTHER_INDIVIDUAL_TO_NOTIFY, OSP$PERSON_D.FULL_NAME NOTIFY,
+				OSP$UNIT.OSP_ADMINISTRATOR, OSP$PERSON_E.FULL_NAME ADMINTR,
+				OSP$ARG_VALUE_LOOKUP.DESCRIPTION AS CAMPUS
+			</SELECTQUERY>
+			<FROM>
+				<TABLE name="OSP$UNIT" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_A" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_B" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_C" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_D" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_E" />
+				<TABLE name="OSP$MULTI_CAMPUS_PERSON_MAP" />
+				<TABLE name="OSP$ARG_VALUE_LOOKUP" />
+			</FROM>
+			<WHERE
+				join="OSP$UNIT.ADMINISTRATIVE_OFFICER = OSP$PERSON_A.PERSON_ID (+)
+                  AND OSP$UNIT.UNIT_HEAD = OSP$PERSON_B.PERSON_ID (+)
+                  AND OSP$UNIT.DEAN_VP = OSP$PERSON_C.PERSON_ID (+)
+                  AND OSP$UNIT.OTHER_INDIVIDUAL_TO_NOTIFY= OSP$PERSON_D.PERSON_ID (+)
+                  AND OSP$UNIT.OSP_ADMINISTRATOR= OSP$PERSON_E.PERSON_ID (+)
+                  AND SUBSTR(UNIT_NAME,1,3) = OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE(+)
+                  AND OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE = OSP$ARG_VALUE_LOOKUP.VALUE(+) 
+                  AND OSP$ARG_VALUE_LOOKUP.ARGUMENT_NAME(+) = 'CampusCode'" />
+		</QUERY>
+		<CRITERIA>
+			<FIELD name="OSP$UNIT.UNIT_NUMBER" datatype="string" webSize="13"
+				size="120" />
+			<FIELD name="OSP$UNIT.UNIT_NAME" datatype="string" webSize="13"
+				size="120" />
+			<FIELD name="SUBSTR(UNIT_NAME,1,3)" datatype="string" webSize="30"
+				size="100" />
+
+		</CRITERIA>
+		<PROCEDURE name="dw_get_unit_list_for_query">
+			<PARAM name="query" datatype="String" direction="IN" />
+			<PARAM name="result" datatype="Resultset" direction="OUT" />
+		</PROCEDURE>
+		<DISPLAY>
+			<FIELD name="UNIT_NUMBER">Unit Number</FIELD>
+			<FIELD name="UNIT_NAME">Unit Name</FIELD>
+			<FIELD name="CAMPUS">Campus</FIELD>
+			<FIELD name="ADMINOFFICER">Administrative Officer</FIELD>
+			<FIELD name="UNITHEAD">Unit Head</FIELD>
+			<FIELD name="DEANVP">Dean VP</FIELD>
+			<FIELD name="NOTIFY">Other Ind To Notify</FIELD>
+			<FIELD name="ADMINTR">Admin</FIELD>
+		</DISPLAY>
+		<REMCLAUSE>
+			ORDER BY OSP$UNIT.UNIT_NUMBER
+		</REMCLAUSE>
+		<DEFAULTSELECT>
+			<ID>
+				UNIT_NUMBER
+			</ID>
+			<NAME>
+				UNIT_NAME
+			</NAME>
+		</DEFAULTSELECT>
+
+	</WEBLEADUNITSEARCH>
+
+	<!-- WEBLEADUNITSEARCH - End -->
+
+	<!-- WEBPERSONSEARCH - Start -->
+
+	<WEBPERSONSEARCH display="Person Search" retrievelimit="PERSON_RETRIEVE_LIMIT"
+		primarykeycolumn="OSP$PERSON.PERSON_ID">
+		<QUERY>
+
+			<SELECTQUERY>SELECT
+				OSP$PERSON.PERSON_ID,OSP$PERSON.FULL_NAME,OSP$PERSON.LAST_NAME,
+				OSP$PERSON.FIRST_NAME,OSP$PERSON.PRIOR_NAME,OSP$PERSON.USER_NAME,OSP$PERSON.EMAIL_ADDRESS,
+				OSP$PERSON.HOME_UNIT,OSP$UNIT.UNIT_NAME,OSP$PERSON.HOME_UNIT,OSP$PERSON.DIRECTORY_TITLE,
+				OSP$PERSON.OFFICE_LOCATION,OSP$PERSON.OFFICE_PHONE,OSP$PERSON.IS_FACULTY,
+				OSP$PERSON.SECONDRY_OFFICE_PHONE,OSP$PERSON.SECONDRY_OFFICE_LOCATION,
+				OSP$PERSON.MOBILE_PHONE_NUMBER,OSP$PERSON.FAX_NUMBER,
+				OSP$PERSON.ERA_COMMONS_USER_NAME,
+				OSP$ARG_VALUE_LOOKUP.DESCRIPTION AS CAMPUS
+			</SELECTQUERY>
+
+			<FROM>
+				<TABLE name="OSP$PERSON" />
+				<TABLE name="OSP$UNIT" />
+				<TABLE name="OSP$MULTI_CAMPUS_PERSON_MAP" />
+				<TABLE name="OSP$ARG_VALUE_LOOKUP" />
+			</FROM>
+			<WHERE
+				join="OSP$PERSON.HOME_UNIT = OSP$UNIT.UNIT_NUMBER(+)
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.PERSON_ID(+) = OSP$PERSON.PERSON_ID
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE = OSP$ARG_VALUE_LOOKUP.VALUE(+) 
+                        AND OSP$ARG_VALUE_LOOKUP.ARGUMENT_NAME(+) = 'CampusCode'" />
+
+		</QUERY>
+		<ORDERBY>OSP$PERSON.FULL_NAME</ORDERBY>
+
+		<CRITERIA>
+			<FIELD name="OSP$PERSON.LAST_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.FIRST_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.FULL_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.USER_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE" datatype="string"
+				webSize="30" size="100" />
+		</CRITERIA>
+
+		<PROCEDURE name="dw_get_person_list_for_query">
+			<PARAM name="query" datatype="String" direction="IN" />
+			<PARAM name="result" datatype="Resultset" direction="OUT" />
+		</PROCEDURE>
+
+		<DISPLAY>
+			<FIELD name="PERSON_ID" visible="false">Person Id</FIELD>
+			<FIELD name="FULL_NAME" size="100">Full Name</FIELD>
+			<FIELD name="PRIOR_NAME" size="100">Prior Name</FIELD>
+			<FIELD name="USER_NAME" size="100">User Name</FIELD>
+			<FIELD name="HOME_UNIT" size="100">Home Unit</FIELD>
+			<FIELD name="CAMPUS">Campus</FIELD>
+			<FIELD name="SCHOOL" size="100">School</FIELD>
+			<FIELD name="EMAIL_ADDRESS" size="100">Email Address</FIELD>
+			<FIELD name="DIRECTORY_TITLE" size="100">Directory Title</FIELD>
+			<FIELD name="OFFICE_LOCATION" size="100">Office Location</FIELD>
+			<FIELD name="OFFICE_PHONE" size="100">Office Phone</FIELD>
+			<FIELD name="IS_FACULTY">Faculty</FIELD>
+			<FIELD name="SECONDRY_OFFICE_LOCATION" size="100">Sec. Office
+				Location</FIELD>
+			<FIELD name="SECONDRY_OFFICE_PHONE" size="100">Sec. Office Phone</FIELD>
+			<FIELD name="MOBILE_PHONE_NUMBER" size="100">Mobile Phone Number</FIELD>
+			<FIELD name="FAX_NUMBER" size="100">Fax Number</FIELD>
+			<FIELD name="PERSON_ID" visible="false">Person Id</FIELD>
+		</DISPLAY>
+		<DEFAULTSELECT>
+			<ID>
+				PERSON_ID
+			</ID>
+			<NAME>
+				FULL_NAME
+			</NAME>
+		</DEFAULTSELECT>
+	</WEBPERSONSEARCH>
+
+	<!-- WEBPERSONSEARCH - End -->
+
+	<!-- ALL_PERSON_SEARCH - Start -->
+
+	<ALL_PERSON_SEARCH display="Person Search"
+		retrievelimit="PERSON_RETRIEVE_LIMIT" primarykeycolumn="OSP$PERSON.PERSON_ID">
+		<QUERY>
+			<SELECTQUERY>
+				SELECT OSP$PERSON.PERSON_ID,OSP$PERSON.FULL_NAME,OSP$PERSON.LAST_NAME,
+				OSP$PERSON.FIRST_NAME,OSP$PERSON.PRIOR_NAME,OSP$PERSON.USER_NAME,OSP$PERSON.EMAIL_ADDRESS,
+				OSP$PERSON.HOME_UNIT,OSP$UNIT.UNIT_NAME,OSP$PERSON.SCHOOL,OSP$PERSON.DIRECTORY_TITLE,
+				OSP$PERSON.OFFICE_LOCATION,OSP$PERSON.OFFICE_PHONE,OSP$PERSON.IS_FACULTY,
+				OSP$PERSON.SECONDRY_OFFICE_PHONE,OSP$PERSON.SECONDRY_OFFICE_LOCATION,
+				to_char(OSP$PERSON.SALARY_ANNIVERSARY_DATE, 'yyyy/MM/dd')
+				SALARY_ANNIVERSARY_DATE,
+				OSP$ARG_VALUE_LOOKUP.DESCRIPTION AS CAMPUS
+			</SELECTQUERY>
+
+			<FROM>
+				<TABLE name="OSP$PERSON" />
+				<TABLE name="OSP$UNIT" />
+				<TABLE name="OSP$MULTI_CAMPUS_PERSON_MAP" />
+				<TABLE name="OSP$ARG_VALUE_LOOKUP" />
+			</FROM>
+			<WHERE
+				join="OSP$PERSON.HOME_UNIT = OSP$UNIT.UNIT_NUMBER(+)
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.PERSON_ID(+) = OSP$PERSON.PERSON_ID
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE = OSP$ARG_VALUE_LOOKUP.VALUE(+) 
+                        AND OSP$ARG_VALUE_LOOKUP.ARGUMENT_NAME(+) = 'CampusCode'" />
+		</QUERY>
+
+		<ORDERBY>OSP$PERSON.FULL_NAME</ORDERBY>
+
+		<CRITERIA>
+			<FIELD name="OSP$PERSON.LAST_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.FIRST_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.FULL_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.USER_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.EMAIL_ADDRESS" datatype="string"
+				webSize="13" size="120" />
+			<FIELD name="OSP$PERSON.HOME_UNIT" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$UNIT.UNIT_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.SCHOOL" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.DIRECTORY_TITLE" datatype="string"
+				webSize="10" size="100" />
+			<FIELD name="OSP$PERSON.OFFICE_LOCATION" datatype="string"
+				webSize="10" size="100" />
+			<FIELD name="OSP$PERSON.OFFICE_PHONE" datatype="string"
+				webSize="10" size="100" />
+			<FIELD name="OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE" datatype="string"
+				webSize="30" size="100" />
+
+		</CRITERIA>
+
+		<PROCEDURE name="dw_get_person_list_for_query">
+			<PARAM name="query" datatype="String" direction="IN" />
+			<PARAM name="result" datatype="Resultset" direction="OUT" />
+		</PROCEDURE>
+
+		<DISPLAY>
+			<FIELD name="PERSON_ID" visible="false">Person Id</FIELD>
+			<FIELD name="FULL_NAME" size="100">Full Name</FIELD>
+			<FIELD name="PRIOR_NAME" size="100">Prior Name</FIELD>
+			<FIELD name="USER_NAME" size="100">User Name</FIELD>
+			<FIELD name="HOME_UNIT" size="100">Home Unit</FIELD>
+			<FIELD name="CAMPUS">Campus</FIELD>
+			<FIELD name="SCHOOL" size="100">School</FIELD>
+			<FIELD name="EMAIL_ADDRESS" size="100">Email Address</FIELD>
+			<FIELD name="DIRECTORY_TITLE" size="100">Directory Title</FIELD>
+			<FIELD name="OFFICE_LOCATION" size="100">Office Location</FIELD>
+			<FIELD name="OFFICE_PHONE" size="100">Office Phone</FIELD>
+			<FIELD name="IS_FACULTY">Faculty</FIELD>
+			<FIELD name="SECONDRY_OFFICE_LOCATION" size="100">Sec. Office
+				Location</FIELD>
+			<FIELD name="SECONDRY_OFFICE_PHONE" size="100">Sec. Office Phone</FIELD>
+			<FIELD name="PERSON_ID" visible="false">Person Id</FIELD>
+			<FIELD name="SALARY_ANNIVERSARY_DATE" visible="false" datatype="date">Salary
+				Anniv Date</FIELD>
+		</DISPLAY>
+		<DEFAULTSELECT>
+			<ID>
+				PERSON_ID
+			</ID>
+			<NAME>
+				FULL_NAME
+			</NAME>
+		</DEFAULTSELECT>
+	</ALL_PERSON_SEARCH>
+
+	<!-- ALL_PERSON_SEARCH - End -->
+
+	<!-- w_unit_select - Start -->
+
+	<w_unit_select display="Unit Search" retrievelimit="UNIT_RETRIEVE_LIMIT"
+		primarykeycolumn="OSP$UNIT.UNIT_NUMBER">
+		<QUERY>
+			<SELECTQUERY>SELECT DISTINCT OSP$UNIT.UNIT_NUMBER,
+				OSP$UNIT.UNIT_NAME,OSP$UNIT.ADMINISTRATIVE_OFFICER,
+				OSP$PERSON_A.FULL_NAME ADMINOFFICER ,OSP$UNIT.UNIT_HEAD,
+				OSP$PERSON_B.FULL_NAME UNITHEAD, OSP$UNIT.DEAN_VP,
+				OSP$PERSON_C.FULL_NAME DEANVP,
+				OSP$UNIT.OTHER_INDIVIDUAL_TO_NOTIFY, OSP$PERSON_D.FULL_NAME NOTIFY,
+				OSP$UNIT.OSP_ADMINISTRATOR, OSP$PERSON_E.FULL_NAME ADMINTR,
+				OSP$ARG_VALUE_LOOKUP.DESCRIPTION AS CAMPUS
+			</SELECTQUERY>
+			<FROM>
+				<TABLE name="OSP$UNIT" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_A" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_B" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_C" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_D" />
+				<TABLE name="OSP$PERSON" alias="OSP$PERSON_E" />
+				<TABLE name="OSP$MULTI_CAMPUS_PERSON_MAP" />
+				<TABLE name="OSP$ARG_VALUE_LOOKUP" />
+			</FROM>
+			<WHERE
+				join="OSP$UNIT.ADMINISTRATIVE_OFFICER = OSP$PERSON_A.PERSON_ID (+)
+                        AND OSP$UNIT.UNIT_HEAD = OSP$PERSON_B.PERSON_ID (+)
+                        AND OSP$UNIT.DEAN_VP = OSP$PERSON_C.PERSON_ID (+)
+                        AND OSP$UNIT.OTHER_INDIVIDUAL_TO_NOTIFY= OSP$PERSON_D.PERSON_ID (+)
+                        AND OSP$UNIT.OSP_ADMINISTRATOR= OSP$PERSON_E.PERSON_ID (+)
+                        AND SUBSTR(UNIT_NAME,1,3) = OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE(+)
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE = OSP$ARG_VALUE_LOOKUP.VALUE(+) 
+                        AND OSP$ARG_VALUE_LOOKUP.ARGUMENT_NAME(+) = 'CampusCode'" />
+		</QUERY>
+		<CRITERIA>
+			<FIELD name="OSP$UNIT.UNIT_NUMBER" datatype="string" webSize="13"
+				size="120" />
+			<FIELD name="OSP$UNIT.UNIT_NAME" datatype="string" webSize="13"
+				size="120" />
+			<FIELD name="OSP$UNIT.ADMINISTRATIVE_OFFICER" alias="OSP$PERSON_A.FULL_NAME"
+				datatype="string" webSize="13" size="120" />
+			<FIELD name="OSP$UNIT.UNIT_HEAD" alias="OSP$PERSON_B.FULL_NAME"
+				datatype="string" webSize="13" size="120" />
+			<FIELD name="OSP$UNIT.DEAN_VP" alias="OSP$PERSON_C.FULL_NAME"
+				datatype="string" webSize="13" size="120" />
+			<FIELD name="OSP$UNIT.OTHER_INDIVIDUAL_TO_NOTIFY" alias="OSP$PERSON_D.FULL_NAME"
+				datatype="string" webSize="13" size="120" />
+			<FIELD name="OSP$UNIT.OSP_ADMINISTRATOR" alias="OSP$PERSON_E.FULL_NAME"
+				datatype="string" webSize="15" size="120" />
+			<FIELD name="SUBSTR(UNIT_NAME,1,3)" datatype="string" webSize="30"
+				size="100" />
+
+		</CRITERIA>
+		<PROCEDURE name="dw_get_unit_list_for_query">
+			<PARAM name="query" datatype="String" direction="IN" />
+			<PARAM name="result" datatype="Resultset" direction="OUT" />
+		</PROCEDURE>
+		<DISPLAY>
+			<FIELD name="UNIT_NUMBER">Unit Number</FIELD>
+			<FIELD name="UNIT_NAME">Unit Name</FIELD>
+			<FIELD name="CAMPUS">Campus</FIELD>
+			<FIELD name="ADMINOFFICER">Administrative Officer</FIELD>
+			<FIELD name="UNITHEAD">Unit Head</FIELD>
+			<FIELD name="DEANVP">Dean VP</FIELD>
+			<FIELD name="NOTIFY">Other Ind To Notify</FIELD>
+			<FIELD name="ADMINTR">Admin</FIELD>
+		</DISPLAY>
+		<REMCLAUSE>
+			ORDER BY OSP$UNIT.UNIT_NUMBER
+		</REMCLAUSE>
+		<DEFAULTSELECT>
+			<ID>
+				UNIT_NUMBER
+			</ID>
+			<NAME>
+				UNIT_NAME
+			</NAME>
+		</DEFAULTSELECT>
+
+	</w_unit_select>
+
+	<!-- w_unit_select - End -->
+
+	<!-- w_person_select - Start -->
+
+	<w_person_select display="Person Search" retrievelimit="PERSON_RETRIEVE_LIMIT"
+		primarykeycolumn="OSP$PERSON.PERSON_ID">
+		<QUERY>
+			<SELECTQUERY>
+				SELECT OSP$PERSON.PERSON_ID,OSP$PERSON.FULL_NAME,OSP$PERSON.LAST_NAME,
+				OSP$PERSON.FIRST_NAME,OSP$PERSON.PRIOR_NAME,OSP$PERSON.USER_NAME,OSP$PERSON.EMAIL_ADDRESS,
+				OSP$PERSON.HOME_UNIT,OSP$UNIT.UNIT_NAME,OSP$PERSON.SCHOOL,OSP$PERSON.DIRECTORY_TITLE,
+				OSP$PERSON.OFFICE_LOCATION,OSP$PERSON.OFFICE_PHONE,OSP$PERSON.IS_FACULTY,
+				OSP$PERSON.SECONDRY_OFFICE_PHONE,OSP$PERSON.SECONDRY_OFFICE_LOCATION,
+				OSP$ARG_VALUE_LOOKUP.DESCRIPTION AS CAMPUS
+			</SELECTQUERY>
+
+			<FROM>
+				<TABLE name="OSP$PERSON" />
+				<TABLE name="OSP$UNIT" />
+				<TABLE name="OSP$MULTI_CAMPUS_PERSON_MAP" />
+				<TABLE name="OSP$ARG_VALUE_LOOKUP" />
+			</FROM>
+
+			<WHERE
+				join="OSP$PERSON.HOME_UNIT = OSP$UNIT.UNIT_NUMBER(+)
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.PERSON_ID(+) = OSP$PERSON.PERSON_ID
+                        AND OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE = OSP$ARG_VALUE_LOOKUP.VALUE(+) 
+                        AND OSP$ARG_VALUE_LOOKUP.ARGUMENT_NAME(+) = 'CampusCode'" />
+		</QUERY>
+
+		<ORDERBY>OSP$PERSON.FULL_NAME</ORDERBY>
+
+		<CRITERIA>
+			<FIELD name="OSP$PERSON.LAST_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.FIRST_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.FULL_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.USER_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.EMAIL_ADDRESS" datatype="string"
+				webSize="13" size="120" />
+			<FIELD name="OSP$PERSON.HOME_UNIT" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$UNIT.UNIT_NAME" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.SCHOOL" datatype="string" webSize="10"
+				size="100" />
+			<FIELD name="OSP$PERSON.DIRECTORY_TITLE" datatype="string"
+				webSize="10" size="100" />
+			<FIELD name="OSP$PERSON.OFFICE_LOCATION" datatype="string"
+				webSize="10" size="100" />
+			<FIELD name="OSP$PERSON.OFFICE_PHONE" datatype="string"
+				webSize="10" size="100" />
+			<FIELD name="OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE" datatype="string"
+				webSize="30" size="100" />
+		</CRITERIA>
+
+		<PROCEDURE name="dw_get_person_list_for_query">
+			<PARAM name="query" datatype="String" direction="IN" />
+			<PARAM name="result" datatype="Resultset" direction="OUT" />
+		</PROCEDURE>
+
+		<DISPLAY>
+			<FIELD name="PERSON_ID" visible="false">Person Id</FIELD>
+			<FIELD name="FULL_NAME" size="100">Full Name</FIELD>
+			<FIELD name="PRIOR_NAME" size="100">Prior Name</FIELD>
+			<FIELD name="USER_NAME" size="100">User Name</FIELD>
+			<FIELD name="HOME_UNIT" size="100">Home Unit</FIELD>
+			<FIELD name="CAMPUS">Campus</FIELD>
+			<FIELD name="SCHOOL" size="100">School</FIELD>
+			<FIELD name="EMAIL_ADDRESS" size="100">Email Address</FIELD>
+			<FIELD name="DIRECTORY_TITLE" size="100">Directory Title</FIELD>
+			<FIELD name="OFFICE_LOCATION" size="100">Office Location</FIELD>
+			<FIELD name="OFFICE_PHONE" size="100">Office Phone</FIELD>
+			<FIELD name="IS_FACULTY">Faculty</FIELD>
+			<FIELD name="SECONDRY_OFFICE_LOCATION" size="100">Sec. Office
+				Location</FIELD>
+			<FIELD name="SECONDRY_OFFICE_PHONE" size="100">Sec. Office Phone</FIELD>
+			<FIELD name="PERSON_ID" visible="false">Person Id</FIELD>
+		</DISPLAY>
+		<DEFAULTSELECT>
+			<ID>
+				PERSON_ID
+			</ID>
+			<NAME>
+				FULL_NAME
+			</NAME>
+		</DEFAULTSELECT>
+	</w_person_select>
+
+	<!-- w_person_select - End -->
+
+	<COLUMN name="OSP$MULTI_CAMPUS_PERSON_MAP.CAMPUS_CODE" type="list"
+		label="Campus" descritpionlabel="Campus" codelabel="Code">
+		<PROCEDURE name="GET_CAMPUS_CODES" codeselectparam="VALUE"
+			descriptionselectparam="DESCRIPTION" />
+	</COLUMN>
+
+	<COLUMN name="SUBSTR(UNIT_NAME,1,3)" type="list" label="Campus"
+		descritpionlabel="Campus" codelabel="Code">
+		<PROCEDURE name="GET_CAMPUS_CODES" codeselectparam="VALUE"
+			descriptionselectparam="DESCRIPTION" />
+	</COLUMN>
+</SEARCHENGINE>

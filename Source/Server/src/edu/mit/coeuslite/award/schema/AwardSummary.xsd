@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 (http://www.altova.com) by midhun (polus) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="AwardSummaryRoot">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Investigators" type="Investigatortype" maxOccurs="unbounded"/>
+				<xs:element name="KeyPersons" type="Investigatortype" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Title" type="xs:string"/>
+				<xs:element name="SponsorName" type="xs:string"/>
+				<xs:element name="Status" type="xs:string"/>
+				<xs:element name="AwardType" type="xs:string"/>
+				<xs:element name="AccountType" type="xs:string"/>
+				<xs:element name="SponsorNumber" type="xs:string"/>
+				<xs:element name="ActivityType" type="xs:string"/>
+				<xs:element name="Units" type="Unittype" maxOccurs="unbounded"/>
+				<xs:element name="AwardNumber" type="xs:string"/>
+				<xs:element name="AccountNumber" type="xs:string"/>
+				<xs:element name="SponsorAwardNumber" type="xs:string"/>
+				<xs:element name="AwardEffectiveDate">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Date" type="Date" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="FinalExpirationDate">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Date" type="Date" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ObligationEffectiveDate">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Date" type="Date" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ObligationExpirationDate">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Date" type="Date" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AnticipatedAmount">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Amount" type="Amount" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ObligatedAmount">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Amount" type="Amount" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ApprovedEquipmentFlag" type="xs:boolean"/>
+				<xs:element name="ApprovedSubContractFlag" type="xs:boolean"/>
+				<xs:element name="ApprovedForeignTripFlag" type="xs:boolean"/>
+				<xs:element name="PaymentScheduleFlag" type="xs:boolean"/>
+				<xs:element name="TransferSponsorFlag" type="xs:boolean"/>
+				<xs:element name="CostSharingFlag" type="xs:boolean"/>
+				<xs:element name="IndirectCostFlag" type="xs:boolean"/>
+				<xs:element name="ObligatedTotalDirect" type="xs:string"/>
+				<xs:element name="ObligatedTotalIndirect" type="xs:string"/>
+				<xs:element name="ObligatedDistributableAmount" type="xs:string"/>
+				<xs:element name="AnticipatedTotalDirect" type="xs:string"/>
+				<xs:element name="AnticipatedTotalIndirect" type="xs:string"/>
+				<xs:element name="AnticipatedDistributableAmount" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Unittype">
+		<xs:sequence>
+			<xs:element name="UnitNumber" type="xs:string"/>
+			<xs:element name="LeadUnitFlag" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Investigatortype">
+		<xs:sequence>
+			<xs:element name="InvestigatorName" type="xs:string"/>
+			<xs:element name="PIFlag" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Date">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="Amount">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+</xs:schema>
