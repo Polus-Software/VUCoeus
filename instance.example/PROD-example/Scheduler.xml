@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Document : Scheduler.xml Created on : September 29, 2006, 2:07 PM Author 
+	: Geo Thomas Description: Configure Coeus Scheduler Engine to run a job in 
+	specific interval. According to the enabling key value, each job will start 
+	during server starts up Scheduler initialize during server starts up and 
+	start each Job depends on the enabling key value defined in the OSP$PARAMETER 
+	table Currently it has got only one Job defined, which runs for S2S polling -->
+
+<Scheduler>
+
+	<!-- S2SPolling Job node: logfilename : Log file name enablingkey : Key 
+		defined in OSP$PARAMETER table to enable S2SPolling Job nodereader : reader 
+		class to read the node jobscheduler : class to perform s2s polling task -->
+	<S2SPolling logfilename="Coeus_S2S_Polling_log" enablingkey='COEUS_SCHEDULER_SERVICE_ENABLED'
+		nodereader="edu.mit.coeus.s2s.util.polling.S2SPollingReader"
+		jobscheduler="edu.mit.coeus.s2s.util.polling.S2SPollingTask">
+		<!-- Each Job can have n number of tasks, which also can be configured 
+			with node attributes. id: task id pollinginterval: Polling interval for the 
+			task. Defined in minutes mailinterval : An email will be sent after this 
+			time interval. Defined in minutes stoppollinterval : Task will stop polling 
+			after the time defined as stoppollinterval. Defined in hours. -->
+		<task id="pre-validation" pollinginterval="20" mailinterval="20">
+			<!-- Mail node can be configured by giving all required information, like 
+				to, cc, bcc etc message : This will get added as a heading in the message 
+				followed by actual message footer : This is plain text will be added as footer 
+				in the message -->
+			<!-- JM 6-2-2011 updated per 4.4.2 -->
+			<mail dunsnumber="004413456" to="coeushelp@vanderbilt.edu" cc=""
+				bcc="" message="Grants.Gov Submissions - Pre-Validation" subject="Grants.Gov Submissions - Pre-Validation"
+				footer="" />
+			<!-- status : Proposals with these statuses will get polled -->
+			<status code="1" value="Submitted to Grants.Gov" />
+			<status code="2" value="Receiving" />
+			<status code="3" value="Received" />
+			<status code="4" value="Processing" />
+			<status code="5" value="S2SReceived" />
+			<!--Coeus-693 start -->
+			<status code="12" value="RECEIVING" />
+			<status code="13" value="RECEIVED" />
+			<status code="14" value="PROCESSING" />
+			<!--Coeus-693 end -->
+		</task>
+		<task id="validation" pollinginterval="60" mailinterval="120"
+			stoppollinterval="48">
+			<!-- JM 6-2-2011 updated per 4.4.2 -->
+			<mail dunsnumber="004413456" to="coeushelp@vanderbilt.edu" cc=""
+				bcc="" message="Grants.Gov Submissions - Validated" subject="Grants.Gov Submissions - Validated"
+				footer="" />
+			<status code="5" value="Validated" />
+			<!--Coeus-693 start -->
+			<status code="16" value="VALIDATED" />
+			<!--Coeus-693 end -->
+		</task>
+		<!-- JM Updated stop polling interval -->
+		<task id="post-validation" pollinginterval="120" mailinterval="240"
+			stoppollinterval="48">
+			<!-- JM 6-2-2011 updated per 4.4.2 -->
+			<mail dunsnumber="004413456" to="coeushelp@vanderbilt.edu" cc=""
+				bcc="" message="Grants.Gov Submissions - Received by Agency"
+				subject="Grants.Gov Submissions - Received by Agency" footer="" />
+			<status code="6" value="Received by Agency" />
+			<!--Coeus-693 start -->
+			<status code="16" value="RECEIVED_BY_AGENCY" />
+			<!--Coeus-693 end -->
+		</task>
+		<task id="error-out" pollinginterval="20" mailinterval="40"
+			stoppollinterval="24">
+			<!-- JM 6-2-2011 updated per 4.4.2 -->
+			<mail dunsnumber="004413456" to="coeushelp@vanderbilt.edu" cc=""
+				bcc="" message="Grants.Gov Submissions - Errors" subject="Grants.Gov Submissions - Errors"
+				footer="" />
+			<status code="10" value="Grants.Gov Submission Error" />
+			<!--Coeus-693 start -->
+			<status code="20" value="Rejected with Errors" />
+			<status code="21" value="REJECTED_WITH_ERRORS" />
+			<!--Coeus-693 end -->
+		</task>
+	</S2SPolling>
+	<!-- Notification Job node: logfilename : Log file name enablingkey : Key 
+		defined in OSP$PARAMETER table to enable Notification Job nodereader : reader 
+		class to read the node jobscheduler : class to perform s2s polling task -->
+	<Notification logfilename="Notification_log"
+		enablingkey='ENABLE_AWARD_REPORT_NOTIF_SCHEDULER' nodereader="edu.mit.coeus.award.notification.AwardNotificationReader"
+		jobscheduler="edu.mit.coeus.award.notification.AwardNotificationTask">
+		<!-- Each Job can have n number of tasks, which also can be configured 
+			with node attributes. id: task id delayToStart: Delay after the server starts 
+			(in minutes) pollinginterval: Polling interval for the task. Defined in minutes 
+			(in minutes) reportClassCode: Denotes the report class period: This value 
+			is number of days actionCode: This is the notification action code to get 
+			the recipients notificationclass: Class to create instance dynamically to 
+			send notification mailinterval : An email will be sent after this time interval. 
+			Defined in minutes stoppollinterval : Task will stop polling after the time 
+			defined as stoppollinterval. Defined in hours. -->
+		<task id="Fiscal - I" delayToStart="2" pollinginterval="480"
+			reportClassCode="1" period="90" actionCode="401" />
+		<task id="Fiscal - II" delayToStart="4" pollinginterval="480"
+			reportClassCode="1" period="60" actionCode="402" />
+		<task id="Fiscal - III" delayToStart="6" pollinginterval="480"
+			reportClassCode="1" period="30" actionCode="403" />
+		<task id="Fiscal - Overdue" delayToStart="8" pollinginterval="1440"
+			reportClassCode="1" period="15" actionCode="404" overdue="yes" />
+		<task id="Property - I" delayToStart="10" pollinginterval="480"
+			reportClassCode="2" period="90" actionCode="405" />
+		<task id="Property - II" delayToStart="12" pollinginterval="480"
+			reportClassCode="2" period="60" actionCode="406" />
+		<task id="Property - III" delayToStart="14" pollinginterval="480"
+			reportClassCode="2" period="30" actionCode="407" />
+		<task id="Property - Overdue" delayToStart="16" pollinginterval="1440"
+			reportClassCode="2" period="15" actionCode="408" overdue="yes" />
+		<task id="Intellectual Property - I" delayToStart="18"
+			pollinginterval="480" reportClassCode="3" period="90" actionCode="409" />
+		<task id="Intellectual Property - II" delayToStart="20"
+			pollinginterval="480" reportClassCode="3" period="60" actionCode="410" />
+		<task id="Intellectual Property - III" delayToStart="22"
+			pollinginterval="480" reportClassCode="3" period="30" actionCode="411" />
+		<task id="Intellectual Property - Overdue" delayToStart="24"
+			pollinginterval="1440" reportClassCode="3" period="15" actionCode="412"
+			overdue="yes" />
+		<task id="Technical/Management - I" delayToStart="26"
+			pollinginterval="480" reportClassCode="4" period="90" actionCode="413" />
+		<task id="Technical/Management - II" delayToStart="28"
+			pollinginterval="480" reportClassCode="4" period="60" actionCode="414" />
+		<task id="Technical/Management - III" delayToStart="30"
+			pollinginterval="480" reportClassCode="4" period="30" actionCode="415" />
+		<task id="Technical/Management - Overdue" delayToStart="32"
+			pollinginterval="1440" reportClassCode="4" period="15" actionCode="416"
+			overdue="yes" />
+		<task id="Procurement - I" delayToStart="34" pollinginterval="480"
+			reportClassCode="5" period="90" actionCode="417" />
+		<task id="Procurement - II" delayToStart="36" pollinginterval="480"
+			reportClassCode="5" period="60" actionCode="418" />
+		<task id="Procurement - III" delayToStart="38" pollinginterval="480"
+			reportClassCode="5" period="30" actionCode="419" />
+		<task id="Procurement - Overdue" delayToStart="40"
+			pollinginterval="1440" reportClassCode="5" period="15" actionCode="420"
+			overdue="yes" />
+
+		<!-- Sample Task with Freq base - For JIRA COEUSDEV-567 -->
+		<!--task id="Fiscal - I" delayToStart="0" pollinginterval="5" period="90" 
+			actionCode="401"> <parameters reportClass="4" reportTypeCode="7" frequencyCode="17" 
+			freqBaseCode="3" ospDistCode="1"/> </task -->
+	</Notification>
+
+
+
+	<IRBBatchCorrespondence logfilename="Correspondence_log"
+		enablingkey='ENABLE_IRB_BATCH_CORRESP_SCHEDULER'
+		nodereader="edu.mit.coeus.irb.notification.IrbBatchCorrespondenceReader"
+		jobscheduler="edu.mit.coeus.irb.notification.IrbBatchCorrespondenceTask">
+		<task id="Protocol Renewal Reminder" batchCorrespondenceTypeCode="1"
+			committeeId="COEUS" delayToStart="0" pollinginterval="1440" />
+		<task id="Reminder to IRB notification"
+			batchCorrespondenceTypeCode="2" committeeId="COEUS" delayToStart="0"
+			pollinginterval="1440" />
+	</IRBBatchCorrespondence>
+
+	<!-- Added for COEUSQA-2675 Remaining IACUC Protocol Actions Batch Correspondence-Start -->
+	<IACUCBatchCorrespondence logfilename="Correspondence_log"
+		enablingkey='ENABLE_IACUC_BATCH_CORRESP_SCHEDULER'
+		nodereader="edu.mit.coeus.iacuc.notification.IacucBatchCorrespondenceReader"
+		jobscheduler="edu.mit.coeus.iacuc.notification.IacucBatchCorrespondenceTask">
+		<task id="IACUC Protocol Renewal Reminder"
+			batchCorrespondenceTypeCode="1" committeeId="Animal Care"
+			delayToStart="0" pollinginterval="1440" />
+		<task id="Reminder to IACUC notification"
+			batchCorrespondenceTypeCode="2" committeeId="Animal Care"
+			delayToStart="0" pollinginterval="1440" />
+	</IACUCBatchCorrespondence>
+	<!-- Added for COEUSQA-2675 Remaining IACUC Protocol Actions Batch Correspondence-End -->
+
+	<!-- DeleteLock node: enablingkey : Key defined in OSP$PARAMETER table to 
+		enable Deletion of Locks logfilename : Log file name nodereader : reader 
+		class to read the node jobscheduler : class to perform Polling task -->
+	<DeleteLock enablingkey='ENABLE_AUTO_DELETE_LOCK'
+		logfilename="LockUpdate_log" nodereader="edu.mit.coeus.utils.locking.DeleteLockReader"
+		jobscheduler="edu.mit.coeus.utils.locking.DeleteLockTask">
+		<!-- id: task id pollinginterval: Polling interval for the task. Defined 
+			in minutes (in minutes) If the 'delayToStart' is specified, it will be igonred. -->
+		<task id="Delete Expired Locks" pollinginterval="60" />
+	</DeleteLock>
+
+</Scheduler>
