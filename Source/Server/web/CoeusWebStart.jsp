@@ -61,8 +61,8 @@
 		UtilFactory.log(errorMsg, null, "", "");
         }        
         jnlpURL = appHomeURL + "coeus.jnlp";
-// JM 3-6-2013 updated to use Java 1.7
-		java32URL = appHomeURL + "jre-7u45-windows-i586.exe";
+// JM 3-6-2013 updated to use Java 1.8
+		java32URL = appHomeURL + "jre-8u45-windows-i586.exe";
 // JM END
 %>
 
@@ -107,7 +107,7 @@
 					   	<BR>
 	                    <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
 	                    <script language="javascript">
-							document.write("Coeus Premium is a 32-bit application and requires 32-bit Java 1.7 on your system.");
+							document.write("Coeus Premium is a 32-bit application and requires 32-bit Java 1.8 on your system.");
 	                    </script>
 	                    </font>
 	                    <BR>
@@ -116,7 +116,7 @@
 							document.write("This version of Java will work on both 32-bit and 64-bit platforms.");			
 	                    </script>
 	                    <script language="javascript">
-	             		document.write('<a href="<%=java32URL%>" style=\"color:#3366FF;text-decoration:none;\">Download Java 1.7</a>');
+	             		document.write('<a href="<%=java32URL%>" style=\"color:#3366FF;text-decoration:none;\">Download Java 1.8</a>');
 			    		</script>
 	                    </font>
                 	</td>
