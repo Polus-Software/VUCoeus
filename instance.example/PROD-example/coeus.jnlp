@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- 
+    JNLP File for Coeus Application 
+    Java web start uses this file to configure each client side jvm
+--> 
+<!-- JM 3-26-2014 updated with instance specific information -->
+<jnlp 
+  spec="1.0+" 
+  codebase="https://coeus.app.vanderbilt.edu/coeus/"
+  href="coeus.jnlp"> 
+
+  <!-- Windows and Linux -->
+  <information os="Windows Linux">
+  	<!-- JM 6-3-2015 updated with instance specific information and custom icons -->
+    <title>Coeus 6.2</title> 
+    <vendor>Vanderbilt University</vendor> 
+    <homepage href="CoeusWebStart.htm"/> 
+    <description>Coeus 6.2</description> 
+    <description kind="short">Coeus 6.2</description> 
+	<icon href="coeus_vu.png"/>
+	<icon kind="shortcut" href="coeus_vu.ico"/>
+    <icon kind="splash" href="coeus_splash.jpg"/>
+    <shortcut online="false">
+      <desktop/>
+    </shortcut>
+  </information> 
+  
+  <!-- Mac -->
+  <information os="Mac">
+  	<!-- JM 6-3-2015 updated with instance specific information and custom icons -->
+    <title>Coeus 6.2</title> 
+    <vendor>Vanderbilt University</vendor> 
+    <homepage href="CoeusWebStart.htm"/> 
+    <description>Coeus 6.2</description> 
+    <description kind="short">Coeus 6.2</description> 
+	<icon href="coeus_vu.png"/>
+	<icon kind="shortcut" href="coeus_vu.icns"/>
+    <icon kind="splash" href="coeus_splash.jpg"/>
+    <shortcut online="false">
+      <desktop/>
+    </shortcut>
+  </information> 
+  <security> 
+      <all-permissions/> 
+  </security> 
+  <update check="always" policy="always"></update>
+  
+<!-- JM 6-3-2015 reworked to only have one resources area; 
+		5-12-2015 updated to include 1.8, removed 1.6; 
+		3-26-2014 updated to include 1.7, removed 1.5 --> 
+  <resources>
+    <j2se version="1.8* 1.7*" href="http://java.sun.com/products/autodl/j2se" initial-heap-size="100M" max-heap-size="200M"/> 
+    <jar href="brokers.jar"/> 
+    <jar href="admin.jar"/>
+    <jar href="commonlib.jar"/> 
+    <jar href="award.jar"/>
+    <jar href="centraladmin.jar"/>
+    <jar href="proposal.jar"/>
+    <jar href="irb.jar"/> 
+    <jar href="iacuc.jar"/> 
+    <jar href="propdev.jar"/> 
+    <jar href="resources.jar"/>
+    <jar href="fop.jar"/> 
+    <jar href="mapsrules.jar"/>
+    <jar href="s2s.jar"/>
+    <jar href="avalon-framework-4.2.0.jar"/> 
+    <jar href="batik-all-1.6.jar"/> 
+    <jar href="poi-3.8-20120326.jar"/> 
+    <jar href="questionnaire.jar"/>
+    <jar href="coeusmail.jar"/>
+    <jar href="routing.jar"/>
+    <jar href="umdnjcoeus.jar"/>
+    <jar href="jsr173_1.0_api.jar" />
+    <jar href="xbean_xpath.jar" />
+    <jar href="xbean.jar" />
+    <jar href="personalization_swing.jar" />
+    <jar href="coeus-personalization.jar"/>
+  </resources> 
+  <application-desc main-class="CoeusApp"/> 
+</jnlp> 
+
+

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Copyright (c) Massachusetts Institute of Technology
+ * 77 Massachusetts Avenue, Cambridge, MA 02139-4307
+ * All rights reserved.
+
+    Document   : Authentication.xml
+    Created on : August 25, 2006, 11:07 AM
+    Author     : Geo Thomas
+    Description:
+        This document is to configure the authentication modes and properties 
+        for Coeus Application
+        Each child od root node define the LOGIN_MODE specified in coeus.properties file
+        Refer coeus.org technical documentation for more details.
+        Currently coeus supports following authentication modes
+        1) USERID : validate against database user id and password
+        2) LDAP : validate user account against LDAP server
+        3) LDAPURL : validate by using LDAP module configured with apache
+        4) KERBEROS : single sign on using kerberos ticket
+        5) MULTI_CAMPUS_LDAP : LDAP implementation for multi campus setup
+-->
+
+<AUTHENTICATION>
+    <USERID clientsideauthclass="edu.mit.coeus.user.auth.ClientAuthServiceHelper" 
+            serversideauthclass="edu.mit.coeus.user.auth.UserIdAuthService" loginscreen="true">
+        <PROPERTY name="LOGIN_FAILURE_PAGE" value="/coeuslite/mit/irb/cwLogonError.jsp"/>
+    </USERID>
+    <CERTAPACHE clientsideauthclass="edu.mit.coeus.user.auth.ClientAuthServiceHelper" 
+                serversideauthclass="edu.mit.coeus.user.auth.SSLAuthService">
+        <PROPERTY name="SSL_CLIENT_EMAIL_KEY" value="SSL_CLIENT_S_DN_Email"/>
+        <PROPERTY name="LOGIN_FAILURE_PAGE" value="/coeuslite/mit/utils/cwCertLogonError.jsp"/>
+    </CERTAPACHE>
+<!-- JM 6-1-2011 updated with instance specific information -->
+    <LDAP clientsideauthclass="edu.mit.coeus.user.auth.ClientAuthServiceHelper" 
+          serversideauthclass="edu.mit.coeus.user.auth.LDAPAuthService" loginscreen="true">
+        <PROPERTY name="LDAP_CONTEXT_FACTORY" value="com.sun.jndi.ldap.LdapCtxFactory"/>
+        <PROPERTY name="LDAP_PROVIDER_URL" value="ldaps://ldap.vunetid.vanderbilt.edu:636"/>
+        <PROPERTY name="LDAP_DOMAIN_BASE" value="DC=vanderbilt,DC=edu"/>
+        <PROPERTY name="LDAP_SECURITY_AUTH_MODE" value="simple"/>
+        <PROPERTY name="LDAP_SECURITY_PROTOCOL" value="ssl"/>
+        <PROPERTY name="LDAP_FILTER_UID_NAME" value="uid"/>
+        <PROPERTY name="COEUS_LDAP_ADMIN_DN" value="UID=<<ldap userid>>,OU=Special Users,DC=vanderbilt,DC=edu"/>
+        <PROPERTY name="COEUS_LDAP_ADMIN_CREDENTIALS" value="<<ldap password>>"/>
+    </LDAP>
+<!-- END -->
+    <LDAP_WITH_USER_MAP clientsideauthclass="edu.mit.coeus.user.auth.ClientAuthServiceHelper" 
+          serversideauthclass="edu.mit.coeus.user.auth.UserMapLDAPAuthService" loginscreen="true">
+        <PROPERTY name="LOGIN_FAILURE_PAGE" value="/coeuslite/mit/irb/cwLogonError.jsp"/>
+        <PROPERTY name="CAMPUS_CODE" value="100"/>
+        <PROPERTY name="LDAP_CONTEXT_FACTORY" value=""/>
+        <PROPERTY name="LDAP_PROVIDER_URL" value=""/>
+        <PROPERTY name="LDAP_DOMAIN_BASE" value=""/>
+        <PROPERTY name="LDAP_SECURITY_AUTH_MODE" value=""/>
+        <PROPERTY name="LDAP_SECURITY_PROTOCOL" value=""/>
+        <PROPERTY name="LDAP_FILTER_UID_NAME" value=""/>
+        <PROPERTY name="COEUS_LDAP_ADMIN_DN" value=""/>
+        <PROPERTY name="COEUS_LDAP_ADMIN_CREDENTIALS" value=""/>
+    </LDAP_WITH_USER_MAP>
+    <MULTI_CAMPUS_LDAP clientsideauthclass="edu.mit.coeus.user.auth.MultiCampusClientAuthService" 
+                       serversideauthclass="edu.mit.coeus.user.auth.MultiCampusLDAPAuthService" loginscreen="true">
+        <PROPERTY name="LOGIN_PAGE" value="/coeuslite/mit/irb/clMultiCampusLogon.jsp"/>
+        <PROPERTY name="LOGIN_FAILURE_PAGE" value="/coeuslite/mit/irb/cwLogonError.jsp"/>
+        <CAMPUS code="030" value="Buffalo">
+            <PROPERTY name="LDAP_CONTEXT_FACTORY" value=""/>
+            <PROPERTY name="LDAP_PROVIDER_URL" value=""/>
+            <PROPERTY name="LDAP_DOMAIN_BASE" value=""/>
+            <PROPERTY name="LDAP_SECURITY_AUTH_MODE" value=""/>
+            <PROPERTY name="LDAP_SECURITY_PROTOCOL" value=""/>
+            <PROPERTY name="LDAP_FILTER_UID_NAME" value=""/>
+            <PROPERTY name="COEUS_LDAP_ADMIN_DN" value=""/>
+            <PROPERTY name="COEUS_LDAP_ADMIN_CREDENTIALS" value=""/>
+        </CAMPUS>
+        <CAMPUS code="050" value="Stonybrook">
+            <PROPERTY name="LDAP_CONTEXT_FACTORY" value=""/>
+            <PROPERTY name="LDAP_PROVIDER_URL" value=""/>
+            <PROPERTY name="LDAP_DOMAIN_BASE" value=""/>
+            <PROPERTY name="LDAP_SECURITY_AUTH_MODE" value=""/>
+            <PROPERTY name="LDAP_SECURITY_PROTOCOL" value=""/>
+            <PROPERTY name="LDAP_FILTER_UID_NAME" value=""/>
+            <PROPERTY name="COEUS_LDAP_ADMIN_DN" value=""/>
+            <PROPERTY name="COEUS_LDAP_ADMIN_CREDENTIALS" value=""/>
+        </CAMPUS>
+        <CAMPUS code="010" value="Albany">
+            <PROPERTY name="LDAP_CONTEXT_FACTORY" value=""/>
+            <PROPERTY name="LDAP_PROVIDER_URL" value=""/>
+            <PROPERTY name="LDAP_DOMAIN_BASE" value=""/>
+            <PROPERTY name="LDAP_SECURITY_AUTH_MODE" value=""/>
+            <PROPERTY name="LDAP_SECURITY_PROTOCOL" value=""/>
+            <PROPERTY name="LDAP_FILTER_UID_NAME" value=""/>
+            <PROPERTY name="COEUS_LDAP_ADMIN_DN" value=""/>
+            <PROPERTY name="COEUS_LDAP_ADMIN_CREDENTIALS" value=""/>
+        </CAMPUS>
+        <CAMPUS code="UNKWN" value="Binghamton">
+            <PROPERTY name="LDAP_CONTEXT_FACTORY" value=""/>
+            <PROPERTY name="LDAP_PROVIDER_URL" value=""/>
+            <PROPERTY name="LDAP_DOMAIN_BASE" value=""/>
+            <PROPERTY name="LDAP_SECURITY_AUTH_MODE" value=""/>
+            <PROPERTY name="LDAP_SECURITY_PROTOCOL" value=""/>
+            <PROPERTY name="LDAP_FILTER_UID_NAME" value=""/>
+            <PROPERTY name="COEUS_LDAP_ADMIN_DN" value=""/>
+            <PROPERTY name="COEUS_LDAP_ADMIN_CREDENTIALS" value=""/>
+        </CAMPUS>
+    </MULTI_CAMPUS_LDAP>
+    <KERBEROS clientsideauthclass="edu.mit.coeus.user.auth.KerberosClientAuthService" 
+              serversideauthclass="edu.mit.coeus.user.auth.KerberosAuthService">
+        <PROPERTY name="java.security.krb5.realm" value=""/>
+        <PROPERTY name="java.security.krb5.kdc" value=""/>
+    </KERBEROS>
+    <LDAPURL clientsideauthclass="edu.mit.coeus.user.auth.ClientAuthServiceHelper" 
+             serversideauthclass="edu.mit.coeus.user.auth.LDAPURLAuthService">
+        <PROPERTY name="LOGIN_FAILURE_PAGE" value="/coeuslite/mit/irb/cwLogonError.jsp"/>
+    </LDAPURL>
+    <X509CERTIFICATE clientsideauthclass="edu.mit.coeus.user.auth.ClientAuthServiceHelper" 
+                     serversideauthclass="edu.mit.coeus.user.auth.X509CertAuthService">
+    </X509CERTIFICATE>
+</AUTHENTICATION>
