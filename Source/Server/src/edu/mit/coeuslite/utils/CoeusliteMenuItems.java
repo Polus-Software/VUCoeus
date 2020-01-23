@@ -258,4 +258,6 @@ public interface CoeusliteMenuItems {
     //COEUSQA-4066
     public static final String USER_ATT_S2S_FORM = "P444";
    //COEUSQA-4066 
+    
+    public static final String HUMAN_SUBJECTS_CLINICAL_TRIALS = "P222";
 }

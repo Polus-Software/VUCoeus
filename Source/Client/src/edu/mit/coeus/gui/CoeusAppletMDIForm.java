@@ -474,9 +474,9 @@ public class CoeusAppletMDIForm extends JFrame {
         pm.display();
         
         // rdias UCSD - Coeus personalization impl
-	    AbstractController persnref = AbstractController.getPersonalizationControllerRef();
-	    persnref.customize_mainFrame(getCoeusMenuBar(),
-	    		coeusToolBar.getToolBar(), this, "MAINFRAME");
+//	    AbstractController persnref = AbstractController.getPersonalizationControllerRef();
+//	    persnref.customize_mainFrame(getCoeusMenuBar(),
+//	    		coeusToolBar.getToolBar(), this, "MAINFRAME");
 	    //rdias UCSD
     }
     

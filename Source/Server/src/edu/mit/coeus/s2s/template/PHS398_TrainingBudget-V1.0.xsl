@@ -30,12 +30,15 @@
 										<xsl:for-each select="PHS398_TrainingBudget:PHS398_TrainingBudget">
 											<xsl:for-each select="PHS398_TrainingBudget:BudgetYear">
 												<fo:table-row margin="0">
-													<fo:table-cell margin="0" padding="0" padding-bottom="0" display-align="center">
+													<fo:table-cell margin="0" padding="0" padding-bottom="0" display-align="before" text-align="right">
 														<fo:block>
 															<fo:inline font-size="5pt">
 																<xsl:text>OMB Number: 0925-0001</xsl:text>
 															</fo:inline>
 														</fo:block>
+                                                                                                                <fo:block>
+                                                                                                                    <fo:inline font-size="5pt"><xsl:text>Expiration Date:  03/31/2020</xsl:text></fo:inline>
+                                                                                                                </fo:block>
 													</fo:table-cell>
 												</fo:table-row>
 												<fo:table-row margin="0">
@@ -3682,11 +3685,11 @@
 																							<fo:table-cell number-columns-spanned="4" padding="2pt" display-align="before">
 																								<fo:block>
 																									<fo:inline font-weight="bold">
-																										<xsl:text>D. Indirect Costs</xsl:text>
+																										<xsl:text>D. Indirect (F&amp;A) Costs</xsl:text>
 																									</fo:inline>
 																									<fo:block/>
 																									<fo:inline>
-																										<xsl:text>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Indirect Cost Type</xsl:text>
+																										<xsl:text>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Indirect (F&amp;A) Type</xsl:text>
 																									</fo:inline>
 																								</fo:block>
 																							</fo:table-cell>
@@ -3714,7 +3717,7 @@
 																							<fo:table-cell number-columns-spanned="2" padding="2pt" text-align="center" display-align="center">
 																								<fo:block>
 																									<fo:inline>
-																										<xsl:text>Indirect Cost</xsl:text>
+																										<xsl:text>Indirect (F&amp;A)</xsl:text>
 																									</fo:inline>
 																									<fo:block/>
 																									<fo:inline>
@@ -3725,11 +3728,11 @@
 																							<fo:table-cell number-columns-spanned="4" padding="2pt" text-align="center" display-align="center">
 																								<fo:block>
 																									<fo:inline>
-																										<xsl:text>Indirect Cost</xsl:text>
+																										<xsl:text>Indirect (F&amp;A)</xsl:text>
 																									</fo:inline>
 																									<fo:block/>
 																									<fo:inline>
-																										<xsl:text>Base ($)</xsl:text>
+																										<xsl:text>Base</xsl:text>
 																									</fo:inline>
 																								</fo:block>
 																							</fo:table-cell>
@@ -4142,7 +4145,7 @@
 																							<fo:table-cell number-columns-spanned="6" padding="2pt" text-align="right" display-align="center">
 																								<fo:block>
 																									<fo:inline font-weight="bold">
-																										<xsl:text>Total Indirect Costs Requested</xsl:text>
+																										<xsl:text>Total Indirect (F&amp;A)Costs Requested</xsl:text>
 																									</fo:inline>
 																								</fo:block>
 																							</fo:table-cell>
@@ -4188,7 +4191,7 @@
 																							<fo:table-cell number-columns-spanned="8" padding="2pt" display-align="center">
 																								<fo:block>
 																									<fo:inline font-weight="bold">
-																										<xsl:text>E. Total Direct and Indirect Costs Requested (C + D)</xsl:text>
+																										<xsl:text>E. Total Direct and Indirect (F&amp;A) Costs Requested (C + D)</xsl:text>
 																									</fo:inline>
 																								</fo:block>
 																							</fo:table-cell>
@@ -5566,7 +5569,7 @@
 																				<fo:table-cell number-columns-spanned="3" padding="2pt" display-align="center">
 																					<fo:block>
 																						<fo:inline font-weight="bold">
-																							<xsl:text>D. Total Indirect Costs Requested</xsl:text>
+																							<xsl:text>D. Total Indirect (F&amp;A) Costs Requested</xsl:text>
 																						</fo:inline>
 																					</fo:block>
 																				</fo:table-cell>
@@ -5617,7 +5620,7 @@
 																				<fo:table-cell number-columns-spanned="4" padding="2pt" height="7" display-align="center">
 																					<fo:block>
 																						<fo:inline font-weight="bold">
-																							<xsl:text>E. Total Direct and Indirect Costs Requested (C + D)</xsl:text>
+																							<xsl:text>E. Total Direct and Indirect (F&amp;A) Costs Requested (C + D)</xsl:text>
 																						</fo:inline>
 																					</fo:block>
 																				</fo:table-cell>

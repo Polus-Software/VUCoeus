@@ -11,8 +11,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/coeus-utils.tld" prefix="coeusUtils"%>
 <%@ include file="/coeuslite/mit/utils/CoeusContextPath.jsp"%>
-<%@page
-	import="java.util.Vector,edu.mit.coeuslite.coiv2.services.CoiCommonService,edu.mit.coeuslite.award.beans.AwardDisplayBean,edu.mit.coeuslite.award.beans.AwardInvestigatorsBean;"%>
+<%@page import="java.util.Vector,edu.mit.coeuslite.coiv2.services.CoiCommonService,edu.mit.coeuslite.award.beans.AwardDisplayBean,edu.mit.coeuslite.award.beans.AwardInvestigatorsBean;"%>
 
 <html:html>
 <head>

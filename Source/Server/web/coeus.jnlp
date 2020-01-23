@@ -6,7 +6,7 @@
 
 <jnlp 
   spec="1.0+" 
-  codebase="<server.at.your.place where jnlp file resides>" 
+  codebase="http://localhost:8080/VUServer/" 
   href="coeus.jnlp"> 
   <!-- This sesction be used to differntiate dev, test and prod instances -->
   <information> 

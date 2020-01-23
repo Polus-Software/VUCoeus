@@ -30,19 +30,37 @@
         <PROPERTY name="SSL_CLIENT_EMAIL_KEY" value="SSL_CLIENT_S_DN_Email"/>
         <PROPERTY name="LOGIN_FAILURE_PAGE" value="/coeuslite/mit/utils/cwCertLogonError.jsp"/>
     </CERTAPACHE>
-<!-- JM 6-1-2011 updated with instance specific information -->
+    <!--
+        Following is a deprecated block. Its not required to use specific classes for
+        each LDAP server, instead use generic class LDAPAuthService, which has been 
+        modified to work for any ldap server
+    -->
+    <!--
+    Replace it with generic one
+    <LDAP clientsideauthclass="edu.mit.coeus.user.auth.ClientAuthServiceHelper" 
+            serversideauthclass="edu.mit.coeus.user.auth.UMDLDAPAuthService">
+        <PROPERTY name="LDAP_CONTEXT_FACTORY" value="com.sun.jndi.ldap.LdapCtxFactory"/>
+        <PROPERTY name="LDAP_PROVIDER_URL" value=""/>
+        <PROPERTY name="LDAP_DOMAIN_BASE" value=""/>
+        <PROPERTY name="LDAP_SECURITY_AUTH_MODE" value=""/>
+        <PROPERTY name="LDAP_SECURITY_PROTOCOL" value=""/>
+        <PROPERTY name="LDAP_FILTER_UID_NAME" value=""/>
+        <PROPERTY name="COEUS_LDAP_ADMIN_DN" value=""/>
+        <PROPERTY name="COEUS_LDAP_ADMIN_CREDENTIALS" value=""/>
+     </LDAP>
+     -->
+     <!-- Generic LDAP authentication -->
     <LDAP clientsideauthclass="edu.mit.coeus.user.auth.ClientAuthServiceHelper" 
           serversideauthclass="edu.mit.coeus.user.auth.LDAPAuthService" loginscreen="true">
-        <PROPERTY name="LDAP_CONTEXT_FACTORY" value="com.sun.jndi.ldap.LdapCtxFactory"/>
-        <PROPERTY name="LDAP_PROVIDER_URL" value="ldaps://ldap.vunetid.vanderbilt.edu:636"/>
-        <PROPERTY name="LDAP_DOMAIN_BASE" value="DC=vanderbilt,DC=edu"/>
-        <PROPERTY name="LDAP_SECURITY_AUTH_MODE" value="simple"/>
-        <PROPERTY name="LDAP_SECURITY_PROTOCOL" value="ssl"/>
-        <PROPERTY name="LDAP_FILTER_UID_NAME" value="uid"/>
-        <PROPERTY name="COEUS_LDAP_ADMIN_DN" value="UID=<<ldap userid>>,OU=Special Users,DC=vanderbilt,DC=edu"/>
-        <PROPERTY name="COEUS_LDAP_ADMIN_CREDENTIALS" value="<<ldap password>>"/>
+        <PROPERTY name="LDAP_CONTEXT_FACTORY" value=""/>
+        <PROPERTY name="LDAP_PROVIDER_URL" value=""/>
+        <PROPERTY name="LDAP_DOMAIN_BASE" value=""/>
+        <PROPERTY name="LDAP_SECURITY_AUTH_MODE" value=""/>
+        <PROPERTY name="LDAP_SECURITY_PROTOCOL" value=""/>
+        <PROPERTY name="LDAP_FILTER_UID_NAME" value=""/>
+        <PROPERTY name="COEUS_LDAP_ADMIN_DN" value=""/>
+        <PROPERTY name="COEUS_LDAP_ADMIN_CREDENTIALS" value=""/>
     </LDAP>
-<!-- END -->
     <LDAP_WITH_USER_MAP clientsideauthclass="edu.mit.coeus.user.auth.ClientAuthServiceHelper" 
           serversideauthclass="edu.mit.coeus.user.auth.UserMapLDAPAuthService" loginscreen="true">
         <PROPERTY name="LOGIN_FAILURE_PAGE" value="/coeuslite/mit/irb/cwLogonError.jsp"/>
