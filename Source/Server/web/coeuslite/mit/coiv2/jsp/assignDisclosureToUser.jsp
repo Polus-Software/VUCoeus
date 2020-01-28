@@ -5,31 +5,23 @@
 --%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ page
-	import="java.util.Vector,java.util.Date,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,edu.mit.coeuslite.coiv2.beans.CoiUsersBean,edu.mit.coeuslite.coiv2.beans.Coiv2AssignDisclUserBean;"%>
-<jsp:useBean id="loggedinUser" scope="session" class="java.lang.String" />
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ page import="java.util.Vector,java.util.Date,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,edu.mit.coeuslite.coiv2.beans.CoiUsersBean,edu.mit.coeuslite.coiv2.beans.Coiv2AssignDisclUserBean"%>
+<jsp:useBean id= "loggedinUser" scope="session" class="java.lang.String"/>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>C O I</title>
 <%String path = request.getContextPath();%>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/divSlide.js"></script>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/Balloon.js"></script>
-<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css"
-	rel="stylesheet" type="text/css" />
+<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css" rel="stylesheet" type="text/css" />
 </head>
 <script src="js/jquery.js" type="text/javascript"></script>
 <%  String s = (String) request.getAttribute("disNum");
@@ -168,28 +160,25 @@ function compltReview(value,personId){
 }
 </script>
 <html:form action="/assignDisclToUser.do">
-	<body>
+<body>
 
-		<table id="bodyTable" class="table" style="width: 100%;" border="0"
-			align="center">
-			<%--<table id="attBodyTable" class="table" border="0" width="100%">--%>
-			<tr style="background-color: #6E97CF; height: 22px;">
-				<td
-					style="color: #FFFFFF; font-size: 12px; font-weight: bold; padding: 2px 0 2px 3px;"
-					colspan="3">
-					<h1
-						style="background-color: #6E97CF; color: #FFFFFF; float: left; font-size: 14px; font-weight: bold; margin: 0; padding: 2px 0 2px 0px; position: relative; text-align: left;">Disclosure
-						Reviewer</h1>
-				</td>
-				<td align="right">
-					<% link = "javaScript:searchWindow();";%> <html:link href="<%=link%>">
-						<u> Add Reviewer</u>
-					</html:link>
+<table id="bodyTable" class="table" style="width: 100%;" border="0" align="center">
+     <%--<table id="attBodyTable" class="table" border="0" width="100%">--%>
+                <tr style="background-color:#6E97CF;height: 22px;">
+                    <td style="color:#FFFFFF;font-size:12px;font-weight:bold;padding: 2px 0 2px 3px;" colspan="3">
+                        <h1 style="background-color:#6E97CF;color:#FFFFFF;float:left;font-size:14px;font-weight:bold;margin: 0;padding: 2px 0
+2px 0px;position: relative;text-align: left;">Disclosure Reviewer</h1>
+                    </td>
+                    <td align="right">
+                   <% link = "javaScript:searchWindow();";%>
+                      <html:link href="<%=link%>">
+                      <u> Add Reviewer</u>
+                      </html:link>
 
-				</td>
-			</tr>
+                    </td>
+                </tr>
 
-			<%--<tr>
+<%--<tr>
     <td colspan="4">
 <b>Select Viewer :</b><br/><br/> </td></tr>
 <tr>
@@ -222,10 +211,12 @@ name="usr" property="fullName"/></option>
 </html:select>
 </td>
 </tr>--%>
-			<tr>
-				<td colspan="4">&nbsp;</td>
-			</tr>
-			<%--<tr>
+<tr>
+    <td colspan="4">
+        &nbsp;
+       </td>
+</tr>
+<%--<tr>
     <td colspan="4">
         &nbsp;
     </td>
@@ -238,31 +229,30 @@ name="usr" property="fullName"/></option>
 </td>
 </tr>--%>
 
-			<%--new COI Assign reviewer starts--%>
-			<table width='100%' cellpadding='3' cellspacing='0' class='tabtable'>
-				<tr>
-					<%--<td  class='theader' width='10%' nowrap>User Name</td>--%>
-					<td class='theader' width="25%">Full Name</td>
-					<td class='theader' width="10%">HomeUnit</td>
-					<td class='theader' width="20%">Recommended Action</td>
-					<td class='theader' nowrap width="25%">Review Complete
-						Timestamp</td>
-					<td class='theader'></td>
-				</tr>
+<%--new COI Assign reviewer starts--%>
+<table width='100%'   cellpadding='3' cellspacing='0' class='tabtable'>
+            <tr>
+                <%--<td  class='theader' width='10%' nowrap>User Name</td>--%>
+                <td  class='theader' width="25%">Full Name</td>
+                <td  class='theader' width="10%">HomeUnit</td>
+                <td  class='theader' width="20%">Recommended Action</td>
+                <td  class='theader' nowrap width="25%">Review Complete Timestamp</td>
+                <td  class='theader'></td>
+            </tr>
 
-				<logic:present name="details">
-					<% String strBgColor = "#DCE5F1";
+                <logic:present name="details">
+                     <% String strBgColor = "#DCE5F1";
                         int row=0;
 
                         %>
-					<logic:iterate id="usr" name="details">
-						<%if (row%2 == 0) {
+                <logic:iterate id="usr" name="details">
+             <%if (row%2 == 0) {
                     strBgColor = "#D6DCE5";
                 }
                else {
                 strBgColor="#DCE5F1";
              } %>
-						<%
+                    <%
                      Vector details = (Vector) request.getAttribute("details");
                     edu.mit.coeuslite.coiv2.beans.Coiv2AssignDisclUserBean userBean = (edu.mit.coeuslite.coiv2.beans.Coiv2AssignDisclUserBean)details.get(row);
                     String usrName = userBean.getFullName();
@@ -274,66 +264,63 @@ name="usr" property="fullName"/></option>
                     String updateUser = userBean.getUpdateUserName();
                 %>
 
-						<%--if(!(user.get("acType").equals("D"))){--%>
-						<tr bgcolor="<%=strBgColor%>"
-							onmouseover="className='TableItemOn'"
-							onmouseout="className='TableItemOff'">
-							<%--<td class='copy'><bean:write name="usr" property="userName"/></td>--%>
-							<td class='copy' nowrap><bean:write name="usr"
-									property="fullName" /></td>
-							<td class='copy'><logic:notEmpty name="usr"
-									property="unitNumber">
-									<bean:write name="usr" property="unitNumber" />
-								</logic:notEmpty></td>
-							<%
+            <%--if(!(user.get("acType").equals("D"))){--%>
+            <tr bgcolor="<%=strBgColor%>" onmouseover="className='TableItemOn'" onmouseout="className='TableItemOff'">
+                <%--<td class='copy'><bean:write name="usr" property="userName"/></td>--%>
+                <td class='copy' nowrap><bean:write name="usr" property="fullName"/></td>
+                <td class='copy' >
+                    <logic:notEmpty name="usr" property="unitNumber"><bean:write name="usr" property="unitNumber"/></logic:notEmpty>
+                </td>
+                     <%
                 String remove = "javaScript:removeLink('"+usrId+"','"+prsnId+"');";
                 String cmpltlink = "javaScript:compltReview('"+usrName+"','"+prsnId+"');";
                  if(usrName.equalsIgnoreCase(updateUser)){
                  if(reviewCmplt!=null && reviewCmplt.equals("Y")){ %>
-							<td class='copy'><%=description%></td>
-							<td class='copy' nowrap><%=updatedTime%><b> by </b><%=updateUser%></td>
-							<% }%>
-							<%--<td class='copy' ><a href="<%=cmpltlink%>">Complete Review</a></td>
+                 <td class='copy' ><%=description%></td>
+                 <td class='copy'  nowrap><%=updatedTime%><b> by </b><%=updateUser%></td>
+                 <% }%>
+                  <%--<td class='copy' ><a href="<%=cmpltlink%>">Complete Review</a></td>
                    <td class='copy'/>--%>
-							<% //}
+                     <% //}
                  } else {
                 if(admin!=null && admin){
                  if(reviewCmplt!=null && reviewCmplt.equals("Y")){
                             %>
-							<td class='copy'><a href="<%=cmpltlink%>"><%=description%></a></td>
-							<td class='copy' nowrap><%=updatedTime%><b> by </b><%=updateUser%></td>
-							<% }}}
+                 <td class='copy' ><a href="<%=cmpltlink%>"><%=description%></a></td>
+                 <td class='copy' nowrap><%=updatedTime%><b> by </b><%=updateUser%></td>
+                   <% }}}
                   if(admin!=null && admin){
                     if(reviewCmplt == null){
                            %>
-							<td class='copy'><a href="<%=cmpltlink%>">Complete
-									Review</a></td>
-							<td class='copy' />
-							<% }}else{ %>
-							<td class='copy' colspan="2" />
-							<% } %>
+                  <td class='copy'><a href="<%=cmpltlink%>">Complete Review</a></td>
+                   <td class='copy'/>
+                 <% }}else{ %>
+                 <td class='copy' colspan="2"/>
+                        <% } %>
 
-							<td class='copy' align=center><html:link href="<%=remove%>">
-									<bean:message bundle="proposal" key="proposalRoles.Remove" />
-								</html:link></td>
-						</tr>
-						<%//}
+                 <td class='copy' align=center>
+                    <html:link href="<%=remove%>">
+                        <bean:message bundle="proposal" key="proposalRoles.Remove"/>
+                    </html:link>
+                  </td>
+             </tr>
+                  <%//}
              row++;               %>
-					</logic:iterate>
-				</logic:present>
+                </logic:iterate>
+                 </logic:present>
 
 
 
-			</table>
-			<%--COI Assign reviewer ends--%>
-		</table>
+        </table>
+<%--COI Assign reviewer ends--%>
+</table>
 
-		<%String seleindx = (String) request.getAttribute("seleindx");
+<%String seleindx = (String) request.getAttribute("seleindx");
 if(seleindx==null ||seleindx.equalsIgnoreCase("")){
 seleindx = "0";
 }
 %>
-		<script>
+<script>
 var name = '<%=s%>';
 if(name == null){
 document.forms[0].discl.text = "Select";
@@ -341,6 +328,6 @@ document.forms[0].discl.text = "Select";
 document.forms[0].discl.selectedIndex = '<%=seleindx%>';
 }
 </script>
-	</body>
-</html:form>
+</body>
+   </html:form>
 </html>

@@ -4,77 +4,44 @@
     Author     : Mr
 --%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ page
-	import="java.util.Vector,java.util.Date,edu.mit.coeuslite.coiv2.utilities.CoiConstants,
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ page import="java.util.Vector,java.util.Date,edu.mit.coeuslite.coiv2.utilities.CoiConstants,
          edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,edu.mit.coeuslite.utils.bean.SubHeaderBean,
          edu.mit.coeuslite.coiv2.beans.CoiAnnualProjectEntityDetailsBean,edu.mit.coeuslite.coiv2.services.CoiCommonService,
-         edu.mit.coeuslite.coiv2.beans.CoiProposalBean,java.util.TreeSet;"%>
+         edu.mit.coeuslite.coiv2.beans.CoiProposalBean,java.util.TreeSet"%>
 <html:html locale="true">
 <head>
 <title>C O I</title>
-<script language="javascript" type="text/JavaScript"
-	src="..\scripts\_js.js"></script>
-<script language="javascript" type="text/JavaScript"
-	src="..\scripts\CheckForward.js"></script>
-<%! JspWriter writer;%>
+<script language="javascript" type="text/JavaScript" src="..\scripts\_js.js"></script>
+    <script language="javascript" type="text/JavaScript" src="..\scripts\CheckForward.js"></script>
+ <%! JspWriter writer;%>
 <%
 writer = out;
 String path = request.getContextPath();%>
 
-<script
-	src="<%=request.getContextPath()%>/coeuslite/mit/utils/scripts/modal/modaldbox.js"></script>
+      <script src="<%=request.getContextPath()%>/coeuslite/mit/utils/scripts/modal/modaldbox.js"></script>
 
-<title>CoeusLite</title>
-<script language="javascript" type="text/JavaScript"
-	src="..\scripts\_js.js"></script>
-<script language="javascript" type="text/JavaScript"
-	src="..\scripts\CheckForward.js"></script>
+        <title>CoeusLite</title>
+    <script language="javascript" type="text/JavaScript" src="..\scripts\_js.js"></script>
+    <script language="javascript" type="text/JavaScript" src="..\scripts\CheckForward.js"></script>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/divSlide.js"></script>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/Balloon.js"></script>
-<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css"
-	rel="stylesheet" type="text/css" />
+<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css" rel="stylesheet" type="text/css" />
 <style>
-#mbox {
-	background-color: #6e97cf;
-	padding: 0px 8px 8px 8px;
-	border: 3px solid #095796;
-}
+            #mbox{background-color:#6e97cf; padding:0px 8px 8px 8px; border:3px solid #095796;}
+            #mbm{font-family:sans-serif;font-weight:bold;float:right;padding-bottom:5px;}
+            #ol{background-image: url('../coeuslite/mit/utils/scripts/modal/overlay.png');}
+            .dialog {display:none}
 
-#mbm {
-	font-family: sans-serif;
-	font-weight: bold;
-	float: right;
-	padding-bottom: 5px;
-}
+            * html #ol{background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../coeuslite/mit/utils/scripts/modal/overlay.png", sizingMethod="scale");}
 
-#ol {
-	background-image:
-		url('../coeuslite/mit/utils/scripts/modal/overlay.png');
-}
-
-.dialog {
-	display: none
-}
-
-* html #ol {
-	background-image: none;
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../coeuslite/mit/utils/scripts/modal/overlay.png",
-		sizingMethod="scale");
-}
-</style>
+  </style>
 <%
     Vector val = (Vector) request.getAttribute("pjtEntDetView");
      boolean isAdmin = false;
@@ -368,29 +335,20 @@ function showDialog(txtAreaID,id)
      document.getElementById("mbox").style.top="250";//250
  }
 </script>
-<html:form action="/saveProjectsByFinancialEntitiesView.do">
-	<body>
-		<table id="bodyTable" class="table" style="width: 100%; height: 100%;"
-			border="0">
-			<tr style="background-color: #6E97CF; height: 22px;">
-				<td width="2%" style="background-color: #6E97CF;">&nbsp;</td>
-				<td
-					style="width: 14%; background-color: #6E97CF; color: #FFFFFF; float: none; font-size: 12px; font-weight: bold; margin: 0; text-align: left;"><strong>&nbsp;Discl.Event</strong></td>
-				<td
-					style="width: 14%; background-color: #6E97CF; color: #FFFFFF; float: none; font-size: 12px; font-weight: bold; margin: 0; text-align: left;"><strong>&nbsp;Project
-						#</strong></td>
-				<td
-					style="width: 32%; background-color: #6E97CF; color: #FFFFFF; float: none; font-size: 12px; font-weight: bold; margin: 0; text-align: left;"><strong>&nbsp;Project
-						Name</strong></td>
-				<td
-					style="width: 22%; background-color: #6E97CF; color: #FFFFFF; float: none; font-size: 12px; font-weight: bold; margin: 0; text-align: left;"><strong>&nbsp;Discl.Event
-						Status</strong></td>
-				<td width="10%" align="right"><a
-					href="<%=path%>/financialentities.do">View By FinancialEntities</a></td>
+    <html:form action="/saveProjectsByFinancialEntitiesView.do">
+    <body>
+   <table id="bodyTable" class="table" style="width: 100%;height: 100%;" border="0" >
+<tr style="background-color:#6E97CF;height:22px;"> 
+     <td width="2%" style="background-color:#6E97CF;">&nbsp;</td>
+    <td style="width: 14%;background-color:#6E97CF;color:#FFFFFF;float:none;font-size:12px;font-weight:bold;margin: 0;text-align: left; "><strong>&nbsp;Discl.Event</strong></td>
+    <td style="width: 14%;background-color:#6E97CF;color:#FFFFFF;float:none;font-size:12px;font-weight:bold;margin: 0;text-align: left;"><strong>&nbsp;Project #</strong></td>
+    <td style="width: 32%;background-color:#6E97CF;color:#FFFFFF;float:none;font-size:12px;font-weight:bold;margin: 0;text-align: left;"><strong>&nbsp;Project Name</strong></td>
+    <td style="width: 22%;background-color:#6E97CF;color:#FFFFFF;float:none;font-size:12px;font-weight:bold;margin: 0;text-align: left;"><strong>&nbsp;Discl.Event Status</strong></td>
+    <td  width="10%"align="right"><a href="<%=path%>/financialentities.do">View By FinancialEntities</a></td>
 
-				<%String projectType = (String)request.getSession().getAttribute("param5"); %>
-			</tr>
-			<%
+        <%String projectType = (String)request.getSession().getAttribute("param5"); %>
+</tr>
+<%
    Vector entlist = new Vector()  ;
  if(request.getAttribute("entityNameList") != null) {
       entlist = (Vector)request.getAttribute("entityNameList");
@@ -398,42 +356,44 @@ function showDialog(txtAreaID,id)
      if(entlist != null && entlist.size() == 0) {
          if(request.getAttribute("entityNameListCurr") == null){
          %>
-			<tr>
-				<td colspan="8"><font color="red">No Projects found</font></td>
-			</tr>
-			<tr>
-				<td><html:button onclick="javaScript:saveAndcontinue();"
-						property="Save" styleClass="clsavebutton" style="width:150px;">
+          <tr>
+        <td colspan="8">
+        <font color="red">No Projects found</font>
+        </td>
+        </tr>
+        <tr><td>
+            <html:button onclick="javaScript:saveAndcontinue();" property="Save" styleClass="clsavebutton" style="width:150px;">
                  Continue
-             </html:button> <%continuePresent = true;%></td>
-			</tr>
-			<%}
+             </html:button>
+                 <%continuePresent = true;%>
+            </td>
+        </tr>
+    <%}
          }
      }else { %>
-			<tr>
-				<td colspan="8"><font color="red">No Projects found</font></td>
-			</tr>
-			<tr>
-				<td><html:button onclick="javaScript:saveAndcontinue();"
-						property="Save" styleClass="clsavebutton" style="width:150px;">
+        <tr>
+        <td colspan="8">
+        <font color="red">No Projects found</font>
+        </td>
+        </tr>
+        <tr><td>
+            <html:button onclick="javaScript:saveAndcontinue();" property="Save" styleClass="clsavebutton" style="width:150px;">
                  Continue
-             </html:button></td>
-				<%continuePresent = true;%>
-			</tr>
-			<%}
+             </html:button>
+            </td>
+            <%continuePresent = true;%>
+        </tr>
+            <%}
  %>
 
-		</table>
-		<table id="bodyTable" class="table" style="width: 100%; height: 100%;"
-			border="0">
-			<logic:present name="entityNameListCurr">
+   </table>
+    <table id="bodyTable" class="table" style="width: 100%;height: 100%;" border="0" >
+     <logic:present name="entityNameListCurr">
 
-				<tr>
-					<td>
+             <tr><td>
 
-						<table id="bodyTable" class="table"
-							style="width: 100%; height: 100%;" border="0">
-							<%
+         <table id="bodyTable" class="table" style="width: 100%;height: 100%;" border="0" >
+               <%
                     String strBgColor1 = "#DCE5F1";
                     Vector projectList = (Vector)request.getAttribute("entityNameListCurr");
                       int startIndex = 0;
@@ -454,8 +414,8 @@ function showDialog(txtAreaID,id)
                             entDetList = (Vector)request.getAttribute("pjtEntDetViewCurr");
                         }
                %>
-							<logic:iterate id="pjtTitle" name="entityNameListCurr">
-								<%
+        <logic:iterate id="pjtTitle" name="entityNameListCurr">
+                 <%
                             String startDate = "";
                             String endDate = "";
                             if (startIndex%2 == 0) {
@@ -513,143 +473,114 @@ function showDialog(txtAreaID,id)
                                       }
                             if(!propPresent && (moduleCode1 == 2 || moduleCode1 == 3)) {
                       %>
-								<tr>
-									<td width="1px"></td>
-									<td colspan="4"><label
-										style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Following
-											Proposals included in this disclosure</label></td>
-								</tr>
-								<%
+                      <tr>
+                          <td width="1px"></td>
+                          <td colspan="4">
+                              <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;">Following Proposals included in this disclosure</label>
+                          </td>
+                      </tr>
+                      <%
                         propPresent = true;
                        }
                          if(!irbPresent && moduleCode1 == 7){
                        %>
-								<tr>
-									<td width="1px"></td>
-									<td colspan="4"><label
-										style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Following
-											IRB Protocols included in this disclosure</label></td>
-								</tr>
-								<%
+                        <tr>
+                          <td width="1px"></td>
+                          <td colspan="4">
+                              <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;">Following IRB Protocols included in this disclosure</label>
+                          </td>
+                      </tr>
+                       <%
                         irbPresent = true;
                         }
                         if(!iacucPresent && moduleCode1 == 9){
                        %>
 
-								<tr>
-									<td width="1px"></td>
-									<td colspan="4"><label
-										style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Following
-											IACUC Protocols included in this disclosure</label></td>
-								</tr>
-								<%
+                       <tr>
+                          <td width="1px"></td>
+                          <td colspan="4">
+                              <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;">Following IACUC Protocols included in this disclosure</label>
+                          </td>
+                      </tr>
+                       <%
                             iacucPresent = true;
                         }
                         if(!awardPresent && moduleCode1 == 1) {
                        %>
-								<tr>
-									<td width="1px"></td>
-									<td colspan="4"><label
-										style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Following
-											Awards included in this disclosure</label></td>
-								</tr>
-								<%
+                         <tr>
+                          <td width="1px"></td>
+                          <td colspan="4">
+                              <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;">Following Awards included in this disclosure</label>
+                          </td>
+                      </tr>
+                       <%
                              awardPresent = true;
                             }
                         %>
-								<%if(moduleCode1 !=0) {%>
-								<tr bgcolor="<%=strBgColor1%>" id="row<%=startIndex%>"
-									class="rowLine" onmouseover="className='rowHover rowLine'"
-									onmouseout="className='rowLine'" height="22px">
-									<td style="text-align: left;" width="2%"><img
-										src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-										border='none' id="imgtoggleview<%=startIndex%>"
-										name="imgtoggleview<%=startIndex%>" border="none"
-										onclick="javascript:selectProjView(<%=startIndex%>);" /> <img
-										src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-										style="visibility: hidden;" border='none'
-										id="imgtoggleminusview<%=startIndex%>"
-										name="imgtoggleminusview<%=startIndex%>" border="none"
-										onclick="javascript:selectProjView(<%=startIndex%>);" /></td>
-									<td style="text-align: left;" width="14%">&nbsp;<%=projectType%></td>
-									<td style="text-align: left;" width="14%">&nbsp;<bean:write
-											name="pjtTitle" property="coiProjectId" /></td>
-									<td style="text-align: left;" width="32%">&nbsp;<bean:write
-											name="pjtTitle" property="coiProjectTitle" /></td>
-									<%
+         <%if(moduleCode1 !=0) {%>
+         <tr bgcolor="<%=strBgColor1%>" id="row<%=startIndex%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+             <td style="text-align: left;" width="2%">
+           <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgtoggleview<%=startIndex%>" name="imgtoggleview<%=startIndex%>" border="none" onclick="javascript:selectProjView(<%=startIndex%>);"/>
+           <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgtoggleminusview<%=startIndex%>" name="imgtoggleminusview<%=startIndex%>" border="none" onclick="javascript:selectProjView(<%=startIndex%>);"/>
+         </td>
+         <td  style="text-align: left;" width="14%">&nbsp;<%=projectType%></td>
+         <td  style="text-align: left;" width="14%">&nbsp;<bean:write name="pjtTitle" property="coiProjectId"/></td>
+         <td  style="text-align: left;" width="32%">&nbsp;<bean:write name="pjtTitle" property="coiProjectTitle"/></td>
+            <%
                if(isAdmin && entityNum1 != null && !apprvdView.equalsIgnoreCase("approvedDisclosureview") && !isHistoryView)
             {%>
-									<td style="text-align: left;" width="22%"><select
-										id="dispositionStatus<%=startIndex%>"
-										name="dispDisclStatusForm" style="width: 100%"
-										onchange="changeStatusCode(<%=startIndex%>);">
-											<%--<option value="<bean:write name="pjtTitle" property="entityStatusCode"/>"><bean:write name="pjtTitle" property="entityStatus"/></option>--%>
-											<option value="<%=entStatusCode%>"><%=entStatusDescription%></option>
-											<logic:present name="typeList">
-												<logic:iterate id="statusList" name="typeList">
-													<option
-														value="<bean:write name="statusList" property="code"/>"><bean:write
-															name="statusList" property="description" /></option>
-												</logic:iterate>
-											</logic:present>
-									</select></td>
-									<%} else if(entityNum1 != null){%>
-									<td style="text-align: left;" width="22%">&nbsp;<%--<bean:write name="pjtTitle" property="entityStatus"/>--%><%=entStatusDescription%></td>
-									<%} else{%>
-									<td style="text-align: left;" width="22%">&nbsp;</td>
-									<%}%>
-									<td align="center" width="10%">&nbsp;&nbsp;&nbsp;&nbsp; <a
-										href="javascript:populateHistoryList('<%=linkFeed1%>')"</a>History
-									</td>
-								</tr>
-								<tr>
-									<td colspan="6">
-										<div id="div<%=startIndex%>"
-											style="height: 1px; width: 100%; visibility: hidden; background-color: #9DBFE9; overflow-x: hidden; overflow-y: scroll;">
-											<!--[if IE]>
+            <td  style="text-align: left;" width="22%">
+                <select id="dispositionStatus<%=startIndex%>" name="dispDisclStatusForm" style="width: 100%" onchange="changeStatusCode(<%=startIndex%>);">
+                <%--<option value="<bean:write name="pjtTitle" property="entityStatusCode"/>"><bean:write name="pjtTitle" property="entityStatus"/></option>--%>
+                <option value="<%=entStatusCode%>"><%=entStatusDescription%></option>
+                <logic:present name="typeList">
+                <logic:iterate id="statusList" name="typeList">
+                <option value="<bean:write name="statusList" property="code"/>"><bean:write name="statusList" property="description"/></option>
+                </logic:iterate>
+                </logic:present>
+               </select>
+            </td>
+            <%} else if(entityNum1 != null){%>
+            <td  style="text-align: left;" width="22%">&nbsp;<%--<bean:write name="pjtTitle" property="entityStatus"/>--%><%=entStatusDescription%></td>
+            <%} else{%>
+            <td  style="text-align: left;" width="22%">&nbsp;</td>
+            <%}%>
+            <td  align="center" width="10%">&nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:populateHistoryList('<%=linkFeed1%>')" </a>History</td>
+         </tr> <tr>
+            <td colspan="6">
+                <div id="div<%=startIndex%>" style="height: 1px;width: 100%;visibility: hidden;background-color: #9DBFE9;overflow-x: hidden; overflow-y: scroll;">
+                 <!--[if IE]>
             <style type="text/css">
                 body {word-wrap: break-word;}
                 </style>
                 <![endif]-->
-											<table id="bodyTable" class="table"
-												style="width: 100%; height: 100%;" border="0">
-												<tr>
-													<td
-														style="width: 100px; background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;">
-														&nbsp;<strong>Entity Name</strong>
-													</td>
-													<td
-														style="width: 200px; background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;">
-														&nbsp;<strong>Entity Business Focus</strong>
-													</td>
-													<td
-														style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Relationship
-															Description</strong></td>
-													<td
-														style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Entity
-															Status</strong></td>
-													<%--<td width="5%" align="left" style="background-color:#6E97CF;color:#FFFFFF;float:none;font-size:14px;font-weight:bold;margin: 0;"><strong>&nbsp;&nbsp;Comments</strong></td>--%>
+                    <table id="bodyTable" class="table" style="width: 100% ;height: 100%;" border="0" >
+                <tr>
+                    <td style="width:100px;background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"> &nbsp;<strong>Entity Name</strong></td>
+                    <td style="width:200px;background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"> &nbsp;<strong>Entity Business Focus</strong></td>
+                    <td style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Relationship Description</strong></td>
+                    <td style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Entity Status</strong></td>
+                    <%--<td width="5%" align="left" style="background-color:#6E97CF;color:#FFFFFF;float:none;font-size:14px;font-weight:bold;margin: 0;"><strong>&nbsp;&nbsp;Comments</strong></td>--%>
 
-												</tr>
-												<% int startIndex1=0;
+                </tr>
+                <% int startIndex1=0;
                     int countPresent=0;
                     Vector entNameList = (Vector)request.getAttribute("pjtEntDetView");
                     int numOfEntity=0;
                 %>
 
-												<logic:present name="pjtEntDetViewCurr">
-													<logic:iterate id="pjtEntView" name="pjtEntDetViewCurr">
+                 <logic:present name="pjtEntDetViewCurr">
+                    <logic:iterate id="pjtEntView" name="pjtEntDetViewCurr">
 
-														<logic:equal value="<%=pjtId%>" property="coiProjectId"
-															name="pjtEntView">
-															<%numOfEntity++;%>
-														</logic:equal>
-													</logic:iterate>
-												</logic:present>
+                    <logic:equal value="<%=pjtId%>" property="coiProjectId" name="pjtEntView">
+                        <%numOfEntity++;%>
+                    </logic:equal>
+                    </logic:iterate>
+                </logic:present>
 
-												<logic:present name="pjtEntDetViewCurr">
-													<logic:iterate id="pjtEntView" name="pjtEntDetViewCurr">
-														<% String projectName = (String)pjtBean1.getCoiProjectId();
+                <logic:present name="pjtEntDetViewCurr">
+                    <logic:iterate id="pjtEntView" name="pjtEntDetViewCurr">
+                            <% String projectName = (String)pjtBean1.getCoiProjectId();
                                 CoiAnnualProjectEntityDetailsBean entityBean = (CoiAnnualProjectEntityDetailsBean)entNameList.get(startIndex1);
                                 String entityNumber=entityBean.getEntityNumber();
                            String DescDetails = "";
@@ -674,114 +605,93 @@ function showDialog(txtAreaID,id)
 
                              }}
                             %>
-														<logic:equal value="<%=pjtId%>" property="coiProjectId"
-															name="pjtEntView">
-															<%
+                    <logic:equal value="<%=pjtId%>" property="coiProjectId" name="pjtEntView">
+                     <%
                         DescDetails += entityBean.getEntityName()+"##";
                         DescDetails += entityBean.getRelationshipDescription()+"##";
                         DescDetails += entityBean.getOrgRelationDescription();
                      %>
-															<logic:notEmpty name="pjtEntView" property="entityName">
-																<tr class="rowLineLight"
-																	onmouseover="className='rowHover rowLine'"
-																	onmouseout="className='rowLineLight'"
-																	style="height: 22px;">
-																	<td>&nbsp;<b><a
-																			href="javascript:show('<%=entityNumber%>')"><u><bean:write
-																						name="pjtEntView" property="entityName" /></u></a></b>
-																	</td>
-																	<td>
-																		<div
-																			style="word-wrap: break-word; width: 254px; float: left; overflow: hidden"><%=comments%></div>
-																	</td>
-																	<input id="txtAreaCommentId1<%=startIndex1%>"
-																		name="finEntDet" type="hidden" value="<%=commentObj%>" />
-																	<td style="width: 254px !important;">
-																		<div
-																			style="word-wrap: break-word; width: 254px; float: left; overflow: hidden"><%=commnt%></div>
-																	</td>
-																	<input id="txtAreaCommentId2<%=startIndex1%>"
-																		name="finEntDet" type="hidden" value="<%=commentOb%>" />
-																	<%countPresent = 1;%>
-																	<%if(isAdmin && !apprvdView.equalsIgnoreCase("approvedDisclosureview") && !isHistoryView) {%>
-																	<td style="text-align: left;">
-																		<div style="word-wrap: break-word; width: 154px;">
-																			<select
-																				id="entityStatus<%=startIndex%><%=startIndex1%>"
-																				name="dispDisclStatusForm"
-																				onchange="changePjtStatus('<%=startIndex%>','<%=numOfEntity%>');">
-																				<option
-																					value="<bean:write name="pjtEntView" property="entityStatusCode"/>"><bean:write
-																						name="pjtEntView" property="entityStatus" /></option>
-																				<logic:present name="typeList">
-																					<logic:iterate id="statusList" name="typeList">
-																						<option
-																							value="<bean:write name="statusList" property="code"/>"><bean:write
-																								name="statusList" property="description" /></option>
-																					</logic:iterate>
-																				</logic:present>
-																			</select> <input type="hidden"
-																				id="discDetail<%=startIndex%><%=startIndex1%>"
-																				value="<bean:write name="pjtEntView" property="coiDiscDetailsNumber"/>" />
-																		</div>
-																	</td>
-																	<%} else {%>
-																	<td><b><bean:write name="pjtEntView"
-																				property="entityStatus" /></b></td>
-																	<%}%>
+                    <logic:notEmpty name="pjtEntView" property="entityName">
+                      <tr class="rowLineLight" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLineLight'" style="height: 22px;">
+                        <td>
+                            &nbsp;<b><a href="javascript:show('<%=entityNumber%>')"><u><bean:write name="pjtEntView" property="entityName"/></u></a></b>
+                        </td>
+                        <td>
+                            <div style="word-wrap: break-word;width:254px;float:left;overflow: hidden"><%=comments%></div>                       
+                        </td>
+                        <input id="txtAreaCommentId1<%=startIndex1%>" name="finEntDet" type="hidden" value="<%=commentObj%>" />
+                         <td style="width:254px !important;">
+                             <div style="word-wrap: break-word;width:254px;float:left;overflow: hidden"><%=commnt%></div>
+                         </td>
+                <input id="txtAreaCommentId2<%=startIndex1%>" name="finEntDet" type="hidden" value="<%=commentOb%>" />
+                            <%countPresent = 1;%>
+                            <%if(isAdmin && !apprvdView.equalsIgnoreCase("approvedDisclosureview") && !isHistoryView) {%>
+                            <td style="text-align: left;">
+                             <div style="word-wrap: break-word;width:154px;">
+                                <select id="entityStatus<%=startIndex%><%=startIndex1%>" name="dispDisclStatusForm" onchange="changePjtStatus('<%=startIndex%>','<%=numOfEntity%>');">
+                            <option value="<bean:write name="pjtEntView" property="entityStatusCode"/>"><bean:write name="pjtEntView" property="entityStatus"/></option>
+                             <logic:present name="typeList">
+                                <logic:iterate id="statusList" name="typeList">
+                                <option value="<bean:write name="statusList" property="code"/>"><bean:write name="statusList" property="description"/></option>
+                                </logic:iterate>
+                             </logic:present>
+                            </select>
+                               <input type="hidden" id="discDetail<%=startIndex%><%=startIndex1%>" value="<bean:write name="pjtEntView" property="coiDiscDetailsNumber"/>" />
+                             </div>
+                                </td>
+                           <%} else {%>
+                            <td>
+                                <b><bean:write name="pjtEntView" property="entityStatus"/></b>
+                            </td>
+                           <%}%>
 
-																</tr>
-															</logic:notEmpty>
-														</logic:equal>
-														<% startIndex1++; %>
-													</logic:iterate>
-													<%if(countPresent == 0) {%>
-													<tr>
-														<td colspan="2" style="padding-left: 25px;"><font
-															style="color: red">No financial entities found</font></td>
-													</tr>
-													<%} else {%>
-													<logic:empty name="pjtEntView" property="entityName">
-														<tr>
-															<td colspan="2" style="padding-left: 25px;"><font
-																style="color: red">No financial entities found</font></td>
-														</tr>
-													</logic:empty>
-													<%}%>
-												</logic:present>
-											</table>
-										</div>
-									</td>
-								</tr>
-								<%}%>
-								<%startIndex++;%>
-							</logic:iterate>
-							<%request.getSession().setAttribute("lastIndex",startIndex);%>
-							<%
+                     </tr>
+                   </logic:notEmpty>                     
+                   </logic:equal>
+                     <% startIndex1++; %>
+                    </logic:iterate>
+                   <%if(countPresent == 0) {%>
+                    <tr><td colspan="2" style="padding-left: 25px;">
+                           <font style="color: red">No financial entities found</font>
+                    </td></tr>
+                   <%} else {%>
+                       <logic:empty name="pjtEntView" property="entityName">
+                            <tr><td colspan="2" style="padding-left: 25px;">
+                                    <font style="color: red">No financial entities found</font>
+                            </td></tr>
+                        </logic:empty>
+                      <%}%>
+                 </logic:present>
+               </table>
+              </div>
+          </td>
+          </tr>
+          <%}%>
+         <%startIndex++;%>
+        </logic:iterate>
+                <%request.getSession().setAttribute("lastIndex",startIndex);%>
+                 <%
                   if(isAdmin && entityNum1 != null && !(entlist != null && entlist.size() > 0) && !apprvdView.equalsIgnoreCase("approvedDisclosureview") && !isHistoryView) {%>
-							<logic:notPresent name="historyView">
-								<tr>
-									<td><html:button styleClass="clsavebutton" value="Save"
-											property="save" onclick="updateProjectDetails();" /></td>
-								</tr>
-							</logic:notPresent>
-							<%}%>
+                  <logic:notPresent name="historyView">
+                 <tr>
+                    <td>
+                        <html:button styleClass="clsavebutton"  value="Save" property="save" onclick="updateProjectDetails();"/>
+                    </td>
+                              </tr>
+                  </logic:notPresent>
+                 <%}%>
 
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td>
-			</logic:present>
-			<logic:present name="entityNameListCurr">
-				<div id="pjtList" style="display: none; overflow: hidden;"
-					align="left">
-			</logic:present>
+        </table>
+                 </td></tr>
+             <tr><td>
+        </logic:present>
+            <logic:present name="entityNameListCurr">
+                <div id="pjtList" style="display:none; overflow: hidden;" align="left">
+             </logic:present>
 
-			<table id="bodyTable" class="table"
-				style="width: 100%; height: 100%;" border="0">
-				<logic:present name="entityNameList">
-					<%
+                    <table id="bodyTable" class="table" style="width: 100%;height: 100%;" border="0">
+        <logic:present name="entityNameList">
+               <%
                     String strBgColor = "#DCE5F1";
                     Vector projectNameList = (Vector)request.getAttribute("entityNameList");
                       int index = 0;
@@ -802,8 +712,8 @@ function showDialog(txtAreaID,id)
                             entDetList_v = (Vector)request.getAttribute("pjtEntDetView");
                         }
                %>
-					<logic:iterate id="pjtTitle" name="entityNameList">
-						<%
+        <logic:iterate id="pjtTitle" name="entityNameList">
+                 <%
                             String startDate1 = "";
                             String endDate1 = "";
 
@@ -862,150 +772,123 @@ function showDialog(txtAreaID,id)
                           }
                       if(!propPresent_v && (moduleCode == 2 || moduleCode == 3)) {
                       %>
-						<tr>
-							<td width="1px"></td>
-							<td colspan="4"><label
-								style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Following
-									Proposals included in this disclosure</label></td>
-						</tr>
-						<% propPresent_v = true;
+                      <tr>
+                          <td width="1px"></td>
+                          <td colspan="4">
+                              <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;">Following Proposals included in this disclosure</label>
+                          </td>
+                      </tr>
+                      <% propPresent_v = true;
                         }
 
                          if(!irbPresent_v && moduleCode == 7) {
                       %>
-						<tr>
-							<td width="1px"></td>
-							<td colspan="4"><label
-								style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Following
-									IRB Protocols included in this disclosure</label></td>
-						</tr>
-						<%
+                        <tr>
+                          <td width="1px"></td>
+                          <td colspan="4">
+                              <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;">Following IRB Protocols included in this disclosure</label>
+                          </td>
+                      </tr>
+                      <%
                         irbPresent_v = true;
                         }
                         if(!iacucPresent_v && moduleCode == 9){
                       %>
-						<tr>
-							<td width="1px"></td>
-							<td colspan="4"><label
-								style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Following
-									IACUC Protocols included in this disclosure</label></td>
-						</tr>
-						<%
+                        <tr>
+                          <td width="1px"></td>
+                          <td colspan="4">
+                              <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;">Following IACUC Protocols included in this disclosure</label>
+                          </td>
+                      </tr>
+                      <%
                         iacucPresent_v = true;
                        }
                         if(!awardPresent_v && moduleCode == 1) {
                       %>
-						<tr>
-							<td width="1px"></td>
-							<td colspan="4"><label
-								style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">Following
-									Awards included in this disclosure</label></td>
-						</tr>
-						<%
+                      <tr>
+                          <td width="1px"></td>
+                          <td colspan="4">
+                              <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;">Following Awards  included in this disclosure</label>
+                          </td>
+                      </tr>
+                      <%
                         awardPresent_v = true;
                         }
                       %>
-						<%if(moduleCode != 0) {%>
-						<tr bgcolor="<%=strBgColor%>" id="row<%=index%>" class="rowLine"
-							onmouseover="className='rowHover rowLine'"
-							onmouseout="className='rowLine'" height="22px" align="left">
-							<td style="text-align: left; width: 2px"><img
-								src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-								border='none' id="imgtoggle<%=index%>"
-								name="imgtoggle<%=index%>" border="none"
-								onclick="javascript:selectProj(<%=index%>);" /> <img
-								src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-								style="visibility: hidden;" border='none'
-								id="imgtoggleminus<%=index%>" name="imgtoggleminus<%=index%>"
-								border="none" onclick="javascript:selectProj(<%=index%>);" /></td>
-							<td width="14%" align="left" style="text-align: left;">&nbsp;<%=projectType%></td>
-							<td width="14%" style="text-align: left;">&nbsp;<bean:write
-									name="pjtTitle" property="coiProjectId" /></td>
-							<td width="32%" style="text-align: left;">
-								<%  String relatn=pjtBean.getCoiProjectTitle();
+                   <%if(moduleCode != 0) {%>
+      <tr bgcolor="<%=strBgColor%>" id="row<%=index%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px" align="left">
+        <td style="text-align: left;width: 2px">
+           <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgtoggle<%=index%>" name="imgtoggle<%=index%>" border="none" onclick="javascript:selectProj(<%=index%>);"/>
+           <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgtoggleminus<%=index%>" name="imgtoggleminus<%=index%>" border="none" onclick="javascript:selectProj(<%=index%>);"/>
+        </td>
+        <td  width="14%" align="left" style="text-align: left;">&nbsp;<%=projectType%></td>
+        <td width="14%" style="text-align: left;">&nbsp;<bean:write name="pjtTitle" property="coiProjectId"/></td>
+        <td width="32%" style="text-align: left;">
+            <%  String relatn=pjtBean.getCoiProjectTitle();
             String comment="";
         if(relatn==null){comment="";}
         else{comment=(String)relatn;
             if(comment.trim().length()>88)
                 {comment=(String)comment.substring(0,88);
                  comment+="<a href=\"javaScript:showTitle('txtAreaComment"+index+"','divTXT')\">[...]</a>";
-            }}%><%=comment%> <input id="txtAreaComment<%=index%>"
-								name="finEntDet" type="hidden"
-								value="<%=pjtBean.getCoiProjectTitle()%>" />
-							</td>
-							<%
+            }}%><%=comment%>
+            <input id="txtAreaComment<%=index%>" name="finEntDet" type="hidden" value="<%=pjtBean.getCoiProjectTitle()%>" />
+        </td>
+            <%
            if(isAdmin && entityNum != null && !apprvdView.equalsIgnoreCase("approvedDisclosureview") && !isHistoryView) {%>
-							<td width="22%" style="text-align: left;"><select
-								id="dispositionStatus<%=index%>" name="dispDisclStatusForm"
-								style="width: 100%" onchange="changeStatusCode(<%=index%>);">
-									<%--<option value="<bean:write name="pjtTitle" property="entityStatusCode"/>"><bean:write name="pjtTitle" property="entityStatus"/></option>--%>
-									<option value="<%=entStatusCode_v%>"><%=entStatusDescription_v%></option>
-									<logic:present name="typeList">
-										<logic:iterate id="statusList" name="typeList">
-											<option
-												value="<bean:write name="statusList" property="code"/>"><bean:write
-													name="statusList" property="description" /></option>
-										</logic:iterate>
-									</logic:present>
-							</select></td>
-							<%} else if(entityNum != null){%>
-							<td width="22%">
-								<%--<bean:write name="pjtTitle" property="entityStatus"/>--%><%=entStatusDescription_v%></td>
-							<%} else{%>
-							<td width="22%">&nbsp;</td>
-							<%}%>
-							<td align="center" width="10%">&nbsp;&nbsp;&nbsp;&nbsp;<a
-								href="javascript:populateHistoryList('<%=linkFeed%>')">History
-							</a>
-							<%--<html:link action="<%=link1%>">History</html:link>--%></td>
-						</tr>
-						<tr>
-							<td colspan="6">
-								<div id="<%=index%>"
-									style="height: 1px; width: 100%; visibility: hidden; overflow: hidden; background-color: #9DBFE9; overflow-x: hidden; overflow-y: scroll;">
-									<table id="bodyTable" class="table"
-										style="width: 100%; height: 100%;" border="0">
-										<tr style="height: 3px;">
-											<td width="14%"
-												style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"
-												nowrap><strong>Entity Name</strong></td>
-											<td width="30%"
-												style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>&nbsp;Entity
-													Business Focus</strong></td>
-											<td width="30%"
-												style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Relationship
-													Description</strong></td>
-											<td width="22%"
-												style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Entity
-													Status</strong></td>
-											<%--<td width="5%" align="left" style="background-color:#6E97CF;color:#FFFFFF;float:none;font-size:14px;font-weight:bold;margin: 0;"><strong>&nbsp;&nbsp;Comments</strong></td>--%>
-										</tr>
-										<% int index1=0;
+           <td width="22%" style="text-align: left;">
+            <select id="dispositionStatus<%=index%>" name="dispDisclStatusForm" style="width: 100%" onchange="changeStatusCode(<%=index%>);">
+            <%--<option value="<bean:write name="pjtTitle" property="entityStatusCode"/>"><bean:write name="pjtTitle" property="entityStatus"/></option>--%>
+            <option value="<%=entStatusCode_v%>"><%=entStatusDescription_v%></option>
+            <logic:present name="typeList">
+            <logic:iterate id="statusList" name="typeList">
+            <option value="<bean:write name="statusList" property="code"/>"><bean:write name="statusList" property="description"/></option>
+            </logic:iterate>
+            </logic:present>
+            </select>
+         </td>
+        <%} else if(entityNum != null){%>
+        <td  width="22%"><%--<bean:write name="pjtTitle" property="entityStatus"/>--%><%=entStatusDescription_v%></td>
+        <%} else{%>
+        <td width="22%">&nbsp;</td>
+        <%}%>
+        <td align="center" width="10%">&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:populateHistoryList('<%=linkFeed%>')" >History  </a><%--<html:link action="<%=link1%>">History</html:link>--%></td>
+        </tr>
+            <tr>
+            <td colspan="6">               
+                <div id="<%=index%>" style="height: 1px;width: 100%;visibility: hidden;overflow: hidden;background-color: #9DBFE9;overflow-x: hidden; overflow-y: scroll;">
+            <table id="bodyTable" class="table" style="width: 100% ;height: 100%;" border="0" >
+                <tr style="height: 3px;">
+              <td width="14%" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;" nowrap><strong>Entity Name</strong></td>
+            <td width="30%" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>&nbsp;Entity Business Focus</strong></td>
+            <td width="30%"style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Relationship Description</strong></td>
+            <td width="22%" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Entity Status</strong></td>
+            <%--<td width="5%" align="left" style="background-color:#6E97CF;color:#FFFFFF;float:none;font-size:14px;font-weight:bold;margin: 0;"><strong>&nbsp;&nbsp;Comments</strong></td>--%>
+            </tr>
+                <% int index1=0;
                     int countPresent1=0;
                     Vector entityNameList = (Vector)request.getAttribute("pjtEntDetView");
                     int entityCount=0;
                 %>
 
-										<logic:present name="pjtEntDetView">
-											<logic:iterate id="pjtEntView" name="pjtEntDetView">
-												<% String projName1 = (String)pjtBean.getCoiProjectId();
+                <logic:present name="pjtEntDetView">
+                <logic:iterate id="pjtEntView" name="pjtEntDetView">
+                        <% String projName1 = (String)pjtBean.getCoiProjectId();
                         %>
-												<logic:equal value="<%=projectId%>" property="coiProjectId"
-													name="pjtEntView">
-													<% entityCount++;%>
-												</logic:equal>
-											</logic:iterate>
-										</logic:present>
+                    <logic:equal value="<%=projectId%>" property="coiProjectId" name="pjtEntView">
+                       <% entityCount++;%>
+                    </logic:equal>
+                </logic:iterate>
+                </logic:present>
 
 
-										<logic:present name="pjtEntDetView">
-											<logic:iterate id="pjtEntView" name="pjtEntDetView">
-												<% String projectName1 = (String)pjtBean.getCoiProjectId();
+            <logic:present name="pjtEntDetView">
+                <logic:iterate id="pjtEntView" name="pjtEntDetView">
+                        <% String projectName1 = (String)pjtBean.getCoiProjectId();
                            
                         %>
-												<logic:equal value="<%=projectId%>" property="coiProjectId"
-													name="pjtEntView">
-													<%
+                    <logic:equal value="<%=projectId%>" property="coiProjectId" name="pjtEntView">
+                        <%
                            CoiAnnualProjectEntityDetailsBean entBean = (CoiAnnualProjectEntityDetailsBean)entityNameList.get(index1);
                            String DescriptionDetails = "";
                            String entityNumber=entBean.getEntityNumber();
@@ -1038,141 +921,119 @@ function showDialog(txtAreaID,id)
 
                              }}
                         %>
-													<logic:notEmpty name="pjtEntView" property="entityName">
-														<tr class="rowLineLight"
-															onmouseover="className='rowHover rowLine'"
-															onmouseout="className='rowLineLight'"
-															style="height: 22px;">
-															<td>&nbsp; <b><a
-																	href="javascript:show('<%=entityNumber%>')"><u><bean:write
-																				name="pjtEntView" property="entityName" /></u></a></b>
-															</td>
-															<td>
-																<div
-																	style="word-wrap: break-word; width: 254px; float: left; overflow: hidden"><%=comments%></div>
-															</td>
-															<input id="txtAreaCommentId<%=index1%>" name="finEntDet"
-																type="hidden" value="<%=commentObj%>" />
-															<td style="width: 254px !important;">
-																<div
-																	style="word-wrap: break-word; width: 254px; float: left; overflow: hidden"><%=commnt%></div>
-															</td>
-															<input id="txtAreaCommentId2<%=index1%>" name="finEntDet"
-																type="hidden" value="<%=commentOb%>" />
-															<%
+                <logic:notEmpty name="pjtEntView" property="entityName">
+                <tr class="rowLineLight" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLineLight'" style="height: 22px;">
+                <td>
+                    &nbsp;  <b><a href="javascript:show('<%=entityNumber%>')"><u><bean:write name="pjtEntView" property="entityName"/></u></a></b>
+                </td>
+                <td>
+                    <div style="word-wrap: break-word;width:254px;float:left;overflow: hidden"><%=comments%></div>
+                </td>
+                <input id="txtAreaCommentId<%=index1%>" name="finEntDet" type="hidden" value="<%=commentObj%>" />
+                 <td style="width:254px !important;">
+                     <div style="word-wrap: break-word;width:254px;float:left;overflow: hidden"><%=commnt%></div>
+                 </td>
+                <input id="txtAreaCommentId2<%=index1%>" name="finEntDet" type="hidden" value="<%=commentOb%>" />
+                <%
                 countPresent1 = 1;%>
-															<%   if(isAdmin && !apprvdView.equalsIgnoreCase("approvedDisclosureview") && !isHistoryView) {%>
+             <%   if(isAdmin && !apprvdView.equalsIgnoreCase("approvedDisclosureview") && !isHistoryView) {%>
 
-															<td style="text-align: left;">
-																<div style="word-wrap: break-word; width: 154px;">
-																	<select id="entityStatus<%=index%><%=index1%>"
-																		name="dispDisclStatusForm" style="width: 100%"
-																		onchange="changePjtStatus('<%=index%>','<%=entityCount%>')">
-																		<option
-																			value="<bean:write name="pjtEntView" property="entityStatusCode"/>"><bean:write
-																				name="pjtEntView" property="entityStatus" /></option>
-																		<logic:present name="typeList">
-																			<logic:iterate id="statusList" name="typeList">
-																				<option
-																					value="<bean:write name="statusList" property="code"/>"><bean:write
-																						name="statusList" property="description" /></option>
-																			</logic:iterate>
-																		</logic:present>
-																	</select> <input type="hidden"
-																		id="discDetail<%=index%><%=index1%>"
-																		value="<bean:write name="pjtEntView" property="coiDiscDetailsNumber"/>" />
-																</div>
-															</td>
-															<%} else {%>
-															<td><b><bean:write name="pjtEntView"
-																		property="entityStatus" /></b></td>
-															<%}%>
-															<%--<td width="5%">&nbsp;&nbsp;&nbsp;<a href="javascript:showComment('<%=DescriptionDetails%>')">View</a></td>--%>
-														</tr>
-													</logic:notEmpty>
-												</logic:equal>
-												<% index1++; %>
-											</logic:iterate>
-											<%if(countPresent1 == 0) {%>
-											<tr style="height: 2px;">
-												<td colspan="2" style="padding-left: 25px;"><font
-													style="color: red">No financial entities found</font></td>
-											</tr>
-											<%} else {%>
-											<logic:empty name="pjtEntView" property="entityName">
-												<tr style="height: 2px;">
-													<td colspan="2" style="padding-left: 25px;"><font
-														style="color: red">No financial entities found</font></td>
-												</tr>
-											</logic:empty>
-											<%}%>
-										</logic:present>
-									</table>
-								</div>
-							</td>
-						</tr>
-						<%}%>
-						<%index++;%>
-					</logic:iterate>
-					<%request.getSession().setAttribute("lastIndex",index);%>
-					<%
+                <td style="text-align: left;">
+               <div style="word-wrap: break-word;width:154px;">
+                    <select id="entityStatus<%=index%><%=index1%>" name="dispDisclStatusForm" style="width: 100%" onchange="changePjtStatus('<%=index%>','<%=entityCount%>')">
+               <option value="<bean:write name="pjtEntView" property="entityStatusCode"/>"><bean:write name="pjtEntView" property="entityStatus"/></option>
+               <logic:present name="typeList">
+               <logic:iterate id="statusList" name="typeList">
+               <option value="<bean:write name="statusList" property="code"/>"><bean:write name="statusList" property="description"/></option>
+               </logic:iterate>
+               </logic:present>
+               </select>
+                   <input type="hidden" id="discDetail<%=index%><%=index1%>" value="<bean:write name="pjtEntView" property="coiDiscDetailsNumber"/>" />
+               </div>
+                          </td>
+            <%} else {%>
+                <td>
+                    <b><bean:write name="pjtEntView" property="entityStatus"/></b>
+                </td>
+               <%}%>
+                <%--<td width="5%">&nbsp;&nbsp;&nbsp;<a href="javascript:showComment('<%=DescriptionDetails%>')">View</a></td>--%>
+               </tr>
+                </logic:notEmpty>                
+                </logic:equal>
+               <% index1++; %>
+                </logic:iterate>
+               <%if(countPresent1 == 0) {%>
+               <tr style="height: 2px;"><td colspan="2" style="padding-left: 25px;">
+                    <font style="color: red">No financial entities found</font>
+                </td></tr>
+               <%} else {%>
+                   <logic:empty name="pjtEntView" property="entityName">
+                   <tr style="height: 2px;"><td colspan="2" style="padding-left: 25px;">
+                             <font style="color: red">No financial entities found</font>
+                        </td></tr>
+                    </logic:empty>
+                  <%}%>
+             </logic:present>
+            </table>
+            </div></td>
+      </tr><%}%>
+         <%index++;%>
+        </logic:iterate>
+        <%request.getSession().setAttribute("lastIndex",index);%>
+         <%
           if(isAdmin && entityNum != null) {%>
-					<logic:notPresent name="historyView">
-						<tr>
-							<td width="1%"></td>
-							<td class='savebutton' align="left" colspan="5">
-								<%if(!apprvdView.equalsIgnoreCase("approvedDisclosureview") && !isHistoryView){%>
-								<html:button styleClass="clsavebutton" value="Save"
-									property="save" onclick="updateProjectDetails();"
-									style="width:150px;" /> <%}%> <html:button
-									onclick="javaScript:saveAndcontinue();" property="Save"
-									styleClass="clsavebutton" style="width:150px;">
+          <logic:notPresent name="historyView">
+         <tr>
+             <td width="1%"></td>
+             <td class='savebutton' align="left" colspan="5">
+             <%if(!apprvdView.equalsIgnoreCase("approvedDisclosureview") && !isHistoryView){%>
+                <html:button styleClass="clsavebutton"  value="Save" property="save" onclick="updateProjectDetails();" style="width:150px;"/>
+
+            <%}%>
+                   <html:button onclick="javaScript:saveAndcontinue();" property="Save" styleClass="clsavebutton" style="width:150px;">
                      Continue
-                 </html:button> <%continuePresent = true;%>
-							</td>
-						</tr>
-					</logic:notPresent>
-					<%}%>
-				</logic:present>
-				<logic:present name="entityNameListCurr">
-					<tr>
-						<td colspan="6"><html:button styleClass="clsavebutton"
-								value="Hide All" property="showAll" onclick="hideAllProjects();"
-								style="width:150px;" /> <%if(!isAdmin) {%> <html:button
-								onclick="javaScript:saveAndcontinue();" property="Save"
-								styleClass="clsavebutton" style="width:150px;">
+                 </html:button>
+                     <%continuePresent = true;%>
+            </td>
+         </tr>
+         </logic:notPresent>
+         <%}%>
+        </logic:present>
+          <logic:present name="entityNameListCurr">
+         <tr>
+                    <td colspan="6">
+                        <html:button styleClass="clsavebutton"  value="Hide All" property="showAll" onclick="hideAllProjects();" style="width:150px;"/>
+                        <%if(!isAdmin) {%>
+                         <html:button onclick="javaScript:saveAndcontinue();" property="Save" styleClass="clsavebutton" style="width:150px;">
                              Continue
-                         </html:button> <%}%></td>
-					</tr>
-				</logic:present>
-			</table>
-			<logic:present name="entityNameListCurr">
-				</div>
-			</logic:present>
-			</td>
-			</tr>
-			<logic:notEmpty name="entityNameList">
-				<logic:notPresent name="checkPrint">
-					<%
+                         </html:button>
+                         <%}%>
+                    </td>
+         </tr>
+          </logic:present>
+         </table>
+        <logic:present name="entityNameListCurr">
+        </div>
+        </logic:present>
+                 </td></tr>
+             <logic:notEmpty name="entityNameList">
+                 <logic:notPresent name="checkPrint">
+    <%
 projectType = (String)request.getSession().getAttribute("param5");
 if((session.getAttribute("param6") == null)&&!(projectType.equals("Annual")) &&!(projectType.equals("Revision"))){%>
-					<tr>
-						<td>
-							<div id="showAll">
-								<html:button styleClass="clsavebutton" value="Show All"
-									property="showAll" onclick="showAllProjects();"
-									style="width:150px;" />
-								<%if(!isAdmin) {%>
-								<html:button onclick="javaScript:saveAndcontinue();"
-									property="Save" styleClass="clsavebutton" style="width:150px;">
+             <tr>
+                 <td>
+                     <div id="showAll">
+                        <html:button styleClass="clsavebutton"  value="Show All" property="showAll" onclick="showAllProjects();" style="width:150px;"/>
+                        <%if(!isAdmin) {%>
+                     <html:button onclick="javaScript:saveAndcontinue();" property="Save" styleClass="clsavebutton" style="width:150px;">
                          Continue
                      </html:button>
-								<% continuePresent = true;}%>
-							</div>
-						</td>
-					</tr>
-					<%} %>
-					<%-- <%if(session.getAttribute("param6") != null && (projectType.equals("Annual") || projectType.equals("Revision") )) {%>
+                   <% continuePresent = true;}%>
+                  </div>
+                 </td></tr>
+             <%} %>
+            <%-- <%if(session.getAttribute("param6") != null && (projectType.equals("Annual") || projectType.equals("Revision") )) {%>
                     <tr>
                     <td class='savebutton' align="left" colspan="6">
                        <html:button onclick="javaScript:saveAndcontinue();" property="Save" styleClass="clsavebutton" style="width:150px;">
@@ -1181,187 +1042,168 @@ if((session.getAttribute("param6") == null)&&!(projectType.equals("Annual")) &&!
                      </td>
                 </tr>
              <%}%>--%>
-				</logic:notPresent>
-			</logic:notEmpty>
+             </logic:notPresent>
+             </logic:notEmpty>
 
-			<%--<logic:empty name="entityNameList">--%>
-			<logic:present name="checkPrint">
-				<%if(!isAdmin) {%>
-				<tr>
-					<td class='savebutton' align="left" colspan="6"><html:button
-							onclick="javaScript:saveAndcontinue();" property="Save"
-							styleClass="clsavebutton" style="width:150px;">
+             <%--<logic:empty name="entityNameList">--%>
+             <logic:present name="checkPrint">
+             <%if(!isAdmin) {%>
+                <tr>
+                    <td class='savebutton' align="left" colspan="6">
+                       <html:button onclick="javaScript:saveAndcontinue();" property="Save" styleClass="clsavebutton" style="width:150px;">
                          Continue
-                     </html:button></td>
-				</tr>
-				<%
+                     </html:button>
+                     </td>
+                </tr>
+                <%
                     continuePresent = true;
                     }%>
-			</logic:present>
+             </logic:present>
 
-			<%if(!continuePresent) {%>
-			<tr>
-				<td class='savebutton' align="left" colspan="6"><html:button
-						onclick="javaScript:saveAndcontinue();" property="Save"
-						styleClass="clsavebutton" style="width:150px;">
+              <%if(!continuePresent) {%>
+                <tr>
+                    <td class='savebutton' align="left" colspan="6">
+                       <html:button onclick="javaScript:saveAndcontinue();" property="Save" styleClass="clsavebutton" style="width:150px;">
                          Continue
-                     </html:button></td>
-			</tr>
-			<%}%>
-			<input type="hidden" id="entityDetails" name="entityDetails"
-				value="test" />
-			<%--</logic:empty>--%>
-		</table>
-		<div id="divTXT" class="dialog"
-			style="width: auto; overflow: hidden; position: absolute;">
-			<table width="100%" border="0" cellpadding="1" cellspacing="1"
-				class="table">
-				<tr style="background-color: #6E97CF; font-size: 12px; margin: 0;">
-					<td style="padding: 2px 0px 5px 0px"><font color="#FFFFFF"
-						size="2px"><b>Project Name</b></font></td>
-				</tr>
-				<tr style="height: 100px; width: 200px;">
+                     </html:button>
+                     </td>
+                </tr>
+              <%}%>
+              <input type="hidden" id="entityDetails" name="entityDetails" value="test" />
+            <%--</logic:empty>--%>
+         </table>
+         <div id="divTXT" class="dialog" style="width:auto;overflow: hidden;position:absolute;">
+    <table width="100%" border="0" cellpadding="1" cellspacing="1" class="table"  >
+            <tr style="background-color:#6E97CF;font-size:12px;margin: 0;">
+                <td style="padding: 2px 0px 5px 0px"> <font color="#FFFFFF" size="2px"><b>Project Name</b></font></td>
+            </tr>
+            <tr style="height: 100px;width:200px;">
 
-					<td align="left" style="height: 100px;">
-						<div
-							style="height: 100px; width: 650px; overflow-x: scroll; overflow-y: scroll; overflow: auto;">
-							<label id="TxtArea"></label>
-						</div>
-					</td>
-				</tr>
-				<tr style="background-color: #6E97CF;">
-					<td align="center"><input type="button" value="Close"
-						class="clsavebutton" onclick="hm('divTXT');" /></td>
+                <td align="left" style="height: 100px;">
+                    <div style="height: 100px;width: 650px;overflow-x: scroll; overflow-y: scroll;overflow: auto;">
+                    <label id="TxtArea"></label>
+                    </div>
+                </td>
+            </tr>
+           <tr style="background-color:#6E97CF;">
+              <td align="center" >
+                  <input type="button" value="Close" class="clsavebutton" onclick="hm('divTXT');"/>
+              </td>
 
-				</tr>
-			</table>
-		</div>
-		<div id="divDisclosureStaus" class="dialog"
-			style="width: 450px; overflow: hidden; position: absolute;">
-			<table class="table" style="width: 100%;" id="historyDet">
-				<tr>
-					<td style=""><label id="HeaderDetails">hi</label></td>
-				</tr>
-				<tr>
-					<td><label id="HistoryList">hi2</label></td>
-				</tr>
-				<tr>
-					<td align="center"><input type="button" value="Close"
-						class="clsavebutton" onclick="hm('divDisclosureStaus')" /></td>
-				</tr>
-			</table>
-		</div>
+           </tr>
+        </table>
+               </div>
+<div id="divDisclosureStaus" class="dialog" style="width:450px;overflow: hidden;position:absolute;">
+    <table class="table" style="width: 100%;" id="historyDet">
+                 <tr>
+                     <td style="">
+                         <label id="HeaderDetails" >hi</label>
+                      </td>
+                 </tr>
+                 <tr><td><label id="HistoryList">hi2</label>
+                     </td></tr>
+                 <tr><td align="center"><input type="button"  value="Close" class="clsavebutton" onclick="hm('divDisclosureStaus')"/></td></tr>
+               </table>
+</div>
 
-		<div id="divTXTDetails" class="dialog"
-			style="width: 450px; height: 320px; overflow: auto; position: absolute;">
-			<table width="100%" border="0" class="table">
-				<tr style="background-color: #6E97CF; font-size: 12px; margin: 0;">
-					<td colspan="2" style="padding: 2px 0px 5px 0px"><font
-						color="#FFFFFF" size="2px"><b>Relationship Comments</b></font></td>
-				</tr>
-				<tr style="float: none; font-size: 12px; margin: 0;">
-					<td style="height: 17px; width: 80px;"><b>Entity Name: </b></td>
-					<td><b><label id="entName" /></b></td>
-				</tr>
-				<tr style="float: none; font-size: 12px; margin: 0; height: 17px;">
-					<td><b>Project Title: </b></td>
-					<td><b><label id="pjtTitle" /></b></td>
-				</tr>
-				<tr style="float: none; font-size: 12px; margin: 0;">
-					<td><b>Project #: </b></td>
-					<td><b><label id="pjtId" /></b></td>
-				</tr>
-				<tr style="float: none; font-size: 12px; margin: 0;">
-					<td style="height: 15px;" colspan="2"><img width="100%"
-						height="1" border="0"
-						src="<%=request.getContextPath()%>/coeusliteimages/line4.gif" /></td>
-				</tr>
-				<tr style="background-color: #6E97CF; float: none; margin: 0;">
-					<td style="height: 25px;" colspan="2"><b>Relationship
-							Description:</b></td>
-				</tr>
-				<tr style="height: 70px; width: 450px;">
-					<td colspan="2" align="left">
-						<div
-							style="height: 70px; width: 650px; overflow-x: scroll; overflow-y: scroll; overflow: auto;">
-							<label id="reldesc"></label>
-						</div>
-					</td>
-				</tr>
+<div id="divTXTDetails" class="dialog" style="width:450px;height: 320px;overflow: auto;position:absolute;">
+        <table width="100%" border="0"  class="table">
+             <tr  style="background-color:#6E97CF;font-size:12px;margin: 0;">
+                 <td colspan="2" style="padding: 2px 0px 5px 0px"> <font color="#FFFFFF" size="2px"><b>Relationship Comments</b></font>
+                </td>
+             </tr>
+            <tr style="float:none;font-size:12px;margin: 0;">
+                <td style="height: 17px;width:80px;"><b>Entity Name: </b></td>
+                <td><b><label id="entName"/></b></td>
+            </tr>
+             <tr style="float:none;font-size:12px;margin: 0;height: 17px;">
+                <td><b>Project Title: </b></td>
+                <td><b><label id="pjtTitle"/></b></td>
+            </tr>
+            <tr style="float:none;font-size:12px;margin: 0;">
+                <td><b>Project #: </b></td>
+                <td><b><label id="pjtId"/></b></td>
+            </tr>
+            <tr style="float:none;font-size:12px;margin: 0;">
+                <td style="height: 15px;" colspan="2">
+                <img width="100%" height="1" border="0" src="<%=request.getContextPath()%>/coeusliteimages/line4.gif"/>
+                </td>
+            </tr>
+            <tr style="background-color:#6E97CF;float:none;margin: 0;">
+                <td style="height: 25px;" colspan="2"><b>Relationship Description:</b></td>
+            </tr>
+             <tr style="height: 70px;width: 450px;">
+                <td colspan="2" align="left">
+                    <div style="height: 70px;width: 650px;overflow-x: scroll; overflow-y: scroll;overflow: auto;">
+                    <label id="reldesc"></label> </div></td>
+            </tr>
 
-				<tr style="background-color: #6E97CF; float: none; margin: 0;">
-					<td style="height: 25px;" colspan="2"><b>Relationship to
-							Organization:</b></td>
-				</tr>
+            <tr style="background-color:#6E97CF;float:none;margin: 0;">
+                <td style="height: 25px;" colspan="2"><b>Relationship to Organization:</b></td>
+            </tr>
 
-				<tr style="height: 70px; width: 450px;">
-					<td colspan="2" align="left">
-						<div
-							style="height: 70px; width: 650px; overflow-x: scroll; overflow-y: scroll; overflow: auto;">
-							<label id="relOrgn"> </label>
-						</div>
-					</td>
-				</tr>
+             <tr style="height: 70px;width: 450px;">
+                <td colspan="2" align="left">
+                    <div style="height: 70px;width: 650px;overflow-x: scroll; overflow-y: scroll;overflow: auto;">
+                    <label id="relOrgn">
+                    </label>
+                    </div>
+                    </td>
+            </tr>
 
-				<tr style="background-color: #6E97CF;">
-					<td style="height: 30px;" align="center" colspan="2"><input
-						type="button" value="Close" Class="clsavebutton"
-						onclick="hm('divDisclosureStaus')" /></td>
+            <tr style="background-color:#6E97CF;">
+                <td style="height:30px;" align="center" colspan="2">
+                  <input type="button" value="Close"  Class="clsavebutton" onclick="hm('divDisclosureStaus')" />
+              </td>
 
-				</tr>
-			</table>
-		</div>
+           </tr>
+        </table>
+    </div>
 
-		<div id="divTXTDetails1" class="dialog"
-			style="width: auto; overflow: hidden; position: absolute;">
-			<table width="100%" border="0" cellpadding="1" cellspacing="1"
-				class="table">
-				<tr style="background-color: #6E97CF; font-size: 12px; margin: 0;">
-					<td style="padding: 2px 0px 5px 0px"><font color="#FFFFFF"
-						size="2px"><b>Entity Business Focus</b></font></td>
-				</tr>
-				<tr style="height: 100px; width: 200px;">
-					<%-- <td align="center"> <textarea id="TxtAreaComments" cols="3" style=" height: 70px;resize:none; width: 430px;" disabled ></textarea></td>--%>
-					<td align="left" style="height: 100px;">
-						<div
-							style="height: 100px; width: 650px; overflow-x: scroll; overflow-y: scroll; overflow: auto;">
-							<label id="TxtAreaComments"></label>
-						</div>
-					</td>
-				</tr>
-				<tr style="background-color: #6E97CF;">
-					<td align="center"><input type="button" value="Close"
-						class="clsavebutton" onclick="hm('divTXTDetails1');" /></td>
+   <div id="divTXTDetails1" class="dialog" style="width:auto;overflow: hidden;position:absolute;">
+    <table width="100%" border="0" cellpadding="1" cellspacing="1" class="table"  >
+            <tr  style="background-color:#6E97CF;font-size:12px;margin: 0;">
+                <td style="padding: 2px 0px 5px 0px"> <font color="#FFFFFF" size="2px"><b>Entity Business Focus</b></font></td>
+            </tr>
+            <tr style="height: 100px;width:200px;">
+               <%-- <td align="center"> <textarea id="TxtAreaComments" cols="3" style=" height: 70px;resize:none; width: 430px;" disabled ></textarea></td>--%>
+                <td align="left" style="height: 100px;">
+                    <div style="height: 100px;width: 650px;overflow-x: scroll; overflow-y: scroll;overflow: auto;">
+                    <label id="TxtAreaComments"></label>
+                    </div>
+                </td>
+            </tr>
+           <tr style="background-color:#6E97CF;">
+              <td align="center" >
+                  <input type="button" value="Close" class="clsavebutton" onclick="hm('divTXTDetails1');"/>
+              </td>
 
-				</tr>
-			</table>
-		</div>
-		<div id="divTXTDetails2" class="dialog"
-			style="width: auto; overflow: hidden; position: absolute;">
-			<table width="100%" border="0" cellpadding="1" cellspacing="1"
-				class="table">
-				<tr style="background-color: #6E97CF; font-size: 12px; margin: 0;">
-					<td style="padding: 2px 0px 5px 0px"><font color="#FFFFFF"
-						size="2px"><b>Relationship Description</b></font></td>
-				</tr>
-				<tr style="height: 100px; width: 200px;">
-					<%-- <td align="center"> <textarea id="TxtAreaComments" cols="3" style=" height: 70px;resize:none; width: 430px;" disabled ></textarea></td>--%>
-					<td align="left" style="height: 100px;">
-						<div
-							style="height: 100px; width: 650px; overflow-x: scroll; overflow-y: scroll; overflow: auto;">
-							<label id="TxtAreaCommnt"></label>
-						</div>
-					</td>
-				</tr>
-				<tr style="background-color: #6E97CF;">
-					<td align="center"><input type="button" value="Close"
-						class="clsavebutton" onclick="hm('divTXTDetails2');" /></td>
+           </tr>
+        </table>
+    </div>
+                <div id="divTXTDetails2" class="dialog" style="width:auto;overflow: hidden;position:absolute;">
+    <table width="100%" border="0" cellpadding="1" cellspacing="1" class="table"  >
+            <tr  style="background-color:#6E97CF;font-size:12px;margin: 0;">
+                <td style="padding: 2px 0px 5px 0px"> <font color="#FFFFFF" size="2px"><b>Relationship Description</b></font></td>
+            </tr>
+            <tr style="height: 100px;width:200px;">
+               <%-- <td align="center"> <textarea id="TxtAreaComments" cols="3" style=" height: 70px;resize:none; width: 430px;" disabled ></textarea></td>--%>
+                <td align="left" style="height: 100px;">
+                    <div style="height: 100px;width: 650px;overflow-x: scroll; overflow-y: scroll;overflow: auto;">
+                    <label id="TxtAreaCommnt"></label>
+                    </div>
+                </td>
+            </tr>
+           <tr style="background-color:#6E97CF;">
+              <td align="center" >
+                  <input type="button" value="Close" class="clsavebutton" onclick="hm('divTXTDetails2');"/>
+              </td>
 
-				</tr>
-			</table>
-		</div>
+           </tr>
+        </table>
+    </div>
 
-		<script>
+<script>
 
  function last(){
       var lastinx = "<%=request.getSession().getAttribute("lastIndex")%>";
@@ -1374,16 +1216,16 @@ if((session.getAttribute("param6") == null)&&!(projectType.equals("Annual")) &&!
 }
 }}
 </script>
-		<logic:notEmpty name="COIProjectDetailList">
-			<script type="text/javascript">
+<logic:notEmpty name="COIProjectDetailList">
+     <script type="text/javascript">
            var  width =650;// document.getElementById("divDisclosureStaus").style.pixelWidth;
            var  height =250;//document.getElementById("divDisclosureStaus").style.pixelHeight;
             sm("divDisclosureStaus",width,height);
             document.getElementById("mbox").style.left="385";//450
             document.getElementById("mbox").style.top="200";//250
      </script>
-		</logic:notEmpty>
-		<script type="text/javascript">
+</logic:notEmpty>
+      <script type="text/javascript">
 function populateHistoryList(coipjtId)
     {
         var HttpRequest=init();
@@ -1444,7 +1286,7 @@ function populateHistoryList(coipjtId)
         HttpRequest.send(null);
          };
      </script>
-		<script>
+        <script>
          var index = 0;
          <%
          if(!projectType.equalsIgnoreCase("Annual") && !projectType.equalsIgnoreCase("Revision")){
@@ -1463,6 +1305,6 @@ function populateHistoryList(coipjtId)
 
             <%}%>
         </script>
-	</body>
-</html:form>
+    </body>
+    </html:form>
 </html:html>

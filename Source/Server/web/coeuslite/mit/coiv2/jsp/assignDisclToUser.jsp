@@ -5,30 +5,22 @@
 --%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ page
-	import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean;"%>
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ page import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>C O I</title>
 <%String path = request.getContextPath();%>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/divSlide.js"></script>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/Balloon.js"></script>
-<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css"
-	rel="stylesheet" type="text/css" />
+<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css" rel="stylesheet" type="text/css" />
 </head>
 <script src="js/jquery.js" type="text/javascript"></script>
 <%String s = (String) request.getAttribute("disNum");
@@ -119,102 +111,101 @@ document.forms[0].submit();
 }
 </script>
 <html:form action="/assignDisclToUser.do">
-	<body>
+<body>
 
-		<table id="bodyTable" class="table" style="width: 960px;" border="0"
-			align="center">
+<table id="bodyTable" class="table" style="width: 960px;" border="0" align="center">
 
-			<%--<select name='numbers' multiple='multiple' id="discl" style="height: 100px;width: 150px;">
+<%--<select name='numbers' multiple='multiple' id="discl" style="height: 100px;width: 150px;">
 <logic:iterate id="pjtTitle" name="entityNameList">
 <option><bean:write name="pjtTitle" property="coiDisclosureNumber"/></option>
 </logic:iterate>
 </select>--%>
-			<logic:present name="message">
-				<logic:equal value="true" name="message">
-					<tr>
-						<td colspan="2"><font color="red">Disclosure Assigned
-								Successfully</font></td>
-					</tr>
-				</logic:equal>
-			</logic:present>
-			<tr>
-				<td><b>Select Disclosure:</b><br /> <select name='numbers'
-					id="discl" style="height: 20px; width: 200px;"
-					onchange="javaScript:popsequnce();">
-						<%--<logic:notPresent name="seqNameList">--%>
-						<option>Select</option>
-						<%--</logic:notPresent>--%>
-						<logic:present name="entityNameList">
-							<logic:iterate id="pjtTitle" name="entityNameList">
+<logic:present name="message">
+<logic:equal value="true" name="message">
+<tr>
+<td colspan="2">
+<font color="red">Disclosure Assigned Successfully</font>
+</td>
+</tr>
+</logic:equal>
+</logic:present>
+<tr>
+    <td>
+        <b>Select Disclosure:</b><br/>
+<select name='numbers' id="discl" style="height: 20px;width: 200px;" onchange="javaScript:popsequnce();">
+<%--<logic:notPresent name="seqNameList">--%>
+<option>Select</option>
+<%--</logic:notPresent>--%>
+<logic:present name="entityNameList">
+<logic:iterate id="pjtTitle" name="entityNameList">
 
-								<%--<logic:notEqual value="<%=s%>" name="disNum">--%>
-								<option
-									value="<bean:write name="pjtTitle" property="coiDisclosureNumber"/>:<bean:write name="pjtTitle" property="userName"/>"><bean:write
-										name="pjtTitle" property="coiDisclosureNumber" />:
-									<bean:write name="pjtTitle" property="userName" /></option>
-								<%--</logic:notEqual>--%>
-							</logic:iterate>
-						</logic:present>
-				</select></td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td><b>Select Version:</b><br /> <select name='numbers2'
-					multiple='multiple' id="sequence"
-					style="height: 100px; width: 200px;">
-						<logic:present name="seqNameList">
-							<%   int index = 0;
+    <%--<logic:notEqual value="<%=s%>" name="disNum">--%>
+    <option value="<bean:write name="pjtTitle" property="coiDisclosureNumber"/>:<bean:write name="pjtTitle" property="userName"/>"><bean:write name="pjtTitle" property="coiDisclosureNumber"/>:<bean:write name="pjtTitle" property="userName"/></option>
+    <%--</logic:notEqual>--%>
+</logic:iterate>
+</logic:present>
+</select>
+    </td>
+    <td>
+        &nbsp;
+    </td>
+</tr>
+<tr>
+<td>
+    <b>Select Version:</b><br/>
+<select name='numbers2' multiple='multiple' id="sequence" style="height: 100px;width: 200px;">
+<logic:present name="seqNameList">
+<%   int index = 0;
      Vector historyVector = (Vector) request.getAttribute("seqNameList");
 %>
-							<logic:iterate id="seqTitle" name="seqNameList">
-								<%  CoiDisclosureBean bean = (CoiDisclosureBean) historyVector.get(index);
+<logic:iterate id="seqTitle" name="seqNameList">
+<%  CoiDisclosureBean bean = (CoiDisclosureBean) historyVector.get(index);
     String link = bean.getSequenceNumber().toString();
 
 %>
 
-								<option value="<%=link%>"><bean:write name="seqTitle"
-										property="moduleName" />&nbsp;Based:&nbsp;V<%=link%></option>
-								<%index++;%>
-							</logic:iterate>
-						</logic:present>
-				</select></td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td width="30%"><html:select property="assignedList"
-						name="assignDisclToUser" multiple='multiple'
-						style="height: 100px;width: 400px;">
-					</html:select></td>
-				<td align="center" width="20%"><html:button
-						styleClass="clsavebutton" onclick="javaScript:add();"
-						property="button" value="<<"></html:button></td>
-				<td width="50%"><b>Select User:</b><br /> <select
-					name='numbers1' multiple='multiple' id="user"
-					style="height: 100px; width: 200px;">
-						<logic:present name="usersList">
-							<logic:iterate id="usr" name="usersList">
-								<option value="<bean:write name="usr" property="userName"/>"><bean:write
-										name="usr" property="userName" /></option>
-							</logic:iterate>
-						</logic:present>
-				</select></td>
-			</tr>
-			<tr>
-				<td><html:button styleClass="clsavebutton"
-						onclick="javaScript:save(assignedList);" property="button"
-						value="Save"></html:button> &nbsp;<html:button
-						styleClass="clsavebutton" onclick="javaScript:remove();"
-						property="button" value="Remove"></html:button></td>
-				<td>&nbsp;</td>
-			</tr>
-		</table>
+<option value="<%=link%>"><bean:write name="seqTitle" property="moduleName"/>&nbsp;Based:&nbsp;V<%=link%></option>
+<%index++;%>
+</logic:iterate>
+</logic:present>
+</select>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <td width="30%">
+<html:select property="assignedList" name="assignDisclToUser" multiple='multiple' style="height: 100px;width: 400px;">
+</html:select>
+</td>
+    <td align="center" width="20%">
+<html:button styleClass="clsavebutton" onclick="javaScript:add();" property="button" value="<<"></html:button>
+</td>
+<td width="50%">
+<b>Select User:</b><br/>
+<select name='numbers1' multiple='multiple' id="user" style="height: 100px;width: 200px;">
+<logic:present name="usersList">
+<logic:iterate id="usr" name="usersList">
+    <option value="<bean:write name="usr" property="userName"/>"><bean:write name="usr" property="userName"/></option>
+</logic:iterate>
+</logic:present>
+</select>
+</td>
+</tr>
+<tr>
+    <td>
+<html:button styleClass="clsavebutton" onclick="javaScript:save(assignedList);" property="button" value="Save"></html:button>
+&nbsp;<html:button styleClass="clsavebutton" onclick="javaScript:remove();" property="button" value="Remove"></html:button>
+</td>
+<td>&nbsp;</td>
+</tr>
+</table>
 
-		<%String seleindx = (String) request.getAttribute("seleindx");
+<%String seleindx = (String) request.getAttribute("seleindx");
 if(seleindx==null ||seleindx.equalsIgnoreCase("")){
 seleindx = "0";
 }
 %>
-		<script>
+<script>
 var name = '<%=s%>';
 if(name == null){
 document.forms[0].discl.text = "Select";
@@ -222,6 +213,6 @@ document.forms[0].discl.text = "Select";
 document.forms[0].discl.selectedIndex = '<%=seleindx%>';
 }
 </script>
-	</body>
-</html:form>
+</body>
+   </html:form>
 </html>

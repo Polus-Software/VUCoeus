@@ -4,27 +4,20 @@
     Author     : Sony
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"
-	import="edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,java.util.HashMap,edu.mit.coeuslite.coiv2.utilities.CoiConstants,java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiProtocolInfoBean;"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ taglib uri="/WEB-INF/coeus-utils.tld" prefix="coeusUtils"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,java.util.HashMap,edu.mit.coeuslite.coiv2.utilities.CoiConstants,java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiProtocolInfoBean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" 	prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" 	prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" 	prefix="logic" %>
+<%@ taglib uri="/WEB-INF/coeus-utils.tld"	prefix="coeusUtils" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>C O I</title>
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css"
-	rel="stylesheet" type="text/css" />
-<%String path = request.getContextPath();                   
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>C O I</title>
+        <link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css" rel="stylesheet" type="text/css" />
+        <link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css" rel="stylesheet" type="text/css" />
+        <%String path = request.getContextPath();                   
                     String operationType = (String) request.getAttribute("operation");
                     CoiDisclosureBean disclosureBean = (CoiDisclosureBean) request.getSession().getAttribute("disclosureBeanSession");
                     String target = "#";
@@ -35,9 +28,9 @@
                     }
                      int index = 0;
         %>
-</head>
-<script src="js/jquery.js" type="text/javascript"></script>
-<script type="text/javascript">
+    </head>
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
         function addDisclSubmit(count){
               var canContinue=false;
         var cc=parseInt(count);
@@ -69,42 +62,35 @@
     </script>
 
 
-<%--<body>--%>
-<td valign="top" bgcolor="#D1E5FF">
-	<table id="bodyTable1" class="table" style="width: 765px;" border="0">
-		<tr style="background-color: #6E97CF;">
-			<td colspan="6">
-				<h1
-					style="background-color: #6E97CF; color: #FFFFFF; float: left; font-size: 14px; font-weight: bold; margin: 0; padding: 2px 0 2px 10px; position: relative; text-align: left;">
-					Financial Disclosure by
-					<bean:write name="person" property="fullName" />
-				</h1>
-			</td>
-		</tr>
-		<tr>
-			<td
-				style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; float: left; width: 100px;">
-				Reporter Name :</td>
-			<td
-				style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; align: left; width: 150px;">
-				<bean:write name="person" property="fullName" />
-			</td>
-			<td
-				style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; float: left; width: 100px;">
-				Department :</td>
-			<td
-				style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; align: left; width: 150px;">
-				<bean:write name="person" property="dirDept" />
-			</td>
-			<td
-				style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; float: left; width: 100px;">
-				Reporter Email :</td>
-			<td
-				style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; align: left; width: 150px;">
-				<bean:write name="person" property="email" />
-			</td>
-		</tr>
-		<%--         <tr>
+    <%--<body>--%>
+    <td valign="top" bgcolor="#D1E5FF">
+        <table id="bodyTable1" class="table" style="width: 765px;" border="0">
+            <tr style="background-color:#6E97CF;" >
+                <td colspan="6">
+                    <h1 style="background-color:#6E97CF;color:#FFFFFF;float:left;font-size:14px;font-weight:bold;margin: 0;padding: 2px 0 2px 10px;position: relative;text-align: left;">Financial Disclosure by <bean:write name="person" property="fullName"/></h1>
+                </td>
+            </tr>
+            <tr>
+                <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;float: left;width: 100px;">
+                    Reporter Name :
+                </td>
+                <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;align:left;width: 150px;">
+                    <bean:write name="person" property="fullName"/>
+                </td>
+                <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;float: left;width: 100px;">
+                    Department :
+                </td>
+                <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;align:left;width: 150px;">
+                    <bean:write name="person" property="dirDept"/>
+                </td>
+                <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;float: left;width: 100px;">
+                    Reporter Email :
+                </td>
+                <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;align:left;width: 150px;">
+                    <bean:write name="person" property="email"/>
+                </td>
+            </tr>
+            <%--         <tr>
                            <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;float: left">
                                     Office Location :
                            </td>
@@ -124,11 +110,14 @@
                            <bean:write name="person" property="secOffLoc"/>
                            </td>
                      </tr>--%>
-		<tr>
-			<td colspan="6"><img height="2" border="0" width="100%"
-				src="/coeus44server/coeusliteimages/line4.gif" /></td>
-		</tr>
-	</table> <%-- <table id="bodyTable" class="table" style="width: 765px;" border="0">
+            <tr>
+                <td colspan="6">
+                    <img height="2" border="0" width="100%" src="/coeus44server/coeusliteimages/line4.gif"/>
+                </td>
+            </tr>
+        </table>
+
+       <%-- <table id="bodyTable" class="table" style="width: 765px;" border="0">
             <html:form action="/createDisclosureCoiv2.do">
                  <div align="center">
                      <div id="wrapper">
@@ -228,7 +217,7 @@
                     </html:form>
 
         </table>--%>
-</td>
+    </td>
 </tr>
 </table>
 <%--</body>--%>
