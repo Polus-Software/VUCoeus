@@ -4,27 +4,20 @@
     Author     : Sony
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"
-	import="edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,edu.mit.coeuslite.coiv2.services.CoiCommonService,java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiProposalBean,org.apache.struts.taglib.html.JavascriptValidatorTag,java.util.HashMap,edu.mit.coeuslite.coiv2.utilities.CoiConstants;"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ taglib uri="/WEB-INF/coeus-utils.tld" prefix="coeusUtils"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,edu.mit.coeuslite.coiv2.services.CoiCommonService,java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiProposalBean,org.apache.struts.taglib.html.JavascriptValidatorTag,java.util.HashMap,edu.mit.coeuslite.coiv2.utilities.CoiConstants"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" 	prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" 	prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" 	prefix="logic" %>
+<%@ taglib uri="/WEB-INF/coeus-utils.tld"	prefix="coeusUtils" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%--<html xmlns="http://www.w3.org/1999/xhtml">--%>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>C O I</title>
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css"
-	rel="stylesheet" type="text/css" />
-<%String path = request.getContextPath();            
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>C O I</title>
+    <link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css" rel="stylesheet" type="text/css" />
+    <%String path = request.getContextPath();            
             String disable = "";            
                 String operationType = (String) request.getAttribute("operation");
                 CoiDisclosureBean disclosureBean = (CoiDisclosureBean) request.getSession().getAttribute("disclosureBeanSession");
@@ -37,8 +30,7 @@
                  int index = 0;
     %>
 </head>
-<script language="javascript" type="text/JavaScript"
-	src="<%=request.getContextPath()%>/coeuslite/mit/utils/scripts/coeusLiteCalendar.js"></script>
+<script language="javascript" type="text/JavaScript" src="<%=request.getContextPath()%>/coeuslite/mit/utils/scripts/coeusLiteCalendar.js"></script>
 <script type="text/javascript">
     var ctxpath='<%=request.getContextPath()%>';
     function addDisclSubmit(count){
@@ -350,58 +342,48 @@ function checkValue(){
 
 </script>
 
-<html:form action="/createDisclosureCoiv2.do" method="post">
-	<table class="table" style="width: 100%; height: auto;" border="0">
-		<tr>
-			<td colspan="5" align="right">
-				<% if(disable==null ||disable.equals("")){ %> <a
-				href="javaScript:showPjtDet();"><u>Add New Proposal
-						Information</u></a> <%}%>
-			</td>
-		</tr>
-		<logic:notPresent name="proposalList">
-			<tr>
-				<td colspan="5"><p style="color: #ff0000; font-size: 12px;">There
-						are no proposals in the system that requires your COI disclosure.</p></td>
-			</tr>
-		</logic:notPresent>
-		<logic:present name="proposalList">
+<html:form action="/createDisclosureCoiv2.do" method="post" >
+<table class="table" style="width: 100%;height:auto;" border="0" >
+    <tr><td colspan="5"  align="right" >
+    <% if(disable==null ||disable.equals("")){ %>
+        <a href="javaScript:showPjtDet();"><u>Add New Proposal Information</u></a>
+    <%}%>
+    </td></tr>
+<logic:notPresent name="proposalList">
+<tr><td colspan="5"><p style="color: #ff0000;font-size: 12px;">There are no proposals in the system that requires your COI disclosure.</p></td></tr>
+</logic:notPresent>
+<logic:present name="proposalList">
 
-			<logic:notEmpty name="proposalList">
-				<tr>
-					<td colspan="5">Please select a proposal from the list to
-						create a new COI disclosure</td>
-				</tr>
-				<tr style="background-color: #6E97CF;">
-					<td style="width: 100px;"><strong> Proposal #</strong></td>
-					<td style="width: auto;"><strong> Title</strong></td>
-					<td style="width: 120px;"><strong> Sponsor</strong></td>
-					<td style="width: 90px;"><strong> Start Date</strong></td>
-					<td style="width: 90px;"><strong> End Date</strong></td>
-				</tr>
-			</logic:notEmpty>
+<logic:notEmpty name="proposalList">
+<tr><td colspan="5">Please select a proposal from the list to create a new COI disclosure</td></tr>
+<tr style="background-color:#6E97CF;">
+    <td style="width:100px; " ><strong> Proposal #</strong></td>
+    <td style="width:auto;" ><strong> Title</strong></td>
+    <td style="width:120px; " ><strong> Sponsor</strong></td>
+    <td style="width:90px; " ><strong> Start Date</strong></td>
+    <td style="width:90px; " ><strong> End Date</strong></td>
+</tr>
+</logic:notEmpty>
 
-			<logic:empty name="proposalList">
-				<tr>
-					<td colspan="5"><p style="color: #ff0000; font-size: 12px;">No
-							Proposal is created for the user</p></td>
-				</tr>
-			</logic:empty>
+<logic:empty name="proposalList">
+<tr><td colspan="5"><p style="color: #ff0000;font-size: 12px;">No Proposal is created for the user</p></td></tr>
+</logic:empty>
 
-			<%
+            <%
                         String[] rowColors = {"#D6DCE5", "#DCE5F1"};
                         int i = 0;
                         String rowColor = "";
             %>
-			<logic:present name="invaliddate">
-				<logic:messagesPresent>
-					<font color="red"> <bean:write name="invaliddate" />
-					</font>
-				</logic:messagesPresent>
-			</logic:present>
-			<%Vector propsal = (Vector) request.getAttribute("proposalList");%>
-			<logic:iterate id="allProposals" name="proposalList">
-				<%
+        <logic:present name="invaliddate">
+            <logic:messagesPresent>
+                <font color="red"  >
+                    <bean:write name="invaliddate"/>
+                </font>
+            </logic:messagesPresent>
+        </logic:present>
+            <%Vector propsal = (Vector) request.getAttribute("proposalList");%>
+<logic:iterate id="allProposals" name="proposalList">
+                <%
                             if (i == 0) {
                                 rowColor = rowColors[0];
                                 i = 1;
@@ -428,155 +410,96 @@ function checkValue(){
                                                          }
                             index++;
                 %>
-				<tr bgcolor="<%=rowColor%>" class="rowLine"
-					onmouseover="className='rowHover rowLine'"
-					onmouseout="className='rowLine'">
-					<td><input type="radio" <%=disable%> <%=checked%>
-						name="checkedPropsalProjects"
-						value="<bean:write name="allProposals" property="proposalNumber"/>;<bean:write name="allProposals" property="title"/>;<bean:write name="allProposals" property="sponsorName"/>;<bean:write name="allProposals" property="startDate"/>;<bean:write name="allProposals" property="endDate"/>;<bean:write name="allProposals" property="nonIntegrated"/>;<bean:write name="allProposals" property="totalCost"/>;<bean:write name="allProposals" property="proposalTypeDesc"/>;<bean:write name="allProposals" property="roleName"/>" />
-						<bean:write name="allProposals" property="proposalNumber" /></td>
-					<td><bean:write name="allProposals" property="title" /></td>
-					<td><bean:write name="allProposals" property="sponsorName" /></td>
-					<td><%=startDate%></td>
-					<td><%=endDate%></td>
-				</tr>
-			</logic:iterate>
+<tr bgcolor="<%=rowColor%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" >
+    <td>
+        <input type="radio" <%=disable%> <%=checked%> name="checkedPropsalProjects" 
+               value="<bean:write name="allProposals" property="proposalNumber"/>;<bean:write name="allProposals" property="title"/>;<bean:write name="allProposals" property="sponsorName"/>;<bean:write name="allProposals" property="startDate"/>;<bean:write name="allProposals" property="endDate"/>;<bean:write name="allProposals" property="nonIntegrated"/>;<bean:write name="allProposals" property="totalCost"/>;<bean:write name="allProposals" property="proposalTypeDesc"/>;<bean:write name="allProposals" property="roleName"/>"/>
+        <bean:write name="allProposals" property="proposalNumber"/>
+    </td>
+    <td><bean:write name="allProposals" property="title"/></td>
+    <td><bean:write name="allProposals" property="sponsorName"/></td>
+    <td><%=startDate%></td>
+    <td><%=endDate%></td>
+</tr>
+</logic:iterate>
 
-			<logic:notEmpty name="proposalList">
-				<tr>
-					<td align="left" colspan="5">
-						<% String link="javaScript:addDisclSubmit('" + index + "')"; %> <html:button
-							styleClass="clsavebutton" value="Continue" property="save"
-							onclick="<%=link%>" />
-					</td>
-				</tr>
-			</logic:notEmpty>
-		</logic:present>
+<logic:notEmpty name="proposalList">
+<tr><td align="left" colspan="5">
+    <% String link="javaScript:addDisclSubmit('" + index + "')"; %>
+    <html:button styleClass="clsavebutton"  value="Continue" property="save"  onclick="<%=link%>"/>
+    </td>
+</tr>
+</logic:notEmpty>
+</logic:present>
 
-		<tr bgcolor="#D1E5FF">
-			<td colspan="7">
-				<div class="myForm" id="pjtDet"
-					style="visibility: hidden; overflow: hidden; height: 1px; width: 700px"
-					align="center">
-					<table style="width: 100%">
-						<tr>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<td
-								style="width: 15%; color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Title</td>
-							<td width="35%"><html:text property="coiProjectTitle"
-									name="coiPersonProjectDetailsForm" styleClass="textbox"
-									maxlength="180" style="width:144px;" /></td>
-							<td
-								style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Project
-								Role</td>
-							<td width="35%"><html:text property="coiProjectRole"
-									name="coiPersonProjectDetailsForm" styleClass="textbox"
-									maxlength="180" style="width:144px;" /></td>
-						</tr>
-						<tr>
-							<%--<td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Project#</td>
+<tr bgcolor="#D1E5FF"><td colspan="7">
+    <div class="myForm" id="pjtDet" style="visibility: hidden; overflow:hidden; height: 1px;width:700px" align="center">
+         <table style="width: 100%">
+             <tr><td>&nbsp;</td></tr>
+             <tr>
+                 <td style="width: 15%;color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Title</td>
+                 <td width="35%"><html:text property="coiProjectTitle" name="coiPersonProjectDetailsForm" styleClass="textbox"  maxlength="180" style="width:144px;"/></td>
+                 <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Project Role</td>
+                 <td width="35%"><html:text property="coiProjectRole" name="coiPersonProjectDetailsForm" styleClass="textbox"  maxlength="180" style="width:144px;"/></td>
+             </tr>
+             <tr>
+                 <%--<td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Project#</td>
                  <td ><html:text property="coiProjectId" name="coiPersonProjectDetailsForm" styleClass="textbox"  maxlength="20" style="width:144px;"/></td>--%>
-							<td
-								style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Sponsor</td>
-							<td><html:text property="coiProjectSponser"
-									name="coiPersonProjectDetailsForm" styleClass="textbox"
-									maxlength="200" style="width:144px;" /></td>
-						</tr>
-						<logic:present name="message">
-							<logic:equal value="true" name="message">
-								<tr>
-									<td colspan="4"><p
-											style="color: #ff0000; font-size: 12px;">
-											<b>Project Id</b> Already Exist.! &nbsp;Choose Another One.
-										</p></td>
-								</tr>
-							</logic:equal>
+                 <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Sponsor</td>
+                 <td><html:text property="coiProjectSponser" name="coiPersonProjectDetailsForm" styleClass="textbox"  maxlength="200" style="width:144px;"/></td>
+             </tr>
+<logic:present name="message">
+    <logic:equal value="true" name="message">
+             <tr>
+                 <td colspan="4"><p style="color: #ff0000;font-size: 12px;"><b>Project Id</b> Already Exist.!  &nbsp;Choose Another One. </p></td>
+             </tr>
+    </logic:equal>
+    
+    <logic:equal value="true1" name="message">
+             <tr>
+                 <td colspan="4"><p style="color: #ff0000; font-family:Arial,Helvetica,sans-serif; font-size: 12px;"><b>Project Id</b> Used In CurrentList.! &nbsp;Choose Another One.</p></td>
+             </tr>
+    </logic:equal>
+</logic:present>
+             <tr>
+                 <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Project Type</td>
+                 <td><html:select property="coiProjectType" name="coiPersonProjectDetailsForm"  styleClass="textbox-long" style="width:144px;"><html:option value=""><bean:message key="specialReviewLabel.pleaseSelect"/></html:option>
+                     <html:options collection="propsalType" property="code" labelProperty="description"  />>
+                     </html:select>
+                 </td>
+                 <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Funding Amount</td>
+                 <td><html:text property="coiProjectFundingAmount" name="coiPersonProjectDetailsForm" styleClass="textbox"  maxlength="30" style="width:144px;"   onkeypress="CheckFund(event)"/></td>
+             </tr>
+             <tr>
+                 <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Project Start Date(mm/dd/yy)</td>
+                 <td><html:text property="coiProjectStartDate" styleClass="textbox" name="coiPersonProjectDetailsForm"  maxlength="10"  style="width:144px;"  onkeypress="CheckNumeric(event)" onblur="isValidDate(document.forms[0].coiProjectStartDate.value,'coiProjectStartDate')" />
+                          <a id="hlIRBDate" onclick="displayCalendarWithTopLeft('coiProjectStartDate',8,25)" tabindex="32" href="javascript:void(0);" runat="server">
+                              <img id="imgIRBDate" title="" height="16" alt=""  src="<%=request.getContextPath()%>/coeusliteimages/cal.gif" width="16" border="0" runat="server" />
+                           </a>
+                 </td>
+                 <td style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Project End Date(mm/dd/yy)</td>
+                 <td><html:text  property="coiProjectEndDate" styleClass="textbox" name="coiPersonProjectDetailsForm"  maxlength="10" style="width:144px;"  onkeypress="CheckNumeric(event)" onblur="isValidDate(document.forms[0].coiProjectEndDate.value,'coiProjectEndDate')"/>
+                           <a id="hlIRBDate" onclick="displayCalendarWithTopLeft('coiProjectEndDate',8,25)" tabindex="32" href="javascript:void(0);" runat="server">
+                               <img id="imgIRBDate" title="" height="16" alt="" src="<%=request.getContextPath()%>/coeusliteimages/cal.gif" width="16" border="0" runat="server"/>
+                           </a>
+                 </td>
+             </tr>
+        </table>
 
-							<logic:equal value="true1" name="message">
-								<tr>
-									<td colspan="4"><p
-											style="color: #ff0000; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">
-											<b>Project Id</b> Used In CurrentList.! &nbsp;Choose Another
-											One.
-										</p></td>
-								</tr>
-							</logic:equal>
-						</logic:present>
-						<tr>
-							<td
-								style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Project
-								Type</td>
-							<td><html:select property="coiProjectType"
-									name="coiPersonProjectDetailsForm" styleClass="textbox-long"
-									style="width:144px;">
-									<html:option value="">
-										<bean:message key="specialReviewLabel.pleaseSelect" />
-									</html:option>
-									<html:options collection="propsalType" property="code"
-										labelProperty="description" />>
-                     </html:select></td>
-							<td
-								style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Funding
-								Amount</td>
-							<td><html:text property="coiProjectFundingAmount"
-									name="coiPersonProjectDetailsForm" styleClass="textbox"
-									maxlength="30" style="width:144px;"
-									onkeypress="CheckFund(event)" /></td>
-						</tr>
-						<tr>
-							<td
-								style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Project
-								Start Date(mm/dd/yy)</td>
-							<td><html:text property="coiProjectStartDate"
-									styleClass="textbox" name="coiPersonProjectDetailsForm"
-									maxlength="10" style="width:144px;"
-									onkeypress="CheckNumeric(event)"
-									onblur="isValidDate(document.forms[0].coiProjectStartDate.value,'coiProjectStartDate')" />
-								<a id="hlIRBDate"
-								onclick="displayCalendarWithTopLeft('coiProjectStartDate',8,25)"
-								tabindex="32" href="javascript:void(0);" runat="server"> <img
-									id="imgIRBDate" title="" height="16" alt=""
-									src="<%=request.getContextPath()%>/coeusliteimages/cal.gif"
-									width="16" border="0" runat="server" />
-							</a></td>
-							<td
-								style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Project
-								End Date(mm/dd/yy)</td>
-							<td><html:text property="coiProjectEndDate"
-									styleClass="textbox" name="coiPersonProjectDetailsForm"
-									maxlength="10" style="width:144px;"
-									onkeypress="CheckNumeric(event)"
-									onblur="isValidDate(document.forms[0].coiProjectEndDate.value,'coiProjectEndDate')" />
-								<a id="hlIRBDate"
-								onclick="displayCalendarWithTopLeft('coiProjectEndDate',8,25)"
-								tabindex="32" href="javascript:void(0);" runat="server"> <img
-									id="imgIRBDate" title="" height="16" alt=""
-									src="<%=request.getContextPath()%>/coeusliteimages/cal.gif"
-									width="16" border="0" runat="server" />
-							</a></td>
-						</tr>
-					</table>
+<html:button styleClass="clsavebutton" onclick="javaScript:saveProject();" property="button" value="Add to list"></html:button>
+</div>
 
-					<html:button styleClass="clsavebutton"
-						onclick="javaScript:saveProject();" property="button"
-						value="Add to list"></html:button>
-				</div>
-
-				</div>
-			</td>
-		</tr>
-		<logic:messagesPresent>
-			<script type="text/javascript">
+</div></td></tr>
+     <logic:messagesPresent>
+                <script type="text/javascript" >
                     showPjtDet();
                     count= <%=index%>;
                 </script>
-		</logic:messagesPresent>
+     </logic:messagesPresent>
 
 
 
-	</table>
+</table>
 </html:form>
 <%--</html>--%>
 

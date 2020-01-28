@@ -1,8 +1,7 @@
 
 
 <!--contents of download.jsp-->
-<%@ page
-	import="java.util.*,java.io.*,edu.mit.coeuslite.coiv2.beans.Coiv2AttachmentBean;"%>
+<%@ page import="java.util.*,java.io.*,edu.mit.coeuslite.coiv2.beans.Coiv2AttachmentBean"%>
 
 <%
             Coiv2AttachmentBean attachmentBean = new Coiv2AttachmentBean();
