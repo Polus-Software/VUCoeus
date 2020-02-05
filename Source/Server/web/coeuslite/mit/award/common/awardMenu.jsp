@@ -9,7 +9,7 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 <%@page
 	import="edu.mit.coeuslite.utils.CoeusLiteConstants,
-                edu.mit.coeuslite.utils.bean.MenuBean;"%>
+                edu.mit.coeuslite.utils.bean.MenuBean"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>

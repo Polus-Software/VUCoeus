@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"
-	import="edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,java.util.Vector,java.util.HashMap,edu.mit.coeuslite.coiv2.utilities.CoiConstants,edu.mit.coeuslite.coiv2.beans.CoiAwardInfoBean;"%>
+	import="edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,java.util.Vector,java.util.HashMap,edu.mit.coeuslite.coiv2.utilities.CoiConstants,edu.mit.coeuslite.coiv2.beans.CoiAwardInfoBean"%>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>

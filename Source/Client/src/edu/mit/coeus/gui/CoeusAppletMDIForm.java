@@ -301,27 +301,12 @@ public class CoeusAppletMDIForm extends JFrame {
 //            title = "Coeus "+ " -  "+ getUserId() + name;
 //        }else{
 //            title = "Coeus "+ " -  "+ getUserId();
-//        }
-        
-        /* JM 4-15-2016 set icons based on institution */
-    	CustomFunctions custom = new CustomFunctions();
-    	String[] params = (String[]) custom.getParameterValues("ACRONYM");
-    	String acronym = (String) params[0];
-    	/* JM END */
-        
-    	/* JM 4-19-2016 set name for VUMC instance to include VUMC */
-    	String application = "Coeus";
-        if (acronym.equals("VUMC")) { 
-        	application = "Coeus VUMC";
+//        } 
+          if(getInstanceName()!= null ){
+            title = "Coeus "+ " -  "+ this.fullName + name;
+        }else{
+            title = "Coeus "+ " -  "+ this.fullName;
         }
-        /* Exclude instance name for PROD systems */
-        if ((getInstanceName() != null) && (!getInstanceName().equals("PROD")) && (!getInstanceName().equals("MCPROD")) ) {
-            title = application + " -  "+ this.fullName + name;
-        }
-        else {
-            title = application + " -  "+ this.fullName;
-        }
-        /* JM END */
         
         System.out.println("The title before showing :"+title);
         this.setTitle(title);
@@ -407,41 +392,6 @@ public class CoeusAppletMDIForm extends JFrame {
         // set title icon
         setIconImage(getCoeusImageIcon().getImage());
 
-        /* JM 3-31-2015 pretty icons */
-    	/* JM 4-15-2016 updated for VUMC and VU icons sets */
-        try {
-        	
-        	edu.vanderbilt.coeus.utils.DisplayOptions displayOptions = 
-        			new edu.vanderbilt.coeus.utils.DisplayOptions();
-	        java.util.List<Image> icons = new ArrayList<Image>();
-	        icons = displayOptions.getInstitutionIcons();
-	        /*
-	        if (acronym.equals("VUMC")) {
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON128_VUMC)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON96_VUMC)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON64_VUMC)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON48_VUMC)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON32_VUMC)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON24_VUMC)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON16_VUMC)).getImage());
-	        }
-	        else {
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON128_VU)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON96_VU)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON64_VU)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON48_VU)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON32_VU)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON24_VU)).getImage());
-	        	icons.add(new ImageIcon(getClass().getClassLoader().getResource(CoeusGuiConstants.ICON16_VU)).getImage());
-	        }
-        	*/
-            //icons.add(getCoeusImageIcon().getImage());
-        	setIconImages(icons);	        
-        }
-        catch (Exception e) {
-            setIconImage(getCoeusImageIcon().getImage());
-        }
-        /* JM END */ 
 
         /* commented because the FocusManager class is obsolete from jdk 1.4
          if (System.getProperty("java.version").startsWith("1.3")) {

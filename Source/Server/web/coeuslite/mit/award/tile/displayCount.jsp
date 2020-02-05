@@ -17,7 +17,7 @@
 <%@page
 	import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,
         edu.mit.coeuslite.coiv2.services.CoiCommonService,java.util.Date,edu.mit.coeuslite.utils.bean.SubHeaderBean,
-        edu.mit.coeus.bean.PersonInfoBean,edu.mit.coeus.bean.UserDetailsBean;"%>
+        edu.mit.coeus.bean.PersonInfoBean,edu.mit.coeus.bean.UserDetailsBean"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

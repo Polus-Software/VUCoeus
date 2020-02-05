@@ -289,7 +289,7 @@
 
            %>
 		<!-- JM 7-25-2012 set table width to match header -->
-		<table width="970" height="100%" border="0" cellpadding="0"
+		<table width="100%" height="100%" border="0" cellpadding="0"
 			cellspacing="0" class="table">
 			<tr>
 				<td align="left" valign="top" width="auto">
