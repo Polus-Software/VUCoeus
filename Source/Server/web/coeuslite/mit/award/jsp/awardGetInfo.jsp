@@ -12,7 +12,7 @@
 <%@ taglib uri="/WEB-INF/coeus-utils.tld" prefix="coeusUtils"%>
 <%@ include file="/coeuslite/mit/utils/CoeusContextPath.jsp"%>
 <%@page
-	import="java.util.Vector,edu.mit.coeuslite.coiv2.services.CoiCommonService,edu.mit.coeuslite.award.beans.AwardDisplayBean,edu.mit.coeuslite.award.beans.AwardInvestigatorsBean;"%>
+	import="java.util.Vector,edu.mit.coeuslite.coiv2.services.CoiCommonService,edu.mit.coeuslite.award.beans.AwardDisplayBean,edu.mit.coeuslite.award.beans.AwardInvestigatorsBean"%>
 
 <html:html>
 <head>

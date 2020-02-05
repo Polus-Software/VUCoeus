@@ -12,7 +12,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ include file="/coeuslite/mit/utils/CoeusContextPath.jsp"%>
 <%@page
-	import="java.util.Vector,edu.mit.coeuslite.coiv2.services.CoiCommonService,edu.mit.coeuslite.award.beans.AwardDisplayBean;"%>
+	import="java.util.Vector,edu.mit.coeuslite.coiv2.services.CoiCommonService,edu.mit.coeuslite.award.beans.AwardDisplayBean"%>
 
 <html:html>
 <head>
