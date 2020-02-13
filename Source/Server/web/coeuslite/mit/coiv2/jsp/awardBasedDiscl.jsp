@@ -4,11 +4,13 @@
     Author     : Sony
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" import="edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,java.util.Vector,java.util.HashMap,edu.mit.coeuslite.coiv2.utilities.CoiConstants,edu.mit.coeuslite.coiv2.beans.CoiAwardInfoBean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" 	prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" 	prefix="bean" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" 	prefix="logic" %>
-<%@ taglib uri="/WEB-INF/coeus-utils.tld"	prefix="coeusUtils" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"
+	import="edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,java.util.Vector,java.util.HashMap,edu.mit.coeuslite.coiv2.utilities.CoiConstants,edu.mit.coeuslite.coiv2.beans.CoiAwardInfoBean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
+<%@ taglib uri="/WEB-INF/coeus-utils.tld" prefix="coeusUtils"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>

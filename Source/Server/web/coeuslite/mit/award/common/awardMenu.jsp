@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
+
 <%@page import="edu.mit.coeuslite.utils.CoeusLiteConstants,
                 edu.mit.coeuslite.utils.bean.MenuBean"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
@@ -14,6 +15,7 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/coeus-utils.tld"	prefix="coeusUtils" %>
 <%@ include file= "/coeuslite/mit/utils/CoeusContextPath.jsp"  %>
+
 <jsp:useBean id="menuItems" scope="session" class="java.util.Vector" />
 
 <html:html>

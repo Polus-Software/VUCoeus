@@ -76,13 +76,13 @@ System.out.println("************************************** ");
 				</table>
 			</td>
 		</tr>
-
+<table width="90%" cellspacing="0" cellpadding="0" border="0" align="center" class="tabtable">
 		<tr>
 			<td colspan="2" valign="top"><tiles:insert attribute="footer" />
 			</td>
 		</tr>
+</table>
 	</table>
 </body>
 </html>
-
 

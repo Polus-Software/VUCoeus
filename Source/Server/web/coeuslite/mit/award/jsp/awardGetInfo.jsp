@@ -5,13 +5,13 @@
 --%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-<%@ taglib uri="/WEB-INF/coeus-utils.tld"  prefix="coeusUtils"%>
-<%@ include file= "/coeuslite/mit/utils/CoeusContextPath.jsp"  %>
-<%@page import= "java.util.Vector,edu.mit.coeuslite.coiv2.services.CoiCommonService,edu.mit.coeuslite.award.beans.AwardDisplayBean,edu.mit.coeuslite.award.beans.AwardInvestigatorsBean"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
+<%@ taglib uri="/WEB-INF/coeus-utils.tld" prefix="coeusUtils"%>
+<%@ include file="/coeuslite/mit/utils/CoeusContextPath.jsp"%>
+<%@page	import="java.util.Vector,edu.mit.coeuslite.coiv2.services.CoiCommonService,edu.mit.coeuslite.award.beans.AwardDisplayBean,edu.mit.coeuslite.award.beans.AwardInvestigatorsBean"%>
 
 <html:html>
   <head>
