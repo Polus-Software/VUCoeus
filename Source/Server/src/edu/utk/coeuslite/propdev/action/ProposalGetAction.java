@@ -106,7 +106,8 @@ public class ProposalGetAction extends ProposalBaseAction{
         //JIRA COEUSDEV 61 - START
         //Check if User has Create Proposal Right and check if this schema exists in coeus.
         String schemaUrl = request.getParameter("schemaUrl");
-        String proposalNumber = request.getParameter("proposalNumber");  
+        String proposalNumber = request.getParameter("proposalNumber"); 
+        
         if (schemaUrl != null) {
             String user = null;
             UserInfoBean userInfoBean = (UserInfoBean) request.getSession().getAttribute("user" + request.getSession().getId());
@@ -179,6 +180,27 @@ public class ProposalGetAction extends ProposalBaseAction{
 //            session.removeAttribute("proposalLock");
         }
         //COEUSQA-1433 - Allow Recall for Routing - End
+        
+       if (actionMapping.getPath().equals("/getPHSHumanSubjectForm")) {
+            WebTxnBean webTxnBean = new WebTxnBean();
+            if (request.getParameter("proposalNumber") != null) {
+                proposalNumber = request.getParameter("proposalNumber");
+                session.setAttribute("PHSHumanFromPremium" + proposalNumber + session.getId(), true);
+                session.setAttribute(CoeusLiteConstants.PROPOSAL_NUMBER + session.getId(), proposalNumber);
+                HashMap hmProposalHeader = new HashMap();
+                hmProposalHeader.put("proposalNumber", proposalNumber);
+                Hashtable htProposalHeader = (Hashtable) webTxnBean.getResults(request, "getProposalHeaderData", hmProposalHeader);
+                Vector vecProposalHeader = (Vector) htProposalHeader.get("getProposalHeaderData");
+                if (vecProposalHeader != null && vecProposalHeader.size() > 0) {
+                    session.setAttribute("epsProposalHeaderBean", (EPSProposalHeaderBean) vecProposalHeader.elementAt(0));
+                }
+            }
+            actionForward = actionMapping.findForward("success"); 
+        }
+       
+        session.setAttribute("isPHSHumanSubjectCTFormIncluded"+session.getId(), isPHSHumanSubjectCTFormIncluded(proposalNumber, request));
+                
+        
         return actionForward;
     }
    
@@ -393,7 +415,7 @@ public class ProposalGetAction extends ProposalBaseAction{
                 }
                 session.setAttribute("propYnqCount", propYnqCount);
                 //COEUSQA:3446 - End
-
+                                
                 //While getting a proposal details for a particular proposal
                 if(proposalNumber!=null && !proposalNumber.equals(EMPTY_STRING)){
                     //start - 28/12/2006
@@ -1007,7 +1029,25 @@ public class ProposalGetAction extends ProposalBaseAction{
         lockBean.setSessionId(request.getSession().getId());
         return lockBean;
     }
-
     
+    private boolean isPHSHumanSubjectCTFormIncluded(String proposalNumber, HttpServletRequest request) {
+        boolean isPHSHSCIncluded = false;
+        try {
+            HashMap hms2s = new HashMap();
+            WebTxnBean webTxnBean = new WebTxnBean();
+            hms2s.put("proposalNumber", proposalNumber);
+            Hashtable hts2s = (Hashtable) webTxnBean.getResults(request, "fnIsPhsHSCTFormIncluded", hms2s);
+            HashMap hmUnitDesc = (HashMap) hts2s.get("fnIsPhsHSCTFormIncluded");
+            if (hmUnitDesc != null && !hmUnitDesc.isEmpty()) {
+                int retval = Integer.parseInt(hmUnitDesc.get("returnValue").toString());
+                if (retval == 1) {
+                    isPHSHSCIncluded = true;
+                }
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return isPHSHSCIncluded;
+    }
 }
  

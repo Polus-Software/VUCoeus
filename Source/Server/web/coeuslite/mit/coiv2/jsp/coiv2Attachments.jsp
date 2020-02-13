@@ -1,14 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ include file="/coeuslite/mit/utils/CoeusContextPath.jsp"%>
-<%@ page
-	import="edu.mit.coeus.bean.PersonInfoBean,java.util.Vector,edu.mit.coeuslite.coiv2.beans.Coiv2AttachmentBean,java.util.HashMap,edu.mit.coeuslite.coiv2.services.CoiCommonService,
+<%@ include file= "/coeuslite/mit/utils/CoeusContextPath.jsp"%>
+<%@ page import="edu.mit.coeus.bean.PersonInfoBean,java.util.Vector,edu.mit.coeuslite.coiv2.beans.Coiv2AttachmentBean,java.util.HashMap,edu.mit.coeuslite.coiv2.services.CoiCommonService,
          edu.mit.coeuslite.coiv2.beans.CoiPersonProjectDetails,
-         edu.mit.coeuslite.coiv2.utilities.CoiConstants,java.util.Date;"%>
+         edu.mit.coeuslite.coiv2.utilities.CoiConstants,java.util.Date"%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld"  prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld"  prefix="html"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ taglib uri="/WEB-INF/coeus-utils.tld" prefix="coeusUtils"%>
+<%@ taglib uri="/WEB-INF/coeus-utils.tld"  prefix="coeusUtils"%> 
 <%  String path = request.getContextPath();
         String startDate = "";
          String endDate = "";
@@ -28,9 +27,9 @@
             
 %>
 <html:html locale="true">
-<head>
-<title>Disclosure Notes</title>
-<script language="javaScript">
+    <head>
+        <title>Disclosure Notes</title>
+        <script language="javaScript">
 
             function selectFile(){                
                 checkFormat();
@@ -166,16 +165,14 @@
              }
         </script>
 
-</head>
-<body onload="javaScript:setFocus()">
-	<html:form action="/saveAttachmentsCoiv2.do"
-		enctype="multipart/form-data">
-		<div id="notesProtocol">
-			<table style="width: 100%;" height="100%" border="0" cellpadding="2"
-				cellspacing="0" class="table" align='center'>
+    </head>
+    <body onload="javaScript:setFocus()">
+              <html:form action="/saveAttachmentsCoiv2.do" enctype="multipart/form-data">
+                  <div id="notesProtocol" >
+                    <table style="width: 100%;" height="100%"  border="0" cellpadding="2" cellspacing="0" class="table" align='center'>
 
-				<%--      code added for displaying project details...starts--%>
-				<%
+<%--      code added for displaying project details...starts--%>
+             <%
              
             String projectType = (String) request.getSession().getAttribute("projectType");
             if(projectType.equalsIgnoreCase("Proposal")||projectType.equalsIgnoreCase("iacucProtocol")||projectType.equalsIgnoreCase("Protocol")||projectType.equalsIgnoreCase("Award")||projectType.equalsIgnoreCase("Travel")){
@@ -198,265 +195,204 @@
             }}}
         %>
 
-				<%
+               <%
                 if(projectType.equals("Protocol")) {%>
-				<tr>
-					<td colspan="4"><b>For your project listed below, please
-							answer the certification questionnaire:</b></td>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap><b>IRB
-							Protocol # :</b></td>
-					<td style="float: none" align="left" width="30%"><%=moduleItemKey%></td>
-					<td width="28%" style="float: none"></td>
-					<td style="float: none"></td>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap><b>Title
-							:</b></td>
-					<td colspan="3" style="float: none" align="left" width="30%"><%=pjctTitle%></td>
-					<%--<td width="28%" style="float: none"></td>
+                 <tr><td colspan="4"><b>For your project listed below, please answer the certification questionnaire:</b></td></tr>
+                 <tr><td align="right" width="16%" style="float: none" nowrap><b>IRB Protocol # :</b></td>
+                     <td style="float: none" align="left" width="30%"><%=moduleItemKey%></td>
+                     <td width="28%" style="float: none"></td>
+                            <td style="float: none"></td>
+                                </tr>
+                        <tr><td align="right" width="16%" style="float: none" nowrap><b>Title :</b></td>
+                            <td colspan="3"style="float: none" align="left" width="30%"><%=pjctTitle%></td>
+                            <%--<td width="28%" style="float: none"></td>
                             <td style="float: none"></td>--%>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap><b>Application
-							Date :</b></td>
-					<td style="float: none" align="left" width="30%"><%=startDate%></td>
-					<td align="right" width="15%" style="float: none" nowrap><b>Expiration
-							Date :</b></td>
-					<td align="left" width="38%" style="float: none"><%=endDate%></td>
-				</tr>
-				<%}else if(projectType.equalsIgnoreCase("iacucProtocol")){%>
-				<tr>
-					<td colspan="4"><b>For your project listed below, please
-							answer the certification questionnaire:</b></td>
-				</tr>
-				<tr>
-					<td align="right" width="15%" style="float: none" nowrap><b>IACUC
-							Protocol # :</b></td>
-					<td style="float: none" align="left" width="30%"><%=moduleItemKey%></td>
-					<td width="28%" style="float: none"></td>
-					<td style="float: none"></td>
-				</tr>
-				<tr>
-					<td align="right" width="15%" style="float: none" nowrap><b>Title
-							:</b></td>
-					<td colspan="3" style="float: none" align="left" width="30%"><%=pjctTitle%></td>
-					<%--<td width="28%" style="float: none"></td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="16%" style="float: none" nowrap><b>Application Date :</b></td><td style="float: none" align="left" width="30%"><%=startDate%></td>
+                            <td align="right" width="15%" style="float: none" nowrap><b>Expiration Date :</b></td><td align="left" width="38%" style="float: none"><%=endDate%></td>
+                        </tr>
+                <%}else if(projectType.equalsIgnoreCase("iacucProtocol")){%>
+                        <tr><td colspan="4"><b>For your project listed below, please answer the certification questionnaire:</b></td></tr>
+                        <tr><td align="right" width="15%" style="float: none" nowrap><b>IACUC Protocol # :</b></td>
+                            <td style="float: none" align="left" width="30%"><%=moduleItemKey%></td>
+                            <td width="28%" style="float: none"></td>
+                            <td style="float: none"></td>
+                                </tr>
+                        <tr><td align="right" width="15%" style="float: none" nowrap><b>Title :</b></td>
+                            <td colspan="3" style="float: none" align="left" width="30%"><%=pjctTitle%></td>
+                            <%--<td width="28%" style="float: none"></td>
                             <td style="float: none"></td>--%>
-				</tr>
-				<tr>
-					<td align="right" width="15%" style="float: none" nowrap><b>Application
-							Date :</b></td>
-					<td style="float: none" align="left" width="30%"><%=startDate%></td>
-					<td align="right" width="15%" style="float: none" nowrap><b>Expiration
-							Date :</b></td>
-					<td align="left" width="38%" style="float: none"><%=endDate%></td>
-				</tr>
-				<%}else if(projectType.equals("Proposal")){%>
-				<tr>
-					<td colspan="4"><b>For your project listed below, please
-							answer the certification questionnaire:</b></td>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Proposal
-							# :</b></td>
-					<td style="float: none" align="left" width="30%"><%=moduleItemKey%></td>
-					<td width="28%" style="float: none"></td>
-					<td style="float: none"></td>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Title
-							:</b></td>
-					<td colspan="3" style="float: none" align="left" width="30%"><%=pjctTitle%></td>
-					<%--<td width="28%" style="float: none"></td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="15%" style="float: none" nowrap><b>Application Date :</b></td><td style="float: none" align="left" width="30%"><%=startDate%></td>
+                            <td align="right" width="15%" style="float: none" nowrap><b>Expiration Date :</b></td><td align="left" width="38%" style="float: none"><%=endDate%></td>
+                        </tr>
+                 <%}else if(projectType.equals("Proposal")){%>
+                        <tr><td colspan="4"><b>For your project listed below, please answer the certification questionnaire:</b></td></tr>
+                        <tr><td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Proposal # :</b></td>
+                            <td style="float: none" align="left" width="30%"><%=moduleItemKey%></td>
+                            <td width="28%" style="float: none"></td>
+                            <td style="float: none"></td>
+                                </tr>
+                        <tr><td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Title :</b></td>
+                            <td colspan="3" style="float: none" align="left" width="30%"><%=pjctTitle%></td>
+                            <%--<td width="28%" style="float: none"></td>
                             <td style="float: none"></td>--%>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Start
-							Date :</b></td>
-					<td style="float: none" align="left" width="30%"><%=startDate%></td>
-					<td align="right" width="28%" style="float: none" nowrap><b>End
-							Date :</b></td>
-					<td align="left" width="35%" style="float: none"><%=endDate%></td>
-				</tr>
-				<%} else if(projectType.equals("Award")){ %>
-				<tr>
-					<td colspan="4"><b>For your project listed below, please
-							answer the certification questionnaire:</b></td>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Award
-							# :</b></td>
-					<td style="float: none" align="left" width="30%"><%=moduleItemKey%></td>
-					<td width="28%" style="float: none"></td>
-					<td style="float: none"></td>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Title:</b></td>
-					<td style="float: none" align="left" width="30%"><%=pjctTitle%></td>
-					<td width="28%" style="float: none"></td>
-					<td style="float: none"></td>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Start
-							Date :</b></td>
-					<td style="float: none" align="left" width="30%"><%=startDate%></td>
-					<td align="right" width="28%" style="float: none" nowrap><b>End
-							Date :</b></td>
-					<td align="left" width="35%" style="float: none"><%=endDate%></td>
-				</tr>
-				<% } else if(projectType.equals("Travel")){ %>
-				<tr>
-					<td colspan="4"><b>For your project listed below, please
-							answer the certification questionnaire:</b></td>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Travel
-							# :</b></td>
-					<td style="float: none" align="left" width="30%"><%=moduleItemKey%></td>
-					<td width="28%" style="float: none"></td>
-					<td style="float: none"></td>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Title:</b></td>
-					<td style="float: none" align="left" width="30%"><%=pjctTitle%></td>
-					<td width="28%" style="float: none"></td>
-					<td style="float: none"></td>
-				</tr>
-				<tr>
-					<td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Start
-							Date :</b></td>
-					<td style="float: none" align="left" width="30%"><%=startDate%></td>
-					<td align="right" width="28%" style="float: none" nowrap><b>End
-							Date :</b></td>
-					<td align="left" width="35%" style="float: none"><%=endDate%></td>
-				</tr>
-				<% } %>
+                        </tr>
+                        <tr>
+                            <td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Start Date :</b></td><td style="float: none" align="left" width="30%"><%=startDate%></td>
+                            <td align="right" width="28%" style="float: none" nowrap><b>End Date :</b></td><td align="left" width="35%" style="float: none"><%=endDate%></td>
+                        </tr>
+                 <%} else if(projectType.equals("Award")){ %>
+                     <tr><td colspan="4"><b>For your project listed below, please answer the certification questionnaire:</b></td></tr>
+                        <tr><td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Award # :</b></td>
+                            <td style="float: none" align="left" width="30%"><%=moduleItemKey%></td>
+                            <td width="28%" style="float: none"></td>
+                            <td style="float: none"></td>
+                                </tr>
+                        <tr><td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Title:</b></td>
+                            <td style="float: none" align="left" width="30%"><%=pjctTitle%></td>
+                        <td width="28%" style="float: none"></td>
+                            <td style="float: none"></td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Start Date :</b></td><td style="float: none" align="left" width="30%"><%=startDate%></td>
+                            <td align="right" width="28%" style="float: none" nowrap><b>End Date :</b></td><td align="left" width="35%" style="float: none"><%=endDate%></td>
+                        </tr>
+                <% } else if(projectType.equals("Travel")){ %>
+                      <tr><td colspan="4"><b>For your project listed below, please answer the certification questionnaire:</b></td></tr>
+                        <tr><td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Travel # :</b></td>
+                            <td style="float: none" align="left" width="30%"><%=moduleItemKey%></td>
+                            <td width="28%" style="float: none"></td>
+                            <td style="float: none"></td>
+                                </tr>
+                        <tr><td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Title:</b></td>
+                            <td style="float: none" align="left" width="30%"><%=pjctTitle%></td>
+                        <td width="28%" style="float: none"></td>
+                            <td style="float: none"></td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="16%" style="float: none" nowrap>&emsp;<b>Start Date :</b></td><td style="float: none" align="left" width="30%"><%=startDate%></td>
+                            <td align="right" width="28%" style="float: none" nowrap><b>End Date :</b></td><td align="left" width="35%" style="float: none"><%=endDate%></td>
+                        </tr>
+                <% } %>
 
-				<%--      code added for displaying project details...ends--%>
-				<tr>
-					<td colspan="5">
-						<table width="100%" border="0" cellpadding="2" cellspacing="0">
-							<tr>
-								<td height="20" width="50%" align="left" valign="top"
-									class="theader">Disclosure Attachment</td>
-								<td align="right" width="50%" class="theader"><a
-									id="helpPageText" href="#"> </a></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
+<%--      code added for displaying project details...ends--%>
+                        <tr>
+                            <td colspan="5">
+                                <table width="100%" border="0" cellpadding="2" cellspacing="0">
+                                    <tr>
+                                        <td height="20" width="50%" align="left" valign="top" class="theader">
+                                            Disclosure Attachment
+                                        </td>
+                                        <td align="right" width="50%" class="theader">
+                                            <a id="helpPageText" href="#">
+                                           </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
 
-				<%--             <tr class = "copy">
+           <%--             <tr class = "copy">
                             <td align="left" width='99%'>
 
                             </td>
                         </tr>--%>
 
-				<%--         <tr class='copybold' align='left' width='100%'>
+               <%--         <tr class='copybold' align='left' width='100%'>
                             <td>
                             </td>
                         </tr>--%>
 
-				<!-- Add Documents: - Start  -->
-				<tr>
-					<td colspan="4" align="left" valign="top" class='core'><table
-							width="100%" border="0" align="center" cellpadding="0"
-							cellspacing="0" class="tabtable">
-							<tr>
-								<td colspan="5" align="left" valign="top"><table
-										width="100%" height="2%" border="0" cellpadding="0"
-										cellspacing="0" class="tableheader">
-										<tr>
-											<td align="left" class="copybold" style="width: 300px;">
+                        <!-- Add Documents: - Start  -->
+                        <tr>
+                            <td  colspan="4" align="left" valign="top" class='core'><table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabtable">
+                                    <tr>
+                                        <td colspan="5" align="left" valign="top"><table width="100%" height="2%"  border="0" cellpadding="0" cellspacing="0" class="tableheader">
+                                                <tr>
+                                                    <td align="left" class="copybold" style="width: 300px;">
 
-												<bean:message key="uploadDocLabel.AddDocuments" />
+                                                            <bean:message key="uploadDocLabel.AddDocuments"/>
 
 
-											</td>
-										</tr>
-									</table></td>
-							</tr>
+                                                    </td>
+                                                </tr>
+                                            </table></td>
+                                    </tr>
 
-							<tr>
-								<td colspan="4" align="left" valign="top">
-									<table width="100%">
-										<tr>
-											<td>
-												<%
+                                    <tr>
+                                        <td colspan="4" align="left" valign="top">
+                                            <table width="100%">
+                                                <tr>
+                                                    <td>
+                                                        <%
                                                                     String addLink = "javascript:add_documents()";
                                                         %>
-												<div id='add_label' style='display: none;'>
-													&nbsp;&nbsp;&nbsp;&nbsp;
-													<html:link href="<%=addLink%>">
-														<u><bean:message key="uploadDocLabel.AddDocuments" /></u>
-													</html:link>
-												</div>
-											</td>
-										</tr>
-									</table>
-								</td>
-							</tr>
+                                                        <div id='add_label' style='display: none;'>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <html:link href="<%=addLink%>">
+                                                                <u><bean:message key="uploadDocLabel.AddDocuments"/></u>
+                                                            </html:link>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
 
-							<tr>
-								<td>
-									<table width="100%" border="0" cellpadding="1" cellspacing="5">
-										<tr>
-											<td width="12%" align="left" class="copybold" nowrap><bean:message
-													key="uploadDocLabel.DocumentType" />:</td>
-											<td width="30%" align="left" nowrap><logic:notEmpty
-													name="DocTypes">
-                                                            &nbsp;<html:select
-														property="docType" styleClass="textbox-long"
-														disabled="<%=disable%>" onchange="dataChanged()">
-														<html:option value="">
-															<bean:message key="specialReviewLabel.pleaseSelect" />
-														</html:option>
-														<html:options collection="DocTypes" property="code"
-															labelProperty="description" />
-													</html:select>
-												</logic:notEmpty> <logic:empty name="DocTypes">
-                                                            &nbsp;<html:select
-														property="docType" styleClass="textbox-long">
-														<html:option value="">
-															<bean:message key="specialReviewLabel.pleaseSelect" />
-														</html:option>
-													</html:select>
-												</logic:empty></td>
-											<td width="15%" align=right nowrap class="copybold"><bean:message
-													key="uploadDocLabel.Description" />:</td>
-											<td width='43%' align=left>&nbsp;<html:text
-													property="description" maxlength="150"
-													disabled="<%=disable%>" size="40" onchange="dataChanged()"></html:text></td>
-										</tr>
-										<tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellpadding="1" cellspacing="5">
+                                                <tr>
+                                                    <td  width="12%" align="left" class="copybold" nowrap>
+                                                        <bean:message key="uploadDocLabel.DocumentType"/>:
+                                                    </td>
+                                                    <td width="30%" align="left" nowrap>
+                                                        <logic:notEmpty name = "DocTypes">
+                                                            &nbsp;<html:select property="docType" styleClass="textbox-long" disabled="<%=disable%>" onchange="dataChanged()">
+                                                                <html:option value=""><bean:message key="specialReviewLabel.pleaseSelect"/></html:option>
+                                                                <html:options collection="DocTypes" property="code" labelProperty="description"  />
+                                                            </html:select>
+                                                        </logic:notEmpty>
+                                                        <logic:empty name="DocTypes">
+                                                            &nbsp;<html:select  property="docType"  styleClass="textbox-long" >
+                                                                <html:option value=""><bean:message key="specialReviewLabel.pleaseSelect"/></html:option>
+                                                            </html:select>
+                                                        </logic:empty>
+                                              </td>
+                                                    <td width="15%" align=right nowrap class="copybold">
 
-											<td align="left" nowrap class="copybold"><bean:message
-													key="uploadDocLabel.FileName" />:</td>
+                                                        <bean:message key="uploadDocLabel.Description"/>:
+                                                    </td>
+                                                        <td width='43%' align=left>&nbsp;<html:text property="description" maxlength="150" disabled="<%=disable%>"  size="40" onchange="dataChanged()"></html:text></td>
+                                                </tr>
+                                                <tr>
 
-											<td align="left" class='copy' colspan="4">&nbsp;<html:file
-													property="document" disabled="<%=disable%>"
-													onchange="selectFile()" maxlength="300" size="50" />
-											</td>
-										</tr>
-										<tr>
-											<td align="left" class="copybold" nowrap>Project #:</td>
-											<td style="font-size: 13px" colspan="4"><logic:present
-													name="projectList">
-													<logic:notEmpty name="projectList">
-														<html:select property="pjtName" styleClass="textbox-long"
-															style="width:650;" onchange="dataChanged()">
-															<html:option value="0">
-																<bean:message key="specialReviewLabel.pleaseSelect" />
-															</html:option>
-															<html:options collection="projectList" property="code"
-																labelProperty="description" />
-														</html:select>
-													</logic:notEmpty>
+                                                    <td align="left" nowrap class="copybold">
+                                                        <bean:message key="uploadDocLabel.FileName"/>:
+                                                    </td>
 
-												</logic:present> <logic:notPresent name="projectList">
-													<%  String moduleitemkey = "";
+                                                    <td align = "left" class='copy' colspan="4">
+                                                        &nbsp;<html:file property="document" disabled="<%=disable%>" onchange="selectFile()" maxlength="300" size = "50"/>
+                                                    </td>
+                                                </tr>
+                                                    <tr>
+                                                        <td  align="left" class="copybold" nowrap>Project #:</td>
+                                                        <td style="font-size: 13px" colspan="4">
+                                        
+                                                            <logic:present name="projectList">
+                        <logic:notEmpty name="projectList">
+                            <html:select property="pjtName" styleClass="textbox-long" style="width:650;" onchange="dataChanged()">
+                                <html:option value="0"><bean:message key="specialReviewLabel.pleaseSelect"/></html:option>
+                                <html:options collection="projectList" property="code" labelProperty="description"  />
+                        </html:select>
+                        </logic:notEmpty>
+
+                    </logic:present>
+                                                         <logic:notPresent name="projectList">
+                                      <%  String moduleitemkey = "";
                                         // String projectType = (String) request.getSession().getAttribute("projectType");
                                             if((projectType.equals("Protocol")))
                                              {
@@ -484,111 +420,133 @@
                                                 name=name.substring(0, 25);
                                                }
                                                         %>
+                                                        
+                                                         <%=moduleitemkey%>
+                                                         <html:hidden property="pjtName" value="<%=moduleitemkey%>" />
+                                                       </logic:notPresent>
+                                         
 
-													<%=moduleitemkey%>
-													<html:hidden property="pjtName" value="<%=moduleitemkey%>" />
-												</logic:notPresent></td>
-										</tr>
-										<tr>
-											<%if((projectType.equals("Travel"))){%>
-											<td align="left" class="copybold" nowrap colspan="6"></td>
-											<%} else {%>
-											<td align="left" class="copybold" nowrap>Financial
-												Entity:</td>
-											<td colspan="5"><logic:present name="FinEntForPerson">
-													<html:select property="entity" styleClass="textbox-long"
-														style="width:650;">
-														<html:option value="0">
-															<bean:message key="specialReviewLabel.pleaseSelect" />
-														</html:option>
-														<html:options collection="FinEntForPerson" property="code"
-															labelProperty="description" />
-													</html:select>
-												</logic:present> <%--<html:select property="entity" styleClass="textbox-long" style="width:200%;" >
+                        
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <%if((projectType.equals("Travel"))){%>
+                                                        <td align="left" class="copybold" nowrap colspan="6"></td>
+                                                        <%} else {%>
+                                                       <td align="left" class="copybold" nowrap> Financial Entity: </td>
+                                                       <td colspan="5" >
+                                                                      <logic:present name="FinEntForPerson">
+                                                                          <html:select property="entity" styleClass="textbox-long" style="width:650;" >
+                                                                          <html:option value="0"><bean:message key="specialReviewLabel.pleaseSelect"/></html:option>
+                                                                          <html:options collection="FinEntForPerson" property="code" labelProperty="description"/>
+                                                                       </html:select>
+                                                                      </logic:present>
+                                                                          <%--<html:select property="entity" styleClass="textbox-long" style="width:200%;" >
                                                                           <html:option value="0"><bean:message key="specialReviewLabel.pleaseSelect"/></html:option>--%>
-												<logic:notPresent name="FinEntForPerson">
-													<html:options collection="FinEntForPerson" property="code"
-														labelProperty="description" />
-												</logic:notPresent></td>
-											<%}%>
-										</tr>
-										<tr>
-											<td>&nbsp;</td>
-											<td colspan="5" style="visibility: hidden"><html:text
-													property="fileName" style="width: 450px;"
-													disabled="<%=disable%>" styleClass="cltextbox-color"
-													readonly="true" /></td>
-										</tr>
-									</table>
-								</td>
-							</tr>
+                                                                          <logic:notPresent name="FinEntForPerson">
+                                                                          <html:options collection="FinEntForPerson" property="code" labelProperty="description"/>
+                                                                       </logic:notPresent>
+                                                                        
+                                                                      
+                                                                      
+                                                       </td>
+                                                      <%}%>
+                                                    </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td colspan="5" style="visibility: hidden">
+                                                        <html:text property="fileName" style="width: 450px;" disabled="<%=disable%>" styleClass="cltextbox-color" readonly="true"  />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
 
-							<tr class='table'>
-								<td class='savebutton'><html:button property="Save"
-										onclick="javaScript:saveOrDelete();" value="Save"
-										disabled="<%=disable%>" styleClass="clsavebutton" />
+                                    <tr class='table'>
+                                        <td class='savebutton'>
 
-									&nbsp;&nbsp;&nbsp;</td>
+                                            <html:button property="Save"  onclick="javaScript:saveOrDelete();" value="Save" disabled="<%=disable%>" styleClass="clsavebutton"/>
+                                           
+                                            &nbsp;&nbsp;&nbsp;
 
-							</tr>
+                                        </td>
 
-
-						</table></td>
-				</tr>
-				<!-- Add Documents: - End  -->
-
+                                    </tr>
 
 
-				<!-- List of Disclosure Attachments Start -->
-				<tr>
-					<td colspan="4" align="left" valign="top" class='core'>
-						<table width="100%" border="0" align="center" cellpadding="0"
-							cellspacing="0" class="tabtable">
+                                </table>
+                            </td> 
+                        </tr>
+                        <!-- Add Documents: - End  -->
 
-							<tr>
-								<td colspan="10" align="left" valign="top">
-									<table width="100%" border="0" cellpadding="0" cellspacing="0"
-										class="tableheader">
-										<tr>
-											<td>List of Attachments</td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-							<tr>
-								<td height='2'></td>
-							</tr>
 
-							<tr>
-								<td class="theader" align="left" width="15%">Attachment
-									Type</td>
 
-								<td class="theader" align='left' width="17%">File Name</td>
-								<td class="theader" align='left' width="18%">Description</td>
-								<td class="theader" align='left' width="12%">Project #</td>
-								<%if((projectType.equals("Travel"))){%>
-								<td class="theader" align='left' width="15%" colspan="2">
-									Update Timestamp</td>
-								<%} else {%>
-								<td class="theader" align='left' width="12%">Entity</td>
-								<td class="theader" align='left' width="15%">Update
-									Timestamp</td>
-								<%}%>
-								<td class="theader" align='left' width="3%"></td>
-								<td class="theader" align='center' width="8%"></td>
+                        <!-- List of Disclosure Attachments Start -->
+                        <tr>
+                            <td colspan="4" align="left" valign="top" class='core'>
+                                <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabtable">
 
-							</tr>
+                                    <tr>
+                                        <td colspan="10" align="left" valign="top">
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableheader">
+                                                <tr>
+                                                    <td>
+                                                        List of Attachments 
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height='2'>
+                                        </td>
+                                    </tr>
 
-							<%
+                                    <tr>
+                                        <td class="theader" align="left" width="15%">
+                                            Attachment Type
+                                        </td>
+                                        
+                                        <td class="theader" align='left' width="17%">
+                                        	File Name
+                                        </td>
+                                            <td class="theader" align='left'  width="18%">
+                                        	Description
+                                        </td>
+                                       <td class="theader" align='left' width="12%">
+                                        	Project #
+                                        </td>
+                                         <%if((projectType.equals("Travel"))){%>
+                                         <td class="theader" align='left' width="15%" colspan="2">
+                                        	Update Timestamp
+                                        </td>
+                                         <%} else {%>
+                                        <td class="theader" align='left' width="12%">
+                                        	Entity 
+                                        </td>
+                                        <td class="theader" align='left' width="15%">
+                                        	Update Timestamp
+                                        </td>
+                                        <%}%>
+                                        <td class="theader" align='left'  width="3%">
+
+                                        </td>
+                                        <td class="theader" align='center' width="8%">
+
+                                        </td>
+
+                                    </tr>
+                         
+                                    <%
                                                 String strBgColor = "#D6DCE5";
                                                 int index = 0;
                                                 int i = 0;
                                                 Vector attachmentList = (Vector) request.getAttribute("attachmentList");
 
                                     %>
-							<logic:present name="attachmentList">
-								<logic:iterate id="disclosureAttachments" name="attachmentList">
-									<%
+                                    <logic:present name="attachmentList">
+                                     <logic:iterate id="disclosureAttachments"  name="attachmentList">
+                                            <%
 
                                                         if (index % 2 == 0) {
                                                             strBgColor = "#D6DCE5";
@@ -610,13 +568,11 @@
 
                                                         i++; 
                                             %>
-									<tr bgcolor="<%=strBgColor%>" class="rowLine"
-										onmouseover="className='rowHover rowLine'"
-										onmouseout="className='rowLine'">
-										<td class="copy" align='left' style="width: 15%">
-											<%--<bean:write name="disclosureAttachments" property="docType"/>--%><%=docTyp%>
-										</td>
-										<%-- <logic:present name="eventDiscl">
+                                            <tr bgcolor="<%=strBgColor%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'">
+                                                <td class="copy" align='left' style="width: 15%">
+                                                    <%--<bean:write name="disclosureAttachments" property="docType"/>--%><%=docTyp%>
+                                                </td>
+                                                   <%-- <logic:present name="eventDiscl">
                                                        <% String name1= (String)request.getSession().getAttribute("pjctname");
                                                        int size=name1.length();
                                                        if(size >25){
@@ -631,76 +587,84 @@
                                                          <%=annlPjtName%>
                                                          </td>
                                                     </logic:notPresent>--%>
+                                  
+                                                  <td class="copy" align='left' style="width: 15%">
+                                                  <%=fileName%> 
+                                                </td>
 
-										<td class="copy" align='left' style="width: 15%"><%=fileName%>
-										</td>
-
-										<td class="copy" align='left'><%=desc%></td>
-										<td class="copy" align='left'><bean:write
-												name="disclosureAttachments" property="moduleItemKey" /></td>
-										<%if((projectType.equals("Travel"))){%>
-										<td class="copy" align='left' colspan="2"><%=updateTimestamp%>
-											by <%=updateUser%></td>
-										<%}else {%>
-										<td class="copy" align='left'><bean:write
-												name="disclosureAttachments" property="entName" /></td>
-										<td class="copy" align='left'><%=updateTimestamp%> by <%=updateUser%>
-										</td>
-										<%}%>
-										<td class="copy" align='left'>
-											<%
+                                                 <td class="copy" align='left'>
+                                                <%=desc%>
+                                                </td>
+                                                <td class="copy" align='left' >
+                                                <bean:write name="disclosureAttachments" property="moduleItemKey"/>
+                                                </td>
+                                                <%if((projectType.equals("Travel"))){%>
+                                                <td class="copy" align='left' colspan="2">
+                                               <%=updateTimestamp%> by <%=updateUser%>
+                                                </td>
+                                                <%}else {%>
+                                                 <td class="copy" align='left' >
+                                               <bean:write name="disclosureAttachments" property="entName"/>
+                                                </td>                                             
+                                                 <td class="copy" align='left'>
+                                               <%=updateTimestamp%> by <%=updateUser%>
+                                                </td>
+                                                  <%}%>
+                                                <td class="copy" align='left'>
+                                                    <%
                                                                 String link1 = "javaScript:viewAttachment('" + attachmentBean.getEntityNumber() + "','" + attachmentBean.getDisclosureNumber() + "','" + attachmentBean.getSequenceNumber() + "','" + attachmentBean.getUpdateUser() + "')";
-                                                    %> <html:link
-												href="<%=link1%>">
+                                                    %>
+                                                    <html:link  href="<%=link1%>">
                                                         View
                                                     </html:link>
-										</td>
-										<td class="copy" align='left'>
-											<%
+                                                  </td>
+                                                <td class="copy" align='left' >
+                                                    <%
                                                       String link = "javaScript:removeAttachment('" + attachmentBean.getEntityNumber() + "','" + attachmentBean.getDisclosureNumber() + "','" + attachmentBean.getSequenceNumber() + "','" + attachmentBean.getUpdateUser() + "')";
-                                                    %> <html:link
-												href="<%=link%>">
+                                                    %>
+
+                                                    <html:link href="<%=link%>" >
                                                         &nbsp;&nbsp;Remove
                                                     </html:link>&nbsp;&nbsp;
-										</td>
+                                                </td>
 
-
-									</tr>
-									<tr>
-										<td height=2></td>
-									</tr>
-									<%
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td height=2>
+                                                </td>
+                                            </tr>
+                                            <%
                                                         index++;
                                             %>
-								</logic:iterate>
-							</logic:present>
-							<tr>
-								<td class='savebutton' align="left" colspan="3"><html:button
-										onclick="javaScript:saveAndcontinue();" property="Save"
-										styleClass="clsavebutton" style="width:150px;">
+                                        </logic:iterate>
+                                        </logic:present>
+                                    <tr>
+                                        <td class='savebutton' align="left" colspan="3">
+                                        <html:button onclick="javaScript:saveAndcontinue();" property="Save" styleClass="clsavebutton" style="width:150px;">
                                            Continue
-                                        </html:button> <html:button
-										onclick="javaScript:exitToCoi();" property="Save"
-										styleClass="clsavebutton" style="width:150px;">
-                                          Quit
-                                        </html:button></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<!-- List of Disclosure Attachments End -->
-				<%--<html:hidden property="docName"/>--%>
-				<html:hidden property="acType" />
-				<html:hidden property="disclosureNumber" />
-				<html:hidden property="sequenceNumber" />
-				<html:hidden property="entityNumber" />
-				<html:hidden property="fileBytes" />
-				<html:hidden property="fileNameHidden" />
-			</table>
-		</div>
+                                        </html:button>
 
-	</html:form>
-	<script>
+                                        <html:button onclick="javaScript:exitToCoi();" property="Save" styleClass="clsavebutton" style="width:150px;">
+                                          Quit
+                                        </html:button>
+                                    </td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- List of Disclosure Attachments End -->
+                        <%--<html:hidden property="docName"/>--%>
+                        <html:hidden property="acType"/>
+                        <html:hidden property="disclosureNumber"/>
+                        <html:hidden property="sequenceNumber"/>
+                        <html:hidden property="entityNumber"/>
+                        <html:hidden property="fileBytes"/>
+                        <html:hidden property="fileNameHidden"/>
+                    </table>
+                </div>
+
+            </html:form>
+        <script>
       DATA_CHANGED = 'false';
       var errValue = false;
       if(errValue && !errLock) {

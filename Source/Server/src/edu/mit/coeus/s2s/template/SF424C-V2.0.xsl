@@ -56,7 +56,7 @@ xmlns:SF424C_2_0="http://apply.grants.gov/forms/SF424C_2_0-V2.0" xmlns:codes="ht
 									</fo:block>
 									<fo:block>
 										<fo:inline font-size="6px">Expiration
-											Date: 06/30/2014</fo:inline>
+											Date: 01/31/2019</fo:inline>
 									</fo:block>
 								</fo:table-cell>
 							</fo:table-row>

@@ -1831,3 +1831,4 @@ public class CoeusAppletMDIForm extends JFrame {
     }
 }//End Class
 
+

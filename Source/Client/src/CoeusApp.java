@@ -18,7 +18,7 @@ public class CoeusApp {
                 System.exit(0);
             }
         });
-        myFrame.resize(380, 150);
+        myFrame.resize(380, 150); 
         myFrame.setResizable(false) ;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension dlgSize = myFrame.getSize();

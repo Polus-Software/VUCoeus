@@ -98,8 +98,8 @@ public class CoeusToolBarFactory extends JToolBar implements ActionListener {
         coeusMessageResources = CoeusMessageResources.getInstance();
         createToolBar();
         // rdias UCSD - Coeus personalization impl
-	    AbstractController persnref = AbstractController.getPersonalizationControllerRef();
-	    persnref.customize_module(null, getToolBar(),this, "MAINFRAME");
+//	    AbstractController persnref = AbstractController.getPersonalizationControllerRef();
+//	    persnref.customize_module(null, getToolBar(),this, "MAINFRAME");
 	    //rdias UCSD               
     }
     
@@ -503,9 +503,9 @@ public class CoeusToolBarFactory extends JToolBar implements ActionListener {
         InstituteProposalListController proposalController= new InstituteProposalListController();
         
         // rdias UCSD - Coeus personalization impl
-        AbstractController persnref = AbstractController.getPersonalizationControllerRef();
-        persnref.customize_module(proposalController,proposalController,null,
-        		CoeusGuiConstants.PROPOSAL_BASE_FRAME_TITLE);
+//        AbstractController persnref = AbstractController.getPersonalizationControllerRef();
+//        persnref.customize_module(proposalController,proposalController,null,
+//        		CoeusGuiConstants.PROPOSAL_BASE_FRAME_TITLE);
         // rdias UCSD - Coeus personalization impl
         
         proposalController.display();

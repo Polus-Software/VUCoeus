@@ -69,6 +69,11 @@ public interface S2SConstants {
     public static final String COULD_NOT_EXTRACT_XML_FROM_PDF = "Could Not Extract XML From PDF";
     public static final String PROPOSAL_NUMBER = "proposalNumber";
     public static final String USER_ATTACHED_FORM_NUMBER = "userAttachedFormNumber";
+    public static final String PHS_HUMANSUBJECT_FORM_NUMBER = "phsHumanSubjectFormNumber";
+    public static final String PHS_HUMANSUBJECT_ATTMNT_TYPE = "phsHumanSubjectAttachmentType";
+    public static final String PHS_HUMANSUBJECT_ATTMNT_NUMBER = "phsHumanSubjectAttachmentNumber";
+    public static final String PHS_ATTMNT_TYPE = "phsAttachmentType";
+    public static final String PHS_HUMANSUBJECTS_AND_CLINICALTRIALSINFO_FORM_NAME = "PHSHumanSubjectsAndClinicalTrialsInfo";
     public static final String FILE = "file";
     public static final String TIMESTAMP = "TS";
     public static final String CONTENT_ID = "CONTENT_ID";
