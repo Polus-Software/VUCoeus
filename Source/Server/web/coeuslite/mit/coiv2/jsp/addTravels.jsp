@@ -6,31 +6,23 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ taglib uri="/WEB-INF/coeus-utils.tld" prefix="coeusUtils"%>
-<%@ page
-	import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiEventTypeAttrBean,edu.mit.coeuslite.coiv2.beans.CoiProjectEntityDetailsBean,edu.mit.coeuslite.coiv2.services.CoiCommonService,java.util.HashMap;"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" 	prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" 	prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" 	prefix="logic" %>
+<%@ taglib uri="/WEB-INF/coeus-utils.tld"	prefix="coeusUtils" %>
+<%@ page import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiEventTypeAttrBean,edu.mit.coeuslite.coiv2.beans.CoiProjectEntityDetailsBean,edu.mit.coeuslite.coiv2.services.CoiCommonService,java.util.HashMap" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>COI</title>
-<%String path = request.getContextPath();%>
-<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css"
-	rel="stylesheet" type="text/css" />
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>COI</title>
+        <%String path = request.getContextPath();%>
+    <link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css" rel="stylesheet" type="text/css" />
 
-<%
+    <%
           boolean mode = false;
         Boolean modeValue = (Boolean)request.getAttribute("flag");
             boolean edit=Boolean.parseBoolean(request.getParameter("edit"));
@@ -118,7 +110,7 @@
                 }
         %>
 
-<script language="javascript" type="text/javascript">
+        <script language="javascript" type="text/javascript">
 
         function CheckNumeric (e)
         {
@@ -249,16 +241,15 @@
     }
 
     </script>
-</head>
+    </head>
 
-<script language="javascript" type="text/JavaScript"
-	src="<%=request.getContextPath()%>/coeuslite/mit/utils/scripts/coeusLiteCalendar.js"></script>
+    <script language="javascript" type="text/JavaScript" src="<%=request.getContextPath()%>/coeuslite/mit/utils/scripts/coeusLiteCalendar.js"></script>
 
-<html:form action="/createDisclosureCoiv2.do" method="post">
+    <html:form action="/createDisclosureCoiv2.do" method="post">
 
-	<table class="table" style="height: auto;" border="0"
-		<% if(travelUserDet == null){%>
-		<tr><td colspan="4">Please add a new Travel Event to create a new COI disclosure</td></tr>
+    <table class="table" style="height:auto;" border="0"
+           <% if(travelUserDet == null){%>
+                <tr><td colspan="4">Please add a new Travel Event to create a new COI disclosure</td></tr>
         <%}%>
    
          <tr style="height: 3px;"><td colspan="4"></td></tr>
@@ -284,7 +275,7 @@
                         }
 
                 %>
-		<tr bgcolor="#D1E5FF">
+                <tr bgcolor="#D1E5FF">
                     <td style="width: 25%;color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;text-align:inherit;padding-left: 3px;padding-top: 5px;">
                        <%=label%>:
                     </td>
@@ -321,7 +312,7 @@
                             fieldValue = (String)travelUserDet.get(editValue);
                         }
                 %>
-		<tr bgcolor="#D1E5FF">
+                <tr bgcolor="#D1E5FF">
                     <td style="width: 25%;color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;text-align:inherit;padding-left: 3px;padding-top: 3px;">
                        <%=label%>:
                     </td>
@@ -362,7 +353,7 @@
                             fieldValue = travelUserDet.get(editValue).toString();
                         }
                 %>
-		<tr bgcolor="#D1E5FF">
+                        <tr bgcolor="#D1E5FF">
                             <td style="width: 25%;color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;text-align:inherit;padding-left: 3px;padding-top: 3px;">
                                <%=label%>:
                             </td>
@@ -430,7 +421,7 @@
                             fieldValue = (String)travelUserDet.get(editValue);
                         }
                 %>
-		<tr bgcolor="#D1E5FF">
+                        <tr bgcolor="#D1E5FF">
                             <td style="width: 25%;color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;text-align:inherit;padding-left: 3px;padding-top: 3px;">
                                <%=label%>:
                             </td>
@@ -510,7 +501,7 @@
                             fieldValue = (String)travelUserDet.get(editValue);
                         }
                 %>
-		<tr bgcolor="#D1E5FF">
+                        <tr bgcolor="#D1E5FF">
                             <td style="width: 25%;color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;text-align:inherit;padding-left: 3px;padding-top: 3px;">
                                <%=label%>:
                             </td>
@@ -550,8 +541,9 @@
                              <% } %>
 
             </td>
-        </tr></table>
-	<script language="javascript" type="text/javascript">
+        </tr>
+    </table>
+      <script language="javascript" type="text/javascript">
        function saveProject()
       {
         var success=validateNewproject();

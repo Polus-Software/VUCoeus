@@ -9,15 +9,14 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ page
-	import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.Coiv2AttachmentBean,edu.mit.coeuslite.coiv2.utilities.CoiConstants,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,edu.mit.coeuslite.coiv2.services.CoiCommonService,java.util.Date;"%>
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ page import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.Coiv2AttachmentBean,edu.mit.coeuslite.coiv2.utilities.CoiConstants,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,edu.mit.coeuslite.coiv2.services.CoiCommonService,java.util.Date"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>C O I</title>
 <%
 String path = request.getContextPath();
@@ -25,17 +24,10 @@ String statusChanged=(String)request.getAttribute("changedViewStatus");
 %>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/divSlide.js"></script>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/Balloon.js"></script>
-<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css"
-	rel="stylesheet" type="text/css" />
+<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 var reviewSts = 0;
 function approve(){
@@ -64,23 +56,20 @@ document.forms[0].submit();
 </script>
 </head>
 <script src="js/jquery.js" type="text/javascript"></script>
-<body>
-	<%--<td valign="top">--%>
-	<table id="setStatusBodyTable" class="table" style="width: 100%;"
-		border="0">
-		<tr>
-			<td><html:form action="/updateStatus.do">
-					<logic:present name="status">
-						<logic:equal value="true" name="status">
-							<font color="red">Status Updated to <%= statusChanged%>
-							</font>
-						</logic:equal>
-						<logic:equal value="false" name="status">
-							<font color="red">Status Not Updated</font>
-						</logic:equal>
-					</logic:present>
-					<br />
-					<%--<logic:present name="status1">
+    <body>
+<%--<td valign="top">--%>
+<table id="setStatusBodyTable" class="table" style="width: 100%;" border="0" >
+    <tr><td>
+<html:form action="/updateStatus.do">
+<logic:present name="status">
+    <logic:equal value="true" name="status">
+        <font color="red">Status Updated to <%= statusChanged%> </font>
+    </logic:equal>
+    <logic:equal value="false" name="status">
+        <font color="red">Status Not Updated</font>
+    </logic:equal>
+</logic:present><br/>
+<%--<logic:present name="status1">
     <logic:equal value="true" name="status1">
         <font color="red">Mail send successfully</font>
     </logic:equal>
@@ -88,28 +77,16 @@ document.forms[0].submit();
         <font color="red">Mail send failed</font>
     </logic:equal>
 </logic:present><br/>--%>
-					<logic:notPresent name="status">
-						<div id="buttonDiv">
-							&nbsp; &nbsp;
-							<html:button styleClass="clsavebutton"
-								onclick="javaScript:approve();" property="button"
-								value="Recomend for Approval" style="width:200px"></html:button>
-							<br>
-							<br> &nbsp; &nbsp;
-							<html:button styleClass="clsavebutton"
-								onclick="javaScript:disapprove();" property="button"
-								value="Recomend for Disapproval" style="width:200px"></html:button>
-							<br>
-							<br> &nbsp; &nbsp;
-							<html:button styleClass="clsavebutton"
-								onclick="javaScript:review();" property="button"
-								value="Review by COI committee" style="width:200px"></html:button>
-						</div>
-					</logic:notPresent>
-				</html:form></td>
-		</tr>
-	</table>
+<logic:notPresent name="status">
+<div id="buttonDiv">
+&nbsp; &nbsp;<html:button styleClass="clsavebutton" onclick="javaScript:approve();" property="button" value="Recomend for Approval" style="width:200px"></html:button><br><br>
+&nbsp; &nbsp;<html:button styleClass="clsavebutton" onclick="javaScript:disapprove();" property="button" value="Recomend for Disapproval" style="width:200px"></html:button><br><br>
+&nbsp; &nbsp;<html:button styleClass="clsavebutton" onclick="javaScript:review();" property="button" value="Review by COI committee" style="width:200px"></html:button>
+</div>
+</logic:notPresent>
+</html:form></td></tr></table>
 
 
-</body>
+    </body>
 </html>
+  

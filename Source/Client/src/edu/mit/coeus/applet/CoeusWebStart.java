@@ -6,7 +6,7 @@
 
 package edu.mit.coeus.applet;
 
-import com.sun.security.auth.callback.DialogCallbackHandler;
+//import com.sun.security.auth.callback.DialogCallbackHandler;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -326,8 +326,7 @@ public class CoeusWebStart extends javax.swing.JApplet implements ActionListener
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         pnlMain.add(password, gridBagConstraints);
 
-        // JM 12-19-2014 commented out image
-        //jLabel1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("coeus.gif") ));
+        jLabel1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/coeus.gif") ));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;

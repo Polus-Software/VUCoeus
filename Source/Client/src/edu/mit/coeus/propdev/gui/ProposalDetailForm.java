@@ -50,13 +50,14 @@ import java.beans.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 
+import java.util.*;
 //import edu.mit.coeus.utils.BaseWindowObservable;
 import edu.mit.coeus.exception.*;
 import edu.mit.coeus.instprop.gui.InvestigaorListForm;
 import edu.mit.coeus.irb.bean.ProtocolFundingSourceBean;
 import edu.mit.coeus.irb.bean.ProtocolInfoBean;
+import static edu.mit.coeus.propdev.gui.ProposalInvestigatorForm.connect;
 import edu.mit.coeus.utils.query.*;
 //import edu.mit.coeus.propdev.gui.PrintProposal;
 import edu.mit.coeus.s2s.bean.OpportunityInfoBean;
@@ -79,13 +80,7 @@ import edu.mit.coeus.search.gui.ProposalSearch;
 //import edu.mit.coeus.utils.ChangePassword;
 //import edu.mit.coeus.propdev.gui.SpecialReviewForm;
 import edu.ucsd.coeus.personalization.controller.AbstractController;
-
-/* 4-23-2015 added for custom functionality */
-import edu.mit.coeus.utils.locking.LockingBean;
-import edu.vanderbilt.coeus.gui.CoeusHelpGidget;
-import edu.vanderbilt.coeus.utils.CustomFunctions;
-/* JM END */
-
+import java.io.IOException;
 /**
  * The class is used to maintain the Proposal details.
  * This will be invoked from the <CODE>ProposalBaseWindow</CODE> in three different modes,
@@ -95,7 +90,7 @@ import edu.vanderbilt.coeus.utils.CustomFunctions;
  * @author  subramanya
  * Created on March 13, 2003, 10:49 AM
  * @updated Subramanya
- * Description : Updated Functionality for Previous/Next button in View Mode.
+ * Description : Updated Functionality for Previous/Next button in Veiw Mode.
  */
 public class ProposalDetailForm extends CoeusInternalFrame
 implements ActionListener,TypeConstants, Observer, ChangeListener{
@@ -188,6 +183,8 @@ implements ActionListener,TypeConstants, Observer, ChangeListener{
 
     /*Added for COEUSQA-4066*/
     private CoeusMenuItem userAttachedS2SForms;
+    
+    private CoeusMenuItem humnSubS2SForms;
 
     private CoeusMenu localFileMenu, editMenu,actionsMenu;
     private CoeusToolBarButton btnNextProposal,btnPrevProposal,btnApproveProposal,
@@ -197,11 +194,6 @@ implements ActionListener,TypeConstants, Observer, ChangeListener{
     //Added for the case#COEUSQA-1679-Modification for Final Document Indicator-start
 //    private edu.mit.coeus.routing.gui.RoutingApprovalForm routingApprovalForm;
 
-    /* JM 5-17-2016 new button to display proposal number which this proposal was copied from;
-     * 		5-25-2016 questionnaire, validations, and GG buttons */
-    private CoeusToolBarButton btnCopiedFromPropNum, btnQuestionnaire, btnValidations, btnGG;
-    /* JM END */
-    
     Vector proposalStatus = new Vector();
     Vector proposalTypes = new Vector();
     Vector proposalNSFCodes = new Vector() ;
@@ -276,7 +268,7 @@ implements ActionListener,TypeConstants, Observer, ChangeListener{
 
     //holds the proposal investigator component
     private ProposalInvestigatorForm proposalInvestigator = null;
-
+    private static final char GET_APP_HOME_URL = 'o';  
     // holds the medusa details
     private MedusaDetailForm medusaDetailform = null;
 
@@ -490,10 +482,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
     //ppc certify flag for key person starts
     private static final String ENABLE_PROP_PERSON_SELF_CERTIFY="ENABLE_PROP_PERSON_SELF_CERTIFY";
     //ppc certify flag for key person ends
-
-    // JM 4-15-2015 added APPROVAL_IN_PROGRESS and APPROVED status variables
-    private static final int APPROVAL_IN_PROGRESS = 2;
-    // JM END
 
 
     public ProposalDetailForm( char fnType, String propID,
@@ -920,6 +908,11 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             userAttachedS2SForms = new CoeusMenuItem("User Attached S2S Forms...", null, true, true);
 //            userAttachedS2SForms.setMnemonic('S');
             userAttachedS2SForms.addActionListener(this);
+            
+            //Human Subjects 
+            humnSubS2SForms = new CoeusMenuItem("Human Subjects Forms...", null, true, true);
+            humnSubS2SForms.addActionListener(this);
+            //Human Subjects 
 
             //Commented for the Coeus Enhancement case:#1823 start step:4
 //            specialReview = new CoeusMenuItem("Special Review...", null, true, true);
@@ -983,21 +976,8 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
 
             fileChildren.add(narrative);
             fileChildren.add(budget);
-             
-            // JM 1-14-2015 check for permissions; only show menu option if user has right
-            edu.vanderbilt.coeus.utils.UserPermissions perm = 
-        		new edu.vanderbilt.coeus.utils.UserPermissions(mdiForm.getUserId());
-            try {
-            	boolean hasRight = perm.hasRight("UPLOAD_USER_S2S_FORMS");
-            	if (hasRight) {
             fileChildren.add(userAttachedS2SForms);
-            	}
-				
-			} catch (CoeusClientException e) {
-				System.out.println("Could not get user permissions for S2S form menu item");
-			}
-	        // JM END 
-
+            fileChildren.add(humnSubS2SForms);
             fileChildren.add(SEPERATOR);
 
             //Commented for the Coeus Enhancement case:#1823 start step:5
@@ -1054,13 +1034,13 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             submitSponsor.setMnemonic('b');
             submitSponsor.addActionListener(this);
 
-            submitGrantsGov = new CoeusMenuItem(CoeusGuiConstants.GRANTS_GOV, null, true, true); // JM 5-25-2016 static title
+            submitGrantsGov = new CoeusMenuItem("Grants.Gov", null, true, true);
             submitGrantsGov.setMnemonic('g');
             submitGrantsGov.addActionListener(this);
             //            submitGrantsGov.setEnabled(false);
 
 
-            validationChecks = new CoeusMenuItem(CoeusGuiConstants.VALIDATIONS, null, true, true); // JM 5-25-2016 static title
+            validationChecks = new CoeusMenuItem("Validation checks", null, true, true);
             validationChecks.setMnemonic('V');
             validationChecks.addActionListener(this);
 
@@ -1111,36 +1091,35 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             //Commented for COEUSQA-2342 : remove the old notification icon and menu item from proposal development window - Start
 //            fileChildren.add(notify);
             //COEUSQA-2342 : End
+            fileChildren.add(SEPERATOR);
+            fileChildren.add(certifications);
+
             // notification START
             try
             {
             parameterExist=fetchParameterValue();
             if(parameterExist){
-            	/* JM 5-25-2011 remove menu selection for Print Certifications per 4.4.2; 4-2-2015 re-enabling for testing */
-                fileChildren.add(SEPERATOR);
-                fileChildren.add(certifications);
-                /* JM END */
+            fileChildren.add(notification);
+               notification.setEnabled(false);
+            rightExist=getNotifyProposalPersonRight();
+            if(rightExist){
+            fileChildren.add(notification);
+            }
+            else{
                 fileChildren.add(notification);
+                notification.setVisible(true);
                 notification.setEnabled(false);
-                rightExist=getNotifyProposalPersonRight();
-                if(rightExist){
-                	fileChildren.add(notification);
-                }
-                else{
-                	fileChildren.add(notification);
-                	notification.setVisible(true);
-                	notification.setEnabled(false);
-               }
+            }
 //Added for COEUSDEV-736:
 //This code is added to disable Send Notification  button if the proposal is a child proposal.
-                if(hierarchyMap!= null){
-		            boolean inHierarchy = ((Boolean)hierarchyMap.get("IN_HIERARCHY")).booleanValue();
-		            boolean isParent = false;
-		            if(inHierarchy) {
-		                isParent = ((Boolean)hierarchyMap.get("IS_PARENT")).booleanValue();
-		                if(!isParent){notification.setEnabled(false);}
-		            }
-	            }
+            if(hierarchyMap!= null){
+            boolean inHierarchy = ((Boolean)hierarchyMap.get("IN_HIERARCHY")).booleanValue();
+            boolean isParent = false;
+            if(inHierarchy) {
+                isParent = ((Boolean)hierarchyMap.get("IS_PARENT")).booleanValue();
+                if(!isParent){notification.setEnabled(false);}
+            }
+            }
 //Added for COEUSDEV-736: to disable Send Notification button end.
             }
             else
@@ -1256,26 +1235,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         btnMedusa = new CoeusToolBarButton(new ImageIcon(
         getClass().getClassLoader().getResource(CoeusGuiConstants.MEDUSA_ICON)),
         null, "Medusa");
-        
-        /* JM 5-17-2016 button to display copied from num */
-        btnCopiedFromPropNum = new CoeusToolBarButton(new ImageIcon(
-                getClass().getClassLoader().getResource(CoeusGuiConstants.COPY_ICON)),
-                null, "Copied From Proposal Number");
-        /* JM END */
-        
-        /* JM 5-25-2016 buttons for questionnaire, validations, GG */
-        btnQuestionnaire = new CoeusToolBarButton(new ImageIcon(
-                getClass().getClassLoader().getResource(CoeusGuiConstants.QUESTION_PROP_HIE_ICON)),
-                null, CoeusGuiConstants.PROPOSAL_QUESTIONNAIRE);
-        
-        btnValidations = new CoeusToolBarButton(new ImageIcon(
-                getClass().getClassLoader().getResource(CoeusGuiConstants.CATEGORY_ICON)),
-                null, CoeusGuiConstants.VALIDATIONS);
-        
-        btnGG = new CoeusToolBarButton(new ImageIcon(
-                getClass().getClassLoader().getResource(CoeusGuiConstants.PROTOCOL_SUBMISSION_BASE_ICON)),
-                null, CoeusGuiConstants.GRANTS_GOV);
-        /* JM END */
 
         btnPrint = new CoeusToolBarButton(new ImageIcon(
         getClass().getClassLoader().getResource(CoeusGuiConstants.PRINT_ICON)),
@@ -1339,22 +1298,9 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         //Commented for COEUSQA-2342 : remove the old notification icon and menu item from proposal development window - Start
 //        toolbar.add(btnProposalNotification);
         //COEUSQA-2342 : End
-        /* JM 5-25-2016 validations and GG buttons */
         toolbar.addSeparator();
-        btnValidations.addActionListener(this);
-        toolbar.add(btnValidations);
-        btnGG.addActionListener(this);
-        toolbar.add(btnGG);
-        /* JM END */
-        
-        toolbar.addSeparator();
-        btnCopiedFromPropNum.addActionListener(this);
         toolbar.add(btnProposalNarrative);
         toolbar.add(btnBudget);
-        /* JM 5-25-2016 questionnaire button */
-        btnQuestionnaire.addActionListener(this);
-        toolbar.add(btnQuestionnaire); 
-        /* JM END */
         //Commented for the Coeus Enhancement case:#1823 start step:8
 //        toolbar.add(btnSpecialReview);
         //End Coeus Enhancement case:#1823 step:8
@@ -1367,10 +1313,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         toolbar.addSeparator();
         toolbar.add(btnMedusa);
         toolbar.addSeparator();
-        /* JM 5-17-2016 copied from proposal button */
-        btnCopiedFromPropNum.addActionListener(this);
-        toolbar.add(btnCopiedFromPropNum);
-        /* JM END */
         toolbar.add(btnPrint);
         toolbar.add(btnSave);
         toolbar.addSeparator();
@@ -1382,6 +1324,8 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         toolbar.add(sendEmail);
         toolbar.addSeparator();
         toolbar.add(btnClose);
+
+
 
         toolbar.setFloatable(false);
         if(functionType == DISPLAY_MODE){
@@ -1398,6 +1342,56 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
     public void unRegisterObserver( Observer observer ) {
         observable.deleteObserver( observer );
     }
+
+//    /** generate xml - added by ele for proposal nih printing
+//     */
+//
+//    private void proposalXMLGenerator() throws Exception{
+//
+//        String connURL = CoeusGuiConstants.CONNECTION_URL +
+//        "/ProposalXMLGeneratorServlet";
+//
+//
+//        // connect to the database and get the formData
+//        RequesterBean request = new RequesterBean();
+//        request.setId( proposalID );
+//
+//        AppletServletCommunicator comm = new AppletServletCommunicator(
+//        connURL, request );
+//        comm.send();
+//
+//        ResponderBean response = comm.getResponse();
+//        if ( response.isSuccessfulResponse() ) {
+//            String pdfURL = response.getDataObject().toString() ;
+//            AppletContext coeusContxt = mdiForm.getCoeusAppletContext();
+//
+//            if (coeusContxt != null) {//applet - obsolete
+//                coeusContxt.showDocument( new URL(
+//                CoeusGuiConstants.CONNECTION_URL + pdfURL ), "_blank" );
+//            }
+//            else {//webstart
+//                javax.jnlp.BasicService bs = (javax.jnlp.BasicService)javax.jnlp.ServiceManager.lookup("javax.jnlp.BasicService");
+//                bs.showDocument(new URL(CoeusGuiConstants.CONNECTION_URL + pdfURL ));
+//                try {
+//                    if ((response.getId().equalsIgnoreCase("Yes")) || (response.getId().equalsIgnoreCase("Y")) ) {
+//                        String debugXmlURL = pdfURL.substring(0,pdfURL.indexOf(".pdf"))  + ".xml" ;
+//                        bs.showDocument(new URL(CoeusGuiConstants.CONNECTION_URL + debugXmlURL ));
+//                    }
+//                }
+//                catch(Exception xmlExp) {
+//                    xmlExp.printStackTrace() ;
+//                }
+//            }
+//
+//        }
+//        else {
+//            CoeusOptionPane.showErrorDialog(response.getMessage()) ;
+//        }
+//    }
+
+
+
+
 
     /**
      *  This
@@ -1432,12 +1426,46 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                          specialReviewForm.setProtocolCreated(newProtocolBean,newProtocolNumber);
                     }
 
+//
+//                    old method
+//                    String protstatustitle = newProtocolBean.getProtocolStatusDesc();
+//                    Date applicationDate = newProtocolBean.getApplicationDate() ;
+//                    String applnDate="";
+//                    String approveDate="";
+//                    if(applicationDate != null){
+////                        applnDate = dtUtils.formatDate(applicationDate.toString(),"dd-MMM-yyyy");
+//                        applnDate = dtUtils.formatDate(applicationDate.toString(),"yyyy/MM/dd");
+//                    }
+//                    Date aprDate = newProtocolBean.getApprovalDate();
+//                    if(aprDate != null){
+//                     approveDate = dtUtils.formatDate(aprDate.toString(),"dd-MMM-yyyy");
+//                    }
+//                                           specialReviewForm.columnValueEditor.stopCellEditing();
+//                               // specialReviewForm.tblSpecialReview.getModel(). setValueAt("Human Subjects",selRow,1);
+//                                        specialReviewForm.tblSpecialReview.setValueAt(newProtocolNumber, selRow,3);
+//                                //specialReviewForm.tblSpecialReview.getModel(). setValueAt(newProtocolNumber,selRow,3);
+//                                        specialReviewForm.tblSpecialReview.setValueAt(protstatustitle,selRow,2);
+//                                //specialReviewForm.tblSpecialReview.getModel(). setValueAt(protstatustitle,selRow,2);
+//                                        specialReviewForm.tblSpecialReview.setValueAt(applnDate,selRow,4);
+//                                //specialReviewForm.tblSpecialReview.getModel(). setValueAt(applnDate,selRow,4);
+//                                            //specialReviewForm.tblSpecialReview.setValueAt(approveDate,selRow,5);
+//
+//                               // specialReviewForm.tblSpecialReview.getSelectionModel().setLeadSelectionIndex(selRow);
+//
+//                              saveRequired = true;
+////                                if(specialReviewForm.tblSpecialReview.getCellEditor()!=null){
+////                                    specialReviewForm.tblSpecialReview.getCellEditor().cancelCellEditing();
+////                                }
                     specialReviewForm.btnStartProtocol.setEnabled(false);
 
                     }
+                // CoeusOptionPane.showInfoDialog("new protocols....... saved successfully..");
                 }
             else if( source.equals( btnClose ) || source.equals( close ) ){
                 closeProposalDetailForm();
+                //specialReviewForm.clearSpecialReviewData();
+                // proposalSpecialReview.setVecData(null);
+                //  proposalDevelopmentFormBean.setPropSpecialReviewFormBean(null);
             }else if ( source.equals( btnSave ) || source.equals( save ) ){
                 //Case :#3149 ? Tabbing between fields does not work on others tabs - Start
                 if(getFunctionType() != DISPLAY_MODE && proposalOther != null){
@@ -1487,6 +1515,8 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             //COEUSQA-2342 : End
             }else if(source.equals(userAttachedS2SForms)){
                 showUserAttachmentsS2SForms(proposalID);
+            }else if(source.equals(humnSubS2SForms)){
+                showHumnSubjtForms(proposalID);
             }else if(source.equals(dataOverride)){                                                                  // Added by Amit
                 showDataOverride();                                                                                         // Added by Amit
             }else if(source.equals(addViewer)){                                                                     // Added by Amit
@@ -1515,30 +1545,22 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             }else if( source.equals( submitApproval) || ( source.equals( btnSubmitProposal))  ) {
                 // saveProposalDetails( SAVE_RETAIN_LOCK );
                 showSubmitForApproval();
-            } 
-            /* JM 5-25-2016 added to trigger by button as well */
-            else if (source.equals(validationChecks) || source.equals(btnValidations)) { 
-            	char errType = doValidation(true);
+            }else if( ( source.equals( validationChecks) )  ) {
+                char errType = doValidation(true);
                 if(errType==0){
                     CoeusOptionPane.showInfoDialog(
                         coeusMessageResources.parseMessageKey("validationChecks_exceptionCode.1904"));
                 }
-            }
-            /* JM END */
-            else if( source.equals(btnNotepad) || source.equals(notepad) ){
+            }else if( source.equals(btnNotepad) || source.equals(notepad) ){
                 showNotepad();
             }else if( source.equals(btnApproveProposal) || source.equals(approve) ){
                 showProposalRouting();
             }else if(source.equals(submitSponsor)){
                 submitSponsor();
-            }
-             /* JM 5-25-2016 added to trigger by button as well */
-            else if (source.equals(submitGrantsGov) || source.equals(btnGG) ){
+            }else if(source.equals(submitGrantsGov)){
                 submitGrantsGov();
                 updateChildStatus(proposalID);
-            }
-            /* JM END */
-            else if( source.equals(inbox) ) {
+            }else if( source.equals(inbox) ) {
                 showInboxDetails();
             }else if( source.equals(changePass) ) {
                 showChangePassword();
@@ -1551,14 +1573,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             }
             //Added for Case#3682 - Enhancements related to Delegations - End
             else if (source.equals(print) || source.equals(btnPrint))  {          //added by ele for nih prop printing
-// JM 7-25-2011 check performing organization and throw error if missing
-            	cvSites = proposalOrganization.getFormData();
-            	ProposalSiteBean proposalSiteBean = (ProposalSiteBean) cvSites.get(1);
-            	
-                if (proposalSiteBean.getOrganizationId() == null) {
-                	CoeusOptionPane.showErrorDialog("Performing organization must be defined.");
-                } else {
-// END                	
                 //case 1686 begin
                 if(isSaveRequired()) {
                     String msg = coeusMessageResources.parseMessageKey(
@@ -1586,7 +1600,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
 
 
                 //                     proposalXMLGenerator() ;
-                } // JM
             }else if (source.equals(certifications)){
                 //Added for bug fix #1829 Start
                 if(isSaveRequired()) {
@@ -1603,11 +1616,21 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                 //start of bug fix id 1651
             }else if(source.equals(notification)){
                 notification.setEnabled(true);
+            //String msg = coeusMessageResources.parseMessageKey(
+             //       "saveConfirmCode.1002");
+         //int selection = CoeusOptionPane.showQuestionDialog(msg, CoeusOptionPane.OPTION_YES_NO, CoeusOptionPane.DEFAULT_YES);
+
+    //showPrintCertifications();
                 showPersonNotification();
 
             }
-            else if(source.equals(disclosurestatus)){
+                    else if(source.equals(disclosurestatus)){
                 disclosurestatus.setEnabled(true);
+            //String msg = coeusMessageResources.parseMessageKey(
+             //       "saveConfirmCode.1002");
+         //int selection = CoeusOptionPane.showQuestionDialog(msg, CoeusOptionPane.OPTION_YES_NO, CoeusOptionPane.DEFAULT_YES);
+
+    //showPrintCertifications();
                 showdisclosurestatus();
 
             }
@@ -1642,12 +1665,10 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             }
             //Added for Case #2371 end 3
              //Added for questionnaire start 2
-             /* JM 5-25-2016 added to trigger by button as well */
-            else if(source.equals(mnuItmQuestions) || source.equals(btnQuestionnaire)){
+            else if(source.equals(mnuItmQuestions)){
                 saveProposalDetails(SAVE_RETAIN_LOCK);
                 showQuestionsWindow();
             }
-             /* JM END */
             //Added for questionnaire end 2
             //Added for Case#2214 Email enhancement - start
             //Invoking the mail interface from SendMailNotification command button from tool bar.
@@ -1659,25 +1680,7 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                     }
             }
             //Added for Case#2214 Email enhancement - end
-            
-             /* JM 5-17-2016 show copied from proposal number */
-            else if (source.equals(btnCopiedFromPropNum)) {
-            	showCopiedFromPropNum();
-            }
-            /* JM END */
-             
-            /* JM 5-25-2016 questionnaire, validations, and GG buttons */
-            else if (source.equals(btnQuestionnaire)) {
-            	showCopiedFromPropNum();
-            }
-            else if (source.equals(btnValidations)) {
-            	showCopiedFromPropNum();
-            }
-            else if (source.equals(btnGG)) {
-            	showCopiedFromPropNum();
-            }
-            /* JM END */
-            
+
             else {
                 CoeusOptionPane.showInfoDialog(coeusMessageResources.parseMessageKey(
                 "funcNotImpl_exceptionCode.1100"));
@@ -1867,6 +1870,27 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             }
         //}
     }
+
+    /*private String checkLockForSyncChilds(String proposalID) throws CoeusException,Exception{
+        String connectTo = CoeusGuiConstants.CONNECTION_URL + HIERARCHY_SERVLET;
+        RequesterBean request = new RequesterBean();
+        String message = null;
+        request.setDataObject(proposalID);
+        request.setFunctionType(CHECK_LOCK_FOR_SYNC_ALL);
+        AppletServletCommunicator comm
+        = new AppletServletCommunicator(connectTo, request);
+        comm.send();
+        ResponderBean response = comm.getResponse();
+        if (response!=null){
+            if (response.isSuccessfulResponse()){
+                message = (String)response.getDataObject();
+            }
+            else {
+                throw new CoeusException(response.getMessage());
+            }
+        }
+        return message;
+    }*/
 
     private Vector connectToSyncAllChild() throws CoeusException,Exception{
         String connectTo = CoeusGuiConstants.CONNECTION_URL + HIERARCHY_SERVLET;
@@ -2286,7 +2310,31 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             String connectTo = CoeusGuiConstants.CONNECTION_URL + HIERARCHY_SERVLET;
             RequesterBean request = new RequesterBean();
             CoeusVector cvData = new CoeusVector();
+            /** If the proposal is selected from the proposal hierarchy tab,
+             *then also perform the action
+             */
+           /* String childProp = "";
+            String parentProp = "";
+            if(tbdPnProposal.getSelectedComponent() instanceof edu.mit.coeus.propdev.gui.ProposalHierarchyForm){
+                CoeusVector hierarchyData = hierarchyController.getDataObject();
+                if(hierarchyData!= null && hierarchyData.size() > 0){
+                    if(isParentProposal()){
+                        childProp = (String)hierarchyData.get(1);
+                        parentProp = proposalID;
 
+                    }else{
+                        parentProp = getParentPropNo();
+                        childProp = (String)hierarchyData.get(1);
+                    }
+                }else{
+                    CoeusOptionPane.showInfoDialog("Parent has child");
+                    return ;
+                }
+                cvData.addElement(parentProp);
+                cvData.addElement(childProp);
+            }else{
+
+            }*/
             cvData.addElement(getParentPropNo()); //Parent proposal no
             cvData.addElement(proposalID);        //Child proposal no
             request.setDataObject(cvData);
@@ -2642,15 +2690,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             }
         }
     }
-    
-    /* JM 5-17-2016 show copied from proposal number */
-    private void showCopiedFromPropNum() {
-    	String oldProposalNumber = proposalDevelopmentFormBean.getCopiedFromPropNum();
-    	edu.vanderbilt.coeus.propdev.CopiedFromPropNum copy = 
-    			new edu.vanderbilt.coeus.propdev.CopiedFromPropNum(oldProposalNumber);
-    	copy.popupFrame();
-    }
-    /* JM END */
 
     private boolean performValidation(String proposalNumber){
 
@@ -2778,9 +2817,7 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
 //            edu.mit.coeus.utils.CoeusOptionPane.showErrorDialog(s2sException.getHtmlOutput());
             }catch (Exception  ex){
                 ex.printStackTrace();
-                //CoeusOptionPane.showErrorDialog(this, ex.getMessage()); // JM
-                CoeusOptionPane.showErrorDialog(this, "Unexpected Grants.gov validation error. Unable to route proposal. Please contact Coeus Help."); //JM
-                return false; // JM 7-26-2013 return false if it throws an error!
+                CoeusOptionPane.showErrorDialog(this, ex.getMessage());
             }
             return true;
     }
@@ -2811,13 +2848,8 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             headerParam.setCfdaNumber(tempCfdaNum.toString());
         }
         //coeus-675 start
-        // JM 6-22-2015 old code works; new code breaks! fixing it
 //        headerParam.setOpportunityId(proposalDevelopmentFormBean.getProgramAnnouncementNumber());
-        if (proposalDevelopmentFormBean.getProgramAnnouncementNumber() != null &&
-        		proposalDevelopmentFormBean.getProgramAnnouncementNumber().length() > 0) {
-        	headerParam.setOpportunityId(proposalDevelopmentFormBean.getProgramAnnouncementNumber().toUpperCase().trim().replaceAll(" ", "")); // JM
-        }
-        // JM END
+        headerParam.setOpportunityId(proposalDevelopmentFormBean.getProgramAnnouncementNumber().toUpperCase().trim().replaceAll(" ", ""));
         //coeus-7675 end
         headerParam.setAgency(proposalDevelopmentFormBean.getSponsorCode()+" : "+
         proposalDevelopmentFormBean.getSponsorName());
@@ -2839,24 +2871,26 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
 //            String propNumber = "";
             String proposalType = proposalDevelopmentFormBean.getProposalTypeDesc();
             int proposalTypeCode = proposalDevelopmentFormBean.getProposalTypeCode();
-            
-            /* JM 3-4-2016 we don't want to pop this up for resubmissions */
-            /*
             if(proposalTypeCode==6){
-           	
                 SubmitToSponsor submitToSponsor = new SubmitToSponsor(mdiForm,true,proposalID);
+//		//Case : 2920 - Change corrected prop dev - Inst prop confirmation window
+//                submitToSponsor.setDevProposalText(coeusMessageResources.parseMessageKey("proposalSubmitToSponsor_exceptionCode.1125"));
+                 //Added for the case# COEUSQA-1679- Modification for Final Document Indicator-start
+                // CHeck Proposal is in hierachy and Narrative staus is complete
                 if(!isHierarchy()&& !validateForSubmitToSponsor() ){
+                   // CoeusOptionPane.showInfoDialog(coeusMessageResources.parseMessageKey(NARRATIVE_INCOMPLETE));
                     return;
                 }
+                //Added for the case# COEUSQA-1679- Modification for Final Document Indicator-start
                 submitToSponsor.setHierarchy(isHierarchy());
                 submitToSponsor.setParent(isParentProposal());
                 submitToSponsor.setProposalDevelopmentFormBean(proposalDevelopmentFormBean);
                 submitToSponsor.setFormMode('S');   //Added by Vyjayanthi to set the form mode
+                //if (submitToSponsor.display()) {
                 submitSponsor.setEnabled(submitToSponsor.display());
                 return ;
-            }else */
-            /* JM END */	
-            if(proposalDevelopmentFormBean.isS2sOppSelected()) {
+                //}
+            }else if(proposalDevelopmentFormBean.isS2sOppSelected()) {
                 //Grants Gov candidate and submission type = Change Corrected
                 S2SHeader headerParam = new S2SHeader();
                 headerParam.setSubmissionTitle(proposalDevelopmentFormBean.getProposalNumber());
@@ -3239,16 +3273,13 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                         proposalRoutingForm.setHierarchy(isHierarchy());
                         //Added for the case# COEUSQA-1679- Modification for Final Document Indicator-end
                         //COEUSQA-1433 - Allow Recall from Routing - Start
-                        // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - Start
-                        // Routing lock is done in RoutingApprovalForm
-//                        if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
-//                            boolean isProtocolLocked = lockProposalRecall();
-//                            if(isProtocolLocked){
-//                                proposalRoutingForm.display();
-//                            }
-//                        }
-                        proposalRoutingForm.display();
-                        // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - End
+                        if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
+                            boolean isProtocolLocked = lockProposalRecall();
+                            if(isProtocolLocked){
+                                proposalRoutingForm.display();
+                            }
+                        }
+                        //proposalRoutingForm.display();
                         //COEUSQA-1433 - Allow Recall from Routing - End
                         if(proposalRoutingForm.isMapsNotFound()){
                             return;
@@ -3423,29 +3454,23 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         proposalRoutingForm.registerObserver( this );
         if( hasSubmitToSponsorRt ){
             //COEUSQA-1433 - Allow Recall from Routing - Start
-            // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - Start
-            // Routing lock is done in RoutingApprovalForm
-//            if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
-//                boolean isProtocolLocked = lockProposalRecall();
-//                if(isProtocolLocked){
-//                    submitSponsor.setEnabled(proposalRoutingForm.display());
-//                }
-//            }
-            submitSponsor.setEnabled(proposalRoutingForm.display());
-            // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - End
+            //submitSponsor.setEnabled(proposalRoutingForm.display());
+            if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
+                boolean isProtocolLocked = lockProposalRecall();
+                if(isProtocolLocked){
+                    submitSponsor.setEnabled(proposalRoutingForm.display());
+                }
+            }
             //COEUSQA-1433 - Allow Recall from Routing - End
         }else{
             //COEUSQA-1433 - Allow Recall from Routing - Start
-            // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - Start
-            // Routing lock is done in RoutingApprovalForm
-//            if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
-//                boolean isProtocolLocked = lockProposalRecall();
-//                if(isProtocolLocked){
-//                    proposalRoutingForm.display();
-//                }
-//            }
-            proposalRoutingForm.display();
-            // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - End            
+            if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
+                boolean isProtocolLocked = lockProposalRecall();
+                if(isProtocolLocked){
+                    proposalRoutingForm.display();
+                }
+            }
+            //proposalRoutingForm.display();
             //COEUSQA-1433 - Allow Recall from Routing - End
         }
         //Added for Case#3775 - Manually selected map disappears - starts
@@ -4118,28 +4143,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         if( proposalID != null ){
             saveProposalDetails( SAVE_RETAIN_LOCK );
 
-    		// JM 4-10-2015 check if narratives are locked
-            if (proposalDevelopmentFormBean.getCreationStatusCode() == APPROVAL_IN_PROGRESS) {
-	    		CustomFunctions fn = new CustomFunctions();
-	    		LockingBean lockingBean = (LockingBean) fn.getNarrativeLock(proposalID);
-	    		String lockingUser = "";
-	    		
-	    		boolean locked = false;
-	    		if (lockingBean.getUpdateUser() != null) {
-	    			locked = true;
-	    			lockingUser = lockingBean.getUpdateUser();
-	    		}
-	    		
-	    		if (locked) {
-	    			if (lockingBean.getUpdateUserName() != null) {
-	    				lockingUser = lockingBean.getUpdateUserName();
-	    			}
-	    			String lockMessage = "Narratives are currently in use and locked by " + lockingUser + "  ";
-	    			CoeusOptionPane.showErrorDialog(lockMessage);
-	    		}
-            }
-    		// JM END
-
             try{
                 mdiForm.checkDuplicate(CoeusGuiConstants.PROPOSAL_NARRATIVE_FRAME_TITLE,
                 proposalID, fType );
@@ -4605,7 +4608,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
          JPanel pnlKeyPerson = new JPanel(new FlowLayout(FlowLayout.LEFT));
         //ppc certify flag change starts         
          proposalDevelopmentFormBean.setKeyPersonCertifyParam(getParameterValueForPPC());         
-
          proposalKeyPersonController=new ProposalKeyPersonController(proposalID,keyStudyPersonnel,functionType,
                  proposalDevelopmentFormBean.isKeyPersonCertifyParam());
         //ppc certify flag change ends
@@ -5481,6 +5483,7 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                 if( ProposalDetailAdminForm.SPONSOR_CODE != null ){
                     sponsorcode= ProposalDetailAdminForm.SPONSOR_CODE;
                     sponsorName= ProposalDetailAdminForm.SPONSOR_CODE +" : "+ ProposalDetailAdminForm.SPONSOR_DESCRIPTION  ;
+
                     ProtocolFundingSourceBean protocolFundingSourceBean = new ProtocolFundingSourceBean();
                     protocolFundingSourceBean.setFundingSource(sponsorcode);
                     protocolFundingSourceBean.setFundingSourceName(sponsorName);
@@ -5488,8 +5491,8 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                     protocolFundingSourceBean.setAcType("I");
                     cvFund.add(protocolFundingSourceBean);
                     protocolBean.setFundingSources(cvFund);
-
                  }
+                
 
                 RequesterBean request = new RequesterBean();
                 request.setFunctionType( SaveType );
@@ -5537,35 +5540,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         }
         return infoBean;
     }
-    
-    // JM 4-4-2013 check to make sure person is not on proposal twice
-    private boolean checkPersonDuplicates(ProposalDevelopmentFormBean formBean, Vector keyPersons) {
-        int matches = 0;
-        boolean duplicatesFound = false;
-        Vector investigators = (Vector) formBean.getInvestigators();
-        String selPersonId, checkPersonId;        
-        if (investigators != null) {
-        	ProposalInvestigatorFormBean bean1;
-        	ProposalKeyPersonFormBean bean2;
-            for( int perRow = 0 ; perRow < investigators.size(); perRow++ ) {
-            	matches = 0;
-            	bean1 = (ProposalInvestigatorFormBean) investigators.elementAt(perRow);
-                selPersonId = (String) bean1.getPersonId();
-                if (keyPersons != null) {
-	                for(int checkRow = 0 ; checkRow < keyPersons.size(); checkRow++ ){
-	                	bean2 = (ProposalKeyPersonFormBean) keyPersons.elementAt(checkRow);
-	                	checkPersonId = (String) bean2.getPersonId();
-	                    if (selPersonId.equals(checkPersonId)) {
-	                    	duplicatesFound = true;
-	                    }
-	                }
-                }
-            }
-        }
-        return duplicatesFound;
-    }
-    // JM END
-    
     private void saveProposalDetails( char saveType ) throws Exception{
 
         if ( isSaveRequired() ) {
@@ -5763,17 +5737,9 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                     //                    }
                     saveRequired = false;
                 }else{
-                	// JM 4-10-2013 don't want to drop lock on error
-                    //releaseUpdateLock(); // JM
+                    releaseUpdateLock();
                     saveRequired = false;
-                    // JM 4-5-2013 check for duplicate persons
-                    if (checkPersonDuplicates(proposalDevelopmentFormBean,allKeyStudyPersonnel)) {
-                    	throw new CoeusException("Proposal person cannot be both investigator and key person");
-                    }
-                    else {
-                    // JM END
                     throw new CoeusException(response.getMessage());
-                    } // JM
                     //System.out.println("error....");
                     //                    CoeusOptionPane.showInfoDialog( response.getMessage() );
                 }
@@ -7334,7 +7300,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         return value;
     }
 //Added for COEUSDEV-1075 : Locking messages inconsistency between Lite and Premium - end
-
  public boolean getParameterValueForPPC(){
         final String connectTo = CoeusGuiConstants.CONNECTION_URL+ "/coeusFunctionsServlet";
         final String PARAMETER = ENABLE_PROP_PERSON_SELF_CERTIFY;
@@ -7357,5 +7322,42 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             }
         }
         return returnValue;
-    }      
+    }   
+
+    private void showHumnSubjtForms(String proposalNumber) throws IOException, Exception{
+    String personId =(String)mdiForm.getUserId();
+    String ProposalNum= proposalNumber;
+    String urlSend=null;
+    String baseUrl = getAppHomeUrl();
+    StringBuffer url =null;
+                            url=new StringBuffer();
+                            url.append(baseUrl);
+                            url.append("getPHSHumanSubjectForm.do?proposalNumber=");
+                            url.append(ProposalNum+"&id_person="+personId);
+                            urlSend=url.toString();
+                       
+        try{
+            URLOpener.openUrl(urlSend);
+            }catch(Exception ex){
+                CoeusOptionPane.showErrorDialog(ex.getMessage());
+            }
+    }
+    
+    private String getAppHomeUrl() throws Exception{     
+        RequesterBean  requesterBean = new RequesterBean();
+        requesterBean.setFunctionType(GET_APP_HOME_URL);      
+        String appHomeUrl = null;
+        AppletServletCommunicator comm = new AppletServletCommunicator(
+        connect, requesterBean);
+        comm.send();
+        ResponderBean response = comm.getResponse();
+        if(response!= null){
+            if(response.isSuccessfulResponse()){
+                appHomeUrl = (String)response.getParameterValue();
+            }else {
+                throw new Exception(response.getMessage());
+            }
+        }
+        return appHomeUrl;
+    }
 }

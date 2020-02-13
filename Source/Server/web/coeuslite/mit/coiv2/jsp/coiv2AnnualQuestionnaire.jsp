@@ -1,23 +1,20 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page
-	import="org.apache.struts.action.DynaActionForm,
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="org.apache.struts.action.DynaActionForm,
          org.apache.commons.beanutils.DynaBean,
          edu.dartmouth.coeuslite.coi.beans.QABean,
-         java.util.List,edu.mit.coeuslite.utils.CoeusDynaBeansList"%>
+         java.util.List,edu.mit.coeuslite.utils.CoeusDynaBeansList" %>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ include file="/coeuslite/mit/utils/CoeusContextPath.jsp"%>
-<%@ page
-	import="edu.mit.coeuslite.utils.CoeusLiteConstants,
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ include file= "/coeuslite/mit/utils/CoeusContextPath.jsp"  %>
+<%@ page import="edu.mit.coeuslite.utils.CoeusLiteConstants,
          edu.mit.coeus.questionnaire.bean.QuestionnaireAnswerHeaderBean,
-         java.util.HashMap, java.util.Vector,java.util.HashMap,edu.mit.coeuslite.coiv2.utilities.CoiConstants;"%>
-<jsp:useBean id="proposalList" scope="session" class="java.util.Vector" />
-<jsp:useBean id="proposalColumnNames" scope="session"
-	class="java.util.Vector" />
+         java.util.HashMap, java.util.Vector,java.util.HashMap,edu.mit.coeuslite.coiv2.utilities.CoiConstants"%>
+<jsp:useBean  id="proposalList" scope="session" class="java.util.Vector"/>
+<jsp:useBean  id="proposalColumnNames" scope="session" class="java.util.Vector"/>
 
 <%
             String proposalNumber = (String) session.getAttribute("proposalNumber" + session.getId());
@@ -101,19 +98,15 @@
 
 <%--<html:html>--%>
 <head>
-<title>Coeus Web</title>
-<%String path = request.getContextPath();%>
-<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css"
-	rel="stylesheet" type="text/css">
-<html:base />
-<script language="javascript" type="text/JavaScript"
-	src="<bean:write name='ctxtPath'/>/coeuslite/mit/utils/scripts/coeusLiteCalendar.js"></script>
+    <title>Coeus Web</title>
+    <%String path = request.getContextPath();%>
+    <link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css" rel="stylesheet" type="text/css">
+    <html:base/>
+    <script language="javascript" type="text/JavaScript" src="<bean:write name='ctxtPath'/>/coeuslite/mit/utils/scripts/coeusLiteCalendar.js"></script>
 </head>
 
 <style>
-.textbox-longer {
-	width: 400px;
-}
+    .textbox-longer{ width: 400px ;}
 </style>
 
 <script>
@@ -303,111 +296,103 @@
 
 </script>
 <body>
-	<form action="/createAnnualDisclosureCoiv2.do" name="dynaBeanList"
-		method="POST">
-		<%if (mess != null && mess.equals("COMPLETED")
+    <form action="/createAnnualDisclosureCoiv2.do" name="dynaBeanList"  method="POST">
+        <%if (mess != null && mess.equals("COMPLETED")
                             && request.getAttribute("COMPLETED") == null) {%>
-		<script>
+        <script>
             <%if (questionnaireModuleObject.getModuleItemCode() == 10) {%>
                 alert('Questionnaire Completed for Disclosure <%=questionnaireModuleObject.getModuleItemKey()%>');
             <%}%>
 
         </script>
-		<%}%>
+        <%}%>
 
-		<table width="100%" border="0" cellpadding="5" cellspacing="0"
-			class="table">
-			<tr>
-				<td align="left" valign="top">
-
-					<table width="100%" height="20" border="0" cellpadding="0"
-						cellspacing="0" class="table">
-						<tr height="20px">
-							<%--         <td>  <%=session.getAttribute("questionaireLabel")%>
+        <table width="100%" border="0" cellpadding="5" cellspacing="0" class="table">
+            <tr>
+                <td align="left" valign="top">
+                   
+                                <table width="100%" height="20"  border="0" cellpadding="0" cellspacing="0" class="table">
+                                    <tr height="20px">
+                                        <%--         <td>  <%=session.getAttribute("questionaireLabel")%>
                                                  </td>--%>
-							<td height="23" class="theader" style="font-size: 14px"><bean:message
-									bundle="coi" key="AnnualDisclosure.Certification.Header" /></font></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
+                                        <td height="23" class="theader" style="font-size:14px" ><bean:message bundle="coi" key="AnnualDisclosure.Certification.Header"/></font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
 
-
-			<logic:present name="questionsList">
-				<tr>
-					<td class="copybold" height="30px"><bean:message bundle="coi"
-							key="AnnualDisclosure.Certification.request" /></td>
-				</tr>
-			</logic:present>
+                      
+                        <logic:present name="questionsList">   <tr><td class="copybold" height="30px"><bean:message bundle="coi" key="AnnualDisclosure.Certification.request"/></td></tr></logic:present>
 
 
 
-			<logic:messagesPresent message="true">
-				<tr>
-					<td class="copybold"><script>errValue = true;</script> <font
-						color='red' style=""> <html:messages id="message"
-								message="true" property="answerMandatory" bundle="proposal">
-								<li><bean:write name="message" /></li>
-							</html:messages> <html:messages id="message" message="true"
-								property="numberFormatException" bundle="proposal">
-								<li><bean:write name="message" /></li>
-							</html:messages> <html:messages id="message" message="true"
-								property="notValidDate" bundle="proposal">
-								<li><bean:write name="message" /></li>
-							</html:messages> <html:messages id="message" message="true"
-								property="customElements.notValidLength" bundle="proposal">
-								<li><bean:write name="message" /></li>
-							</html:messages> <html:messages id="message" message="true" property="errMsg"
-								bundle="proposal">
-								<script>errLock = true;</script>
-								<li><bean:write name="message" /></li>
-							</html:messages>
-					</font></td>
-				</tr>
-			</logic:messagesPresent>
+                            <logic:messagesPresent message="true">
+                                <tr>
+                                    <td class="copybold">
+                                        <script>errValue = true;</script>
+                                        <font color='red'  style="font-size=12px;font-weight='bold';">
+                                            <html:messages id="message" message="true" property="answerMandatory" bundle="proposal">
+                                                <li><bean:write name = "message"/></li>
+                                            </html:messages>
+                                            <html:messages id="message" message="true" property="numberFormatException" bundle="proposal">
+                                                <li><bean:write name = "message"/></li>
+                                            </html:messages>
+                                            <html:messages id="message" message="true" property="notValidDate" bundle="proposal">
+                                                <li><bean:write name = "message"/></li>
+                                            </html:messages>
+                                            <html:messages id="message" message="true" property="customElements.notValidLength" bundle="proposal">
+                                                <li><bean:write name = "message"/></li>
+                                            </html:messages>
+                                            <html:messages id="message" message="true" property="errMsg" bundle="proposal">
+                                                <script>errLock = true;</script>
+                                                <li><bean:write name = "message"/></li>
+                                            </html:messages>
+                                        </font>
+                                    </td>
+                                </tr>
+                            </logic:messagesPresent>
 
-			<%
+                            <%
                                 if(qnrListSize == 0) {
 
                             %>
-			<tr>
-				<td colspan="8"><font color="red"><bean:message
-							bundle="coi" key="coiMessage.noQuestionnaire" /></font></td>
-			</tr>
-			<tr>
-				<td class='savebutton' align='left'><html:submit
-						value="Continue" styleClass="clsavebutton"
-						onclick="javascript:continueWithoutQnr();" /></td>
-			</tr>
-			<%} else if(qnrListSize > 1) {%>
-			<tr>
-				<td colspan="8"><font color="red"><bean:message
-							bundle="coi" key="coiMessage.moreThanOneQuestionnaire" /></font></td>
-			</tr>
-			<%} else {%>
+                                        <tr>
+                                        <td colspan="8">
+                                        <font color="red"><bean:message bundle="coi" key="coiMessage.noQuestionnaire"/></font>
+                                        </td>
+                                        </tr>
+                                            <tr>
+                                            <td class='savebutton' align='left'>
+                                            <html:submit  value="Continue" styleClass="clsavebutton" onclick="javascript:continueWithoutQnr();"/></td>
+                                            </tr>
+                             <%} else if(qnrListSize > 1) {%>
+                                <tr>
+                                        <td colspan="8">
+                                        <font color="red"><bean:message bundle="coi" key="coiMessage.moreThanOneQuestionnaire"/></font>
+                                        </td>
+                                        </tr>
+                             <%} else {%>
 
-			<logic:present name="questionsList">
+                             <logic:present name="questionsList">
 
-				<logic:notEmpty name="questionsList" property="list" scope="session">
+                            <logic:notEmpty name="questionsList" property="list" scope="session">
 
-					<tr class="copybold" bgcolor="#D6DCE5">
-
-					</tr>
-					<tr align="left">
-						<td valign="top">
-							<table width="100%" height="100%" border="0" cellpadding="5"
-								cellspacing="0">
-								<%
+                                <tr class="copybold"  bgcolor="#D6DCE5">
+        
+                                </tr>
+                                <tr align="left">
+                                    <td valign="top">
+                                        <table width="100%" height="100%" border="0" cellpadding="5" cellspacing="0" >
+                                            <%
                                                         String strBgColor = "#DCE5F3";
                                                         String calImage = request.getContextPath() + "/coeusliteimages/cal.gif";
                                                         HashMap hmQuestionNumber = new HashMap();
                                                         int questionNum = 1;
                                             %>
 
-								<logic:iterate id="dynaFormData" name="questionsList"
-									property="list" type="org.apache.struts.action.DynaActionForm"
-									indexId="index" scope="session">
-									<%
+                                            <logic:iterate id="dynaFormData" name="questionsList" property="list" type="org.apache.struts.action.DynaActionForm" indexId="index" scope="session">
+                                                <%
                                                             if (count % 4 == 0) {
                                                                 strBgColor = "#D6DCE5";
                                                             } else {
@@ -432,146 +417,143 @@
                                                             }
                                                             answer = (answer == null) ? "" : answer;
                                                 %>
-									<%if (Integer.parseInt(answerNumber) == 0) {%>
-									<%--<tr height="5px"><td >&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>--%>
-									<tr bgcolor="<%=strBgColor%>" class="rowLine"
-										onmouseover="className='rowHover rowLine'"
-										onmouseout="className='rowLine'">
-										<td height="20" valign="top" class="copy">
-											<%String key = "" + questionId + questionNumber;
+                                                <%if (Integer.parseInt(answerNumber) == 0) {%>
+                                                <%--<tr height="5px"><td >&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>--%>
+                                                <tr  bgcolor="<%=strBgColor%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'">
+                                                    <td height="20" valign="top" class="copy">
+                                                        <%String key = "" + questionId + questionNumber;
                                                             if (hmQuestionNumber.get(key) == null) {
                                                                 hmQuestionNumber.put(key, "" + questionNum);
                                                                 questionNum++;
-                                                            }%> <%=hmQuestionNumber.get(key)%>.&nbsp;
-										</td>
-										<td width="50%" class="copy"><bean:write
-												name="dynaFormData" property="description" /></td>
-										<%} else {%>
-										<td width="20%" class="copy" nowrap valign="top">
-											<% if (validAnswers != null && !validAnswers.equals("")) {
-                                                                if (validAnswers.equalsIgnoreCase("Text")) {%>
+                                                            }%>
+                                                        <%=hmQuestionNumber.get(key)%>.&nbsp;
+                                                    </td>
+                                                    <td  width="50%" class="copy">
+                                                        <bean:write name="dynaFormData" property="description"/>
+                                                    </td>
+                                                    <%} else {%>
+                                                    <td width="20%" class="copy" nowrap valign="top">
 
-											<%if (answer.length() <= 2000) {%> <%if (answer.length() <= 60) {%>
-											<html:text property="answer" name="dynaFormData"
-												indexed="true" disabled="<%=modeValue%>"
-												onchange="dataChanged()" /> <%} else if (answer.length() > 60 && answer.length() <= 120) {%>
-											<html:text property="answer" name="dynaFormData"
-												styleClass="textbox-long" indexed="true"
-												disabled="<%=modeValue%>" onchange="dataChanged()" /> <%} else {%>
-											<html:textarea property="answer" name="dynaFormData"
-												styleClass="textbox-longer" cols="150" rows="5"
-												indexed="true" disabled="<%=modeValue%>"
-												onchange="dataChanged()" /> <%}%> <%}%> <% if (!modeValue) {
+                                                        <% if (validAnswers != null && !validAnswers.equals("")) {
+                                                                if (validAnswers.equalsIgnoreCase("Text")) {%>
+                             
+                                                        <%if (answer.length() <= 2000) {%>
+                                                        <%if (answer.length() <= 60) {%>
+                                                        <html:text property="answer" name="dynaFormData" indexed="true" disabled="<%=modeValue%>" onchange="dataChanged()"/>
+                                                        <%} else if (answer.length() > 60 && answer.length() <= 120) {%>
+                                                        <html:text property="answer" name="dynaFormData" styleClass="textbox-long" indexed="true" disabled="<%=modeValue%>" onchange="dataChanged()"/>
+                                                        <%} else {%>
+                                                        <html:textarea property="answer" name="dynaFormData" styleClass="textbox-longer" cols="150" rows="5" indexed="true" disabled="<%=modeValue%>" onchange="dataChanged()"/>
+                                                        <%}%>
+                                                        <%}%>
+
+                                                        <% if (!modeValue) {
                                                            if (answerDataType.equals("Date")) {
                                                            String calender = "javascript:displayCalendarWithTopLeft('dynaFormData[" + count + "].answer',8,25)";%>
 
-											<html:link href="<%=calender%>" onclick="dataChanged()">
-												<html:img src="<%=calImage%>" border="0" height="16"
-													width="16" />
-											</html:link> <%}
+                                                        <html:link href="<%=calender%>" onclick="dataChanged()">
+                                                            <html:img src="<%=calImage%>" border="0" height="16" width="16"/>
+                                                        </html:link>
+                                                        <%}
                                                                                                  }%>
-											<%} else if (validAnswers.equalsIgnoreCase("YN")) {
-                                                        %> <html:radio
-												property="answer" name="dynaFormData" value="Y"
-												indexed="true" disabled="<%=modeValue%>"
-												onchange="dataChanged()" />Yes &nbsp; <html:radio
-												property="answer" name="dynaFormData" value="N"
-												indexed="true" disabled="<%=modeValue%>"
-												onchange="dataChanged()" />No <%} else if (validAnswers.equalsIgnoreCase("YNX")) {%>
-											<html:radio property="answer" name="dynaFormData" value="Y"
-												indexed="true" disabled="<%=modeValue%>"
-												onchange="dataChanged()" />Yes &nbsp; <html:radio
-												property="answer" name="dynaFormData" value="N"
-												indexed="true" disabled="<%=modeValue%>"
-												onchange="dataChanged()" />No <html:radio property="answer"
-												name="dynaFormData" value="X" indexed="true"
-												disabled="<%=modeValue%>" onchange="dataChanged()" />N/A <%} else if (isLookupPresent) {%>
-											<html:text property="answer" name="dynaFormData"
-												maxlength="2000" indexed="true" readonly="true"
-												disabled="<%=modeValue%>" onchange="dataChanged()" /> <%  String pageUrl = "javaScript:openLookupWindow('" + lookupGUI + "','" + lookUpName + "','','" + count + "')";
+                                                        <%} else if (validAnswers.equalsIgnoreCase("YN")) {
+                                                        %>
+                                                        <html:radio property="answer" name="dynaFormData" value="Y" indexed="true" disabled="<%=modeValue%>" onchange="dataChanged()"/>Yes
+                                                        &nbsp;
+                                                        <html:radio property="answer" name="dynaFormData" value="N" indexed="true" disabled="<%=modeValue%>" onchange="dataChanged()"/>No
+                                                        <%} else if (validAnswers.equalsIgnoreCase("YNX")) {%>
+                                                        <html:radio property="answer" name="dynaFormData" value="Y" indexed="true" disabled="<%=modeValue%>" onchange="dataChanged()"/>Yes
+                                                        &nbsp;
+                                                        <html:radio property="answer" name="dynaFormData" value="N" indexed="true" disabled="<%=modeValue%>" onchange="dataChanged()"/>No
+                                                        <html:radio property="answer" name="dynaFormData" value="X" indexed="true" disabled="<%=modeValue%>" onchange="dataChanged()"/>N/A
+                                                        <%} else if (isLookupPresent) {%>
+                                                        <html:text property="answer" name="dynaFormData" maxlength="2000" indexed="true"  readonly="true" disabled="<%=modeValue%>" onchange="dataChanged()"/>
+                                                        <%  String pageUrl = "javaScript:openLookupWindow('" + lookupGUI + "','" + lookUpName + "','','" + count + "')";
                                                          if (!modeValue) {
                                                            String image = request.getContextPath() + "/coeusliteimages/search.gif";%>
-											<html:link href="<%=pageUrl%>">
-												<u><bean:message bundle="proposal"
-														key="proposalOrganization.Search" /></u>
-											</html:link> <%}%> <%}%> <%--<html:text property="answer" name="dynaFormData" maxlength="10" indexed="true" readonly ="true" disabled="<%=modeValue%>" />
+                                                        <html:link  href="<%=pageUrl%>" ><u><bean:message bundle="proposal" key="proposalOrganization.Search"/></u></html:link>
+                                                        <%}%>
+
+                                                        <%}%>
+                                                        <%--<html:text property="answer" name="dynaFormData" maxlength="10" indexed="true" readonly ="true" disabled="<%=modeValue%>" />
                                                         <a id="hlIRBDate" onclick="displayCalendarWithTopLeft('dynaFormData[<%=count%>].answer',8,25)" tabindex="32" href="javascript:void(0);"
                                                          runat="server"><img id="imgIRBDate" title="" height="16" alt="" src="<bean:write name='ctxtPath'/>/coeusliteimages/cal.gif" width="16"
                                                          border="0" runat="server">
-                                                        </a>--%> <%}
+                                                        </a>--%>
+                                                        <%}
                                                             if (!modeValue) {
                                                                 if (isLookupPresent) {
                                                                     String image = request.getContextPath() + "/coeusliteimages/search.gif";
                                                                     //String pageUrl="javaScript:openLookupWindow('"+lookupGUI+"','"+lookUpName+"','"+validAnswers+"','"+count+"')";
-                                                        %> <%-- <html:link  href=""><html:img src="<%=image%>"/> </html:link>--%>
-											<%}
+                                                        %>
+                                                        <%-- <html:link  href=""><html:img src="<%=image%>"/> </html:link>--%>
+                                                        <%}
                                                             }%>
-										</td>
-										<td width="25%" class="copybold" nowrap valign="center">&nbsp;
-											<html:hidden property="searchName" name="dynaFormData"
-												indexed="true" /> <span style="font-weight: bold;"
-											id="searchName<%=count%>"> <%if (searchName != null && searchName.length() > 0) {%>
-												<%=searchName%> <%}%>
-										</span>
-										</td>
-									</tr>
-									<%}%>
-									<% count++;%>
-								</logic:iterate>
-							</table>
-						</td>
-					</tr>
-				</logic:notEmpty>
-			</logic:present>
+                                                    </td>
+                                                    <td width="25%" class="copybold" nowrap valign="center">&nbsp;
+                                                        <html:hidden property="searchName"  name="dynaFormData"  indexed="true"/>
+                                                        <span style="font-weight:bold;" id="searchName<%=count%>">
+                                                            <%if (searchName != null && searchName.length() > 0) {%>
+                                                            <%=searchName%>
+                                                            <%}%>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <%}%>
+                                                <% count++;%>
+                                            </logic:iterate>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </logic:notEmpty>
+        </logic:present>
+                               
+                            <tr>
+                                <td>
+                                    <font color='red'>
+                                        <logic:present name="questionsList">
+                                        <logic:empty name="questionsList" property="list" scope="session">
+                                            <%String errorMessage = "";%>
+                                            <%if (questionnaireModuleObject.getModuleItemCode() == 7) {%>
+                                            <%errorMessage = "This " + session.getAttribute("questionaireLabel") + " is not answered for this protocol";%>
+                                            <%} else if (questionnaireModuleObject.getModuleItemCode() == 3) {%>
+                                            <%errorMessage = "This " + session.getAttribute("questionaireLabel") + " is not answered for this proposal";%>
+                                            <%}%>
+                                            <li> <%=errorMessage%></li>
+                                        </logic:empty>
+                                            </logic:present>
+                                    </font>
+                                </td>
+                            </tr>
+                            <% if (!modeValue) {%>
+                            <tr align="left" class='table'>
+                                <td class='savebutton'>
 
-			<tr>
-				<td><font color='red'> <logic:present
-							name="questionsList">
-							<logic:empty name="questionsList" property="list" scope="session">
-								<%String errorMessage = "";%>
-								<%if (questionnaireModuleObject.getModuleItemCode() == 7) {%>
-								<%errorMessage = "This " + session.getAttribute("questionaireLabel") + " is not answered for this protocol";%>
-								<%} else if (questionnaireModuleObject.getModuleItemCode() == 3) {%>
-								<%errorMessage = "This " + session.getAttribute("questionaireLabel") + " is not answered for this proposal";%>
-								<%}%>
-								<li><%=errorMessage%></li>
-							</logic:empty>
-						</logic:present>
-				</font></td>
-			</tr>
-			<% if (!modeValue) {%>
-			<tr align="left" class='table'>
-				<td class='savebutton'>&nbsp;<html:button
-						property="saveAndProceed" styleClass="clsavebutton"
-						value="<%=buttonName%>" onclick="javascript:processData('SAVE')" />
-					<!-- &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;<html:button property="saveAndProceed"  styleClass="clsavebutton" value="<%=buttonName%>" onclick="javascript:processData('SAVE')"/>
+                                    <!-- &nbsp;&nbsp;&nbsp;&nbsp;
                                     <html:button property="print" styleClass="clsavebutton" value="Print" onclick="javascript:processData('PRINT')"/>-->
-					&nbsp;<html:button property="saveAndProceed"
-						styleClass="clsavebutton" style="width:150px;"
-						value="Discard Changes" onclick="javascript:exitToCoi()" />
-				</td>
-			</tr>
-			<%} else if (modeValue) {
+                                     &nbsp;<html:button property="saveAndProceed" styleClass="clsavebutton" style="width:150px;" value="Discard Changes" onclick="javascript:exitToCoi()" />
+                                </td>
+                            </tr>
+                            <%} else if (modeValue) {
                                  /*CoeusDynaBeansList questList=(CoeusDynaBeansList)session.getAttribute("questionsList");
                                  request.setAttribute("questionsList",questList);*/%>
 
-			<!-- Modified for Case#4447 : Next phase of COI enhancements - Start
+                            <!-- Modified for Case#4447 : Next phase of COI enhancements - Start
                             <tr><td><table width="100%" height="20"  colspan='2' border="0" cellpadding="0" cellspacing="0" class="table">-->
-			<tr>
-				<td class='savebutton' align='left'><html:submit
-						value="Continue" styleClass="clsavebutton"
-						onclick="javascript:continueProcess();" /></td>
-			</tr>
-			<%}%>
-			<!--Case#4447 - End-->
-		</table>
-		<%}%>
+                            <tr>
+                                <td class='savebutton' align='left'>
+                                    <html:submit  value="Continue" styleClass="clsavebutton" onclick="javascript:continueProcess();"/></td>
+                            </tr>
+                 <%}%>
+                            <!--Case#4447 - End-->
+                           </table>
+                            <%}%>
 
-		</td>
-		</tr>
-		</table>
-	</form>
-	<script>
+    </td>
+</tr>
+</table></form>
+<script>
     DATA_CHANGED = 'false';
     if(errValue && !errLock){
         DATA_CHANGED = 'true';
@@ -584,7 +566,7 @@
     }
     <!--  linkForward(errValue);-->
 </script>
-	<script>
+<script>
     <%--      var help = '<bean:message bundle="proposal" key="helpTextProposal.Questionnaire"/>';
           help = trim(help);
           if(help.length == 0){

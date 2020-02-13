@@ -34,11 +34,6 @@ import edu.mit.coeus.utils.query.And;
 import edu.mit.coeus.utils.query.AuthorizationOperator;
 import edu.mit.coeus.utils.query.Equals;
 import edu.mit.coeus.utils.query.Operator;
-
-// JM 12-3-2013 added for help area
-import edu.vanderbilt.coeus.gui.CoeusHelpGidget;
-// JM END
-
 import java.math.BigDecimal;
 
 import java.util.*;
@@ -428,7 +423,10 @@ public class SpecialReviewForm extends javax.swing.JComponent implements TypeCon
                             // Modified for COEUSDEV-1144 : Unable to edit Special review comments RT #2022030 - Start
 //                            if( acType == null){
                             if( acType == null || "null".equalsIgnoreCase(acType)) {  // Modified for COEUSDEV-1144 : End
-                                specialReviewFormBean.setAcType(UPDATE_RECORD);
+                                for(int index=0;index<vecSpecialReviewData.size();index++){
+                                   specialReviewFormBean = (SpecialReviewFormBean)vecSpecialReviewData.get(index);
+                                   specialReviewFormBean.setAcType(UPDATE_RECORD);
+                                }   
                             }
                         }
                        
@@ -1577,6 +1575,14 @@ public class SpecialReviewForm extends javax.swing.JComponent implements TypeCon
     txtAreaComments.setFont(CoeusFontFactory.getNormalFont());
     txtAreaComments.setLineWrap(true);
     txtAreaComments.setWrapStyleWord(true);
+    txtAreaComments.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            txtAreaCommentsFocusGained(evt);
+        } 
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            txtAreaCommentsFocusLost(evt);
+        }
+    });
     scrPnCommentsContainer.setViewportView(txtAreaComments);
 
     pnlComments.add(scrPnCommentsContainer, new java.awt.GridBagConstraints());
@@ -1601,25 +1607,6 @@ public class SpecialReviewForm extends javax.swing.JComponent implements TypeCon
     gridBagConstraints.insets = new java.awt.Insets(3, 3, 0, 0);
     add(lblSpecialReviewComments, gridBagConstraints);
 
-    // JM 12-3-2013 panel for page usage directions
-    CoeusHelpGidget gidgetUsage = new CoeusHelpGidget("specialReview_helpCode.1000");
-    JScrollPane scrPnUsage = new JScrollPane(gidgetUsage.createHelpScrollArea());
-    scrPnUsage.setMaximumSize(new java.awt.Dimension(650, 170));
-    scrPnUsage.setMinimumSize(new java.awt.Dimension(650, 150));
-    scrPnUsage.setPreferredSize(new java.awt.Dimension(650, 185));
-
-    JPanel pnlUsage = gidgetUsage.createHelpPanel();
-    pnlUsage.add(scrPnUsage, java.awt.BorderLayout.CENTER);
-     
-    gridBagConstraints = new java.awt.GridBagConstraints();
-    gridBagConstraints.gridx = 0;
-    gridBagConstraints.gridy = 5;
-    gridBagConstraints.gridwidth = 15;
-    gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-    gridBagConstraints.insets = new java.awt.Insets(0, 3, 10, 3);
-    add(pnlUsage, gridBagConstraints);
-    // JM END
-    
     pnlButtonsContainer.setLayout(new java.awt.GridBagLayout());
 
     pnlAddDeleteButtons.setLayout(new java.awt.GridBagLayout());
@@ -2167,6 +2154,54 @@ public class SpecialReviewForm extends javax.swing.JComponent implements TypeCon
             prvComments = "";
         }
     }
+    
+    public void txtAreaCommentsFocusGained(java.awt.event.FocusEvent evt) {                                            
+        Object source = evt.getSource();
+        int selectedRow = tblSpecialReview.getSelectedRow();
+        if( source.equals( txtAreaComments )){
+            if( selectedRow == -1 && tblSpecialReview.getRowCount() > 0 ){
+                showWarningMessage();
+                tblSpecialReview.requestFocus();
+            }
+        }
+        prvComments = txtAreaComments.getText();
+        if(prvComments == null){
+            prvComments = "";
+        }
+    }
+    
+    public void txtAreaCommentsFocusLost(java.awt.event.FocusEvent evt) {                                          
+        String curComments = "";
+        if ( !evt.isTemporary()) {
+            Object source = evt.getSource();
+            int selectedRow = lastSelectedRow;
+            if( source.equals( txtAreaComments ) &&
+                    lastSelectedRow <= tblSpecialReview.getRowCount()  ){
+                SpecialReviewFormBean prBean = null;
+                if(vecSpecialReviewData != null){
+                    prBean = (SpecialReviewFormBean )vecSpecialReviewData.get(selectedRow);
+                }
+                if(prBean != null){
+                    prBean.setComments( txtAreaComments.getText() );                    
+                    String acTyp = prBean.getAcType();
+                    if( (acTyp != null) ||( !acTyp.equalsIgnoreCase(INSERT_RECORD) )){
+                        curComments = txtAreaComments.getText().trim();
+                        if( (!curComments.equalsIgnoreCase(prvComments))
+                        && (!acTyp.equalsIgnoreCase(INSERT_RECORD))) {
+                            prBean.setAcType( UPDATE_RECORD );
+                            saveRequired = true;
+                        }
+                    }
+                    if(vecSpecialReviewData != null){                       
+                        if( (!curComments.equalsIgnoreCase(prvComments))){
+                            saveRequired = true;
+                        }                       
+                        vecSpecialReviewData.setElementAt(prBean,selectedRow);
+                    }
+                }
+            }
+        }
+    }
 
     /**  Supporting method to show the warning message
      */
@@ -2216,7 +2251,7 @@ public class SpecialReviewForm extends javax.swing.JComponent implements TypeCon
             }
         }
     }
-
+      
     /** This method is fired whenever the table row is changed.
      * This method contains the implementation of changing the text area contents whenever table row is changed.
      * @param listSelectionEvent  List Selection Event

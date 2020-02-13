@@ -7,13 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-<%@ include file="/coeuslite/mit/utils/CoeusContextPath.jsp"%>
-<%@ page import="java.util.Vector,edu.mit.coeus.coi.bean.ComboBoxBean;"%>
+<%@ include file= "/coeuslite/mit/utils/CoeusContextPath.jsp"%>
+<%@ page import="java.util.Vector,edu.mit.coeus.coi.bean.ComboBoxBean"%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld"  prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld"  prefix="html"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ taglib uri="/WEB-INF/coeus-utils.tld" prefix="coeusUtils"%>
+<%@ taglib uri="/WEB-INF/coeus-utils.tld"  prefix="coeusUtils"%>
 
 <%
     String path = request.getContextPath();
@@ -36,9 +36,9 @@
     }
 %>
 <html:html locale="true">
-<head>
-<title>Reviewer Comment</title>
-<%
+    <head>
+        <title>Reviewer Comment</title>
+        <%
         String reviewC= (String)session.getAttribute("reviewC");
           Vector recommendedActionList = new Vector();
          if(request.getAttribute("recommendedActionList") != null) {
@@ -47,7 +47,7 @@
           Vector revDetails=(Vector)request.getAttribute("details");
         %>
 
-<script type="text/javascript">
+        <script type="text/javascript">
             function saveAndcomplteReview(){
                 var success=validateSave();
                 if(success==true){
@@ -70,38 +70,32 @@
             return true;
             }
        </script>
-</head>
+    </head>
 <body>
-	<table id="setStatusBodyTable" class="table"
-		style="width: 100%; height: auto;">
-		<tr>
-			<td><html:form action="/saveNotesCoiv2.do">
-					<logic:present name="update">
-						<logic:equal value="true" name="update">
-							<font color="red">You have successfully completed this
-								review and set the Recommended Action :&nbsp;<%=reviewC%></font>
-						</logic:equal>
-					</logic:present>
+    <table id="setStatusBodyTable" class="table" style="width: 100%; height: auto; " >
+    <tr><td>
+    <html:form action="/saveNotesCoiv2.do">
+        <logic:present name="update">
+    <logic:equal value="true" name="update">
+        <font color="red">You have successfully completed this review and set the Recommended Action :&nbsp;<%=reviewC%></font>
+    </logic:equal>
+    </logic:present>
 
-					<logic:notPresent name="update">
+    <logic:notPresent name="update">
 
-						<div>
-							<table style="width: 100%;" height="100%" border="0"
-								cellpadding="0" cellspacing="0" class="table" align='center'>
-								<tr>
-									<td height="20" width="50%" align="left" valign="top"
-										class="theader" colspan="2">Complete Review</td>
-								</tr>
-								<tr>
-									<td valign="top" align="left"
-										style="width: 80%; padding-left: 2px;" colspan="2"><br />
-										Please complete the review by selecting a recommended action
-										from the dropdown and then Save. If you wish to return to the
-										disclosure, select Cancel <br />
-									<br /></td>
-								</tr>
+            <div>
+                <table style="width: 100%;" height="100%"  border="0" cellpadding="0" cellspacing="0" class="table" align='center'>
+                    <tr>
+                        <td height="20" width="50%" align="left" valign="top" class="theader" colspan="2">Complete Review</td>
+                    </tr>
+                    <tr>
+                        <td valign="top" align="left" style="width:80%;padding-left: 2px;" colspan="2"><br/>
+                           Please complete the review by selecting a recommended action from
+                           the dropdown and then Save. If you wish to return to the disclosure,
+                           select Cancel <br/><br/></td>
+                    </tr>
 
-								<%
+                             <%
                     String beancodeConflict="";
                     String code="" ;
 
@@ -113,11 +107,11 @@
                        if(userBean.getCode() != null){
                          code=userBean.getCode().toString();
                        %>
-								<tr>
-									<td colspan="2"><b> Recommended Action:</b> <select
-										id="recommendedAction" name="recommendedAction"
-										style="width: 70%">
-											<%
+                        <tr>
+                        <td colspan="2">
+                        <b> Recommended Action:</b>
+                        <select id="recommendedAction" name="recommendedAction" style="width: 70%" >
+                            <%
                              if (recommendedActionList != null) {
                                                 ComboBoxBean bean;
                                                 for (int index = 0; index < recommendedActionList.size(); index++) {
@@ -128,53 +122,46 @@
                                                     selected = "selected";
                                                 }
                             %>
-											<option <%=selected%> value="<%=bean.getCode()%>">
-												<%=bean.getDescription() %></option>
-											<% }} %>
-									</select></td>
-								</tr>
-								<% }else{%>
-								<tr>
-									<td colspan="2"><b> Recommended Action:</b> <select
-										id="recommendedAction" name="recommendedAction"
-										style="width: 70%">
-											<option value=""></option>
-											<logic:present name="recommendedActionList">
-												<logic:iterate id="recommendAction"
-													name="recommendedActionList">
-													<option
-														value="<bean:write name="recommendAction" property="code"/>"><bean:write
-															name="recommendAction" property="description" /></option>
+                        <option  <%=selected%> value="<%=bean.getCode()%>" > <%=bean.getDescription() %></option>
+                        <% }} %>
+                       </select>
+                        </td></tr>
+                    <% }else{%>
+                     <tr>
+                        <td colspan="2">
+                    <b> Recommended Action:</b>
+                        <select id="recommendedAction" name="recommendedAction" style="width: 70%" >
+                        <option value=""></option>
+                        <logic:present name="recommendedActionList">
+                        <logic:iterate id="recommendAction" name="recommendedActionList">
+                        <option value="<bean:write name="recommendAction" property="code"/>"><bean:write name="recommendAction" property="description"/></option>
 
-												</logic:iterate>
-											</logic:present>
-									</select> <% }} %></td>
-								</tr>
-								<% }} %>
+                        </logic:iterate>
+                        </logic:present>
+                       </select>
+                       <% }} %>
+                        </td>
+                    </tr>
+                      <% }} %>
 
-								<tr>
-								<tr>
-									<td colspan="2">&nbsp;</td>
-								</tr>
-								<td class='savebutton' width="5%" style="padding-left: 10px;">
-									<html:button property="Save" styleClass="clsavebutton"
-										style="width:100px;"
-										onclick="javaScript:saveAndcomplteReview();">
+                    <tr>
+                    <tr><td colspan="2"> &nbsp;</td></tr>
+                        <td class='savebutton' width="5%" style="padding-left: 10px;">
+                            <html:button property="Save" styleClass="clsavebutton" style="width:100px;" onclick="javaScript:saveAndcomplteReview();">
                                 Save
                             </html:button>
-								</td>
-								<td class='savebutton'><html:button property="Save"
-										styleClass="clsavebutton" style="width:100px;"
-										onclick="javaScript:cancelReview();">
+                        </td>
+                        <td class='savebutton'>
+                            <html:button property="Save" styleClass="clsavebutton" style="width:100px;" onclick="javaScript:cancelReview();">
                                  Cancel
-                            </html:button></td>
-								</tr>
-							</table>
-						</div>
+                            </html:button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
-					</logic:notPresent></td>
-		</tr>
-	</table>
-	</html:form>
-</body>
+    </logic:notPresent>
+     </td></tr></table>
+    </html:form>
+      </body>
 </html:html>

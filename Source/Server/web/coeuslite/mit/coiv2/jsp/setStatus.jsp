@@ -9,15 +9,14 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ page
-	import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.Coiv2AttachmentBean,edu.mit.coeuslite.coiv2.utilities.CoiConstants,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,edu.mit.coeuslite.coiv2.services.CoiCommonService,java.util.Date;"%>
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ page import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.Coiv2AttachmentBean,edu.mit.coeuslite.coiv2.utilities.CoiConstants,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,edu.mit.coeuslite.coiv2.services.CoiCommonService,java.util.Date"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>C O I</title>
 <%String path = request.getContextPath();
    String statusChanged=(String)request.getAttribute("changedStatus");
@@ -26,8 +25,8 @@
        inputType = request.getParameter("param").toString();
    }
    
-   String selectedEntDesc = "No Conflict Exists";
-   String selEntCode = "210";
+   String selectedEntDesc = "No Financial Interest";
+   String selEntCode = "1";
 
    if(request.getAttribute("selectedEntDesc") != null && request.getAttribute("selectedEntDesc").toString().trim().length()!=0) {
        selectedEntDesc = (String)request.getAttribute("selectedEntDesc");
@@ -44,30 +43,25 @@
  %>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/divSlide.js"></script>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/Balloon.js"></script>
-<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css"
-	rel="stylesheet" type="text/css" />
+<link href="<%=path%>/coeuslite/dartmouth/utils/css/coeus_styles.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 <!--
-.buttonforstatus {
-	border-right: gray 1px solid;
-	border-top: #ffffff 1px solid;
-	border-left: #ffffff 1px solid;
-	border-bottom: dimgray 1px solid;
-	background-color: #D6DFF7;
-	width: 150px;
-	font-size: 11px;
-	font-weight: bold;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+.buttonforstatus{
+	 border-right: gray 1px solid;
+         border-top: #ffffff 1px solid;
+         border-left: #ffffff 1px solid;
+         border-bottom: dimgray 1px solid;
+         background-color: #D6DFF7;
+         width: 150px;
+         font-size: 11px;
+         font-weight: bold;
+         font-family: Verdana, Arial, Helvetica, sans-serif;
+
 }
+
 -->
 </style>
 
@@ -182,97 +176,73 @@ function setReviewStatus() {
 </head>
 <script src="js/jquery.js" type="text/javascript"></script>
 <body>
-	<%--<td valign="top">--%>
-	<table id="setStatusBodyTable" class="table"
-		style="width: 100%; height: auto;">
-		<tr>
-			<td><html:form action="/updateStatus.do">
+<%--<td valign="top">--%>
+<table id="setStatusBodyTable" class="table" style="width: 100%; height: auto; " >
+    <tr><td>
+<html:form action="/updateStatus.do">
 
-					<logic:present name="message">
-						<logic:equal value="true" name="message">
-							<font color="red">You have successfully changed the
-								disclosure status to <%= statusChanged%></font>
-						</logic:equal>
-						<logic:equal value="false" name="message">
-							<font color="red">Disclosure Not Updated</font>
-						</logic:equal>
-					</logic:present>
-					<br />
+<logic:present name="message">
+    <logic:equal value="true" name="message">
+        <font color="red">You have successfully changed the disclosure status to <%= statusChanged%></font>
+    </logic:equal>
+    <logic:equal value="false" name="message">
+        <font color="red">Disclosure Not Updated</font>
+    </logic:equal>
+</logic:present><br/>
 
-					<logic:present name="revmessage">
-						<logic:equal value="true" name="revmessage">
-							<font color="red">You have successfully changed the review
-								status to <%= statusChanged%></font>
-						</logic:equal>
-						<logic:equal value="false" name="revmessage">
-							<font color="red">Disclosure Not Updated</font>
-						</logic:equal>
-					</logic:present>
-					<br />
+<logic:present name="revmessage">
+    <logic:equal value="true" name="revmessage">
+        <font color="red">You have successfully changed the review status to <%= statusChanged%></font>
+    </logic:equal>
+    <logic:equal value="false" name="revmessage">
+        <font color="red">Disclosure Not Updated</font>
+    </logic:equal>
+</logic:present><br/>
 
-					<div id="buttonDiv">
-						<logic:present name="setStatusMessage">
-							<logic:equal value="true" name="setStatusMessage">
-&nbsp;&nbsp;<html:button styleClass="buttonforstatus"
-									onclick="javaScript:pending();" style="width: 150px;"
-									property="button" value="Set Disclosure Status"></html:button>
-								<br />
-								<br />
-&nbsp;&nbsp;<html:button styleClass="clsavebutton"
-									onclick="javaScript:approve();" property="button"
-									style="width: 150px;" value="Approve"></html:button>
-								<br />
-								<br />
-&nbsp;&nbsp;<html:button styleClass="clsavebutton"
-									onclick="javaScript:disapprove();" property="button"
-									style="width: 150px;" value="Disapprove"></html:button>
-							</logic:equal>
-						</logic:present>
-					</div>
+<div id="buttonDiv">
+    <logic:present name="setStatusMessage">
+     <logic:equal value="true" name="setStatusMessage">
+&nbsp;&nbsp;<html:button styleClass="buttonforstatus" onclick="javaScript:pending();" style="width: 150px;"  property="button" value="Set Disclosure Status"></html:button><br/><br/>
+&nbsp;&nbsp;<html:button styleClass="clsavebutton" onclick="javaScript:approve();" property="button" style="width: 150px;" value="Approve"></html:button><br/><br/>
+&nbsp;&nbsp;<html:button styleClass="clsavebutton" onclick="javaScript:disapprove();" property="button" style="width: 150px;" value="Disapprove"></html:button>
+     </logic:equal>
+    </logic:present>
+</div>
 
-					<div id="PendDiv" style="display: none;">
-						&nbsp;&nbsp; <b>Review Status:</b> <select id="disclosureStatus2"
-							name="dispDisclStatusForm" class="textbox-long"
-							style="width: 200px;">
+    <div id="PendDiv" style="display: none; ">
+  &nbsp;&nbsp;      <b>Review Status:</b>
+ 
+    <select id="disclosureStatus2" name="dispDisclStatusForm" class="textbox-long" style="width: 200px;" >
 
-							<option value="0">Select</option>
-							<logic:present name="PendingDisclStatusList">
-								<logic:iterate id="discView" name="PendingDisclStatusList">
-									<option
-										value="<bean:write name="discView" property="reviewStatusCode"/>:<bean:write name="discView" property="reviewStatus"/>"><bean:write
-											name="discView" property="reviewStatus" /></option>
-								</logic:iterate>
-							</logic:present>
-						</select> <br />
-						<br /> &nbsp;&nbsp;
-						<html:button styleClass="buttonforstatus"
-							onclick="javaScript:setReviewStatus();" property="button"
-							value="Set Review Status" style="width:150px;"></html:button>
-					</div>
-					<%-- code added for the new button Pending By Indhu -- end --%>
+            <option value="0">Select</option>
+        <logic:present name="PendingDisclStatusList">
+            <logic:iterate id="discView" name="PendingDisclStatusList">
+                <option value="<bean:write name="discView" property="reviewStatusCode"/>:<bean:write name="discView" property="reviewStatus"/>" ><bean:write name="discView" property="reviewStatus"/></option>
+            </logic:iterate>
+        </logic:present>
+        </select>
 
-					<div id="AppDiv" style="display: none;">
-						&nbsp;&nbsp;<b>Disclosure Status is set to '<%=selectedEntDesc%>'
-							based on the Project-Financial Entity conflict status
-						</b> <br />
-						<br />
-						<%--<html:button styleClass="clsavebutton" onclick="javaScript:update();" property="button" value="Set"></html:button>--%>
-						&nbsp;&nbsp;
-						<html:button styleClass="clsavebutton" onclick="javaScript:set();"
-							property="button" value="Approve" style="width:150px;"></html:button>
-					</div>
+        <br/><br/>
+    &nbsp;&nbsp;    <html:button styleClass="buttonforstatus" onclick="javaScript:setReviewStatus();" property="button" value="Set Review Status" style="width:150px;"></html:button>
+     </div>
+<%-- code added for the new button Pending By Indhu -- end --%>
 
-					<div id="DisAppDiv" style="display: none;">
-						&nbsp;&nbsp;<b>Disclosure Status is set to '<%=selectedEntDesc%>'
-							based on the Project-Financial Entity conflict status
-						</b> <br />
-						<br />
-						<%--<html:button styleClass="clsavebutton" onclick="javaScript:update();" property="button" value="Set"></html:button>--%>
-						&nbsp;&nbsp;
-						<html:button styleClass="clsavebutton" onclick="javaScript:set();"
-							property="button" value="Disapprove" style="width:150px;"></html:button>
-					</div>
-					<script>
+<div id="AppDiv" style="display:none;" >
+&nbsp;&nbsp;<b>Disclosure Status is set to '<%=selectedEntDesc%>' based on the Project-Financial Entity conflict status</b>
+
+<br/><br/>
+<%--<html:button styleClass="clsavebutton" onclick="javaScript:update();" property="button" value="Set"></html:button>--%>
+&nbsp;&nbsp;<html:button styleClass="clsavebutton" onclick="javaScript:set();" property="button" value="Approve" style="width:150px;"></html:button>
+</div>
+
+<div id="DisAppDiv" style="display:none;">
+&nbsp;&nbsp;<b>Disclosure Status is set to '<%=selectedEntDesc%>' based on the Project-Financial Entity conflict status</b>
+
+<br/><br/>
+<%--<html:button styleClass="clsavebutton" onclick="javaScript:update();" property="button" value="Set"></html:button>--%>
+&nbsp;&nbsp;<html:button styleClass="clsavebutton" onclick="javaScript:set();" property="button" value="Disapprove" style="width:150px;"></html:button>
+</div>
+<script>
     var type1 = '<%=inputType%>';
 if(type1=="pending"){
    pending();
@@ -282,8 +252,6 @@ approve();
 disapprove();
 }
 </script>
-				</html:form></td>
-		</tr>
-	</table>
-</body>
+</html:form></td></tr></table>
+    </body>
 </html>

@@ -53,8 +53,6 @@
                 <form-property name="ownerFirstName" type="java.lang.String"/>
                 <form-property name="ownerLastName" type="java.lang.String"/>
                 <form-property name="personId" type="java.lang.String"/>
-                <form-property name="status" type="java.lang.String"/>
-                
                 <form-property name="dateEdited" type="java.lang.String"/>
                 <form-property name="contactFirstName" type="java.lang.String"/>
                 <form-property name="contactLastName" type="java.lang.String"/>
@@ -153,6 +151,7 @@
 
 
            <form-bean name="uploadProposalForm" type="edu.utk.coeuslite.propdev.form.ProposalUploadForm"/>
+           <form-bean name="phsHumanSubjectsBean" type="edu.mit.coeus.s2s.phshumansubject.bean.PHSHumanSubjectsBean"/>
                 <form-bean name="otherCustomElementsForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
                 <form-property  name = "proposalNumber"     type = "java.lang.String"/>
                 <form-property  name = "columnName"         type = "java.lang.String"/>
@@ -367,7 +366,7 @@
              <form-bean name="pdInvestKeyPersForm"
                       type="org.apache.struts.validator.DynaValidatorForm">
                 <form-property name="proposalNumber" type="java.lang.String"/>
-                <form-property name="personId" type="java.lang.String"/>               
+                <form-property name="personId" type="java.lang.String"/>
                 <form-property name="personName" type="java.lang.String"/>
                 <form-property name="invLastName" type="java.lang.String"/>
                 <form-property name="invFirstName" type="java.lang.String"/>
@@ -395,12 +394,8 @@
                 <form-property name="coiFlag" type="java.lang.String"/>
                 <form-property name="FEDRdebrFlag" type="java.lang.String"/>
                 <form-property name="FEDRdelqFlag" type="java.lang.String"/>
-				<form-property name="status" type="java.lang.String"/>
-                <form-property name="isExternal" type="java.lang.String"/>
+
                 <form-property name="commonsUserName" type="java.lang.String"/>
-               
-                
-                
 
                 <!-- custom elements -->
                 <form-property name="costCenter" type="java.lang.String"/>
@@ -449,7 +444,6 @@
                 <form-property name="isCreditSplitExists" type="java.lang.String"/>
                 <!-- Added for COEUSQA-2037 : Software allows you to delete an investigator who is assigned credit in the credit split window - end -->
                 <form-property name="isSelected" type="java.lang.String"/>
-				 
            </form-bean>
 
             <!-- From UTK end -->
@@ -530,8 +524,6 @@
      <!-- ~**~*~*~**~*~*~*~**~*~*~*~ DISPLAYPROPOSALFORM beans  CONTAINS ~**~*~*~**~*~*~**~*~*~**~*~*~**~*~*~*~* -->
                <form-property name="proposalNumber" type="java.lang.String"/>
                 <form-property name="personId" type="java.lang.String"/>
-                <form-property name="status" type="java.lang.String"/>
-                <form-property name="isExternal" type="java.lang.String"/>
                 <form-property name="personName" type="java.lang.String"/>
                 <form-property name="invLastName" type="java.lang.String"/>
                 <form-property name="invFirstName" type="java.lang.String"/>
@@ -608,7 +600,7 @@
                 <!-- Added for COEUSQA-2037 : Software allows you to delete an investigator who is assigned credit in the credit split window - start -->
                 <form-property name="isCreditSplitExists" type="java.lang.String"/>
                 <!-- Added for COEUSQA-2037 : Software allows you to delete an investigator who is assigned credit in the credit split window - end -->
-				
+
 
 	       </form-bean>
            <!-- Proposal Print - END -->
@@ -676,7 +668,6 @@
            <form-property  name = "locationTypeDesc" type = "java.lang.String"/>
            <form-property  name = "locationTypeCode" type = "java.lang.Integer"/>
            <form-property  name = "cvCongDist" type = "java.util.Vector"/>
-           <form-property  name = "billingAgreementOrg" type = "java.lang.String"/>           
            </form-bean>
 
             <form-bean name="proposalCongDistForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
@@ -793,8 +784,6 @@
             <form-property name="personId" type="java.lang.String"/>
             <form-property name="userType" type="java.lang.String"/>
             <form-property name="status" type="java.lang.String"/>
-          
-            
             <form-property name="unitName" type="java.lang.String"/>
 
            <form-property name="updateTimestamp" type="java.lang.String"/>
@@ -919,8 +908,6 @@
                 <form-property  name = "sortId" type = "java.lang.Integer"/>
                 <form-property name = "stateCode" type="java.lang.String"/>
                 <form-property name = "division" type="java.lang.String"/>
-                 <form-property name="status" type="java.lang.String"/>
-                
            </form-bean>
             <!--Proposal Inv More Details End -->
 
@@ -941,10 +928,9 @@
 
             <form-property name="userName" type="java.lang.String"/>
             <form-property name="nonMitPersonFlag" type="java.lang.String"/>
-            <form-property name="status" type="java.lang.String"/>
-            
             <form-property name="personId" type="java.lang.String"/>
             <form-property name="userType" type="java.lang.String"/>
+            <form-property name="status" type="java.lang.String"/>
             <form-property name="unitName" type="java.lang.String"/>
 
            <form-property name="newUpdateTimetamp" type="java.lang.String"/><!--this is av time-->
@@ -1012,9 +998,7 @@
 	        <form-property name="proposalNumber" type="java.lang.String"/>
                 <form-property name="personId" type="java.lang.String"/>
                 <form-property name="personName" type="java.lang.String"/>
-				 <form-property name="status" type="java.lang.String"/>
-                <form-property name="isExternal" type="java.lang.String"/>
-				 <form-property name="invLastName" type="java.lang.String"/>
+                <form-property name="invLastName" type="java.lang.String"/>
                 <form-property name="invFirstName" type="java.lang.String"/>
                 <form-property name="invPhone" type="java.lang.String"/>
                 <form-property name="invEmail" type="java.lang.String"/>
@@ -1128,8 +1112,97 @@
           <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
           <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
           <forward name="statusException" path="/coeuslite/utk/propdev/tiles/clProposalListTile.jsp"/>
+        </action>        
+        <action path="/getPHSHumanSubjectForm" type="edu.utk.coeuslite.propdev.action.ProposalGetAction"
+                        scope="request" name="generalInfoProposal" validate="false">
+          <forward name="success" path="/getPHSHumanSubjectS2SDetails.do"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="noRight" path="/coeuslite/utk/propdev/clPhsHumanSubjectsError.jsp"/>         
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>  
+        
+        <!--PHS Human Subjects-->
+        <action path="/savePHSHumanSubjectS2SDetails" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+               scope="request" name="phsHumanSubjectsBean" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
         </action>
+        <action path="/getPHSHumanSubjectS2SDetails" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+               scope="request" name="phsHumanSubjectsBean" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="noRight" path="/coeuslite/utk/propdev/clPhsHumanSubjectsError.jsp"/>         
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/savePHSHumanSubHeaderDetails" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+               scope="request" name="phsHumanSubjectsBean" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/saveDelayedOnsetStudies" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+               scope="request" name="phsHumanSubjectsBean" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/saveHumanOtherAttachment" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+               scope="request" name="phsHumanSubjectsBean" validate="true" input="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="isNotAllowed" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        <action path="/deleteHumanOtherAttachment" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+               scope="request" name="phsHumanSubjectsBean" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="isNotAllowed" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        
+        <action path="/deletePHSHumanSubjectS2SDetails" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+               scope="request" name="phsHumanSubjectsBean" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="isNotAllowed" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        
+        <action path="/viewHumanOtherAttachment" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+               scope="request" name="phsHumanSubjectsBean" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        
+        <action path="/viewPHSHumanSubjectDetails" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+               scope="request" name="phsHumanSubjectsBean" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        
+        <action path="/downloadHumanSubjectForm" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+               scope="request" name="phsHumanSubjectsBean" validate="false">
+          <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+          <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+          <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        </action>
+        
+        <!--PHS Human Subjects-->
+        
     <!--Action mapping for case#3108 - Rolodex info -->
+    
 
         <action path="/getRolodexInfo" type="edu.utk.coeuslite.propdev.action.RolodexGetAction" scope="request" name="RolodexInfoForm" validate="false">
           <forward name="success" path="/coeuslite/utk/propdev/tiles/clAddNewRolodexTile.jsp" />
@@ -2040,7 +2113,14 @@
         <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
         <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
         <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
-    </action>      
+    </action>  
+    <action path="/downloadHumanSubjectForm" type="edu.mit.coeus.s2s.phshumansubject.PHSHumanSubjectS2SAction"
+        scope="request" name="phsHumanSubjectsBean" validate="false">
+        <forward name="success" path="/coeuslite/utk/propdev/tiles/clPhsHumanSubjectsTile.jsp"/>
+        <forward name="error" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="failure" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+        <forward name="exception" path="/coeuslite/mit/irb/cwErrorPage.jsp"/>
+    </action>
 <!--    COEUSQA-4066-->
     
     <!-- ========== Message Resources Definitions =========================== -->

@@ -6,35 +6,27 @@
 --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<%@page
-	import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,
+<%@page import="java.util.Vector,edu.mit.coeuslite.coiv2.beans.CoiDisclosureBean,
         edu.mit.coeuslite.coiv2.services.CoiCommonService,
         java.util.Date,
         edu.mit.coeuslite.utils.bean.SubHeaderBean,
         edu.mit.coeuslite.coiv2.beans.CoiDisclosureDetailsListBean,java.util.Calendar,java.text.SimpleDateFormat,
-        java.util.TreeSet;"%>
+        java.util.TreeSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ taglib uri="/WEB-INF/coeus-utils.tld" prefix="coeusUtils"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" 	prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" 	prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" 	prefix="logic" %>
+<%@ taglib uri="/WEB-INF/coeus-utils.tld"	prefix="coeusUtils" %>
 <%
 String path = request.getContextPath();
 %>
 
 <script src="<%=path%>/coeuslite/mit/utils/scripts/divSlide.js"></script>
 <script src="<%=path%>/coeuslite/mit/utils/scripts/Balloon.js"></script>
-<link href="<%=path%>/coeuslite/mit/utils/css/coeus_styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css"
-	rel="stylesheet" type="text/css" />
+<link href="<%=path%>/coeuslite/mit/utils/css/coeus_styles.css" rel="stylesheet" type="text/css"/>
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/coeuslite/mit/coiv2/css/collapsemenu.css" rel="stylesheet" type="text/css" />
 <%
             Vector pendingDisclosure = (Vector) request.getAttribute("pendingDiscl");
             Vector approvedDisclosureView = (Vector) request.getAttribute("ApprovedDisclDetView");
@@ -46,10 +38,10 @@ String path = request.getContextPath();
 //String path = request.getContextPath();
 %>
 <html:html locale="true">
-<head>
-<title>Disclosure Notes</title>
+    <head>
+        <title>Disclosure Notes</title>
 
-<script type="text/javascript">
+        <script type="text/javascript">
             var glob = "null";
             var glob2 = "null";
              var appGlob1 = null;
@@ -693,9 +685,9 @@ String path = request.getContextPath();
                 }
  //---------------------------------------------travel ends--------------------------------------------------//
         </script>
-</head>
+    </head>
 
-<%
+      <%
             int index = 0;
             String strBgColor = "#DCE5F1";
             Vector projetList = new Vector();
@@ -711,62 +703,45 @@ String path = request.getContextPath();
             CoiDisclosureDetailsListBean pjtBean;
        %>
 <!-- Managed Disclosure List-->
-<%--<logic:present name="ApprovedDisclDetView">--%>
-<table>
-	<tr style="background-color: white">
-		<td></td>
-	</tr>
-</table>
-<table class="table" style="width: 100%;" border="0">
-	<tr>
-		<td><img
-			src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-			border='none' id="managedimgtoggle" name="projectimgtoggle"
-			border="none" onclick="javascript:selectManagedDiscIcon();" /> <img
-			src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-			style="visibility: hidden;" border='none' id="managedimgtoggleminus"
-			name="projectimgtoggleminus" border="none"
-			onclick="javascript:selectManagedDiscIcon;" /> <label
-			style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Managed</label>
-		</td>
-	</tr>
-</table>
+    <%--<logic:present name="ApprovedDisclDetView">--%>
+    <table>
+        <tr style="background-color: white">
+            <td></td>
+        </tr>
+    </table>
+        <table class="table" style="width: 100%;" border="0">
+            <tr>
+                <td>
+                     <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="managedimgtoggle" name="projectimgtoggle" border="none" onclick="javascript:selectManagedDiscIcon();"/>
+                     <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility:hidden;" border='none' id="managedimgtoggleminus" name="projectimgtoggleminus" border="none" onclick="javascript:selectManagedDiscIcon;"/>
+                     <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Managed</label>
+                </td>
+            </tr>
+        </table>
 
-<div id="managedDisclosureDiv" style="display: none; height: 1px;">
-	<table id="bodyTable" class="table" style="width: 100%;" border="0">
-		<tr style="background-color: #6E97CF; height: 22px;">
-			<td style="width: 3%; background-color: #538dd5;"></td>
-			<td nowrap="nowrap"
-				style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-					Type</strong></td>
-			<td
-				style="width: 18%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Title</strong></td>
-			<td
-				style="width: 11%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Project
-					#</strong></td>
-			<td
-				style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Start
-					Date</strong></td>
-			<td
-				style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>End
-					Date</strong></td>
-			<td nowrap="nowrap"
-				style="width: 16%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-					Status</strong></td>
-			<td style="width: 16%;" align="right"><a
-				href="javaScript:setViewByManagedFinancialEnity();">View By
-					FinancialEntities</a></td>
-		</tr>
+         <div  id="managedDisclosureDiv" style="display: none;height: 1px;" >
+             <table id="bodyTable" class="table" style="width: 100%;" border="0" >
+                 <tr style="background-color:#6E97CF;height: 22px;">
+                     <td style="width:3%;background-color:#538dd5;"></td>
+                       <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px; background-color:#538dd5;"><strong>Discl.Event Type</strong></td>
+                        <td style="width:18%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Title</strong></td>
+                        <td style="width:11%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Project #</strong></td>
+                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Start Date</strong></td>
+                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>End Date</strong></td>
+                        <td nowrap="nowrap" style="width:16%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Status</strong></td>
+			<td style="width:16%;" align="right"><a href="javaScript:setViewByManagedFinancialEnity();">View By FinancialEntities</a></td>
+                 </tr>
 
-		<logic:empty name="mngdPjtEntDetailsViews">
-			<tr style="height: 1px;">
-				<td colspan="2" style="padding-left: 25px;"><font
-					style="color: red">No Projects found</font></td>
-			</tr>
-		</logic:empty>
+                 <logic:empty name="mngdPjtEntDetailsViews">
+                     <tr style="height:1px;">
+                         <td colspan="2" style="padding-left: 25px;">
+                             <font style="color: red">No Projects found</font>
+                         </td>
+                     </tr>
+                 </logic:empty>
 
-		<logic:present name="mngdPjtEntDetailsViews">
-			<% int mngdIndex = 0;
+                 <logic:present name="mngdPjtEntDetailsViews">
+                       <% int mngdIndex = 0;
                             TreeSet entStatusId = new TreeSet();
                             String pjtId = "";
                             String entStatusDescription = "";
@@ -779,9 +754,9 @@ String path = request.getContextPath();
                               entDetList = (Vector)request.getAttribute("mngdEntPjtDetView");
                           }
                        %>
-			<logic:iterate id="pjtList" name="mngdPjtEntDetailsViews">
+                     <logic:iterate id="pjtList" name="mngdPjtEntDetailsViews">
 
-				<%
+                          <%
                                 if (mngdIndex % 2 == 0) {
                                     strBgColor = "#D6DCE5";
                                 } else {
@@ -858,120 +833,93 @@ String path = request.getContextPath();
                                  }
                          %>
 
-				<tr bgcolor="<%=strBgColor%>" id="rowMngd<%=mngdIndex%>"
-					class="rowLine" onmouseover="className='rowHover rowLine'"
-					onmouseout="className='rowLine'" height="22px">
-					<td width="3%"><img
-						src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-						border='none' id="imgtoggleMngd<%=mngdIndex%>"
-						name="imgtoggleMngd<%=mngdIndex%>" border="none"
-						onclick="javascript:selectManagedDiscEntityView(<%=mngdIndex%>);" />
-						<img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-						style="visibility: hidden;" border='none'
-						id="imgtoggleminusMngd<%=mngdIndex%>"
-						name="imgtoggleminusMngd<%=mngdIndex%>" border="none"
-						onclick="javascript:selectManagedDiscEntityView(<%=mngdIndex%>);" />
-					</td>
-					<td style="width: 15%;"><%=moduleNameMngd%></td>
-					<td style="width: 18%;"><bean:write name="pjtList"
-							property="coiProjectTitle" /></td>
-					<td style="width: 11%;"><bean:write name="pjtList"
-							property="coiProjectId" /></td>
-					<td style="width: 12%;"><%=startDate%></td>
-					<td style="width: 12%;"><%=endDate%></td>
-					<td style="width: 16%;">
-						<%--<bean:write name="pjtList" property="coiDisclosureStatusDesc"/>--%><%=entStatusDescription%></td>
-					<td style="width: 16%;">&nbsp;</td>
-				</tr>
+                         <tr bgcolor="<%=strBgColor%>" id="rowMngd<%=mngdIndex%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+                              <td width="3%">
+                                   <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgtoggleMngd<%=mngdIndex%>" name="imgtoggleMngd<%=mngdIndex%>" border="none" onclick="javascript:selectManagedDiscEntityView(<%=mngdIndex%>);"/>
+                                   <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgtoggleminusMngd<%=mngdIndex%>" name="imgtoggleminusMngd<%=mngdIndex%>" border="none" onclick="javascript:selectManagedDiscEntityView(<%=mngdIndex%>);"/>
+                            </td>
+                            <td style="width:15%;"><%=moduleNameMngd%></td>
+                             <td style="width:18%;"><bean:write name="pjtList" property="coiProjectTitle"/></td>
+                             <td style="width:11%;"><bean:write name="pjtList" property="coiProjectId"/></td>
+                             <td style="width:12%;"><%=startDate%></td>
+                             <td style="width:12%;"><%=endDate%></td>
+                             <td style="width:16%;"><%--<bean:write name="pjtList" property="coiDisclosureStatusDesc"/>--%><%=entStatusDescription%></td>
+                             <td style="width:16%;">&nbsp;</td>
+                         </tr>
 
-				<tr id="trMngd<%=mngdIndex%>"
-					style="width: 100%; height: 1px; visibility: hidden; overflow: hidden;">
-					<td style="width: 100%;" colspan="8">
-						<div id="mngdProject<%=mngdIndex%>"
-							style="width: 100%; height: 1px; visibility: hidden; background-color: #9DBFE9; overflow-x: hidden; overflow-y: scroll;">
-							<table id="bodyTable" class="table"
-								style="width: 100%; height: 1px;" border="0">
-								<tr style="height: 1px;">
-									<td
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;">&nbsp;</td>
-									<td colspan="3"
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Entity
-											Name</strong></td>
+                         <tr id="trMngd<%=mngdIndex%>" style="width: 100%; height: 1px; visibility: hidden; overflow: hidden;">
+                             <td style="width: 100%;" colspan="8">
+                                 <div id="mngdProject<%=mngdIndex%>" style="width: 100%; height: 1px;visibility: hidden;background-color: #9DBFE9;overflow-x: hidden; overflow-y: scroll;">
+                                     <table id="bodyTable" class="table" style="width: 100% ; height: 1px;" border="0" >
+                                         <tr style="height: 1px;">
+                                             <td style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;">&nbsp;</td>
+                                             <td colspan="3" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Entity Name</strong></td>
 
-									<td colspan="3"
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Entity
-											Status</strong></td>
-								</tr>
+                                             <td  colspan="3" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Entity Status</strong></td>
+                                         </tr>
 
-								<% int mngdIndex1=0; %>
-								<logic:iterate id="pjtEntView" name="mngdEntPjtDetView">
-									<% String projectName1 = (String) pjtBean.getCoiProjectId();%>
-									<logic:equal value="<%=projectName1%>" property="coiProjectId"
-										name="pjtEntView">
-										<logic:notEmpty name="pjtEntView" property="entityName">
-											<% mngdIndex1++; %>
-											<tr class="rowLineLight"
-												onmouseover="className='rowHover rowLine'"
-												onmouseout="className='rowLineLight'" style="height: 1px;"
-												width="100%">
-												<td style="width: 5%"></td>
-												<td colspan="3"><b><bean:write name="pjtEntView"
-															property="entityName" /></b></td>
-												<td colspan="3"><b><bean:write name="pjtEntView"
-															property="entityStatusDesc" /></b></td>
-											</tr>
-										</logic:notEmpty>
-									</logic:equal>
+                                         <% int mngdIndex1=0; %>
+                                         <logic:iterate id="pjtEntView" name="mngdEntPjtDetView">
+                                                <% String projectName1 = (String) pjtBean.getCoiProjectId();%>
+                                                <logic:equal value="<%=projectName1%>" property="coiProjectId" name="pjtEntView">
+                                                   <logic:notEmpty name="pjtEntView" property="entityName">
+                                                        <% mngdIndex1++; %>
+                                                        <tr class="rowLineLight" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLineLight'" style="height:1px;" width="100%">
+                                                       <td style="width: 5%"></td>
+                                                       <td colspan="3">
+                                                            <b><bean:write name="pjtEntView" property="entityName"/></b>
+                                                        </td>
+                                                        <td colspan="3">
+                                                            <b><bean:write name="pjtEntView" property="entityStatusDesc"/></b>
+                                                        </td>
+                                                    </tr>
+                                                    </logic:notEmpty>
+                                                </logic:equal>
 
-								</logic:iterate>
+                                         </logic:iterate>
 
-								<%if(mngdIndex1 == 0){%>
-								<tr style="height: 1px;">
-									<td colspan="7" style="padding-left: 25px;"><font
-										style="color: red">No financial entities found</font></td>
-								</tr>
-								<%}%>
+                                         <%if(mngdIndex1 == 0){%>
+                                         <tr style="height:1px;"><td colspan="7" style="padding-left: 25px;"><font style="color: red">No financial entities found</font></td></tr>
+                                        <%}%>
 
-							</table>
-						</div>
-					</td>
-				</tr>
-				<%
+                                     </table>
+                                 </div>
+                             </td>
+                         </tr>
+                         <%
                             mngdIndex++;
                          %>
-			</logic:iterate>
+                     </logic:iterate>
 
-		</logic:present>
+                 </logic:present>
 
-	</table>
-</div>
+             </table>
+         </div>
 
-<div id="disclosureByManagedFinancialEntityDiv"
-	style="display: none; height: 1px;">
-	<table id="bodyTable" class="table" style="width: 100%;" border="0">
-		<tr style="background-color: #6E97CF; height: 22px;">
-			<td>&nbsp;</td>
-			<td style="width: 40%; color: #FFFFFF; font-size: 14px;"><strong>Entity
-					Names</strong></td>
-			<td style="width: 50%;" align="right"><a
-				href="javaScript:setViewByProjectsManaged();">View By Projects</a></td>
-			<td><strong>&nbsp;</strong></td>
-			<td><strong>&nbsp;</strong></td>
-		</tr>
+           <div  id="disclosureByManagedFinancialEntityDiv" style="display: none;height: 1px;" >
+                 <table id="bodyTable" class="table" style="width: 100%;" border="0" >
+                         <tr style="background-color:#6E97CF;height: 22px;">
+                                 <td>&nbsp;</td>
+                                 <td style="width:40%;color:#FFFFFF;font-size:14px;"><strong>Entity Names</strong></td>
+                                 <td  style="width:50%;" align="right"> <a href="javaScript:setViewByProjectsManaged();">View By Projects</a></td>
+                                 <td><strong>&nbsp;</strong></td>
+                                 <td><strong>&nbsp;</strong></td>
+                         </tr>
 
-		<logic:empty name="mngdEntityNameLists">
-			<tr style="height: 1px;">
-				<td colspan="2" style="padding-left: 25px;"><font
-					style="color: red">No Entities found</font></td>
-			</tr>
-		</logic:empty>
+                         <logic:empty name="mngdEntityNameLists">
+                             <tr style="height:1px;">
+                                 <td colspan="2" style="padding-left: 25px;">
+                                     <font style="color: red">No Entities found</font>
+                                 </td>
+                             </tr>
+                         </logic:empty>
 
-		<logic:present name="mngdEntityNameLists">
-			<%
+                         <logic:present name="mngdEntityNameLists">
+                                 <%
                                         int mngdEntity = 0;
                                  %>
-			<logic:iterate id="pjtTitle" name="mngdEntityNameLists">
-				<%
+                                 <logic:iterate id="pjtTitle"  name="mngdEntityNameLists">
+                                                <%
                                                     if (mngdEntity % 2 == 0) {
                                                             strBgColor = "#D6DCE5";
                                                     } else {
@@ -979,63 +927,45 @@ String path = request.getContextPath();
                                                     }
                                                 %>
 
-				<tr bgcolor="<%=strBgColor%>" id="row1pend<%=mngdEntity%>"
-					class="rowLine" onmouseover="className='rowHover rowLine'"
-					onmouseout="className='rowLine'" height="22px">
-					<td colspan="1" width="5%"><img
-						src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-						border='none' id="imgMngdtoggle<%=mngdEntity%>"
-						name="imgMngdtoggle<%=mngdEntity%>" border="none"
-						onclick="javascript:getManagedDiscPjtView(<%=mngdEntity%>);" /> <img
-						src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-						style="visibility: hidden;" border='none'
-						id="imgMngdtoggleminus<%=mngdEntity%>"
-						name="imgMngdtoggleminus<%=mngdEntity%>" border="none"
-						onclick="javascript:getManagedDiscPjtView(<%=mngdEntity%>);" /></td>
-					<td colspan="4"><b><bean:write name="pjtTitle" /></b></td>
-				</tr>
+                                     <tr bgcolor="<%=strBgColor%>" id="row1pend<%=mngdEntity%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+                                            <td colspan="1" width="5%">
+                                                    <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgMngdtoggle<%=mngdEntity%>" name="imgMngdtoggle<%=mngdEntity%>" border="none" onclick="javascript:getManagedDiscPjtView(<%=mngdEntity%>);"/>
+                                                    <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgMngdtoggleminus<%=mngdEntity%>" name="imgMngdtoggleminus<%=mngdEntity%>" border="none" onclick="javascript:getManagedDiscPjtView(<%=mngdEntity%>);"/>
+                                            </td>
+                                            <td colspan="4">
+                                                    <b><bean:write name="pjtTitle" /></b>
+                                            </td>
+                                    </tr>
 
-				<tr>
-					<td colspan="5">
-						<div id="entMngd<%=mngdEntity%>"
-							style="height: 1px; width: 100%; visibility: hidden; background-color: #9DBFE9; overflow-x: hidden; overflow-y: scroll;">
-							<table id="bodyTable" class="table"
-								style="width: 100%; height: 100%;" border="0">
-								<tr style="background-color: #6E97CF;">
-									<td width="3%" style="background-color: #538dd5;"></td>
-									<td nowrap="nowrap"
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-											Type</strong></td>
-									<td
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Title</strong></td>
-									<td
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Project
-											#</strong></td>
-									<td
-										style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Start
-											Date</strong></td>
-									<td
-										style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>End
-											Date</strong></td>
-									<td nowrap="nowrap"
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-											Status</strong></td>
-								</tr>
-								<logic:empty name="mngdPjtEntDetailsViews">
-									<tr style="height: 1px;">
-										<td colspan="2" style="padding-left: 25px;"><font
-											style="color: red">No Projects found</font></td>
-									</tr>
-								</logic:empty>
-								<logic:present name="mngdPjtEntDetailsViews">
-									<% int mngdPjtIndex = 0;
+                                        <tr>
+                                    <td colspan="5">
+                                          <div id="entMngd<%=mngdEntity%>" style="height: 1px;width: 100%;visibility: hidden;background-color: #9DBFE9;overflow-x: hidden; overflow-y: scroll;">
+                                            <table id="bodyTable" class="table" style="width: 100%;height: 100%;" border="0" >
+                                                <tr style="background-color:#6E97CF;">
+                                                    <td width="3%" style="background-color:#538dd5;"></td>
+                                                             <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Type</strong></td>
+                                                            <td style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Title</strong></td>
+                                                            <td style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Project #</strong></td>
+                                                            <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Start Date</strong></td>
+                                                            <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>End Date</strong></td>
+                                                            <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Status</strong></td>
+                                                    </tr>
+                                                       <logic:empty name="mngdPjtEntDetailsViews">
+                                                             <tr style="height:1px;">
+                                                                     <td colspan="2" style="padding-left: 25px;">
+                                                                             <font style="color: red">No Projects found</font>
+                                                                     </td>
+                                                             </tr>
+                                                     </logic:empty>
+                                                     <logic:present name="mngdPjtEntDetailsViews">
+                                                             <% int mngdPjtIndex = 0;
                                                             if(request.getAttribute("mngdPjtEntDetailsViews") != null){
                                                                      projetList = (Vector) request.getAttribute("mngdPjtEntDetailsViews");
                                                               }
                                                        %>
-									<logic:iterate id="pjtList" name="mngdPjtEntDetailsViews">
+                                                     <logic:iterate id="pjtList" name="mngdPjtEntDetailsViews">
 
-										<%
+                                                              <%
                                                                 if (mngdPjtIndex % 2 == 0) {
                                                                         strBgColor = "#D6DCE5";
                                                                 } else {
@@ -1089,101 +1019,78 @@ String path = request.getContextPath();
                                                                             }
                                                                  }
                                                              %>
-										<tr bgcolor="<%=strBgColor%>" id="row2Pend<%=mngdPjtIndex%>"
-											class="rowLine" onmouseover="className='rowHover rowLine'"
-											onmouseout="className='rowLine'" height="22px">
+                                                             <tr bgcolor="<%=strBgColor%>" id="row2Pend<%=mngdPjtIndex%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
 
-											<td width="3%"></td>
-											<td style="width: 15%;"><%=moduleNmMngd%></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="coiProjectTitle" /></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="coiProjectId" /></td>
-											<td style="width: 12%;"><%=startDate%></td>
-											<td style="width: 12%;"><%=endDate%></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="entityStatusDesc" /></td>
-										</tr>
-										<%mngdPjtIndex++;%>
-									</logic:iterate>
-									<%if(mngdPjtIndex == 0){%>
-									<tr style="height: 1px;">
-										<td colspan="2" style="padding-left: 25px;"><font
-											style="color: red">No Projects found</font></td>
-									</tr>
-									<%}%>
-								</logic:present>
+                                                                     <td width="3%"></td>
+                                                                     <td style="width:15%;"><%=moduleNmMngd%></td>
+                                                                     <td style="width:15%;"><bean:write name="pjtList" property="coiProjectTitle"/></td>
+                                                                     <td style="width:15%;"><bean:write name="pjtList" property="coiProjectId"/></td>
+                                                                     <td style="width:12%;"><%=startDate%></td>
+                                                                     <td style="width:12%;"><%=endDate%></td>
+                                                                     <td style="width:15%;"><bean:write name="pjtList" property="entityStatusDesc"/></td>
+                                                             </tr>
+                                                            <%mngdPjtIndex++;%>
+                                                     </logic:iterate>
+                                                      <%if(mngdPjtIndex == 0){%>
+                                                            <tr style="height:1px;"><td colspan="2" style="padding-left: 25px;"><font style="color: red">No Projects found</font></td></tr>
+                                                      <%}%>
+                                                     </logic:present>
 
-							</table>
-						</div>
-					</td>
+                                            </table>
+                                            </div>
+                                    </td>
 
-				</tr>
-				<%mngdEntity++;%>
-			</logic:iterate>
+                                        </tr>
+                                          <%mngdEntity++;%>
+                                 </logic:iterate>
 
-		</logic:present>
+                         </logic:present>
 
-	</table>
-</div>
+                 </table>
+            </div>
 
-<%--</logic:present>--%>
+    <%--</logic:present>--%>
 
-<!--Pending Disclosure List -->
+    <!--Pending Disclosure List -->
 
-<%--<logic:present name="ApprovedDisclDetView">--%>
-<table>
-	<tr style="background-color: white">
-		<td></td>
-	</tr>
-</table>
-<table class="table" style="width: 100%;" border="0">
-	<tr>
-		<td><img
-			src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-			border='none' id="pendingimgtoggle" name="pendingimgtoggle"
-			border="none" onclick="javascript:selectPendingDiscIcon();" /> <img
-			src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-			style="visibility: hidden;" border='none' id="pendingimgtoggleminus"
-			name="pendingimgtoggleminus" border="none"
-			onclick="javascript:selectPendingDiscIcon();" /> <label
-			style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Pending</label>
-		</td>
-	</tr>
-</table>
+    <%--<logic:present name="ApprovedDisclDetView">--%>
+    <table>
+        <tr style="background-color: white">
+            <td></td>
+        </tr>
+    </table>
+         <table class="table" style="width: 100%;" border="0">
+            <tr>
+                <td>
+                     <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="pendingimgtoggle" name="pendingimgtoggle" border="none" onclick="javascript:selectPendingDiscIcon();"/>
+                     <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility:hidden;" border='none' id="pendingimgtoggleminus" name="pendingimgtoggleminus" border="none" onclick="javascript:selectPendingDiscIcon();"/>
+                     <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Pending</label>
+                </td>
+            </tr>
+        </table>
 
-<div id="pendingDisclosureDiv" style="display: none; height: 1px;">
-	<table id="bodyTable" class="table" style="width: 100%;" border="0">
-		<tr style="background-color: #6E97CF; height: 22px;">
-			<td style="width: 3%; background-color: #538dd5;"></td>
-			<td nowrap="nowrap"
-				style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-					Type</strong></td>
-			<td
-				style="width: 18%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Title</strong></td>
-			<td
-				style="width: 11%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Project
-					#</strong></td>
-			<td
-				style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Start
-					Date</strong></td>
-			<td
-				style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>End
-					Date</strong></td>
-			<td nowrap="nowrap"
-				style="width: 16%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-					Status</strong></td>
-			<td style="width: 16%; background-color: #538dd5;" align="right"></td>
-		</tr>
-		<logic:empty name="pendingPjtList">
-			<tr style="height: 1px;">
-				<td colspan="2" style="padding-left: 25px;"><font
-					style="color: red">No Projects found</font></td>
-			</tr>
-		</logic:empty>
+         <div  id="pendingDisclosureDiv" style="display: none;height: 1px;" >
+             <table id="bodyTable" class="table" style="width: 100%;" border="0" >
+                 <tr style="background-color:#6E97CF;height: 22px;">
+                        <td style="width:3%;background-color:#538dd5;"></td>
+                        <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Type</strong></td>
+                        <td style="width:18%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Title</strong></td>
+                        <td style="width:11%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Project #</strong></td>
+                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Start Date</strong></td>
+                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>End Date</strong></td>
+                        <td nowrap="nowrap" style="width:16%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Status</strong></td>
+                        <td style="width:16%;background-color:#538dd5;" align="right" ></td>
+                 </tr>
+                 <logic:empty name="pendingPjtList">
+                     <tr style="height:1px;">
+                         <td colspan="2" style="padding-left: 25px;">
+                             <font style="color: red">No Projects found</font>
+                         </td>
+                     </tr>
+                 </logic:empty>
 
-		<logic:present name="pendingPjtList">
-			<% int pendIndex = 0;
+                 <logic:present name="pendingPjtList">
+                         <% int pendIndex = 0;
                          String link = "";
                          String disclosureStatus = "";
 
@@ -1191,9 +1098,9 @@ String path = request.getContextPath();
                              projetList = (Vector) request.getAttribute("pendingPjtList");
                           }
                        %>
-			<logic:iterate id="pjtList" name="pendingPjtList">
+                     <logic:iterate id="pjtList" name="pendingPjtList">
 
-				<%
+                          <%
                                 if (pendIndex % 2 == 0) {
                                     strBgColor = "#D6DCE5";
                                 } else {
@@ -1274,8 +1181,8 @@ String path = request.getContextPath();
                                  }
                          %>
 
-				<%if(reviewcode!=1){%>
-				<%
+                          <%if(reviewcode!=1){%>
+                            <%
                               String moduleItemKey = pjtBean.getCoiProjectId();
                             link = "/getannualdisclosure.do?&param1=" + pjtBean.getCoiDisclosureNumber() + "&param2=" + pjtBean.getCoiSequenceNumber() + "&param5=" + moduleNamePend+ "&param3=" + pjtBean.getPersonId()+ "&param6=" + "pendingDiscl"+"&selectedPjct="+moduleItemKey;
                            if(moduleNamePend!= null && moduleNamePend.equals("Travel")){
@@ -1283,8 +1190,8 @@ String path = request.getContextPath();
                             }
                                disclosureStatus = "Pending For Approval";
                             %>
-				<%}else{%>
-				<%
+                            <%}else{%>
+                            <%
                         //    link = "/createDisclosureFromInProgress.do?&param1=" + pjtBean.getCoiDisclosureNumber() + "&param2=" + pjtBean.getCoiSequenceNumber()+ "&param3=" + pjtBean.getPersonId()+ "&param5=" + moduleNamePend + "&param6=" + "pendingDiscl&frmPendingInPrg=true&projectID="+pjtBean.getCoiProjectId()+"&operationType=MODIFY&operation=UPDATE&code="+code;
                           //  link = "/findDisclosureProjectType.do?&param1=" + pjtBean.getCoiDisclosureNumber() + "&param2=" + pjtBean.getCoiSequenceNumber()+ "&param3=" + pjtBean.getPersonId()+ "&param5=" + code + "&param6=pendingDiscl&module_item_key="+pjtBean.getCoiProjectId();
                             //disclosureStatus = pendingDisclosuresBean.getDisclosureStatus();
@@ -1294,104 +1201,80 @@ String path = request.getContextPath();
                             }
                             disclosureStatus = "In Progress";
                             %>
-				<%}%>
+                            <%}%>
 
 
-				<tr bgcolor="<%=strBgColor%>" id="rowpend<%=pendIndex%>"
-					class="rowLine" onmouseover="className='rowHover rowLine'"
-					onmouseout="className='rowLine'" height="22px">
-					<td width="3%">
-						<%--<img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgtogglepend<%=pendIndex%>" name="imgtogglepend<%=pendIndex%>" border="none" onclick="javascript:selectPendingDiscEntityView(<%=pendIndex%>);"/>
+                         <tr bgcolor="<%=strBgColor%>" id="rowpend<%=pendIndex%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+                             <td width="3%">
+                               <%--<img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgtogglepend<%=pendIndex%>" name="imgtogglepend<%=pendIndex%>" border="none" onclick="javascript:selectPendingDiscEntityView(<%=pendIndex%>);"/>
                                <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgtoggleminuspend<%=pendIndex%>" name="imgtoggleminuspend<%=pendIndex%>" border="none" onclick="javascript:selectPendingDiscEntityView(<%=pendIndex%>);"/>
-                           --%>
-					</td>
-					<td style="width: 15%;"><html:link
-							style="color: #003399;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;float: none;font-size:12px;"
-							action="<%=link%>">
-							<bean:write name="pjtList" property="eventType" />
-						</html:link></td>
-					<%if(code == 8) {%>
-					<td style="width: 18%;"><bean:write name="pjtList"
-							property="eventName" /></td>
-					<%}else {%>
-					<td style="width: 18%;"><bean:write name="pjtList"
-							property="coiProjectTitle" /></td>
-					<%}%>
-					<td style="width: 11%;"><bean:write name="pjtList"
-							property="coiProjectId" /></td>
-					<td style="width: 12%;"><%=startDate%></td>
-					<td style="width: 12%;"><%=pendingdisclendDate%></td>
-					<%--<td style="width:20%;"><%=disclosureStatus%></td>--%>
-					<td style="width: 16%;"><bean:write name="pjtList"
-							property="reviewStatus" /></td>
-					<td style="width: 16%;">&nbsp;</td>
-				</tr>
-				<%
+                           --%> </td>
+                           <td style="width:15%;">
+
+                                   <html:link style="color: #003399;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;float: none;font-size:12px;" action="<%=link%>"><bean:write name="pjtList" property="eventType"/></html:link>
+
+                            </td>
+                             <%if(code == 8) {%>
+                             <td style="width:18%;"><bean:write name="pjtList" property="eventName"/></td>
+                             <%}else {%>
+                             <td style="width:18%;"><bean:write name="pjtList" property="coiProjectTitle"/></td>
+                             <%}%>
+                             <td style="width:11%;"><bean:write name="pjtList" property="coiProjectId"/></td>
+                             <td style="width:12%;"><%=startDate%></td>
+                             <td style="width:12%;"><%=pendingdisclendDate%></td>
+                             <%--<td style="width:20%;"><%=disclosureStatus%></td>--%>
+                              <td style="width:16%;"><bean:write name="pjtList" property="reviewStatus"/></td>
+                             <td style="width:16%;">&nbsp;</td>
+                         </tr>                        
+                         <%
                             pendIndex++;
                          %>
-			</logic:iterate>
+                     </logic:iterate>
 
-		</logic:present>
+                 </logic:present>
 
-	</table>
-</div>
+             </table>
+         </div>
 
 
-<table>
-	<tr style="background-color: white">
-		<td></td>
-	</tr>
-</table>
-<table class="table" style="width: 100%;" border="0">
-	<tr>
-		<td><img
-			src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-			border='none' id="approvedimgtoggle" name="approvedimgtoggle"
-			border="none" onclick="javascript:selectApprovedDiscIcon();" /> <img
-			src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-			style="visibility: hidden;" border='none' id="approvedimgtoggleminus"
-			name="approvedimgtoggleminus" border="none"
-			onclick="javascript:selectApprovedDiscIcon();" /> <label
-			style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Approved</label>
-		</td>
-	</tr>
-</table>
+    <table>
+        <tr style="background-color: white">
+            <td></td>
+        </tr>
+    </table>
+        <table class="table" style="width: 100%;" border="0">
+            <tr>
+                <td>
+                     <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="approvedimgtoggle" name="approvedimgtoggle" border="none" onclick="javascript:selectApprovedDiscIcon();"/>
+                     <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility:hidden;" border='none' id="approvedimgtoggleminus" name="approvedimgtoggleminus" border="none" onclick="javascript:selectApprovedDiscIcon();"/>
+                     <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Approved</label>
+                </td>
+            </tr>
+        </table>
 
-<div id="approvedDisclosureDiv" style="display: none; height: 1px;">
-	<table id="bodyTable" class="table" style="width: 100%;" border="0">
-		<tr style="background-color: #6E97CF; height: 22px;">
-			<td style="width: 3%; background-color: #538dd5;"></td>
-			<td nowrap="nowrap"
-				style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-					Type</strong></td>
-			<td
-				style="width: 18%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Title</strong></td>
-			<td
-				style="width: 11%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Project
-					#</strong></td>
-			<td
-				style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Start
-					Date</strong></td>
-			<td
-				style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>End
-					Date</strong></td>
-			<td nowrap="nowrap"
-				style="width: 16%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-					Status</strong></td>
-			<td style="width: 16%;" align="right"><a
-				href="javaScript:setViewByApprvdFinancialEnity();">View By
-					FinancialEntities</a></td>
-		</tr>
+         <div  id="approvedDisclosureDiv" style="display: none;height: 1px;" >
+             <table id="bodyTable" class="table" style="width: 100%;" border="0" >
+                 <tr style="background-color:#6E97CF;height: 22px;">
+                     <td style="width:3%;background-color:#538dd5;"></td>
+                       <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px; background-color:#538dd5;" ><strong>Discl.Event Type</strong></td>
+                        <td style="width:18%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Title</strong></td>
+                        <td style="width:11%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Project #</strong></td>
+                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Start Date</strong></td>
+                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>End Date</strong></td>
+                        <td nowrap="nowrap" style="width:16%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Status</strong></td>
+			<td style="width:16%;" align="right"><a href="javaScript:setViewByApprvdFinancialEnity();">View By FinancialEntities</a></td>
+                 </tr>
 
-		<logic:empty name="apprvdPjtEntDetailsViews">
-			<tr style="height: 1px;">
-				<td colspan="2" style="padding-left: 25px;"><font
-					style="color: red">No Projects found</font></td>
-			</tr>
-		</logic:empty>
+                 <logic:empty name="apprvdPjtEntDetailsViews">
+                     <tr style="height:1px;">
+                         <td colspan="2" style="padding-left: 25px;">
+                             <font style="color: red">No Projects found</font>
+                         </td>
+                     </tr>
+                 </logic:empty>
 
-		<logic:present name="apprvdPjtEntDetailsViews">
-			<% index = 0;
+                 <logic:present name="apprvdPjtEntDetailsViews">
+                         <% index = 0;
 
                          TreeSet entStatusIdApprvd = new TreeSet();
                             String pjtIdApprvd = "";
@@ -1407,9 +1290,9 @@ String path = request.getContextPath();
                           }
 
                        %>
-			<logic:iterate id="pjtList" name="apprvdPjtEntDetailsViews">
+                     <logic:iterate id="pjtList" name="apprvdPjtEntDetailsViews">
 
-				<%
+                          <%
                                 if (index % 2 == 0) {
                                     strBgColor = "#D6DCE5";
                                 } else {
@@ -1486,124 +1369,99 @@ String path = request.getContextPath();
 
                                  }
                          %>
-				<tr bgcolor="<%=strBgColor%>" id="row<%=index%>" class="rowLine"
-					onmouseover="className='rowHover rowLine'"
-					onmouseout="className='rowLine'" height="22px">
-					<td width="3%"><img
-						src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-						border='none' id="imgtoggleapp<%=index%>"
-						name="imgtoggleapp<%=index%>" border="none"
-						onclick="javascript:selectApprvdDiscEntityView(<%=index%>);" /> <img
-						src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-						style="visibility: hidden;" border='none'
-						id="imgtoggleminusapp<%=index%>"
-						name="imgtoggleminusapp<%=index%>" border="none"
-						onclick="javascript:selectApprvdDiscEntityView(<%=index%>);" /></td>
-					<td style="width: 15%"><%=moduleName%></td>
-					<td style="width: 18%"><bean:write name="pjtList"
-							property="coiProjectTitle" /></td>
-					<td style="width: 11%"><bean:write name="pjtList"
-							property="coiProjectId" /></td>
-					<td style="width: 12%"><%=startDate%></td>
-					<td style="width: 12%"><%=endDate%></td>
-					<td style="width: 16%">
-						<%--<bean:write name="pjtList" property="coiDisclosureStatusDesc"/>--%><%=entStatusDescriptionApprvd%></td>
-					<td style="width: 16%">&nbsp;</td>
-				</tr>
+                         <tr bgcolor="<%=strBgColor%>" id="row<%=index%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+                             <td width="3%">
+                               <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgtoggleapp<%=index%>" name="imgtoggleapp<%=index%>" border="none" onclick="javascript:selectApprvdDiscEntityView(<%=index%>);"/>
+                               <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgtoggleminusapp<%=index%>" name="imgtoggleminusapp<%=index%>" border="none" onclick="javascript:selectApprvdDiscEntityView(<%=index%>);"/>
+                            </td>
+                             <td style="width:15%"><%=moduleName%></td>
+                             <td style="width:18%"><bean:write name="pjtList" property="coiProjectTitle"/></td>
+                             <td style="width:11%"><bean:write name="pjtList" property="coiProjectId"/></td>
+                             <td style="width:12%"><%=startDate%></td>
+                             <td style="width:12%"><%=endDate%></td>
+                             <td style="width:16%"><%--<bean:write name="pjtList" property="coiDisclosureStatusDesc"/>--%><%=entStatusDescriptionApprvd%></td>
+                             <td style="width:16%">&nbsp;</td>
+                         </tr>
 
-				<tr id="tr<%=index%>"
-					style="width: 100%; height: 1px; visibility: hidden; overflow: hidden;">
-					<td style="width: 100%;" colspan="8">
-						<div id="project<%=index%>"
-							style="width: 100%; height: 1px; visibility: hidden; background-color: #9DBFE9; overflow-x: hidden; overflow-y: scroll;">
-							<table id="bodyTable" class="table"
-								style="width: 100%; height: 1px;" border="0">
-								<tr style="height: 1px;">
-									<td
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;">&nbsp;</td>
-									<td colspan="3"
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Entity
-											Name</strong></td>
+                         <tr id="tr<%=index%>" style="width: 100%; height: 1px; visibility: hidden; overflow: hidden;">
+                             <td style="width: 100%;" colspan="8">
+                                 <div id="project<%=index%>" style="width: 100%; height: 1px;visibility: hidden;background-color: #9DBFE9;overflow-x: hidden; overflow-y: scroll;">
+                                     <table id="bodyTable" class="table" style="width: 100% ; height: 1px;" border="0" >
+                                         <tr style="height: 1px;">
+                                             <td style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;">&nbsp;</td>
+                                             <td colspan="3" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Entity Name</strong></td>
 
-									<td colspan="3"
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Entity
-											Status</strong></td>
-								</tr>
+                                             <td  colspan="3" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Entity Status</strong></td>
+                                         </tr>
 
-								<% int index1=0; %>
-								<logic:empty name="apprvdEntPjtDetView">
-									<tr style="height: 1px;">
-										<td colspan="2" style="padding-left: 25px;"><font
-											style="color: red">No Entities found</font></td>
-									</tr>
-								</logic:empty>
-								<logic:iterate id="pjtEntView" name="apprvdEntPjtDetView">
-									<% String projectNameApp = (String) pjtBean.getCoiProjectId();%>
-									<logic:equal value="<%=projectNameApp%>"
-										property="coiProjectId" name="pjtEntView">
-										<logic:notEmpty name="pjtEntView" property="entityName">
-											<% index1++; %>
-											<tr class="rowLineLight"
-												onmouseover="className='rowHover rowLine'"
-												onmouseout="className='rowLineLight'" style="height: 1px;"
-												width="100%">
-												<td style="width: 5%"></td>
-												<td colspan="3"><b><bean:write name="pjtEntView"
-															property="entityName" /></b></td>
-												<td colspan="3"><b><bean:write name="pjtEntView"
-															property="entityStatusDesc" /></b></td>
-											</tr>
-										</logic:notEmpty>
-									</logic:equal>
-								</logic:iterate>
+                                         <% int index1=0; %>
+                                         <logic:empty name="apprvdEntPjtDetView">
+                                             <tr style="height:1px;">
+                                                 <td colspan="2" style="padding-left: 25px;">
+                                                     <font style="color: red">No Entities found</font>
+                                                 </td>
+                                             </tr>
+                                         </logic:empty>
+                                         <logic:iterate id="pjtEntView" name="apprvdEntPjtDetView">
+                                                <% String projectNameApp = (String) pjtBean.getCoiProjectId();%>
+                                                <logic:equal value="<%=projectNameApp%>" property="coiProjectId" name="pjtEntView">
+                                                   <logic:notEmpty name="pjtEntView" property="entityName">
+                                                        <% index1++; %>
+                                                        <tr class="rowLineLight" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLineLight'" style="height:1px;" width="100%">
+                                                       <td style="width: 5%"></td>
+                                                       <td colspan="3">
+                                                            <b><bean:write name="pjtEntView" property="entityName"/></b>
+                                                        </td>
+                                                        <td colspan="3">
+                                                            <b><bean:write name="pjtEntView" property="entityStatusDesc"/></b>
+                                                        </td>
+                                                    </tr>
+                                                    </logic:notEmpty>
+                                                </logic:equal>
+                                         </logic:iterate>
 
-								<%if(index1 == 0){%>
-								<tr style="height: 1px;">
-									<td colspan="2" style="padding-left: 25px;"><font
-										style="color: red">No financial entities found</font></td>
-								</tr>
-								<%}%>
+                                         <%if(index1 == 0){%>
+                                         <tr style="height:1px;"><td colspan="2" style="padding-left: 25px;"><font style="color: red">No financial entities found</font></td></tr>
+                                        <%}%>
 
-							</table>
-						</div>
-					</td>
-				</tr>
-				<%
+                                     </table>
+                                 </div>
+                             </td>
+                         </tr>
+                         <%
                             index++;
                          %>
-			</logic:iterate>
+                     </logic:iterate>
 
-		</logic:present>
+                 </logic:present>
 
-	</table>
-</div>
+             </table>
+         </div>
 
-<div id="disclosureByApprvdFinancialEntityDiv"
-	style="display: none; height: 1px;">
-	<table id="bodyTable" class="table" style="width: 100%;" border="0">
-		<tr style="background-color: #6E97CF; height: 22px;">
-			<td>&nbsp;</td>
-			<td style="width: 40%; color: #FFFFFF; font-size: 14px;"><strong>Entity
-					Names</strong></td>
-			<td style="width: 50%;" align="right"><a
-				href="javaScript:setViewByProjectsApp();">View By Projects</a></td>
-			<td><strong>&nbsp;</strong></td>
-			<td><strong>&nbsp;</strong></td>
-		</tr>
+                     <div  id="disclosureByApprvdFinancialEntityDiv" style="display: none;height: 1px;" >
+                         <table id="bodyTable" class="table" style="width: 100%;" border="0" >
+                             <tr style="background-color:#6E97CF;height: 22px;">
+                                 <td>&nbsp;</td>
+                                 <td style="width:40%;color:#FFFFFF;font-size:14px;"><strong>Entity Names</strong></td>
+                                 <td  style="width:50%;" align="right"> <a href="javaScript:setViewByProjectsApp();">View By Projects</a></td>
+                                 <td><strong>&nbsp;</strong></td>
+                                 <td><strong>&nbsp;</strong></td>
+                             </tr>
 
-		<logic:empty name="apprvdEntityNameLists">
-			<tr style="height: 1px;">
-				<td colspan="2" style="padding-left: 25px;"><font
-					style="color: red">No Entities found</font></td>
-			</tr>
-		</logic:empty>
+                             <logic:empty name="apprvdEntityNameLists">
+                                 <tr style="height:1px;">
+                                     <td colspan="2" style="padding-left: 25px;">
+                                         <font style="color: red">No Entities found</font>
+                                     </td>
+                                 </tr>
+                             </logic:empty>
 
-		<logic:present name="apprvdEntityNameLists">
-			<%
+                             <logic:present name="apprvdEntityNameLists">
+                                 <%
                                     int entity = 0;
                                  %>
-			<logic:iterate id="pjtTitle" name="apprvdEntityNameLists">
-				<%
+                                 <logic:iterate id="pjtTitle"  name="apprvdEntityNameLists">
+                                        <%
                                                 if (entity % 2 == 0) {
                                                     strBgColor = "#D6DCE5";
                                                 } else {
@@ -1611,64 +1469,46 @@ String path = request.getContextPath();
                                                 }
                                         %>
 
-				<tr bgcolor="<%=strBgColor%>" id="row1<%=entity%>" class="rowLine"
-					onmouseover="className='rowHover rowLine'"
-					onmouseout="className='rowLine'" height="22px">
-					<td colspan="1" width="5%"><img
-						src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-						border='none' id="imgApptoggle<%=entity%>"
-						name="imgtoggleapp<%=entity%>" border="none"
-						onclick="javascript:getApprvdDiscPjtView(<%=entity%>);" /> <img
-						src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-						style="visibility: hidden;" border='none'
-						id="imgApptoggleminus<%=entity%>"
-						name="imgApptoggleminus<%=entity%>" border="none"
-						onclick="javascript:getApprvdDiscPjtView(<%=entity%>);" /></td>
-					<td colspan="4"><b><bean:write name="pjtTitle" /></b></td>
-				</tr>
+                                         <tr bgcolor="<%=strBgColor%>" id="row1<%=entity%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+                                            <td colspan="1" width="5%">
+                                                <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgApptoggle<%=entity%>" name="imgtoggleapp<%=entity%>" border="none" onclick="javascript:getApprvdDiscPjtView(<%=entity%>);"/>
+                                                <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgApptoggleminus<%=entity%>" name="imgApptoggleminus<%=entity%>" border="none" onclick="javascript:getApprvdDiscPjtView(<%=entity%>);"/>
+                                            </td>
+                                            <td colspan="4">
+                                                <b><bean:write name="pjtTitle" /></b>
+                                            </td>
+                                        </tr>
 
-				<tr>
-					<td colspan="5">
-						<div id="ent<%=entity%>"
-							style="height: 1px; width: 100%; visibility: hidden; background-color: #9DBFE9; overflow-x: hidden; overflow-y: scroll;">
-							<table id="bodyTable" class="table"
-								style="width: 100%; height: 100%;" border="0">
-								<tr style="background-color: #6E97CF;">
-									<td width="3%" style="background-color: #538dd5;"></td>
-									<td nowrap="nowrap"
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-											Type</strong></td>
-									<td
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Title</strong></td>
-									<td
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Project
-											#</strong></td>
-									<td
-										style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Start
-											Date</strong></td>
-									<td
-										style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>End
-											Date</strong></td>
-									<td nowrap="nowrap"
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-											Status</strong></td>
-								</tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <div id="ent<%=entity%>" style="height: 1px;width: 100%;visibility: hidden;background-color: #9DBFE9;overflow-x: hidden; overflow-y: scroll;">
+                                                <table id="bodyTable" class="table" style="width: 100%;height: 100%;" border="0" >
+                                                    <tr style="background-color:#6E97CF;">
+                                                        <td width="3%" style="background-color:#538dd5;"></td>
+                                                         <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Type</strong></td>
+                                                        <td style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Title</strong></td>
+                                                        <td style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Project #</strong></td>
+                                                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Start Date</strong></td>
+                                                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>End Date</strong></td>
+                                                        <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Status</strong></td>
+                                                    </tr>
 
-								<logic:empty name="apprvdPjtEntDetailsViews">
-									<tr style="height: 1px;">
-										<td colspan="2" style="padding-left: 25px;"><font
-											style="color: red">No Projects found</font></td>
-									</tr>
-								</logic:empty>
-								<logic:present name="apprvdPjtEntDetailsViews">
-									<% int pjtIndex = 0;
+                                                    <logic:empty name="apprvdPjtEntDetailsViews">
+                                                     <tr style="height:1px;">
+                                                         <td colspan="2" style="padding-left: 25px;">
+                                                             <font style="color: red">No Projects found</font>
+                                                         </td>
+                                                     </tr>
+                                                 </logic:empty>
+                                                     <logic:present name="apprvdPjtEntDetailsViews">
+                                                         <% int pjtIndex = 0;
                                                         if(request.getAttribute("apprvdPjtEntDetailsViews") != null){
                                                              projetList = (Vector) request.getAttribute("apprvdPjtEntDetailsViews");
                                                           }
                                                        %>
-									<logic:iterate id="pjtList" name="apprvdPjtEntDetailsViews">
+                                                     <logic:iterate id="pjtList" name="apprvdPjtEntDetailsViews">
 
-										<%
+                                                          <%
                                                                 if (pjtIndex % 2 == 0) {
                                                                     strBgColor = "#D6DCE5";
                                                                 } else {
@@ -1723,102 +1563,80 @@ String path = request.getContextPath();
 
                                                                  }
                                                          %>
-										<tr bgcolor="<%=strBgColor%>" id="row2<%=pjtIndex%>"
-											class="rowLine" onmouseover="className='rowHover rowLine'"
-											onmouseout="className='rowLine'" height="22px">
-											<%-- <td width="3%">
+                                                         <tr bgcolor="<%=strBgColor%>" id="row2<%=pjtIndex%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+                                                            <%-- <td width="3%">
                                                                <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgtoggleapp<%=pjtIndex%>" name="imgtoggleapp<%=pjtIndex%>" border="none" onclick="javascript:selectProj(<%=pjtIndex%>);"/>
                                                                <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgtoggleminusapp<%=pjtIndex%>" name="imgtoggleminusapp<%=pjtIndex%>" border="none" onclick="javascript:selectProj(<%=pjtIndex%>);"/>
                                                             </td>--%>
-											<td width="3%"></td>
-											<td style="width: 15%;"><%=moduleNm%></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="coiProjectTitle" /></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="coiProjectId" /></td>
-											<td style="width: 12%;"><%=startDate%></td>
-											<td style="width: 12%;"><%=endDate%></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="entityStatusDesc" /></td>
-										</tr>
-										<%pjtIndex++;%>
-									</logic:iterate>
+                                                             <td width="3%"></td>
+                                                             <td style="width:15%;"><%=moduleNm%></td>
+                                                             <td style="width:15%;"><bean:write name="pjtList" property="coiProjectTitle"/></td>
+                                                             <td style="width:15%;"><bean:write name="pjtList" property="coiProjectId"/></td>
+                                                             <td style="width:12%;"><%=startDate%></td>
+                                                             <td style="width:12%;"><%=endDate%></td>
+                                                             <td style="width:15%;"><bean:write name="pjtList" property="entityStatusDesc"/></td>
+                                                         </tr>
+                                                        <%pjtIndex++;%>
+                                                     </logic:iterate>
 
-								</logic:present>
+                                                     </logic:present>
 
-							</table>
-						</div>
-					</td>
+                                                </table>
+                                            </div>
+                                        </td>
 
-				</tr>
-				<%entity++;%>
-			</logic:iterate>
+                                    </tr>
+                                      <%entity++;%>
+                                 </logic:iterate>
 
-		</logic:present>
+                             </logic:present>
 
-	</table>
-</div>
+                         </table>
+                     </div>
 
-<%--</logic:present>--%>
+    <%--</logic:present>--%>
 
-<!--Closed Disclosure List -->
+      <!--Closed Disclosure List -->
 
-<%--<logic:present name="ApprovedDisclDetView">--%>
-<table>
-	<tr style="background-color: white">
-		<td></td>
-	</tr>
-</table>
-<table class="table" style="width: 100%;" border="0">
-	<tr>
-		<td><img
-			src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-			border='none' id="closedimgtoggle" name="closedimgtoggle"
-			border="none" onclick="javascript:selectClosedDiscIcon();" /> <img
-			src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-			style="visibility: hidden;" border='none' id="closedimgtoggleminus"
-			name="closedimgtoggleminus" border="none"
-			onclick="javascript:selectClosedDiscIcon();" /> <label
-			style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Closed</label>
-		</td>
-	</tr>
-</table>
+    <%--<logic:present name="ApprovedDisclDetView">--%>
+    <table>
+        <tr style="background-color: white">
+            <td></td>
+        </tr>
+    </table>
+     <table class="table" style="width: 100%;" border="0">
+            <tr>
+                <td>
+                     <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="closedimgtoggle" name="closedimgtoggle" border="none" onclick="javascript:selectClosedDiscIcon();"/>
+                     <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility:hidden;" border='none' id="closedimgtoggleminus" name="closedimgtoggleminus" border="none" onclick="javascript:selectClosedDiscIcon();"/>
+                     <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Closed</label>
+                </td>
+            </tr>
+        </table>
 
-<div id="closedDisclosureDiv" style="display: none; height: 1px;">
-	<table id="bodyTable" class="table" style="width: 100%;" border="0">
-		<tr style="background-color: #6E97CF; height: 22px;">
-			<td style="width: 3%; background-color: #538dd5;"></td>
-			<td nowrap="nowrap"
-				style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-					Type</strong></td>
-			<td
-				style="width: 18%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Title</strong></td>
-			<td
-				style="width: 11%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Project
-					#</strong></td>
-			<td
-				style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Start
-					Date</strong></td>
-			<td
-				style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>End
-					Date</strong></td>
-			<td nowrap="nowrap"
-				style="width: 16%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-					Status</strong></td>
-			<td style="width: 16%;" align="right"><a
-				href="javaScript:setViewByClosedFinancialEnity();">View By
-					FinancialEntities</a></td>
-		</tr>
+         <div  id="closedDisclosureDiv" style="display: none;height: 1px;" >
+             <table id="bodyTable" class="table" style="width: 100%;" border="0" >
+                 <tr style="background-color:#6E97CF;height: 22px;">
+                     <td style="width:3%;background-color:#538dd5;"></td>
+                       <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Type</strong></td>
+                        <td style="width:18%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Title</strong></td>
+                        <td style="width:11%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Project #</strong></td>
+                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Start Date</strong></td>
+                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>End Date</strong></td>
+                        <td nowrap="nowrap" style="width:16%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Status</strong></td>
+                        <td style="width:16%;" align="right"><a href="javaScript:setViewByClosedFinancialEnity();">View By FinancialEntities</a></td>
+                 </tr>
 
-		<logic:empty name="cldPjtEntDetailsViews">
-			<tr style="height: 1px;">
-				<td colspan="2" style="padding-left: 25px;"><font
-					style="color: red">No Projects found</font></td>
-			</tr>
-		</logic:empty>
+                  <logic:empty name="cldPjtEntDetailsViews">
+                     <tr style="height:1px;">
+                         <td colspan="2" style="padding-left: 25px;">
+                             <font style="color: red">No Projects found</font>
+                         </td>
+                     </tr>
+                 </logic:empty>
 
-		<logic:present name="cldPjtEntDetailsViews">
-			<% int cldIndex = 0;
+                 <logic:present name="cldPjtEntDetailsViews">
+                         <% int cldIndex = 0;
                             TreeSet entStatusIdClsd = new TreeSet();
                             String pjtIdClsd = "";
                             String entStatusDescriptionClsd = "";
@@ -1831,9 +1649,9 @@ String path = request.getContextPath();
                               entDetListClsd = (Vector)request.getAttribute("cldEntPjtDetView");
                           }
                        %>
-			<logic:iterate id="pjtList" name="cldPjtEntDetailsViews">
+                     <logic:iterate id="pjtList" name="cldPjtEntDetailsViews">
 
-				<%
+                          <%
                                 if (cldIndex % 2 == 0) {
                                     strBgColor = "#D6DCE5";
                                 } else {
@@ -1909,118 +1727,91 @@ String path = request.getContextPath();
                                       }
                                  }
                          %>
-				<tr bgcolor="<%=strBgColor%>" id="rowcld<%=cldIndex%>"
-					class="rowLine" onmouseover="className='rowHover rowLine'"
-					onmouseout="className='rowLine'" height="22px">
-					<td width="3%"><img
-						src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-						border='none' id="imgtogglecld<%=cldIndex%>"
-						name="imgtogglecld<%=cldIndex%>" border="none"
-						onclick="javascript:selectClosedDiscEntityView(<%=cldIndex%>);" />
-						<img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-						style="visibility: hidden;" border='none'
-						id="imgtoggleminuscld<%=cldIndex%>"
-						name="imgtoggleminuscld<%=cldIndex%>" border="none"
-						onclick="javascript:selectClosedDiscEntityView(<%=cldIndex%>);" />
-					</td>
-					<td style="width: 15%;"><%=moduleNameCld%></td>
-					<td style="width: 18%;"><bean:write name="pjtList"
-							property="coiProjectTitle" /></td>
-					<td style="width: 11%;"><bean:write name="pjtList"
-							property="coiProjectId" /></td>
-					<td style="width: 12%;"><%=startDate%></td>
-					<td style="width: 12%;"><%=closedpjctendDate%></td>
-					<td style="width: 16%;">
-						<%--<bean:write name="pjtList" property="coiDisclosureStatusDesc"/>--%><%=entStatusDescriptionClsd%></td>
-					<td style="width: 16%">&nbsp;</td>
-				</tr>
-				<tr id="trcld<%=cldIndex%>"
-					style="width: 100%; height: 1px; visibility: hidden; overflow: hidden;">
-					<td style="width: 100%;" colspan="8">
-						<div id="projectcld<%=cldIndex%>"
-							style="width: 100%; height: 1px; visibility: hidden; background-color: #9DBFE9; overflow-x: hidden; overflow-y: scroll;">
-							<table id="bodyTable" class="table"
-								style="width: 100%; height: 1px;" border="0">
-								<tr style="height: 1px;">
-									<td
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;">&nbsp;</td>
-									<td colspan="3"
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Entity
-											Name</strong></td>
+                         <tr bgcolor="<%=strBgColor%>" id="rowcld<%=cldIndex%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+                             <td width="3%">
+                               <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgtogglecld<%=cldIndex%>" name="imgtogglecld<%=cldIndex%>" border="none" onclick="javascript:selectClosedDiscEntityView(<%=cldIndex%>);"/>
+                               <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgtoggleminuscld<%=cldIndex%>" name="imgtoggleminuscld<%=cldIndex%>" border="none" onclick="javascript:selectClosedDiscEntityView(<%=cldIndex%>);"/>
+                            </td>
+                             <td style="width:15%;"><%=moduleNameCld%></td>
+                             <td style="width:18%;"><bean:write name="pjtList" property="coiProjectTitle"/></td>
+                             <td style="width:11%;"><bean:write name="pjtList" property="coiProjectId"/></td>
+                             <td style="width:12%;"><%=startDate%></td>
+                             <td style="width:12%;"><%=closedpjctendDate%></td>
+                             <td style="width:16%;"><%--<bean:write name="pjtList" property="coiDisclosureStatusDesc"/>--%><%=entStatusDescriptionClsd%></td>
+                             <td style="width:16%">&nbsp;</td>
+                         </tr>
+                        <tr id="trcld<%=cldIndex%>" style="width: 100%; height: 1px; visibility: hidden; overflow: hidden;">
+                             <td style="width: 100%;" colspan="8">
+                                 <div id="projectcld<%=cldIndex%>" style="width: 100%; height: 1px;visibility: hidden;background-color: #9DBFE9;overflow-x: hidden; overflow-y: scroll;">
+                                     <table id="bodyTable" class="table" style="width: 100% ; height: 1px;" border="0" >
+                                         <tr style="height: 1px;">
+                                             <td style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;">&nbsp;</td>
+                                             <td colspan="3" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Entity Name</strong></td>
 
-									<td colspan="3"
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Entity
-											Status</strong></td>
-								</tr>
+                                             <td  colspan="3" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Entity Status</strong></td>
+                                         </tr>
 
-								<% int cldIndex1=0; %>
-								<logic:iterate id="pjtEntView" name="cldEntPjtDetView">
-									<% String projectNameCld = (String) pjtBean.getCoiProjectId();%>
-									<logic:equal value="<%=projectNameCld%>"
-										property="coiProjectId" name="pjtEntView">
-										<logic:notEmpty name="pjtEntView" property="entityName">
-											<% cldIndex1++; %>
-											<tr class="rowLineLight"
-												onmouseover="className='rowHover rowLine'"
-												onmouseout="className='rowLineLight'" style="height: 1px;"
-												width="100%">
-												<td style="width: 5%"></td>
-												<td colspan="3"><b><bean:write name="pjtEntView"
-															property="entityName" /></b></td>
-												<td colspan="3"><b><bean:write name="pjtEntView"
-															property="entityStatusDesc" /></b></td>
-											</tr>
-										</logic:notEmpty>
-									</logic:equal>
-								</logic:iterate>
+                                         <% int cldIndex1=0; %>
+                                         <logic:iterate id="pjtEntView" name="cldEntPjtDetView">
+                                                <% String projectNameCld = (String) pjtBean.getCoiProjectId();%>
+                                                <logic:equal value="<%=projectNameCld%>" property="coiProjectId" name="pjtEntView">
+                                                   <logic:notEmpty name="pjtEntView" property="entityName">
+                                                        <% cldIndex1++; %>
+                                                        <tr class="rowLineLight" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLineLight'" style="height:1px;" width="100%">
+                                                       <td style="width: 5%"></td>
+                                                       <td colspan="3">
+                                                            <b><bean:write name="pjtEntView" property="entityName"/></b>
+                                                        </td>
+                                                        <td colspan="3">
+                                                            <b><bean:write name="pjtEntView" property="entityStatusDesc"/></b>
+                                                        </td>
+                                                    </tr>
+                                                    </logic:notEmpty>
+                                                </logic:equal>
+                                         </logic:iterate>
 
-								<%if(cldIndex1 == 0){%>
-								<tr style="height: 1px;">
-									<td colspan="2" style="padding-left: 25px;"><font
-										style="color: red">No financial entities found</font></td>
-								</tr>
-								<%}%>
+                                         <%if(cldIndex1 == 0){%>
+                                         <tr style="height:1px;"><td colspan="2" style="padding-left: 25px;"><font style="color: red">No financial entities found</font></td></tr>
+                                        <%}%>
 
-							</table>
-						</div>
-					</td>
-				</tr>
-				<%
+                                     </table>
+                                 </div>
+                             </td>
+                         </tr>
+                         <%
                             cldIndex++;
                          %>
-			</logic:iterate>
+                     </logic:iterate>
 
-		</logic:present>
+                 </logic:present>
 
-	</table>
-</div>
+             </table>
+         </div>
 
-<div id="disclosureByClosedFinancialEntityDiv"
-	style="display: none; height: 1px;">
-	<table id="bodyTable" class="table" style="width: 100%;" border="0">
-		<tr style="background-color: #6E97CF; height: 22px;">
-			<td>&nbsp;</td>
-			<td style="width: 40%; color: #FFFFFF; font-size: 14px;"><strong>Entity
-					Names</strong></td>
-			<td style="width: 50%;" align="right"><a
-				href="javaScript:setViewByProjectsClosed();">View By Projects</a></td>
-			<td><strong>&nbsp;</strong></td>
-			<td><strong>&nbsp;</strong></td>
-		</tr>
+         <div  id="disclosureByClosedFinancialEntityDiv" style="display: none;height: 1px;" >
+             <table id="bodyTable" class="table" style="width: 100%;" border="0" >
+             <tr style="background-color:#6E97CF;height: 22px;">
+                     <td>&nbsp;</td>
+                     <td style="width:40%;color:#FFFFFF;font-size:14px;"><strong>Entity Names</strong></td>
+                     <td  style="width:50%;" align="right"> <a href="javaScript:setViewByProjectsClosed();">View By Projects</a></td>
+                     <td><strong>&nbsp;</strong></td>
+                     <td><strong>&nbsp;</strong></td>
+             </tr>
 
-		<logic:empty name="cldEntityNameLists">
-			<tr style="height: 1px;">
-				<td colspan="2" style="padding-left: 25px;"><font
-					style="color: red">No Entities found</font></td>
-			</tr>
-		</logic:empty>
+                 <logic:empty name="cldEntityNameLists">
+                     <tr style="height:1px;">
+                         <td colspan="2" style="padding-left: 25px;">
+                             <font style="color: red">No Entities found</font>
+                         </td>
+                     </tr>
+                 </logic:empty>
 
-		<logic:present name="cldEntityNameLists">
-			<%
+             <logic:present name="cldEntityNameLists">
+                     <%
                             int cldentity = 0;
                      %>
-			<logic:iterate id="pjtTitle" name="cldEntityNameLists">
-				<%
+                 <logic:iterate id="pjtTitle"  name="cldEntityNameLists">
+                        <%
                             if (cldentity % 2 == 0) {
                                     strBgColor = "#D6DCE5";
                             } else {
@@ -2028,64 +1819,46 @@ String path = request.getContextPath();
                             }
                         %>
 
-				<tr bgcolor="<%=strBgColor%>" id="row1<%=cldentity%>"
-					class="rowLine" onmouseover="className='rowHover rowLine'"
-					onmouseout="className='rowLine'" height="22px">
-					<td colspan="1" width="5%"><img
-						src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-						border='none' id="imgcldtoggle<%=cldentity%>"
-						name="imgcldtoggle<%=cldentity%>" border="none"
-						onclick="javascript:getClosedDiscPjtView(<%=cldentity%>);" /> <img
-						src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-						style="visibility: hidden;" border='none'
-						id="imgcldtoggleminus<%=cldentity%>"
-						name="imgcldtoggleminus<%=cldentity%>" border="none"
-						onclick="javascript:getClosedDiscPjtView(<%=cldentity%>);" /></td>
-					<td colspan="4"><b><bean:write name="pjtTitle" /></b></td>
-				</tr>
+                     <tr bgcolor="<%=strBgColor%>" id="row1<%=cldentity%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+                            <td colspan="1" width="5%">
+                                    <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgcldtoggle<%=cldentity%>" name="imgcldtoggle<%=cldentity%>" border="none" onclick="javascript:getClosedDiscPjtView(<%=cldentity%>);"/>
+                                    <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgcldtoggleminus<%=cldentity%>" name="imgcldtoggleminus<%=cldentity%>" border="none" onclick="javascript:getClosedDiscPjtView(<%=cldentity%>);"/>
+                            </td>
+                            <td colspan="4">
+                                    <b><bean:write name="pjtTitle" /></b>
+                            </td>
+                    </tr>
 
-				<tr>
-					<td colspan="5">
-						<div id="entcld<%=cldentity%>"
-							style="height: 1px; width: 100%; visibility: hidden; background-color: #9DBFE9; overflow-x: hidden; overflow-y: scroll;">
-							<table id="bodyTable" class="table"
-								style="width: 100%; height: 100%;" border="0">
-								<tr style="background-color: #6E97CF;">
-									<td width="3%" style="background-color: #538dd5;"></td>
-									<td nowrap="nowrap"
-										style="width: 20%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-											Type</strong></td>
-									<td
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Title</strong></td>
-									<td
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Project
-											#</strong></td>
-									<td
-										style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Start
-											Date</strong></td>
-									<td
-										style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>End
-											Date</strong></td>
-									<td nowrap="nowrap"
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-											Status</strong></td>
-								</tr>
+                    <tr>
+                <td colspan="5">
+                        <div id="entcld<%=cldentity%>" style="height: 1px;width: 100%;visibility: hidden;background-color: #9DBFE9;overflow-x: hidden; overflow-y: scroll;">
+                                <table id="bodyTable" class="table" style="width: 100%;height: 100%;" border="0" >
+                                    <tr style="background-color:#6E97CF;">
+                                        <td width="3%" style="background-color:#538dd5;"></td>
+                                         <td nowrap="nowrap" style="width:20%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Type</strong></td>
+                                        <td style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Title</strong></td>
+                                        <td style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Project #</strong></td>
+                                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Start Date</strong></td>
+                                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>End Date</strong></td>
+                                        <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Status</strong></td>
+                                    </tr>
 
-								<logic:empty name="cldPjtEntDetailsViews">
-									<tr style="height: 1px;">
-										<td colspan="2" style="padding-left: 25px;"><font
-											style="color: red">No Projects found</font></td>
-									</tr>
-								</logic:empty>
-								<logic:present name="cldPjtEntDetailsViews">
-									<% int cldpjtIndex = 0;
+                                    <logic:empty name="cldPjtEntDetailsViews">
+                                        <tr style="height:1px;">
+                                             <td colspan="2" style="padding-left: 25px;">
+                                                 <font style="color: red">No Projects found</font>
+                                             </td>
+                                         </tr>
+                                    </logic:empty>
+                                         <logic:present name="cldPjtEntDetailsViews">
+                                                 <% int cldpjtIndex = 0;
                                                 if(request.getAttribute("cldPjtEntDetailsViews") != null){
                                                          projetList = (Vector) request.getAttribute("cldPjtEntDetailsViews");
                                                   }
                                            %>
-									<logic:iterate id="pjtList" name="cldPjtEntDetailsViews">
+                                         <logic:iterate id="pjtList" name="cldPjtEntDetailsViews">
 
-										<%
+                                                  <%
                                                     if (cldpjtIndex % 2 == 0) {
                                                             strBgColor = "#D6DCE5";
                                                     } else {
@@ -2141,97 +1914,74 @@ String path = request.getContextPath();
 
                                                      }
                                                  %>
-										<tr bgcolor="<%=strBgColor%>" id="rowcld<%=cldpjtIndex%>"
-											class="rowLine" onmouseover="className='rowHover rowLine'"
-											onmouseout="className='rowLine'" height="22px">
+                                                 <tr bgcolor="<%=strBgColor%>" id="rowcld<%=cldpjtIndex%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
 
-											<td width="3%"></td>
-											<td style="width: 20%;"><%=moduleNmCld%></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="coiProjectTitle" /></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="coiProjectId" /></td>
-											<td style="width: 12%;"><%=startDate%></td>
-											<td style="width: 12%;"><%=endDate%></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="entityStatusDesc" /></td>
-										</tr>
-										<%cldpjtIndex++;%>
-									</logic:iterate>
-									<%if(cldpjtIndex == 0){%>
-									<tr style="height: 1px;">
-										<td colspan="2" style="padding-left: 25px;"><font
-											style="color: red">No Projects found</font></td>
-									</tr>
-									<%}%>
-								</logic:present>
+                                                         <td width="3%"></td>
+                                                         <td style="width:20%;"><%=moduleNmCld%></td>
+                                                         <td style="width:15%;"><bean:write name="pjtList" property="coiProjectTitle"/></td>
+                                                         <td style="width:15%;"><bean:write name="pjtList" property="coiProjectId"/></td>
+                                                         <td style="width:12%;"><%=startDate%></td>
+                                                         <td style="width:12%;"><%=endDate%></td>
+                                                         <td style="width:15%;"><bean:write name="pjtList" property="entityStatusDesc"/></td>
+                                                 </tr>
+                                                <%cldpjtIndex++;%>
+                                         </logic:iterate>
+                                          <%if(cldpjtIndex == 0){%>
+                                                <tr style="height:1px;"><td colspan="2" style="padding-left: 25px;"><font style="color: red">No Projects found</font></td></tr>
+                                          <%}%>
+                                         </logic:present>
 
-							</table>
-						</div>
-					</td>
+                                    </table>
+                            </div>
+                        </td>
 
-				</tr>
-				<%cldentity++;%>
-			</logic:iterate>
+                        </tr>
+                          <%cldentity++;%>
+                 </logic:iterate>
 
-		</logic:present>
+             </logic:present>
 
-	</table>
-</div>
+     </table>
+     </div>
 
-<!--travel disclosure---->
-<table>
-	<tr style="background-color: white">
-		<td></td>
-	</tr>
-</table>
-<table class="table" style="width: 100%;" border="0">
-	<tr>
-		<td><img
-			src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-			border='none' id="travelimgtoggle" name="travelimgtoggle"
-			border="none" onclick="javascript:selectTravelDiscIcon();" /> <img
-			src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-			style="visibility: hidden;" border='none' id="travelimgtoggleminus"
-			name="travelimgtoggleminus" border="none"
-			onclick="javascript:selectTravelDiscIcon();" /> <label
-			style="color: #333333; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold;">Reported
-				Travel Events</label></td>
-	</tr>
-</table>
-<div id="travelDisclosureDiv" style="display: none; height: 1px;">
-	<table id="bodyTable" class="table" style="width: 100%;" border="0">
-		<tr style="background-color: #6E97CF; height: 22px;">
-			<td style="width: 3%; background-color: #538dd5;"></td>
-			<td nowrap="nowrap"
-				style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-					Type</strong></td>
-			<td
-				style="width: 18%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Title</strong></td>
-			<td
-				style="width: 11%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Project
-					#</strong></td>
-			<td
-				style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Start
-					Date</strong></td>
-			<td
-				style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>End
-					Date</strong></td>
-			<td nowrap="nowrap"
-				style="width: 16%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-					Status</strong></td>
-			<td style="width: 16%; color: #FFFFFF; background-color: #538dd5;"></td>
-		</tr>
+                  <!--travel disclosure---->
+                     <table>
+        <tr style="background-color: white">
+            <td></td>
+        </tr>
+    </table>
+        <table class="table" style="width: 100%;" border="0">
+            <tr>
+                <td>
+                     <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="travelimgtoggle" name="travelimgtoggle" border="none" onclick="javascript:selectTravelDiscIcon();" />
+                     <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility:hidden;" border='none' id="travelimgtoggleminus" name="travelimgtoggleminus" border="none" onclick="javascript:selectTravelDiscIcon();" />
+                     <label style="color: #333333;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;">Reported Travel Events</label>
+                </td>
+            </tr>
+        </table>
+            <div  id="travelDisclosureDiv" style="display: none;height: 1px;" >
+             <table id="bodyTable" class="table" style="width: 100%;" border="0" >
+                 <tr style="background-color:#6E97CF;height: 22px;">
+                     <td style="width:3%;background-color:#538dd5;"></td>
+                       <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Type</strong></td>
+                        <td style="width:18%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Title</strong></td>
+                        <td style="width:11%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Project #</strong></td>
+                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Start Date</strong></td>
+                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>End Date</strong></td>
+                        <td nowrap="nowrap" style="width:16%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Status</strong></td>
+                        <td style="width:16%;color:#FFFFFF;background-color:#538dd5;"></td>
+                 </tr>
 
 
-		<logic:empty name="tvlPjtEntDetailsViews">
-			<tr style="height: 1px;">
-				<td colspan="2" style="padding-left: 25px;"><font
-					style="color: red">No Projects found</font></td>
-			</tr>
-		</logic:empty>
-		<logic:present name="tvlPjtEntDetailsViews">
-			<% int tvlIndex = 0;
+                  <logic:empty name="tvlPjtEntDetailsViews">
+                     <tr style="height:1px;">
+                         <td colspan="2" style="padding-left: 25px;">
+                             <font style="color: red">No Projects found</font>
+                         </td>
+                     </tr>
+                     </logic:empty>
+                  <logic:present name="tvlPjtEntDetailsViews">
+                         <% int tvlIndex = 0;
                             TreeSet entStatusIdTvl = new TreeSet();
                             String pjtIdTvl= "";
                             String entStatusDescriptionTvl = "";
@@ -2244,9 +1994,9 @@ String path = request.getContextPath();
                               entDetListTvl = (Vector)request.getAttribute("tvlEntPjtDetView");
                           }
                        %>
-			<logic:iterate id="pjtList" name="tvlPjtEntDetailsViews">
+                     <logic:iterate id="pjtList" name="tvlPjtEntDetailsViews">
 
-				<%
+                          <%
                                 if (tvlIndex % 2 == 0) {
                                     strBgColor = "#D6DCE5";
                                 } else {
@@ -2325,107 +2075,87 @@ String path = request.getContextPath();
                                       }
                                  }
                          %>
-				<tr bgcolor="<%=strBgColor%>" id="rowcld<%=tvlIndex%>"
-					class="rowLine" onmouseover="className='rowHover rowLine'"
-					onmouseout="className='rowLine'" height="22px">
-					<td width="3%"></td>
-					<td style="width: 15%;"><%=moduleNameTvl%></td>
-					<td style="width: 18%;"><bean:write name="pjtList"
-							property="eventName" /></td>
-					<td style="width: 11%;"><bean:write name="pjtList"
-							property="coiProjectId" /></td>
-					<td style="width: 12%;"><%=startDate%></td>
-					<td style="width: 12%;"><%=closedpjctendDate%></td>
-					<td style="width: 16%;">
-						<%--<bean:write name="pjtList" property="coiDisclosureStatusDesc"/>--%><%=entStatusDescriptionTvl%></td>
-					<td style="width: 16%">&nbsp;</td>
-				</tr>
-				<tr id="trTrvl<%=tvlIndex%>"
-					style="width: 100%; height: 1px; visibility: hidden; overflow: hidden;">
-					<td style="width: 100%;" colspan="8">
-						<div id="projectTrvl<%=tvlIndex%>"
-							style="width: 100%; height: 1px; visibility: hidden; background-color: #9DBFE9; overflow-x: hidden; overflow-y: scroll;">
-							<table id="bodyTable" class="table"
-								style="width: 100%; height: 1px;" border="0">
-								<tr style="height: 1px;">
-									<td
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;">&nbsp;</td>
-									<td colspan="3"
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Entity
-											Name</strong></td>
+                         <tr bgcolor="<%=strBgColor%>" id="rowcld<%=tvlIndex%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+                             <td width="3%"></td>                            
+                             <td style="width:15%;"><%=moduleNameTvl%></td>
+                             <td style="width:18%;"><bean:write name="pjtList" property="eventName"/></td>
+                             <td style="width:11%;"><bean:write name="pjtList" property="coiProjectId"/></td>
+                             <td style="width:12%;"><%=startDate%></td>
+                             <td style="width:12%;"><%=closedpjctendDate%></td>
+                             <td style="width:16%;"><%--<bean:write name="pjtList" property="coiDisclosureStatusDesc"/>--%><%=entStatusDescriptionTvl%></td>
+                             <td style="width:16%">&nbsp;</td>
+                         </tr>
+                        <tr id="trTrvl<%=tvlIndex%>" style="width: 100%; height: 1px; visibility: hidden; overflow: hidden;">
+                             <td style="width: 100%;" colspan="8">
+                                 <div id="projectTrvl<%=tvlIndex%>" style="width: 100%; height: 1px;visibility: hidden;background-color: #9DBFE9;overflow-x: hidden; overflow-y: scroll;">
+                                     <table id="bodyTable" class="table" style="width: 100% ; height: 1px;" border="0" >
+                                         <tr style="height: 1px;">
+                                             <td style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;">&nbsp;</td>
+                                             <td colspan="3" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Entity Name</strong></td>
 
-									<td colspan="3"
-										style="background-color: #6E97CF; color: #FFFFFF; font-size: 12px; font-weight: bold;"><strong>Entity
-											Status</strong></td>
-								</tr>
+                                             <td  colspan="3" style="background-color:#6E97CF;color:#FFFFFF;font-size:12px;font-weight:bold;"><strong>Entity Status</strong></td>
+                                         </tr>
 
-								<% int tvlIndex1=0;%>
-								<logic:iterate id="pjtEntView" name="tvlEntPjtDetView">
-									<% String projectNameTvl = (String) pjtBean.getCoiProjectId();%>
-									<logic:equal value="<%=projectNameTvl%>"
-										property="coiProjectId" name="pjtEntView">
-										<logic:notEmpty name="pjtEntView" property="entityName">
-											<% tvlIndex1++; %>
-											<tr class="rowLineLight"
-												onmouseover="className='rowHover rowLine'"
-												onmouseout="className='rowLineLight'" style="height: 1px;"
-												width="100%">
-												<td style="width: 5%"></td>
-												<td colspan="3"><b><bean:write name="pjtEntView"
-															property="entityName" /></b></td>
-												<td colspan="3"><b><bean:write name="pjtEntView"
-															property="entityStatusDesc" /></b></td>
-											</tr>
-										</logic:notEmpty>
-									</logic:equal>
-								</logic:iterate>
+                                         <% int tvlIndex1=0;%>
+                                         <logic:iterate id="pjtEntView" name="tvlEntPjtDetView">
+                                                <% String projectNameTvl = (String) pjtBean.getCoiProjectId();%>
+                                                <logic:equal value="<%=projectNameTvl%>" property="coiProjectId" name="pjtEntView">
+                                                   <logic:notEmpty name="pjtEntView" property="entityName">
+                                                        <% tvlIndex1++; %>
+                                                        <tr class="rowLineLight" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLineLight'" style="height:1px;" width="100%">
+                                                       <td style="width: 5%"></td>
+                                                       <td colspan="3">                                                          
+                                                            <b><bean:write name="pjtEntView" property="entityName"/></b>
+                                                        </td>
+                                                        <td colspan="3">                                                            
+                                                            <b><bean:write name="pjtEntView" property="entityStatusDesc"/></b>
+                                                        </td>
+                                                    </tr>
+                                                </logic:notEmpty>
+                                                </logic:equal>
+                                         </logic:iterate>
 
-								<%if(tvlIndex1 == 0){%>
-								<tr style="height: 1px;">
-									<td colspan="2" style="padding-left: 25px;"><font
-										style="color: red">No financial entities found</font></td>
-								</tr>
-								<%}%>
+                                      <%if(tvlIndex1 == 0){%>
+                                         <tr style="height:1px;"><td colspan="2" style="padding-left: 25px;"><font style="color: red">No financial entities found</font></td></tr>
+                                        <%}%>
 
-							</table>
-						</div>
-					</td>
-				</tr>
-				<%
+                                     </table>
+                                 </div>
+                             </td>
+                         </tr>
+                         <%
                             tvlIndex++;
                          %>
-			</logic:iterate>
+                     </logic:iterate>
 
-		</logic:present>
+                 </logic:present>
 
-	</table>
-</div>
+             </table>
+         </div>
 
-<div id="disclosureByTravelFinancialEntityDiv"
-	style="display: none; height: 1px;">
-	<table id="bodyTable" class="table" style="width: 100%;" border="0">
-		<tr style="background-color: #6E97CF; height: 22px;">
-			<td>&nbsp;</td>
-			<td style="width: 40%; color: #FFFFFF; font-size: 14px;"><strong>Entity
-					Names</strong></td>
-			<td style="width: 50%;" align="right"><a
-				href="javascript:setViewByProjectsTravel();">View By Projects</a></td>
-			<td><strong>&nbsp;</strong></td>
-			<td><strong>&nbsp;</strong></td>
-		</tr>
+         <div  id="disclosureByTravelFinancialEntityDiv" style="display: none;height: 1px;" >
+             <table id="bodyTable" class="table" style="width: 100%;" border="0" >
+             <tr style="background-color:#6E97CF;height: 22px;">
+                     <td>&nbsp;</td>
+                     <td style="width:40%;color:#FFFFFF;font-size:14px;"><strong>Entity Names</strong></td>
+                     <td  style="width:50%;" align="right"> <a href="javascript:setViewByProjectsTravel();">View By Projects</a></td>
+                     <td><strong>&nbsp;</strong></td>
+                     <td><strong>&nbsp;</strong></td>
+             </tr>
 
-		<logic:empty name="tvlEntityNameLists">
-			<tr style="height: 1px;">
-				<td colspan="2" style="padding-left: 25px;"><font
-					style="color: red">No Entities found</font></td>
-			</tr>
-		</logic:empty>
-		<logic:present name="tvlEntityNameLists">
-			<%
+                 <logic:empty name="tvlEntityNameLists">
+                     <tr style="height:1px;">
+                         <td colspan="2" style="padding-left: 25px;">
+                             <font style="color: red">No Entities found</font>
+                         </td>
+                     </tr>
+                 </logic:empty>
+                 <logic:present name="tvlEntityNameLists">
+                     <%
                             int tentity = 0;
                      %>
-			<logic:iterate id="pjtTitle" name="tvlEntityNameLists">
-				<%
+                 <logic:iterate id="pjtTitle"  name="tvlEntityNameLists">
+                        <%
                             if (tentity % 2 == 0) {
                                     strBgColor = "#D6DCE5";
                             } else {
@@ -2433,64 +2163,46 @@ String path = request.getContextPath();
                             }
                         %>
 
-				<tr bgcolor="<%=strBgColor%>" id="row1<%=tentity%>" class="rowLine"
-					onmouseover="className='rowHover rowLine'"
-					onmouseout="className='rowLine'" height="22px">
-					<td colspan="1" width="5%"><img
-						src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
-						border='none' id="imgtvltoggle<%=tentity%>"
-						name="imgtvltoggle<%=tentity%>" border="none"
-						onclick="javascript:getTravelDiscPjtView(<%=tentity%>);" /> <img
-						src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
-						style="visibility: hidden;" border='none'
-						id="imgtvltoggleminus<%=tentity%>"
-						name="imgtvltoggleminus<%=tentity%>" border="none"
-						onclick="javascript:getTravelDiscPjtView(<%=tentity%>);" /></td>
-					<td colspan="4"><b><bean:write name="pjtTitle" /></b></td>
-				</tr>
+                     <tr bgcolor="<%=strBgColor%>" id="row1<%=tentity%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
+                            <td colspan="1" width="5%">
+                                    <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' id="imgtvltoggle<%=tentity%>" name="imgtvltoggle<%=tentity%>" border="none" onclick="javascript:getTravelDiscPjtView(<%=tentity%>);"/>
+                                    <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="visibility: hidden;" border='none' id="imgtvltoggleminus<%=tentity%>" name="imgtvltoggleminus<%=tentity%>" border="none" onclick="javascript:getTravelDiscPjtView(<%=tentity%>);"/>
+                            </td>
+                            <td colspan="4">
+                                    <b><bean:write name="pjtTitle" /></b>
+                            </td>
+                    </tr>
 
-				<tr>
-					<td colspan="5">
-						<div id="entTvl<%=tentity%>"
-							style="height: 1px; width: 100%; visibility: hidden; background-color: #9DBFE9; overflow-x: hidden; overflow-y: scroll;">
-							<table id="bodyTable" class="table"
-								style="width: 100%; height: 100%;" border="0">
-								<tr style="background-color: #6E97CF;">
-									<td width="3%" style="background-color: #538dd5;"></td>
-									<td nowrap="nowrap"
-										style="width: 20%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-											Type</strong></td>
-									<td
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Title</strong></td>
-									<td
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Project
-											#</strong></td>
-									<td
-										style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Start
-											Date</strong></td>
-									<td
-										style="width: 12%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>End
-											Date</strong></td>
-									<td nowrap="nowrap"
-										style="width: 15%; color: #FFFFFF; font-size: 12px; background-color: #538dd5;"><strong>Discl.Event
-											Status</strong></td>
-								</tr>
+                    <tr>
+                <td colspan="5">
+                        <div id="entTvl<%=tentity%>" style="height: 1px;width: 100%;visibility: hidden;background-color: #9DBFE9;overflow-x: hidden; overflow-y: scroll;">
+                                <table id="bodyTable" class="table" style="width: 100%;height: 100%;" border="0" >
+                                    <tr style="background-color:#6E97CF;">
+                                        <td width="3%" style="background-color:#538dd5;"></td>
+                                         <td nowrap="nowrap" style="width:20%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Type</strong></td>
+                                        <td style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Title</strong></td>
+                                        <td style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Project #</strong></td>
+                                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Start Date</strong></td>
+                                        <td style="width:12%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>End Date</strong></td>
+                                        <td nowrap="nowrap" style="width:15%;color:#FFFFFF;font-size:12px;background-color:#538dd5;"><strong>Discl.Event Status</strong></td>
+                                    </tr>
 
-								<logic:empty name="tvlPjtEntDetailsViews">
-									<tr style="height: 1px;">
-										<td colspan="2" style="padding-left: 25px;"><font
-											style="color: red">No Projects found</font></td>
-									</tr>
-								</logic:empty>
-								<logic:present name="tvlPjtEntDetailsViews">
-									<% int tvlpjtIndex = 0;
+                                    <logic:empty name="tvlPjtEntDetailsViews">
+                                        <tr style="height:1px;">
+                                             <td colspan="2" style="padding-left: 25px;">
+                                                 <font style="color: red">No Projects found</font>
+                                             </td>
+                                         </tr>
+                                    </logic:empty>
+                                         <logic:present name="tvlPjtEntDetailsViews">
+                                                 <% int tvlpjtIndex = 0;
                                                 if(request.getAttribute("tvlPjtEntDetailsViews") != null){
                                                          projetList = (Vector) request.getAttribute("tvlPjtEntDetailsViews");
                                                   }
                                            %>
-									<logic:iterate id="pjtList" name="tvlPjtEntDetailsViews">
+                                         <logic:iterate id="pjtList" name="tvlPjtEntDetailsViews">
 
-										<%
+                                                  <%
                                                     if (tvlpjtIndex % 2 == 0) {
                                                             strBgColor = "#D6DCE5";
                                                     } else {
@@ -2549,42 +2261,34 @@ String path = request.getContextPath();
 
                                                      }
                                                  %>
-										<tr bgcolor="<%=strBgColor%>" id="rowtvl<%=tvlpjtIndex%>"
-											class="rowLine" onmouseover="className='rowHover rowLine'"
-											onmouseout="className='rowLine'" height="22px">
+                                                 <tr bgcolor="<%=strBgColor%>" id="rowtvl<%=tvlpjtIndex%>" class="rowLine" onmouseover="className='rowHover rowLine'" onmouseout="className='rowLine'" height="22px">
 
-											<td width="3%"></td>
-											<td style="width: 20%;"><%=moduleNmTvl%></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="eventName" /></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="coiProjectId" /></td>
-											<td style="width: 12%;"><%=startDate%></td>
-											<td style="width: 12%;"><%=endDate%></td>
-											<td style="width: 15%;"><bean:write name="pjtList"
-													property="entityStatusDesc" /></td>
-										</tr>
-										<%tvlpjtIndex++;%>
-									</logic:iterate>
-									<%if(tvlpjtIndex == 0){%>
-									<tr style="height: 1px;">
-										<td colspan="2" style="padding-left: 25px;"><font
-											style="color: red">No Projects found</font></td>
-									</tr>
-									<%}%>
-								</logic:present>
+                                                         <td width="3%"></td>
+                                                         <td style="width:20%;"><%=moduleNmTvl%></td>
+                                                         <td style="width:15%;"><bean:write name="pjtList" property="eventName"/></td>
+                                                         <td style="width:15%;"><bean:write name="pjtList" property="coiProjectId"/></td>
+                                                         <td style="width:12%;"><%=startDate%></td>
+                                                         <td style="width:12%;"><%=endDate%></td>
+                                                         <td style="width:15%;"><bean:write name="pjtList" property="entityStatusDesc"/></td>
+                                                 </tr>
+                                                <%tvlpjtIndex++;%>
+                                         </logic:iterate>
+                                         <%if(tvlpjtIndex == 0){%>
+                                                <tr style="height:1px;"><td colspan="2" style="padding-left: 25px;"><font style="color: red">No Projects found</font></td></tr>
+                                          <%}%>
+                                         </logic:present>
 
-							</table>
-						</div>
-					</td>
+                                    </table>
+                            </div>
+                        </td>
 
-				</tr>
-				<%tentity++;%>
-			</logic:iterate>
+                        </tr>
+                          <%tentity++;%>
+                 </logic:iterate>
 
-		</logic:present>
-	</table>
-</div>
+             </logic:present>
+             </table>
+                     </div>
 
 
 </html:html>

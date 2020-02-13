@@ -1,276 +1,314 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <Menu>
-	<MenuItem>
-		<Menu_Id>P099</Menu_Id>
-		<Menu_Name>Proposal Summary</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>PROPOSAL SUMMARY</FieldName>
-		<Link>/displayProposal.do</Link>
-		<Group> 0 </Group>
-		<visible> true</visible>
+        <MenuItem>
+	     <Menu_Id>P099</Menu_Id>
+	     <Menu_Name>Proposal Summary</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>PROPOSAL SUMMARY</FieldName>
+	     <Link>/displayProposal.do</Link>
+             <Group> 0 </Group>
+             <visible> true</visible>
 	</MenuItem>
 	<MenuItem>
-		<Menu_Id>P001</Menu_Id>
-		<Menu_Name>General Info</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>GENERALINFO</FieldName>
-		<Link>/getGeneralInfo.do</Link>
-		<Group> 0 </Group>
-		<visible> true</visible>
+	     <Menu_Id>P001</Menu_Id>
+	     <Menu_Name>General Info</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>GENERALINFO</FieldName>	     
+	     <Link>/getGeneralInfo.do</Link>
+             <Group> 0 </Group>
+             <visible> true</visible>
 	</MenuItem>
-
+        
+         <MenuItem>
+	     <Menu_Id>P018</Menu_Id>
+	     <Menu_Name>Organization</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>ORGANIZATION</FieldName>	     
+	     <Link>/getOrganization.do</Link>
+             <Group> 0 </Group>
+             <visible> true</visible>
+	</MenuItem> 
+               
 	<MenuItem>
-		<Menu_Id>P018</Menu_Id>
-		<Menu_Name>Organization</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>ORGANIZATION</FieldName>
-		<Link>/getOrganization.do</Link>
-		<Group> 0 </Group>
-		<visible> true</visible>
+	     <Menu_Id>P002</Menu_Id>
+	     <Menu_Name>Investigators/Key Persons</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>INVESTIGATORS</FieldName>     
+	     <Link>/getInvKeyPersons.do</Link>
+             <Group> 0 </Group>
+             <visible> true</visible>
 	</MenuItem>
-
+        
 	<MenuItem>
-		<Menu_Id>P002</Menu_Id>
-		<Menu_Name>Investigators/Key Persons</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>INVESTIGATORS</FieldName>
-		<Link>/getInvKeyPersons.do</Link>
-		<Group> 0 </Group>
-		<visible> true</visible>
+	     <Menu_Id>P022</Menu_Id>
+	     <Menu_Name>Credit Split</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>CREDITSPLIT</FieldName>     
+	     <Link>/getCreditSplitInfo.do</Link>
+             <Group> 0 </Group>
+             <visible> true</visible>
 	</MenuItem>
-
+        
 	<MenuItem>
-		<Menu_Id>P022</Menu_Id>
-		<Menu_Name>Credit Split</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>CREDITSPLIT</FieldName>
-		<Link>/getCreditSplitInfo.do</Link>
-		<Group> 0 </Group>
-		<visible> true</visible>
+	     <Menu_Id>P019</Menu_Id>
+	     <Menu_Name>Special Review</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>SPECIAL_REVIEW</FieldName>	     
+	     <Link>/getPropDevSpecialReview.do</Link>
+             <Group> 0 </Group>
+             <visible> true</visible>
 	</MenuItem>
-
-	<MenuItem>
-		<Menu_Id>P019</Menu_Id>
-		<Menu_Name>Special Review</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>SPECIAL_REVIEW</FieldName>
-		<Link>/getPropDevSpecialReview.do</Link>
-		<Group> 0 </Group>
-		<visible> true</visible>
+        
+        <MenuItem>
+	     <Menu_Id>P007</Menu_Id>
+	     <Menu_Name>Abstract</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>ABSTRACT</FieldName>	     
+	     <Link>/getAbstract.do</Link>
+             <Group> 0 </Group>
+             <visible>true</visible>
 	</MenuItem>
-
-	<MenuItem>
-		<Menu_Id>P007</Menu_Id>
-		<Menu_Name>Abstract</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>ABSTRACT</FieldName>
-		<Link>/getAbstract.do</Link>
-		<Group> 0 </Group>
-		<visible>true</visible>
+        
+        <!--Added for COEUSQA-1438-Science Code Information not Located in Lite Start-->
+        <MenuItem>
+	     <Menu_Id>P025</Menu_Id>
+	     <Menu_Name>Science Code</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>SCIENCE_CODE</FieldName>	     
+	     <Link>/getScienceCode.do</Link>
+             <Group> 0 </Group>
+             <visible>true</visible>
 	</MenuItem>
-
-	<!--Added for COEUSQA-1438-Science Code Information not Located in Lite 
-		Start -->
+        <!--Added for COEUSQA-1438-Science Code Information not Located in Lite End-->
+        
+        <MenuItem>
+	     <Menu_Id>P008</Menu_Id>
+	     <Menu_Name>Others</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>OTHER</FieldName>	     
+	     <Link>/getOtherCostElements.do?groupName=Other</Link>
+             <Group> 0 </Group>
+             <visible>true</visible>
+	</MenuItem> 
+	
 	<MenuItem>
-		<Menu_Id>P025</Menu_Id>
-		<Menu_Name>Science Code</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>SCIENCE_CODE</FieldName>
-		<Link>/getScienceCode.do</Link>
-		<Group> 0 </Group>
-		<visible>true</visible>
+	     <Menu_Id>P020</Menu_Id>
+	     <Menu_Name>YNQ</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>YNQ</FieldName>	     
+	     <Link>/getYNQDetails.do</Link>
+             <Group> 0 </Group>
+             <visible> true</visible>
 	</MenuItem>
-	<!--Added for COEUSQA-1438-Science Code Information not Located in Lite 
-		End -->
-
-	<MenuItem>
-		<Menu_Id>P008</Menu_Id>
-		<Menu_Name>Others</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>OTHER</FieldName>
-		<Link>/getOtherCostElements.do?groupName=Other</Link>
-		<Group> 0 </Group>
-		<visible>true</visible>
-	</MenuItem>
-
-	<MenuItem>
-		<Menu_Id>P020</Menu_Id>
-		<Menu_Name>YNQ</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>YNQ</FieldName>
-		<Link>/getYNQDetails.do</Link>
-		<Group> 0 </Group>
-		<visible> true</visible>
-	</MenuItem>
-
-	<MenuItem>
-		<Menu_Id>P023</Menu_Id>
-		<Menu_Name>Proposal Roles</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>PROPOSAL ROLES</FieldName>
-		<Link>/getProposalRoles.do</Link>
-		<Group> 0 </Group>
-		<visible> true</visible>
+        
+        <MenuItem>
+	     <Menu_Id>P023</Menu_Id>
+	     <Menu_Name>Proposal Roles</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>PROPOSAL ROLES</FieldName>	     
+	     <Link>/getProposalRoles.do</Link>
+             <Group> 0 </Group>
+             <visible> true</visible>
 	</MenuItem>
 
-	<MenuItem>
-		<Menu_Id>P021</Menu_Id>
-		<Menu_Name>Questionnaire</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>Proposal Questionnaire</FieldName>
-		<Link>Proposal Questionnaire</Link>
-		<Group> 0 </Group>
-		<visible> true</visible>
+          <MenuItem>
+	     <Menu_Id>P021</Menu_Id>
+	     <Menu_Name>Questionnaire</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>Proposal Questionnaire</FieldName>	     
+	     <Link>Proposal Questionnaire</Link>
+             <Group> 0 </Group>
+             <visible> true</visible>
 	</MenuItem>
-
-	<MenuItem>
-		<Menu_Id>P013</Menu_Id>
-		<Menu_Name>Grants.Gov</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>GRANTSGOV</FieldName>
-		<Link>/displayGrantsGov.do</Link>
-		<Group> 1 </Group>
-		<visible> true</visible>
-	</MenuItem>
-	<!-- JM 1-15-2014 rem'd, will be permissions driven only in premium <MenuItem> 
-		<Menu_Id>P444</Menu_Id> <Menu_Name>User Attached S2S Forms</Menu_Name> <Image_Path></Image_Path> 
-		<OnLoadImage></OnLoadImage> <FieldName>USERATTS2SFORM</FieldName> <Link>/getUserAttS2SDetails.do</Link> 
-		<Group> 1 </Group> <visible> true</visible> </MenuItem> -->
-	<MenuItem>
-		<Menu_Id>P003</Menu_Id>
-		<Menu_Name>Budget</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>BUDGET</FieldName>
-		<Link>/getBudget.do</Link>
-		<Group> 2 </Group>
-		<visible> true</visible>
-	</MenuItem>
-
-	<!--MenuItem> <Menu_Id>P006</Menu_Id> <Menu_Name> Location</Menu_Name> <Image_Path></Image_Path> 
-		<OnLoadImage></OnLoadImage> <FieldName>LOCATION</FieldName> <Link>/empty</Link> 
-		<Group> 3 </Group> <visible> true</visible> </MenuItem -->
-
-	<MenuItem>
-		<Menu_Id>P009</Menu_Id>
-		<Menu_Name>Upload Attachments</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>UPLOADATTACHMENTS</FieldName>
-		<Link>/upLoadProposal.do?page=P</Link>
-		<Group> 2 </Group>
-		<visible> true</visible>
+        
+        <MenuItem>
+	     <Menu_Id>P013</Menu_Id>
+	     <Menu_Name>Grants.Gov</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>GRANTSGOV</FieldName>	     
+	     <Link>/displayGrantsGov.do</Link>
+             <Group> 1 </Group>
+             <visible> true</visible>
+	</MenuItem> 
+        
+         <MenuItem>
+	     <Menu_Id>P444</Menu_Id>
+	     <Menu_Name>User Attached S2S Forms</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>USERATTS2SFORM</FieldName>	     
+	     <Link>/getUserAttS2SDetails.do</Link>
+             <Group> 1 </Group>
+             <visible> true</visible>
+	</MenuItem>  
+        
+        <MenuItem>
+	     <Menu_Id>P222</Menu_Id>
+	     <Menu_Name>Human Subjects and Clinical Trials</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>HUMANSUBJECTSCLINICALTRIALS</FieldName>	     
+	     <Link>/getPHSHumanSubjectS2SDetails.do</Link>
+             <Group> 1 </Group>
+             <visible> true</visible>
 	</MenuItem>
 
 	<MenuItem>
-		<Menu_Id>P010</Menu_Id>
-		<Menu_Name>Validate</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>VALIDATE</FieldName>
-		<Link>/validateProposal.do</Link>
-		<Group> 3 </Group>
-		<visible> true</visible>
+	     <Menu_Id>P003</Menu_Id>
+	     <Menu_Name>Budget</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>BUDGET</FieldName>	     
+	     <Link>/getBudget.do</Link>
+             <Group> 2 </Group>
+             <visible> true</visible>
+	</MenuItem>
+        
+        <!--MenuItem>
+	     <Menu_Id>P006</Menu_Id>
+	     <Menu_Name> Location</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>LOCATION</FieldName>	     
+	     <Link>/empty</Link>
+             <Group> 3 </Group>
+             <visible> true</visible>
+	</MenuItem-->
+        
+        <MenuItem>
+	     <Menu_Id>P009</Menu_Id>
+	     <Menu_Name>Upload Attachments</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>UPLOADATTACHMENTS</FieldName>	     
+	     <Link>/upLoadProposal.do?page=P</Link>
+             <Group> 2 </Group>
+             <visible> true</visible>
 	</MenuItem>
 
-	<!--MenuItem> <Menu_Id>P011</Menu_Id> <Menu_Name>Notify</Menu_Name> <Image_Path></Image_Path> 
-		<OnLoadImage></OnLoadImage> <FieldName>NOTIFY</FieldName> <Link>/empty</Link> 
-		<Group> 4 </Group> <visible> true</visible> </MenuItem -->
+        <MenuItem>
+        <Menu_Id>P010</Menu_Id>
+        <Menu_Name>Validate</Menu_Name>
+        <Image_Path></Image_Path>
+        <OnLoadImage></OnLoadImage>
+        <FieldName>VALIDATE</FieldName>
+        <Link>/validateProposal.do</Link>
+        <Group> 3 </Group>
+        <visible> true</visible>
+	</MenuItem>                                                              
 
-	<MenuItem>
-		<Menu_Id>P012</Menu_Id>
-		<Menu_Name>Submit for Approval</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>SUBMITFORAPPROVAL</FieldName>
-		<Link>/submitForApproval.do</Link>
-		<Group> 3 </Group>
-		<visible> true</visible>
+        <!--MenuItem>
+	     <Menu_Id>P011</Menu_Id>
+	     <Menu_Name>Notify</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>NOTIFY</FieldName>	     
+	     <Link>/empty</Link>
+             <Group> 4 </Group>
+             <visible> true</visible>
+	</MenuItem-->                                        
+
+        <MenuItem>
+	     <Menu_Id>P012</Menu_Id>
+	     <Menu_Name>Submit for Approval</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>SUBMITFORAPPROVAL</FieldName>	     
+	     <Link>/submitForApproval.do</Link>
+             <Group> 3 </Group>
+             <visible> true</visible>
 	</MenuItem>
-
-	<MenuItem>
-		<Menu_Id>P015</Menu_Id>
-		<Menu_Name>Approval Routing</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>APPROVALROUTING</FieldName>
-		<Link>/approvalRoute.do?DisplayType=Boxed</Link>
-		<Group> 4 </Group>
-		<visible> true</visible>
+       
+         <MenuItem>
+	     <Menu_Id>P015</Menu_Id>
+	     <Menu_Name>Approval Routing</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>APPROVALROUTING</FieldName>	     
+	     <Link>/approvalRoute.do?DisplayType=Boxed</Link>
+             <Group> 4 </Group>
+             <visible> true</visible>
 	</MenuItem>
-
-	<!--<MenuItem> <Menu_Id>P014</Menu_Id> <Menu_Name>Export Control</Menu_Name> 
-		<Image_Path></Image_Path> <OnLoadImage></OnLoadImage> <FieldName>EXPORTCONTROL</FieldName> 
-		<Link>/getOtherCostElements.do?groupName=Export</Link> <Group> 3 </Group> 
-		<visible> true</visible> </MenuItem> -->
-
-	<MenuItem>
-		<Menu_Id>P016</Menu_Id>
-		<Menu_Name>Print</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>Print</FieldName>
-		<Link>/proposalPrint.do</Link>
-		<Group> 4 </Group>
-		<visible> true</visible>
+        
+          <!--<MenuItem>
+	     <Menu_Id>P014</Menu_Id>
+	     <Menu_Name>Export Control</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>EXPORTCONTROL</FieldName>	     
+	     <Link>/getOtherCostElements.do?groupName=Export</Link>
+             <Group> 3 </Group>
+             <visible> true</visible>
+	</MenuItem>-->                  
+             
+        <MenuItem>
+	     <Menu_Id>P016</Menu_Id>
+	     <Menu_Name>Print</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>Print</FieldName>	     
+	     <Link>/proposalPrint.do</Link>
+             <Group> 4 </Group>
+             <visible> true</visible>
+	</MenuItem> 
+          
+        <MenuItem>
+            <Menu_Id>P026</Menu_Id>
+            <Menu_Name>Delete Proposal</Menu_Name>
+            <Image_Path></Image_Path>
+            <OnLoadImage></OnLoadImage>
+            <FieldName>DELETEPROPOSAL</FieldName>	     
+            <Link>/deleteProposal.do</Link>
+            <Group> 4 </Group>
+            <visible> true</visible>
+        </MenuItem>  
+        
+        <MenuItem>
+	     <Menu_Id>P017</Menu_Id>
+	     <Menu_Name>Copy Proposal</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>COPYPROPOSAL</FieldName>	     
+	     <Link>/getCopyProposal.do</Link>
+             <Group> 4 </Group>
+             <visible> true</visible>
+	</MenuItem> 
+        <MenuItem>
+	     <Menu_Id> P024</Menu_Id>
+	     <Menu_Name>Email</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>Email</FieldName>	     
+	     <Link>/mailAction.do?MODULE_CODE=3&#38;ACTION_CODE=0</Link>
+             <Group> 0 </Group>
+             <visible> true</visible>
 	</MenuItem>
-
-	<MenuItem>
-		<Menu_Id>P026</Menu_Id>
-		<Menu_Name>Delete Proposal</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>DELETEPROPOSAL</FieldName>
-		<Link>/deleteProposal.do</Link>
-		<Group> 4 </Group>
-		<visible> true</visible>
+	<!-- Added for case#3108 - 
+		adding rolodex maintenance in coeuslite -->
+        <MenuItem>
+	     <Menu_Id>P777</Menu_Id>
+	     <Menu_Name>Add New Rolodex Entry</Menu_Name>
+	     <Image_Path></Image_Path>
+	     <OnLoadImage></OnLoadImage>
+             <FieldName>ADDROLODEX</FieldName>	     
+	     <Link>/getRolodexInfo.do?SUBHEADER_ID=Add%20Rolodex%20Name</Link>
+             <Group> 4 </Group>
+             <visible> true</visible>
 	</MenuItem>
-
-	<MenuItem>
-		<Menu_Id>P017</Menu_Id>
-		<Menu_Name>Copy Proposal</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>COPYPROPOSAL</FieldName>
-		<Link>/getCopyProposal.do</Link>
-		<Group> 4 </Group>
-		<visible> true</visible>
-	</MenuItem>
-	<MenuItem>
-		<Menu_Id> P024</Menu_Id>
-		<Menu_Name>Email</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>Email</FieldName>
-		<Link>/mailAction.do?MODULE_CODE=3&#38;ACTION_CODE=0</Link>
-		<Group> 0 </Group>
-		<visible> true</visible>
-	</MenuItem>
-	<!-- Added for case#3108 - adding rolodex maintenance in coeuslite -->
-	<MenuItem>
-		<Menu_Id>P777</Menu_Id>
-		<Menu_Name>Add New Rolodex Entry</Menu_Name>
-		<Image_Path></Image_Path>
-		<OnLoadImage></OnLoadImage>
-		<FieldName>ADDROLODEX</FieldName>
-		<Link>/getRolodexInfo.do?SUBHEADER_ID=Add%20Rolodex%20Name</Link>
-		<Group> 4 </Group>
-		<visible> true</visible>
-	</MenuItem>
-
-	<!-- Added for COEUSQA-4066 -->
-
-</Menu>
+        
+        <!-- Added for COEUSQA-4066 -->       
+	
+ </Menu>
