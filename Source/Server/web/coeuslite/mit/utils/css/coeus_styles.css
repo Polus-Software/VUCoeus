@@ -703,3 +703,41 @@ td.savebutton {
 	border-left-style: solid;
 	border-left-width: 1px;
 }
+.topDiv{
+    border: 1px solid #5590da; 
+    padding :3px;
+    text-align: justify;
+}
+.border_box{
+    border: 1px solid #5590da; 
+    text-align: justify;
+}
+
+.tablefont{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px !important;
+	color: #333333;
+	font-weight: bold;
+}
+.white_border{
+    border-bottom: 1px solid white;
+}
+.header_font{
+    font-family: verdana !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    color: #FFFFFF !important;
+}
+.text_padding{
+    padding:3px;
+    text-align: justify;
+}
+.padding_left{
+    padding-left: 77px;
+}
+.padding_left_radio{
+    padding-left: 76px;
+}
+.padding-left-header{
+     padding-left:3px;
+}
