@@ -897,12 +897,15 @@ public class S2SSubmissionDetailController implements ActionListener,
             if(!frmInfo.isAvailable())
                 throw new CoeusException(coeusMessageResources.parseMessageKey(
                         "s2ssubdetfrm_exceptionCode.1007"));
-           	sltdFrmList.add(oppFrmTblMdl.getValueAt(sltdRows[frmIndex]));
+            sltdFrmList.add(oppFrmTblMdl.getValueAt(sltdRows[frmIndex]));    
+            if(!isTemplateAvailableForThisForm(frmInfo)){                
+                throw new CoeusException("The Form '"+(frmInfo != null ? frmInfo.getFormName() : "")+"' is not available for printing.");
+            }            
         }
 //        validateGrantsGovData();
         String fileName = processGrant.printForms(sltdFrmList);
         if(fileName!=null){
-        		URLOpener.openUrl(fileName);
+            URLOpener.openUrl(fileName);
         }
     }
     /**
@@ -1165,6 +1168,19 @@ public class S2SSubmissionDetailController implements ActionListener,
             return text;
         }
     }
+
+    private boolean isTemplateAvailableForThisForm(FormInfoBean frmInfo){
+        if(frmInfo != null && ( 
+                                  "PHS HumanSubjects And ClinicalTrialsInfo V1-0".equalsIgnoreCase(frmInfo.getFormName())
+                              ||  "Project_Abstract_1_2".equalsIgnoreCase(frmInfo.getFormName())  
+                              ||  "Project_Abstract_1_2-V1.2".equalsIgnoreCase(frmInfo.getFormName())  
+                              ||  "Project_Abstract-V1.1".equalsIgnoreCase(frmInfo.getFormName())  
+                              ||  "Project_Abstract".equalsIgnoreCase(frmInfo.getFormName()))){
+            return false;
+        }            
+        return true;    
+    }
+    
     
     public class OppFormsTableModel extends AbstractTableModel{
         private String[] colName = {FORM_NAME, MANDATORY, INCLUDE, EMPTY_STRING};

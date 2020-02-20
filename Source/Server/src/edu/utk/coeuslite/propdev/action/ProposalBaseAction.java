@@ -901,6 +901,27 @@ public abstract class ProposalBaseAction extends CoeusBaseAction {
         return vecMenuItems;
     }
 //COEUSQA-4090
+        
+    protected boolean isPHSHumanSubjectCTFormIncluded(String proposalNumber, HttpServletRequest request) {
+        boolean isPHSHSCIncluded = false;
+        try {
+            HashMap hms2s = new HashMap();
+            WebTxnBean webTxnBean = new WebTxnBean();
+            hms2s.put("proposalNumber", proposalNumber);
+            Hashtable hts2s = (Hashtable) webTxnBean.getResults(request, "fnIsPhsHSCTFormIncluded", hms2s);
+            HashMap hmUnitDesc = (HashMap) hts2s.get("fnIsPhsHSCTFormIncluded");
+            if (hmUnitDesc != null && !hmUnitDesc.isEmpty()) {
+                int retval = Integer.parseInt(hmUnitDesc.get("returnValue").toString());
+                if (retval == 1) {
+                    isPHSHSCIncluded = true;
+                }
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return isPHSHSCIncluded;
+
+    }
 }
 
     
