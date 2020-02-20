@@ -21,7 +21,6 @@ import edu.mit.coeus.utils.dbengine.Parameter;
 import edu.mit.coeus.utils.dbengine.ProcReqParameter;
 import gov.grants.apply.soap.util.SoapUtils;
 import gov.grants.apply.system.footer_v1.GrantSubmissionFooterType;
-import gov.grants.apply.system.header_2_0_v2.Header20Type;
 import gov.grants.apply.system.header_v1.GrantSubmissionHeaderType;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -48,7 +47,6 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
     private CoeusFunctions coeusFunctions;
     private String userId;
     private static final String SCHEMA_VERSION = "1.0";
-    private static final String SCHEMA_VERSION_V2 = "2.0";
     /** Creates a new instance of S2SSubmissionDataTxnBean */
     public S2SSubmissionDataTxnBean() {
         submissionInfo = new S2SXMLInfoBean();
@@ -62,7 +60,6 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
         try{
             submissionInfo.setLocalOpportunity(getLocalOpportunity(headerParam));
             submissionInfo.setHeader(getHeader(headerParam));
-            submissionInfo.setHeader20(getHeader20(headerParam));
             submissionInfo.setFooter(getFooter(headerParam));
             submissionInfo.setSelectedOptionalForms(getSelectedOptionalForms(headerParam));
             submissionInfo.setParams(headerParam);
@@ -120,17 +117,6 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
         //            header.setSchemaVersion("1.0");
         //            header.setSubmissionTitle(param.getSubmissionTitle());
         return header;
-        
-    }
-    private Header20Type getHeader20(S2SHeader param) throws Exception{
-        gov.grants.apply.system.header_2_0_v2.Header20Type header20;        
-        header20 = new gov.grants.apply.system.header_2_0_v2.ObjectFactory().createHeader20Type();        
-        DBOpportunityInfoBean opp = (DBOpportunityInfoBean)submissionInfo.getLocalOpportunity();
-        //just hardcoded because, ApplicationFilingName is know at the time of development
-        header20.setApplicationFilingName(opp.getProposalNumber());
-        header20.setPackageID(opp.getPackageID());
-        header20.setSchemaVersion(SCHEMA_VERSION_V2);
-        return header20;
         
     }
     
@@ -361,7 +347,6 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
                     paramSubsn.addElement(new Parameter("UPDATE_USER",
                     DBEngineConstants.TYPE_STRING,
                     getUserId()));
-                    //UtilFactory.log("application xml before insterting into OSP$S2S_APPLICATION=>"+appInfo.getApplicationData());
                     //        System.out.println("application xml before insterting into db=>"+appInfo.getApplicationData());
                     StringBuffer sqlSubsn = new StringBuffer("");
                     switch(appInfo.getAcType()){
@@ -695,9 +680,7 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
         paramOpp.addElement(new Parameter("OPPORTUNITY",
                 DBEngineConstants.TYPE_CLOB, opportunity));
         paramOpp.addElement(new Parameter("CFDA_NUMBER",
-                DBEngineConstants.TYPE_STRING, dbOppInfo.getCfdaNumber()));        
-        paramOpp.addElement(new Parameter("PACKAGE_ID",
-                DBEngineConstants.TYPE_STRING, dbOppInfo.getPackageID()));
+                DBEngineConstants.TYPE_STRING, dbOppInfo.getCfdaNumber()));
         paramOpp.addElement(new Parameter("AW_PROPOSAL_NUMBER",
                 DBEngineConstants.TYPE_STRING, dbOppInfo.getAwProposalNumber()));
         paramOpp.addElement(new Parameter("AW_UPDATE_TIMESTAMP",
@@ -718,7 +701,6 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
                 sqlOpp.append(" UPDATE_USER , ");
                 sqlOpp.append(" OPPORTUNITY_ID ,  ");
                 sqlOpp.append(" CFDA_NUMBER ,  ");
-                sqlOpp.append(" PACKAGE_ID ,  ");
                 sqlOpp.append(" OPPORTUNITY ) ");
                 sqlOpp.append(" values (");
                 sqlOpp.append(" <<PROPOSAL_NUMBER>> , ");
@@ -732,7 +714,6 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
                 sqlOpp.append(" <<UPDATE_USER>> , ");
                 sqlOpp.append(" <<OPPORTUNITY_ID>> ,  ");
                 sqlOpp.append(" <<CFDA_NUMBER>> ,  ");
-                sqlOpp.append(" <<PACKAGE_ID>> ,  ");
                 sqlOpp.append(" <<OPPORTUNITY>> ) ");
                 break;
             case ('U'):
@@ -747,7 +728,7 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
                 sqlOpp.append(" UPDATE_TIMESTAMP = <<UPDATE_TIMESTAMP>> , ");
                 sqlOpp.append(" UPDATE_USER = <<UPDATE_USER>> , ");
                 sqlOpp.append(" OPPORTUNITY_ID = <<OPPORTUNITY_ID>> , ");
-                sqlOpp.append(" CFDA_NUMBER = <<CFDA_NUMBER>> , ");               
+                sqlOpp.append(" CFDA_NUMBER = <<CFDA_NUMBER>> , ");
                 sqlOpp.append(" OPPORTUNITY = <<OPPORTUNITY>> ");
                 sqlOpp.append("where ");
                 sqlOpp.append(" PROPOSAL_NUMBER  = <<AW_PROPOSAL_NUMBER>> AND ");
@@ -1021,8 +1002,6 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
             dbOppBean.setRevisionOtherDescription(((String)rowParameter.get("REVISION_OTHER_DESCRIPTION")));
             dbOppBean.setSubmissionEndPoint(((String)rowParameter.get("END_POINT")));
             //modification for new columns in OSP$S2S_OPPORTUNITY, S2S_SUBMISSION_TYPE_CODE, REVISION_CODE, REVISION_OTHER_DESCRIPTION - END
-            dbOppBean.setPackageID(((String)rowParameter.get("PACKAGE_ID")));
-        
         }
         return dbOppBean;
     }
@@ -1232,7 +1211,6 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
         paramAtt.addElement(new Parameter("UPDATE_USER", DBEngineConstants.TYPE_STRING, dbOpportunityInfoBean.getUpdateUser()));
         paramAtt.addElement(new Parameter("AW_PROPOSAL_NUMBER", DBEngineConstants.TYPE_STRING, dbOpportunityInfoBean.getAwProposalNumber()));
         paramAtt.addElement(new Parameter("AW_UPDATE_TIMESTAMP", DBEngineConstants.TYPE_TIMESTAMP, dbOpportunityInfoBean.getAwUpdateTimestamp()));
-        paramAtt.addElement(new Parameter("PACKAGE_ID", DBEngineConstants.TYPE_STRING, dbOpportunityInfoBean.getPackageID()));
         paramAtt.addElement(new Parameter("AC_TYPE", DBEngineConstants.TYPE_STRING, ""+dbOpportunityInfoBean.getAcType()));
         
         StringBuffer sqlBudget = new StringBuffer(
@@ -1252,7 +1230,6 @@ public class S2SSubmissionDataTxnBean implements IS2SDataTxn{
         sqlBudget.append(" <<UPDATE_USER>> , ");
         sqlBudget.append(" <<AW_PROPOSAL_NUMBER>> , ");
         sqlBudget.append(" <<AW_UPDATE_TIMESTAMP>> , ");
-        sqlBudget.append(" <<PACKAGE_ID>> , ");
         sqlBudget.append(" <<AC_TYPE>> )");
         
         ProcReqParameter procAtt  = new ProcReqParameter();

@@ -181,9 +181,7 @@ public class ProposalMaintenanceServlet extends CoeusBaseServlet implements Type
     //COEUSQA-1433 - Allow Recall from Routing - End
     private static final char PROPOSAL_CREATION_STATUS_DETAILS = '3';
     
-    // JM 11-21-2012 get proposal details only
-    private static final char GET_PROPOSAL_DETAILS_ONLY = '4';
-    // JM END
+    private static final char CHECK_IS_PHS_HS_CT_FORM = '4';
     
     /** Initializes the servlet.
      */
@@ -287,15 +285,6 @@ public class ProposalMaintenanceServlet extends CoeusBaseServlet implements Type
                 for (int index = 0; index < proposalYNQBean.size(); index++) {
                     ////System.out.println("is the update good ?. " + proposalUpdTxnBean.addUpdDeleteProposalYNQ((ProposalYNQBean)proposalYNQBean.elementAt(index)));
                 }
-            // JM 11-21-2012 get proposal details only
-            } else if (functionType == GET_PROPOSAL_DETAILS_ONLY) {
-                proposalNumber = (String) requester.getId();
-                proposalDataTxnBean = new ProposalDevelopmentTxnBean();
-                proposalDevelopmentFormBean = proposalDataTxnBean.getProposalDevelopmentDetails(proposalNumber);
-                dataObjects.addElement(proposalDevelopmentFormBean);
-                responder.setResponseStatus(true);
-                responder.setDataObjects(dataObjects);
-            // JM END
             } else if (functionType == GET_PROPOSAL_ABSTRACTS) {
                 proposalNumber = (String) requester.getId();
                 ProposalDevelopmentTxnBean proposalDevTxnBean = new ProposalDevelopmentTxnBean();
@@ -1990,6 +1979,14 @@ public class ProposalMaintenanceServlet extends CoeusBaseServlet implements Type
                 responder.setDataObject(new Integer(proposalStatusCode));
                 responder.setResponseStatus(true);
             } //COEUSQA-1579 : End
+             else if (functionType == CHECK_IS_PHS_HS_CT_FORM) {
+                proposalNumber = (String) requester.getDataObject();
+                ProposalDevelopmentTxnBean proposalDevelopmentTxnBean = new ProposalDevelopmentTxnBean();
+                boolean caninclude = proposalDevelopmentTxnBean.isPHSHumanSubjectCTFormIncluded(proposalNumber);                
+                responder.setDataObject(new Boolean(caninclude));
+                responder.setResponseStatus(true);               
+            }           
+            
             else if (functionType == PROPOSAL_CREATION_STATUS_DETAILS) {
                 proposalNumber = (String) requester.getDataObject();
                 ProposalDevelopmentTxnBean proposalDevelopmentTxnBean = new ProposalDevelopmentTxnBean();
