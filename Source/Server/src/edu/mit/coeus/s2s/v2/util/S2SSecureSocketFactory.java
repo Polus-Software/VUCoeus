@@ -99,9 +99,8 @@ public class S2SSecureSocketFactory implements SecureSocketFactory{//extends Sun
         TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
         tmf.init(ts);
         tm = tmf.getTrustManagers();
-        //SSLContext sslContext = SSLContext.getInstance("SSL"); // JM 8-7-2015 new for SHA2
-        SSLContext sslContext = SSLContext.getInstance("TLSv1.2"); // JM
-        
+        SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
+         
         sslContext.init(kmf.getKeyManagers(), tm, null);
         SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
         Socket sk = sslSocketFactory.createSocket(host, port);

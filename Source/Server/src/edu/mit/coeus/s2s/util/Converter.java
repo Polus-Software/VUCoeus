@@ -37,9 +37,6 @@ import java.util.TimeZone;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -211,22 +208,9 @@ public class Converter {
         }
         tempAppXml = replaceAll(tempAppXml,"\\+00:00","");
         tempAppXml = replaceAll(tempAppXml,"\\"+getLocalTimeZone(),"");
-        tempAppXml = replaceAllWithZ(tempAppXml);
-        
         return tempAppXml;
     }
-    private static String replaceAllWithZ(String tempAppXml) {
-    	Pattern datePattern = Pattern.compile("((19|20)\\d{2})-([1-9]|0[1-9]|1[0-2])-(0[1-9]|[1-9]|[12][0-9]|3[01])(z|Z)");
-    	Matcher dateMatcher = datePattern.matcher(tempAppXml);
-    	
-    	StringBuffer result = new StringBuffer();
-    	
-    	while (dateMatcher.find()) {
-    		dateMatcher.appendReplacement(result, dateMatcher.group(1)+"-"+dateMatcher.group(3)+"-"+dateMatcher.group(4));
-    	}
-    	return dateMatcher.appendTail(result).toString();
-	}
-	private static String getLocalTimeZone(){
+    private static String getLocalTimeZone(){
         String localTimeZoneId; 
         try {
             localTimeZoneId = CoeusProperties.getProperty(CoeusPropertyKeys.LOCAL_TIMEZONE_ID);
