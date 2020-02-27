@@ -3637,6 +3637,43 @@ public class S2STxnBean
         return baseSalary;
     }
     //COEUSQA-1559 Display calculated base salary amount on RR Budget form in out years - End
+        
+    public String getNSFIDForAORUnitAdmin() throws DBException,CoeusException{    
+        Vector param= new Vector();
+        Vector result = new Vector();
+        String nsfId = null;  
+        if(dbEngine!=null){
+            result = dbEngine.executeFunctions("Coeus",
+            "{ <<OUT STRING NSF_ID>> = "
+            +"call FN_NSFID_OF_AOR_UNIT_ADMIN() } ", param);
+        }else{
+            throw new CoeusException("db_exceptionCode.1000");
+        }
+        if(!result.isEmpty()){
+            HashMap rowParameter = (HashMap)result.elementAt(0);
+            nsfId = (String)rowParameter.get("NSF_ID");
+        }
+        return nsfId;      
+    }
+    
+    public String getNSFIDForPerson(String personId) throws DBException, CoeusException {
+        Vector param = new Vector();
+        Vector result = new Vector();
+        String nsfId = null;
+        param.add(new Parameter("AS_PERSON_ID",DBEngineConstants.TYPE_STRING,personId));
+        if (dbEngine != null) {
+            result = dbEngine.executeFunctions("Coeus",
+                    "{ <<OUT STRING NSF_ID>> = "
+                    + "call FN_GET_PERSON_NSFID(<<AS_PERSON_ID>>) } ", param);
+        } else {
+            throw new CoeusException("db_exceptionCode.1000");
+        }
+        if (!result.isEmpty()) {
+            HashMap rowParameter = (HashMap) result.elementAt(0);
+            nsfId = (String) rowParameter.get("NSF_ID");
+        }
+        return nsfId;
+    }
 }
   
 

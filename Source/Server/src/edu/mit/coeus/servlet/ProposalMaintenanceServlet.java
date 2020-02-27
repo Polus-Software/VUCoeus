@@ -183,6 +183,10 @@ public class ProposalMaintenanceServlet extends CoeusBaseServlet implements Type
     
     private static final char CHECK_IS_PHS_HS_CT_FORM = '4';
     
+    // JM 11-21-2012 get proposal details only
+    private static final char GET_PROPOSAL_DETAILS_ONLY = '4';
+    // JM END
+    
     /** Initializes the servlet.
      */
     public void init(ServletConfig config) throws ServletException {
@@ -285,6 +289,15 @@ public class ProposalMaintenanceServlet extends CoeusBaseServlet implements Type
                 for (int index = 0; index < proposalYNQBean.size(); index++) {
                     ////System.out.println("is the update good ?. " + proposalUpdTxnBean.addUpdDeleteProposalYNQ((ProposalYNQBean)proposalYNQBean.elementAt(index)));
                 }
+            // JM 11-21-2012 get proposal details only
+            } else if (functionType == GET_PROPOSAL_DETAILS_ONLY) {
+                proposalNumber = (String) requester.getId();
+                proposalDataTxnBean = new ProposalDevelopmentTxnBean();
+                proposalDevelopmentFormBean = proposalDataTxnBean.getProposalDevelopmentDetails(proposalNumber);
+                dataObjects.addElement(proposalDevelopmentFormBean);
+                responder.setResponseStatus(true);
+                responder.setDataObjects(dataObjects);
+            // JM END
             } else if (functionType == GET_PROPOSAL_ABSTRACTS) {
                 proposalNumber = (String) requester.getId();
                 ProposalDevelopmentTxnBean proposalDevTxnBean = new ProposalDevelopmentTxnBean();

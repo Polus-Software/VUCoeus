@@ -80,7 +80,7 @@ public class GetOpportunityV2 extends GetOpportunity{
         String cfdaNum = null;
         if(oppList==null && headerParam.getCfdaNumber()!=null){
             headerParam.setOpportunityId(null);
-            oppList = getOpportunityList(headerParam);
+            oppList = getOpportunityListV2(headerParam);
         }
         return oppList;
     }

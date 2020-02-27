@@ -53,6 +53,7 @@
                 <form-property name="ownerFirstName" type="java.lang.String"/>
                 <form-property name="ownerLastName" type="java.lang.String"/>
                 <form-property name="personId" type="java.lang.String"/>
+                <form-property name="status" type="java.lang.String"/>
                 <form-property name="dateEdited" type="java.lang.String"/>
                 <form-property name="contactFirstName" type="java.lang.String"/>
                 <form-property name="contactLastName" type="java.lang.String"/>
@@ -284,6 +285,7 @@
                    <form-property name="updateTimestamp" type="java.lang.String"/>
                    <form-property name="updateUser" type="java.lang.String"/>
                    <form-property name="acType" type="java.lang.String"/>
+                   <form-property name="packageID" type="java.lang.String"/>
             </form-bean>
 
             <!-- includes grantsGovOpportunity and list of FormInfoBean -->
@@ -394,7 +396,8 @@
                 <form-property name="coiFlag" type="java.lang.String"/>
                 <form-property name="FEDRdebrFlag" type="java.lang.String"/>
                 <form-property name="FEDRdelqFlag" type="java.lang.String"/>
-
+				<form-property name="status" type="java.lang.String"/>
+                <form-property name="isExternal" type="java.lang.String"/>
                 <form-property name="commonsUserName" type="java.lang.String"/>
 
                 <!-- custom elements -->
@@ -524,6 +527,8 @@
      <!-- ~**~*~*~**~*~*~*~**~*~*~*~ DISPLAYPROPOSALFORM beans  CONTAINS ~**~*~*~**~*~*~**~*~*~**~*~*~**~*~*~*~* -->
                <form-property name="proposalNumber" type="java.lang.String"/>
                 <form-property name="personId" type="java.lang.String"/>
+                <form-property name="status" type="java.lang.String"/>
+                <form-property name="isExternal" type="java.lang.String"/>
                 <form-property name="personName" type="java.lang.String"/>
                 <form-property name="invLastName" type="java.lang.String"/>
                 <form-property name="invFirstName" type="java.lang.String"/>
@@ -668,6 +673,7 @@
            <form-property  name = "locationTypeDesc" type = "java.lang.String"/>
            <form-property  name = "locationTypeCode" type = "java.lang.Integer"/>
            <form-property  name = "cvCongDist" type = "java.util.Vector"/>
+           <form-property  name = "billingAgreementOrg" type = "java.lang.String"/>
            </form-bean>
 
             <form-bean name="proposalCongDistForm" dynamic="false" type="org.apache.struts.validator.DynaValidatorForm">
@@ -908,6 +914,7 @@
                 <form-property  name = "sortId" type = "java.lang.Integer"/>
                 <form-property name = "stateCode" type="java.lang.String"/>
                 <form-property name = "division" type="java.lang.String"/>
+                <form-property name="status" type="java.lang.String"/>
            </form-bean>
             <!--Proposal Inv More Details End -->
 
@@ -998,6 +1005,8 @@
 	        <form-property name="proposalNumber" type="java.lang.String"/>
                 <form-property name="personId" type="java.lang.String"/>
                 <form-property name="personName" type="java.lang.String"/>
+                <form-property name="status" type="java.lang.String"/>
+                <form-property name="isExternal" type="java.lang.String"/>
                 <form-property name="invLastName" type="java.lang.String"/>
                 <form-property name="invFirstName" type="java.lang.String"/>
                 <form-property name="invPhone" type="java.lang.String"/>

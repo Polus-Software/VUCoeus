@@ -5,6 +5,7 @@
 package edu.mit.coeus.s2s.bean;
 
 
+import edu.mit.coeus.departmental.bean.DepartmentPersonFormBean;
 import edu.mit.coeus.exception.CoeusException;
 import edu.mit.coeus.utils.CoeusVector;
 import edu.mit.coeus.utils.dbengine.*;
@@ -105,5 +106,84 @@ public class NSFCoverPageV12TxnBean {
 
 
  }
+      /** get Authorized rep
+     */
+    public DepartmentPersonFormBean getAuthorizedRep (String proposalNumber)
+        throws CoeusException, DBException
+    {
+      
+        Vector result = null;
+        Vector param = new Vector();
+        param.addElement( new Parameter("PROPOSAL_NUMBER",
+                    DBEngineConstants.TYPE_STRING, proposalNumber));
+                  
+        HashMap row = null;
+        if(dbEngine !=null){
+             result = new Vector(3,2);
+             result = dbEngine.executeRequest("Coeus",
+                "call GET_AUTHORIZED_SIGNER ( <<PROPOSAL_NUMBER>> , <<OUT RESULTSET rset>> )",         
+                                               "Coeus", param);
+        }else{
+                throw new CoeusException("db_exceptionCode.1000");
+        }   
+                  
+         DepartmentPersonFormBean authRepBean = new DepartmentPersonFormBean();
+             
+         int listSize = result.size();
+         if (listSize > 0){
+           for(int index=0; index < listSize; index++){
+                row = (HashMap)result.elementAt(index);
+               
+                authRepBean.setPersonId( (String) row.get("PERSON_ID"));
+                authRepBean.setHomeUnit((String) row.get("HOME_UNIT"));  //CASE 2911
+                authRepBean.setPrimaryTitle( (String) row.get("PRIMARY_TITLE")== null ?
+                         " " : (String) row.get("PRIMARY_TITLE")) ;
 
+                         authRepBean.setDirTitle((String) row.get("PRIMARY_TITLE")== null ?
+                         " " : (String) row.get("PRIMARY_TITLE")) ;
+                authRepBean.setEmailAddress( (String) row.get("EMAIL_ADDRESS")== null ?
+                         " " : (String) row.get("EMAIL_ADDRESS")) ;
+                authRepBean.setFirstName((String) row.get("FIRST_NAME")== null ?
+                         " " : (String) row.get("FIRST_NAME")) ;
+                authRepBean.setFullName((String) row.get("FULL_NAME")== null ?
+                         " " : (String) row.get("FULL_NAME")) ;
+                authRepBean.setLastName((String) row.get("LAST_NAME")== null ?
+                         " " : (String) row.get("LAST_NAME")) ;
+                authRepBean.setMiddleName((String) row.get("MIDDLE_NAME")== null ?
+                         " " : (String) row.get("MIDDLE_NAME")) ;
+                authRepBean.setOfficePhone((String) row.get("OFFICE_PHONE")== null ?
+                         " " : (String) row.get("OFFICE_PHONE")) ;
+                authRepBean.setOfficeLocation((String) row.get("OFFICE_LOCATION")== null ?
+                         " " : (String) row.get("OFFICE_LOCATION")) ;
+                /* CASE #1778 Begin */
+                authRepBean.setFaxNumber((String) row.get("FAX_NUMBER")== null ? 
+                        " " : (String) row.get("FAX_NUMBER")) ; 
+                /* CASE #1778 End */        
+                /* addition mar 20-21,2006 */
+                authRepBean.setAddress1((String) row.get("ADDRESS_LINE_1")== null ? 
+                         " " : (String) row.get("ADDRESS_LINE_1"));
+                /* start case 2911 */
+                authRepBean.setAddress2((String) row.get("ADDRESS_LINE_2")== null ? 
+                         " " : (String) row.get("ADDRESS_LINE_2"));
+                authRepBean.setAddress3((String) row.get("ADDRESS_LINE_3")== null ? 
+                         " " : (String) row.get("ADDRESS_LINE_3"));
+                 /* end case 2911 */
+                authRepBean.setCity((String) row.get("CITY")== null ? 
+                         " " : (String) row.get("CITY")); 
+                authRepBean.setCountryCode((String) row.get("COUNTRY_CODE")== null ? 
+                         " " : (String) row.get("COUNTRY_CODE"));
+                authRepBean.setDirDept((String) row.get("DEPARTMENT")== null ?
+                         " " : (String) row.get("DEPARTMENT"));
+                /* end addition mar 20-21 */
+                /* start addtion mar 23 */
+                authRepBean.setPostalCode((String) row.get("POSTAL_CODE") == null ?
+                        " " : (String) row.get("POSTAL_CODE"));
+                authRepBean.setState((String) row.get("STATE") == null ?
+                        " " : (String) row.get("STATE"));
+
+           }
+         }
+         
+     return authRepBean;
+    }
 }
