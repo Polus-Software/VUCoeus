@@ -6,7 +6,7 @@
 
 <jnlp 
   spec="1.0+" 
-  codebase="http://192.168.1.144:8081/coeusvanderbilt/" 
+  codebase="http://localhost:8080/VUServer/" 
   href="coeus.jnlp"> 
   <!-- This sesction be used to differntiate dev, test and prod instances -->
   <information> 

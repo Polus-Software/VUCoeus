@@ -139,7 +139,7 @@ public class CoeusWebStart extends javax.swing.JApplet implements ActionListener
             System.out.println("Java Web Start code base" + codeBase) ;
         }catch(Exception jnlpex) {
             //                codeBase = this.getAppletCodeBase().toString();
-            codeBase = "http://192.168.1.144:8081/coeusvanderbilt/";
+            codeBase = "http://localhost:8080/VUServer/";
         }
         //CONNECTION_URL = codeBase.substring(0,codeBase.length()-1);
         CONNECTION_URL = codeBase.replaceAll("/$", "");
@@ -180,8 +180,7 @@ public class CoeusWebStart extends javax.swing.JApplet implements ActionListener
                     }
                 }catch(Exception ex) { //in case of jws
                     try {
-                        javax.jnlp.BasicService bs
-                        = (javax.jnlp.BasicService)javax.jnlp.ServiceManager.lookup("javax.jnlp.BasicService");
+                        javax.jnlp.BasicService bs = (javax.jnlp.BasicService)javax.jnlp.ServiceManager.lookup("javax.jnlp.BasicService");
                         URL hostURL = bs.getCodeBase() ;
                         String protocol = hostURL.getProtocol();
                         port = hostURL.getPort();

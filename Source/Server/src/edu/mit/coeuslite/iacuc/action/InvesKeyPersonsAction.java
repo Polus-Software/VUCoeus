@@ -330,6 +330,7 @@ public class InvesKeyPersonsAction extends ProtocolBaseAction {
                                       if(mailMsgInfoBean != null && mailMsgInfoBean.isActive()){
                                             mailMsgInfoBean.setPersonRecipientList(vecRecipientsdata);
                                             //mailMsgInfoBean.setSubject("Notification");
+                                            mailMsgInfoBean.setModuleItemKey(protocolNumber);
                                             mailMsgInfoBean.appendMessage(piData, "\n");
                                             mailMsgInfoBean.appendMessage("", "\n");
                                             mailMsgInfoBean.appendMessage(unitData, "\n");

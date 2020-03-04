@@ -92,7 +92,7 @@ public class ProposalMaintenanceServlet extends CoeusBaseServlet implements Type
     //Case id:2016 step 1 - end
     private static final char GET_IS_OK_COPY_BUDGET = 'O';
     private static final char GET_PROPOSAL_VIEWERS = 'P';
-    private static final char GET_COPY_BUDGET_NARR_ALLOWED = 'Q';
+    private static final char GET_COPY_BUDGET_NARR_ALLOWED = 'Q'; 
     private static final char SAVE_RELEASE_LOCK = 'R';
     private static final char SAVE_RETAIN_LOCK = 'S';
     private static final char SAVE_QUESTION_ANSWERS = 's';

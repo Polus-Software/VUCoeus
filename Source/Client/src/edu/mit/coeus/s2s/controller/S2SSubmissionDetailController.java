@@ -32,7 +32,7 @@ import edu.mit.coeus.s2s.gui.S2SSubmissionDetailForm;
 import edu.mit.coeus.s2s.validator.S2SValidationException;
 //import edu.mit.coeus.utils.tree.xml.XMLTreeCellRenderer;
 //import edu.mit.coeus.utils.tree.xml.XMLTreeModel;
-
+import edu.mit.coeus.propdev.gui.ProposalDetailForm;
 import java.util.List;
 import javax.swing.table.*;
 import javax.swing.event.*;
@@ -807,7 +807,6 @@ public class S2SSubmissionDetailController implements ActionListener,
         Vector vector = new Vector();
         vector.add(oppFrmTblMdl.getData());
         
-        
         vector.add(buildOpportunityInfoBean());
         
         boolean saved = false;
@@ -824,6 +823,11 @@ public class S2SSubmissionDetailController implements ActionListener,
                 coeusMessageResources.parseMessageKey("s2ssubdetfrm_exceptionCode.1005"));
         }
         dataModified = false;
+        
+        ProposalDetailForm proposalDetailForm;
+        if((proposalDetailForm = (ProposalDetailForm)mdiForm.getFrame(CoeusGuiConstants.PROPOSAL_DETAILS_FRAME_TITLE,getSubmissionTitle())) != null ){
+        proposalDetailForm.EnableDisableHumanSubject();
+        }
     }
     
     private OpportunityInfoBean buildOpportunityInfoBean() {

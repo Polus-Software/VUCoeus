@@ -413,9 +413,9 @@ public class CoeusMaintainMenu extends JMenu implements ActionListener{
         InstituteProposalListController proposalController= new InstituteProposalListController();
         
         // rdias UCSD - Coeus personalization impl
-    //    AbstractController persnref = AbstractController.getPersonalizationControllerRef();
-    //    persnref.customize_module(proposalController.getControlledUI(),
-    //    		proposalController.getControlledUI(),this,"GENERIC");
+        AbstractController persnref = AbstractController.getPersonalizationControllerRef();
+        persnref.customize_module(proposalController.getControlledUI(),
+        		proposalController.getControlledUI(),this,"GENERIC");
         // rdias UCSD - Coeus personalization impl
         
         proposalController.display();
@@ -659,10 +659,10 @@ public class CoeusMaintainMenu extends JMenu implements ActionListener{
      *
      */
     // rdias UCSD - Coeus personalization impl
-    //public void notifyPersonalizationController() {
-	//    AbstractController persnref = AbstractController.getPersonalizationControllerRef();	    
-	//    persnref.customize_module(this, mdiForm, this, "MAINFORM");
-	//}    
+    public void notifyPersonalizationController() {
+	    AbstractController persnref = AbstractController.getPersonalizationControllerRef();	    
+	    persnref.customize_module(this, mdiForm, this, "MAINFORM");
+	}    
 
     /* JM 05-02-2013
     private void showIacucProtocolSubmissionDetails() throws PropertyVetoException {
