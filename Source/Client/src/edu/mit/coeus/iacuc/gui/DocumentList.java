@@ -925,7 +925,7 @@ public class DocumentList extends javax.swing.JComponent {
          * @return the value Object at the specified cell
          */
         public Object getValueAt(int row, int column) {
-            protoCorrespRecipientsBean = (ProtoCorrespRecipientsBean)data.get(row);
+            protoCorrespRecipientsBean = (ProtoCorrespRecipientsBean)dataVector.get(row);
             switch (column) {
                 case 0:
                     return protoCorrespRecipientsBean.getProtoCorrespDescription();
@@ -977,7 +977,7 @@ public class DocumentList extends javax.swing.JComponent {
          */
         public void setValueAt(Object value, int row, int column) {
             // Code modified for coeus4.3 enhancement - starts
-            protoCorrespRecipientsBean = (ProtoCorrespRecipientsBean)data.get(row);
+            protoCorrespRecipientsBean = (ProtoCorrespRecipientsBean)dataVector.get(row);
             protoCorrespRecipientsBean.setFinalFlag(!protoCorrespRecipientsBean.isFinalFlag());
             dataChanged = true;
             fireTableCellUpdated(row,column);

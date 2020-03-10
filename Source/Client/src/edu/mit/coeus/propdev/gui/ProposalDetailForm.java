@@ -7401,5 +7401,16 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
 
         return returnValue;
     } 
+  
+  public void EnableDisableHumanSubject(){
+     try{ 
+      if(isPHSHumanSubjectCTFormIncluded(proposalID)){
+          humnSubS2SForms.setVisible(true);
+      }else{
+          humnSubS2SForms.setVisible(false);
+      }
+     }catch(Exception e){}
+      
+  }
     
 }

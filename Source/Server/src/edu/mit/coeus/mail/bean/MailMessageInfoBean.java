@@ -42,7 +42,8 @@ public class MailMessageInfoBean implements Serializable{
     private String coiUrl;
 
     private Timestamp updateTimestamp;
-
+    
+    private String moduleItemKey;   
     public MailMessageInfoBean() {
         
     }
@@ -242,4 +243,18 @@ public class MailMessageInfoBean implements Serializable{
 
 
     // COEUSQA-2105: No notification for some IRB actions - End
+
+    /**
+     * @return the moduleItemKey
+     */
+    public String getModuleItemKey() {
+        return moduleItemKey;
+    }
+
+    /**
+     * @param moduleItemKey the moduleItemKey to set
+     */
+    public void setModuleItemKey(String moduleItemKey) {
+        this.moduleItemKey = moduleItemKey;
+    }
 }

@@ -797,7 +797,7 @@ import java.text.SimpleDateFormat;
         gridBagConstraints.insets = new java.awt.Insets(7, 3, 0, 0);
         add(lblPackegeToPrint, gridBagConstraints);
 
-        scrPnPackage.setMinimumSize(new java.awt.Dimension(450, 200));
+        scrPnPackage.setMinimumSize(new java.awt.Dimension(460, 200));
         tblPackage.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

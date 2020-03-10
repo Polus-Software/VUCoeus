@@ -57,7 +57,7 @@ public class CoeusMonitorFilter implements Filter {
             //if the pages are not .do or .jps, no need to test. Coeus premium uses servlets which doesn't maintain session.
             //JIRA COEUSQA-3409 - avoid rightPersonCertify action from this checking
     //        String remoteHost = ((HttpServletRequest)servletRequest).getRequestURI();
-            if(remoteHost != null && remoteHost.indexOf("userAuthAction") == -1 && remoteHost.indexOf("rightPersonCertify") == -1 && remoteHost.indexOf("getPHSHumanSubjectForm") == -1 && (remoteHost.indexOf(".do") > -1 || remoteHost.indexOf(".jsp") > -1)) {
+            if(remoteHost != null && remoteHost.indexOf("userAuthAction") == -1 && remoteHost.indexOf("rightPersonCertify") == -1 && remoteHost.indexOf("getPHSHumanSubjectForm") == -1&& remoteHost.indexOf("proposalPersonsCertify") == -1 && (remoteHost.indexOf(".do") > -1 || remoteHost.indexOf(".jsp") > -1)) {
                 RequestDispatcher reqDisp = servletRequest.getRequestDispatcher("/userAuthAction.do?reason=sessionExpired");
                 reqDisp.forward(servletRequest, servletResponse);
                 return;

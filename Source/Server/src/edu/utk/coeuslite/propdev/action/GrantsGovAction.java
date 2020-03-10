@@ -100,7 +100,7 @@ public class GrantsGovAction extends ProposalBaseAction{
                 MessageResources messages = MessageResources.getMessageResources("ProposalMessages");
                 throw new CoeusException(messages.getMessage("opportunity.enter.cfdaOrprogramId"));
             }
-            ArrayList oppList = GetOpportunity.getInstance().searchOpportunity(headerParam);
+            ArrayList oppList = GetOpportunity.getInstance().searchOpportunityList(headerParam);
             request.setAttribute("opportunity", oppList);
             request.setAttribute("searchResults", new Boolean(true));
             //JIRA COEUSDEV 61 - START
@@ -265,8 +265,8 @@ public class GrantsGovAction extends ProposalBaseAction{
                 headerParam.setSubmissionTitle(dBOpportunityInfoBean.getProposalNumber());
                 
                 SubmissionDetailInfoBean localSubInfo = (SubmissionDetailInfoBean)txnBean.getSubmissionDetails(headerParam);
-                GetApplication appReq = GetApplication.getInstance();
-                ApplicationInfoBean[] appList = appReq.getApplicationList(headerParam);
+                GetSubmission appReq = GetSubmission.getInstance();
+                SubmissionInfoBean[] appList = appReq.getSubmissionList(headerParam);
                 localSubInfo.setAcType('U');
                 
                 localSubInfo.setUpdateUser(loggedinUser);
@@ -274,14 +274,14 @@ public class GrantsGovAction extends ProposalBaseAction{
                 CoeusMessageResourcesBean coeusMessageResourcesBean = new CoeusMessageResourcesBean();
                 if(appList==null || appList.length==0){//Need to check whether there is any error during the submission
                     //by calling getApplicationStatusDetail web service
-                    Object statusDetail = GetAppStatusDetails.getInstance().getStatusDetails(localSubInfo.getGrantsGovTrackingNumber());
+                    Object statusDetail = GetApplicationInfo.getInstance().getStatusDetails(localSubInfo.getGrantsGovTrackingNumber());
                     if(statusDetail==null) {
                         throw new Exception(coeusMessageResourcesBean.parseMessageKey("exceptionCode.90001"));
                     }
                     
                     localSubInfo.setComments(statusDetail.toString());
                     localSubInfo.setStatus(coeusMessageResourcesBean.parseMessageKey("exceptionCode.90009"));
-                }else for(ApplicationInfoBean latestInfo:appList){
+                }else for(SubmissionInfoBean latestInfo:appList){
                     //Case# COEUSDEV-1101 
                     //BEGIN
                     //ApplicationInfoBean latestInfo = application;
@@ -439,7 +439,7 @@ public class GrantsGovAction extends ProposalBaseAction{
             if(s2sDetails[0]==null || selectOpportunity){
                 try{
                     request.getSession().removeAttribute("opportunity");
-                    ArrayList oppList = GetOpportunity.getInstance().searchOpportunity(headerParam);
+                    ArrayList oppList = GetOpportunity.getInstance().searchOpportunityList(headerParam);                   
                     request.getSession().setAttribute("opportunity", oppList);
                     //request.setAttribute("opportunity", oppList);
                 }catch (CoeusException coeusException) {
@@ -548,7 +548,7 @@ public class GrantsGovAction extends ProposalBaseAction{
             headerParam.setSubmissionTitle(dBOpportunityInfoBean.getProposalNumber());
             
             try{
-                ArrayList oppList = GetOpportunity.getInstance().searchOpportunity(headerParam);
+                ArrayList oppList = GetOpportunity.getInstance().searchOpportunityList(headerParam);                
                 request.getSession().setAttribute("opportunity", oppList);
                 //request.setAttribute("opportunity", oppList);
             }catch (CoeusException coeusException) {
@@ -589,7 +589,7 @@ public class GrantsGovAction extends ProposalBaseAction{
         dynaActionForm.set("competitionId", opportunityInfoBean.getCompetitionId());
         dynaActionForm.set("schemaUrl", opportunityInfoBean.getSchemaUrl());
         dynaActionForm.set("instructionUrl", opportunityInfoBean.getInstructionUrl());
-        
+        dynaActionForm.set("packageID", opportunityInfoBean.getPackageID());
         String formattedDate = formatDate(opportunityInfoBean.getOpeningDate(), DATE_FORMAT);
         dynaActionForm.set("openingDate", formattedDate);
         formattedDate = formatDate(opportunityInfoBean.getClosingDate(), DATE_FORMAT);
@@ -641,6 +641,7 @@ public class GrantsGovAction extends ProposalBaseAction{
         dBOpportunityInfoBean.setCompetitionId((String)dynaActionForm.get("competitionId"));
         dBOpportunityInfoBean.setSchemaUrl((String)dynaActionForm.get("schemaUrl"));
         dBOpportunityInfoBean.setInstructionUrl((String)dynaActionForm.get("instructionUrl"));
+        dBOpportunityInfoBean.setPackageID((String)dynaActionForm.get("packageID"));
         Date date = getDate((String)dynaActionForm.get("openingDate"), DATE_FORMAT);
         Timestamp timestamp = null;
         if(date != null){

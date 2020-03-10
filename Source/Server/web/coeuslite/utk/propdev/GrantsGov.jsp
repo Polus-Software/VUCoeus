@@ -540,6 +540,7 @@
                                                     <td align="right" class="copybold">Instruction Page:</td>
                                                     <td colspan="3"><a href="<bean:write name="simpleBean" property="instructionUrl"/>" target="_blank"><bean:write name="simpleBean" property="instructionUrl"/></a>
                                                     <html:hidden property="instructionUrl" name="simpleBean" indexed="true"/>
+                                                    <html:hidden property="packageID" name="simpleBean" indexed="true"/>
                                                     </td>
                                                 </tr>
                                             </table>

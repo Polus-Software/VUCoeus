@@ -6,7 +6,7 @@
 
 package edu.mit.coeus.applet;
 
-//import com.sun.security.auth.callback.DialogCallbackHandler;
+import com.sun.security.auth.callback.DialogCallbackHandler;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -139,7 +139,7 @@ public class CoeusWebStart extends javax.swing.JApplet implements ActionListener
             System.out.println("Java Web Start code base" + codeBase) ;
         }catch(Exception jnlpex) {
             //                codeBase = this.getAppletCodeBase().toString();
-            codeBase = "http://localhost:8080/Coeus45Trunk/";
+            codeBase = "http://localhost:8080/VUServer/";
         }
         //CONNECTION_URL = codeBase.substring(0,codeBase.length()-1);
         CONNECTION_URL = codeBase.replaceAll("/$", "");
@@ -180,8 +180,7 @@ public class CoeusWebStart extends javax.swing.JApplet implements ActionListener
                     }
                 }catch(Exception ex) { //in case of jws
                     try {
-                        javax.jnlp.BasicService bs
-                        = (javax.jnlp.BasicService)javax.jnlp.ServiceManager.lookup("javax.jnlp.BasicService");
+                        javax.jnlp.BasicService bs = (javax.jnlp.BasicService)javax.jnlp.ServiceManager.lookup("javax.jnlp.BasicService");
                         URL hostURL = bs.getCodeBase() ;
                         String protocol = hostURL.getProtocol();
                         port = hostURL.getPort();
@@ -326,7 +325,8 @@ public class CoeusWebStart extends javax.swing.JApplet implements ActionListener
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 3);
         pnlMain.add(password, gridBagConstraints);
 
-        jLabel1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/coeus.gif") ));
+        // JM 12-19-2014 commented out image
+        //jLabel1.setIcon(new ImageIcon(getClass().getClassLoader().getResource("coeus.gif") ));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;

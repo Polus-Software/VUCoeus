@@ -12,6 +12,7 @@ package edu.mit.coeus.s2s.v2.util;
 import edu.mit.coeus.utils.CoeusFunctions;
 import edu.mit.coeus.utils.UtilFactory;
 import edu.mit.coeus.utils.dbengine.DBException;
+
 import java.io.*;
 import java.math.BigInteger;
 import java.net.InetAddress;
@@ -20,6 +21,7 @@ import java.net.UnknownHostException;
 import java.security.*;
 import java.security.cert.*;
 import java.util.Hashtable;
+
 import javax.net.ssl.*;
 
 
@@ -101,7 +103,8 @@ public class S2SSSLSocketFactory extends SSLSocketFactory{
         TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
         tmf.init(ts);
         tm = tmf.getTrustManagers();
-        sslContext = SSLContext.getInstance("TLSv1.2");
+        //sslContext = SSLContext.getInstance("SSL"); // JM 8-7-2015 new for SHA2
+        sslContext = SSLContext.getInstance("TLSv1.2"); // JM
          
         sslContext.init(kmf.getKeyManagers(), tm, null);
         } catch (Exception ex) {
