@@ -482,8 +482,8 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
     //ppc certify flag for key person starts
     private static final String ENABLE_PROP_PERSON_SELF_CERTIFY="ENABLE_PROP_PERSON_SELF_CERTIFY";
     //ppc certify flag for key person ends
-    
-    private static final char CHECK_IS_PHS_HS_CT_FORM = '4';
+	
+	private static final char CHECK_IS_PHS_HS_CT_FORM = '4';
 
     public ProposalDetailForm( char fnType, String propID,
     CoeusAppletMDIForm mdiForm ) {
@@ -751,7 +751,7 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             submitSponsor.setEnabled(false);
             submitGrantsGov.setEnabled(false);
             validationChecks.setEnabled(false);
-        }       
+        }
 
     }
 
@@ -909,15 +909,9 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             userAttachedS2SForms = new CoeusMenuItem("User Attached S2S Forms...", null, true, true);
 //            userAttachedS2SForms.setMnemonic('S');
             userAttachedS2SForms.addActionListener(this);
-            //Human Subjects 
-            boolean canShow;
-            try {                
-                 canShow = isPHSHumanSubjectCTFormIncluded(proposalID);
-            } catch (Exception ex) {
-               canShow = false;
-            }
             
-            humnSubS2SForms = new CoeusMenuItem("Human Subjects Forms...", null, canShow, true);
+            //Human Subjects 
+            humnSubS2SForms = new CoeusMenuItem("Human Subjects Forms...", null, true, true);
             humnSubS2SForms.addActionListener(this);
             //Human Subjects 
 
@@ -3280,16 +3274,13 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                         proposalRoutingForm.setHierarchy(isHierarchy());
                         //Added for the case# COEUSQA-1679- Modification for Final Document Indicator-end
                         //COEUSQA-1433 - Allow Recall from Routing - Start
-                        // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - Start
-                        // Routing lock is done in RoutingApprovalForm
-//                        if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
-//                            boolean isProtocolLocked = lockProposalRecall();
-//                            if(isProtocolLocked){
-//                                proposalRoutingForm.display();
-//                            }
-//                        }
-                        proposalRoutingForm.display();
-                        // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - End
+                        if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
+                            boolean isProtocolLocked = lockProposalRecall();
+                            if(isProtocolLocked){
+                                proposalRoutingForm.display();
+                            }
+                        }
+                        //proposalRoutingForm.display();
                         //COEUSQA-1433 - Allow Recall from Routing - End
                         if(proposalRoutingForm.isMapsNotFound()){
                             return;
@@ -3464,29 +3455,23 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         proposalRoutingForm.registerObserver( this );
         if( hasSubmitToSponsorRt ){
             //COEUSQA-1433 - Allow Recall from Routing - Start
-            // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - Start
-            // Routing lock is done in RoutingApprovalForm
-//            if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
-//                boolean isProtocolLocked = lockProposalRecall();
-//                if(isProtocolLocked){
-//                    submitSponsor.setEnabled(proposalRoutingForm.display());
-//                }
-//            }
-            submitSponsor.setEnabled(proposalRoutingForm.display());
-            // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - End
+            //submitSponsor.setEnabled(proposalRoutingForm.display());
+            if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
+                boolean isProtocolLocked = lockProposalRecall();
+                if(isProtocolLocked){
+                    submitSponsor.setEnabled(proposalRoutingForm.display());
+                }
+            }
             //COEUSQA-1433 - Allow Recall from Routing - End
         }else{
             //COEUSQA-1433 - Allow Recall from Routing - Start
-            // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - Start
-            // Routing lock is done in RoutingApprovalForm
-//            if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
-//                boolean isProtocolLocked = lockProposalRecall();
-//                if(isProtocolLocked){
-//                    proposalRoutingForm.display();
-//                }
-//            }
-            proposalRoutingForm.display();
-            // Modified for COEUSQA-3816 : Lite - Proposal routing - Locking issues - End            
+            if(proposalRoutingForm.isEnabled() && functionType == DISPLAY_MODE){
+                boolean isProtocolLocked = lockProposalRecall();
+                if(isProtocolLocked){
+                    proposalRoutingForm.display();
+                }
+            }
+            //proposalRoutingForm.display();
             //COEUSQA-1433 - Allow Recall from Routing - End
         }
         //Added for Case#3775 - Manually selected map disappears - starts
@@ -4624,7 +4609,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
          JPanel pnlKeyPerson = new JPanel(new FlowLayout(FlowLayout.LEFT));
         //ppc certify flag change starts         
          proposalDevelopmentFormBean.setKeyPersonCertifyParam(getParameterValueForPPC());         
-
          proposalKeyPersonController=new ProposalKeyPersonController(proposalID,keyStudyPersonnel,functionType,
                  proposalDevelopmentFormBean.isKeyPersonCertifyParam());
         //ppc certify flag change ends
@@ -5184,8 +5168,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                 yesNoQuestion.setEnabled(false);
                 btnYesNoQues.setEnabled(false);
             }
-            
-            
             //COEUSQA:3446 - End
             //if( functionType != DISPLAY_MODE ) {
             //proposal type look up
@@ -5502,6 +5484,7 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                 if( ProposalDetailAdminForm.SPONSOR_CODE != null ){
                     sponsorcode= ProposalDetailAdminForm.SPONSOR_CODE;
                     sponsorName= ProposalDetailAdminForm.SPONSOR_CODE +" : "+ ProposalDetailAdminForm.SPONSOR_DESCRIPTION  ;
+
                     ProtocolFundingSourceBean protocolFundingSourceBean = new ProtocolFundingSourceBean();
                     protocolFundingSourceBean.setFundingSource(sponsorcode);
                     protocolFundingSourceBean.setFundingSourceName(sponsorName);
@@ -5509,8 +5492,8 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
                     protocolFundingSourceBean.setAcType("I");
                     cvFund.add(protocolFundingSourceBean);
                     protocolBean.setFundingSources(cvFund);
-
                  }
+                
 
                 RequesterBean request = new RequesterBean();
                 request.setFunctionType( SaveType );
@@ -7318,7 +7301,6 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         return value;
     }
 //Added for COEUSDEV-1075 : Locking messages inconsistency between Lite and Premium - end
-
  public boolean getParameterValueForPPC(){
         final String connectTo = CoeusGuiConstants.CONNECTION_URL+ "/coeusFunctionsServlet";
         final String PARAMETER = ENABLE_PROP_PERSON_SELF_CERTIFY;
@@ -7341,7 +7323,7 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
             }
         }
         return returnValue;
-    }      
+    }   
 
     private void showHumnSubjtForms(String proposalNumber) throws IOException, Exception{
     String personId =(String)mdiForm.getUserId();
@@ -7379,7 +7361,7 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
         }
         return appHomeUrl;
     }
-  private boolean isPHSHumanSubjectCTFormIncluded(String proposalNumber)throws Exception{
+	 private boolean isPHSHumanSubjectCTFormIncluded(String proposalNumber)throws Exception{
         boolean returnValue = false;
         String connectTo = CoeusGuiConstants.CONNECTION_URL +PROPOSAL_SERVLET;
         RequesterBean request = new RequesterBean();
@@ -7401,8 +7383,7 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
 
         return returnValue;
     } 
-  
-  public void EnableDisableHumanSubject(){
+	public void EnableDisableHumanSubject(){
      try{ 
       if(isPHSHumanSubjectCTFormIncluded(proposalID)){
           humnSubS2SForms.setVisible(true);
@@ -7412,5 +7393,4 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
      }catch(Exception e){}
       
   }
-    
 }
