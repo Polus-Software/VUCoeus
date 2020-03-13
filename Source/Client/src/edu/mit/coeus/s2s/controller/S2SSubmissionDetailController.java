@@ -32,7 +32,7 @@ import edu.mit.coeus.s2s.gui.S2SSubmissionDetailForm;
 import edu.mit.coeus.s2s.validator.S2SValidationException;
 //import edu.mit.coeus.utils.tree.xml.XMLTreeCellRenderer;
 //import edu.mit.coeus.utils.tree.xml.XMLTreeModel;
-
+import edu.mit.coeus.propdev.gui.ProposalDetailForm;
 import java.util.List;
 import javax.swing.table.*;
 import javax.swing.event.*;
@@ -807,7 +807,6 @@ public class S2SSubmissionDetailController implements ActionListener,
         Vector vector = new Vector();
         vector.add(oppFrmTblMdl.getData());
         
-        
         vector.add(buildOpportunityInfoBean());
         
         boolean saved = false;
@@ -824,6 +823,11 @@ public class S2SSubmissionDetailController implements ActionListener,
                 coeusMessageResources.parseMessageKey("s2ssubdetfrm_exceptionCode.1005"));
         }
         dataModified = false;
+        
+        ProposalDetailForm proposalDetailForm;
+        if((proposalDetailForm = (ProposalDetailForm)mdiForm.getFrame(CoeusGuiConstants.PROPOSAL_DETAILS_FRAME_TITLE,getSubmissionTitle())) != null ){
+        proposalDetailForm.EnableDisableHumanSubject();
+        }
     }
     
     private OpportunityInfoBean buildOpportunityInfoBean() {
@@ -897,12 +901,15 @@ public class S2SSubmissionDetailController implements ActionListener,
             if(!frmInfo.isAvailable())
                 throw new CoeusException(coeusMessageResources.parseMessageKey(
                         "s2ssubdetfrm_exceptionCode.1007"));
-           	sltdFrmList.add(oppFrmTblMdl.getValueAt(sltdRows[frmIndex]));
+            sltdFrmList.add(oppFrmTblMdl.getValueAt(sltdRows[frmIndex]));    
+            if(!isTemplateAvailableForThisForm(frmInfo)){                
+                throw new CoeusException("The Form '"+(frmInfo != null ? frmInfo.getFormName() : "")+"' is not available for printing.");
+            }            
         }
 //        validateGrantsGovData();
         String fileName = processGrant.printForms(sltdFrmList);
         if(fileName!=null){
-        		URLOpener.openUrl(fileName);
+            URLOpener.openUrl(fileName);
         }
     }
     /**
@@ -1165,6 +1172,19 @@ public class S2SSubmissionDetailController implements ActionListener,
             return text;
         }
     }
+
+    private boolean isTemplateAvailableForThisForm(FormInfoBean frmInfo){
+        if(frmInfo != null && ( 
+                                  "PHS HumanSubjects And ClinicalTrialsInfo V1-0".equalsIgnoreCase(frmInfo.getFormName())
+                              ||  "Project_Abstract_1_2".equalsIgnoreCase(frmInfo.getFormName())  
+                              ||  "Project_Abstract_1_2-V1.2".equalsIgnoreCase(frmInfo.getFormName())  
+                              ||  "Project_Abstract-V1.1".equalsIgnoreCase(frmInfo.getFormName())  
+                              ||  "Project_Abstract".equalsIgnoreCase(frmInfo.getFormName()))){
+            return false;
+        }            
+        return true;    
+    }
+    
     
     public class OppFormsTableModel extends AbstractTableModel{
         private String[] colName = {FORM_NAME, MANDATORY, INCLUDE, EMPTY_STRING};

@@ -162,16 +162,25 @@
                 var checkBoxName;
                 var selForms = "";
                 var available = "";
-                
+                var formName = "";
                 for(index=0; index < forms; index++) {
                     checkBoxName = "listBean["+index+"].print"
                     if(document.grantsGov.elements[checkBoxName].checked) {
                         available = "listBean["+index+"].available";
+                        formName = "listBean["+index+"].formName";
                         if(document.grantsGov.elements[available].value != "true") {
                             alert("<bean:message bundle="proposal" key="grantsgov.selectAvailForms"/>");
                             return;
-                        }
-                        
+                        }                        
+                        if( document.grantsGov.elements[formName].value == "PHS HumanSubjects And ClinicalTrialsInfo V1-0" ||
+                            document.grantsGov.elements[formName].value == "Project_Abstract_1_2" ||
+                            document.grantsGov.elements[formName].value == "Project_Abstract_1_2-V1.2" ||                            
+                            document.grantsGov.elements[formName].value == "Project_Abstract-V1.1" ||                            
+                            document.grantsGov.elements[formName].value == "Project_Abstract"
+                        ){
+                            alert('The Form "'+document.grantsGov.elements[formName].value+'" is not available for printing.');
+                            return;
+                        } 
                         if(selForms.length > 0) {
                             selForms = selForms + ","+ index;
                         }else {
@@ -531,6 +540,7 @@
                                                     <td align="right" class="copybold">Instruction Page:</td>
                                                     <td colspan="3"><a href="<bean:write name="simpleBean" property="instructionUrl"/>" target="_blank"><bean:write name="simpleBean" property="instructionUrl"/></a>
                                                     <html:hidden property="instructionUrl" name="simpleBean" indexed="true"/>
+                                                    <html:hidden property="packageID" name="simpleBean" indexed="true"/>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -674,9 +684,7 @@
                     <tr> <!-- Buttons -->
                         <td align="center"><br>
                             <html:submit value="Save" disabled="<%=submitted%>"/>&nbsp;&nbsp;
-<!-- JM 5-31-2011 removed per 4.4.2                             
                             <input type="button" value="Submit to Grants.gov" onclick="submitToGrantsGov()" <%=submit?"":"disabled"%>>
--->
                             <br><br>
                         </td>
                     </tr>

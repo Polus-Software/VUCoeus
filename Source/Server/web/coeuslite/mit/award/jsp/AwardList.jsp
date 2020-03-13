@@ -7,8 +7,9 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page import="java.util.Map,java.util.HashMap,
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@page
+	import="java.util.Map,java.util.HashMap,
                 java.util.ArrayList,
                 java.util.Hashtable,
                 javax.servlet.jsp.JspWriter,
@@ -18,15 +19,17 @@
                 java.util.HashSet,
                 edu.mit.coeuslite.utils.CoeusLiteConstants"%>
 
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
-<%@ include file= "/coeuslite/mit/utils/CoeusContextPath.jsp"  %>
-<jsp:useBean  id="childHierarchy" scope="request" class="java.util.Vector"/>
-<jsp:useBean  id="awardList" scope="request" class="java.util.Vector"/>
-<jsp:useBean  id="awardColumnNames" scope="session" class="java.util.Vector"/>
-<jsp:useBean  id="widthList" scope="session" class="java.util.HashMap"/>
-<bean:size id="awardListSize" name="awardList"/>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
+<%@ include file="/coeuslite/mit/utils/CoeusContextPath.jsp"%>
+<jsp:useBean id="childHierarchy" scope="request"
+	class="java.util.Vector" />
+<jsp:useBean id="awardList" scope="request" class="java.util.Vector" />
+<jsp:useBean id="awardColumnNames" scope="session"
+	class="java.util.Vector" />
+<jsp:useBean id="widthList" scope="session" class="java.util.HashMap" />
+<bean:size id="awardListSize" name="awardList" />
 
 <%!
     Vector parentList = new Vector();
@@ -71,12 +74,13 @@
 <html:html>
 <head>
 <title>Award List</title>
-<html:base/>
+<html:base />
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/divSlide.js"></script>
 <script src="<%=path%>/coeuslite/dartmouth/utils/scripts/Balloon.js"></script>
-<script language="javascript" type="text/JavaScript" src="<bean:write name='ctxtPath'/>/coeuslite/mit/utils/scripts/sorttable.js"></script>
+<script language="javascript" type="text/JavaScript"
+	src="<bean:write name='ctxtPath'/>/coeuslite/mit/utils/scripts/sorttable.js"></script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
             function openGeneralInfo(proposalNumber){
                 document.AllAwardRecordFormBean.action = "<%=request.getContextPath()%>/getAwardInfo.do?awardNumber="+proposalNumber;
                 alert(document.AllAwardRecordFormBean.action);
@@ -169,8 +173,8 @@
 
 
 <html:form action="/getBudget.do">
- <body>
-      <%!
+	<body>
+		<%!
       String trBgColor;
         private Vector isChildPresent(String awardNumber) {
              Iterator itr = childList.iterator();
@@ -284,31 +288,37 @@
               }
 
            %>
-<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" class="table">
-    <tr>
-        <td  align="left" valign="top" width="auto"> 
-        <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabtable">
-           
-            <tr>
-                <td colspan="4" align="left" valign="top">
-                    <table width="100%" height="25"   border="0" cellpadding="0" cellspacing="0" class="tableheader">
-                        
-                         <tr>
-                            <td>&nbsp;&nbsp;&nbsp;List of <%=type%>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-             <tr>
-                 <td height="2px"> &nbsp; </td>
-            </tr>
-            <tr align="center">
-                <td>
-                    <table width="98%" height="100%" border="0" cellpadding="2" cellspacing="0" class="table" >
-                            <tr>
-                                    <td class="theader" style="width: 18px;">&nbsp;&nbsp;&nbsp;</td>
-                                 <%
+		<!-- JM 7-25-2012 set table width to match header -->
+		<table width="100%" height="100%" border="0" cellpadding="0"
+			cellspacing="0" class="table">
+			<tr>
+				<td align="left" valign="top" width="auto">
+					<table width="100%" border="0" align="center" cellpadding="0"
+						cellspacing="0" class="tabtable">
+
+						<tr>
+							<td colspan="4" align="left" valign="top">
+								<table width="100%" height="25" border="0" cellpadding="0"
+									cellspacing="0" class="tableheader">
+
+									<tr>
+										<td>&nbsp;&nbsp;&nbsp;List of <%=type%>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td height="2px">&nbsp;</td>
+						</tr>
+						<!-- JM 7-19-2012 added background color -->
+						<tr align="center" style="background-color: #fedc92;">
+							<td>
+								<table width="98%" height="100%" border="0" cellpadding="2"
+									cellspacing="0" class="table">
+									<tr>
+										<td class="theader" style="width: 18px;">&nbsp;&nbsp;&nbsp;</td>
+										<%
                                      if(awardColumnNames != null && awardColumnNames.size()>0){
                                          for(int index=0;index<awardColumnNames.size();index++){
                                              edu.mit.coeus.search.bean.DisplayBean displayBean = (edu.mit.coeus.search.bean.DisplayBean)awardColumnNames.elementAt(index);
@@ -316,22 +326,23 @@
                                                  String strColumnName = displayBean.getValue();
                                                  String clmwidth = widthList.get(displayBean.getName()).toString();
                                                  %>
-                                                 <td width="<%=clmwidth%>%" class="theader"><%=strColumnName%></td>
-                                                  <%
+										<td width="<%=clmwidth%>%" class="theader"><%=strColumnName%></td>
+										<%
                                              }
                                         }
                                      }
                                  %>
 
-                                </tr>
-                                <%
+									</tr>
+									<%
                                         String strBgColor = "#DCE5F1";
                                         int count = 0;
                                         rowCount = 0;
                                  %>
-                                 <logic:present name="awardList">
-                                    <logic:iterate id="award" name="awardList" type="java.util.HashMap">
-                                <%
+									<logic:present name="awardList">
+										<logic:iterate id="award" name="awardList"
+											type="java.util.HashMap">
+											<%
                                         if (rowCount%2 == 0){
                                             strBgColor = "#D6DCE5";}
                                         else{
@@ -360,20 +371,31 @@
                                         ArrayList childPosition = getChildPosition(awrdNum);
 
                                  %>
-                                <tr bgcolor="<%=strBgColor%>" valign="top" onmouseover="className='TableItemOn'" onmouseout="className='TableItemOff'" class="TableItemOff" >
-                                <%
+											<tr bgcolor="<%=strBgColor%>" valign="top"
+												onmouseover="className='TableItemOn'"
+												onmouseout="className='TableItemOff'" class="TableItemOff">
+												<%
                                     if(type.equals("All Parent Awards") || type.equals("All Active Parent Awards") || chldCount == 0) {
                                         %>
-                                        <td style="width: 18px;">&nbsp;&nbsp;&nbsp;</td>
-                                <%
+												<td style="width: 18px;">&nbsp;&nbsp;&nbsp;</td>
+												<%
                                         } else {
-                                %> 
-                                <td>
-                                    <img src='<%=request.getContextPath()%>/coeusliteimages/plus.gif' border='none' style="overflow: hidden;" id="imgtoggle<%=rowCount%>" name="imgtoggle<%=rowCount%>" border="none" onclick="javascript:selectProjPlus(<%=childPosiForPlus%>,<%=rowCount%>); "/>
-                                    <img src='<%=request.getContextPath()%>/coeusliteimages/minus.gif' style="display:  none; overflow: hidden;" border='none' id="imgtoggleminus<%=rowCount%>" name="imgtoggleminus<%=rowCount%>" border="none" onclick="javascript:selectProjMinus(<%=childPosition%>,<%=rowCount%>);"/>
-                                </td>
+                                %>
+												<td><img
+													src='<%=request.getContextPath()%>/coeusliteimages/plus.gif'
+													border='none' style="overflow: hidden;"
+													id="imgtoggle<%=rowCount%>" name="imgtoggle<%=rowCount%>"
+													border="none"
+													onclick="javascript:selectProjPlus(<%=childPosiForPlus%>,<%=rowCount%>); " />
+													<img
+													src='<%=request.getContextPath()%>/coeusliteimages/minus.gif'
+													style="display: none; overflow: hidden;" border='none'
+													id="imgtoggleminus<%=rowCount%>"
+													name="imgtoggleminus<%=rowCount%>" border="none"
+													onclick="javascript:selectProjMinus(<%=childPosition%>,<%=rowCount%>);" />
+												</td>
 
-                                <% }
+												<% }
                                     rowCount++;
                                     String awardNumber="";
                                      if(awardColumnNames != null && awardColumnNames.size()>0){
@@ -401,28 +423,28 @@
                                                         value = value+" ...";
                                                     }
                                                 }%>
-                                                <td style="white-space:normal;" align="left"   width="<%=clmwidth%>%">
-                                   <a href="<%=request.getContextPath()%>/getAwardInfo.do?awardNumber=<%=awardNumber%>"><u><%=value%> </u></a>
-                                   </td>
-                                     <% 
+												<td style="white-space: normal;" align="left"
+													width="<%=clmwidth%>%"><a
+													href="<%=request.getContextPath()%>/getAwardInfo.do?awardNumber=<%=awardNumber%>"><u><%=value%>
+													</u></a></td>
+												<% 
                                             }
                                         }
                                      }
                                  %>
 
-                                </tr>
-                              <%
+											</tr>
+											<%
                               String strBgColorChild="ADDFFF";
                             //  String strBgColorChildSecond="#A0CFEC";
                               trBgColor=strBgColorChild;
                               createChildHierarchy(awardNumber,out,request); 
                               
                                 %>
-                                     </logic:iterate>
-                                        <%request.getSession().setAttribute("lastIndex",rowCount);%>
-                                </logic:present>
-                     </table>
-                                 <%!
+										</logic:iterate>
+										<%request.getSession().setAttribute("lastIndex",rowCount);%>
+									</logic:present>
+								</table> <%!
                                     private void createChildHierarchy(String awrdNum, JspWriter out,HttpServletRequest request) {
                                        selectedAward =  awrdNum;
                                        selectedChildList = isChildPresent(selectedAward);
@@ -519,27 +541,25 @@
                                      }
 
                                      %>
-                                    </td></tr>
-                                <logic:lessEqual name="awardListSize" value="0" >
-                                            <tr>
-                                                <td colspan='3' height="23" align=center>
-                                                    <div style="color: black">
-                                                 No Awards found
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                </logic:lessEqual>
-                                           
-                            </table>
+							</td>
+						</tr>
+						<logic:lessEqual name="awardListSize" value="0">
+							<tr>
+								<td colspan='3' height="23" align=center>
+									<div style="color: black">No Awards found</div>
+								</td>
+							</tr>
+						</logic:lessEqual>
 
-        </td>
-    </tr>
-    <tr> 
-        <td height='10'>
-            &nbsp;
-        </td>
-    </tr>
-</table>
-</body>
+					</table>
+
+				</td>
+			</tr>
+			<tr>
+				<td height='10'>&nbsp;</td>
+			</tr>
+		</table>
+	</body>
 </html:form>
 </html:html>
+

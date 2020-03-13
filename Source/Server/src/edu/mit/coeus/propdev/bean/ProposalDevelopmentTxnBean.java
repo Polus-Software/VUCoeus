@@ -5483,4 +5483,35 @@ public class ProposalDevelopmentTxnBean implements TypeConstants {
 		}
 		return hasRightToView;
 	}
-}// end of class
+//COEUSQA-3956 ENDS   
+public boolean isPHSHumanSubjectCTFormIncluded(String proposalNumber)throws CoeusException, DBException{
+     Vector result = null;
+     Vector param= new Vector();
+     HashMap proposalDevRow = null;
+     boolean canInclude = false;
+     int retValue = 0;
+     param.addElement(new Parameter("PROPOSAL_NUMBER",
+             DBEngineConstants.TYPE_STRING,proposalNumber));
+     
+    try {
+        if (dbEngine != null) {
+            result = dbEngine.executeFunctions("Coeus",
+                    "{ <<OUT INTEGER RESULTS>> = call FN_IS_PHS_HS_CT_FORM_INCLUDED(<< PROPOSAL_NUMBER >>"
+                    + " ) }", param);
+        } else {
+            throw new CoeusException("db_exceptionCode.1000");
+        }
+        if (!result.isEmpty()) {
+            HashMap rowPersonExist = (HashMap) result.elementAt(0);
+            retValue = Integer.parseInt(rowPersonExist.get("RESULTS").toString());
+            if (retValue == 1) {
+                canInclude = true;
+            }
+        }
+    } catch (Exception e) {
+        canInclude = false;
+    }       
+  
+    return canInclude;
+ }   
+}//end of class

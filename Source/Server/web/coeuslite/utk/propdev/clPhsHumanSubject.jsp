@@ -17,16 +17,32 @@
         <script language="JavaScript">
             
             <% ArrayList attachmntList = (ArrayList)request.getAttribute("phsHumanSubjectAttachments");
+               ArrayList humanSbjctAttachmntList = (ArrayList)request.getAttribute("lstUserAttachmentS2S");
+               ArrayList delayedAttachmntList = (ArrayList)request.getAttribute("phsHumnSubjtDlyStdyList");
                 boolean isAttachmentAdded = false;
                 boolean isOtherAttAdded = false;
-                for (int i = 0; i < attachmntList.size(); i++) {
-                  PHSHumanSubjectAttachments  attachmnt = (PHSHumanSubjectAttachments)attachmntList.get(i);
-                    if(attachmnt.getPhsHumnsubjtAttachmentType() == 1){
-                        isAttachmentAdded = true;                        
-                    }else if(attachmnt.getPhsHumnsubjtAttachmentType() == 2){
-                        isOtherAttAdded = true;
-                    }                  
-                }               
+                boolean isHumansbctRcrdAdded = false;
+                if(attachmntList != null){
+                    for (int i = 0; i < attachmntList.size(); i++) {
+                      PHSHumanSubjectAttachments  attachmnt = (PHSHumanSubjectAttachments)attachmntList.get(i);
+                        if(attachmnt.getPhsHumnsubjtAttachmentType() == 1){
+                            isAttachmentAdded = true;                        
+                        }else if(attachmnt.getPhsHumnsubjtAttachmentType() == 2){
+                            isOtherAttAdded = true;
+                        }                  
+                    } 
+                }
+                if(humanSbjctAttachmntList != null){
+                    if(humanSbjctAttachmntList.size() > 0){
+                        isHumansbctRcrdAdded = true;
+                    }
+                }
+                if(delayedAttachmntList != null){
+                    if(delayedAttachmntList.size() > 0){
+                        isHumansbctRcrdAdded = true;
+                    }
+                }
+                             
 
            PHSHumanSubjectsBean phsHumanSubjectsBean = (PHSHumanSubjectsBean)request.getAttribute("phsHumanSubjectinfo");
            List<String> exemptList = phsHumanSubjectsBean.getExemptionNumberList();  
@@ -77,8 +93,7 @@
                 }
             }
            function showHumanSpecimenAttchmnt() {
-                var isOtherAttAdded = '<%=isOtherAttAdded%>';              
-                dataChanged();
+                var isOtherAttAdded = '<%=isOtherAttAdded%>';
                 var isInvolveHumanSpecimenList = document.getElementsByName("isInvolveHumanSpecimen");
                 for( var i= 0; i<isInvolveHumanSpecimenList.length;i++){
                     if(isInvolveHumanSpecimenList[i].checked){
@@ -134,8 +149,9 @@
               }
             }
             
-            function saveHeaderDetail(){ 
+            function saveHeaderDetail(){                
                 var isHumanTrue ='<%=isHumanTrue%>';
+                var isHumansbctRcrdAdded ='<%=isHumansbctRcrdAdded%>';                
                 var isInvolveHumanSpecimenList = document.getElementsByName("isInvolveHumanSpecimen");
                 for( var i= 0; i<isInvolveHumanSpecimenList.length;i++){
                     if(isInvolveHumanSpecimenList[i].checked){
@@ -144,21 +160,24 @@
                 }
                 var isAttachmentAdded = '<%=isAttachmentAdded%>';
                 if(isHumanTrue == 'N'){
-                    if(isAttachmentAdded == 'true' && isInvolveHumanSpecimen == 'Y' || isInvolveHumanSpecimen == 'N' ){
-                        DATA_CHANGED = 'false';
+                    if(isAttachmentAdded == 'true' && isInvolveHumanSpecimen == 'Y' || isInvolveHumanSpecimen == 'N' ){                        
                         document.phsHumanSubjectsBean.action = "<%=request.getContextPath()%>/savePHSHumanSubHeaderDetails.do";
                         document.phsHumanSubjectsBean.submit();
                     }
-                    else if(isInvolveHumanSpecimen == ''){
+                    else if(isInvolveHumanSpecimen == '' || isInvolveHumanSpecimen == undefined){
                         alert("Please answer the Question 'Does the proposed research involve human specimens and/or data?'");
                     }
                     else {
-                        alert("Please add Attachment for 'Add Document'");
+                        alert("Please attach an explanation of why the application does not involve human subjects research under 'Add Documents'.");
                     }
-                }else{
-                    DATA_CHANGED = 'false';
-                    document.phsHumanSubjectsBean.action = "<%=request.getContextPath()%>/savePHSHumanSubHeaderDetails.do";
-                    document.phsHumanSubjectsBean.submit();
+                }else if(isHumanTrue == 'Y'){
+                    if(isHumansbctRcrdAdded == 'false'){
+                        alert("Please add at least one Attachment under the 'Human Subject Study Record(s)' or 'Delayed Onset Study(ies)' section.")
+                    }
+                    else{
+                        document.phsHumanSubjectsBean.action = "<%=request.getContextPath()%>/savePHSHumanSubHeaderDetails.do";
+                        document.phsHumanSubjectsBean.submit();
+                    }                    
                 }
             }
             function saveOtherAttachment(attachmentType) {  
@@ -474,9 +493,11 @@
             <td class="copybold padding-left-header">
                 <div style="padding:5px;text-align:justify;">
                     <span>
-                        Add a record for each proposed Human Subject Study by selecting 'Add New Study' or 'Add New Delayed Onset Study' as appropriate. Delayed onset
-                        studies are those for which there is no well-defined plan for human subject involvement at the time of submission, per agency policies on Delayed Onset
-                        Studies. For delayed onset studies, you will provide the study name and a justification for omission of human subjects study information.
+                        You must add at least 1 of the following:
+                        <ul>
+                            <li>A Human Subjects Study record for each proposed Human Subject Study by adding the description, choosing the file, and clicking the 'Add' button.</li>
+                            <li>A Delayed Onset Study in the Delayed Studies section(s) by adding the study title, choosing the file, and clicking the 'Add' button.<br><i>Delayed onset studies are those for which there is no well-defined plan for human subject involvement at the time of submission, per agency policies on delayed onset studies.  For delayed onset studies, you will provide the study name and a justification for omission of the human subject study information.</i></li>
+                        </ul>
                     </span>
                 </div><br>
              </td>
@@ -979,14 +1000,7 @@
         
     </html:form>
     <script>
-        showHumanSpecimenAttchmnt();
-        DATA_CHANGED = 'false';
-        LINK = "<%=request.getContextPath()%>/savePHSHumanSubHeaderDetails.do";
-        FORM_LINK = document.phsHumanSubjectsBean;
-        PAGE_NAME = "PHS HumanSubjects Information";
-        function dataChanged() {
-            DATA_CHANGED = 'true';
-        }
+        showHumanSpecimenAttchmnt();       
     </script>
 </body>
 </html:html>

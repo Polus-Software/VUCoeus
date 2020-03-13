@@ -92,7 +92,7 @@ public class ProposalMaintenanceServlet extends CoeusBaseServlet implements Type
     //Case id:2016 step 1 - end
     private static final char GET_IS_OK_COPY_BUDGET = 'O';
     private static final char GET_PROPOSAL_VIEWERS = 'P';
-    private static final char GET_COPY_BUDGET_NARR_ALLOWED = 'Q';
+    private static final char GET_COPY_BUDGET_NARR_ALLOWED = 'Q'; 
     private static final char SAVE_RELEASE_LOCK = 'R';
     private static final char SAVE_RETAIN_LOCK = 'S';
     private static final char SAVE_QUESTION_ANSWERS = 's';
@@ -180,6 +180,8 @@ public class ProposalMaintenanceServlet extends CoeusBaseServlet implements Type
     private static final char PROPOSAL_RECALL_LOCK_CHECK = '2';
     //COEUSQA-1433 - Allow Recall from Routing - End
     private static final char PROPOSAL_CREATION_STATUS_DETAILS = '3';
+    
+    private static final char CHECK_IS_PHS_HS_CT_FORM = '4';
     
     // JM 11-21-2012 get proposal details only
     private static final char GET_PROPOSAL_DETAILS_ONLY = '4';
@@ -1990,6 +1992,14 @@ public class ProposalMaintenanceServlet extends CoeusBaseServlet implements Type
                 responder.setDataObject(new Integer(proposalStatusCode));
                 responder.setResponseStatus(true);
             } //COEUSQA-1579 : End
+             else if (functionType == CHECK_IS_PHS_HS_CT_FORM) {
+                proposalNumber = (String) requester.getDataObject();
+                ProposalDevelopmentTxnBean proposalDevelopmentTxnBean = new ProposalDevelopmentTxnBean();
+                boolean caninclude = proposalDevelopmentTxnBean.isPHSHumanSubjectCTFormIncluded(proposalNumber);                
+                responder.setDataObject(new Boolean(caninclude));
+                responder.setResponseStatus(true);               
+            }           
+            
             else if (functionType == PROPOSAL_CREATION_STATUS_DETAILS) {
                 proposalNumber = (String) requester.getDataObject();
                 ProposalDevelopmentTxnBean proposalDevelopmentTxnBean = new ProposalDevelopmentTxnBean();

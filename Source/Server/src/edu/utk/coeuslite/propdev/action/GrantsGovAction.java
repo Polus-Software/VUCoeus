@@ -389,9 +389,8 @@ public class GrantsGovAction extends ProposalBaseAction{
             proposalNumber = request.getParameter("proposalNumber");
             request.getSession().setAttribute("proposalNumber", proposalNumber);
         }        
-        //Commented because Vanderbilt is not using Coeus PHSHumanSubjectCTFormIncluded web Form
-        //HttpSession session = request.getSession();
-        // session.setAttribute("isPHSHumanSubjectCTFormIncluded"+session.getId(), isPHSHumanSubjectCTFormIncluded(proposalNumber, request));
+        HttpSession session = request.getSession();
+        session.setAttribute("isPHSHumanSubjectCTFormIncluded"+session.getId(), isPHSHumanSubjectCTFormIncluded(proposalNumber, request));
 
         request.getSession().removeAttribute("grantsGov");
         
@@ -590,7 +589,7 @@ public class GrantsGovAction extends ProposalBaseAction{
         dynaActionForm.set("competitionId", opportunityInfoBean.getCompetitionId());
         dynaActionForm.set("schemaUrl", opportunityInfoBean.getSchemaUrl());
         dynaActionForm.set("instructionUrl", opportunityInfoBean.getInstructionUrl());
-        
+        dynaActionForm.set("packageID", opportunityInfoBean.getPackageID());
         String formattedDate = formatDate(opportunityInfoBean.getOpeningDate(), DATE_FORMAT);
         dynaActionForm.set("openingDate", formattedDate);
         formattedDate = formatDate(opportunityInfoBean.getClosingDate(), DATE_FORMAT);
@@ -642,6 +641,7 @@ public class GrantsGovAction extends ProposalBaseAction{
         dBOpportunityInfoBean.setCompetitionId((String)dynaActionForm.get("competitionId"));
         dBOpportunityInfoBean.setSchemaUrl((String)dynaActionForm.get("schemaUrl"));
         dBOpportunityInfoBean.setInstructionUrl((String)dynaActionForm.get("instructionUrl"));
+        dBOpportunityInfoBean.setPackageID((String)dynaActionForm.get("packageID"));
         Date date = getDate((String)dynaActionForm.get("openingDate"), DATE_FORMAT);
         Timestamp timestamp = null;
         if(date != null){

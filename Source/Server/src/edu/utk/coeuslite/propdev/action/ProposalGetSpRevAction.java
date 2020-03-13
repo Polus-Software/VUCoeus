@@ -51,6 +51,8 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
 import org.apache.struts.validator.DynaValidatorForm;
 import edu.mit.coeus.utils.ModuleConstants;
+import edu.mit.coeuslite.utils.LockBean;
+import edu.mit.coeuslite.utils.SearchModuleBean;
 import edu.utk.coeuslite.propdev.bean.EPSProposalHeaderBean;
 
 public class ProposalGetSpRevAction extends ProposalBaseAction{
@@ -136,7 +138,15 @@ public class ProposalGetSpRevAction extends ProposalBaseAction{
         }else {
             request.setAttribute("hasRight", false);
         }
-
+        //Added to hide special review section when proposal is open in edit mode in premium
+        // This is done for FORMS-E PHS Human Subject 
+        if(session.getAttribute("PHSHumanFromPremium"+proposalNumber+ session.getId())!= null){
+            UserInfoBean userInfoBean = (UserInfoBean) request.getSession().getAttribute("user" + request.getSession().getId());
+            boolean isValid = prepareLock(userInfoBean,proposalNumber,request);
+            if(!isValid){
+            session.setAttribute("mode"+session.getId(),"display");
+            } 
+        }
         return actionForward;
         
     }
@@ -373,55 +383,138 @@ public class ProposalGetSpRevAction extends ProposalBaseAction{
         }
         return hasRight;
     }
-     
-     //Added for COEUSDEV-1144 : Unable to edit Special review comments RT #2022030 - Start
-    /**
-     * Method called when special review is editted
-     * @param form 
-     * @param request 
+         /** This method will notify for the acquiring and releasing the Lock
+     *based on the way the locks are opened.
+     *It will check whether the proposal is opened through search or list
+     *Based on the conditions it will acquire the lock and release the lock
+     *If it locked then it will prepare the locking messages
+     *@param UserInfoBean, ProposalNumber(Current)
+     *@throws Exception
+     *@returns boolean is locked or not
      */
-     private void editSpecialReview(ActionForm form,HttpServletRequest request){
-         DynaValidatorForm dynaForm = (DynaValidatorForm) form;
-         HttpSession session = request.getSession();
-         String editMode = request.getParameter("editMode");
-         if("true".equalsIgnoreCase(editMode)){
-             Vector htPropDevSpRev = (Vector)session.getAttribute("pdReviewList");
-             if(htPropDevSpRev != null && !htPropDevSpRev.isEmpty()){
-                 String specialReviewNumber = request.getParameter("specialReviewNumber");
-                 int splReviewNumber = 0;
-                 if(specialReviewNumber != null){
-                     splReviewNumber = Integer.parseInt(specialReviewNumber);
-                 }
-                 for(Object specialReview : htPropDevSpRev){
-                     DynaValidatorForm specialReviewForm = (DynaValidatorForm)specialReview;
-                     if(splReviewNumber ==
-                             Integer.parseInt(specialReviewForm.get("specialReviewNumber").toString())){
-                         dynaForm.set("acType",TypeConstants.UPDATE_RECORD);
-                         request.setAttribute("acType",TypeConstants.UPDATE_RECORD);
-                         dynaForm.set("spRevProtocolNumber", specialReviewForm.get("spRevProtocolNumber"));
-                         dynaForm.set("specialReviewCode", specialReviewForm.get("specialReviewCode"));
-                         dynaForm.set("approvalCode", specialReviewForm.get("approvalCode"));
-                         dynaForm.set("applicationDate", specialReviewForm.get("applicationDate"));
-                         dynaForm.set("approvalDate", specialReviewForm.get("approvalDate"));
-                         dynaForm.set("comments", specialReviewForm.get("comments"));
-                         dynaForm.set("proposalNumber", specialReviewForm.get("proposalNumber"));
-                         dynaForm.set("pdSpTimestamp", specialReviewForm.get("pdSpTimestamp"));
-                         dynaForm.set("updateUser", specialReviewForm.get("updateUser"));
-                         dynaForm.set("specialReviewDescription", specialReviewForm.get("specialReviewDescription"));
-                         dynaForm.set("approvalDescription", specialReviewForm.get("approvalDescription"));
-                         dynaForm.set("specialReviewNumber", specialReviewForm.get("specialReviewNumber"));
-                         dynaForm.set("tempApprovalCode", specialReviewForm.get("approvalCode"));
-                         dynaForm.set("tempApprovalText", specialReviewForm.get("approvalDescription"));
-                         dynaForm.set("tempApprovalDate", specialReviewForm.get("applicationDate"));
-                         dynaForm.set("tempApplicationDate",  specialReviewForm.get("applicationDate"));
-                         
-                         break;
-                     }
-                 }
-             }
-             
-         }
-     }
-    //Added for COEUSDEV-1144 : Unable to edit Special review comments RT #2022030 - End
+    private boolean prepareLock(UserInfoBean userInfoBean, String proposalNumber, 
+        HttpServletRequest request) throws Exception{
+        boolean isSuccess = true;
+        HttpSession session = request.getSession();
+        WebTxnBean webTxnBean = new WebTxnBean();
+        String mode = (String)session.getAttribute("mode"+session.getId());
+        SearchModuleBean moduleBean = (SearchModuleBean)session.getAttribute(CoeusLiteConstants.PROPOSAL_SEARCH_ACTION+session.getId());
+        LockBean lockBean = null;
+        LockBean sessionLockBean = (LockBean)session.getAttribute(CoeusLiteConstants.LOCK_BEAN+session.getId());
+    
+        // If the action is from search window
+        if(moduleBean!= null && !moduleBean.getOldModuleNumber().equals(EMPTY_STRING)){
+            
+                moduleBean.setMode(getMode(mode));
+            // If the current Proposal number is in MODIFY MODE then lock it
+                if(!moduleBean.getMode().equals(CoeusLiteConstants.DISPLAY_MODE)){
+                    lockBean = getLockingBean(userInfoBean,moduleBean.getModuleNumber(),request);
+                    boolean isLocked = isLockExists(lockBean, lockBean.getModuleKey());
+                    boolean isSessionRowLocked = false;
+                    Object  isRowLocked = session.getAttribute(
+                        CoeusLiteConstants.RECORD_LOCKED+session.getId());
+                    if(isRowLocked!= null){
+                        isSessionRowLocked = ((Boolean)isRowLocked).booleanValue();
+                    }
+                    /** Make server call and get the locked data. Check for the unit
+                     *number. If the unit number!= 00000000 then assume that
+                     *it is lokced by the coeus premium and show the message
+                     */
+                    LockBean serverDataBean = getLockedData(CoeusLiteConstants.PROP_DEV_LOCK_STR+lockBean.getModuleNumber(), request);
+                    // If the current proposal is locked by other user, then show the message
+                    // else lock it
+                    if(!isLocked ){
+                        /** Check if the same record is locked or not. If not 
+                         *then only show the message else discard it
+                         */
+                        if(!isSessionRowLocked || !serverDataBean.getSessionId().equals(lockBean.getSessionId())){                          
+                            isSuccess = false;
+                        }// End if for lockeed record in the session
+                    }else{// If the record is not locked then go ahead and lock it
+                        lockModule(lockBean, request);
+                        session.setAttribute(CoeusLiteConstants.RECORD_LOCKED+session.getId(), 
+                            new Boolean(true));
+                    }
+                }
+            
+        }else{
+            // Proposal opened from list
+            lockBean = getLockingBean(userInfoBean, proposalNumber,request);
+            boolean isLockExists = isLockExists(lockBean, lockBean.getModuleKey());
+            LockBean serverDataBean = getLockedData(CoeusLiteConstants.PROP_DEV_LOCK_STR+lockBean.getModuleNumber(), request);
+            if(isLockExists) {
+                if(serverDataBean!=null && !lockBean.getSessionId().equals(serverDataBean.getSessionId())) {
+                    isLockExists = false;
+                }
+            }
+
+            if(isLockExists && !lockBean.getMode().equals(CoeusLiteConstants.DISPLAY_MODE)) {
+                lockModule(lockBean, request);
+                session.setAttribute(CoeusLiteConstants.RECORD_LOCKED+session.getId(), 
+                            new Boolean(true));
+            }else{
+                if(sessionLockBean == null && !lockBean.getMode().equals(CoeusLiteConstants.DISPLAY_MODE)){                    
+                    isSuccess = false;
+                } else if(sessionLockBean!=null && serverDataBean!=null) {
+                    if(!lockBean.getSessionId().equals(serverDataBean.getSessionId())) {                       
+                        isSuccess = false;                        
+                    }
+                }
+            }
+        }
+        session.removeAttribute(CoeusLiteConstants.PROPOSAL_SEARCH_ACTION+session.getId());
+        return isSuccess;
+        
+    }
+    //Added for COEUSDEV-1144 : Unable to edit Special review comments RT #2022030 - Start
+   /**
+    * Method called when special review is editted
+    * @param form 
+    * @param request 
+    */
+    private void editSpecialReview(ActionForm form,HttpServletRequest request){
+        DynaValidatorForm dynaForm = (DynaValidatorForm) form;
+        HttpSession session = request.getSession();
+        String editMode = request.getParameter("editMode");
+        if("true".equalsIgnoreCase(editMode)){
+            Vector htPropDevSpRev = (Vector)session.getAttribute("pdReviewList");
+            if(htPropDevSpRev != null && !htPropDevSpRev.isEmpty()){
+                String specialReviewNumber = request.getParameter("specialReviewNumber");
+                int splReviewNumber = 0;
+                if(specialReviewNumber != null){
+                    splReviewNumber = Integer.parseInt(specialReviewNumber);
+                }
+                for(Object specialReview : htPropDevSpRev){
+                    DynaValidatorForm specialReviewForm = (DynaValidatorForm)specialReview;
+                    if(splReviewNumber ==
+                            Integer.parseInt(specialReviewForm.get("specialReviewNumber").toString())){
+                        dynaForm.set("acType",TypeConstants.UPDATE_RECORD);
+                        request.setAttribute("acType",TypeConstants.UPDATE_RECORD);
+                        dynaForm.set("spRevProtocolNumber", specialReviewForm.get("spRevProtocolNumber"));
+                        dynaForm.set("specialReviewCode", specialReviewForm.get("specialReviewCode"));
+                        dynaForm.set("approvalCode", specialReviewForm.get("approvalCode"));
+                        dynaForm.set("applicationDate", specialReviewForm.get("applicationDate"));
+                        dynaForm.set("approvalDate", specialReviewForm.get("approvalDate"));
+                        dynaForm.set("comments", specialReviewForm.get("comments"));
+                        dynaForm.set("proposalNumber", specialReviewForm.get("proposalNumber"));
+                        dynaForm.set("pdSpTimestamp", specialReviewForm.get("pdSpTimestamp"));
+                        dynaForm.set("updateUser", specialReviewForm.get("updateUser"));
+                        dynaForm.set("specialReviewDescription", specialReviewForm.get("specialReviewDescription"));
+                        dynaForm.set("approvalDescription", specialReviewForm.get("approvalDescription"));
+                        dynaForm.set("specialReviewNumber", specialReviewForm.get("specialReviewNumber"));
+                        dynaForm.set("tempApprovalCode", specialReviewForm.get("approvalCode"));
+                        dynaForm.set("tempApprovalText", specialReviewForm.get("approvalDescription"));
+                        dynaForm.set("tempApprovalDate", specialReviewForm.get("applicationDate"));
+                        dynaForm.set("tempApplicationDate",  specialReviewForm.get("applicationDate"));
+                        
+                        break;
+                    }
+                }
+            }
+            
+        }
+    }
+   //Added for COEUSDEV-1144 : Unable to edit Special review comments RT #2022030 - End
+   
     
 }

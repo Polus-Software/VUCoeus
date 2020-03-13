@@ -165,23 +165,7 @@ public class ProposalGetAction extends ProposalBaseAction{
         if(request.getParameter("page")!=null && !request.getParameter("page").equals(EMPTY_STRING)){
           actionForward = actionMapping.findForward("success"); 
         }
-        //COEUSQA-1433 - Allow Recall for Routing - Start
-        //to release lock if the proposal is in approval in progress
-        EPSProposalHeaderBean proposalHeaderBean=(EPSProposalHeaderBean)session.getAttribute("epsProposalHeaderBean");
-        String statusCode = EMPTY_STRING;
-        if(proposalHeaderBean!=null){
-             statusCode = proposalHeaderBean.getProposalStatusCode();
-        }
-        if("2".equals(statusCode)){
-            UserInfoBean userInfoBean = (UserInfoBean)session.getAttribute("user"+session.getId());
-            proposalNumber = request.getAttribute("proposalNumber").toString();
-            LockBean lockBean = getLockingBean(userInfoBean, proposalNumber, request);
-            releaseLock(lockBean, request);
-//            session.removeAttribute("proposalLock");
-        }
-        //COEUSQA-1433 - Allow Recall for Routing - End
-        
-       if (actionMapping.getPath().equals("/getPHSHumanSubjectForm")) {
+         if (actionMapping.getPath().equals("/getPHSHumanSubjectForm")) {
             WebTxnBean webTxnBean = new WebTxnBean();
             if (request.getParameter("proposalNumber") != null) {
                 proposalNumber = request.getParameter("proposalNumber");
@@ -194,9 +178,53 @@ public class ProposalGetAction extends ProposalBaseAction{
                 if (vecProposalHeader != null && vecProposalHeader.size() > 0) {
                     session.setAttribute("epsProposalHeaderBean", (EPSProposalHeaderBean) vecProposalHeader.elementAt(0));
                 }
+                EPSProposalHeaderBean proposalHeaderBean = (EPSProposalHeaderBean)session.getAttribute("epsProposalHeaderBean");
+                               
+                int creationStatusCode = Integer.parseInt(proposalHeaderBean.getProposalStatusCode());
+                switch (creationStatusCode) {
+                        case PROPOSAL_APPROVAL_IN_PROGRESS:                                   
+                        session.setAttribute("mode"+session.getId(),"display");
+                        break;
+                        case PROPOSAL_APPROVED:                       
+                        session.setAttribute("mode"+session.getId(),"display");
+
+                        break;
+                        case PROPOSAL_SUBMITTED:                                                                
+                        session.setAttribute("mode"+session.getId(),"display");                                  
+                        break;
+
+                        case PROPOSAL_POST_SUB_APPROVAL:                                                        
+                        session.setAttribute("mode"+session.getId(),"display");                                   
+                        break;
+
+                        case PROPOSAL_POST_SUB_REJECTION:                              
+                        session.setAttribute("mode"+session.getId(),"display");
+                        break;
+                }
+                
             }
             actionForward = actionMapping.findForward("success"); 
+        }       
+        
+        //COEUSQA-1433 - Allow Recall for Routing - Start
+        //to release lock if the proposal is in approval in progress
+        EPSProposalHeaderBean proposalHeaderBean=(EPSProposalHeaderBean)session.getAttribute("epsProposalHeaderBean");        
+        String statusCode = EMPTY_STRING;
+        if(proposalHeaderBean!=null){
+             statusCode = proposalHeaderBean.getProposalStatusCode();
         }
+        if("2".equals(statusCode)){
+            UserInfoBean userInfoBean = (UserInfoBean)session.getAttribute("user"+session.getId());            
+            if(request.getAttribute("proposalNumber") != null){
+                 proposalNumber = request.getAttribute("proposalNumber").toString();
+            }else{
+                 proposalNumber = request.getParameter("proposalNumber");
+            } 
+            LockBean lockBean = getLockingBean(userInfoBean, proposalNumber, request);
+            releaseLock(lockBean, request);
+//            session.removeAttribute("proposalLock");
+        }
+        //COEUSQA-1433 - Allow Recall for Routing - End
        
         session.setAttribute("isPHSHumanSubjectCTFormIncluded"+session.getId(), isPHSHumanSubjectCTFormIncluded(proposalNumber, request));
                 
@@ -1030,24 +1058,5 @@ public class ProposalGetAction extends ProposalBaseAction{
         return lockBean;
     }
     
-    private boolean isPHSHumanSubjectCTFormIncluded(String proposalNumber, HttpServletRequest request) {
-        boolean isPHSHSCIncluded = false;
-        try {
-            HashMap hms2s = new HashMap();
-            WebTxnBean webTxnBean = new WebTxnBean();
-            hms2s.put("proposalNumber", proposalNumber);
-            Hashtable hts2s = (Hashtable) webTxnBean.getResults(request, "fnIsPhsHSCTFormIncluded", hms2s);
-            HashMap hmUnitDesc = (HashMap) hts2s.get("fnIsPhsHSCTFormIncluded");
-            if (hmUnitDesc != null && !hmUnitDesc.isEmpty()) {
-                int retval = Integer.parseInt(hmUnitDesc.get("returnValue").toString());
-                if (retval == 1) {
-                    isPHSHSCIncluded = true;
-                }
-            }
-        } catch (Exception e) {
-            return false;
-        }
-        return isPHSHSCIncluded;
-    }
 }
  
