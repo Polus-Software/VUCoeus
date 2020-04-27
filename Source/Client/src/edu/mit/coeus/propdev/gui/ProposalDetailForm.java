@@ -496,11 +496,11 @@ private static final char CHECK_QUESTIONNAIRE_COMPLETED = 'b';
     //ppc certify flag for key person ends
 	
 	private static final char CHECK_IS_PHS_HS_CT_FORM = '4';
-
+  
     // JM 4-15-2015 added APPROVAL_IN_PROGRESS and APPROVED status variables
     private static final int APPROVAL_IN_PROGRESS = 2;
     // JM END
-
+    
     public ProposalDetailForm( char fnType, String propID,
     CoeusAppletMDIForm mdiForm ) {
         super( CoeusGuiConstants.PROPOSAL_DETAILS_FRAME_TITLE
