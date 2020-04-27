@@ -34,11 +34,6 @@ import edu.mit.coeus.utils.query.And;
 import edu.mit.coeus.utils.query.AuthorizationOperator;
 import edu.mit.coeus.utils.query.Equals;
 import edu.mit.coeus.utils.query.Operator;
-
-// JM 12-3-2013 added for help area
-import edu.vanderbilt.coeus.gui.CoeusHelpGidget;
-// JM END
-
 import java.math.BigDecimal;
 
 import java.util.*;
@@ -1612,25 +1607,6 @@ public class SpecialReviewForm extends javax.swing.JComponent implements TypeCon
     gridBagConstraints.insets = new java.awt.Insets(3, 3, 0, 0);
     add(lblSpecialReviewComments, gridBagConstraints);
 
-    // JM 12-3-2013 panel for page usage directions
-    CoeusHelpGidget gidgetUsage = new CoeusHelpGidget("specialReview_helpCode.1000");
-    JScrollPane scrPnUsage = new JScrollPane(gidgetUsage.createHelpScrollArea());
-    scrPnUsage.setMaximumSize(new java.awt.Dimension(650, 170));
-    scrPnUsage.setMinimumSize(new java.awt.Dimension(650, 150));
-    scrPnUsage.setPreferredSize(new java.awt.Dimension(650, 185));
-
-    JPanel pnlUsage = gidgetUsage.createHelpPanel();
-    pnlUsage.add(scrPnUsage, java.awt.BorderLayout.CENTER);
-     
-    gridBagConstraints = new java.awt.GridBagConstraints();
-    gridBagConstraints.gridx = 0;
-    gridBagConstraints.gridy = 5;
-    gridBagConstraints.gridwidth = 15;
-    gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-    gridBagConstraints.insets = new java.awt.Insets(0, 3, 10, 3);
-    add(pnlUsage, gridBagConstraints);
-    // JM END
-    
     pnlButtonsContainer.setLayout(new java.awt.GridBagLayout());
 
     pnlAddDeleteButtons.setLayout(new java.awt.GridBagLayout());

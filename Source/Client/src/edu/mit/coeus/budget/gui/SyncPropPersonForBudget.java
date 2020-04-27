@@ -105,10 +105,8 @@ public class SyncPropPersonForBudget extends javax.swing.JComponent implements A
     //Added for Case 3869 - Save not working for budget person - start
     private Vector vecAppointmentTypes;
     //COEUSQA-2036 Code Table Prop Dev Appt Type and Period Types - Start
-    // JM 7-12-2012 12M DURATION is INACTIVE so setting to 12M EMPLOYEE
     //private final String REG_EMPLOYEE = "REG_EMPLOYEE";
-    //private final String REG_EMPLOYEE = "12M DURATION";
-    private final String REG_EMPLOYEE = "12M EMPLOYEE"; 
+    private final String REG_EMPLOYEE = "12M DURATION";
     //COEUSQA-2036 Code Table Prop Dev Appt Type and Period Types - End
     //Added for Case 3869 - Save not working for budget person - end
     //COEUSQA-1535-Access to institutionally maintained salaries in proposal budget - Start
@@ -826,7 +824,7 @@ public class SyncPropPersonForBudget extends javax.swing.JComponent implements A
         setLayout(new java.awt.GridBagLayout());
 
         scrPnPropBudgetSync.setBorder(new javax.swing.border.EtchedBorder());
-        scrPnPropBudgetSync.setMinimumSize(new java.awt.Dimension(390, 150));
+        scrPnPropBudgetSync.setMinimumSize(new java.awt.Dimension(380, 150));
         scrPnPropBudgetSync.setPreferredSize(new java.awt.Dimension(390, 150));
         tblPropBudgetSync.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1155,15 +1153,8 @@ public class SyncPropPersonForBudget extends javax.swing.JComponent implements A
      * @return Vector vecApptData
      */
     public Vector constructAppointmentTypeVector(HashMap hmData){
-        // JM 7-16-2012 added to allow sorted data in appointment type
-    	Map sortedData = edu.vanderbilt.coeus.utils.CoeusComparator.sortByComparator(hmData);
-    	// JM END
-    	
         Vector vecApptData = new Vector();
-        // JM 7-16-2012 added to allow sorted data in appointment type
-        //Set<Map.Entry<String, String>> setData = hmData.entrySet();
-        Set<Map.Entry<String, String>> setData = sortedData.entrySet();
-        // JM END
+        Set<Map.Entry<String, String>> setData = hmData.entrySet();
         for(Map.Entry<String,String> mapData : setData){
             ComboBoxBean cmbBean = new ComboBoxBean();
             cmbBean.setCode(mapData.getKey());
