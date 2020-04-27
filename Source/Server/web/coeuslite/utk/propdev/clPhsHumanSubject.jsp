@@ -300,7 +300,7 @@
     <html:form  action="/getPHSHumanSubjectS2SDetails.do"  enctype="multipart/form-data"> 
         <table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" class="table">
             <tr>
-                <td height="25px" align="left" align="top" class="theader header_font "> <span class="padding-left-header">PHS Human Subjects and Clinical Trails Information</span>   </td>
+                <td height="25px" align="left" align="top" class="theader"> <span class="padding-left-header">PHS Human Subjects and Clinical Trails Information</span>   </td>
             </tr>
             <tr>
                 <td>
@@ -382,7 +382,7 @@
                     <div id="isHumanSpecimenTrue" class="border_box">
                         <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0" class="tabtable">
                             <tr>
-                                <td  height="30px" align="left" class="theader header_font"> Add Documents </td> 
+                                <td  height="30px" align="left" class="theader"> Add Documents </td> 
                             </tr>
                             <%if(!modeValue){%>
                             <tr>
@@ -506,7 +506,7 @@
             <td>
                 <table width="100%"  border="0" align="center" cellpadding="3" cellspacing="0">
                     <tr class="white_border">
-                        <td  height="30px" align="left" class="theader header_font"> Human Subject Study Record(s)
+                        <td  height="30px" align="left" class="theader"> Human Subject Study Record(s)
                             <span style="float:right;"><html:button property="Save" value="click here to extract Human Subject Study Record Attachment" onclick="javascript:downloadHumanStdyForm();"/></span></td>
                     </tr>
                 </table>
@@ -720,7 +720,7 @@
                 <div>
                     <table width="100%"  border="0" align="center" cellpadding="3" cellspacing="0">
                         <tr>
-                            <td  height="30px" class="theader header_font">
+                            <td  height="30px" class="theader">
                                 Delayed Onset Study(ies) 
                             </td> 
                         </tr>
@@ -867,7 +867,7 @@
                 <td>   
                     <table width="100%"  border="0" align="center" cellpadding="3" cellspacing="0" class="tabtable">
                         <tr>
-                            <td height="30px" align="left" class="theader header_font padding-left-header">
+                            <td height="30px" align="left" class="theader padding-left-header">
                                 Other Requested Information 
                             </td> 
                         </tr>

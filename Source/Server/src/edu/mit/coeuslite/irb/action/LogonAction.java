@@ -21,11 +21,19 @@ import edu.mit.coeus.utils.dbengine.DBException;
 import edu.mit.coeuslite.irb.bean.ReadProtocolDetails;
 import edu.mit.coeuslite.irb.form.MyLogonForm;
 import edu.mit.coeuslite.utils.CoeusBaseAction;
+import static edu.mit.coeuslite.utils.CoeusBaseAction.AWARD_ENABLE;
+import edu.mit.coeuslite.utils.CoeusLiteConstants;
+import edu.mit.coeuslite.utils.SessionConstants;
+import edu.mit.coeuslite.utils.bean.CoeusHeaderBean;
+import edu.mit.coeuslite.utils.bean.WebTxnBean;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -153,7 +161,7 @@ public class LogonAction extends ValidateUserAction{
         return loginMode;
     }
     
-    private void getHeaderDetails(HttpServletRequest request) {
+    private void getHeaderDetails(HttpServletRequest request) throws Exception {
         ServletContext application = getServlet().getServletConfig().getServletContext();
         HttpSession session = request.getSession();
         Vector headerVector;
@@ -165,6 +173,28 @@ public class LogonAction extends ValidateUserAction{
             session.setAttribute(HEADER_ITEMS, headerVector);
         }
 
+        /**
+             * check for MY Award enable
+             */
+
+             String myAwardEnabled = fetchParameterValue(request, AWARD_ENABLE);
+            if(myAwardEnabled != null){
+                if("0".equals(myAwardEnabled.trim())){
+                    session.setAttribute("tdWidth", "525px");
+                    session.setAttribute(SessionConstants.AWARD_ENABLE,CoeusLiteConstants.NO);
+                    for(int i = 0; i < headerVector.size(); i++) {
+                        CoeusHeaderBean headerBean = new CoeusHeaderBean();
+                        headerBean = (CoeusHeaderBean)headerVector.get(i);
+                        if(headerBean.getHeaderId().equals("009")) {
+                           headerVector.remove(headerBean);
+                        }
+                    }
+                   // headerVector.removeElementAt(headerVector.);
+                } else if("1".equals(myAwardEnabled.trim())){
+                    session.setAttribute("tdWidth", "650px");
+                    session.setAttribute(SessionConstants.AWARD_ENABLE,CoeusLiteConstants.YES);
+                }
+            }
         
     }
     
@@ -419,6 +449,27 @@ public class LogonAction extends ValidateUserAction{
         ValidateUserTxnBean validateUserTxn = new ValidateUserTxnBean();
         return validateUserTxn.isThisUserValidUser(userName);
     }
-    
+
+    /**
+     * This method is to get the Parameter Value for a particular Parameter
+     * Parameter value is fetched from OSP$PARAMETER table, through the procedure get_parameter_value 
+     * @throws Exception
+     * @return String Parameter Value
+     */
+    protected String fetchParameterValue(HttpServletRequest request, String parameter)throws Exception{
+        Map mpParameterName = new HashMap();
+        WebTxnBean webTxnBean = new WebTxnBean();
+        String value = "";
+        mpParameterName.put("parameterName",parameter);
+        Hashtable htParameterValue =
+                (Hashtable)webTxnBean.getResults(request, "getParameterValue", mpParameterName );
+        if(htParameterValue != null){
+            HashMap hmParameterValue = (HashMap)htParameterValue.get("getParameterValue");
+            if(htParameterValue != null){
+                value = (String)hmParameterValue.get("parameterValue");
+            }
+        }
+        return value ;
+    }
     
 }
